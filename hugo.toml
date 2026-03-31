@@ -1,0 +1,50 @@
+baseURL = "https://yoon-gu.github.io/compendium/"
+languageCode = "ko"
+title = "Compendium"
+theme = "PaperMod"
+
+[params]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  description = "관심 있는 글을 스크래핑하고 한국어로 번역하여 기록합니다."
+
+  [params.homeInfoParams]
+    Title = "Compendium"
+    Content = "관심 있는 글을 모아 한국어로 번역하여 기록하는 공간입니다."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/yoon-gu/compendium"
+
+[menu]
+  [[menu.main]]
+    identifier = "archive"
+    name = "아카이브"
+    url = "/archives/"
+    weight = 5
+  [[menu.main]]
+    identifier = "tags"
+    name = "태그"
+    url = "/tags/"
+    weight = 10
+  [[menu.main]]
+    identifier = "search"
+    name = "검색"
+    url = "/search/"
+    weight = 15
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
