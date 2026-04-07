@@ -8,6 +8,9 @@ tags: ["LLM", "지식관리", "위키", "Obsidian", "RAG"]
 summary: "Andrej Karpathy가 제안하는 LLM 위키 패턴 — RAG 대신 LLM이 점진적으로 구축·유지하는 영속적 지식 베이스."
 ---
 
+> **원문:** [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — Andrej Karpathy
+> **작성일:** 2026-04-02
+
 LLM을 사용하여 개인 지식 베이스를 구축하는 패턴입니다.
 
 이 문서는 아이디어 파일로, 여러분의 LLM 에이전트(예: OpenAI Codex, Claude Code, OpenCode / Pi 등)에 복사하여 붙여넣기 하도록 설계되었습니다. 높은 수준의 아이디어를 전달하는 것이 목표이며, 구체적인 내용은 여러분의 에이전트가 여러분과 협업하여 만들어 나갈 것입니다.

@@ -8,6 +8,9 @@ tags: ["Claude Code", "AI", "에이전트", "LLM"]
 summary: "Claude Code의 에이전틱 루프, 컨텍스트 로딩, 도구 실행 모델, 대화 생명주기의 내부 동작을 살펴봅니다."
 ---
 
+> **원문:** [How Claude Code works](https://www.mintlify.com/VineeTagarwaL-code/claude-code/concepts/how-it-works)
+> **작성일:** 2026-03-31
+
 에이전틱 루프, 컨텍스트 로딩, 도구 실행 모델, 그리고 내부에서 이루어지는 대화 생명주기에 대해 알아봅니다.
 
 Claude Code는 터미널 기반 코딩 에이전트로, 연속적인 에이전틱 루프를 실행합니다. 사용자의 요청을 읽고, 무엇을 해야 할지 추론하고, 도구를 호출하고, 결과를 관찰한 뒤, 작업이 완료되거나 사용자의 입력이 필요할 때까지 이 과정을 반복합니다.
