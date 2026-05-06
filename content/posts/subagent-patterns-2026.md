@@ -19,7 +19,12 @@ summary: "메인 에이전트가 서브에이전트의 라이프사이클을 통
 
 가장 단순한 패턴입니다. 메인 에이전트는 서브에이전트를 띄우고 그 결과를 툴 응답으로 반환하는 툴을 호출합니다. 메인 에이전트의 관점에서 서브에이전트를 호출하는 것은 `read_file`이나 `run_command`를 호출하는 것과 동일합니다.
 
-![Pattern 1 diagram](https://www.philschmid.de/static/blog/subagent-patterns-2026/pattern-1.png)
+```text
+┌─────────────┐   call_agent(task)   ┌──────────────┐
+│ Main Agent  │ ───────────────────▶ │  Subagent    │
+│             │ ◀─────────────────── │  (own ctx)   │
+└─────────────┘     tool response    └──────────────┘
+```
 
 메인 에이전트는 예를 들어 `call_agent`라는 툴을 가집니다. 작업을 보내고 결과를 받습니다. 서브에이전트는 자체 도구와 지침으로 자신의 컨텍스트에서 실행됩니다. 메인 에이전트는 서브에이전트의 라이프사이클을 직접 관리하지 않습니다.
 
@@ -65,7 +70,18 @@ summary: "메인 에이전트가 서브에이전트의 라이프사이클을 통
 
 메인 에이전트가 서브에이전트들을 띄우고 `wait_agent` 툴을 사용해 결과를 수집합니다. 인라인 툴과 달리, 띄우기와 수집은 별도의 단계입니다. `spawn_agent`는 항상 즉시 반환합니다. 모델은 다음에 무엇을 할지 결정합니다 — 즉시 `wait_agent`를 호출하거나, 자체 작업을 먼저 하거나, 대기 전에 더 많은 에이전트를 띄울 수 있습니다.
 
-![Pattern 2 diagram](https://www.philschmid.de/static/blog/subagent-patterns-2026/pattern-2.png)
+```text
+                    spawn_agent(A) ─────▶ ┌──────────┐
+                                          │ Agent A  │
+┌─────────────┐    spawn_agent(B) ─────▶ ┌──────────┐
+│ Main Agent  │                          │ Agent B  │
+│             │    spawn_agent(C) ─────▶ ┌──────────┐
+└──────┬──────┘                          │ Agent C  │
+       │                                  └────┬─────┘
+       │            wait_agent()               │
+       └◀──────────────────────────────────────┘
+                  (results in batch)
+```
 
 두 개의 툴: `spawn_agent`는 작업을 디스패치하고 ID와 함께 즉시 반환합니다. `wait_agent`는 하나 이상의 에이전트가 완료될 때까지 블로킹됩니다.
 
@@ -103,7 +119,18 @@ summary: "메인 에이전트가 서브에이전트의 라이프사이클을 통
 
 이는 더 풍부한 툴 표면을 필요로 합니다: `spawn_agent`, `send_message`, `wait_agent`, `list_agents`, `kill_agent`.
 
-![Pattern 3 diagram](https://www.philschmid.de/static/blog/subagent-patterns-2026/pattern-3.png)
+```text
+                send_message ──▶ ┌──────────────┐
+                                 │  Agent A     │
+                ◀── response ─── │ (stateful)   │
+┌─────────────┐                  └──────────────┘
+│ Main Agent  │  send_message ──▶ ┌──────────────┐
+│ (coordinator)│                  │  Agent B     │
+└─────────────┘ ◀── response ─── │ (stateful)   │
+                                 └──────────────┘
+   tools: spawn_agent, send_message, wait_agent,
+          list_agents, kill_agent
+```
 
 패턴 2와 달리, 여기서 에이전트는 상태를 가지며 상호작용형입니다. 메인 에이전트는 메시지를 보내고, 응답을 받고, 같은 에이전트에게 또 다른 메시지를 보냅니다. 에이전트는 전체 대화 기록을 유지합니다. 이는 메인 에이전트가 전문가들 사이를 조율하는 다단계 워크플로우를 지원합니다.
 
@@ -168,7 +195,18 @@ agent-r은 두 번 메시지를 받고(리서치, 그 다음 사실 확인) 첫 
 
 에이전트들이 메인 에이전트를 거치지 않고 서로에게 직접 메시지를 보냅니다. 메인 에이전트는 팀을 설정하고, 역할을 정의하고, 한 발 물러납니다. 에이전트들은 직접 메시징이나 공유 메일박스를 사용해 자기들끼리 조율합니다.
 
-![Pattern 4 diagram](https://www.philschmid.de/static/blog/subagent-patterns-2026/pattern-4.png)
+```text
+┌─────────────┐   kickoff   ┌──────────────┐
+│ Main Agent  │ ──────────▶ │   Planner    │
+│ (supervisor)│             └───┬──────┬───┘
+└─────────────┘                 │      │
+       ▲                send_msg│      │send_msg
+       │ final report           ▼      ▼
+       │                ┌────────────┐  ┌────────────┐
+       │                │ Implementer│◀▶│  Reviewer  │
+       └─── reports ─── └────────────┘  └────────────┘
+                         (agents talk to each other)
+```
 
 툴 표면에 교차 에이전트 어드레싱이 포함됩니다. 각 에이전트는 자체 툴 셋에 `send_message`를 가지며 이름이나 경로로 다른 에이전트를 어드레싱할 수 있습니다.
 
