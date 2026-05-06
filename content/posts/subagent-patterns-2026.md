@@ -19,18 +19,43 @@ summary: "메인 에이전트가 서브에이전트의 라이프사이클을 통
 
 가장 단순한 패턴입니다. 메인 에이전트는 서브에이전트를 띄우고 그 결과를 툴 응답으로 반환하는 툴을 호출합니다. 메인 에이전트의 관점에서 서브에이전트를 호출하는 것은 `read_file`이나 `run_command`를 호출하는 것과 동일합니다.
 
-![Pattern 1 diagram](https://www.philschmid.de/static/blog/subagent-patterns-2026/pattern-1.png)
+```text
+┌─────────────┐   call_agent(task)   ┌──────────────┐
+│ Main Agent  │ ───────────────────▶ │  Subagent    │
+│             │ ◀─────────────────── │  (own ctx)   │
+└─────────────┘     tool response    └──────────────┘
+```
 
 메인 에이전트는 예를 들어 `call_agent`라는 툴을 가집니다. 작업을 보내고 결과를 받습니다. 서브에이전트는 자체 도구와 지침으로 자신의 컨텍스트에서 실행됩니다. 메인 에이전트는 서브에이전트의 라이프사이클을 직접 관리하지 않습니다.
 
 ```json
 [
-  { "role": "user", "content": "PR #42를 보안 이슈로 검토해줘" },
-  { "role": "assistant", "tool_calls": [
-    { "name": "call_agent", "arguments": { "task": "PR #42를 보안 이슈로 검토. 인증 변경에 집중.", "agent": "security-reviewer", "tools": ["read_file", "search_code"] } }
-  ]},
-  { "role": "tool", "name": "call_agent", "content": "2개 이슈 발견: 1) /api/users 엔드포인트에서 인증 토큰이 검증되지 않음. 2) login 핸들러에서 세션 쿠키에 HttpOnly 플래그가 없음." },
-  { "role": "assistant", "content": "검토에서 2개의 보안 이슈를 발견했습니다..." }
+  {
+    "role": "user",
+    "content": "PR #42를 보안 이슈로 검토해줘"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "call_agent",
+        "arguments": {
+          "task": "PR #42를 보안 이슈로 검토. 인증 변경에 집중.",
+          "agent": "security-reviewer",
+          "tools": ["read_file", "search_code"]
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "call_agent",
+    "content": "2개 이슈 발견: 1) /api/users 엔드포인트에서 인증 토큰이 검증되지 않음. 2) login 핸들러에서 세션 쿠키에 HttpOnly 플래그가 없음."
+  },
+  {
+    "role": "assistant",
+    "content": "검토에서 2개의 보안 이슈를 발견했습니다..."
+  }
 ]
 ```
 
@@ -42,16 +67,51 @@ summary: "메인 에이전트가 서브에이전트의 라이프사이클을 통
 
 ```json
 [
-  { "role": "user", "content": "PR #42를 검토하고 CI 로그도 확인해줘" },
-  { "role": "assistant", "tool_calls": [
-    { "name": "call_agent", "arguments": { "task": "PR #42를 보안 이슈로 검토", "agent": "security-reviewer", "background": true } },
-    { "name": "read_file", "arguments": { "path": "ci/logs/latest.txt" } }
-  ]},
-  { "role": "tool", "name": "call_agent", "content": "agent_id: agent-x1. 백그라운드에서 실행 중." },
-  { "role": "tool", "name": "read_file", "content": "빌드 통과. 142개 테스트 그린." },
-  { "role": "assistant", "content": "CI는 깨끗해 보입니다. 보안 검토를 기다리는 중..." },
-  { "role": "user", "content": "<notification agent_id='agent-x1' status='completed'>2개 이슈 발견: ...</notification>" },
-  { "role": "assistant", "content": "보안 검토에서 2개의 이슈를 발견했습니다..." }
+  {
+    "role": "user",
+    "content": "PR #42를 검토하고 CI 로그도 확인해줘"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "call_agent",
+        "arguments": {
+          "task": "PR #42를 보안 이슈로 검토",
+          "agent": "security-reviewer",
+          "background": true
+        }
+      },
+      {
+        "name": "read_file",
+        "arguments": {
+          "path": "ci/logs/latest.txt"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "call_agent",
+    "content": "agent_id: agent-x1. 백그라운드에서 실행 중."
+  },
+  {
+    "role": "tool",
+    "name": "read_file",
+    "content": "빌드 통과. 142개 테스트 그린."
+  },
+  {
+    "role": "assistant",
+    "content": "CI는 깨끗해 보입니다. 보안 검토를 기다리는 중..."
+  },
+  {
+    "role": "user",
+    "content": "<notification agent_id='agent-x1' status='completed'>2개 이슈 발견: ...</notification>"
+  },
+  {
+    "role": "assistant",
+    "content": "보안 검토에서 2개의 이슈를 발견했습니다..."
+  }
 ]
 ```
 
@@ -65,7 +125,18 @@ summary: "메인 에이전트가 서브에이전트의 라이프사이클을 통
 
 메인 에이전트가 서브에이전트들을 띄우고 `wait_agent` 툴을 사용해 결과를 수집합니다. 인라인 툴과 달리, 띄우기와 수집은 별도의 단계입니다. `spawn_agent`는 항상 즉시 반환합니다. 모델은 다음에 무엇을 할지 결정합니다 — 즉시 `wait_agent`를 호출하거나, 자체 작업을 먼저 하거나, 대기 전에 더 많은 에이전트를 띄울 수 있습니다.
 
-![Pattern 2 diagram](https://www.philschmid.de/static/blog/subagent-patterns-2026/pattern-2.png)
+```text
+                    spawn_agent(A) ─────▶ ┌──────────┐
+                                          │ Agent A  │
+┌─────────────┐    spawn_agent(B) ─────▶ ┌──────────┐
+│ Main Agent  │                          │ Agent B  │
+│             │    spawn_agent(C) ─────▶ ┌──────────┐
+└──────┬──────┘                          │ Agent C  │
+       │                                  └────┬─────┘
+       │            wait_agent()               │
+       └◀──────────────────────────────────────┘
+                  (results in batch)
+```
 
 두 개의 툴: `spawn_agent`는 작업을 디스패치하고 ID와 함께 즉시 반환합니다. `wait_agent`는 하나 이상의 에이전트가 완료될 때까지 블로킹됩니다.
 
@@ -73,19 +144,74 @@ summary: "메인 에이전트가 서브에이전트의 라이프사이클을 통
 
 ```json
 [
-  { "role": "user", "content": "auth 모듈을 리팩터링하고 관련된 모든 테스트를 업데이트해줘" },
-  { "role": "assistant", "tool_calls": [
-    { "name": "spawn_agent", "arguments": { "task": "JWT 토큰을 사용하도록 auth 모듈 리팩터링", "agent": "backend-engineer" } },
-    { "name": "spawn_agent", "arguments": { "task": "새로운 JWT 흐름에 맞춰 모든 auth 관련 테스트 업데이트", "agent": "test-writer" } },
-    { "name": "read_file", "arguments": { "path": "docs/auth-spec.md" } }
-  ]},
-  { "role": "tool", "name": "spawn_agent", "content": "agent-a (backend-engineer) 띄움. 실행 중." },
-  { "role": "tool", "name": "spawn_agent", "content": "agent-b (test-writer) 띄움. 실행 중." },
-  { "role": "tool", "name": "read_file", "content": "# Auth Spec\nRS256 JWT 토큰..." },
-  { "role": "assistant", "content": "두 작업을 시작했습니다. auth 스펙은 RS256을 사용해야 함을 확인했습니다." },
-  { "role": "assistant", "tool_calls": [{ "name": "wait_agent", "arguments": { "timeout": 300 } }]},
-  { "role": "tool", "name": "wait_agent", "content": "2개 에이전트 완료:\n- agent-a: 3개 파일 리팩터링 (auth.ts, middleware.ts, config.ts)\n- agent-b: 12개 테스트 업데이트, 모두 통과" },
-  { "role": "assistant", "content": "두 작업 모두 완료되었습니다. auth 모듈은 이제 JWT를 사용합니다..." }
+  {
+    "role": "user",
+    "content": "auth 모듈을 리팩터링하고 관련된 모든 테스트를 업데이트해줘"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "spawn_agent",
+        "arguments": {
+          "task": "JWT 토큰을 사용하도록 auth 모듈 리팩터링",
+          "agent": "backend-engineer"
+        }
+      },
+      {
+        "name": "spawn_agent",
+        "arguments": {
+          "task": "새로운 JWT 흐름에 맞춰 모든 auth 관련 테스트 업데이트",
+          "agent": "test-writer"
+        }
+      },
+      {
+        "name": "read_file",
+        "arguments": {
+          "path": "docs/auth-spec.md"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "spawn_agent",
+    "content": "agent-a (backend-engineer) 띄움. 실행 중."
+  },
+  {
+    "role": "tool",
+    "name": "spawn_agent",
+    "content": "agent-b (test-writer) 띄움. 실행 중."
+  },
+  {
+    "role": "tool",
+    "name": "read_file",
+    "content": "# Auth Spec\nRS256 JWT 토큰..."
+  },
+  {
+    "role": "assistant",
+    "content": "두 작업을 시작했습니다. auth 스펙은 RS256을 사용해야 함을 확인했습니다."
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "wait_agent",
+        "arguments": {
+          "timeout": 300
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "wait_agent",
+    "content": "2개 에이전트 완료:\n- agent-a: 3개 파일 리팩터링 (auth.ts, middleware.ts, config.ts)\n- agent-b: 12개 테스트 업데이트, 모두 통과"
+  },
+  {
+    "role": "assistant",
+    "content": "두 작업 모두 완료되었습니다. auth 모듈은 이제 JWT를 사용합니다..."
+  }
 ]
 ```
 
@@ -103,7 +229,18 @@ summary: "메인 에이전트가 서브에이전트의 라이프사이클을 통
 
 이는 더 풍부한 툴 표면을 필요로 합니다: `spawn_agent`, `send_message`, `wait_agent`, `list_agents`, `kill_agent`.
 
-![Pattern 3 diagram](https://www.philschmid.de/static/blog/subagent-patterns-2026/pattern-3.png)
+```text
+                send_message ──▶ ┌──────────────┐
+                                 │  Agent A     │
+                ◀── response ─── │ (stateful)   │
+┌─────────────┐                  └──────────────┘
+│ Main Agent  │  send_message ──▶ ┌──────────────┐
+│ (coordinator)│                  │  Agent B     │
+└─────────────┘ ◀── response ─── │ (stateful)   │
+                                 └──────────────┘
+   tools: spawn_agent, send_message, wait_agent,
+          list_agents, kill_agent
+```
 
 패턴 2와 달리, 여기서 에이전트는 상태를 가지며 상호작용형입니다. 메인 에이전트는 메시지를 보내고, 응답을 받고, 같은 에이전트에게 또 다른 메시지를 보냅니다. 에이전트는 전체 대화 기록을 유지합니다. 이는 메인 에이전트가 전문가들 사이를 조율하는 다단계 워크플로우를 지원합니다.
 
@@ -111,48 +248,190 @@ summary: "메인 에이전트가 서브에이전트의 라이프사이클을 통
 
 ```json
 [
-  { "role": "user", "content": "WebAssembly 성능에 대한 블로그 포스트를 써줘" },
-
-  { "role": "assistant", "tool_calls": [
-    { "name": "spawn_agent", "arguments": { "role": "researcher", "tools": ["web_search", "read_url"] }},
-    { "name": "spawn_agent", "arguments": { "role": "writer", "tools": ["write_file", "read_file"] }}
-  ]},
-  { "role": "tool", "name": "spawn_agent", "content": "agent-r (researcher) 띄움" },
-  { "role": "tool", "name": "spawn_agent", "content": "agent-w (writer) 띄움" },
-
-  { "role": "assistant", "tool_calls": [
-    { "name": "send_message", "arguments": { "to": "agent-r", "message": "WebAssembly 성능 벤치마크를 리서치. 구체적인 수치가 있는 5개 출처를 찾아줘." } },
-    { "name": "send_message", "arguments": { "to": "agent-w", "message": "WebAssembly 성능에 대한 블로그 포스트 구조를 잡아줘. 4개 섹션." } }
-  ]},
-  { "role": "tool", "name": "send_message", "content": "agent-r에 전달됨" },
-  { "role": "tool", "name": "send_message", "content": "agent-w에 전달됨" },
-
-  { "role": "assistant", "tool_calls": [{ "name": "wait_agent", "arguments": {} }]},
-  { "role": "tool", "name": "wait_agent", "content": "agent-w 응답: 개요 준비 완료: 도입, 벤치마크, 실제 사례, 결론" },
-
-  { "role": "assistant", "tool_calls": [{ "name": "wait_agent", "arguments": {} }]},
-  { "role": "tool", "name": "wait_agent", "content": "agent-r 응답: 5개 출처 발견: 1) Chrome 벤치마크는 네이티브 속도의 1.2배..." },
-
-  { "role": "assistant", "tool_calls": [{ "name": "send_message", "arguments": { "to": "agent-w", "message": "이 출처들을 사용해 개요를 채워줘: 1) Chrome 벤치마크는 네이티브 속도의 1.2배..." } }]},
-  { "role": "tool", "name": "send_message", "content": "agent-w에 전달됨" },
-
-  { "role": "assistant", "tool_calls": [{ "name": "wait_agent", "arguments": {} }]},
-  { "role": "tool", "name": "wait_agent", "content": "agent-w 응답: 초안 완료. 제목: 'WebAssembly Is Faster Than You Think'..." },
-
-  { "role": "assistant", "tool_calls": [{ "name": "send_message", "arguments": { "to": "agent-r", "message": "이 초안을 너의 출처와 대조해 사실 확인: 'WebAssembly Is Faster Than You Think'..." } }]},
-  { "role": "tool", "name": "send_message", "content": "agent-r에 전달됨" },
-
-  { "role": "assistant", "tool_calls": [{ "name": "wait_agent", "arguments": {} }]},
-  { "role": "tool", "name": "wait_agent", "content": "agent-r 응답: 2개 수정 사항: 3번째 단락은 2배 속도라고 인용했지만 출처는 1.5배라고 함..." },
-
-  { "role": "assistant", "tool_calls": [
-    { "name": "send_message", "arguments": { "to": "agent-w", "message": "이 수정 사항들을 적용해줘: 3번째 단락은 2배가 아니라 1.5배여야 함..." } },
-    { "name": "kill_agent", "arguments": { "agent_id": "agent-r" }}
-  ]},
-  { "role": "tool", "name": "send_message", "content": "agent-w에 전달됨" },
-  { "role": "tool", "name": "kill_agent", "content": "agent-r 종료됨" },
-
-  { "role": "assistant", "content": "최종 포스트는 다음과 같습니다..." }
+  {
+    "role": "user",
+    "content": "WebAssembly 성능에 대한 블로그 포스트를 써줘"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "spawn_agent",
+        "arguments": {
+          "role": "researcher",
+          "tools": ["web_search", "read_url"]
+        }
+      },
+      {
+        "name": "spawn_agent",
+        "arguments": {
+          "role": "writer",
+          "tools": ["write_file", "read_file"]
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "spawn_agent",
+    "content": "agent-r (researcher) 띄움"
+  },
+  {
+    "role": "tool",
+    "name": "spawn_agent",
+    "content": "agent-w (writer) 띄움"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "send_message",
+        "arguments": {
+          "to": "agent-r",
+          "message": "WebAssembly 성능 벤치마크를 리서치. 구체적인 수치가 있는 5개 출처를 찾아줘."
+        }
+      },
+      {
+        "name": "send_message",
+        "arguments": {
+          "to": "agent-w",
+          "message": "WebAssembly 성능에 대한 블로그 포스트 구조를 잡아줘. 4개 섹션."
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "send_message",
+    "content": "agent-r에 전달됨"
+  },
+  {
+    "role": "tool",
+    "name": "send_message",
+    "content": "agent-w에 전달됨"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "wait_agent",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "wait_agent",
+    "content": "agent-w 응답: 개요 준비 완료: 도입, 벤치마크, 실제 사례, 결론"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "wait_agent",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "wait_agent",
+    "content": "agent-r 응답: 5개 출처 발견: 1) Chrome 벤치마크는 네이티브 속도의 1.2배..."
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "send_message",
+        "arguments": {
+          "to": "agent-w",
+          "message": "이 출처들을 사용해 개요를 채워줘: 1) Chrome 벤치마크는 네이티브 속도의 1.2배..."
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "send_message",
+    "content": "agent-w에 전달됨"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "wait_agent",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "wait_agent",
+    "content": "agent-w 응답: 초안 완료. 제목: 'WebAssembly Is Faster Than You Think'..."
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "send_message",
+        "arguments": {
+          "to": "agent-r",
+          "message": "이 초안을 너의 출처와 대조해 사실 확인: 'WebAssembly Is Faster Than You Think'..."
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "send_message",
+    "content": "agent-r에 전달됨"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "wait_agent",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "wait_agent",
+    "content": "agent-r 응답: 2개 수정 사항: 3번째 단락은 2배 속도라고 인용했지만 출처는 1.5배라고 함..."
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "send_message",
+        "arguments": {
+          "to": "agent-w",
+          "message": "이 수정 사항들을 적용해줘: 3번째 단락은 2배가 아니라 1.5배여야 함..."
+        }
+      },
+      {
+        "name": "kill_agent",
+        "arguments": {
+          "agent_id": "agent-r"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "send_message",
+    "content": "agent-w에 전달됨"
+  },
+  {
+    "role": "tool",
+    "name": "kill_agent",
+    "content": "agent-r 종료됨"
+  },
+  {
+    "role": "assistant",
+    "content": "최종 포스트는 다음과 같습니다..."
+  }
 ]
 ```
 
@@ -168,7 +447,18 @@ agent-r은 두 번 메시지를 받고(리서치, 그 다음 사실 확인) 첫 
 
 에이전트들이 메인 에이전트를 거치지 않고 서로에게 직접 메시지를 보냅니다. 메인 에이전트는 팀을 설정하고, 역할을 정의하고, 한 발 물러납니다. 에이전트들은 직접 메시징이나 공유 메일박스를 사용해 자기들끼리 조율합니다.
 
-![Pattern 4 diagram](https://www.philschmid.de/static/blog/subagent-patterns-2026/pattern-4.png)
+```text
+┌─────────────┐   kickoff   ┌──────────────┐
+│ Main Agent  │ ──────────▶ │   Planner    │
+│ (supervisor)│             └───┬──────┬───┘
+└─────────────┘                 │      │
+       ▲                send_msg│      │send_msg
+       │ final report           ▼      ▼
+       │                ┌────────────┐  ┌────────────┐
+       │                │ Implementer│◀▶│  Reviewer  │
+       └─── reports ─── └────────────┘  └────────────┘
+                         (agents talk to each other)
+```
 
 툴 표면에 교차 에이전트 어드레싱이 포함됩니다. 각 에이전트는 자체 툴 셋에 `send_message`를 가지며 이름이나 경로로 다른 에이전트를 어드레싱할 수 있습니다.
 
@@ -176,30 +466,118 @@ agent-r은 두 번 메시지를 받고(리서치, 그 다음 사실 확인) 첫 
 
 ```json
 [
-  { "role": "user", "content": "기능 X를 빌드해줘" },
-
-  { "role": "assistant", "tool_calls": [
-    { "name": "spawn_agent", "arguments": { "role": "planner", "tools": ["read_file", "search_code", "send_message"] } },
-    { "name": "spawn_agent", "arguments": { "role": "implementer", "tools": ["read_file", "write_file", "run_command", "send_message"] } },
-    { "name": "spawn_agent", "arguments": { "role": "reviewer", "tools": ["read_file", "search_code", "send_message"] } }
-  ]},
-  { "role": "tool", "name": "spawn_agent", "content": "agent-p (planner) 띄움" },
-  { "role": "tool", "name": "spawn_agent", "content": "agent-i (implementer) 띄움" },
-  { "role": "tool", "name": "spawn_agent", "content": "agent-v (reviewer) 띄움" },
-
-  { "role": "assistant", "tool_calls": [{ "name": "send_message", "arguments": { "to": "agent-p", "message": "기능 X를 계획하고 조율해줘. 너의 팀원: agent-i (implementer), agent-v (reviewer). 그들에게 직접 메시지를 보내. 완료되면 나에게 보고해." } }]},
-  { "role": "tool", "name": "send_message", "content": "agent-p에 전달됨" },
-
-  { "role": "assistant", "tool_calls": [{ "name": "wait_agent", "arguments": { "timeout": 60 } }]},
-  { "role": "tool", "name": "wait_agent", "content": "타임아웃. 응답한 에이전트 없음." },
-
-  { "role": "assistant", "tool_calls": [{ "name": "list_agents", "arguments": {} }]},
-  { "role": "tool", "name": "list_agents", "content": "agent-p: 실행 중, agent-i: 실행 중, agent-v: 유휴" },
-
-  { "role": "assistant", "tool_calls": [{ "name": "wait_agent", "arguments": { "timeout": 120 } }]},
-  { "role": "tool", "name": "wait_agent", "content": "agent-p 응답: 기능 X 완료. 3개 파일 변경, 모든 테스트 통과. 요약: ..." },
-
-  { "role": "assistant", "content": "기능 X가 빌드되었습니다. 수행된 작업은 다음과 같습니다..." }
+  {
+    "role": "user",
+    "content": "기능 X를 빌드해줘"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "spawn_agent",
+        "arguments": {
+          "role": "planner",
+          "tools": ["read_file", "search_code", "send_message"]
+        }
+      },
+      {
+        "name": "spawn_agent",
+        "arguments": {
+          "role": "implementer",
+          "tools": ["read_file", "write_file", "run_command", "send_message"]
+        }
+      },
+      {
+        "name": "spawn_agent",
+        "arguments": {
+          "role": "reviewer",
+          "tools": ["read_file", "search_code", "send_message"]
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "spawn_agent",
+    "content": "agent-p (planner) 띄움"
+  },
+  {
+    "role": "tool",
+    "name": "spawn_agent",
+    "content": "agent-i (implementer) 띄움"
+  },
+  {
+    "role": "tool",
+    "name": "spawn_agent",
+    "content": "agent-v (reviewer) 띄움"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "send_message",
+        "arguments": {
+          "to": "agent-p",
+          "message": "기능 X를 계획하고 조율해줘. 너의 팀원: agent-i (implementer), agent-v (reviewer). 그들에게 직접 메시지를 보내. 완료되면 나에게 보고해."
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "send_message",
+    "content": "agent-p에 전달됨"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "wait_agent",
+        "arguments": {
+          "timeout": 60
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "wait_agent",
+    "content": "타임아웃. 응답한 에이전트 없음."
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "list_agents",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "list_agents",
+    "content": "agent-p: 실행 중, agent-i: 실행 중, agent-v: 유휴"
+  },
+  {
+    "role": "assistant",
+    "tool_calls": [
+      {
+        "name": "wait_agent",
+        "arguments": {
+          "timeout": 120
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "wait_agent",
+    "content": "agent-p 응답: 기능 X 완료. 3개 파일 변경, 모든 테스트 통과. 요약: ..."
+  },
+  {
+    "role": "assistant",
+    "content": "기능 X가 빌드되었습니다. 수행된 작업은 다음과 같습니다..."
+  }
 ]
 ```
 
