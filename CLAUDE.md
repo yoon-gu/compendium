@@ -13,6 +13,12 @@ content/
 - `notes/`: 블로그/위키/문서 같은 짧은 글의 한국어 요약 (마크다운만)
 - `papers/`: 논문 레벨의 긴 번역. arxiv 논문은 아래 워크플로우로 LaTeX→PDF 빌드까지 함께 발행
 
+**요약-논문 양방향 연결 규칙**: `papers/<slug>.md`를 작성하면 `notes/<slug>.md`에도 같은 슬러그로 짧은 요약본(1~2 화면 분량의 핵심 정리)을 함께 만들고, 두 글을 양방향 링크로 잇는다.
+
+- `notes/<slug>.md`: 본문 끝 또는 상단에 "전문은 [한국어 번역본](/compendium/papers/<slug>/)에서" 식의 링크. arxiv 논문이면 한국어/원문 PDF 링크도 함께 노출
+- `papers/<slug>.md`: 상단에 "짧은 요약은 [/notes/<slug>/](/compendium/notes/<slug>/)" 링크 한 줄
+- 두 파일이 같은 슬러그를 공유해도 Hugo 섹션이 다르므로 URL은 각각 `/notes/<slug>/`와 `/papers/<slug>/`로 구분됨
+
 빌드 산출물:
 - `static/papers/<slug>.pdf` — 한국어 번역본 PDF
 - `static/papers/<slug>-original.pdf` — arxiv 원문 PDF (arxiv 출처일 때만)
@@ -71,6 +77,14 @@ curl -sL "https://arxiv.org/pdf/<id>v<v>.pdf" \
 `chapters/` 또는 `\input` 으로 들어오는 모든 본문 .tex를 라인바이라인으로 번역. **LaTeX 명령은 그대로 유지** — `\cite`, `\ref`, `\label`, math, environments(`figure`, `table`, `itemize` 등), `\textbf`, `\emph`, 커스텀 매크로(`\inR` 등) 모두 보존. 번역하는 것은 자연어 본문과 캡션/제목 텍스트만.
 
 표·그림 캡션도 한국어로. 표 헤더 셀(예: `Task`, `Metric`)도 한국어로 다듬되, 약어/지표명(ROC-AUC, $F_1$, mAP, LoRA 등)은 영문 유지.
+
+**전문용어 원문 병기 규칙**: 도메인 전문용어를 한국어로 옮길 때, **한 논문 안에서 첫 등장 1회**에 한해 괄호로 원문을 함께 표기한다. (LaTeX 다중 파일 논문이라면 전체 문서를 단위로, 마크다운은 한 파일이 단위.) 독자의 이해도와 영어 자료로의 연결성을 높이기 위함.
+
+- 적용 대상: 분야 특화 용어, 모델/방법 이름, 학습 패러다임 (예: `트랜스포머(Transformer)`, `사전학습(pre-training)`, `파인튜닝(fine-tuning)`, `자기지도(self-supervised)`, `다운스트림 과제(downstream task)`, `질의응답(question answering, QA)`)
+- 예외: 이미 영문 그대로 쓰는 약어/모델명/지표 (BERT, GPT, LoRA, ROC-AUC 등), 일반어휘에 가까운 단어 (모델, 데이터, 학습 등)
+- 같은 파일에서 두 번째부터는 괄호 없이 한국어만
+- 약어가 있는 용어는 약어까지 함께 표기 (예: `자연어 추론(natural language inference, NLI)`)
+- 한국어 표기가 정착되지 않은 용어는 원문 그대로 두는 것도 OK
 
 이미 `content/papers/<slug>.md`에 손번역된 마크다운이 있다면 용어 일관성을 위해 참고.
 
@@ -138,12 +152,14 @@ arxiv가 아닌 출처(블로그, transformer-circuits.pub 등)는 보통 LaTeX 
 
 ## 빌드 산출물 .gitignore
 
-`papers-tex/**/*.aux,bbl,fls,log,xdv,...` 와 `build/` 는 `.gitignore`에 등록되어 있음. PDF는 `static/papers/`에 커밋.
+`papers-tex/**/*.aux,fls,log,xdv,...` 와 `build/` 는 `.gitignore`에 등록되어 있음. **단, `.bbl`은 제외하지 않는다** — arxiv 소스는 `.bib` 없이 사전 생성된 `.bbl`만 동봉하는 경우가 많아 빌드에 필요. PDF는 `static/papers/`에 커밋.
 
 ## 커밋 정책
 
-- **커밋은 사용자가 명시 요청할 때만**. 그 외에는 변경 사항만 보고하고 대기.
+- **작업 단위가 일단락되면 기본적으로 커밋 + `git push origin master` 까지 진행한다.** 사용자가 별도로 "커밋하지 말고 보여만 달라"고 하지 않는 한 푸시까지 한다 (사용자 사전 승인됨).
+- 푸시 전 점검: `git status`로 의도치 않은 파일(`.DS_Store` 등)이 포함되지 않았는지 확인. 민감 정보 가능성 있는 파일은 스테이징 제외.
 - 커밋 메시지 스타일: 짧은 한국어 동사구 (예: `수식 렌더링 수정: 인라인 KaTeX span 렌더링 추가`)
+- `master`에 직접 푸시. 강제 푸시(`--force`), `git reset --hard`, 훅 우회(`--no-verify`)는 사용자 명시 요청 시에만.
 
 ## 환경 메모
 
