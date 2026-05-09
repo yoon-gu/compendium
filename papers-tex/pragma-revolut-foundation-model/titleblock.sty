@@ -1,0 +1,38 @@
+%%%% titleblock.sty
+%%%% Custom package for a rounded gray title block
+%%%% Designed to work alongside tmlr.sty without modifying it.
+%%%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{titleblock}[2025/02/10 Rounded gray title block for paper first page]
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+
+% ---------------------------------------------------------------------------
+% Colour
+% ---------------------------------------------------------------------------
+\definecolor{titleblockbg}{HTML}{F3F0FE}
+
+% ---------------------------------------------------------------------------
+% Title-block environment  (tcolorbox)
+% ---------------------------------------------------------------------------
+%   - Text-width box with rounded corners and light gray background
+%   - Black text (inherits default)
+% ---------------------------------------------------------------------------
+\newtcolorbox{titleblock}{%
+  enhanced,
+  colback=titleblockbg,
+  colframe=titleblockbg,
+  coltext=black,
+  boxrule=0pt,
+  arc=12pt,
+  outer arc=12pt,
+  left=14pt,
+  right=14pt,
+  top=14pt,
+  bottom=14pt,
+  before skip=0pt,
+  after skip=0.5in,
+}
+
+\endinput

@@ -13,6 +13,7 @@ theme = "PaperMod"
   ShowToc = true
   TocOpen = false
   description = "관심 있는 글을 스크래핑하고 한국어로 번역하여 기록합니다."
+  mainSections = ["notes", "papers"]
 
   [params.homeInfoParams]
     Title = "Compendium"
@@ -23,6 +24,16 @@ theme = "PaperMod"
     url = "https://github.com/yoon-gu/compendium"
 
 [menu]
+  [[menu.main]]
+    identifier = "notes"
+    name = "요약"
+    url = "/notes/"
+    weight = 1
+  [[menu.main]]
+    identifier = "papers"
+    name = "논문"
+    url = "/papers/"
+    weight = 2
   [[menu.main]]
     identifier = "archive"
     name = "아카이브"

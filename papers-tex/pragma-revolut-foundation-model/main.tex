@@ -1,0 +1,107 @@
+\documentclass[10pt]{article}
+
+\usepackage[preprint]{tmlr}
+
+\usepackage{titleblock}
+
+% --- Korean translation support (xelatex + kotex) ---
+\usepackage{kotex}
+\usepackage{fontspec}
+% Latin body: Nanum Myeongjo (overrides tmlr's times)
+\setmainfont{NanumMyeongjo}[AutoFakeSlant=0.167]
+\setsansfont{NanumGothic}[AutoFakeSlant=0.167]
+% Hangul: 본문 명조, sans 고딕, 코드 고딕코딩
+\setmainhangulfont{NanumMyeongjo}[AutoFakeSlant=0.167]
+\setsanshangulfont{NanumGothic}[AutoFakeSlant=0.167]
+\setmonohangulfont{NanumGothicCoding}[AutoFakeSlant=0.167]
+\setmonofont{NanumGothicCoding}[AutoFakeSlant=0.167]
+% 한글 본문은 디폴트(1.2)가 빽빽하므로 1.4로 늘림
+\linespread{1.4}\selectfont
+% Figure/Table → 그림/표
+\renewcommand{\figurename}{그림}
+\renewcommand{\tablename}{표}
+% tmlr.sty가 \parindent를 0으로 두는데 한국어 논문체에는 들여쓰기가 자연스러움
+\setlength{\parindent}{1.2em}
+% --- end Korean support ---
+
+\renewcommand{\headrulewidth}{0pt}
+
+\renewenvironment{abstract}{\vskip.075in\noindent\ignorespaces}{\par\vskip 1ex}
+
+\input{math_commands.tex}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{maintext}{HTML}{1F1F1F}
+\AtBeginDocument{\color{maintext}}
+\definecolor{refblue}{HTML}{376cd5}
+\definecolor{tablerule}{HTML}{e4e4e4}
+\arrayrulecolor{tablerule}
+\setlength{\lightrulewidth}{1pt}
+\setlength{\cmidrulewidth}{1pt}
+\usepackage[colorlinks=true,linkcolor=refblue,citecolor=refblue,urlcolor=refblue]{hyperref}
+\usepackage{cleveref}
+\usepackage{svg}
+
+\definecolor{clrVI}{HTML}{0F52BA}
+\definecolor{clrMO}{HTML}{2A9D8F}
+\definecolor{clrRM}{HTML}{E76F51}
+\definecolor{clrAA}{HTML}{606C38}
+\definecolor{clrAR}{HTML}{7B2D8B}
+\definecolor{clrVP}{HTML}{E63946}
+\definecolor{clrAS}{HTML}{B5838D}
+\newcommand{\inlinecomment}[3]{\textcolor{#1}{\sffamily\bfseries [#2: #3]}}
+
+\newcommand{\inR}{\in \mathbb{R}}
+
+\newcommand{\thead}[1]{\textbf{#1}}
+\newcommand{\method}[1]{\textbf{#1}}
+\newcommand{\best}[1]{\textbf{#1}}
+
+\title{PRAGMA: Revolut의 멀티 소스 뱅킹 이벤트 시퀀스용 파운데이션 모델\\[2pt]\normalsize\normalfont\itshape (PRAGMA: Revolut Foundation Model — 한국어 번역본)}
+
+\author{
+Maxim Ostroukhov\textsuperscript{1}\qquad Ruslan Mikhailov\textsuperscript{1}\qquad Vladimir Iashin\textsuperscript{1}\\[3pt]
+Artem Sokolov\textsuperscript{1}\quad Andrei Akshonov\textsuperscript{1}\quad Vitaly Protasov\textsuperscript{1}\quad Dmitrii Beloborodov\textsuperscript{1}\\[3pt]
+Vince Mullin\textsuperscript{2}\quad Roman Y. Enzmann\textsuperscript{2}\quad Georgios Kolovos\textsuperscript{2}\quad Jason Renders\textsuperscript{2}\\[3pt]
+Pavel Nesterov\textsuperscript{1}\qquad Anton Repushko\textsuperscript{1}\\[8pt]
+{\small\itshape
+\textsuperscript{1}Revolut Research\quad\quad\textsuperscript{2}NVIDIA\\[4pt]
+\normalfont\rmfamily 한국어 번역: Compendium (\url{https://yoon-gu.github.io/compendium/})}
+}
+
+\begin{document}
+
+\begin{titleblock}
+\maketitle
+
+\begin{abstract}
+\input{chapters/abstract}
+\end{abstract}
+\end{titleblock}
+
+\input{chapters/introduction}
+
+\section{Pre-training}
+\label{sec:pretraining-main}
+\input{chapters/dataset}
+\input{chapters/tokenisation}
+\input{chapters/architecture}
+\input{chapters/large-scale-pretraining}
+
+\section{Evaluation}
+\label{sec:evaluation}
+\input{chapters/protocol}
+\input{chapters/downstreams}
+\input{chapters/results}
+\input{chapters/ablations}
+
+\input{chapters/related_work}
+\input{chapters/conclusion}
+
+\bibliography{references}
+\bibliographystyle{tmlr-firstauthor}
+
+\end{document}
