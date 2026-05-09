@@ -1,0 +1,70 @@
+%auto-ignore
+\input{glue_official_tab}
+\section{실험}
+\label{sec:experiments}
+
+본 절에서 저자들은 11개 NLP 과제에 대한 BERT 파인튜닝 결과를 제시한다.
+
+\subsection{GLUE}
+\label{sec:glue}
+
+General Language Understanding Evaluation(GLUE) 벤치마크~\cite{wang-etal:2018:_glue}는 다양한 자연어 이해 과제의 모음이다.
+%Most of the GLUE datasets have already existed for a number of years, but the purpose of GLUE is to (1) distribute these datasets with canonical Train, Dev, and Test splits, and (2) set up an evaluation server to mitigate issues with evaluation inconsistencies and Test set overfitting. GLUE does not distribute labels for the Test set and users must upload their predictions to the GLUE server for evaluation, with limits on the number of submissions.
+GLUE 데이터셋의 상세 설명은 부록~\ref{appendix:sec:glue}에 있다.
+
+GLUE 파인튜닝을 위해, 저자들은 \S\ref{sec:bert}에서 설명한 대로 입력 시퀀스(단일 문장 또는 문장 쌍)를 표현하고, 첫 입력 토큰({\tt [CLS]})에 해당하는 최종 은닉 벡터 $C \in \mathbb{R}^{H}$를 집계 표현으로 사용한다.
+%This is demonstrated visually in Figure~\ref{fig:bert_fine_tune} (a) and (b).
+파인튜닝 동안 새로 도입되는 파라미터는 분류 층 가중치 $W \in \mathbb{R}^{K \times H}$뿐이며, 여기서 $K$는 라벨 수다. 저자들은 $C$와 $W$로 표준 분류 손실, 즉 $\log({\rm softmax}(CW^T))$를 계산한다.
+
+저자들은 모든 GLUE 과제에서 배치 크기 32, 데이터 위 3 에포크로 파인튜닝한다. 각 과제에 대해 Dev 셋에서 가장 좋은 파인튜닝 학습률을 (5e-5, 4e-5, 3e-5, 2e-5 중에서) 선택한다. 또한 \bertlarge는 작은 데이터셋에서 파인튜닝이 불안정할 때가 있어, 여러 번의 무작위 재시작을 돌리고 Dev 셋에서 가장 좋은 모델을 선택한다. 무작위 재시작에서는 동일한 사전학습 체크포인트를 쓰되, 파인튜닝 데이터 셔플과 분류 층 초기화는 다르게 한다.\footnote{GLUE 데이터셋 배포에는 Test 라벨이 포함되어 있지 않으며, 저자들은 \bertbase와 \bertlarge 각각에 대해 GLUE 평가 서버에 단 한 번씩만 제출했다.}
+
+결과는 표~\ref{tab:glue_official}에 제시한다. \bertbase와 \bertlarge 모두 모든 과제에서 큰 차이로 모든 시스템을 능가하며, 이전 최첨단 대비 평균 정확도를 각각 4.5\,\%와 7.0\,\% 끌어올린다. \bertbase와 OpenAI GPT는 어텐션 마스킹을 제외하면 모델 아키텍처가 거의 동일하다는 점에 유의한다. 가장 크고 가장 널리 보고되는 GLUE 과제인 MNLI에서, BERT는 절대 4.6\,\% 정확도 향상을 얻는다. 공식 GLUE 리더보드\footnote{https://gluebenchmark.com/leaderboard}에서 \bertlarge는 80.5점을 얻으며, 이는 작성 시점의 OpenAI GPT 점수 72.8과 비교된다.
+
+\bertlarge는 모든 과제에서, 특히 학습 데이터가 매우 적은 과제에서 \bertbase를 큰 폭으로 능가한다. 모델 크기의 효과는 \S\ref{sec:model_size_ablation}에서 더 자세히 다룬다.
+
+\subsection{SQuAD v1.1}
+\label{sec:squad}
+
+Stanford Question Answering Dataset(SQuAD v1.1)은 10만 건의 크라우드소싱된 질문/답변 쌍 모음이다~\cite{rajpurkar-etal:2016:_squad}. 답을 포함하는 Wikipedia 본문과 질문이 주어졌을 때, 본문 내 답 텍스트 구간을 예측하는 과제다.
+
+\eat{
+For example:
+
+\begin{itemize}
+\item Input Question: \\{\tt {\scriptsize  Where do water droplets collide with ice crystals to form precipitation?}}
+\item Input Paragraph: \\{\tt {\scriptsize  ... Precipitation forms as smaller droplets coalesce via collision with other rain drops or ice crystals within a cloud. ...}}
+\item Output Answer: \\ {\tt {\scriptsize  within a cloud}}
+\end{itemize}
+}
+
+그림~\ref{fig:bert_overall}에서 보이듯, 질의응답 과제에서 저자들은
+입력 질문과 본문을 하나의 묶인 시퀀스로 표현하며, 질문에는 {\tt A} 임베딩을, 본문에는 {\tt B} 임베딩을 사용한다. 파인튜닝 동안 도입되는 파라미터는 시작 벡터 $S \in \mathbb{R}^H$와 종료 벡터 $E \in \mathbb{R}^H$ 두 개뿐이다.
+단어 $i$가 답 구간의 시작일 확률은 $T_i$와 $S$의 내적 뒤 본문의 모든 단어에 대해 소프트맥스를 취해 계산한다 — $P_i = \frac{e^{S{\cdot}T_i}}{\sum_j e^{S{\cdot}T_j}}$. 답 구간의 끝에도 동일한 식을 사용한다. 위치 $i$부터 $j$까지의 후보 구간 점수는 $S{\cdot}T_i + E{\cdot}T_j$로 정의되며, $j \geq i$인 구간 중 점수가 최대인 것을 예측으로 사용한다. 학습 목적함수는 올바른 시작·종료 위치의 로그우도(log-likelihood) 합이다. 학습률 5e-5, 배치 크기 32로 3 에포크 파인튜닝한다.
+
+\input{squad_tab}
+
+
+표~\ref{tab:squad_results}는 리더보드 상위 엔트리와 함께 상위 발표 시스템들의 결과를 보여 준다~\cite{bidaf,clark-gardner:2018:_simpl,peters-etal:2018:_deep,hu2017reinforced}.
+SQuAD 리더보드 상위 결과들은 최신 공개 시스템 설명이 없는 경우가 있고,\footnote{QANet은 \newcite{yu-etal:2018:_qanet}에 기술되어 있으나, 게재 이후 시스템이 상당히 개선되었다.} 시스템 학습 시 어떤 공개 데이터든 사용할 수 있도록 허용된다. 그래서 저자들은 적당한 데이터 증강만을 사용한다 — TriviaQA~\cite{joshi-etal:2017:_triviaq}로 먼저 파인튜닝한 뒤 SQuAD에서 파인튜닝한다.
+
+저자들의 가장 좋은 시스템은 앙상블에서 +1.5 F1, 단일 시스템에서 +1.3 F1으로 리더보드 1위 시스템을 능가한다. 사실, 저자들의 단일 BERT 모델만으로도 F1 기준 1위 앙상블 시스템을 능가한다. TriviaQA 파인튜닝 데이터를 쓰지 않으면 0.1--0.4 F1만 잃지만, 그래도 기존 시스템들을 큰 차이로 능가한다.\footnote{사용한 TriviaQA 데이터는 TriviaQA-Wiki에서 첫 400 토큰으로 구성된 단락 가운데, 제공된 가능한 답 중 적어도 하나를 포함하는 것들이다.}
+
+\subsection{SQuAD v2.0}
+
+SQuAD 2.0 과제는 SQuAD 1.1 문제 정의를 확장해, 제공된 단락에 짧은 답이 존재하지 않을 가능성을 허용함으로써 문제를 더 현실적으로 만든다.
+
+저자들은 SQuAD v1.1 BERT 모델을 이 과제로 확장하기 위해 단순한 접근을 쓴다. 답이 없는 질문은 답 구간의 시작과 끝이 모두 {\tt [CLS]} 토큰인 경우로 처리한다. 시작·끝 답 구간 위치의 확률 공간을 {\tt [CLS]} 토큰의 위치까지 포함하도록 확장한다. 예측 시에는 무답 구간 점수 $s_{\tt null} = S{\cdot}C + E{\cdot}C$와 최선 비-널 구간 점수 $\hat{s_{i,j}} =  {\tt max}_{j \geq i} S{\cdot}T_i + E{\cdot}T_j$를 비교한다. $\hat{s_{i,j}} > s_{\tt null} + \tau$이면 비-널 답을 예측하며, 임계값 $\tau$는 dev 셋에서 F1을 최대화하도록 선택한다. 본 모델에는 TriviaQA 데이터를 사용하지 않았다. 학습률 5e-5, 배치 크기 48로 2 에포크 파인튜닝했다.
+
+이전 리더보드 엔트리와 상위 발표 연구~\cite{unet,slqa}와 비교한 결과는 표~\ref{tab:squad2_results}에 있으며, 구성 요소로 BERT를 사용한 시스템은 제외했다. 이전 최고 시스템 대비 +5.1 F1 향상이 관찰된다.
+
+
+\subsection{SWAG}
+\label{sec:swag}
+Situations With Adversarial Generations(SWAG) 데이터셋은 11.3만 건의 문장 쌍 완성 예시를 담고 있으며, 상식 기반 추론(grounded commonsense inference)을 평가한다~\cite{zellers2018swag}. 한 문장이 주어지면 네 개의 후보 중 가장 그럴듯한 이어지는 문장을 고르는 과제다.
+
+
+SWAG 데이터셋에 대한 파인튜닝에서, 저자들은 주어진 문장(문장 {\tt A})과 가능한 이어짐(문장 {\tt B})의 결합을 각각 담은 네 개의 입력 시퀀스를 만든다. 도입되는 과제별 파라미터는 {\tt [CLS]} 토큰 표현 $C$와의 내적이 각 후보의 점수가 되는 벡터 하나뿐이며, 그 점수는 소프트맥스 층으로 정규화된다.
+
+학습률 2e-5, 배치 크기 16으로 3 에포크 파인튜닝한다. 결과는 표~\ref{tab:swag_official}에 제시한다. \bertlarge는 저자들의 베이스라인 ESIM+ELMo 시스템을 +27.1\,\%, OpenAI GPT를 +8.3\,\% 능가한다.
+
+\input{swag_official_tab}

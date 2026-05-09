@@ -1,0 +1,38 @@
+%auto-ignore
+
+\section{추가 절제 연구}
+\label{appendix:sec:more_ablation_studies}
+
+\subsection{학습 스텝 수의 효과}
+\label{sec:num_training_steps}
+
+그림~\ref{fig:step_abalation}은 $k$ 스텝 동안 사전학습된 체크포인트에서 파인튜닝한 뒤의 MNLI Dev 정확도를 보여 준다. 이를 통해 다음 두 질문에 답할 수 있다.
+
+\input{steps_ablation_fig}
+
+\begin{enumerate}
+\item 질문: BERT가 높은 파인튜닝 정확도를 얻기 위해 정말로 그렇게 많은 사전학습(128,000 단어/배치 × 1,000,000 스텝)이 필요한가? \\
+답: 그렇다. \bertbase는 500k 스텝 학습 대비 1M 스텝 학습 시 MNLI 정확도를 거의 1.0\,\% 더 얻는다.
+\item 질문: 각 배치에서 모든 단어가 아닌 15\,\%만 예측하므로, MLM 사전학습이 LTR 사전학습보다 느리게 수렴하는가? \\
+답: MLM 모델은 LTR 모델보다 약간 느리게 수렴한다. 그러나 절대 정확도 면에서, MLM 모델은 거의 즉시 LTR 모델을 능가하기 시작한다.
+\end{enumerate}
+
+\subsection{서로 다른 마스킹 절차에 대한 절제}
+\label{appendix:sec:different_masks}
+
+\S\ref{sec:pretraining_tasks}에서 언급했듯이, BERT는 마스킹 언어모델(MLM) 목적함수로 사전학습할 때 목표 토큰을 마스킹하는 데 혼합 전략을 쓴다. 다음은 서로 다른 마스킹 전략의 효과를 평가하는 절제 연구이다.
+
+마스킹 전략의 목적은 사전학습과 파인튜닝 사이의 불일치를 줄이는 것임에 유의한다 — {\tt [MASK]} 기호가 파인튜닝 단계에는 등장하지 않기 때문이다. 저자들은 MNLI와 NER 양쪽의 Dev 결과를 보고한다. NER에 대해서는 파인튜닝 접근과 피처 기반 접근을 모두 보고하는데, 모델이 표현을 조정할 기회가 없는 피처 기반 접근에서는 불일치가 증폭될 것으로 예상되기 때문이다.
+
+\input{mask_procedure_ablation_tab}
+
+결과는 표~\ref{tab:mask_ablation}에 제시한다. 표에서 \textsc{Mask}는 MLM에서 목표 토큰을 {\tt [MASK]} 기호로 바꾸는 것을, \textsc{Same}은 목표 토큰을 그대로 두는 것을, \textsc{Rnd}는 목표 토큰을 다른 무작위 토큰으로 바꾸는 것을 의미한다.
+
+표 왼쪽 부분의 숫자는 MLM 사전학습 동안 각 전략이 사용되는 확률을 나타낸다(BERT는 80\,\%, 10\,\%, 10\,\%를 사용). 오른쪽 부분은 Dev 셋 결과를 나타낸다. 피처 기반 접근에서는 \S\ref{sec:ner}에서 가장 좋은 방법으로 밝혀진, BERT의 마지막 4개 층을 결합한 피처를 사용한다.
+
+표에서 보이듯, 파인튜닝은 서로 다른 마스킹 전략에 대해 놀라울 만큼 견고하다. 그러나 예상대로, 피처 기반 접근을 NER에 적용할 때 \textsc{Mask} 전략만 사용한 것은 문제가 있었다. 흥미롭게도, \textsc{Rnd} 전략만 사용한 것 역시 본 논문의 전략보다 훨씬 나쁜 성능을 보였다.
+
+
+
+
+

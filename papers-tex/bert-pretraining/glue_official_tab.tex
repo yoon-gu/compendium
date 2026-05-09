@@ -1,0 +1,26 @@
+%auto-ignore
+\begin{table*}[t]
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{center}
+ \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}cccccccc c}
+    \toprule
+System             &  MNLI-(m/mm)    & QQP        & QNLI       & SST-2      & CoLA       & STS-B      & MRPC       & RTE        & {\bf Average} \\
+                  & 392k            & 363k       & 108k       & 67k        & 8.5k       & 5.7k       & 3.5k       & 2.5k       & -          \\ 
+\hline
+Pre-OpenAI SOTA    & 80.6/80.1       & 66.1       & 82.3       & 93.2       & 35.0       & 81.0       & 86.0       & 61.7       & 74.0       \\
+BiLSTM+ELMo+Attn   & 76.4/76.1       & 64.8       & 79.8       & 90.4       & 36.0       & 73.3       & 84.9       & 56.8       & 71.0       \\
+OpenAI GPT         & 82.1/81.4       & 70.3       & 87.4       & 91.3       & 45.4       & 80.0       & 82.3       & 56.0       & 75.1       \\
+
+\hline
+\bertbase          & 84.6/83.4       & 71.2       & 90.5       & 93.5       & 52.1       & 85.8       & 88.9       & 66.4       & 79.6       \\
+\bertlarge         & {\bf 86.7/85.9} & {\bf 72.1} & {\bf 92.7} & {\bf 94.9} & {\bf 60.5} & {\bf 86.5} & {\bf 89.3} & {\bf 70.1} & {\bf 82.1} \\
+    \bottomrule
+   \end{tabular*}
+   \caption{평가 서버({\small \url{https://gluebenchmark.com/leaderboard}})로 채점된 GLUE Test 결과. 각 과제 아래 숫자는 학습 예시 수를 의미한다. ``Average'' 열은 문제가 있는 WNLI 셋을 제외했기 때문에 공식 GLUE 점수와 약간 다르다.\footnote{\url{https://gluebenchmark.com/faq}의 질문 10 참조.}
+   %OpenAI GPT = (L=12, H=768, A=12); \bertbase = (L=12, H=768, A=12); \bertlarge = (L=24, H=1024, A=16).
+   BERT와 OpenAI GPT는 단일 모델·단일 과제 결과다. QQP와 MRPC는 F1, STS-B는 Spearman 상관계수, 나머지 과제는 정확도가 보고된다. BERT를 구성요소로 사용하는 엔트리는 제외했다.}
+   \label{tab:glue_official}
+\end{center}
+\end{table*}
+\footnotetext{See (10) in \url{https://gluebenchmark.com/faq}.}

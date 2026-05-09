@@ -4,7 +4,6 @@ resources/
 
 # LaTeX build artifacts
 papers-tex/**/*.aux
-papers-tex/**/*.bbl
 papers-tex/**/*.blg
 papers-tex/**/*.fdb_latexmk
 papers-tex/**/*.fls

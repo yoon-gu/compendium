@@ -1,0 +1,19 @@
+%auto-ignore
+\begin{table}[t]
+\small
+ \begin{tabular}{@{}lccccc@{}}
+    \toprule
+              & \multicolumn{5}{c}{Dev 셋} \\
+   과제 & MNLI-m & QNLI & MRPC & SST-2 & SQuAD     \\
+         & (Acc) & (Acc) & (Acc) & (Acc) & (F1)     \\
+     \midrule
+\bertbase       & 84.4 & 88.4 & 86.7 & 92.7 & 88.5 \\
+No NSP          & 83.9 & 84.9 & 86.5 & 92.6 & 87.9 \\
+LTR \& No NSP   & 82.1 & 84.3 & 77.5 & 92.1 & 77.8 \\
+\quad + BiLSTM  & 82.1 & 84.1 & 75.7 & 91.6 & 84.9 \\
+     \bottomrule
+   \end{tabular}
+   \caption{\bertbase 아키텍처를 사용한 사전학습 과제 절제. ``No NSP''는 다음 문장 예측 과제 없이 학습된다. ``LTR \& No NSP''는 OpenAI GPT처럼 다음 문장 예측 없이 좌→우 LM으로 학습된다. ``+ BiLSTM''은 파인튜닝 시 ``LTR + No NSP'' 모델 위에 무작위 초기화된 BiLSTM을 추가한 것이다.
+   }
+   \label{tab:task_ablation}    
+\end{table}

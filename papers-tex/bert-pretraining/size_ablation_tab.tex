@@ -1,0 +1,23 @@
+%auto-ignore
+\begin{table}[b]
+\begin{center}
+{\small
+\begin{tabular}{@{}rrrcccc@{}}
+  \toprule
+  \multicolumn{3}{c}{하이퍼파라미터}      &      & \multicolumn{3}{c}{Dev 셋 정확도} \\
+  \midrule
+  \#L & \#H &\#A & LM (ppl) & MNLI-m & MRPC &SST-2               \\
+  \midrule
+  \
+   3 &  768 & 12 & 5.84 & 77.9 & 79.8 & 88.4 \\
+   6 &  768 &  3 & 5.24 & 80.6 & 82.2 & 90.7 \\
+   6 &  768 & 12 & 4.68 & 81.9 & 84.8 & 91.3 \\
+  12 &  768 & 12 & 3.99 & 84.4 & 86.7 & 92.9 \\
+  12 & 1024 & 16 & 3.54 & 85.7 & 86.9 & 93.3 \\
+  24 & 1024 & 16 & 3.23 & 86.6 & 87.8 & 93.7 \\
+\bottomrule
+\end{tabular}
+} % small
+\end{center}
+\caption{\label{tab:size_ablation} BERT 모델 크기 절제. \#L = 층수, \#H = 은닉 크기, \#A = 어텐션 헤드 수. ``LM (ppl)''은 홀드아웃 학습 데이터의 마스킹 LM 퍼플렉시티다.}
+\end{table}

@@ -1,0 +1,30 @@
+%auto-ignore
+\section{실험 세부 설정}
+\label{appendix:sec:exp_details}
+
+\subsection{GLUE 벤치마크 실험 상세 설명}
+\label{appendix:sec:glue}
+
+표~\ref{tab:glue_official}의 GLUE 결과는 \url{https://gluebenchmark.com/leaderboard}와 \url{https://blog.openai.com/language-unsupervised}에서 가져왔다.
+GLUE 벤치마크는 다음 데이터셋들을 포함하며, 원래 \citet{wang-etal:2018:_glue}에 정리된 설명을 따른다.
+
+\paragraph{MNLI} Multi-Genre Natural Language Inference는 크라우드소싱된 대규모 함의(entailment) 분류 과제다~\cite{williams-nangia-bowman:2018}. 한 쌍의 문장이 주어졌을 때, 두 번째 문장이 첫 번째 문장에 대해 \emph{함의}, \emph{모순}, \emph{중립} 중 어떤 관계인지를 예측하는 것이 목표다.
+
+\paragraph{QQP} Quora Question Pairs는 Quora에 올라온 두 질문이 의미적으로 동일한지 판단하는 이진 분류 과제다~\cite{chen-etal:2018:_quora}.
+
+\paragraph{QNLI} Question Natural Language Inference는 Stanford Question Answering Dataset~\cite{rajpurkar-etal:2016:_squad}을 이진 분류 과제로 변환한 버전이다~\cite{wang-etal:2018:_glue}. 양성 예시는 정답을 포함하는 (질문, 문장) 쌍이고, 음성 예시는 같은 단락에서 가져왔지만 답을 포함하지 않는 (질문, 문장) 쌍이다.
+
+\paragraph{SST-2} Stanford Sentiment Treebank는 영화 리뷰에서 추출된 문장들에 사람의 감성 라벨이 붙은 단문장 이진 분류 과제다~\cite{socher-etal:2013:_recur}.
+
+\paragraph{CoLA} Corpus of Linguistic Acceptability는 영어 문장이 언어학적으로 ``수용 가능''한지를 예측하는 단문장 이진 분류 과제다~\cite{warstadt-singh-bowman:2018:_corpus}.
+
+\paragraph{STS-B} Semantic Textual Similarity Benchmark는 뉴스 헤드라인과 기타 출처에서 가져온 문장 쌍의 모음이다~\cite{cer-etal:2017}. 각 쌍에는 두 문장이 의미적으로 얼마나 유사한지를 1점에서 5점으로 표기한 라벨이 붙어 있다.
+
+\paragraph{MRPC} Microsoft Research Paraphrase Corpus는 온라인 뉴스 출처에서 자동 추출된 문장 쌍에, 두 문장이 의미적으로 동일한지에 대한 사람 라벨이 붙은 데이터셋이다~\cite{dolan-brockett:2005:_autom}.
+
+\paragraph{RTE} Recognizing Textual Entailment는 MNLI와 유사한 이진 함의 과제이지만 학습 데이터가 훨씬 적다~\cite{bentivogli-etal:2009}.\footnote{본 논문은 단일 과제 파인튜닝 결과만 보고한다. 다중 과제 파인튜닝은 성능을 더 끌어올릴 가능성이 있다 — 실제로 MNLI와의 다중 과제 학습이 RTE에서 큰 향상을 가져오는 것을 관찰했다.}
+
+\paragraph{WNLI} Winograd NLI는 작은 자연어 추론 데이터셋이다~\cite{levesque-davis-morgenstern:2011:_winog}. GLUE 웹페이지는 이 데이터셋 구성에 문제가 있음을 지적하며,\footnote{\url{https://gluebenchmark.com/faq}} GLUE에 제출된 모든 학습 시스템이 다수 클래스를 예측하는 65.1\,\% 베이스라인 정확도보다 낮은 성능을 보였다. 따라서 OpenAI GPT와의 공정한 비교를 위해 본 데이터셋은 제외한다. 본 논문의 GLUE 제출에서는 항상 다수 클래스를 예측했다.
+
+
+

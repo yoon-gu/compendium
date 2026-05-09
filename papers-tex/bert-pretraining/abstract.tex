@@ -1,0 +1,5 @@
+%auto-ignore
+저자들은 새로운 언어 표현 모델 {\bf \bert}을 소개한다. BERT는 \textbf{B}idirectional \textbf{E}ncoder \textbf{R}epresentations from \textbf{T}ransformers의 약자다. 최근의 언어 표현 모델들~\cite{peters-etal:2018:_deep, radford-etal:2018}과 달리, \bert는 모든 층에서 좌우 양쪽 맥락을 함께 조건부로 받아 비라벨 텍스트로부터 깊은 양방향 표현을 사전학습하도록 설계되었다. 그 결과, 사전학습된 BERT 모델은 출력 층 하나만 추가해 파인튜닝하는 것만으로, 질의응답이나 언어추론 같은 폭넓은 과제에서 큰 폭의 과제별 아키텍처 수정 없이 최첨단 모델을 만들어 낼 수 있다.
+
+\bert는 개념적으로 단순하지만 경험적으로 강력하다. 11개 자연어 처리 과제에서 새로운 최첨단 결과를 달성하며, GLUE 점수를 80.5\,\%로(절대 7.7\,\%p 개선), MultiNLI 정확도를 86.7\,\%로(절대 4.6\,\% 개선), SQuAD v1.1 질의응답 Test F1을 93.2로(절대 1.5점 개선), SQuAD v2.0 Test F1을 83.1로(절대 5.1점 개선) 끌어올렸다.
+
