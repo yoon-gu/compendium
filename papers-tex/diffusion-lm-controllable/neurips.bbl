@@ -1,0 +1,398 @@
+\begin{thebibliography}{45}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Austin et~al.(2021)Austin, Johnson, Ho, Tarlow, and van~den
+  Berg]{austin2021structured}
+Jacob Austin, Daniel~D. Johnson, Jonathan Ho, Daniel Tarlow, and Rianne van~den
+  Berg.
+\newblock Structured denoising diffusion models in discrete state-spaces.
+\newblock In A.~Beygelzimer, Y.~Dauphin, P.~Liang, and J.~Wortman Vaughan,
+  editors, \emph{Advances in Neural Information Processing Systems}, 2021.
+\newblock URL \url{https://openreview.net/forum?id=h7-XixPCAL}.
+
+\bibitem[Bhagavatula et~al.(2020)Bhagavatula, Bras, Malaviya, Sakaguchi,
+  Holtzman, Rashkin, Downey, tau Yih, and Choi]{bhagavatula2020abductive}
+Chandra Bhagavatula, Ronan~Le Bras, Chaitanya Malaviya, Keisuke Sakaguchi, Ari
+  Holtzman, Hannah Rashkin, Doug Downey, Wen tau Yih, and Yejin Choi.
+\newblock Abductive commonsense reasoning.
+\newblock In \emph{International Conference on Learning Representations}, 2020.
+\newblock URL \url{https://openreview.net/forum?id=Byg1v1HKDB}.
+
+\bibitem[Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan, Dhariwal,
+  Neelakantan, Shyam, Sastry, Askell, Agarwal, Herbert-Voss, Krueger, Henighan,
+  Child, Ramesh, Ziegler, Wu, Winter, Hesse, Chen, Sigler, Litwin, Gray, Chess,
+  Clark, Berner, McCandlish, Radford, Sutskever, and Amodei]{brown-et-al-gpt3}
+Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared~D Kaplan, Prafulla
+  Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell,
+  Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon
+  Child, Aditya Ramesh, Daniel Ziegler, Jeffrey Wu, Clemens Winter, Chris
+  Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess,
+  Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever,
+  and Dario Amodei.
+\newblock Language models are few-shot learners.
+\newblock In H.~Larochelle, M.~Ranzato, R.~Hadsell, M.F. Balcan, and H.~Lin,
+  editors, \emph{Advances in Neural Information Processing Systems}, volume~33,
+  pages 1877--1901. Curran Associates, Inc., 2020.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf}.
+
+\bibitem[Chen et~al.(2021)Chen, Zhang, Zen, Weiss, Norouzi, and
+  Chan]{chen2021wavegrad}
+Nanxin Chen, Yu~Zhang, Heiga Zen, Ron~J Weiss, Mohammad Norouzi, and William
+  Chan.
+\newblock Wavegrad: Estimating gradients for waveform generation.
+\newblock In \emph{International Conference on Learning Representations}, 2021.
+\newblock URL \url{https://openreview.net/forum?id=NsMLjcFaO8O}.
+
+\bibitem[Chowdhery et~al.(2022)Chowdhery, Narang, Devlin, Bosma, Mishra,
+  Roberts, Barham, Chung, Sutton, Gehrmann, Schuh, Shi, Tsvyashchenko, Maynez,
+  Rao, Barnes, Tay, Shazeer, Prabhakaran, Reif, Du, Hutchinson, Pope, Bradbury,
+  Austin, Isard, Gur-Ari, Yin, Duke, Levskaya, Ghemawat, Dev, Michalewski,
+  Garc{\'i}a, Misra, Robinson, Fedus, Zhou, Ippolito, Luan, Lim, Zoph,
+  Spiridonov, Sepassi, Dohan, Agrawal, Omernick, Dai, Pillai, Pellat,
+  Lewkowycz, Moreira, Child, Polozov, Lee, Zhou, Wang, Saeta, Diaz, Firat,
+  Catasta, Wei, Meier-Hellstern, Eck, Dean, Petrov, and
+  Fiedel]{Chowdhery2022PaLMSL}
+Aakanksha Chowdhery, Sharan Narang, Jacob Devlin, Maarten Bosma, Gaurav Mishra,
+  Adam Roberts, Paul Barham, Hyung~Won Chung, Charles Sutton, Sebastian
+  Gehrmann, Parker Schuh, Kensen Shi, Sasha Tsvyashchenko, Joshua Maynez,
+  Abhishek Rao, Parker Barnes, Yi~Tay, Noam~M. Shazeer, Vinodkumar Prabhakaran,
+  Emily Reif, Nan Du, Benton~C. Hutchinson, Reiner Pope, James Bradbury, Jacob
+  Austin, Michael Isard, Guy Gur-Ari, Pengcheng Yin, Toju Duke, Anselm
+  Levskaya, Sanjay Ghemawat, Sunipa Dev, Henryk Michalewski, Xavier Garc{\'i}a,
+  Vedant Misra, Kevin Robinson, Liam Fedus, Denny Zhou, Daphne Ippolito, David
+  Luan, Hyeontaek Lim, Barret Zoph, Alexander Spiridonov, Ryan Sepassi, David
+  Dohan, Shivani Agrawal, Mark Omernick, Andrew~M. Dai,
+  Thanumalayan~Sankaranarayana Pillai, Marie Pellat, Aitor Lewkowycz,
+  Erica~Oliveira Moreira, Rewon Child, Oleksandr Polozov, Katherine Lee,
+  Zongwei Zhou, Xuezhi Wang, Brennan Saeta, Mark Diaz, Orhan Firat, Michele
+  Catasta, Jason Wei, Kathleen~S. Meier-Hellstern, Douglas Eck, Jeff Dean, Slav
+  Petrov, and Noah Fiedel.
+\newblock Palm: Scaling language modeling with pathways.
+\newblock \emph{arXiv preprint arXiv:2204.02311}, 2022.
+
+\bibitem[Dathathri et~al.(2020)Dathathri, Madotto, Lan, Hung, Frank, Molino,
+  Yosinski, and Liu]{Dathathri2020Plug}
+Sumanth Dathathri, Andrea Madotto, Janice Lan, Jane Hung, Eric Frank, Piero
+  Molino, Jason Yosinski, and Rosanne Liu.
+\newblock Plug and play language models: A simple approach to controlled text
+  generation.
+\newblock In \emph{International Conference on Learning Representations}, 2020.
+\newblock URL \url{https://openreview.net/forum?id=H1edEyBKDS}.
+
+\bibitem[Devlin et~al.(2019)Devlin, Chang, Lee, and
+  Toutanova]{Devlin2019BERTPO}
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova.
+\newblock Bert: Pre-training of deep bidirectional transformers for language
+  understanding.
+\newblock \emph{ArXiv}, abs/1810.04805, 2019.
+
+\bibitem[Dhariwal and Nichol(2021)]{dhariwal2021diffusion}
+Prafulla Dhariwal and Alexander~Quinn Nichol.
+\newblock Diffusion models beat {GAN}s on image synthesis.
+\newblock In A.~Beygelzimer, Y.~Dauphin, P.~Liang, and J.~Wortman Vaughan,
+  editors, \emph{Advances in Neural Information Processing Systems}, 2021.
+\newblock URL \url{https://openreview.net/forum?id=AAWuCvzaVt}.
+
+\bibitem[Donahue et~al.(2020)Donahue, Lee, and
+  Liang]{donahue-etal-2020-enabling}
+Chris Donahue, Mina Lee, and Percy Liang.
+\newblock Enabling language models to fill in the blanks.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association
+  for Computational Linguistics}, pages 2492--2501, Online, July 2020.
+  Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2020.acl-main.225}.
+\newblock URL \url{https://aclanthology.org/2020.acl-main.225}.
+
+\bibitem[Duchi et~al.(2010)Duchi, Hazan, and Singer]{Duchi2010AdaptiveSM}
+John~C. Duchi, Elad Hazan, and Yoram Singer.
+\newblock Adaptive subgradient methods for online learning and stochastic
+  optimization.
+\newblock In \emph{J. Mach. Learn. Res.}, 2010.
+
+\bibitem[Gu et~al.(2018)Gu, Bradbury, Xiong, Li, and
+  Socher]{gu2018nonautoregressive}
+Jiatao Gu, James Bradbury, Caiming Xiong, Victor~O.K. Li, and Richard Socher.
+\newblock Non-autoregressive neural machine translation.
+\newblock In \emph{International Conference on Learning Representations}, 2018.
+\newblock URL \url{https://openreview.net/forum?id=B1l8BtlCb}.
+
+\bibitem[Ho et~al.(2020)Ho, Jain, and Abbeel]{ho2020denoising}
+Jonathan Ho, Ajay Jain, and Pieter Abbeel.
+\newblock Denoising diffusion probabilistic models.
+\newblock In \emph{Advances in Neural Information Processing Systems}, pages
+  6840--6851, 2020.
+
+\bibitem[Holtzman et~al.(2020)Holtzman, Buys, Du, Forbes, and
+  Choi]{Holtzman2020Nucleus}
+Ari Holtzman, Jan Buys, Li~Du, Maxwell Forbes, and Yejin Choi.
+\newblock The curious case of neural text degeneration.
+\newblock In \emph{International Conference on Learning Representations}, 2020.
+\newblock URL \url{https://openreview.net/forum?id=rygGQyrFvH}.
+
+\bibitem[Hoogeboom et~al.(2021)Hoogeboom, Nielsen, Jaini, Forr{\'e}, and
+  Welling]{hoogeboom2021argmax}
+Emiel Hoogeboom, Didrik Nielsen, Priyank Jaini, Patrick Forr{\'e}, and Max
+  Welling.
+\newblock Argmax flows and multinomial diffusion: Towards non-autoregressive
+  language models.
+\newblock \emph{arXiv preprint arXiv:2102.05379}, 2021.
+
+\bibitem[Hoogeboom et~al.(2022)Hoogeboom, Gritsenko, Bastings, Poole, van~den
+  Berg, and Salimans]{hoogeboom2022autoregressive}
+Emiel Hoogeboom, Alexey~A. Gritsenko, Jasmijn Bastings, Ben Poole, Rianne
+  van~den Berg, and Tim Salimans.
+\newblock Autoregressive diffusion models.
+\newblock In \emph{International Conference on Learning Representations}, 2022.
+\newblock URL \url{https://openreview.net/forum?id=Lm8T39vLDTE}.
+
+\bibitem[Keskar et~al.(2019)Keskar, McCann, Varshney, Xiong, and
+  Socher]{Keskar2019CTRL}
+N.~Keskar, B.~McCann, L.~R. Varshney, Caiming Xiong, and R.~Socher.
+\newblock Ctrl: A conditional transformer language model for controllable
+  generation.
+\newblock \emph{ArXiv}, abs/1909.05858, 2019.
+
+\bibitem[Khashabi et~al.(2021)Khashabi, Stanovsky, Bragg, Lourie, Kasai, Choi,
+  Smith, and Weld]{Khashabi2021GENIEAL}
+Daniel Khashabi, Gabriel Stanovsky, Jonathan Bragg, Nicholas Lourie, Jungo
+  Kasai, Yejin Choi, Noah~A. Smith, and Daniel~S. Weld.
+\newblock Genie: A leaderboard for human-in-the-loop evaluation of text
+  generation.
+\newblock \emph{ArXiv}, abs/2101.06561, 2021.
+
+\bibitem[Kingma and Welling(2014)]{kingma2014auto}
+Diederik~P Kingma and Max Welling.
+\newblock Auto-encoding variational bayes.
+\newblock \emph{International Conference on Learning Representations (ICLR)},
+  2014.
+
+\bibitem[Kingma et~al.(2021)Kingma, Salimans, Poole, and
+  Ho]{kingma2021variational}
+Diederik~P Kingma, Tim Salimans, Ben Poole, and Jonathan Ho.
+\newblock Variational diffusion models.
+\newblock \emph{arXiv preprint arXiv:2107.00630}, 2021.
+
+\bibitem[Kitaev and Klein(2018)]{kitaev-klein-2018-constituency}
+Nikita Kitaev and Dan Klein.
+\newblock Constituency parsing with a self-attentive encoder.
+\newblock In \emph{Proceedings of the 56th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 2676--2686,
+  Melbourne, Australia, July 2018. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/P18-1249}.
+\newblock URL \url{https://aclanthology.org/P18-1249}.
+
+\bibitem[Kong et~al.(2020)Kong, Ping, Huang, Zhao, and
+  Catanzaro]{kong2020diffwave}
+Zhifeng Kong, Wei Ping, Jiaji Huang, Kexin Zhao, and Bryan Catanzaro.
+\newblock Diffwave: A versatile diffusion model for audio synthesis.
+\newblock \emph{arXiv preprint arXiv:2009.09761}, 2020.
+
+\bibitem[Krause et~al.(2020)Krause, Gotmare, McCann, Keskar, Joty, Socher, and
+  Rajani]{KrauseGeDi2020}
+Ben Krause, Akhilesh~Deepak Gotmare, Bryan McCann, Nitish~Shirish Keskar,
+  Shafiq Joty, Richard Socher, and Nazneen~Fatema Rajani.
+\newblock {GeDi: Generative Discriminator Guided Sequence Generation}.
+\newblock \emph{arXiv preprint arXiv:2009.06367}, 2020.
+
+\bibitem[Kumar and Byrne(2004)]{kumar-byrne-2004-minimum}
+Shankar Kumar and William Byrne.
+\newblock Minimum {B}ayes-risk decoding for statistical machine translation.
+\newblock In \emph{Proceedings of the Human Language Technology Conference of
+  the North {A}merican Chapter of the Association for Computational
+  Linguistics: {HLT}-{NAACL} 2004}, pages 169--176, Boston, Massachusetts, USA,
+  May 2 - May 7 2004. Association for Computational Linguistics.
+\newblock URL \url{https://aclanthology.org/N04-1022}.
+
+\bibitem[Liu et~al.(2021)Liu, Sap, Lu, Swayamdipta, Bhagavatula, Smith, and
+  Choi]{liu-etal-2021-dexperts}
+Alisa Liu, Maarten Sap, Ximing Lu, Swabha Swayamdipta, Chandra Bhagavatula,
+  Noah~A. Smith, and Yejin Choi.
+\newblock {DE}xperts: Decoding-time controlled text generation with experts and
+  anti-experts.
+\newblock In \emph{Proceedings of the 59th Annual Meeting of the Association
+  for Computational Linguistics and the 11th International Joint Conference on
+  Natural Language Processing (Volume 1: Long Papers)}, pages 6691--6706,
+  Online, August 2021. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2021.acl-long.522}.
+\newblock URL \url{https://aclanthology.org/2021.acl-long.522}.
+
+\bibitem[Mittal et~al.(2021)Mittal, Engel, Hawthorne, and
+  Simon]{Mittal2021Music}
+Gautam Mittal, Jesse Engel, Curtis Hawthorne, and Ian Simon.
+\newblock Symbolic music generation with diffusion models.
+\newblock \emph{arXiv preprint arXiv:2103.16091}, March 2021.
+
+\bibitem[Mostafazadeh et~al.(2016)Mostafazadeh, Chambers, He, Parikh, Batra,
+  Vanderwende, Kohli, and Allen]{mostafazadeh-etal-2016-corpus}
+Nasrin Mostafazadeh, Nathanael Chambers, Xiaodong He, Devi Parikh, Dhruv Batra,
+  Lucy Vanderwende, Pushmeet Kohli, and James Allen.
+\newblock A corpus and cloze evaluation for deeper understanding of commonsense
+  stories.
+\newblock In \emph{Proceedings of the 2016 Conference of the North {A}merican
+  Chapter of the Association for Computational Linguistics: Human Language
+  Technologies}, pages 839--849, San Diego, California, June 2016. Association
+  for Computational Linguistics.
+\newblock \doi{10.18653/v1/N16-1098}.
+\newblock URL \url{https://aclanthology.org/N16-1098}.
+
+\bibitem[Nichol and Dhariwal(2021)]{nichol2021improved}
+Alex Nichol and Prafulla Dhariwal.
+\newblock Improved denoising diffusion probabilistic models.
+\newblock \emph{arXiv preprint arXiv:2102.09672}, 2021.
+
+\bibitem[Novikova et~al.(2017)Novikova, Du{\v{s}}ek, and
+  Rieser]{novikova-etal-2017-e2e}
+Jekaterina Novikova, Ond{\v{r}}ej Du{\v{s}}ek, and Verena Rieser.
+\newblock The {E}2{E} dataset: New challenges for end-to-end generation.
+\newblock In \emph{Proceedings of the 18th Annual {SIG}dial Meeting on
+  Discourse and Dialogue}, pages 201--206, Saarbr{\"u}cken, Germany, August
+  2017. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/W17-5525}.
+\newblock URL \url{https://aclanthology.org/W17-5525}.
+
+\bibitem[Pennington et~al.(2014)Pennington, Socher, and
+  Manning]{pennington-etal-2014-glove}
+Jeffrey Pennington, Richard Socher, and Christopher Manning.
+\newblock {G}lo{V}e: Global vectors for word representation.
+\newblock In \emph{Proceedings of the 2014 Conference on Empirical Methods in
+  Natural Language Processing ({EMNLP})}, pages 1532--1543, Doha, Qatar,
+  October 2014. Association for Computational Linguistics.
+\newblock \doi{10.3115/v1/D14-1162}.
+\newblock URL \url{https://aclanthology.org/D14-1162}.
+
+\bibitem[Qin et~al.(2020)Qin, Shwartz, West, Bhagavatula, Hwang, Le~Bras,
+  Bosselut, and Choi]{qin-etal-2020-back}
+Lianhui Qin, Vered Shwartz, Peter West, Chandra Bhagavatula, Jena~D. Hwang,
+  Ronan Le~Bras, Antoine Bosselut, and Yejin Choi.
+\newblock Back to the future: Unsupervised backprop-based decoding for
+  counterfactual and abductive commonsense reasoning.
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, pages 794--805, Online, November 2020.
+  Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2020.emnlp-main.58}.
+\newblock URL \url{https://aclanthology.org/2020.emnlp-main.58}.
+
+\bibitem[Qin et~al.(2022)Qin, Welleck, Khashabi, and Choi]{Qin-COLD}
+Lianhui Qin, Sean Welleck, Daniel Khashabi, and Yejin Choi.
+\newblock Cold decoding: Energy-based constrained text generation with langevin
+  dynamics, 2022.
+\newblock URL \url{https://arxiv.org/abs/2202.11705}.
+
+\bibitem[Radford and Narasimhan(2018)]{Radford2018ImprovingLU}
+Alec Radford and Karthik Narasimhan.
+\newblock Improving language understanding by generative pre-training.
+\newblock \url{https://openai.com/blog/language-unsupervised/}, 2018.
+
+\bibitem[Radford et~al.(2019)Radford, Wu, Child, Luan, Amodei, and
+  Sutskever]{radford2019language}
+Alec Radford, Jeff Wu, Rewon Child, David Luan, Dario Amodei, and Ilya
+  Sutskever.
+\newblock Language models are unsupervised multitask learners.
+\newblock https://openai.com/blog/better-language-models/, 2019.
+
+\bibitem[Ramesh et~al.(2022)Ramesh, Dhariwal, Nichol, Chu, and
+  Chen]{ramesh2022hierarchical}
+Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, and Mark Chen.
+\newblock Hierarchical text-conditional image generation with clip latents.
+\newblock \emph{arXiv preprint arXiv:2204.06125}, April 2022.
+
+\bibitem[Ren et~al.(2020)Ren, Liu, Tan, Zhao, Zhao, and
+  Liu]{ren-etal-2020-study}
+Yi~Ren, Jinglin Liu, Xu~Tan, Zhou Zhao, Sheng Zhao, and Tie-Yan Liu.
+\newblock A study of non-autoregressive model for sequence generation.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association
+  for Computational Linguistics}, pages 149--159, Online, July 2020.
+  Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2020.acl-main.15}.
+\newblock URL \url{https://aclanthology.org/2020.acl-main.15}.
+
+\bibitem[Rezende et~al.(2014)Rezende, Mohamed, and
+  Wierstra]{rezende2014stochastic}
+Danilo~Jimenez Rezende, Shakir Mohamed, and Daan Wierstra.
+\newblock Stochastic backpropagation and approximate inference in deep
+  generative models.
+\newblock \emph{arXiv preprint arXiv:1401.4082}, 2014.
+
+\bibitem[Saharia et~al.(2020)Saharia, Chan, Saxena, and
+  Norouzi]{saharia2020latentalignments}
+Chitwan Saharia, William Chan, Saurabh Saxena, and Mohammad Norouzi.
+\newblock Non-autoregressive machine translation with latent alignments.
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, pages 1098--1108, 2020.
+
+\bibitem[Sha(2020)]{sha-2020-gradient}
+Lei Sha.
+\newblock Gradient-guided unsupervised lexically constrained text generation.
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, pages 8692--8703, Online, November
+  2020. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2020.emnlp-main.701}.
+\newblock URL \url{https://aclanthology.org/2020.emnlp-main.701}.
+
+\bibitem[Sohl-Dickstein et~al.(2015)Sohl-Dickstein, Weiss, Maheswaranathan, and
+  Ganguli]{pmlr-v37-sohl-dickstein15}
+Jascha Sohl-Dickstein, Eric Weiss, Niru Maheswaranathan, and Surya Ganguli.
+\newblock Deep unsupervised learning using nonequilibrium thermodynamics.
+\newblock In Francis Bach and David Blei, editors, \emph{Proceedings of the
+  32nd International Conference on Machine Learning}, volume~37 of
+  \emph{Proceedings of Machine Learning Research}, pages 2256--2265, Lille,
+  France, 07--09 Jul 2015. PMLR.
+\newblock URL \url{https://proceedings.mlr.press/v37/sohl-dickstein15.html}.
+
+\bibitem[Song et~al.(2021)Song, Sohl-Dickstein, Kingma, Kumar, Ermon, and
+  Poole]{song2021scorebased}
+Yang Song, Jascha Sohl-Dickstein, Diederik~P Kingma, Abhishek Kumar, Stefano
+  Ermon, and Ben Poole.
+\newblock Score-based generative modeling through stochastic differential
+  equations.
+\newblock In \emph{International Conference on Learning Representations}, 2021.
+\newblock URL \url{https://openreview.net/forum?id=PxTIG12RRHS}.
+
+\bibitem[Van~der Maaten and Hinton(2008)]{vanDerMaaten2008}
+Laurens Van~der Maaten and Geoffrey Hinton.
+\newblock Visualizing data using t-{SNE}.
+\newblock \emph{Journal of Machine Learning Research}, 2008.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez,
+  Kaiser, and Polosukhin]{Vaswani2017Attn}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N Gomez, \L~ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock In I.~Guyon, U.~V. Luxburg, S.~Bengio, H.~Wallach, R.~Fergus,
+  S.~Vishwanathan, and R.~Garnett, editors, \emph{Advances in Neural
+  Information Processing Systems}, volume~30, pages 5998--6008. Curran
+  Associates, Inc., 2017.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf}.
+
+\bibitem[Wang and Komatsuzaki(2021)]{gpt-j}
+Ben Wang and Aran Komatsuzaki.
+\newblock {GPT-J-6B: A 6 Billion Parameter Autoregressive Language Model}.
+\newblock \url{https://github.com/kingoflolz/mesh-transformer-jax}, May 2021.
+
+\bibitem[Yang and Klein(2021)]{yang-klein-2021-fudge}
+Kevin Yang and Dan Klein.
+\newblock {FUDGE}: Controlled text generation with future discriminators.
+\newblock In \emph{Proceedings of the 2021 Conference of the North American
+  Chapter of the Association for Computational Linguistics: Human Language
+  Technologies}, pages 3511--3535, Online, June 2021. Association for
+  Computational Linguistics.
+\newblock \doi{10.18653/v1/2021.naacl-main.276}.
+\newblock URL \url{https://aclanthology.org/2021.naacl-main.276}.
+
+\bibitem[Zhang et~al.(2022)Zhang, Roller, Goyal, Artetxe, Chen, Chen, Dewan,
+  Diab, Li, Lin, Mihaylov, Ott, Shleifer, Shuster, Simig, Koura, Sridhar, Wang,
+  and Zettlemoyer]{Zhang2022OPT}
+Susan Zhang, Stephen Roller, Naman Goyal, Mikel Artetxe, Moya Chen, Shuohui
+  Chen, Christopher Dewan, Mona Diab, Xian Li, Xi~Victoria Lin, Todor Mihaylov,
+  Myle Ott, Sam Shleifer, Kurt Shuster, Daniel Simig, Punit~Singh Koura, Anjali
+  Sridhar, Tianlu Wang, and Luke Zettlemoyer.
+\newblock Opt: Open pre-trained transformer language models, 2022.
+\newblock URL \url{https://arxiv.org/abs/2205.01068}.
+
+\end{thebibliography}

@@ -1,0 +1,184 @@
+
+\newcommand{\xxtheta}{f_\theta} 
+\section{Problem Statement and Background}
+\label{sec:background}
+
+We first define controllable generation (\cref{ssec:control_setup}) and then review continuous diffusion models (\cref{ssec:diffusion_setup}).
+
+\subsection{Generative Models and Controllable Generation for Text} 
+\label{ssec:control_setup}
+Text generation is the task of sampling $\ww$ from a trained language model $\plm (\ww)$, where $\ww = [w_1 \cdots w_n]$ is a sequence of discrete words and $\plm (\ww)$ is a probability distribution over sequences of words. Controllable text generation is the task of sampling $\ww$ from a conditional distribution $p(\ww \mid \cc)$, where $\cc$ denotes a \emph{control} variable. For syntactic control, $\cc$ can be a target syntax tree (\cref{fig:1}), while for sentiment control, $\cc$ could be a desired sentiment label. The goal of controllable generation is to generate $\ww$ that satisfies the control target $\cc$. 
+
+Consider the plug-and-play controllable generation setting: we are given a language model $\plm(\ww)$ trained from a large amount of unlabeled text data, and for each control task, we are given a classifier $p(\cc \mid \ww)$ trained from smaller amount of labeled text data (e.g., for syntactic control, the classifier is a probabilistic parser). The goal is to utilize these two models to approximately sample from the posterior $p(\ww \mid \cc)$ via Bayes rule $p(\ww \mid \cc) \propto \plm(\ww) \cdot p(\cc \mid \ww)$. Here, $\plm(\ww)$ encourages $\ww$ to be fluent, and the $p(\cc \mid \ww)$ encourages $\ww$ to fulfill the control. 
+
+
+
+
+
+
+\subsection{Autoregressive Language Models}
+The canonical approach to language modeling factors $\plm$ in an autoregressive left-to-right mannar, $\plm(\ww) = \plm(w_1) \prod_{i=2}^n \plm(x_i \mid x_{<i})$. In this case, text generation is reduced to the task of repeatedly predicting the next token conditioned on the partial sequence generated so far. The next token prediction $\plm(x_i \mid x_{<i})$ is often parametrized by Transformer architecture \cite{Vaswani2017Attn}. 
+
+\subsection{Diffusion Models for Continuous Domains}
+\label{ssec:diffusion_setup}
+
+A diffusion model \citep{ho2020denoising,nichol2021improved} is a latent variable model that
+models the data $\cx{0} \in \mathbb{R}^d$ as a Markov chain $\cx{T} \dots \cx{0}$ with each variable in $\mathbb{R}^d$, and  $\cx{T}$ is a Gaussian. The diffusion model 
+incrementally denoises the sequence of latent variables $\cx{T:1}$ to approximate samples from the target data distribution~(\cref{fig:graphical_model}).  The initial state $p_\theta(\cx{T}) \approx \mathcal{N} (0, \mathbf{I})$, and each denoising transition $\cx{t} \rightarrow \cx{t-1}$ is parametrized by the model $\ptheta(\cx{t-1}\mid \cx{t}) = \mathcal{N}(\cx{t-1}; \mu_\theta(\cx{t}, t), \Sigma_\theta(\cx{t}, t))$. For example, $\mu_\theta$ and $\Sigma_\theta$ may be computed by a U-Net or a Tranformer. 
+
+
+To train the diffusion model, we define a forward process that constructs the intermediate latent variables $\cx{1:T}$. The forward process incrementally adds Gaussian noise to data $\cx{0}$ until, at diffusion step $T$, samples $\cx{T}$ are approximately Gaussian. Each transition $\cx{t-1} \rightarrow \cx{t}$ is parametrized by $q(\cx{t} \mid \cx{t-1}) = \mathcal{N} (\cx{t} ; \sqrt{1-\beta_t} \cx{t-1}, \beta_t \mathbf{I})$, where the hyperparameter $\beta_t$ is the amount of noise added at diffusion step $t$.
+This parametrization of the forward process $q$ contains no trainable parameters and allows us to define a training objective that involves generating noisy data according to a pre-defined forward process $q$ and training a model to reverse the process and reconstruct the data.
+
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/graphical_model_v2.pdf}
+    \caption{\label{fig:graphical_model} A graphical model representing the forward and reverse diffusion processes. In addition to the original diffusion models \cite{ho2020denoising}, we add a Markov transition between $\cx{0}$ and $\ww$, and propose the embedding \cref{ssec:embeddings} and rounding \cref{ssec:rounding} techniques. }
+    \vspace{-5mm}
+\end{figure}
+
+The diffusion model is trained to maximize the marginal likelihood of the data $\mathbb{E}_{\cx{0} \sim p_\text{data} }[\log p_\theta(\cx{0})]$, and the canonical objective is the variational lower bound of $\log p_\theta(\cx{0})$ \cite{pmlr-v37-sohl-dickstein15},
+\begin{equation}
+\Lvlb (\cx{0}) = \mathop{\mathbb{E}}_{q(\cx{1:T} | \cx{0})} \left[\log \frac{q(\cx{T} | \cx{0})}{\ptheta(\cx{T})} + \sum_{t=2}^T \log \frac{q(\cx{t-1} | \cx{0},\cx{t})} {\ptheta(\cx{t-1} | \cx{t}) } - \log \ptheta( \cx{0} | \cx{1})\right].
+\label{eqn:diffusion}
+\end{equation}
+However, this objective can be unstable and require many optimization tricks to stabilize \cite{nichol2021improved}. To circumvent this issue, \citet{ho2020denoising} devised a simple surrogate objective that expands and reweights each KL-divergence term in $\Lvlb$ to obtain a mean-squared error loss  (derivation in \cref{app:derive}) which we will refer to as
+\[\Lsimple (\cx{0}) = \sum_{t=1}^T \mathop{\mathbb{E}}_{q(\cx{t} \mid \cx{0})} || \mu_\theta(\cx{t}, t) - \hat{\mu}(\cx{t}, \cx{0}) ||^2,\]
+where $\hat{\mu}(\cx{t}, \cx{0})$ is the mean of the posterior $q(\cx{t-1} | \cx{0},\cx{t})$ which is a closed from Gaussian, and $\mu_\theta(\cx{t}, t)$ is the predicted mean of $\ptheta(\cx{t-1} \mid \cx{t})$ computed by a neural network. 
+While $\Lsimple$ is no longer a valid lower bound, prior work has found that it empirically made training more stable and improved sample quality\footnote{Our definition of $\Lsimple$ here uses a different parametrization from \citet{ho2020denoising}. We define our squared loss in terms of $\mu_\theta(\cx{t}, t)$ while they express it in terms of $\epsilon_\theta(\cx{t}, t)$.}.
+We will make use of similar simplifications in Diffusion-LM to stabilize training and improve sample quality (\cref{ssec:embeddings}).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\vspace{-2mm}
+\section{Diffusion-LM: Continuous Diffusion Language Modeling}
+\vspace{-2mm}
+\label{sec:method}
+
+Constructing Diffusion-LM requires several modifications to the standard diffusion model.
+First, we must define an embedding function that maps discrete text into a continuous space. To address this, we propose an end-to-end training objective for learning embeddings (\cref{ssec:embeddings}). 
+Second, we require a rounding method to map vectors in embedding space back to words. To address this, we propose training and decoding time methods to facilitate rounding (\cref{ssec:rounding}). 
+
+
+
+
+
+
+
+
+\vspace{-2mm}
+\subsection{End-to-end Training} 
+\label{ssec:embeddings}
+
+
+To apply a continuous diffusion model to discrete text, we define an embedding function $\Emb(w_i)$ that maps each word to a vector in $\mathbb{R}^{d}$. We define the embedding of a sequence $\ww$ of length $n$ to be: $\Emb(\ww) = [\Emb(w_1), \dots, \Emb(w_n)] \in \mathbb{R}^{nd}$. 
+
+We propose a modification of the diffusion model training objective (Equation \ref{eqn:diffusion}) that jointly learns the diffusion model's parameters and word embeddings.
+In preliminary experiments, we explored random Gaussian embeddings, as well as pre-trained word embeddings \cite{pennington-etal-2014-glove, radford2019language}. We found that these fixed embeddings are suboptimal for Diffusion-LM compared to end-to-end training\footnote{While trainable embeddings perform best on control and generation tasks, we found that fixed embeddings onto the vocabulary simplex were helpful when optimizing for held-out perplexity. We leave discussion of this approach and perplexity results to \cref{app:simplex} as the focus of this work is generation quality and not perplexity.}.
+
+
+As shown in Figure \ref{fig:graphical_model}, our approach adds a Markov transition from discrete words $\ww$ to $\cx{0}$ in the forward process, parametrized by $\qphi(\cx{0} | \ww) = \mathcal{N} (\Emb(\ww), \sigma_0 I )$. In the reverse process, we add a trainable rounding step, parametrized by $\ptheta(\ww \mid \cx{0}) = \prod_{i=1}^n \ptheta(w_i \mid x_i)$, where $\ptheta(w_i \mid x_i)$ is a softmax distribution. The training objectives introduced in \cref{sec:background} now becomes
+\begin{equation}
+\begin{aligned}
+\mathcal{L}^\text{e2e}_{\text{vlb}} (\ww) &= \mathop{\mathbb{E}}_{q_\phi(\cx{0} | \ww)}\left[\mathcal{L}_{\text{vlb}} (\cx{0}) + \log \qphi(\cx{0} | \ww) - \log \ptheta(\ww | \cx{0})]\right], \\
+ \mathcal{L}^\text{e2e}_\text{simple} (\ww) &= \mathop{\mathbb{E}}_{\qphi(\cx{0:T} | \ww)} \left[\Lsimple(\cx{0}) + || \Emb(\ww) - \mu_\theta(\cx{1}, 1) ||^2  - \log \ptheta(\ww | \cx{0})\right].
+\end{aligned}
+\label{obj:e2e}
+\end{equation}
+\begin{wrapfigure}[11]{R}{0.5\textwidth}
+\vspace{-10mm}
+\centering
+\includegraphics[width=\linewidth]{fig/embedding_128_v3.pdf}\caption{ \label{fig:emb} A t-SNE \cite{vanDerMaaten2008} plot of the learned word embeddings. Each word is colored by its POS. \looseness=-1 }
+\end{wrapfigure}
+
+We derive $ \mathcal{L}^\text{e2e}_\text{simple} (\ww)$ from $\mathcal{L}^\text{e2e}_{\text{vlb}}(\ww)$ following the simplification in \cref{ssec:diffusion_setup} and our derivation details are in \cref{app:derive}. Since we are training the embedding function, $q_\phi$ now contains trainable parameters and we use the reparametrization trick \citep{rezende2014stochastic, kingma2014auto} to backpropagate through this sampling step. 
+Empirically, we find the learned embeddings cluster meaningfully: words with the same part-of-speech tags (syntactic role) tend to be clustered, as shown in \cref{fig:emb}. 
+
+
+
+\subsection{Reducing Rounding Errors}
+\label{ssec:rounding}
+
+
+The learned embeddings define a mapping from discrete text to the continuous $\cx{0}$. We now describe the inverse process of rounding a predicted $\cx{0}$ back to discrete text. Rounding is achieved by choosing the most probable word for each position, according to argmax $\ptheta(\ww \mid \cx{0})= \prod_{i=1}^n \ptheta(w_i \mid x_i)$. Ideally, this argmax-rounding would be sufficient to map back to discrete text, as the denoising steps should ensure that $\cx{0}$ lies exactly on the embedding of some word. However, empirically, the model fails to generate $\cx{0}$ that commits to a single word. 
+
+
+
+One explanation for this phenomenon is that the $\Lsimple(\cx{0})$ term in our objective \ref{obj:e2e} puts insufficient emphasis on modeling the structure of $\cx{0}$. Recall that we defined $\Lsimple(\cx{0}) =\sum_{t=1}^T \mathbb{E}_{\cx{t}}|| \mu_\theta(\cx{t}, t) - \hat{\mu}(\cx{t}, \cx{0}) ||^2$, where our model $\mu_\theta(\cx{t}, t)$ directly predicts the mean of  $\ptheta(\cx{t-1}\mid \cx{t})$ for each denoising step $t$. 
+In this objective, the constraint that $\cx{0}$ has to commit to a single word embedding
+will only appear in the terms with $t$ near $0$, and we found that this parametrization required careful tuning to force the objective to emphasize those terms (see \cref{app:ablation}).
+
+
+\newcommand{\Lsimplexx}{\mathcal{L}^\text{e2e}_{\cx{0}\text{-simple}}}
+Our approach re-parametrizes $\Lsimple$ to force Diffusion-LM to explicitly model $\cx{0}$ in \emph{every} term of the objective. Specifically, we derive an analogue to $\Lsimple$ which is parametrized via $\cx{0}$, 
+$\Lsimplexx(\cx{0})=\sum_{t=1}^T \mathbb{E}_{\cx{t}} ||\xxtheta(\cx{t}, t) - \cx{0} ||^2$, where our model $\xxtheta(\cx{t}, t)$ predicts $\cx{0}$ directly \footnote{Predicting $\cx{0}$ and $\cx{t-1}$ is equivalent up to scaling constants as the distribution of $\cx{t-1}$ can be obtained in closed form via the forward process $\cx{t-1} = \sqrt{\alphabar} \cx{0} +\sqrt{1-\alphabar} \epsilon$, see \cref{app:derive} for further details.}. This forces the neural network to predict $\cx{0}$ in every term and we found that models trained with this objective quickly learn that $\cx{0}$ should precisely centered at a word embedding.
+
+We described how re-parametrization can be helpful for model training, but we also found that the same intuition could be used at decoding time in a technique that we call the \emph{clamping} trick. 
+In the standard generation approach for a  $\cx{0}$-parametrized model, the model denoises $\cx{t}$ to $\cx{t-1}$ by first computing an
+estimate of $\cx{0}$ via $\xxtheta(\cx{t}, t)$ and then sampling $\cx{t-1}$ conditioned on this estimate: $\cx{t-1} = \sqrt{\alphabar} \xxtheta(\cx{t}, t) +\sqrt{1-\alphabar} \epsilon$, where $\alphabar_t = \prod_{s=0}^t (1-\beta_s)$ and $\epsilon \sim \mathcal{N}(0,I)$ \footnote{This follows from the marginal distribution $q(\cx{t} \mid \cx{0})$, which is a closed form Gaussian since all the Markov transitions are Gaussian.}. In the clamping trick, the model additionally maps the predicted vector $\xxtheta(\cx{t}, t)$ to its nearest word embedding sequence. Now, the sampling step becomes $\cx{t-1} = \sqrt{\alphabar}\cdot \Clamp(\xxtheta(\cx{t}, t)) +\sqrt{1-\alphabar} \epsilon$. The clamping trick forces the predicted vector to commit to a word for intermediate diffusion steps, making the vector predictions more precise and reducing rounding errors.\footnote{Intuitively, applying the clamping trick to early diffusion steps with $t$ near $T$ may be sub-optimal, because the model hasn't figured out what words to commit to. Empirically, applying clamping trick for all diffusion steps doesn't hurt the performance much. But to follow this intuition, one could also set the starting step of the clamping trick as a hyperparameter.} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Decoding and Controllable Generation with Diffusion-LM}
+\label{sec:decode}
+Having described the Diffusion-LM, we now consider the problem of controllable text generation (\cref{ssec:control_text}) and decoding (\cref{ssec:mbr1}). 
+
+
+\subsection{Controllable Text Generation}
+\label{ssec:control_text}
+We now describe a procedure that enables plug-and-play control on Diffusion-LM. Our approach to control is inspired by the Bayesian formulation in \cref{ssec:control_setup}, but instead of performing control directly on the discrete text, we perform control on the sequence of continuous latent variables $\cx{0:T}$ defined by Diffusion-LM, and apply the rounding step to convert these latents into text.
+
+Controlling $\cx{0:T}$ is equivalent to decoding from the posterior $p(\cx{0:T} | \cc) = \prod_{t=1}^T p(\cx{t-1} \mid \cx{t}, \cc)$, and we decompose this joint inference problem to a sequence of control problems at each diffusion step: $p(\cx{t-1} \mid \cx{t}, \cc) \propto p(\cx{t-1} \mid \cx{t}) \cdot p(\cc \mid \cx{t-1}, \cx{t})$. 
+We further simplify $p(\cc \mid \cx{t-1}, \cx{t})=p(\cc \mid \cx{t-1})$ via conditional independence assumptions from prior work on controlling diffusions \cite{song2021scorebased}. Consequently, for the $t$-th step, we run gradient update on $\cx{t-1}$:
+\begin{align*}
+    \nabla_{\cx{t-1}} \log p(\cx{t-1} \mid \cx{t}, \cc) = \nabla_{\cx{t-1}} \log p(\cx{t-1} \mid \cx{t}) + \nabla_{\cx{t-1}}  \log  p(\cc \mid \cx{t-1}),
+\end{align*}
+where both $\log p(\cx{t-1} \mid \cx{t})$ and $\log p(\cc \mid \cx{t-1})$ are differentiable: the first term is parametrized by Diffusion-LM, and the second term is parametrized by a neural network classifier.
+
+
+Similar to work in the image setting \cite{dhariwal2021diffusion,song2021scorebased}, we train the classifier on the diffusion latent variables and run gradient updates on the latent space $\cx{t-1}$ to steer it towards fulfilling the control. These image diffusion works take one gradient step towards $\nabla_{ \cx{t-1}} \log  p(\cc \mid \cx{t-1})$ per diffusion steps. To improve performance on text and speed up decoding,  we introduce two key modifications: fluency regularization and multiple gradient steps. \looseness=-1
+
+
+
+
+To generate fluent text, we run gradient updates on a control objective with \emph{fluency regularization}: $ \lambda \log p(\cx{t-1} \mid \cx{t}) + \log p(\cc \mid \cx{t-1})$, where $\lambda$ is a hyperparameter that trades off fluency (the first term) and control (the second term).  While existing controllable generation methods for diffusions do not include the $\lambda \log p(\cx{t-1} \mid \cx{t})$ term in the objective, we found this term to be instrumental for generating fluent text. The resulting controllable generation process can be viewed as a stochastic decoding method that balances maximizing and sampling $p(\cx{t-1} \mid \cx{t}, \cc)$, much like popular text generation techniques such as nucleus sampling~\cite{Holtzman2020Nucleus} or sampling with low temperature. In order to improve the control quality, we take multiple gradient steps for each diffusion step: we run $3$ steps of the Adagrad \footnote{We tried ablations that replaced Adagrad with SGD, but we found Adagrad to be substantially less sensitive to hyperparameter tuning. } \cite{Duchi2010AdaptiveSM} update for each diffusion steps. To mitigate for the increased computation cost, we downsample the diffusion steps from 2000 to 200, which speeds up our controllable generation algorithm without hurting sample quality much. 
+
+
+\subsection{Minimum Bayes Risk Decoding}
+\label{ssec:mbr1}
+Many conditional text generation tasks require a \emph{single} high-quality output sequence, such as machine translation or sentence infilling. 
+In these settings, we apply Minimum Bayes Risk (MBR) decoding \cite{kumar-byrne-2004-minimum} to aggregate a set of samples $\mathcal{S}$ drawn from the Diffusion-LM , and select the sample that achieves the minimum expected risk under a loss function $\mathcal{L}$ (e.g., negative BLEU score): $\hat{\ww} = \argmin_{\ww \in S} \sum_{\ww' \in S} \frac{1}{|S|}\mathcal{L}(\ww, \ww')$. We found that MBR decoding often returned high quality outputs, since a low quality sample would be dissimilar from the remaining samples and penalized by the loss function.
+
+
+
+
+
+
+

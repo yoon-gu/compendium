@@ -9,8 +9,15 @@ papers-tex/**/*.fdb_latexmk
 papers-tex/**/*.fls
 papers-tex/**/*.log
 papers-tex/**/*.out
+papers-tex/**/*.synctex
 papers-tex/**/*.synctex.gz
 papers-tex/**/*.toc
 papers-tex/**/*.xdv
 papers-tex/**/build/
+
+# arxiv source tarball (can be re-downloaded)
+papers-tex/**/src.tar.gz
+
+# macOS metadata
+.DS_Store
 
