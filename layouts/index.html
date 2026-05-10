@@ -1,0 +1,41 @@
+{{- define "main" }}
+
+{{- if .Site.Params.homeInfoParams }}
+{{- partial "home_info.html" . }}
+{{- end }}
+
+{{- $sections := slice "notes" "papers" }}
+{{- range $sections }}
+  {{- $name := . }}
+  {{- $sectionPage := site.GetPage (printf "/%s" $name) }}
+  {{- $pages := where site.RegularPages "Section" $name }}
+  {{- $pages = $pages | first 6 }}
+  {{- if and $sectionPage $pages }}
+<section class="home-section" style="margin-top: 40px;">
+  <header style="display:flex; align-items:baseline; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:6px; margin-bottom:14px;">
+    <h2 style="margin:0;">
+      <a href="{{ $sectionPage.RelPermalink }}" style="color:inherit; text-decoration:none;">{{ $sectionPage.Title }}</a>
+    </h2>
+    <a href="{{ $sectionPage.RelPermalink }}" style="font-size:0.9em;">전체 보기 →</a>
+  </header>
+  {{- with $sectionPage.Description }}<p style="color:var(--secondary); margin:0 0 14px 0; font-size:0.95em;">{{ . }}</p>{{- end }}
+  <div class="post-entries">
+    {{- range $pages }}
+    <article class="post-entry" style="margin-bottom:14px;">
+      <header class="entry-header">
+        <h3 style="margin:0 0 4px 0;"><a href="{{ .RelPermalink }}" style="color:inherit; text-decoration:none;">{{ .Title }}</a></h3>
+      </header>
+      {{- with .Params.summary }}
+      <div class="entry-content" style="color:var(--secondary); margin:0 0 6px 0; font-size:0.95em;">{{ . | plainify | truncate 180 }}</div>
+      {{- end }}
+      <footer class="entry-footer" style="font-size:0.85em; color:var(--secondary);">
+        {{- partial "post_meta.html" . -}}
+      </footer>
+    </article>
+    {{- end }}
+  </div>
+</section>
+  {{- end }}
+{{- end }}
+
+{{- end }}
