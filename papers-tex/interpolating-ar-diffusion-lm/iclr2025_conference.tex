@@ -1,11 +1,27 @@
 \documentclass{article} % For LaTeX2e
-\usepackage{iclr2025_conference,times}
+\usepackage{iclr2025_conference}
+% \usepackage{times} % (xelatex+fontspec 사용으로 비활성화)
+
+% --- Korean translation support (xelatex + kotex) ---
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{NanumMyeongjo}[AutoFakeSlant=0.167]
+\setsansfont{NanumGothic}[AutoFakeSlant=0.167]
+\setmainhangulfont{NanumMyeongjo}[AutoFakeSlant=0.167]
+\setsanshangulfont{NanumGothic}[AutoFakeSlant=0.167]
+\setmonohangulfont{NanumGothicCoding}[AutoFakeSlant=0.167]
+\setmonofont{NanumGothicCoding}[AutoFakeSlant=0.167]
+\linespread{1.4}\selectfont
+\renewcommand{\figurename}{그림}
+\renewcommand{\tablename}{표}
+\setlength{\parindent}{1.2em}
+% --- end Korean support ---
 
 % Optional math commands from https://github.com/goodfeli/dlbook_notation.
 \input{math_commands.tex}
-\usepackage{lipsum} 
-\usepackage[utf8]{inputenc} % allow utf-8 input
-\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{lipsum}
+% \usepackage[utf8]{inputenc} % (xelatex 사용으로 비활성화)
+% \usepackage[T1]{fontenc}    % (xelatex 사용으로 비활성화)
 \usepackage{xr-hyper}
 \usepackage{hyperref}       % hyperlinks
 \usepackage[page,toc,titletoc,title]{appendix}
@@ -100,7 +116,7 @@
 
 % \title{Interpolating Autoregressive and Discrete Denoising Diffusion Language Models}
 % \title{Block-Autoregressive Masked Diffusion Language Models for Improved Likelihoods \& Flexible-Length Generation}
-\title{Block Diffusion: Interpolating Between Autoregressive and Diffusion Language Models}
+\title{블록 디퓨전: 자기회귀와 디퓨전 언어모델 사이를 보간하기\\ {\normalsize\emph{(Block Diffusion: Interpolating Between Autoregressive and Diffusion Language Models — 한국어 번역본)}}}
 
 % Authors must not appear in the submitted version. They should be hidden
 % as long as the \iclrfinalcopy macro remains commented out below.
@@ -125,14 +141,15 @@
 % \footnotetext[5]{Cornell Tech, USA.}
 
 \author{%
-  Marianne Arriola\footnotemark[2]$\;\;$\thanks{Correspondence to Marianne Arriola: \texttt{marriola@cs.cornell.edu}} \And 
-  Aaron Kerem Gokaslan\thanks{Cornell Tech, NY, USA. $\;\;\;^\P$Stanford University, CA, USA.$\;\;\;^\ddag$ Cohere, NY, USA.} \And 
-  Justin T. Chiu\footnotemark[3] \And 
-  Zhihan Yang\footnotemark[2] \And 
-  Zhixuan Qi\footnotemark[2] \And 
-  Jiaqi Han\footnotemark[5] \And 
- Subham Sekhar Sahoo\footnotemark[2] \And 
-  Volodymyr Kuleshov\footnotemark[2]
+  Marianne Arriola\footnotemark[2]$\;\;$\thanks{Correspondence to Marianne Arriola: \texttt{marriola@cs.cornell.edu}} \And
+  Aaron Kerem Gokaslan\thanks{Cornell Tech, NY, USA. $\;\;\;^\P$Stanford University, CA, USA.$\;\;\;^\ddag$ Cohere, NY, USA.} \And
+  Justin T. Chiu\footnotemark[3] \And
+  Zhihan Yang\footnotemark[2] \And
+  Zhixuan Qi\footnotemark[2] \And
+  Jiaqi Han\footnotemark[5] \And
+ Subham Sekhar Sahoo\footnotemark[2] \And
+  Volodymyr Kuleshov\footnotemark[2] \AND
+  \textit{한국어 번역: Compendium (\url{https://yoon-gu.github.io/compendium/})}
 }
 
 % \author{%
@@ -210,7 +227,7 @@
 \maketitle
 
 \begin{abstract}
-Diffusion language models offer unique benefits over autoregressive models due to their potential for parallelized generation and controllability, yet they lag in likelihood modeling and are limited to fixed-length generation. In this work, we introduce a class of block diffusion language models that interpolate between discrete denoising diffusion and autoregressive models. Block diffusion overcomes key limitations of both approaches by supporting flexible-length generation and improving inference efficiency with KV caching and parallel token sampling. We propose a recipe for building effective block diffusion models that includes an efficient training algorithm, estimators of gradient variance, and data-driven noise schedules to minimize the variance. Block diffusion sets a new state-of-the-art performance among diffusion models on language modeling benchmarks and enables generation of arbitrary-length sequences. We provide the code\footnote{Code: \href{https://github.com/kuleshov-group/bd3lms}{https://github.com/kuleshov-group/bd3lms}}, along with the model weights and blog post on the project page:
+디퓨전 언어모델은 병렬 생성과 제어 가능성의 잠재력 덕분에 자기회귀(autoregressive) 모델 대비 고유한 장점을 제공하지만, 가능도(likelihood) 모델링에서 뒤처지고 고정된 길이의 생성에만 한정된다는 한계가 있다. 본 연구는 이산(discrete) 디노이징 디퓨전과 자기회귀 모델 사이를 보간하는 블록 디퓨전(block diffusion) 언어모델 부류를 도입한다. 블록 디퓨전은 가변 길이 생성을 지원하고 KV 캐싱(KV caching) 및 병렬 토큰 샘플링으로 추론 효율을 높여, 두 접근법의 핵심 한계를 극복한다. 효과적인 블록 디퓨전 모델 구축을 위해 효율적인 학습 알고리즘, 경사 분산(gradient variance) 추정량, 분산을 최소화하는 데이터 주도(data-driven) 노이즈 스케줄을 포함하는 레시피를 제안한다. 블록 디퓨전은 언어모델링 벤치마크에서 디퓨전 모델 가운데 새로운 최첨단 성능을 달성하며, 임의 길이의 시퀀스 생성을 가능하게 한다. 코드\footnote{코드: \href{https://github.com/kuleshov-group/bd3lms}{https://github.com/kuleshov-group/bd3lms}}와 모델 가중치, 블로그 포스트는 프로젝트 페이지에서 제공한다:
 \looseness=-1
 
 % Diffusion language models offer unique benefits over autoregressive models due to their potential for parallelized generation and controllability, yet they lag in likelihood modeling and are limited to fixed-length generation. In this work, we introduce a class of block-autoregressive masked diffusion language models (\algos{}) that interpolate between discrete denoising diffusion and autoregressive models. 
@@ -222,29 +239,33 @@ Diffusion language models offer unique benefits over autoregressive models due t
 \centerline{\href{https://mariannearr.github.io/bd3lms/}{https://m-arriola.com/bd3lms}}
 \end{abstract}
 
-\section{Introduction}
-Diffusion models are widely used to generate images \citep{ho2020denoising,dhariwal2021diffusionmodelsbeatgans,sahoo2024diffusion} and videos \citep{ho2022video,gupta2023photorealisticvideogenerationdiffusion}, and are becoming increasingly effective at generating discrete data such as text \citep{lou2024discrete, sahoo2024simple} or biological sequences \citep{avdeyev2023dirichlet, goel2024memdlm}. Compared to autoregressive models, diffusion models have the potential to accelerate generation and improve the controllability of model outputs \citep{schiff2024discreteguidance, nisonoff2024unlocking, li2024derivative,sahoo2024zeroorder}.
+\begin{quote}
+\textit{역자 주.} 본 문서는 ICLR 2025에 발표된 \emph{Block Diffusion: Interpolating Between Autoregressive and Diffusion Language Models} (Arriola, Gokaslan, Chiu 외, Cornell · Cohere · Stanford) 논문의 한국어 번역이다. 원문 LaTeX 소스의 구조·매크로(\algos{} = BD3-LMs, \algo{} = BD3-LM 등)와 인용·수식·그림은 그대로 유지하고, 자연어 본문·캡션·표 헤더만 한국어로 옮겼다. 부록의 모델 생성 텍스트 샘플은 영어 그대로 둔다(영어 토큰 시퀀스 자체가 평가 대상). 약어·모델명·평가지표는 영문을 살린다.
+\end{quote}
 
-Discrete diffusion models currently face at least three limitations. First, in applications such as chat systems, models must generate output sequences of arbitrary length (e.g., a response to a user's question). However, most recent diffusion architectures only generate fixed-length vectors \citep{austin2021structured,lou2024discrete}. Second, discrete diffusion uses bidirectional context during generation and therefore cannot reuse previous computations with KV caching, which makes inference less efficient \citep{israel2025enabling}. Third, the quality of discrete diffusion models, as measured by standard metrics such as perplexity, lags behind autoregressive approaches and further limits their applicability \citep{gulrajani2024plaid,sahoo2024simple}.
+\section{서론}
+디퓨전 모델은 이미지 \citep{ho2020denoising,dhariwal2021diffusionmodelsbeatgans,sahoo2024diffusion}와 비디오 \citep{ho2022video,gupta2023photorealisticvideogenerationdiffusion} 생성에 널리 사용되며, 텍스트 \citep{lou2024discrete, sahoo2024simple}나 생물학적 시퀀스 \citep{avdeyev2023dirichlet, goel2024memdlm} 같은 이산 데이터 생성에서도 점차 효과적으로 자리잡고 있다. 자기회귀 모델과 비교해, 디퓨전 모델은 생성 속도를 가속하고 모델 출력의 제어 가능성을 높일 잠재력이 있다 \citep{schiff2024discreteguidance, nisonoff2024unlocking, li2024derivative,sahoo2024zeroorder}.
 
-This paper makes progress towards addressing these limitations by introducing \algofull{} (\algos{}), which interpolate between discrete diffusion and autoregressive models. Specifically, block diffusion models (also known as semi-autoregressive models) define an autoregressive probability distribution over blocks of discrete random variables \citep{siautoregressive,si2023semi}; the conditional probability of a block given previous blocks is specified by a discrete denoising diffusion model \citep{austin2021structured,sahoo2024simple}.
+이산 디퓨전 모델은 현재 적어도 세 가지 한계를 안고 있다. 첫째, 챗 시스템과 같은 응용에서 모델은 임의 길이의 출력 시퀀스를 생성해야 한다(예: 사용자 질문에 대한 응답). 그러나 최근 대부분의 디퓨전 아키텍처는 고정 길이 벡터만 생성한다 \citep{austin2021structured,lou2024discrete}. 둘째, 이산 디퓨전은 생성 시 양방향 문맥(bidirectional context)을 사용하므로 KV 캐싱으로 이전 계산을 재사용할 수 없고, 따라서 추론 효율이 떨어진다 \citep{israel2025enabling}. 셋째, perplexity 같은 표준 지표로 측정한 이산 디퓨전 모델의 품질은 자기회귀 접근에 뒤처져 있어 적용성이 제한된다 \citep{gulrajani2024plaid,sahoo2024simple}.
+
+본 논문은 이산 디퓨전과 자기회귀 모델 사이를 보간하는 \algofull{} (\algos{})을 도입하여 이러한 한계를 다루는 방향으로 진전을 이룬다. 구체적으로, 블록 디퓨전 모델(반자기회귀(semi-autoregressive) 모델로도 알려져 있음)은 이산 확률변수의 블록에 대한 자기회귀 확률 분포를 정의하며 \citep{siautoregressive,si2023semi}, 이전 블록들이 주어졌을 때의 한 블록의 조건부 확률은 이산 디노이징 디퓨전 모델로 명시된다 \citep{austin2021structured,sahoo2024simple}.
 
 % We explore a class of block diffusion models based on the masked diffusion language modeling framework \citep{sahoo2024simple, shi2024simplified, ou2025your} and introduce \algofull{} (\algos{}).
 % \citep{han2022ssd,han2023ssd2}. 
 % When the size of the block reduces to one, we recover a regular autoregressive model.
 
-Developing effective \algos{} involves two challenges. First, efficiently computing the training objective for a block diffusion model is not possible using one standard forward pass of a neural network %cannot be done in a normal forward pass through a classical transformer neural network and requires a custom training algorithm.
-and requires developing specialized algorithms.
-% careful consideration in order to maximize efficiency on modern hardware.
-% A naive approach results in training time much slower than autoregressive training.
-Second, training is hampered by the high variance of the gradients of the diffusion objective, causing \algos{} to under-perform autoregression even with a block size of one (when both models should be equivalent). We derive estimators of gradient variance, and demonstrate that it is a key contributor to the gap in perplexity between autoregression and diffusion. We then propose custom noise processes that minimize gradient variance and make progress towards closing the perplexity gap.
+효과적인 \algos{} 개발에는 두 가지 난제가 있다. 첫째, 블록 디퓨전 모델의 학습 목적함수를 신경망의 표준 정방향 패스(forward pass) 한 번으로 효율적으로 계산하는 것은 불가능하며, %고전적인 트랜스포머 신경망의 일반적인 정방향 패스로는 할 수 없고 별도의 학습 알고리즘이 필요하다.
+특화된 알고리즘 개발이 필요하다.
+% 현대 하드웨어에서 효율을 극대화하려면 신중한 고려가 필요하다.
+% 단순한 접근은 자기회귀 학습보다 학습 시간이 훨씬 느려지는 결과를 낳는다.
+둘째, 학습은 디퓨전 목적함수 경사의 높은 분산으로 방해를 받으며, 그 결과 블록 크기가 1일 때(두 모델이 동치여야 함)조차 \algos{}가 자기회귀에 못 미친다. 우리는 경사 분산 추정량을 유도하고, 이것이 자기회귀와 디퓨전 사이 perplexity 격차의 핵심 기여 요인임을 보인다. 이어서 경사 분산을 최소화하는 맞춤 노이즈 과정을 제안하여 perplexity 격차를 좁히는 방향으로 진전을 이룬다.
 
 \begin{figure}
 \centering
     \hspace*{-1.4cm}
     \makebox[\textwidth][l]{
     \includegraphics[width=1.1\textwidth]{figs/graphical_abstract.pdf}}
-    \captionof{figure}{Block diffusion sequentially generates blocks of tokens by performing diffusion within each block and conditioning on previous blocks. By combining strength from autoregressive and diffusion models, block diffusion overcomes the limitations of both approaches by supporting variable-length, higher-quality generation and improving inference efficiency with KV caching and parallel sampling.}
+    \captionof{figure}{블록 디퓨전은 각 블록 안에서 디퓨전을 수행하고 이전 블록들에 조건화함으로써 토큰 블록을 순차적으로 생성한다. 자기회귀와 디퓨전 모델의 강점을 결합한 블록 디퓨전은 가변 길이의 더 높은 품질의 생성을 지원하고, KV 캐싱과 병렬 샘플링으로 추론 효율을 높여 두 접근의 한계를 극복한다.}
     \label{figs/graphical-abstract}
     \vspace{-5pt}
 \end{figure}
@@ -257,16 +278,16 @@ Second, training is hampered by the high variance of the gradients of the diffus
 % \end{figure}
 
 
-We evaluate \algos{} on language modeling benchmarks, and demonstrate that they are able to generate sequences of arbitrary length, including lengths that exceed their training context. In addition, \algos{} achieve new state-of-the-art perplexities among discrete diffusion models. %, and make progress towards reducing the gap to autoregressive models. 
-Compared to alternative semi-autoregressive formulations that perform Gaussian diffusion over embeddings \citep{han2022ssd,han2023ssd2}, our discrete approach features tractable likelihood estimates and yields samples with improved generative perplexity using an order of magnitude fewer generation steps.
-% Semi-autoregressive diffusion models also feature natural speed advantages, as they can implement a forward pass over multiple tokens at inference time. We demonstrate that these models strike a natural trade-off between quality and speed that achieves points on the Pareto frontier that are not accessible with autoregressive models.
-In summary, our work makes the following contributions:
+언어모델링 벤치마크에서 \algos{}를 평가하여, 학습 문맥 길이를 초과하는 길이를 포함해 임의 길이의 시퀀스를 생성할 수 있음을 시연한다. 또한 \algos{}는 이산 디퓨전 모델 가운데 새로운 최첨단 perplexity를 달성한다. %, 자기회귀 모델과의 격차를 줄이는 방향으로 진전을 이룬다.
+임베딩에 대한 가우시안 디퓨전을 수행하는 다른 반자기회귀 정식화 \citep{han2022ssd,han2023ssd2}와 비교해, 우리의 이산 접근은 다루기 쉬운 가능도 추정치를 제공하고, 한 자릿수 더 적은 생성 단계로 향상된 생성 perplexity의 샘플을 만들어 낸다.
+% 반자기회귀 디퓨전 모델은 또한 추론 시 여러 토큰에 걸쳐 정방향 패스를 구현할 수 있어 자연스러운 속도 이점도 가진다. 이 모델들이 자기회귀 모델로는 닿을 수 없는 파레토 경계 위의 품질-속도 절충점을 달성함을 보인다.
+요약하자면, 본 연구의 기여는 다음과 같다.
 \begin{itemize}
-    % \item We introduce \algofull{} (\algos{}), which are autoregressive over blocks of tokens; conditionals over each block are based on discrete diffusion. Unlike prior diffusion language models, \algos{} support variable-length generation and KV-caching.
-    \item We introduce block discrete diffusion language models, which are autoregressive over blocks of tokens; conditionals over each block are based on discrete diffusion. Unlike prior diffusion models, block diffusion supports variable-length generation and KV caching.
-    \item  We introduce custom training algorithms for block diffusion models that enable efficiently leveraging the entire batch of tokens provided to the model.
-    \item We identify gradient variance as a limiting factor of the performance of diffusion models, and we propose custom data-driven noise schedules that reduce gradient variance.
-    \item Our results establish a new state-of-the-art perplexity for discrete diffusion and make progress toward closing the gap to autoregressive models.
+    % \item 토큰 블록 단위로 자기회귀이며 각 블록의 조건부는 이산 디퓨전을 따르는 \algofull{} (\algos{})을 도입한다. 기존 디퓨전 언어모델과 달리, \algos{}는 가변 길이 생성과 KV 캐싱을 지원한다.
+    \item 토큰 블록 단위로 자기회귀이며 각 블록의 조건부가 이산 디퓨전에 기반한 블록 이산 디퓨전 언어모델을 도입한다. 기존 디퓨전 모델과 달리, 블록 디퓨전은 가변 길이 생성과 KV 캐싱을 지원한다.
+    \item 모델에 입력된 토큰 배치 전체를 효율적으로 활용할 수 있게 하는, 블록 디퓨전 모델 전용 학습 알고리즘을 도입한다.
+    \item 디퓨전 모델 성능의 제약 요인으로 경사 분산을 식별하고, 경사 분산을 줄이는 맞춤 데이터 주도 노이즈 스케줄을 제안한다.
+    \item 본 연구의 결과는 이산 디퓨전의 새로운 최첨단 perplexity를 확립하며, 자기회귀 모델과의 격차를 줄이는 방향으로 진전을 이룬다.
 \end{itemize}
 
 %However, existing work has not shown its potential for likelihood modeling on standard benchmarks and have been limited to continuous diffusion models.
@@ -281,26 +302,25 @@ In summary, our work makes the following contributions:
 %\item We introduce tunable noise schedules that further reduce the perplexity gap with autoregressive models by minimizing the variance of gradient updates during training
 %\end{enumerate}
 
-\section{Background: Language Modeling Paradigms}\label{sec:background}
-\paragraph{Notation}
-We consider scalar discrete random variables with $V$ categories as `one-hot' column vectors in the space $\mathcal{V} = \{\x \in \{0, 1\}^{V} : \sum_i \x_i = 1\}\subset \Delta^V$ for the simplex $\Delta^V$. Let the $V$-th category denote a special [MASK] token, where
-$\m \in \mathcal{V}$ is its one-hot vector.
-We define $\seqx$ as a sequence of $L$ tokens, where $\x^\ell \in \mathcal{V}$ for all tokens $\ell \in \{1, \ldots, L\},$ and use $\mathcal{V}^L$ to denote the set of all such sequences. Throughout the work, we simplify notation and refer to the token sequence as $\x$ and an individual token as $\x^\ell$. Finally, let $\cat(\cdot; p)$ be a categorical distribution with probability $p \in \Delta^V$. 
+\section{배경: 언어모델링 패러다임}\label{sec:background}
+\paragraph{표기법}
+$V$개의 범주를 가지는 스칼라 이산 확률변수를, 단순체(simplex) $\Delta^V$의 부분집합인 공간 $\mathcal{V} = \{\x \in \{0, 1\}^{V} : \sum_i \x_i = 1\}\subset \Delta^V$ 위의 ``원-핫(one-hot)'' 열벡터로 본다. $V$번째 범주는 특수 [MASK] 토큰을 나타내며, $\m \in \mathcal{V}$는 그 원-핫 벡터이다.
+$\seqx$를 $L$개의 토큰 시퀀스로 정의하며, 모든 토큰 $\ell \in \{1, \ldots, L\}$에 대해 $\x^\ell \in \mathcal{V}$이고, 그러한 모든 시퀀스의 집합을 $\mathcal{V}^L$로 표기한다. 본 논문 전반에서 표기를 단순화하여 토큰 시퀀스를 $\x$, 개별 토큰을 $\x^\ell$로 부른다. 끝으로, $\cat(\cdot; p)$를 확률 $p \in \Delta^V$인 범주 분포(categorical distribution)로 둔다.
 % \begin{enumerate}
 %     \item Consider a sequence of $L$ tokens $\x = \left[ x^1, \dots, x^L \right]$ drawn from the data distribution $q(\mathbf{x})$. We aim to estimate the joint probability $p(\x)$. We compare two dominant language modeling frameworks: autoregressive and diffusion LMs.
 % \end{enumerate}
-\subsection{Autoregressive Models}
-Consider a sequence of $L$ tokens $\x = \left[ \x^1, \dots, \x^L \right]$ drawn from the data distribution $q(\x)$. 
-% Consider a sequence of $L$ tokens $\x = \left( x^1, \dots, x^L \right)$ drawn from the data distribution $q(\mathbf{x})$.  We aim to fit a model $p_\theta(\x)$ of $q$. 
-% We compare two dominant language modeling frameworks: autoregressive and diffusion LMs.
-Autoregressive (AR) models define a factorized distribution of the form
+\subsection{자기회귀 모델}
+데이터 분포 $q(\x)$에서 추출된 $L$개의 토큰 시퀀스 $\x = \left[ \x^1, \dots, \x^L \right]$를 고려하자.
+% 데이터 분포 $q(\mathbf{x})$에서 추출된 $L$개의 토큰 시퀀스 $\x = \left( x^1, \dots, x^L \right)$를 고려한다. 우리의 목표는 $q$의 모델 $p_\theta(\x)$를 적합시키는 것이다.
+% 두 가지 주요 언어모델링 프레임워크인 자기회귀 LM과 디퓨전 LM을 비교한다.
+자기회귀(autoregressive, AR) 모델은 다음 형태로 인수분해된 분포를 정의한다.
 \begin{align}\label{eq:ar-nll}
     \log p_\theta(\x) = \sum_{\ell=1}^L \log p_\theta(\xl \mid \x^{<\ell}),
 \end{align}
-where each $p_\theta(\xl \mid \x^{<\ell})$ is parameterized directly with a neural network.
-As a result, AR models may be trained efficiently via next token prediction. However, AR models take $L$ steps to generate $L$ tokens due to the sequential dependencies.
+여기서 각 $p_\theta(\xl \mid \x^{<\ell})$은 신경망으로 직접 매개변수화된다.
+따라서 AR 모델은 다음 토큰 예측(next token prediction)을 통해 효율적으로 학습될 수 있다. 그러나 순차 의존성 때문에 AR 모델은 $L$개의 토큰을 생성하는 데 $L$ 단계가 필요하다.
 
-\subsection{Discrete Denoising Diffusion Probabilistic Models}
+\subsection{이산 디노이징 디퓨전 확률 모델}
 % \begin{enumerate}
 %     \item Diffusion models learn $p(\mathbf{x})$ by iteratively undoing a forward corruption process $q(\mathbf{x})$. Whereas AR models optimize the true likelihood, diffusion models optimize a likelihood bound. 
 %     \item Discrete diffusion models, such as D3PM \citep{austin2021structured}, define the diffusion process over discrete structures using a Markov forward process $q(\x_t | \x_{t-1}) = \cat( \x_t ; Q_t \x_{t-1})$. Masked diffusion language models are a class of discrete diffusion models that set the prior distribution to a "masked" state: $\boldsymbol{\pi} = \m$ \vkl{need less content on this than in MDLM, could even drop this bullet point} \TODO{introduce diffusion in the general D3PM formulation}
@@ -351,21 +371,21 @@ As a result, AR models may be trained efficiently via next token prediction. How
 % % MDLM \citep{sahoo2024simple} tightens the ELBO of this class of diffusion LMs and achieves state-of-the-art likelihoods among diffusion models.
 
 % NEW
-Diffusion models fit a model $p_\theta(\mathbf{x})$ to reverse a forward corruption process $q$ \citep{sohl2015deep,ho2020denoising,sahoo2024diffusion}. This process starts with clean data $\mathbf{x}$ and defines latent variables $\mathbf{x}_t = \left[\mathbf{x}^1_t, \dots, \mathbf{x}^L_t\right]$ for $t \in [0, 1]$, which represent progressively noisier versions of $\mathbf{x}$. Given a discretization into $T$ steps, we define $s(j) = (j -1)/T$ and $t(j) = j /T$. For brevity, we drop $j$ from $t(j)$ and $s(j)$ below; in general, $s$ denotes the time step preceding $t$.
+디퓨전 모델은 정방향 손상 과정 $q$를 역행하도록 모델 $p_\theta(\mathbf{x})$를 적합시킨다 \citep{sohl2015deep,ho2020denoising,sahoo2024diffusion}. 이 과정은 깨끗한 데이터 $\mathbf{x}$에서 시작하여, $\mathbf{x}$의 점점 더 노이즈가 많은 버전을 나타내는 잠재변수 $\mathbf{x}_t = \left[\mathbf{x}^1_t, \dots, \mathbf{x}^L_t\right]$를 $t \in [0, 1]$에 대해 정의한다. $T$ 단계로 이산화하면, $s(j) = (j -1)/T$, $t(j) = j /T$로 정의한다. 간결성을 위해 이하에서는 $t(j)$와 $s(j)$의 $j$를 생략한다. 일반적으로 $s$는 $t$ 직전의 시간 단계를 나타낸다.
 
-The D3PM framework \citep{austin2021structured} defines $q$ as a Markov forward process acting independently on each token $\mathbf{x}^\ell$:
+D3PM 프레임워크 \citep{austin2021structured}는 $q$를 각 토큰 $\mathbf{x}^\ell$에 대해 독립적으로 작용하는 마르코프 정방향 과정으로 정의한다.
 $q(\mathbf{x}^\ell_{t} \mid \mathbf{x}^\ell_{s}) = \operatorname{Cat}(\mathbf{x}^\ell_t ; Q_t \mathbf{x}^\ell_{s})$
-where $Q_t \in \mathbb{R}^{V \times V}$ is the diffusion matrix. The matrix $Q_t$ can model various transformations, including masking, random token changes, and related word substitutions. 
+여기서 $Q_t \in \mathbb{R}^{V \times V}$는 디퓨전 행렬이다. 행렬 $Q_t$는 마스킹, 무작위 토큰 변경, 관련 단어 치환 등 다양한 변환을 모델링할 수 있다.
 
-% The reverse posterior $q(\mathbf{x}^\ell_s \mid \mathbf{x}^\ell_t, \mathbf{x})$ is defined following \citet{austin2021structured} in \supp{supp:elbo}. Due to the unavailibility of $\x$ during inference, we approximate it using $\p: \mathcal{V} \times [0, 1] \to \Delta^K$ parameterized by a neural network with parameters $\theta$ as per the D3PM framework: 
-An ideal diffusion model $\p$ is the reverse of the process $q$. The D3PM framework defines $\p$ as
+% 역 사후 $q(\mathbf{x}^\ell_s \mid \mathbf{x}^\ell_t, \mathbf{x})$는 \supp{supp:elbo}에서 \citet{austin2021structured}을 따라 정의한다. 추론 시 $\x$를 사용할 수 없으므로, D3PM 프레임워크에 따라 파라미터 $\theta$의 신경망으로 매개변수화된 $\p: \mathcal{V} \times [0, 1] \to \Delta^K$로 이를 근사한다.
+이상적인 디퓨전 모델 $\p$는 과정 $q$의 역과정이다. D3PM 프레임워크는 $\p$를 다음과 같이 정의한다.
 \begin{align}\label{eqn:diffusion}
     p_\theta(\x_s \mid \x_t) = \prod_{\ell=1}^L p_\theta(\xl_s \mid \x_t) = \sum_{\x} \left[\prod_{\ell=1}^L q(\xl_s \mid \xl_t, \xl) p_\theta(\xl \mid \x_t)\right],
 \end{align}
-where the denoising base model $\p(\xl \mid \x_t)$ predicts clean token $\xl$ given the noisy sequence $\mathbf{x}_t$, and the reverse posterior $q(\mathbf{x}^\ell_s \mid \mathbf{x}^\ell_t, \mathbf{x})$ is defined following \citet{austin2021structured} in \supp{supp:elbo}. 
-% The marginalization is tractable due to the independent noising process over tokens in $q$, as well as the independence assumptions commonly made in the base model: the clean tokens are modeled independently as $\prod_\ell p(\xl\mid \x_t)$.
+여기서 디노이징 기반 모델 $\p(\xl \mid \x_t)$는 노이즈 시퀀스 $\mathbf{x}_t$가 주어졌을 때 깨끗한 토큰 $\xl$을 예측하며, 역 사후 $q(\mathbf{x}^\ell_s \mid \mathbf{x}^\ell_t, \mathbf{x})$은 \citet{austin2021structured}을 따라 \supp{supp:elbo}에 정의되어 있다.
+% $q$에서 토큰별 노이즈 과정이 독립이고, 기반 모델에서도 통상적으로 독립 가정($\prod_\ell p(\xl\mid \x_t)$)을 두므로 주변화는 다루기 쉽다.
 
-The diffusion model $p_\theta$ is trained using variational inference. Let $\operatorname{KL}[\cdot]$ denote the Kullback-Leibler divergence. Then, the Negative ELBO (NELBO) is given by~\citep{sohl2015deep}:
+디퓨전 모델 $p_\theta$는 변분 추론(variational inference)으로 학습된다. $\operatorname{KL}[\cdot]$이 쿨백–라이블러 발산(Kullback–Leibler divergence)을 나타낸다고 하자. 그러면 음의 ELBO(NELBO)는 다음과 같이 주어진다 \citep{sohl2015deep}.
 {\footnotesize
 \begin{align}\label{eqn:elbo}
     % &\log p_\theta(\x) \geq \mathrm{ELBO}(p_\theta, q) \\ 
@@ -374,37 +394,37 @@ The diffusion model $p_\theta$ is trained using variational inference. Let $\ope
     + \KL[q(\x_{t(T)} | \x) \| p_\theta(\x_{t(T)})] \Bigg]
 \end{align}
 }
-This formalism extends to continuous time via Markov chain (CTMC) theory and admits score-based generalizations \citep{song2019generative, lou2024discrete, sun2022score}. Further simplifications \citep{sahoo2024simple, shi2024simplified, ou2025your} tighten the ELBO and enhance performance.
+이 형식은 연속 시간 마르코프 사슬(CTMC) 이론을 통해 연속 시간으로 확장되며, 점수 기반(score-based) 일반화를 허용한다 \citep{song2019generative, lou2024discrete, sun2022score}. 추가적인 단순화 \citep{sahoo2024simple, shi2024simplified, ou2025your}는 ELBO를 더 조이고 성능을 향상시킨다.
 
-\section{Block Diffusion Language Modeling}
-We explore a class of \algofull{} (\algos{}) that interpolate between autoregressive and diffusion models by defining an autoregressive distribution over blocks of tokens and performing diffusion within each block. We provide a block diffusion objective for maximum likelihood estimation and efficient training and sampling algorithms. We show that for a block size of one, the diffusion objective suffers from high variance despite being equivalent to the autoregressive likelihood in expectation. We identify high training variance as a limitation of diffusion models and propose data-driven noise schedules that reduce the variance of the gradient updates during training. 
+\section{블록 디퓨전 언어모델링}
+우리는 토큰 블록에 대한 자기회귀 분포를 정의하고 각 블록 내부에서 디퓨전을 수행함으로써 자기회귀와 디퓨전 모델 사이를 보간하는 \algofull{} (\algos{}) 부류를 탐구한다. 최대 가능도 추정을 위한 블록 디퓨전 목적함수와 효율적인 학습·표집 알고리즘을 제시한다. 블록 크기가 1일 때 디퓨전 목적함수는 기댓값에서는 자기회귀 가능도와 동치이지만 분산이 높다는 점을 보인다. 높은 학습 분산을 디퓨전 모델의 제약으로 식별하고, 학습 시 경사 갱신의 분산을 줄이는 데이터 주도 노이즈 스케줄을 제안한다.
 
 % \paragraph{Notation}
 % Consider a sequence of $L$ tokens $\x = \left[ x^1, \dots, x^L \right]$ drawn from the data distribution $q(\mathbf{x})$. We group tokens in $\x$ into $B$ blocks of length $L'$ with $B=B$ (we assume that $B$ is an integer). We denote each block $\x^{(b-1)L':bL'}$ from token at positions $(b-1)L'$ to $bL'$ for blocks $b \in \{ 1, \dots, B \}$ as $\x^b$ for simplicity.
 
-\subsection{Block Diffusion Distributions and Model Architectures}\label{sec:sar-elbo}
-We propose to combine the language modeling paradigms in Sec. \ref{sec:background} by autoregressively modeling blocks of tokens and performing diffusion within each block. 
-% Let $L$ be the pre-training sequence length and $L'$ be the length of each SAR block, where $L' < L$. 
-% Thus, log-likelihood factorizes over sequences of $L'$-length blocks as 
-We group tokens in $\x$ into $B$ blocks of length $L'$ with $B=L/L'$ (we assume that $B$ is an integer). We denote each block $\x^{(b-1)L':bL'}$ from token at positions $(b-1)L'$ to $bL'$ for blocks $b \in \{ 1, \dots, B \}$ as $\x^b$ for simplicity. Our likelihood factorizes over blocks as
+\subsection{블록 디퓨전 분포와 모델 아키텍처}\label{sec:sar-elbo}
+\cref{sec:background}의 언어모델링 패러다임을, 토큰 블록을 자기회귀적으로 모델링하면서 각 블록 내부에서 디퓨전을 수행하도록 결합할 것을 제안한다.
+% $L$을 사전학습 시퀀스 길이로, $L'$을 각 SAR 블록의 길이로 두며 $L' < L$이라 하자.
+% 따라서 로그가능도는 $L'$ 길이의 블록 시퀀스에 대해 다음과 같이 인수분해된다.
+$\x$의 토큰을 길이 $L'$의 $B$개 블록으로 묶으며 $B=L/L'$이다($B$가 정수라 가정). 위치 $(b-1)L'$부터 $bL'$까지의 각 블록 $\x^{(b-1)L':bL'}$($b \in \{ 1, \dots, B \}$)을 단순히 $\x^b$로 표기한다. 우리의 가능도는 블록에 대해 다음과 같이 인수분해된다.
 % where we have $B=L/L'$ blocks in the sequence. We denote each block $\x^{(b-1)L':bL'}$ from token at positions $(b-1)L'$ to $bL'$ for blocks $b \in \{ 1, \dots, B \}$ as $\x^b$ for simplicity:
 \begin{align}\label{eqn:sar-ll}
      \log p_\theta(\x) &= \sum_{b = 1}^{B} \log p_\theta(\x^{b} \mid \x^{<b}),
 \end{align}
-and each $p_\theta(\x^b \mid \x^{<b})$ is modeled using discrete diffusion over a block of $L'$ tokens. 
-% Specifically, a Markov forward noising process $q(\x_t^b|\x_s^b)$ is applied to $\x^b$; the reverse model $p_\theta(\x_s^b | \x_t^b, \x^{<b}) = q(\x_s^b | \x_t^b, \x^b_\theta(\x^b_t, \x^{<b}))$ is defined as in (\ref{eqn:diffusion}), but restricted to block $b$. 
-Specifically, we define a reverse diffusion process as in (\ref{eqn:diffusion}), but restricted to block $b$:
+그리고 각 $p_\theta(\x^b \mid \x^{<b})$는 $L'$개 토큰의 블록에 대한 이산 디퓨전으로 모델링된다.
+% 구체적으로, $\x^b$에 마르코프 정방향 노이즈 과정 $q(\x_t^b|\x_s^b)$이 적용되며, 역모델 $p_\theta(\x_s^b | \x_t^b, \x^{<b}) = q(\x_s^b | \x_t^b, \x^b_\theta(\x^b_t, \x^{<b}))$은 (\ref{eqn:diffusion})처럼 정의되되 블록 $b$로 제한된다.
+구체적으로, (\ref{eqn:diffusion})처럼 정의되되 블록 $b$로 제한된 역 디퓨전 과정을 정의한다.
 %$p_\theta(\x_s^b | \x_t^b, \x^{<b}) = q(\x_s^b | \x_t^b, \x^b_\theta(\x^b_t, \x^{<b}))$
 \begin{align}
     p_\theta(\x_s^b \mid \x_t^b, \x^{<b}) = \sum_{\x^b} q(\x_s^b \mid \x_t^b, \x^b)p_\theta(\x^b\mid \x^b_t,\x^{<b})
 \end{align}
 %Note that since each $p_\theta(\x^{b} \mid \x^{<b})$ is a distribution over $\x^{b} $ conditioned on $\x^{<b}$, the model $\x_\theta$ which denoises $\x^b_t$ is also conditioned on $\x^{<b}$.
-We obtain a principled learning objective by applying the NELBO in (\ref{eqn:elbo}) to each term in (\ref{eqn:sar-ll}) to obtain
+(\ref{eqn:sar-ll})의 각 항에 (\ref{eqn:elbo})의 NELBO를 적용하여 다음과 같은 원칙적인 학습 목적함수를 얻는다.
 \begin{align}\label{eqn:sar-elbo}
     - \log p_\theta(\x) \leq \mathcal{L}_\text{BD}(\x; \theta) := \sum_{b=1}^{B} \mathcal{L}(\x^b, \x^{<b}; \theta),
 \end{align}
-where each $\mathcal{L}(\x^b, \x^{<b}; \theta)$ is an instance of (\ref{eqn:elbo}) applied to $\log p_\theta(\x^{b} \mid \x^{<b})$. Since the model is conditioned on $\x^{<b}$, we make the dependence on $\x^{<b}, \theta$ explicit in $\mathcal{L}$.
-We denote the sum of these terms  $\mathcal{L}_\text{BD}(\x; \theta)$ (itself a valid NELBO).
+여기서 각 $\mathcal{L}(\x^b, \x^{<b}; \theta)$는 $\log p_\theta(\x^{b} \mid \x^{<b})$에 적용한 (\ref{eqn:elbo})의 한 사례이다. 모델이 $\x^{<b}$에 조건화되므로, $\mathcal{L}$에서 $\x^{<b}, \theta$에 대한 의존을 명시한다.
+이 항들의 합을 $\mathcal{L}_\text{BD}(\x; \theta)$로 표기한다(그 자체로 유효한 NELBO이다).
 
 % \marianne{We note that "block diffusion" modeling is synonymous with "}
 % We adopt the simplified objective from \cite{sahoo2024simple} (the full derivation is provided in Suppl. \ref{supp:elbo}):
@@ -414,69 +434,66 @@ We denote the sum of these terms  $\mathcal{L}_\text{BD}(\x; \theta)$ (itself a 
 % \end{align}
 % The ELBO is tight for $B=1$ but becomes a looser approximation of the true log-likelihood for $B \rightarrow L$  (see Suppl. \ref{supp:sar-elbo-tightness}).
 
-\paragraph{Model Architecture}
-% ideally use f_\theta for the neural network
-Crucially, we parameterize the $B$ base denoiser models $p_\theta(\x^b \mid \x^b_t, \x^{<b})$ using a single neural network $\x_\theta$. The neural network $\x_\theta$ outputs not only the probabilities $p_\theta(\x^b \mid \x_t^b, \x^{<b})$, but also computational artifacts for efficient training. This will enable us to compute the loss $\mathcal{L}_\text{BD}(\x; \theta)$ in parallel for all $B$ blocks in a memory-efficient manner.
-Specifically, we parameterize $\x_\theta$ using a transformer \citep{vaswani2017attention} with a block-causal attention mask. The transformer $\x_\theta$ is applied to $L$ tokens, and tokens in block $b$ attend to tokens in blocks 1 to $b$. When $\x_\theta$ is trained, $\x^b_\theta(\x^b_t, \x^{<b})$ yields $L'$ predictions for denoised tokens in block $b$ based on noised $\x^b_t$ and clean $\x^{<b}$. % from previous blocks.
+\paragraph{모델 아키텍처}
+% 신경망에 대해 이상적으로는 f_\theta를 사용
+결정적으로, $B$개의 기반 디노이저 모델 $p_\theta(\x^b \mid \x^b_t, \x^{<b})$를 단일 신경망 $\x_\theta$로 매개변수화한다. 신경망 $\x_\theta$는 확률 $p_\theta(\x^b \mid \x_t^b, \x^{<b})$뿐 아니라 효율적인 학습을 위한 계산 산출물도 출력한다. 이는 모든 $B$개 블록에 대한 손실 $\mathcal{L}_\text{BD}(\x; \theta)$를 메모리 효율적으로 병렬 계산할 수 있게 해 준다.
+구체적으로, 블록-인과(block-causal) 어텐션 마스크를 사용하는 트랜스포머 \citep{vaswani2017attention}로 $\x_\theta$를 매개변수화한다. 트랜스포머 $\x_\theta$는 $L$개 토큰에 적용되며, 블록 $b$의 토큰들은 블록 1부터 $b$까지의 토큰들에만 주의를 기울인다. $\x_\theta$가 학습되면, $\x^b_\theta(\x^b_t, \x^{<b})$는 노이즈 $\x^b_t$와 깨끗한 $\x^{<b}$를 바탕으로 블록 $b$ 안 디노이즈된 토큰에 대한 $L'$개의 예측을 만들어 낸다. % 이전 블록들로부터.
 
-In autoregressive generation, it is normal to cache keys and values for previously generated tokens to avoid recomputing them at each step. Similarly, we use $\mathbf{K}^b, \mathbf{V}^b$ to denote the keys and values at block $b$, and we define $\x_\theta$ to support these as input and output. The full signature of $\x_\theta$ is
+자기회귀 생성에서는 이전에 생성된 토큰의 키와 값을 캐싱해 매 단계 재계산을 피하는 것이 일반적이다. 마찬가지로, 블록 $b$의 키와 값을 $\mathbf{K}^b, \mathbf{V}^b$로 표기하고, $\x_\theta$가 이를 입력·출력으로 지원하도록 정의한다. $\x_\theta$의 전체 시그니처는 다음과 같다.
 \begin{align}\label{eqn:model-kv}
     \x_\text{logits}^b, \mathbf{K}^b, \mathbf{V}^b \gets \x^b_\theta(\x^b_t, \mathbf{K}^{1:b-1}, \mathbf{V}^{1:b-1}) := \x^b_\theta(\x^b_t, \x^{<b}),
 \end{align}
-where $\x_\text{logits}^b$ are the predictions for the clean $\x^b$, and $\mathbf{K}^b, \mathbf{V}^b$ is the key-value cache in the forward pass of $\x_\theta$, and $\mathbf{K}^{1:b-1}, \mathbf{V}^{1:b-1}$ are keys and values cached on a forward pass of $\x_\theta$ over $\x^{<b}$ (hence the inputs $\x^{<b}$ and $\mathbf{K}^{1:b-1}, \mathbf{V}^{1:b-1}$ are equivalent). 
+여기서 $\x_\text{logits}^b$는 깨끗한 $\x^b$에 대한 예측이고, $\mathbf{K}^b, \mathbf{V}^b$는 $\x_\theta$의 정방향 패스에서 만들어진 키-값 캐시이며, $\mathbf{K}^{1:b-1}, \mathbf{V}^{1:b-1}$은 $\x^{<b}$에 대한 $\x_\theta$ 정방향 패스에서 캐시된 키와 값이다(따라서 입력 $\x^{<b}$와 $\mathbf{K}^{1:b-1}, \mathbf{V}^{1:b-1}$는 동치이다).
 
-% In practice, we parameterize $p_\theta(\x^b |\x_t^b, \x^{<b})$ for blocks $\b \in 1, \dots, B$ in (\ref{eqn:sar-elbo}) using a transformer architecture. Our backbone takes as input a noised block $\x^b_{t_b} \sim q_{t_b}(\cdot|\x^b)$ and clean tokens in previous blocks $\x^{<b}$ to produce logits $\x_{\text{logit}} \gets \x_\theta^b(\x_{t_b}^b, \x^{<b})$.
+% 실제로 (\ref{eqn:sar-elbo})의 블록 $\b \in 1, \dots, B$에 대해 $p_\theta(\x^b |\x_t^b, \x^{<b})$를 트랜스포머 아키텍처로 매개변수화한다. 백본은 노이즈 블록 $\x^b_{t_b} \sim q_{t_b}(\cdot|\x^b)$와 이전 블록의 깨끗한 토큰 $\x^{<b}$를 입력으로 받아 logits $\x_{\text{logit}} \gets \x_\theta^b(\x_{t_b}^b, \x^{<b})$를 만든다.
 
 
-\subsection{Efficient Training and Sampling Algorithms}\label{sec:eff-algs}
+\subsection{효율적 학습·표집 알고리즘}\label{sec:eff-algs}
 
-Ideally, we wish to compute the loss $\mathcal{L}_\text{BD}(\x; \theta)$ in one forward pass of $\x_\theta$. However, observe that denoising $\x_t^b$ requires a forward pass on this noisy input, while denoising the next blocks requires running $\x_\theta$ on the clean version $\x^b$. Thus every block has to go through the model at least twice.
+이상적으로는 손실 $\mathcal{L}_\text{BD}(\x; \theta)$를 $\x_\theta$의 한 번의 정방향 패스로 계산하고 싶다. 그러나 $\x_t^b$를 디노이징하려면 이 노이즈 입력에 대한 정방향 패스가 필요하고, 다음 블록을 디노이징하려면 $\x_\theta$를 깨끗한 버전 $\x^b$에 대해 실행해야 한다. 따라서 모든 블록은 모델을 최소 두 번 통과해야 한다.
 
-\paragraph{Training}
-Based on this observation, we propose a training algorithm with these minimal computational requirements
+\paragraph{학습}
+이 관찰을 바탕으로, 위의 최소 계산 요구를 가진 학습 알고리즘을 제안한다
 %
-% However, this cannot be done in a normal forward pass through a classical transformer neural network since queries $Q^b$ at $\x_{t_b}^b$ must attend to keys and values $\mathbf{K}^{1:b\text{-}1}, \mathbf{V}^{1:b\text{-}1}$ of previous blocks $\x^{<b}$. 
-% We propose to do so using a custom training algorithm 
-(Alg.~\ref{alg:sar-train}). Specifically, we precompute keys and values $\mathbf{K}^{1:B}, \mathbf{V}^{1:B}$ for the full sequence $\x$ in a first forward pass $(\emptyset, \mathbf{K}^{1:B}, \mathbf{V}^{1:B}) \gets \x_\theta(\x)$.
-We then compute denoised predictions for all blocks using $\x_\theta^b(\x_{t}^b,  \mathbf{K}^{1:b\text{-}1}, \mathbf{V}^{1:b\text{-}1})$. Each token passes through $\x_\theta$ twice.
+% 그러나 $\x_{t_b}^b$의 쿼리 $Q^b$가 이전 블록 $\x^{<b}$의 키·값 $\mathbf{K}^{1:b\text{-}1}, \mathbf{V}^{1:b\text{-}1}$에 주의해야 하므로, 고전적인 트랜스포머 신경망의 일반적인 정방향 패스로는 이를 할 수 없다.
+% 우리는 이를 맞춤 학습 알고리즘으로 수행하기를 제안한다
+(Alg.~\ref{alg:sar-train}). 구체적으로, 첫 번째 정방향 패스 $(\emptyset, \mathbf{K}^{1:B}, \mathbf{V}^{1:B}) \gets \x_\theta(\x)$에서 전체 시퀀스 $\x$의 키와 값 $\mathbf{K}^{1:B}, \mathbf{V}^{1:B}$를 미리 계산한다.
+그런 다음 모든 블록에 대한 디노이즈 예측을 $\x_\theta^b(\x_{t}^b,  \mathbf{K}^{1:b\text{-}1}, \mathbf{V}^{1:b\text{-}1})$로 계산한다. 각 토큰은 $\x_\theta$를 두 번 통과한다.
 
-\paragraph{Vectorized Training}
+\paragraph{벡터화 학습}
 
-Naively, we would compute the logits by applying $\x_\theta^b(\x_{t}^b,  \mathbf{K}^{1:b\text{-}1}, \mathbf{V}^{1:b\text{-}1})$ in a loop $B$ times. We propose a vectorized implementation that computes $\mathcal{L}_\text{BD}(\x; \theta)$ in one forward pass on the concatenation $\x_\text{noisy} \oplus \x$ of clean data $\x$ with  noisy data $\x_\text{noisy} = \x^1_{t_1} \oplus \dots \oplus \x^B_{t_B}$ obtained by applying a noise level $t_b$ to each block $\x^b$. We design an attention mask for $\x_\text{noisy} \oplus \x$ such that noisy tokens attend to other noisy tokens in their block and to all clean tokens in preceding blocks
-(see Suppl. \ref{suppl:masks}).  Our method keeps the overhead of training \algos{} tractable and combines with pretraining to further reduce costs.
+단순한 방법으로는 $\x_\theta^b(\x_{t}^b,  \mathbf{K}^{1:b\text{-}1}, \mathbf{V}^{1:b\text{-}1})$를 $B$번 반복 적용해 logits를 계산할 것이다. 우리는 깨끗한 데이터 $\x$와, 각 블록 $\x^b$에 노이즈 수준 $t_b$를 적용해 얻은 노이즈 데이터 $\x_\text{noisy} = \x^1_{t_1} \oplus \dots \oplus \x^B_{t_B}$의 결합 $\x_\text{noisy} \oplus \x$에 대해 한 번의 정방향 패스로 $\mathcal{L}_\text{BD}(\x; \theta)$를 계산하는 벡터화 구현을 제안한다. 노이즈 토큰들이 같은 블록 안 다른 노이즈 토큰들과 이전 블록 안 모든 깨끗한 토큰들에 주의를 기울이도록 $\x_\text{noisy} \oplus \x$에 대한 어텐션 마스크를 설계한다(\supp{suppl:masks} 참조). 본 방법은 \algos{} 학습의 오버헤드를 다루기 좋게 유지하며, 사전학습과 결합해 비용을 더 줄인다.
 % In practice, this procedure is about 50\% slower than diffusion training. 
 
 % As a result, we efficiently model the conditional likelihoods between blocks relative to a naive implementation that requires $B$ forward passes for each conditional term. We may do so using two forward passes (one for pre-computing keys and values $\mathbf{K}^{1:B}, \mathbf{V}^{1:B}$ and the second for computing logits $\x_{\text{logit}}$), or through a single forward pass on $\x_t \oplus \x$ using a custom mask to mimic the proposed attention pattern (more details in Suppl. \ref{suppl:masks}).
 
 
-\paragraph{Sampling} We sample one block at a time, conditioned on previously sampled blocks (Alg \ref{alg:sar-inference}). We may use any sampling procedure $ \textsc{Sample}(\x_\theta^b, \mathbf{K}^{1:b\text{-}1},\mathbf{V}^{1:b\text{-}1})$ to sample from the conditional distribution $p_\theta(\x_{s}^b | \x_{t}^b, \x^{<b})$, where the context conditioning is generated using cross-attention with pre-computed keys and values $\mathbf{K}^{1:b-1}, \mathbf{V}^{1:b-1}$. Similar to AR models, caching the keys and values saves computation instead of recalculating them when sampling a new block.
+\paragraph{표집} 한 번에 한 블록씩 이전에 표집된 블록들에 조건화하여 표집한다(Alg.~\ref{alg:sar-inference}). 조건부 분포 $p_\theta(\x_{s}^b | \x_{t}^b, \x^{<b})$로부터 표집하기 위해 어떤 표집 절차 $ \textsc{Sample}(\x_\theta^b, \mathbf{K}^{1:b\text{-}1},\mathbf{V}^{1:b\text{-}1})$이든 사용할 수 있으며, 문맥 조건화는 미리 계산된 키와 값 $\mathbf{K}^{1:b-1}, \mathbf{V}^{1:b-1}$을 활용한 크로스 어텐션으로 생성된다. AR 모델처럼, 새 블록을 표집할 때 키와 값을 다시 계산하지 않고 캐싱하면 계산을 절약할 수 있다.
 
-Notably, our block diffusion decoding algorithm enables us to sample sequences of arbitrary length, whereas diffusion models are restricted to fixed-length generation. Further, our sampler admits parallel generation within each block, whereas AR samplers are constrained to generate token-by-token.
+특히 우리의 블록 디퓨전 디코딩 알고리즘은 임의 길이의 시퀀스를 표집할 수 있게 해 주는 반면, (일반) 디퓨전 모델은 고정 길이 생성으로 제한된다. 또한 우리의 샘플러는 각 블록 안에서 병렬 생성을 허용하지만, AR 샘플러는 토큰 단위 생성으로 제한된다.
 
 \input{algs/short_algs}
 
 
-\section{Understanding Likelihood Gaps Between Diffusion \& AR Models}
+\section{디퓨전과 AR 모델 사이 가능도 격차의 이해}
 
 % \subsection{\algofull{} (\algos{})}
-\subsection{Masked \algos{}}
+\subsection{마스크 \algos{}}
 
-The most effective diffusion language models leverage a masking noise process \citep{austin2021structured,lou2024discrete,sahoo2024simple}, where tokens are gradually replaced with a special mask token. Here, we introduce masked \algos{}, a special class of block diffusion models based on the masked diffusion language modeling framework \citep{sahoo2024simple, shi2024simplified, ou2025your}.
+가장 효과적인 디퓨전 언어모델은 토큰이 점진적으로 특수 마스크 토큰으로 치환되는 마스킹 노이즈 과정을 활용한다 \citep{austin2021structured,lou2024discrete,sahoo2024simple}. 여기서는 마스크 디퓨전 언어모델링 프레임워크 \citep{sahoo2024simple, shi2024simplified, ou2025your}에 기반한 블록 디퓨전 모델의 특수 부류인 마스크 \algos{}를 도입한다.
 
-More formally, we adopt a per-token noise process $q(\xl_t| \xl) = \cat(\xl_t; \at \xl + (1 - \at) \m)$ for tokens $\ell \in \{1, \dots, L\}$
-where $\m$ is a one-hot encoding of the mask token, and $\alpha_t \in [0, 1]$
-is a strictly decreasing function in $t$, with $\alpha_{0} = 1$ and $\alpha_{1} = 0$. We employ the linear schedule where the probability of masking a token at time $t$ is $1-\alpha_t$.
-We adopt the simplified objective from \cite{sahoo2024simple, shi2024simplified, ou2025your} (the full derivation is provided in Suppl. \ref{supp:elbo}):
+보다 형식적으로, 토큰 $\ell \in \{1, \dots, L\}$에 대해 토큰별 노이즈 과정 $q(\xl_t| \xl) = \cat(\xl_t; \at \xl + (1 - \at) \m)$을 채택한다. 여기서 $\m$은 마스크 토큰의 원-핫 인코딩이고, $\alpha_t \in [0, 1]$은 $\alpha_{0} = 1$, $\alpha_{1} = 0$을 만족하는 $t$에 대한 엄격히 감소 함수이다. 시간 $t$에서 토큰이 마스킹될 확률이 $1-\alpha_t$인 선형 스케줄을 사용한다.
+\cite{sahoo2024simple, shi2024simplified, ou2025your}의 단순화된 목적함수를 채택한다(전체 유도는 \supp{supp:elbo}에 있다).
 \begin{align}\label{eqn:sar-elbo-exp}
     - \log p_\theta(\x) \leq \mathcal{L}_\text{BD}(\x; \theta) :=  \sum_{b=1}^{B} \mathbb{E}_{t \sim [0, 1]} \mathbb{E}_{q} \frac{\at'}{1-\at} \log p_\theta(\x^b | \x_{t}^b, \x^{<b})
 \end{align}
-\noindent where $\at'$ is the instantaneous rate of change of $\at$ under the continuous-time extension of (\ref{eqn:elbo}) that takes $T \rightarrow \infty$. The NELBO is tight for $L'=1$ but becomes a looser approximation of the true negative log-likelihood for $L' \rightarrow L$  (see Suppl. \ref{supp:sar-elbo-tightness}).
+\noindent 여기서 $\at'$은 $T \rightarrow \infty$로 보내는 (\ref{eqn:elbo})의 연속 시간 확장 하에서 $\at$의 순간 변화율이다. NELBO는 $L'=1$에서 타이트(tight)하지만, $L' \rightarrow L$로 갈수록 참 음의 로그가능도에 대한 더 느슨한 근사가 된다(\supp{supp:sar-elbo-tightness} 참조).
 
-\subsection{Case Study: Single Token Generation}
+\subsection{사례 연구: 단일 토큰 생성}
 \begin{wraptable}{r}{5cm}
     \small
   \vspace{-15pt}
-  \caption{Test perplexities for single-token generation (PPL; $\downarrow$) across 16B tokens on LM1B.}
+  \caption{LM1B에서 16B 토큰에 대한 단일 토큰 생성의 테스트 perplexity(PPL; $\downarrow$).}
   \label{tab:bs1-var}
   \centering
   \begin{tabular}{lll}
@@ -490,27 +507,26 @@ We adopt the simplified objective from \cite{sahoo2024simple, shi2024simplified,
     \hspace{1em} + tuned schedule & \textbf{22.88} \\
     \bottomrule
   \end{tabular}
-  \vspace{-10px}
+  \vspace{-10pt}
 \end{wraptable}
-Our block diffusion parameterization (\ref{eqn:sar-elbo-exp}) is equivalent in expectation to the autoregressive NLL (\ref{eq:ar-nll}) in the limiting case where $L'=1$ (see Suppl. \ref{supp:sar-block1-nll}). Surprisingly, we find a two point perplexity gap between our block diffusion model for $L'=1$ and AR when training both models on the LM1B dataset.
+우리의 블록 디퓨전 매개변수화 (\ref{eqn:sar-elbo-exp})은 $L'=1$의 극한에서 자기회귀 NLL (\ref{eq:ar-nll})과 기댓값에서 동치이다(\supp{supp:sar-block1-nll} 참조). 놀랍게도, LM1B 데이터셋으로 두 모델을 학습하면 $L'=1$의 블록 디퓨전 모델과 AR 사이에 perplexity 격차가 약 2 포인트 있음을 발견한다.
 
 
-Although the objectives are equivalent in expectation, we show that the remaining perplexity gap is a result of high training variance. Whereas AR is trained using the cross-entropy of $L$ tokens, our block diffusion model for $L'=1$ only computes the cross-entropy for masked tokens $\xl_t = \m \; \forall \ell \in \{ 1, \dots L \}$ so that $\mathbb{E}_{t \sim \mathcal{U}[0,1]} q(\xl_t = \m | \xl) = 0.5$. Thus, training on the diffusion objective involves estimating loss gradients with 2x fewer tokens and is responsible for higher training variance compared to AR.
+목적함수가 기댓값에서는 동치이지만, 남은 perplexity 격차는 높은 학습 분산의 결과임을 보인다. AR은 $L$개 토큰의 교차 엔트로피로 학습되는 반면, $L'=1$의 우리 블록 디퓨전 모델은 마스크 토큰 $\xl_t = \m \; \forall \ell \in \{ 1, \dots L \}$에 대해서만 교차 엔트로피를 계산하여 $\mathbb{E}_{t \sim \mathcal{U}[0,1]} q(\xl_t = \m | \xl) = 0.5$가 된다. 따라서 디퓨전 목적함수로 학습하면 손실 경사를 2배 더 적은 토큰으로 추정하게 되어 AR 대비 학습 분산이 커진다.
 
-To close the likelihood gap, we train a \algo{} for $L'=1$ by designing the forward process to fully mask tokens, i.e. $q(\xl_t = \m | \xl) =1$. Under this schedule, the diffusion objective becomes \textit{equivalent} to the AR objective (Suppl. \ref{supp:sar-block1-nll}). In Table \ref{tab:bs1-var}, we show that training under the block diffusion objective yields the same perplexity as AR training. Empirically, we see that this reduces the variance of the training loss in Figure \ref{figs/bs-1}. We verify  that tuning the noise schedule reduces the variance of the objective by measuring $\text{Var}_{\x, t} \left[ \mathcal{L}_{\text{BD}} (\x; \theta)\right]$ after training on 328M tokens: while training on the NELBO results in a variance of 1.52, training under full masking reduces the variance to 0.11.
+가능도 격차를 닫기 위해, 정방향 과정을 토큰을 완전히 마스킹하도록(즉, $q(\xl_t = \m | \xl) =1$) 설계하여 $L'=1$인 \algo{}를 학습한다. 이 스케줄에서 디퓨전 목적함수는 AR 목적함수와 \textit{동치}가 된다(\supp{supp:sar-block1-nll}). 표 \ref{tab:bs1-var}에서, 블록 디퓨전 목적함수로 학습한 결과 perplexity가 AR 학습과 같음을 보인다. 경험적으로 이는 그림 \ref{figs/bs-1}처럼 학습 손실의 분산을 줄여 준다. 노이즈 스케줄 튜닝이 목적함수의 분산을 줄임을 328M 토큰 학습 후 $\text{Var}_{\x, t} \left[ \mathcal{L}_{\text{BD}} (\x; \theta)\right]$를 측정하여 검증한다. NELBO로 학습하면 분산이 1.52인 반면, 완전 마스킹 학습으로는 분산이 0.11로 감소한다.
 \begin{figure}
 \centering
     \includegraphics[width=0.75\textwidth]{figs/bs1.pdf}
-    \captionof{figure}{Train NLLs for modeling the per-token likelihood on LM1B. Models are trained on 16B tokens. Training under the discrete diffusion NELBO, where half of the tokens in a batch are masked on average, has similar training variance to an AR model with a random batch size.}
+    \captionof{figure}{LM1B에서 토큰별 가능도 모델링의 학습 NLL. 모델은 16B 토큰으로 학습된다. 배치 안 토큰의 평균 절반이 마스킹되는 이산 디퓨전 NELBO로 학습할 때, 무작위 배치 크기를 가진 AR 모델과 비슷한 학습 분산을 가진다.}
     \label{figs/bs-1}
 \end{figure}
 
 
-\subsection{Diffusion Gap from High Variance Training}
-Next, we formally describe the issue of gradient variance in training diffusion models. Given our empirical observations for single-token generation, we propose an estimator for gradient variance that we use to minimize the variance of diffusion model training for $L' \geq 1$. While the NELBO is invariant to the choice of noise schedule (Suppl. \ref{supp:elbo}), this invariance does not hold for our Monte Carlo estimator of the loss used during training. %for sampling $\x \sim q_0, t \sim \mathcal{U}[0, 1]$, $\x_t \sim q_t(\x)$. 
-As a result, the variance of the estimator and its gradients are dependent on the schedule. First, we express the estimator of the NELBO %$l_\theta (\x)$
-with a batch size $K$.
-We denote a batch of sequences as $\mathbf{X} = \left[\x^{(1)}, \x^{(2)}, \ldots, \x^{(K)}\right]$, with each $\x^{(k)}\overset{\text{iid}}\sim q(\x)$. We obtain the batch NELBO estimator below, where $t(k, b)$ is sampled in sequence $k$ and block $b$:
+\subsection{높은 분산 학습이 만드는 디퓨전 격차}
+다음으로, 디퓨전 모델 학습에서 경사 분산 문제를 형식적으로 기술한다. 단일 토큰 생성에 대한 경험적 관찰을 바탕으로, $L' \geq 1$의 디퓨전 모델 학습 분산을 최소화하기 위해 사용할 경사 분산 추정량을 제안한다. NELBO는 노이즈 스케줄 선택에 불변이지만(\supp{supp:elbo}), 이 불변성은 학습 시 사용하는 손실의 몬테카를로(Monte Carlo) 추정량에는 성립하지 않는다. %$\x \sim q_0, t \sim \mathcal{U}[0, 1]$, $\x_t \sim q_t(\x)$의 표집에 대해.
+따라서 추정량과 그 경사의 분산은 스케줄에 의존한다. 먼저 배치 크기 $K$에서의 NELBO 추정량을 표현한다. %$l_\theta (\x)$
+시퀀스 배치를 $\mathbf{X} = \left[\x^{(1)}, \x^{(2)}, \ldots, \x^{(K)}\right]$로 표기하고, 각 $\x^{(k)}\overset{\text{iid}}\sim q(\x)$이다. 배치 NELBO 추정량은 아래와 같으며, $t(k, b)$는 시퀀스 $k$와 블록 $b$에서 표집된다.
 \begin{align}
 \mathcal{L}_\text{BD}(\mathbf{X}; \theta)
 := l(\mathbf{X}; \theta)
@@ -539,7 +555,7 @@ We denote a batch of sequences as $\mathbf{X} = \left[\x^{(1)}, \x^{(2)}, \ldots
 % % \end{align}
 
 
-The variance of the gradient estimator over $M$ batches for each batch $\mathbf{X}^m \; \forall m \in \{ 1, \dots, M\}$ is:
+각 배치 $\mathbf{X}^m \; \forall m \in \{ 1, \dots, M\}$에 대한 $M$개 배치에 걸친 경사 추정량의 분산은 다음과 같다.
  \begin{align}\label{eq:grad-var-estimator}
      \text{Var}_{\mathbf{X}, t}\left[
     \nabla_\theta l (\mathbf{X}; \theta) \right] 
@@ -562,14 +578,14 @@ The variance of the gradient estimator over $M$ batches for each batch $\mathbf{
 
 % In Table \ref{tab:lm1b_vars}, we observe that training using uniformly sampled mask rates results in higher-variance estimates of the NLL compared to training on a subset of masking rates.
 
-\section{Low-Variance Noise Schedules for \algos{}}
- % We use the above observations to derive improved, low-variance gradient estimators for \algos{} that control the noise schedule.
+\section{\algos{}를 위한 저분산 노이즈 스케줄}
+ % 위의 관찰을 이용해, 노이즈 스케줄을 제어하는 \algos{} 전용의 개선된 저분산 경사 추정량을 유도한다.
 
- \subsection{Intuition: Avoid Extreme Mask Rates}
-We aim to identify schedules that minimize the variance of the gradient estimator and make training most efficient. 
+ \subsection{직관: 극단적 마스크율을 피하기}
+경사 추정량의 분산을 최소화하고 학습을 가장 효율적으로 만드는 스케줄을 찾는 것이 목표이다.
 %
-In a masked setting, we want to mask random numbers of tokens, so that the model learns to undo varying levels of noise, which is important during sampling.
-However, if we mask very few tokens, reconstructing them is easy and does not provide useful learning signal. If we mask everything, the optimal reconstruction are the marginals of each token in the data distribution, which is easy to learn, and again is not useful. These extreme masking rates lead to poor high-variance gradients: we want to learn how to clip them via a simple and effective new class of schedules.
+마스크 환경에서는 무작위 수의 토큰을 마스킹하여, 모델이 다양한 수준의 노이즈를 되돌리는 법을 학습하게 하고자 한다. 이는 표집 시 중요하다.
+그러나 너무 적은 토큰만 마스킹하면 재구성이 쉽고 유용한 학습 신호를 주지 못한다. 모든 것을 마스킹하면 최적 재구성은 데이터 분포에서 각 토큰의 주변(marginals)이며, 학습이 쉽지만 다시 유용하지 않다. 이러한 극단적 마스크율은 분산이 큰 나쁜 경사로 이어진다. 우리는 단순하고 효과적인 새로운 스케줄 부류로 이를 클리핑(clipping)하는 법을 학습하고자 한다.
 % However, the precise optimal sampling distribution depends on the size of the block: we saw that for small blocks, we may want to mask everything, while larger blocks would benefit from smaller rate
 % We attribute high-variance training to sampling extreme masking rates. Intuitively, if the mask rate $1-\alpha_t$ is too low, most tokens are unmasked the denoising task is too easy and the gradient is not useful for training. Similarly, if the masking rate is too high, then the Bayes optimal solution is to predict the marginals of the data distribution. \TODO{might be a bit too hand-wavey}
 
@@ -577,10 +593,10 @@ However, if we mask very few tokens, reconstructing them is easy and does not pr
 
 % \vkl{I think we can expand more on this intuition. I think the idea is that if the mask is too high, the problem is too easy (you just predict the marginals of the data) and the gradient is not useful; if the mask \% is too low, then it's also too easy (nothing is masked) and the gradient is not useful}
 
-\subsection{Clipped Schedules for Low-Variance Gradients}
-% We reduce the variance of the gradient estimator by avoiding sampling $t$ that induce high variance in our gradient estimator.
+\subsection{저분산 경사를 위한 클리핑 스케줄}
+% 경사 추정량에서 높은 분산을 유발하는 $t$의 표집을 피해 경사 추정량의 분산을 줄인다.
 
-We propose a class of ``clipped'' noise schedules that sample mask rates $1-\at \sim \mathcal{U}[\beta, \omega]$ for $0 \leq \beta, \omega \leq 1$. We argue that from the perspective of deriving Monte Carlo gradient estimates, these schedules are equivalent to a continuous schedule where the mask probability is approximately 0 before the specified range such that $1-\alpha_{<\beta} \approx \epsilon$ and approximately 1 after the specified range $1-\alpha_{>\omega} \approx 1-\epsilon$. Consequently, $\at'$ is linear within the range: $\at' \approx 1 / (\beta - \omega)$.
+마스크율 $1-\at \sim \mathcal{U}[\beta, \omega]$($0 \leq \beta, \omega \leq 1$)에서 표집하는 ``클리핑(clipped)'' 노이즈 스케줄 부류를 제안한다. 몬테카를로 경사 추정의 관점에서 이러한 스케줄은, 지정된 범위 이전에는 마스크 확률이 약 0이고($1-\alpha_{<\beta} \approx \epsilon$), 지정된 범위 이후에는 약 1인($1-\alpha_{>\omega} \approx 1-\epsilon$) 연속 스케줄과 동치임을 주장한다. 그 결과 범위 안에서는 $\at'$이 선형이다: $\at' \approx 1 / (\beta - \omega)$.
 % % \vkl{this bracket notation is a bit confusing}. 
 % We derive the Monte Carlo estimators of the diffusion ELBO under such clipped schedules:
 % \begin{align}\label{eq:clipped-estimator}
@@ -599,18 +615,18 @@ We propose a class of ``clipped'' noise schedules that sample mask rates $1-\at 
 % We show that there exists $\beta, \omega$ that improves the variance of the gradient estimate: $\text{Var}_{\x, t} \left[\hat{g}_{[\beta,\omega]}\right] < \text{Var}_{\x, t} \left[\hat{g}_{[0, 1]}\right]$.
 % \TODO{need a proof, can put the full proof in the appendix. just need to show that increasing the bounds increases the variance}
 
-\subsection{Data-Driven Clipped Schedules Across Block Sizes}\label{sec:data-driven-schedules}
-As the optimal mask rates may differ depending on the block size $L'$, we adaptively learn the schedule during training. While \cite{kingma2021variational} perform variance minimization by isolating a variance term using their squared diffusion loss, this strategy is not directly applicable to our variance estimator in Equation \ref{eq:grad-var-estimator} since we seek to reduce variance across random batches in addition to random $t_b$.
+\subsection{블록 크기별 데이터 주도 클리핑 스케줄}\label{sec:data-driven-schedules}
+최적 마스크율은 블록 크기 $L'$에 따라 다를 수 있으므로, 학습 중에 스케줄을 적응적으로 학습한다. \cite{kingma2021variational}는 제곱 디퓨전 손실로 분산 항을 분리해 분산 최소화를 수행하지만, 이 전략은 식 \ref{eq:grad-var-estimator}의 우리 분산 추정량에 직접 적용되지 않는다. 우리는 무작위 $t_b$뿐 아니라 무작위 배치 전반에서도 분산을 줄이고자 하기 때문이다.
 
-Instead, we optimize parameters $\beta, \omega$ to directly minimize training variance. To limit the computational burden of the optimization, we use the variance of the estimator of the diffusion ELBO as a proxy for the gradient estimator to optimize $\beta, \omega$: $\min_{\beta, \omega} \text{Var}_{\mathbf{X}, t} \left[ \mathcal{L}(\mathbf{X}; \theta, \beta, \omega) \right]$. We perform a grid search at regular intervals during training to find the optimal $\beta, \omega$ (experimental details in Sec. \ref{sec:experiments}).
+대신, 학습 분산을 직접 최소화하도록 파라미터 $\beta, \omega$를 최적화한다. 최적화의 계산 부담을 줄이기 위해, 경사 추정량의 대리값(proxy)으로 디퓨전 ELBO 추정량의 분산을 사용해 $\beta, \omega$를 최적화한다: $\min_{\beta, \omega} \text{Var}_{\mathbf{X}, t} \left[ \mathcal{L}(\mathbf{X}; \theta, \beta, \omega) \right]$. 학습 중 정기적인 간격으로 격자 탐색(grid search)을 수행하여 최적 $\beta, \omega$를 찾는다(실험 세부 사항은 \cref{sec:experiments}).
 
-In Table \ref{tab:lm1b_vars}, we show that variance of the diffusion NELBO is correlated with test perplexity. Under a range of ``clipped'' noise rate distributions, we find that there exists a unique distribution for each block size $L' \in \{4, 16, 128\}$ that minimizes both the variance of the NELBO and the test perplexity.
+표 \ref{tab:lm1b_vars}에서 디퓨전 NELBO의 분산이 테스트 perplexity와 상관관계가 있음을 보인다. 다양한 ``클리핑'' 노이즈율 분포 하에서, 블록 크기 $L' \in \{4, 16, 128\}$ 각각에 대해 NELBO의 분산과 테스트 perplexity를 모두 최소화하는 고유한 분포가 존재함을 확인한다.
 
 
 
 \begin{table*}[ht]
     \small
-  \caption{Perplexities (PPLs; $\downarrow$) and variances of the NELBO $\text{Var}_{\mathbf{X}, t}\left[ \mathcal{L}_\text{BD}(\mathbf{X}; \theta)  \right]$ (Var. NELBO; $\downarrow$). Models are trained on LM1B using a linear schedule for 65B tokens, then finetuned for 10B tokens.}
+  \caption{Perplexity(PPLs; $\downarrow$)와 NELBO 분산 $\text{Var}_{\mathbf{X}, t}\left[ \mathcal{L}_\text{BD}(\mathbf{X}; \theta)  \right]$ (Var. NELBO; $\downarrow$). 모델은 선형 스케줄로 LM1B에서 65B 토큰을 학습한 뒤 10B 토큰으로 파인튜닝된다.}
   \label{tab:lm1b_vars}
   \centering
   \setlength{\tabcolsep}{6pt} % Adjust horizontal padding
@@ -632,7 +648,7 @@ In Table \ref{tab:lm1b_vars}, we show that variance of the diffusion NELBO is co
 \begin{wraptable}{r}{0.45\textwidth}
   \vspace{-20pt}
   \small
-  \caption{Test perplexities (PPL; $\downarrow$) of models trained for 65B tokens on LM1B. Best diffusion value is bolded.}
+  \caption{LM1B에서 65B 토큰으로 학습한 모델들의 테스트 perplexity(PPL; $\downarrow$). 디퓨전 모델 중 최고값은 굵게 표시.}
   \label{tab:lm1b-ppl}
   \centering
   \vspace{-10pt}
@@ -659,17 +675,17 @@ In Table \ref{tab:lm1b_vars}, we show that variance of the diffusion NELBO is co
   \vspace{-20pt}
 \end{wraptable}
 
-\section{Experiments}\label{sec:experiments}
+\section{실험}\label{sec:experiments}
 
-We evaluate \algos{} across standard language modeling benchmarks and demonstrate their ability to generate arbitrary-length sequences unconditionally. We pre-train a base \algo{} using the maximum block size $L'=L$ for 850K gradient steps and fine-tune under varying $L'$ for 150K gradient steps on the One Billion Words dataset (LM1B; \citet{chelba2014billion}) and OpenWebText (OWT; \citet{Gokaslan2019OpenWeb}). Details on training and inference are provided in Suppl \ref{suppl:details}.
+\algos{}를 표준 언어모델링 벤치마크에서 평가하고, 비조건적으로 임의 길이의 시퀀스를 생성할 수 있는 능력을 시연한다. One Billion Words 데이터셋(LM1B; \citet{chelba2014billion})과 OpenWebText(OWT; \citet{Gokaslan2019OpenWeb})에서 최대 블록 크기 $L'=L$로 850K 경사 단계 동안 기반 \algo{}를 사전학습하고, 다양한 $L'$로 150K 경사 단계 동안 파인튜닝한다. 학습과 추론 세부 사항은 \supp{suppl:details}에 있다.
 
-To reduce the variance of training on the diffusion NELBO, we adaptively learn the range of masking rates by optimizing parameters $\beta, \omega$ as described in Section \ref{sec:data-driven-schedules}. In practice, we do so using a grid search during every validation epoch (after $\sim$5K gradient updates) to identify $\beta, \omega$: $\min_{\beta, \omega} \text{Var}_{\mathbf{X}, t} \left[ \mathcal{L}(\mathbf{X}; \theta, \beta, \omega) \right]$. During evaluation, we report likelihood under uniformly sampled mask rates (\ref{eqn:sar-elbo-exp}) as in \citet{austin2021structured, sahoo2024simple}.
+디퓨전 NELBO 학습의 분산을 줄이기 위해, \cref{sec:data-driven-schedules}에 기술한 대로 파라미터 $\beta, \omega$를 최적화하여 마스킹율의 범위를 적응적으로 학습한다. 실제로는 매 검증 에포크마다(약 5K 경사 갱신 후) $\beta, \omega$를 찾기 위한 격자 탐색을 수행한다: $\min_{\beta, \omega} \text{Var}_{\mathbf{X}, t} \left[ \mathcal{L}(\mathbf{X}; \theta, \beta, \omega) \right]$. 평가 시에는 \citet{austin2021structured, sahoo2024simple}을 따라 균일 표집 마스크율 하에서의 가능도(\ref{eqn:sar-elbo-exp})를 보고한다.
 
 \begin{wraptable}{r}{0.4\textwidth}
 \vspace{-10pt}
 \small
 \centering
-    \caption{Test perplexities (PPL; $\downarrow$) on \owt{} for models trained for 524B tokens. Best diffusion value is bolded.}\label{owt-ppl}
+    \caption{524B 토큰으로 학습한 모델들의 \owt{} 테스트 perplexity(PPL; $\downarrow$). 디퓨전 모델 중 최고값은 굵게 표시.}\label{owt-ppl}
   \begin{tabular}{ll}
     \toprule
     & PPL ($\downarrow$) \\
@@ -690,11 +706,11 @@ To reduce the variance of training on the diffusion NELBO, we adaptively learn t
 % \vkl{Consider having a section where you just look at the ability to generate arbitrary length text. You want to argue that previous discrete diffusion models (at least SEDD out of the box) cannot generate full-length documents that are longer than the length of the output context chosen at training time. This can be purely qualitative. For example, you can generate documents on OWT and report the length distribution of training data, SEDD-generated data (which would be clipped after 1024), and your data (which should go beyond 1024). If you could show an improvement over MDLM with SAR sampling, that would be awesome, but if not, we can shove it under the rug. We might also be able to add more quantitative experiments.}
 
 
-\subsection{Likelihood Evaluation}
-On LM1B, \algos{} outperform all prior diffusion methods in Table \ref{tab:lm1b-ppl}. Compared to MDLM~\citep{sahoo2024simple}, \algos{} achieve up to 13\% improvement in perplexity.  We observe a similar trend on OpenWebText in Table \ref{owt-ppl}.
+\subsection{가능도 평가}
+LM1B에서 \algos{}는 표 \ref{tab:lm1b-ppl}의 모든 기존 디퓨전 방법을 능가한다. MDLM \citep{sahoo2024simple}과 비교해 \algos{}는 perplexity에서 최대 13\%의 개선을 달성한다. 표 \ref{owt-ppl}의 OpenWebText에서도 비슷한 경향을 관찰한다.
 
 
-We also evaluate the ability of \algos{} to generalize to unseen datasets in a zero-shot setting, following the benchmark from \citet{radford2019language}. We evaluate the likelihood of models trained with OWT on datasets Penn Tree Bank (PTB; \citep{marcus1993building}), Wikitext \citep{merity2016pointer}, LM1B, Lambada \citep{paperno-EtAl:2016:P16-1}, AG News \citep{Zhang2015CharacterlevelCN}, and Scientific Papers (Pubmed and Arxiv subsets; \citep{Cohan_2018}). In Table \ref{zeroshot-ppl}, \algo{} achieves the best zero-shot perplexity on Pubmed, surpassing AR, and the best perplexity among diffusion models on Wikitext, LM1B, and AG News.
+또한 \citet{radford2019language}의 벤치마크를 따라 본 적 없는 데이터셋에 대한 \algos{}의 제로샷(zero-shot) 일반화 능력을 평가한다. OWT로 학습한 모델의 가능도를 Penn Tree Bank(PTB; \citep{marcus1993building}), Wikitext \citep{merity2016pointer}, LM1B, Lambada \citep{paperno-EtAl:2016:P16-1}, AG News \citep{Zhang2015CharacterlevelCN}, Scientific Papers(Pubmed, Arxiv 부분집합; \citep{Cohan_2018}) 데이터셋에서 평가한다. 표 \ref{zeroshot-ppl}에서 \algo{}는 Pubmed에서 AR을 넘어 최고 제로샷 perplexity를 달성하고, Wikitext, LM1B, AG News에서는 디퓨전 모델 중 최고를 달성한다.
 % \begin{table*}[ht]
 % \small
 % \caption{Zero-shot validation perplexities ($\downarrow$) of models trained for 524B tokens on \owt{}.
@@ -721,8 +737,7 @@ We also evaluate the ability of \algos{} to generalize to unseen datasets in a z
 
 \begin{table*}[ht]
 \small
-\caption{Zero-shot validation perplexities ($\downarrow$) of models trained for 524B tokens on \owt{}.
-All perplexities for diffusion models are upper bounds.
+\caption{\owt{}에서 524B 토큰으로 학습한 모델들의 제로샷 검증 perplexity($\downarrow$). 디퓨전 모델의 모든 perplexity는 상한이다.
 }
 \small
 \label{zeroshot-ppl}
@@ -742,24 +757,24 @@ MDLM  &90.96& 33.22& 64.94& \textbf{48.29} & 62.78 & 43.13 & \textbf{37.89}\\
 % \vspace{-4.5pt}
 \end{table*}
 
-\subsection{Sample Quality and Variable-Length Sequence Generation}\label{subsec:samples}
+\subsection{샘플 품질과 가변 길이 시퀀스 생성}\label{subsec:samples}
 
 \begin{wraptable}{r}{0.38\textwidth}
     \small
     \vspace{-10pt}
-  \caption{Generation length statistics from sampling 500 documents from models trained on OWT.}
+  \caption{OWT로 학습한 모델에서 500개 문서를 표집했을 때의 생성 길이 통계.}
   \label{tab:owt-gen-lens}
   \centering
     \setlength{\tabcolsep}{2pt} % Reduce column padding
 
   \begin{tabular}{lcc}
-  
+
     \toprule
-    & Median  & Max \\
-    & \# tokens  & \# tokens \\
+    & 중앙값  & 최댓값 \\
+    & 토큰 수  & 토큰 수 \\
 
     \midrule
-    OWT train set  & 717 & 131K\\
+    OWT 학습 셋  & 717 & 131K\\
     AR  & 4008 & 131K \\
     \midrule
     SEDD & 1021 & 1024 \\
@@ -802,21 +817,21 @@ MDLM  &90.96& 33.22& 64.94& \textbf{48.29} & 62.78 & 43.13 & \textbf{37.89}\\
 
 % We assess the capacity of \algos{} to generate high-quality, variable-length samples. 
 
-One key drawback of many existing diffusion language models (e.g,. \citet{austin2021structured,lou2024discrete}) is that they cannot generate full-length sequences that are longer than the length of the output context chosen at training time. The OWT dataset is useful for examining this limitation, as it contains many documents that are longer than the training context length of 1024 tokens. 
+기존 많은 디퓨전 언어모델(예: \citet{austin2021structured,lou2024discrete})의 핵심 단점 중 하나는 학습 시 선택한 출력 문맥 길이보다 긴 전체 길이의 시퀀스를 생성할 수 없다는 점이다. OWT 데이터셋은 1024 토큰의 학습 문맥 길이보다 긴 문서가 많아서 이 한계를 살펴보기에 유용하다.
 
 % We assess the capacity of \algos{} to generate high-quality, variable-length samples by examining generation length statistics as well as generative perplexity under GPT2-Large for varying decoding lengths (experimental details provided in Suppl. \ref{suppl:eval-details}).
 
 
-We record generation length statistics of 500 variable-length samples in Table \ref{tab:owt-gen-lens}. We continue sampling tokens until an end-of-sequence token [EOS] is generated or sample quality significantly degrades (as measured by sample entropy). \algos{} generate sequences up to $\approx$10$\times$ longer than those of SEDD \citep{lou2024discrete}, which is restricted to the training context size.
+표 \ref{tab:owt-gen-lens}에 500개 가변 길이 샘플의 생성 길이 통계를 기록한다. 시퀀스 종료 토큰 [EOS]가 생성되거나 샘플 품질이 크게 저하될 때까지(샘플 엔트로피로 측정) 토큰 표집을 계속한다. \algos{}는 학습 문맥 크기로 제한된 SEDD \citep{lou2024discrete}보다 약 10배까지 긴 시퀀스를 생성한다.
 
-We also examine the sample quality of \algos{} through quantitative and qualitative analyses. In Table \ref{tab:gen_ppl_2048}, we generate sequences of lengths $L=1024, 2048$ and measure their generative perplexity under GPT2-Large. To sample $L=2048$ tokens from MDLM, we use their block-wise decoding technique (which does not feature block diffusion training as in \algos{}).
+또한 정량·정성적 분석으로 \algos{}의 샘플 품질을 살펴본다. 표 \ref{tab:gen_ppl_2048}에서 길이 $L=1024, 2048$의 시퀀스를 생성하고 GPT2-Large 하에서의 생성 perplexity를 측정한다. MDLM에서 $L=2048$ 토큰을 표집하기 위해 그들의 블록 단위 디코딩 기법을 사용한다(이 기법에는 \algos{}와 같은 블록 디퓨전 학습이 포함되지 않는다).
 
-We also compare to SSD-LM \citep{han2022ssd}, an alternative block diffusion formulation. Unlike our discrete diffusion framework, SSD-LM uses Gaussian diffusion and does not support likelihood estimation. Further, \algo{} adopts an efficient sampler from masked diffusion, where the number of generation steps (NFEs) is upper-bounded by $L$ since tokens are never remasked~\citep{sahoo2024simple, ou2025your}. For SSD-LM, we compare sample quality using $T=1$K diffusion steps per block, matching their experimental setting (yielding $\geq$40K NFEs), and $T=25$ where NFEs are comparable across methods.
+또한 다른 블록 디퓨전 정식화인 SSD-LM \citep{han2022ssd}과 비교한다. 우리의 이산 디퓨전 프레임워크와 달리 SSD-LM은 가우시안 디퓨전을 사용하며 가능도 추정을 지원하지 않는다. 더불어 \algo{}는 마스크 디퓨전의 효율적인 샘플러를 채택하므로, 토큰이 다시 마스킹되지 않기 때문에 생성 단계 수(NFEs)는 $L$로 상한이다 \citep{sahoo2024simple, ou2025your}. SSD-LM에 대해서는 그들의 실험 설정인 블록당 $T=1$K 디퓨전 단계로 샘플 품질을 비교하고($\geq$40K NFEs), 방법 간 NFEs가 비슷한 $T=25$도 보고한다.
 
 
 \begin{table}[ht!]
     \small
-  \caption{Generative perplexity (Gen. PPL; $\downarrow$) and number of function evaluations (NFEs; $\downarrow$) of 300 samples of lengths $L=1024, 2048$. All models are trained on OWT. AR, SEDD, MDLM, \algos{} use 110M parameters and are trained on 524B tokens, while SSD-LM uses 400M parameters and is pre-trained on 122B tokens. Best diffusion value is bolded. We provide further details in Suppl. \ref{suppl:eval-details}.}
+  \caption{길이 $L=1024, 2048$의 300개 샘플에 대한 생성 perplexity(Gen. PPL; $\downarrow$)와 함수 평가 횟수(NFEs; $\downarrow$). 모든 모델은 OWT에서 학습된다. AR, SEDD, MDLM, \algos{}는 110M 파라미터로 524B 토큰에서 학습되었고, SSD-LM은 400M 파라미터로 122B 토큰에서 사전학습되었다. 디퓨전 모델 중 최고값은 굵게 표시. 자세한 내용은 \supp{suppl:eval-details}에 있다.}
   \label{tab:gen_ppl_2048}
   \centering
     \begin{tabular}{lcccc}
@@ -845,28 +860,28 @@ We also compare to SSD-LM \citep{han2022ssd}, an alternative block diffusion for
 
 % \algos{} also enjoy efficiency improvements over AR models by using fewer functional evaluations (NFEs), whereas AR generation is fixed to $L$ NFEs. We evaluate our proposed BAR decoding algorithm (Alg. \ref{alg:sar-inference}) in unconditional generation generate 50 sequences of lengths $L = 1024$ using \algos{}. We show that BAR approaches support generating sequences of arbitrary length, overcoming a key limitation of sampling with diffusion models. In generating 1024 tokens (Table \ref{tab:gen_ppl_2048}), \algo{} may achieve better quality than SSD-LM while using much fewer NFEs.
 % \begin{table*}[ht]
-\algos{} achieve the best generative perplexities compared to previous diffusion methods. Relative to SSD-LM, our discrete approach yields samples with improved generative perplexity using an order of magnitude fewer generation steps. We also qualitatively examine samples taken from \algo{} and baselines (AR, MDLM) trained on the OWT dataset; we report samples in Suppl. \ref{suppl:summaries}. We observe that \algo{} samples have higher coherence than MDLM samples and approach the quality of AR.
+\algos{}는 기존 디퓨전 방법 대비 가장 좋은 생성 perplexity를 달성한다. SSD-LM 대비 우리의 이산 접근은 한 자릿수 더 적은 생성 단계로 향상된 생성 perplexity의 샘플을 만들어 낸다. 또한 OWT 데이터셋에서 학습한 \algo{}와 기준선(AR, MDLM)의 샘플을 정성적으로도 살펴본다. 샘플은 \supp{suppl:summaries}에 있다. \algo{} 샘플이 MDLM 샘플보다 일관성이 높고 AR의 품질에 근접함을 관찰한다.
 
 
-\subsection{Ablations}\label{sec:ablation}
-We assess the impact of the design choices in our proposed block diffusion recipes, namely 1) selection of the noise schedule and 2) the efficiency improvement of the proposed training algorithm relative to a naive implementation.
+\subsection{어블레이션}\label{sec:ablation}
+제안한 블록 디퓨전 레시피의 설계 선택, 즉 1) 노이즈 스케줄 선택과 2) 단순 구현 대비 제안 학습 알고리즘의 효율 향상이 미치는 영향을 평가한다.
 
-\subsubsection*{Selecting Noise Schedules to Reduce Training Variance}
+\subsubsection*{학습 분산을 줄이기 위한 노이즈 스케줄 선택}
 
-% Our class of data-driven "clipped" noise schedules are the most effective in reducing the perplexity gap compared to linear, cosine, and logarithmic schedules. We find that "clipping" the masking rates during training is the most effective for reducing the variance of the training objective, which correlates with the perplexity.  In Table \ref{tab:var_ns_training}, we train \algos{} under a variety of different schedules for $L'=4, 16$ and show their impact on test perplexity on LM1B. The ideal "clipped" masking rates, which are optimized during training, are specific to the block size and further motivate our optimization.
+% 우리의 데이터 주도 ``클리핑'' 노이즈 스케줄 부류는 선형·코사인·로그 스케줄에 비해 perplexity 격차를 가장 효과적으로 줄인다. 학습 중 마스킹율을 ``클리핑''하는 것이 학습 목적함수의 분산을 줄이는 데 가장 효과적이며, 이는 perplexity와 상관관계가 있다. 표 \ref{tab:var_ns_training}에서 다양한 스케줄로 $L'=4, 16$의 \algos{}를 학습하고, LM1B 테스트 perplexity에 미치는 영향을 보인다. 학습 중 최적화되는 이상적인 ``클리핑'' 마스킹율은 블록 크기에 특화되어 있어 우리의 최적화의 동기를 더해 준다.
 
-Compared to the linear schedule used in \citet{lou2024discrete, sahoo2024simple}, training under ``clipped'' noise schedules is the most effective for reducing the training variance which correlates with test perplexity. In Table \ref{tab:var_ns_training}, the ideal ``clipped'' masking rates, which are optimized during training, are specific to the block size and further motivate our optimization. 
+\citet{lou2024discrete, sahoo2024simple}에서 사용된 선형 스케줄과 비교해, ``클리핑'' 노이즈 스케줄로 학습하는 것이 테스트 perplexity와 상관 있는 학습 분산을 가장 효과적으로 줄인다. 표 \ref{tab:var_ns_training}에서 학습 중 최적화되는 이상적인 ``클리핑'' 마스킹율은 블록 크기에 특화되어 있으며, 이는 우리의 최적화 동기를 더해 준다.
 
 \begin{wraptable}{r}{0.43\textwidth}
   \vspace{-13pt}
   \small
-  \caption{Effect of the noise schedule on likelihood estimation. We finetune \algos{} on 3B tokens from LM1B and evaluate on a linear schedule. For clipped schedules, we compare optimal clipping for \(L' = 4, 16\).}
+  \caption{노이즈 스케줄이 가능도 추정에 미치는 영향. LM1B에서 3B 토큰으로 \algos{}를 파인튜닝하고 선형 스케줄로 평가한다. 클리핑 스케줄에 대해서는 \(L' = 4, 16\)의 최적 클리핑을 비교한다.}
   \vspace{-8pt}
   \label{tab:var_ns_training}
   \centering
   \begin{tabular}{lcc}
     \toprule
-    Noise schedule & PPL & Var. NELBO \\
+    노이즈 스케줄 & PPL & Var. NELBO \\
     \midrule
     \textbf{L' = 4} &&\\
     Clipped &&\\
@@ -888,55 +903,53 @@ Compared to the linear schedule used in \citet{lou2024discrete, sahoo2024simple}
   \vspace{-40pt}
 \end{wraptable}
 
-Relative to other standard noise schedules \citep{chang2022maskgit}, ``clipped'' masking achieves the best performance. As heavier masking is effective for the smaller block size $L'=4$, we compare with logarithmic and square root schedules that also encourage heavy masking. As lighter masking is optimal for $L'=16$, we compare with square and cosine schedules.
+다른 표준 노이즈 스케줄 \citep{chang2022maskgit} 대비 ``클리핑'' 마스킹이 가장 좋은 성능을 달성한다. 더 무거운 마스킹이 더 작은 블록 크기 $L'=4$에 효과적이므로, 무거운 마스킹을 권장하는 로그·제곱근 스케줄과 비교한다. 더 가벼운 마스킹이 $L'=16$에 최적이므로 제곱·코사인 스케줄과 비교한다.
 
 
 
-\subsubsection*{Efficiency of Training Algorithm}
-In the \algo{} training algorithm (Sec. \ref{sec:eff-algs}), we compute $\x_{\text{logit}}$ using two options. We may perform two forward passes through the network (precomputing keys and values for the full sequence $\x$, then computing denoised predictions), or combine these passes by concatenating the two inputs into the same attention kernel.
+\subsubsection*{학습 알고리즘의 효율}
+\algo{} 학습 알고리즘(\cref{sec:eff-algs})에서 $\x_{\text{logit}}$를 두 가지 방식으로 계산한다. 신경망을 두 번 정방향 패스(전체 시퀀스 $\x$의 키·값 미리 계산 후 디노이즈 예측 계산)할 수도 있고, 두 입력을 같은 어텐션 커널에 결합해 한 번에 처리할 수도 있다.
 
 
 
-We find that a single forward pass is more efficient as we reduce memory bandwidth bottlenecks by leveraging efficient attention kernels~\citep{dao2022flashattention, dong2024flex}, see Suppl. \ref{suppl:flex-attention-kernels}. Instead of paying the cost of two passes through the network, we only pay the cost of a more expensive attention operation. Our vectorized approach has 20-25\% speed-up during training relative to performing two forward passes.
+효율적인 어텐션 커널 \citep{dao2022flashattention, dong2024flex}을 활용하면 메모리 대역폭 병목이 줄어들어 단일 정방향 패스가 더 효율적임을 확인했다(\supp{suppl:flex-attention-kernels} 참고). 신경망을 두 번 통과하는 비용 대신 더 비싼 어텐션 연산의 비용만 지불한다. 우리의 벡터화 접근은 두 번의 정방향 패스 대비 학습 시 20-25\% 속도 향상을 가진다.
 
 
-\section{Discussion and Prior Work}
+\section{논의와 선행 연구}
 
 % \vkl{TODO: re-phrase the comparison to D3PM, add section on SSD-LM, maybe find one more comparison? also need to edit conclusion}
 
-\paragraph{Comparison to D3PM}
-Block diffusion builds off D3PM \citep{austin2021structured} and applies it to each autoregressive conditional. We improve over D3PM in three ways: (1) we extend D3PM beyond fixed sequence lengths; (2) we study the perplexity gap of D3PM and AR models, identify gradient variance as a contributor, and design variance-minimizing schedules; (3) we improve over the perplexity of D3PM models. 
-% Note that (2) is applicable to vanilla D3PM, not just our block-wise extension. 
-Our work applies to extensions of D3PM \citep{he2022diffusionbert,lou2024discrete} including ones in continuous time \citep{campbell2022continuous,sun2022score}.
-% While (1) involves modifying D3PM to make it block-wise, (2) is applicable to vanilla D3PM. 
+\paragraph{D3PM과의 비교}
+블록 디퓨전은 D3PM \citep{austin2021structured}에서 출발해 이를 각 자기회귀 조건부에 적용한다. D3PM 대비 세 가지 측면에서 개선한다: (1) D3PM을 고정 시퀀스 길이를 넘어 확장하고, (2) D3PM과 AR 모델의 perplexity 격차를 연구하여 경사 분산을 그 기여 요인으로 식별하고 분산 최소화 스케줄을 설계하며, (3) D3PM 모델의 perplexity를 개선한다.
+% (2)는 우리의 블록 단위 확장뿐 아니라 일반 D3PM에도 적용된다.
+본 연구는 연속 시간의 확장 \citep{campbell2022continuous,sun2022score}을 포함한 D3PM의 확장 \citep{he2022diffusionbert,lou2024discrete}에 적용된다.
+% (1)은 D3PM을 블록 단위로 수정하는 것이고, (2)는 일반 D3PM에 적용 가능하다.
 
 
-\paragraph{Comparison to MDLM}
-\algos{} further make use of the perplexity-enhancing improvements in MDLM \citep{sahoo2024simple,shi2024simplified,ou2025your}. We also build upon MDLM: (1) while \citet{sahoo2024simple} point out that their NELBO is invariant to the noise schedule, we show that the noise schedule has a significant effect on gradient variance; (2) we push the state-of-the-art in perplexity beyond MDLM. Note that our perplexity improvements stem not only from block diffusion, but also from optimized schedules, and could enhance standard MDLM and D3PM models.
+\paragraph{MDLM과의 비교}
+\algos{}는 MDLM \citep{sahoo2024simple,shi2024simplified,ou2025your}의 perplexity 향상 개선을 한층 더 활용한다. MDLM 위에 다음과 같이 쌓아 올린다: (1) \citet{sahoo2024simple}는 그들의 NELBO가 노이즈 스케줄에 불변이라고 지적하지만, 우리는 노이즈 스케줄이 경사 분산에 상당한 영향을 미침을 보인다. (2) MDLM 너머로 perplexity의 최첨단을 끌어올린다. 우리의 perplexity 향상은 블록 디퓨전뿐 아니라 최적화된 스케줄에서도 비롯되며, 표준 MDLM과 D3PM 모델도 개선할 수 있다.
 
-\paragraph{Comparison to Gaussian Diffusion} Alternatively, one may perform diffusion over continuous embeddings of discrete tokens \citep{li2022diffusion, dieleman2022continuous, chen2022analog}. This allows using algorithms for continuous data \citep{song2020denoising,ho2022classifier}, but yields worse perplexity \citep{graves2023bayesian,gulrajani2024plaid}.
+\paragraph{가우시안 디퓨전과의 비교} 대안적으로, 이산 토큰의 연속 임베딩에 대해 디퓨전을 수행할 수 있다 \citep{li2022diffusion, dieleman2022continuous, chen2022analog}. 이는 연속 데이터용 알고리즘 \citep{song2020denoising,ho2022classifier}을 사용할 수 있게 해 주지만 perplexity는 더 나쁘다 \citep{graves2023bayesian,gulrajani2024plaid}.
 
-\paragraph{Comparison to Semi-Autoregressive Diffusion}
-\citet{han2022ssd,han2023ssd2} introduced a block formulation of Gaussian diffusion. \algos{} instead extend \citet{austin2021structured}, and feature: (1) tractable likelihood estimates for principled evaluation; (2) faster generation, as our number of model calls is bounded by the number of generated tokens, while SSD-LM performs orders of magnitude more calls; (3) improved sample quality. AR-Diffusion \citep{wu2023ardiffusion} extends SSD-LM with a left-to-right noise schedule; \citet{chen2025diffusion, ye2024diffusion} apply to decision traces and videos; \citet{hao2024training,kong2025scalable} extend to latent reasoning. PARD \citep{zhao2024pard} applies discrete block diffusion to graphs. In contrast, we (1) interpolate between AR/diffusion performance; (2) support KV caching; (3) perform attention within noised blocks, whereas PARD injects new empty blocks.
+\paragraph{반자기회귀 디퓨전과의 비교}
+\citet{han2022ssd,han2023ssd2}는 가우시안 디퓨전의 블록 정식화를 도입했다. 반면 \algos{}는 \citet{austin2021structured}을 확장하며 다음 특성을 가진다: (1) 원칙적 평가를 위한 다루기 쉬운 가능도 추정치, (2) 모델 호출 횟수가 생성 토큰 수로 상한이라 더 빠른 생성(SSD-LM은 한 자릿수 이상 더 많은 호출 수행), (3) 향상된 샘플 품질. AR-Diffusion \citep{wu2023ardiffusion}은 SSD-LM을 좌→우 노이즈 스케줄로 확장한다. \citet{chen2025diffusion, ye2024diffusion}은 의사결정 트레이스와 비디오에, \citet{hao2024training,kong2025scalable}은 잠재 추론에 적용한다. PARD \citep{zhao2024pard}는 이산 블록 디퓨전을 그래프에 적용한다. 이에 비해 우리는 (1) AR/디퓨전 성능 사이를 보간하고, (2) KV 캐싱을 지원하며, (3) 노이즈 블록 안에서 어텐션을 수행한다(반면 PARD는 새 빈 블록을 주입한다).
 
 % diffuser
-Autoregressive diffusion models \citep{hoogeboom2021argmax,hoogeboom2021autoregressive} extend any-order AR models (AO-ARMs; \citet{uria2014deep}) to support parallel sampling. \citet{zheng2024masked} prove equivalence between MDLM and AO-ARM training.
-Further extensions of ARMs that compete with diffusion include iterative editing \citep{gu2019levenshtein}, parallel and speculative decoding \citep{gu2017non,santilli2023accelerating,cai2024medusa,gloeckle2024better}, consistency training \citep{kou2024cllms}, guidance \citep{sanchez2023stay}, and cross-modal extensions \citep{liu2023visual,tian2025visual}.
+자기회귀 디퓨전 모델 \citep{hoogeboom2021argmax,hoogeboom2021autoregressive}은 임의 순서 AR 모델(any-order AR models; AO-ARMs; \citet{uria2014deep})을 확장하여 병렬 표집을 지원한다. \citet{zheng2024masked}는 MDLM과 AO-ARM 학습 사이의 동치성을 증명한다.
+디퓨전과 경쟁하는 AR 모델의 확장에는 반복 편집 \citep{gu2019levenshtein}, 병렬·추측 디코딩 \citep{gu2017non,santilli2023accelerating,cai2024medusa,gloeckle2024better}, 일관성 학습 \citep{kou2024cllms}, 유도 \citep{sanchez2023stay}, 교차 모달 확장 \citep{liu2023visual,tian2025visual} 등이 있다.
 
-\paragraph{Limitations}
+\paragraph{한계}
 
-Training \algos{} is more expensive than regular diffusion training. We propose a vectorized algorithm that keeps training speed within <2x of diffusion training speed; in our experiments, we also pre-train with a standard diffusion loss to further reduce the speed gap. Additionally, \algos{} generate blocks sequentially, and hence may face the same speed and controllability constraints as AR especially when blocks are small. Their optimal block size is task specific (e.g., larger for greater control).
-% and optimal blocks for speed depend on the parallelization capabilities of inferencing hardware (e.g,. FLOPS vs.~memory throughput) and serving batch size.
-\algos{} are subject to inherent limitations of generative models, including hallucinations \citep{achiam2023gpt}, copyright infringement \citep{gokaslan2024commoncanvas}, controllability \citep{schiff2024discreteguidance,wang2023infodiff} and harmful outputs \citep{bai2022constitutional}. % which require further research.
+\algos{} 학습은 일반 디퓨전 학습보다 비용이 크다. 우리는 학습 속도를 디퓨전 학습 속도의 2배 미만으로 유지하는 벡터화 알고리즘을 제안하며, 실험에서는 속도 격차를 더 줄이기 위해 표준 디퓨전 손실로 사전학습도 한다. 또한 \algos{}는 블록을 순차적으로 생성하므로 블록이 작을 때는 AR과 같은 속도·제어성 제약을 겪을 수 있다. 최적 블록 크기는 과제에 따라 다르다(예: 더 큰 제어를 위해 더 큰 블록).
+% 속도 측면 최적 블록은 추론 하드웨어의 병렬화 능력(FLOPS 대 메모리 처리량)과 서빙 배치 크기에 따라 달라진다.
+\algos{}는 환각(hallucinations) \citep{achiam2023gpt}, 저작권 침해 \citep{gokaslan2024commoncanvas}, 제어성 \citep{schiff2024discreteguidance,wang2023infodiff}, 해로운 출력 \citep{bai2022constitutional} 등 생성 모델 고유의 한계를 공유한다. % 추가 연구가 필요하다.
 
-\section{Conclusion}
-This work explores block diffusion and is motivated by two problems with existing discrete diffusion: the need to generate arbitrary-length sequences and the perplexity gap to autoregressive models. We introduce \algos{}, which represent a block-wise extension of the D3PM framework \citep{austin2021structured}, and leverage a specialized training algorithm and custom noise schedules that further improve performance. We observe that in addition to being able to generate long-form documents, these models also improve perplexity, setting a new state-of-the-art among discrete diffusion models.
+\section{결론}
+본 연구는 블록 디퓨전을 탐구하며, 임의 길이의 시퀀스 생성 필요성과 자기회귀 모델 대비 perplexity 격차라는 기존 이산 디퓨전의 두 문제에서 동기를 얻는다. D3PM 프레임워크 \citep{austin2021structured}의 블록 단위 확장에 해당하는 \algos{}를 도입하고, 성능을 더 끌어올리는 특화 학습 알고리즘과 맞춤 노이즈 스케줄을 활용한다. 이 모델들이 장문 문서를 생성할 수 있을 뿐 아니라 perplexity도 개선해, 이산 디퓨전 모델 중 새로운 최첨단을 세움을 관찰한다.
 % These models can generate factually inaccurate or misleading information, commonly referred to as hallucinations, particularly when extrapolating beyond their training data. Additionally, they may produce outputs that inadvertently replicate biases present in the training corpus. Copyright concerns also arise, as models trained on large-scale datasets may generate text resembling protected content, raising questions about data provenance and responsible deployment. Addressing these challenges remains crucial for ensuring the reliability and ethical use of generative models.
 
-\subsubsection*{Acknowledgments and Disclosure of Funding}
-This work was partially funded by the National Science Foundation under awards DGE-1922551,
-CAREER awards 2046760 and 2145577,  and by the National Institute of Health under award MIRA
-R35GM151243. Marianne Arriola is supported by a NSF Graduate Research Fellowship under award DGE-2139899 and a Hopper-Dean/Bowers CIS Deans Excellence Fellowship. We thank Databricks MosaicML for providing access to computational resources.
+\subsubsection*{감사의 말 및 펀딩 공개}
+본 연구는 미국 국립과학재단(National Science Foundation)의 DGE-1922551, CAREER 2046760·2145577 상과 미국 국립보건원(National Institute of Health)의 MIRA R35GM151243 상의 부분적인 지원을 받았다. Marianne Arriola는 NSF Graduate Research Fellowship(DGE-2139899)과 Hopper-Dean/Bowers CIS Deans Excellence Fellowship의 지원을 받는다. 계산 자원 사용을 제공한 Databricks MosaicML에 감사드린다.
 
 
 \bibliography{iclr2025_conference}
@@ -950,8 +963,8 @@ R35GM151243. Marianne Arriola is supported by a NSF Graduate Research Fellowship
 \allowdisplaybreaks
 
 
-\section{Block Diffusion NELBO}\label{suppl:diffusion-nelbo}
-Below, we provide the Negative ELBO (NELBO) for the block diffusion parameterization. Recall that the sequence $\x^{1:L} = \left[ \x^1, \dots, \x^L \right]$ is factorized over $B$ blocks, which we refer to as $\x$ for simplicity, drawn from the data distribution $q(\mathbf{x})$. Specifically, we will factorize the likelihood over $B$ blocks of length $L'$, then perform diffusion in each block over $T$ discretization steps. Let $\KL[\cdot]$ to denote the Kullback-Leibler divergence, $t, s$ be shorthand for $t(i) = i / T$ and $s(i) = (i - 1)/T$ $\forall i \in [1, T]$. We derive the NELBO as follows:
+\section{블록 디퓨전 NELBO}\label{suppl:diffusion-nelbo}
+이하에서는 블록 디퓨전 매개변수화의 음의 ELBO(NELBO)를 제시한다. 데이터 분포 $q(\mathbf{x})$에서 추출된 시퀀스 $\x^{1:L} = \left[ \x^1, \dots, \x^L \right]$이 $B$개의 블록으로 인수분해되며, 단순화를 위해 이를 $\x$로 부른다. 구체적으로 가능도를 길이 $L'$의 $B$개 블록에 대해 인수분해한 뒤, 각 블록에서 $T$ 이산화 단계의 디퓨전을 수행한다. $\KL[\cdot]$을 쿨백–라이블러 발산으로, $t, s$를 모든 $i \in [1, T]$에 대한 $t(i) = i / T$, $s(i) = (i - 1)/T$의 약어로 두자. NELBO를 다음과 같이 유도한다.
 \begin{align}\label{eq:nelbo-bd}
     - \log \p(\x) &= - \sum_{b = 1}^{B} \log \p(\x^{b} | \x^{<b}) \nonumber \\
     &=  - \sum_{b = 1}^{B} \log \mathbb{E}_{q} \frac{\p(\x^{b}_{t(1):t(T)} | \x^{<b})}{q(\x^{b}_{t(1):t(T)} | \x^{b})} \nonumber \\
@@ -965,11 +978,11 @@ Below, we provide the Negative ELBO (NELBO) for the block diffusion parameteriza
 % \noindent For simplicity, we will denote $s = (t - 1)/ T$. 
 
 
-\section{Masked \algos{}}
+\section{마스크 \algos{}}
 
-We explore a specific class of block diffusion models that builds upon the masked diffusion language modeling framework. In particular, we focus on masking diffusion processes introduced by \citet{austin2021structured} and derive a simplified NELBO under this framework as proposed by~\citet{sahoo2024simple, shi2024simplified, ou2025your}.
+마스크 디퓨전 언어모델링 프레임워크 위에 쌓아 올린 블록 디퓨전 모델의 특정 부류를 탐구한다. 특히 \citet{austin2021structured}이 도입한 마스킹 디퓨전 과정에 초점을 맞추고, \citet{sahoo2024simple, shi2024simplified, ou2025your}이 제안한 대로 이 프레임워크 하에서 단순화된 NELBO를 유도한다.
 
-First, we define the diffusion matrix $Q_t$ for states $i \in \{1, \dots, V\}$. Consider the noise schedule function $\alpha_t \in [0, 1]$, which is a strictly decreasing function in $t$ satisfying $\alpha_{0} = 1$ and $\alpha_{1} = 0$. Denote the mask index as $m=V$. The diffusion matrix is defined by~\citet{austin2021structured} as:
+먼저 상태 $i \in \{1, \dots, V\}$에 대한 디퓨전 행렬 $Q_t$를 정의한다. $\alpha_{0} = 1$, $\alpha_{1} = 0$을 만족하는 $t$에 대한 엄격히 감소 함수인 노이즈 스케줄 함수 $\alpha_t \in [0, 1]$를 고려하자. 마스크 인덱스를 $m=V$로 표기한다. \citet{austin2021structured}은 디퓨전 행렬을 다음과 같이 정의한다:
 \begin{align}
     [Q_t]_{ij} =
     \begin{cases}
@@ -979,7 +992,7 @@ First, we define the diffusion matrix $Q_t$ for states $i \in \{1, \dots, V\}$. 
     \end{cases}
 \end{align}
 
-The diffusion matrix for the forward marginal $\Qts$ is:
+정방향 주변 분포에 대한 디퓨전 행렬 $\Qts$는 다음과 같다:
 \begin{align}
     [Q_{t|s}]_{ij} =
     \begin{cases}
@@ -991,37 +1004,37 @@ The diffusion matrix for the forward marginal $\Qts$ is:
 \noindent where $\ats = \at / \as$.
 
 
-\subsection{Forward Process}
+\subsection{정방향 과정}
 
-Under the D3PM framework \citep{austin2021structured}, the forward noise process applied independently for each token $\ell \in \{1, \dots L\}$ is defined using diffusion matrices $Q_t \in \mathbb{R}^{V \times V}$ as
+D3PM 프레임워크 \citep{austin2021structured} 하에서, 각 토큰 $\ell \in \{1, \dots L\}$에 독립적으로 적용되는 정방향 노이즈 과정은 디퓨전 행렬 $Q_t \in \mathbb{R}^{V \times V}$를 사용해 다음과 같이 정의된다.
 \begin{align}
 q(\xl_t | \xl) = \text{Cat} \left( \xl_t; \overline{Q}_t \xl \right), \quad \text{with} \quad \overline{Q}_{t(i)} = Q_{t(1)} Q_{t(2)} \dots Q_{t(i)}
 \end{align}
 
 
-\subsection{Reverse Process}
+\subsection{역방향 과정}
 
-Let $\Qts$ denote the diffusion matrix for the forward marginal. We obtain the reverse posterior $q(\xl_s \mid \xl_t, \xl)$ using the diffusion matrices:
+$\Qts$를 정방향 주변 분포에 대한 디퓨전 행렬이라 하자. 디퓨전 행렬을 사용해 역 사후 $q(\xl_s \mid \xl_t, \xl)$를 얻는다.
 \begin{align}
 q(\xl_{s} | \xl_t, \xl) = \frac{q(\xl_t | \xl_{s}, \xl) q(\xl_{s} | \xl)}{q(\xl_t | \xl)} = \text{Cat} \left( \xl_{s}; \frac{Q_{t|s} \xl_t \odot Q_s^\top \xl}{{(\xl_t)}^\top  Q_t^\top \xl} \right)
 \end{align}
-\noindent where $\odot$ denotes the Hadmard product between two vectors.
+\noindent 여기서 $\odot$은 두 벡터 간 아다마르(Hadamard) 곱을 나타낸다.
 
 
 
-\subsection{Simplified NELBO for Masked Diffusion Processes} \label{supp:elbo}
+\subsection{마스크 디퓨전 과정의 단순화 NELBO} \label{supp:elbo}
 
 
-Following \cite{sahoo2024simple, shi2024simplified, ou2025your}, we simplify the NELBO in the case of masked diffusion processes. Below, we provide the outline of the NELBO derivation; see the full derivation in \cite{sahoo2024simple, shi2024simplified, ou2025your}.
+\cite{sahoo2024simple, shi2024simplified, ou2025your}을 따라, 마스크 디퓨전 과정의 경우에 NELBO를 단순화한다. 이하에서 NELBO 유도의 개요를 제공하며, 전체 유도는 \cite{sahoo2024simple, shi2024simplified, ou2025your}을 참고하라.
 
 % We will first focus on the simplifying the diffusion loss term $\mathbb{E}_{t \in \{ 2, \dots T \}}  \mathbb{E}_{q} T  \text{D}_{KL}\left( q(\x^{b}_{s} |, \x^{b}_{t}, \x^{b}_{0}) \parallel \p(\x^{b}_{t-1}| \x^{b}_{t}, \x^{<b})\right)$. 
 
-We will first focus on simplifying the diffusion loss term $\mathcal{L}_\text{diffusion}$ in Eq. \ref{eq:nelbo-bd}. We employ the SUBS-parameterization proposed in~\citet{sahoo2024diffusion} which simplifies the denoising model $\p$ for masked diffusion. In particular, we enforce the following constraints on the design of $\p$ by leveraging the fact that there only exists two possible states in the diffusion process $\xl_t \in \{ \xl, \m \} \; \forall \ell \in \{1, \dots, L\}$. 
+먼저 식 \ref{eq:nelbo-bd}의 디퓨전 손실 항 $\mathcal{L}_\text{diffusion}$의 단순화에 집중한다. 마스크 디퓨전을 위한 디노이징 모델 $\p$를 단순화하는 \citet{sahoo2024diffusion}의 SUBS-매개변수화를 사용한다. 구체적으로, 디퓨전 과정에서 가능한 상태가 $\xl_t \in \{ \xl, \m \} \; \forall \ell \in \{1, \dots, L\}$ 둘뿐이라는 사실을 이용해 $\p$의 설계에 다음 제약을 부과한다.
 \begin{enumerate}
-    \item \textbf{Zero Masking Probabilities}. We set $p_\theta(\xl = \m | \xl_t) = 0$ (as the clean sequence $\x$ doesn't contain masks).
-    \item \textbf{Carry-Over Unmasking}. The true posterior for the case where $\xl_t \neq \m$ is $q(\xl_s = \xl_t | \xl_t \neq \m) = 1$ (if a token is unmasked in the reverse process, it is never remasked). Thus, we simplify the denoising model by setting $p_\theta (\xl_s = \xl_t | \xl_t \neq \m) = 1$.
+    \item \textbf{영(0) 마스킹 확률}. $p_\theta(\xl = \m | \xl_t) = 0$으로 둔다(깨끗한 시퀀스 $\x$에는 마스크가 없으므로).
+    \item \textbf{언마스크 캐리 오버(carry-over unmasking)}. $\xl_t \neq \m$인 경우의 참 사후는 $q(\xl_s = \xl_t | \xl_t \neq \m) = 1$이다(역방향 과정에서 언마스크된 토큰은 다시 마스킹되지 않는다). 따라서 디노이징 모델을 $p_\theta (\xl_s = \xl_t | \xl_t \neq \m) = 1$로 단순화한다.
 \end{enumerate}
-As a result, we will only approximate the posterior $\p(\xl_s = \xl | \xl_t = \m)$. Let $\x^{b, \ell}$ denote a token in the $\ell$-th position in block $b \in \{1, \dots, B\}$. The diffusion loss term becomes:
+결과적으로, 사후 $\p(\xl_s = \xl | \xl_t = \m)$만 근사하면 된다. $\x^{b, \ell}$을 블록 $b \in \{1, \dots, B\}$의 $\ell$번째 위치의 토큰을 나타내는 표기로 두자. 디퓨전 손실 항은 다음과 같다.
 \begin{align}
     % &/ \mathcal{L}_{\text{diffusion}} \nonumber \\
     % & = \sum_{b = 1}^{B} \mathbb{E}_{t} \mathbb{E}_{\x} T \left[  q(\x_s^b | \x^b_t, \x^b) \log \frac{q(\x_s^b | \x_t^b, \x^b)}{\p(\x_s^b = \x^b | \x_t^b=\m, \x^{<b})} \right] \nonumber \\
@@ -1047,32 +1060,32 @@ As a result, we will only approximate the posterior $\p(\xl_s = \xl | \xl_t = \m
     & = \sum_{b = 1}^{B} \mathbb{E}_{t} \mathbb{E}_{q} T \left[\sum_{\ell = 1}^{L'} \kl \left[q(\xlb_s | \xlb_t, \x^{b,\ell}) \| \p(\xlb_s | \x^{b}_t, \x^{<b})\right] \right] \nonumber \\
     % & = \sum_{b = 1}^{B} \mathbb{E}_{t} \mathbb{E}_{q} T \left[\sum_{\ell = 1}^{L'}\kl \left[q(\xlb_s = \xlb | \xlb_t=\m, \xl) \| \p(\xlb_s = \xlb | \xlb_t=\m, \x^{<b})\right] \right] \nonumber \\
     % & \text{\footnotesize \TODO{@marianne: Add a citation or a reference (Sahoo et al., 2024 Appendix B.1. ) for this equality}} \nonumber \\ 
-    & \text{\footnotesize $\kl$ is simply the discrete-time diffusion loss for the block $b$; hence, from \citet{sahoo2024simple} (Suppl. B.1), we get:} \nonumber \\ 
+    & \text{\footnotesize $\kl$는 단순히 블록 $b$에 대한 이산 시간 디퓨전 손실이다. 따라서 \citet{sahoo2024simple} (Suppl. B.1)로부터 다음을 얻는다:} \nonumber \\
     % & = \sum_{b = 1}^{B} \mathbb{E}_{t \in \{ 2, \dots T \}} \mathbb{E}_{q} T \left[ \frac{\as - \at}{1 - \at} \log \frac{\at p_\theta(\x^b = \m \mid \x_t^b, \x^{<b}) + (1 - \at)}{(1 - \at) p_\theta(\x^b = \x \mid \x_t^b, \x^{<b})} \right] \\
     &= \sum_{b=1}^{B} \mathbb{E}_{t} \mathbb{E}_{q} T \left[ \sum_{\ell = 1}^{L'}\frac{\at - \as}{1-\at} \log p_\theta(\xlb \mid \xlb_t, \x^{<b}) \right] \nonumber \\
     &= \sum_{b=1}^{B} \mathbb{E}_{t} \mathbb{E}_{q} T \left[ \frac{\at - \as}{1-\at} \log p_\theta(\x^b \mid \x_t^b, \x^{<b}) \right]
 \end{align}
 
-Lastly, we obtain a tighter approximation of the likelihood by taking the diffusion steps $T \rightarrow \infty$ \citep{sahoo2024simple}, for which $T (\at - \as) = \at'$:
+끝으로, 디퓨전 단계를 $T \rightarrow \infty$로 보내 가능도에 대한 더 타이트한 근사를 얻는다 \citep{sahoo2024simple}. 이때 $T (\at - \as) = \at'$이다.
 \begin{align}
     \mathcal{L}_{\text{diffusion}} &= \sum_{b=1}^{B} \mathbb{E}_{t \sim [0, 1]} \mathbb{E}_{q} \left[ \frac{\at'}{1-\at} \log p_\theta(\x^b \mid \x_t^b, \x^{<b}) \right]
 \end{align}
-For the continuous time case, \citet{sahoo2024simple} (Suppl. A.2.4) show the reconstruction loss reduces to 0 as $\x_{t(1)}^b \sim \lim_{T \rightarrow \infty} \text{Cat}\left(.; \x_{t = \frac{1}{T}}^b\right) = \text{Cat}(.; \x^b)$. Using this, we obtain:
+연속 시간의 경우, \citet{sahoo2024simple} (Suppl. A.2.4)는 $\x_{t(1)}^b \sim \lim_{T \rightarrow \infty} \text{Cat}\left(.; \x_{t = \frac{1}{T}}^b\right) = \text{Cat}(.; \x^b)$이므로 재구성 손실이 0으로 줄어듦을 보인다. 이를 사용하면 다음을 얻는다.
 \begin{align}
     \mathcal{L}_{\text{recons}} &= - \mathbb{E}_q \log \p (\x^b | \x_{t(1)}^b, \x^{<b}) \nonumber \\
     &= - \log \p (\x^b | \x_{t(1)}^b = \x^b, \x^{<b}) \nonumber \\
     &= 0
 \end{align}
-The prior loss $\mathcal{L}_\text{prior} = \text{D}_{KL} \left( q(\x^{b}_{t=1} | \x^{b}) \parallel \p(\x^{b}_{t=1}) \right)$ also reduces to 0 because $\alpha_{t=1} = 0$ which ensures $q(\x_{t=1}^b | \x^b) = \text{Cat} (. ; \m)$ and $\p(\x_{t=1}^b) = \text{Cat} (. ; \m)$; see~\citet{sahoo2024simple} (Suppl. A.2.4).
+사전 손실 $\mathcal{L}_\text{prior} = \text{D}_{KL} \left( q(\x^{b}_{t=1} | \x^{b}) \parallel \p(\x^{b}_{t=1}) \right)$ 또한 0으로 줄어드는데, 이는 $\alpha_{t=1} = 0$이어서 $q(\x_{t=1}^b | \x^b) = \text{Cat} (. ; \m)$, $\p(\x_{t=1}^b) = \text{Cat} (. ; \m)$이 되기 때문이다(\citet{sahoo2024simple} (Suppl. A.2.4) 참고).
 
-Finally, we obtain a simple objective that is a weighted average of cross-entropy terms:
+마지막으로 교차 엔트로피 항의 가중 평균인 간단한 목적함수를 얻는다.
 \begin{align}
     \mathcal{L}_{\text{BD}} (\x; \theta) &= \sum_{b=1}^{B} \mathbb{E}_{t \sim [0, 1]} \mathbb{E}_{q} \left[ \frac{\at'}{1-\at} \log p_\theta(\x^b \mid \x_t^b, \x^{<b}) \right]
 \end{align}
-The above NELBO is invariant to the choice of noise schedule $\at$; see \cite{sahoo2024simple} (Suppl. E.1.1).
+위 NELBO는 노이즈 스케줄 $\at$의 선택에 불변이다(\cite{sahoo2024simple} (Suppl. E.1.1) 참고).
 
-\subsection{Recovering the NLL from the NELBO for Single Token Generation} \label{supp:sar-block1-nll}
-Consider the block diffuson NELBO for a block size of 1 where $L'=1, B=L$. The block diffusion NELBO is equivalent to the AR NLL when modeling a single token:
+\subsection{단일 토큰 생성에서 NELBO로부터 NLL 복원} \label{supp:sar-block1-nll}
+$L'=1, B=L$인 블록 크기 1의 블록 디퓨전 NELBO를 고려하자. 단일 토큰 모델링 시 블록 디퓨전 NELBO는 AR NLL과 동치이다.
 \begin{align}\label{eqn:supp:true-nll-part1}
     -\log p(\x) & \leq \sum_{b=1}^{L} \mathbb{E}_{t \sim [0, 1]} \mathbb{E}_{q} \left[ \frac{\at'}{1-\at} \log  p_\theta(\x^b \mid \x_t^b ,\x^{<b}) \right] \nonumber \\
     & \text{\footnotesize{$\because \at' = -1$ and $\at = 1-t$},} \nonumber \\ 
@@ -1082,14 +1095,14 @@ Consider the block diffuson NELBO for a block size of 1 where $L'=1, B=L$. The b
     &= - \sum_{b=1}^{L} \mathbb{E}_{t \sim [0, 1]} \frac{1}{t} \bigg[ q(\x_t^b = \m | \x^b )\log p_\theta(\x^b \mid \x_t^b = \m,\x^{<b}) \nonumber \\
     &\hspace{8em} + q(\x_t^b = \x^b | \x^b ) \log p_\theta(\x^b \mid \x_t^b = \x^b,\x^{<b}) \bigg]
 \end{align}
-Recall that our denoising model employs the SUBS-parameterization proposed in~\citet{sahoo2024diffusion}. The ``carry-over unmasking'' property ensures that $\log p_\theta(\x^b \mid \x_t^b = \x^b, \x^{<b})=0$, as an unmasked token is simply copied over from from the input of the denoising model to the output. Hence,~\Eqn{eqn:supp:true-nll-part1} reduces to following:
+우리의 디노이징 모델은 \citet{sahoo2024diffusion}의 SUBS-매개변수화를 사용함을 떠올리자. ``언마스크 캐리 오버'' 성질에 의해 언마스크 토큰은 디노이징 모델의 입력에서 출력으로 단순히 복사되므로 $\log p_\theta(\x^b \mid \x_t^b = \x^b, \x^{<b})=0$이다. 따라서 \Eqn{eqn:supp:true-nll-part1}은 다음으로 환원된다.
 \begin{align}
     -\log \p(\x) &\leq - \sum_{b=1}^{L} \mathbb{E}_{t \sim [0, 1]} \frac{1}{t} q(\x_t^b = \m | \x^b) \log p_\theta(\x^b \mid \x_t^b = \m,\x^{<b})  \nonumber \\
     & \text{\footnotesize{ $\because q(\x^b_t = \m | \x^b) = t$, we get:}} \nonumber \\
     &= - \sum_{b=1}^{L} \mathbb{E}_{t \sim [0, 1]} \log p_\theta(\x^b \mid \x_t^b = \m,\x^{<b}) \nonumber \\
     &= - \sum_{b=1}^{L} \log p_\theta(\x^b \mid \m, \x^{<b})
 \end{align}
-For single-token generation ($L'=1$) we  recover the autoregressive NLL.
+단일 토큰 생성($L'=1$)에서 자기회귀 NLL을 복원한다.
 
 % For single-token generation ($L'=1$) and under sampling $t \sim \mathcal{U}[1, 1]$, we  recover the autoregressive NLL:
 % \begin{align}
@@ -1098,17 +1111,17 @@ For single-token generation ($L'=1$) we  recover the autoregressive NLL.
 %     &= - \sum_{b=1}^{L} \log p_\theta(\x^b \mid \x_t^b, \x^{<b}) & \text{since $\mathbb{E}_{t \sim [1, 1]} \frac{1}{t}=1$}
 % \end{align}
 
-\subsection{Tightness of the NELBO}\label{supp:sar-elbo-tightness}
-For block sizes $1 \leq K \leq L$, we show that -$\log p(\x) \leq \mathcal{L}_{K} \leq \mathcal{L}_{K+1}$. Consider $K=1$, where we recover the autoregressive NLL (see Suppl \ref{supp:sar-block1-nll}):
+\subsection{NELBO의 타이트함}\label{supp:sar-elbo-tightness}
+블록 크기 $1 \leq K \leq L$에 대해 $-\log p(\x) \leq \mathcal{L}_{K} \leq \mathcal{L}_{K+1}$을 보인다. 자기회귀 NLL을 복원하는 $K=1$을 고려하자(\supp{supp:sar-block1-nll} 참조).
 \begin{align}
     \mathcal{L}_1 &= \sum_{b=1}^{L} \log \mathbb{E}_{t \sim [0, 1]} \mathbb{E}_q \frac{\at'}{1-\at} p_\theta(\x^b \mid \x_t^b,\x^{<b}) \nonumber \\
     &= - \sum_{b=1}^{L}  \log p_\theta(\x^b \mid \m,\x^{<b})
 \end{align}
-Consider the ELBO for block size $K=2$:
+블록 크기 $K=2$에 대한 ELBO를 고려하자.
 \begin{align}
     \mathcal{L}_2 = \sum_{b=1}^{L/2} \log \mathbb{E}_{t \sim [0, 1]} \mathbb{E}_q \frac{\at'}{1-\at} p_\theta(\x^b \mid \x_t^b, \x^{<b})
 \end{align}
-We show that $\mathcal{L}_1 \leq \mathcal{L}_2$, and this holds for all $1 \leq K \leq L$ by induction. Let $\x^{b, \ell}$ correspond to the token in position $\ell \in [1, L']$ of block $b$. We derive the below inequality:
+$\mathcal{L}_1 \leq \mathcal{L}_2$를 보이며, 귀납에 의해 모든 $1 \leq K \leq L$에 대해 성립한다. $\x^{b, \ell}$이 블록 $b$의 위치 $\ell \in [1, L']$의 토큰에 대응한다고 하자. 다음 부등식을 유도한다.
 \begin{align}
     - \sum_{b=1}^{L} \log  p_\theta(\x^b \mid \m, \x^{<b}) &= -\sum_{b=1}^{L/2} \log \mathbb{E}_{t \sim [0, 1]} \mathbb{E}_q \frac{1}{1-\at} p_\theta(\x^b \mid \x_t^b, \x^{<b}) \nonumber \\
     &= - \sum_{b=1}^{L/2} \log \mathbb{E}_{t \sim [0, 1]} \mathbb{E}_q \prod_{i=1}^2 \frac{1}{1-\at} p_\theta(\x^{b, \ell} \mid \x_t^b, \x^{<b}) \nonumber \\
@@ -1116,30 +1129,30 @@ We show that $\mathcal{L}_1 \leq \mathcal{L}_2$, and this holds for all $1 \leq 
     &\leq - \sum_{b=1}^{L/2} \sum_{i=1}^2 \log \mathbb{E}_{t \sim [0, 1]} \mathbb{E}_q \frac{1}{1-\at} p_\theta(\x^{b, \ell} \mid \x_t^b, \x^{<b})
 \end{align}
 
-\subsection{Specialized Attention Masks}\label{suppl:masks}
-We aim to model conditional probabilities $p_\theta(\x^b \mid \x^b_t, \x^{<b})$ for all blocks $b \in [1, B]$ simultaneously by designing an efficient training algorithm with our transformer backbone. However, modeling all $B$ conditonal terms requires processing both the noised sequence $\x_t^b$ and the conditional context $\x^{<b}$ for all $b$.
+\subsection{특화 어텐션 마스크}\label{suppl:masks}
+우리의 트랜스포머 백본으로 효율적인 학습 알고리즘을 설계하여, 모든 블록 $b \in [1, B]$에 대한 조건부 확률 $p_\theta(\x^b \mid \x^b_t, \x^{<b})$을 동시에 모델링하는 것이 목표이다. 그러나 $B$개 조건부 항을 모두 모델링하려면 모든 $b$에 대해 노이즈 시퀀스 $\x_t^b$와 조건부 문맥 $\x^{<b}$를 모두 처리해야 한다.
 
-Rather than calling the denoising network $B$ times, we process both sequences simultaneously by concatenating them $\x_{\text{full}} \gets \x_{t} \oplus \x$ as input to a transformer. We update this sequence $\x_{\text{full}}$ of length $2L$ tokens using a custom attention mask $\M_{\text{full}} \in \{ 0, 1\}^{2L \times 2L}$ for efficient training.
+디노이징 네트워크를 $B$번 호출하는 대신, 두 시퀀스를 결합 $\x_{\text{full}} \gets \x_{t} \oplus \x$하여 한 번에 트랜스포머의 입력으로 처리한다. 효율적인 학습을 위해 길이 $2L$ 토큰의 시퀀스 $\x_{\text{full}}$을 맞춤 어텐션 마스크 $\M_{\text{full}} \in \{ 0, 1\}^{2L \times 2L}$로 갱신한다.
 
-The full attention mask is comprised of four $L \times L$ smaller attention masks:
+전체 어텐션 마스크는 네 개의 $L \times L$ 더 작은 어텐션 마스크로 구성된다.
 \begin{equation*}
    \M_{\text{full}} = \begin{bmatrix}
       \M_{BD} & \M_{OBC} \\
       \mathbf{0} & \M_{BC}
    \end{bmatrix}
 \end{equation*}
-\noindent where $\M_{BD}$ and $\M_{OBC}$ are used to update the representation of $\x_t$ and $\M_{BC}$ is used to update the representation of $\x$. We define these masks as follows:
+\noindent 여기서 $\M_{BD}$와 $\M_{OBC}$는 $\x_t$의 표현을 갱신하는 데, $\M_{BC}$는 $\x$의 표현을 갱신하는 데 사용된다. 이 마스크들은 다음과 같이 정의한다.
 
 \begin{itemize}
-    \item $\M_{BD}$ (Block-diagonal mask): Self-attention mask within noised blocks $\x_t^b$ $$\left[\M_{BD}\right]_{ij} = \begin{cases} 1 & \text{if $i,j$ are in the same block} \\ 0 & \text{otherwise} \end{cases}$$
-    
-    \item $\M_{OBC}$ (Offset block-causal mask): Cross-attention to conditional context $\x^{<b}$ $$\left[\M_{OBC}\right]_{ij} = \begin{cases} 1 & \text{if $j$ belongs in a block before $i$}\\ 0 & \text{otherwise} \end{cases}$$
-    
-    \item $\M_{BC}$ (Block-causal mask): Attention mask for updating $\x^b$
-    $$\left[ \M_{BC} \right]_{ij} = \begin{cases} 1 & \text{if $j$ belongs in the same block as $i$, or a block before $i$} \\ 0 & \text{otherwise} \end{cases}$$
+    \item $\M_{BD}$ (블록 대각 마스크): 노이즈 블록 $\x_t^b$ 안의 셀프 어텐션 마스크 $$\left[\M_{BD}\right]_{ij} = \begin{cases} 1 & \text{$i, j$가 같은 블록에 있을 때} \\ 0 & \text{그 외} \end{cases}$$
+
+    \item $\M_{OBC}$ (오프셋 블록-인과 마스크): 조건부 문맥 $\x^{<b}$로의 크로스 어텐션 $$\left[\M_{OBC}\right]_{ij} = \begin{cases} 1 & \text{$j$가 $i$보다 앞 블록에 속할 때}\\ 0 & \text{그 외} \end{cases}$$
+
+    \item $\M_{BC}$ (블록-인과 마스크): $\x^b$ 갱신용 어텐션 마스크
+    $$\left[ \M_{BC} \right]_{ij} = \begin{cases} 1 & \text{$j$가 $i$와 같은 블록 또는 $i$보다 앞 블록에 속할 때} \\ 0 & \text{그 외} \end{cases}$$
 \end{itemize}
 
-We visualize an example attention mask for $L = 6$ and block size $L' = 2$ in Figure \ref{fig:attention_mask_2}.
+$L = 6$, 블록 크기 $L' = 2$인 어텐션 마스크의 예시를 그림 \ref{fig:attention_mask_2}에 시각화한다.
 
 \input{figs/mask.tex}
 
@@ -1162,19 +1175,19 @@ We visualize an example attention mask for $L = 6$ and block size $L' = 2$ in Fi
 %     \label{fig:caching-wall-clock}
 % \end{figure}
 
-\subsection{Optimized Attention Kernel with FlexAttention}\label{suppl:flex-attention-kernels}
+\subsection{FlexAttention을 이용한 최적화 어텐션 커널}\label{suppl:flex-attention-kernels}
 
-As ~\Cref{fig:attention_mask_2} demonstrates, our attention matrix is extremely sparse. We can exploit this sparsity to massively improve the efficiency of \algos{}.
+\Cref{fig:attention_mask_2}이 보이듯, 우리의 어텐션 행렬은 매우 희소(sparse)하다. 이 희소성을 활용해 \algos{}의 효율을 크게 개선할 수 있다.
 
-FlexAttention~\citep{dong2024flex} is a compiler-driven programming model that enables efficient implementation of attention mechanisms with structured sparsity in PyTorch. It provides a flexible interface for defining custom attention masks while maintaining high performance comparable to manually optimized attention kernels.
+FlexAttention \citep{dong2024flex}은 PyTorch에서 구조화된 희소성을 가진 어텐션 메커니즘을 효율적으로 구현할 수 있게 해 주는 컴파일러 기반 프로그래밍 모델이다. 수작업 최적화 어텐션 커널과 비등한 고성능을 유지하면서, 맞춤 어텐션 마스크를 정의할 유연한 인터페이스를 제공한다.
 
-Below in~\cref{fig:flex-attn-mask} we define a block-wise attention mask, \texttt{block\_diff\_mask}, based on its definition as $\M_{\text{full}} \in \{0, 1\}^{2L \times 2L}$ in Suppl. \ref{suppl:masks}. We fuse the attention operations into a single FlexAttention kernel designed to exploit the sparsity in our attention matrix to increase computational efficiency. By doing so, we perform the following optimizations:
+아래 \cref{fig:flex-attn-mask}에서, \supp{suppl:masks}의 $\M_{\text{full}} \in \{0, 1\}^{2L \times 2L}$ 정의에 기반한 블록 단위 어텐션 마스크 \texttt{block\_diff\_mask}를 정의한다. 어텐션 연산을 단일 FlexAttention 커널로 융합하여 어텐션 행렬의 희소성을 이용해 계산 효율을 높인다. 이를 통해 다음 최적화를 수행한다.
 
 \begin{itemize}
-    \item \textbf{Precomputed Block Masking:} The \texttt{create\_block\_mask} utility generates a sparse attention mask at compile-time, avoiding per-step computation of invalid attention entries. Through sparsity-aware execution, FlexAttention kernels reduce the number of FLOPs in the attention computation.
-    % \item \textbf{Causal and Cross-Block Attention:} Queries are restricted to attending within their designated blocks while allowing controlled cross-group attention, ensuring that dependencies are efficiently managed.
-    \item \textbf{Reduced Memory Footprint:} By leveraging block-level sparsity, the attention mechanism avoids full materialization of large-scale attention matrices, significantly reducing memory overhead. FlexAttention minimizes memory accesses by skipping fully masked blocks.
-    \item \textbf{Optimized Computation via \texttt{torch.compile}:} The integration of \texttt{torch.compile} enables kernel fusion and efficient execution on GPUs by generating optimized Triton-based kernels. This efficiently parallelizes masked attention computations using optimized GPU execution paths.
+    \item \textbf{사전 계산 블록 마스킹}: \texttt{create\_block\_mask} 유틸리티가 컴파일 시점에 희소 어텐션 마스크를 생성하여, 매 단계 유효하지 않은 어텐션 항을 계산하는 일을 피한다. 희소성을 인지하는 실행을 통해 FlexAttention 커널은 어텐션 계산의 FLOPs 수를 줄인다.
+    % \item \textbf{인과·크로스-블록 어텐션}: 쿼리는 지정된 블록 내부에서 주의하도록 제한되며, 통제된 크로스-그룹 어텐션을 허용해 의존성이 효율적으로 관리되도록 한다.
+    \item \textbf{줄어든 메모리 사용량}: 블록 수준의 희소성을 활용하여, 어텐션 메커니즘이 대규모 어텐션 행렬을 전부 구체화하지 않도록 함으로써 메모리 오버헤드를 크게 줄인다. FlexAttention은 완전히 마스킹된 블록을 건너뛰어 메모리 접근을 최소화한다.
+    \item \textbf{\texttt{torch.compile}을 통한 계산 최적화}: \texttt{torch.compile} 통합은 최적화된 Triton 기반 커널을 생성해 GPU에서 커널 융합과 효율적 실행을 가능하게 한다. 이는 최적화된 GPU 실행 경로로 마스크 어텐션 계산을 효율적으로 병렬화한다.
 \end{itemize}
 
 \begin{figure}
@@ -1235,7 +1248,7 @@ def block_diff_mask(b, h, q_idx, kv_idx, block_size, n):
 \end{python}
 \label{py::flex-attention}
 \end{minipage}
-    \caption{We can adapt the masking strategy from \cref{fig:attention_mask_2} to a FlexAttention compatible sparse masking function as above. This enables the creation of a customized JIT attention operation that uses significantly less memory with up to $\approx$5X speedup over the naive native scaled\_dot\_product\_attention implementation in PyTorch ($\geq$ 2.5) on a A5000 GPU with $L=1024$ and batch size $B=16$.}
+    \caption{\cref{fig:attention_mask_2}의 마스킹 전략을 위와 같이 FlexAttention 호환의 희소 마스킹 함수로 변형할 수 있다. 이로써 메모리를 훨씬 적게 쓰면서 PyTorch($\geq$ 2.5)의 단순 네이티브 scaled\_dot\_product\_attention 구현 대비 최대 약 5배의 속도 향상을 가지는 맞춤 JIT 어텐션 연산을 만들 수 있다(A5000 GPU, $L=1024$, 배치 크기 $B=16$).}
     \label{fig:flex-attn-mask}
 \end{figure}
 
@@ -1261,12 +1274,12 @@ def single_pass_block_diff_attn(q, k, v, block_mask):
     return flex_attention(q, k, v, block_mask=block_mask)
 \end{python}
 \end{minipage}
-    \caption{Attention computation using FlexAttention with our proposed custom mask.}
+    \caption{우리가 제안한 맞춤 마스크를 FlexAttention과 함께 사용해 어텐션을 계산.}
 \end{figure}
 
 
 
-This implementation exploits FlexAttention's ability to dynamically optimize execution based on the provided sparsity pattern. By precomputing block-level sparsity and leveraging efficient kernel fusion, it enables scalable attention computation for long sequences.
+이 구현은 제공된 희소 패턴에 기반해 실행을 동적으로 최적화하는 FlexAttention의 능력을 활용한다. 블록 수준 희소성을 사전 계산하고 효율적인 커널 융합을 활용함으로써, 긴 시퀀스에 대한 확장 가능한 어텐션 계산을 가능하게 한다.
 
 % FlexAttention achieves superior performance by:
 
@@ -1276,69 +1289,69 @@ This implementation exploits FlexAttention's ability to dynamically optimize exe
 %     \item Efficiently parallelizing masked attention computations using optimized GPU execution paths.
 % \end{itemize}
 
-Overall, this approach provides a principled method to accelerate attention computations while preserving structured dependency constraints. End-to-end, replacing FlashAttention kernels using a custom mask with FlexAttention kernels leads to $\approx15\%$ speedup in a model forward pass. We use a single A5000 for $L=1024$ and batch size $B=16$.
+전체적으로 이 접근은 구조화된 의존 제약을 보존하면서 어텐션 계산을 가속하는 원칙적 방법을 제공한다. 종단간으로, 맞춤 마스크를 사용하는 FlashAttention 커널을 FlexAttention 커널로 대체하면 모델 정방향 패스에서 약 15\%의 속도 향상이 있다. A5000 1장, $L=1024$, 배치 크기 $B=16$를 사용한다.
 \newpage
 
-\section{Experimental Details}
+\section{실험 세부 사항}
 \label{suppl:details}
-We closely follow the same training and evaluation setup as used by \citet{sahoo2024simple}. 
+\citet{sahoo2024simple}의 학습·평가 설정을 거의 그대로 따른다.
 
-\subsection{Datasets}
+\subsection{데이터셋}
 \label{suppl:datasets}
-We conduct experiments on two datasets: The One Billion Word Dataset (LM1B; \citet{chelba2014billion}) and OpenWebText (OWT; \citet{Gokaslan2019OpenWeb}). Models trained on LM1B use the \texttt{bert-base-uncased} tokenizer and a context length of 128. We report perplexities on the test split of LM1B. Models trained on OWT use the \texttt{GPT2} tokenizer \citet{radford2019language} and a context length of 1024. Since OWT does not have a validation split, we leave the last 100k documents for validation.
+두 데이터셋에서 실험한다: One Billion Word Dataset(LM1B; \citet{chelba2014billion})과 OpenWebText(OWT; \citet{Gokaslan2019OpenWeb}). LM1B에서 학습한 모델은 \texttt{bert-base-uncased} 토크나이저와 문맥 길이 128을 사용한다. LM1B의 테스트 분할에서 perplexity를 보고한다. OWT에서 학습한 모델은 \texttt{GPT2} 토크나이저 \citet{radford2019language}와 문맥 길이 1024를 사용한다. OWT에는 검증 분할이 없으므로 마지막 100k 문서를 검증용으로 남긴다.
 
-In preparing LM1B examples, \citet{sahoo2024simple} pad each example to fit in the context length of $L=128$ tokens. Since most examples consist of only a single sentence, block diffusion modeling for larger block sizes $L'>4$ would not be useful for training. Instead, we concatenate and wrap sequences to a length of 128. As a result, we retrain our autoregressive baseline, SEDD, and MDLM on LM1B with wrapping. 
+LM1B 예시 준비에서, \citet{sahoo2024simple}는 각 예시를 $L=128$ 토큰의 문맥 길이에 맞도록 패딩한다. 그러나 대부분 예시가 단일 문장으로만 구성되어 있어 더 큰 블록 크기 $L'>4$의 블록 디퓨전 모델링은 학습에 유용하지 않다. 대신 시퀀스를 결합·랩핑(wrap)하여 길이 128로 만든다. 그 결과 LM1B에서 자기회귀 기준선, SEDD, MDLM을 랩핑한 데이터로 재학습한다.
 
-Similarly for OWT, we do not pad or truncate sequences, but concatenate them and wrap them to a length of 1024 similar to LM1B. For unconditional generation experiments in Section \ref{subsec:samples}, we wish to generate sequences longer than the context length seen during training. However, \citet{sahoo2024simple} inject beginning-of-sequence and end-of-sequence tokens ([BOS], [EOS] respectively) at the beginning and end of the training context. Thus, baselines from~\citet{sahoo2024simple} will generate sequences that match the training context size. To examine model generations across varying lengths in Section \ref{subsec:samples}, we retrain our AR, SEDD, and MDLM baselines without injecting [BOS] and [EOS] tokens in the examples. We also adopt this preprocessing convention for training all \algos{} on OWT.
+OWT에서도 마찬가지로 시퀀스를 패딩·자르지 않고, LM1B처럼 결합해 길이 1024로 랩핑한다. \cref{subsec:samples}의 비조건 생성 실험에서는 학습 시 본 문맥 길이보다 긴 시퀀스를 생성하고자 한다. 그러나 \citet{sahoo2024simple}는 학습 문맥의 시작·끝에 시작·끝 토큰([BOS], [EOS])을 주입한다. 따라서 \citet{sahoo2024simple}의 기준선은 학습 문맥 크기에 일치하는 시퀀스를 생성한다. \cref{subsec:samples}에서 다양한 길이의 모델 생성을 살펴보기 위해 예시에 [BOS]·[EOS] 토큰을 주입하지 않고 AR, SEDD, MDLM 기준선을 재학습한다. OWT에서 모든 \algos{}를 학습할 때도 같은 전처리 관례를 사용한다.
 
-\subsection{Architecture}
+\subsection{아키텍처}
 \label{suppl:arch}
-The model architecture augments the diffusion transformer \citep{peebles2023scalable} with rotary positional embeddings \citep{su2021roformer}. We parameterize our autoregressive baselines, SEDD, MDLM, and \algos{} with a transformer architecture from \citet{sahoo2024simple} that uses 12 layers, a hidden dimension of 768, and 12 attention heads. This corresponds to 110M parameters. We do not include timestep conditioning as \citet{sahoo2024simple} show it does not affect performance. We use the AdamW optimizer with a batch size of 512 and constant learning rate warmup from 0 to \texttt{3e-4} for 2.5K gradient updates.
+모델 아키텍처는 디퓨전 트랜스포머 \citep{peebles2023scalable}에 회전 위치 임베딩(rotary positional embedding) \citep{su2021roformer}을 더한 것이다. 자기회귀 기준선, SEDD, MDLM, \algos{}는 \citet{sahoo2024simple}의 트랜스포머 아키텍처(12 레이어, 은닉 차원 768, 어텐션 헤드 12)로 매개변수화한다. 이는 110M 파라미터에 해당한다. \citet{sahoo2024simple}이 시간 단계 조건화(timestep conditioning)가 성능에 영향을 주지 않음을 보였으므로 우리도 포함하지 않는다. 배치 크기 512와 \texttt{3e-4}까지의 일정 학습률 워밍업(2.5K 경사 갱신)으로 AdamW 옵티마이저를 사용한다.
 
-\subsection{Training}
+\subsection{학습}
 \label{suppl:training}
-We train a base \algo{} using the maximum context length $L'=L$ for 850K gradient steps. Then, we fine-tune under varying $L'$ using the noise schedule optimization for 150K gradient steps on the One Billion Words dataset (LM1B) and OpenWebText (OWT). This translates to 65B tokens and 73 epochs on LM1B, 524B tokens and 60 epochs on OWT. We use 3090, A5000, A6000, and A100 GPUs.
+최대 문맥 길이 $L'=L$로 850K 경사 단계 동안 기반 \algo{}를 학습한다. 그런 다음 노이즈 스케줄 최적화를 사용해 다양한 $L'$로 150K 경사 단계 동안 LM1B와 OpenWebText에서 파인튜닝한다. 이는 LM1B에서 65B 토큰, 73 에포크, OWT에서 524B 토큰, 60 에포크에 해당한다. 3090, A5000, A6000, A100 GPU를 사용한다.
 
-\subsection{Likelihood Evaluation}
-We use a single Monte Carlo estimate for sampling $t$ to evaluate the likelihood of a token block. We adopt a low-discrepancy sampler proposed in~\citet{kingma2021variational} that reduces the variance of this estimate by ensuring the time steps are more evenly spaced across the interval [0,1] following~\cite{sahoo2024simple}. In particular, we sample the time step for each block $b \in \{1, \dots, B\}$ and sequence $k \in \{1, \dots, K\}$ from a different partition of the uniform interval $t(k, b) \sim \mathcal{U}[ \frac{(k-1)B + b - 1}{KB}, \frac{(k-1)B + b}{KB} ]$. 
+\subsection{가능도 평가}
+토큰 블록의 가능도 평가에 $t$ 표집을 위한 단일 몬테카를로 추정을 사용한다. \cite{sahoo2024simple}을 따라, 시간 단계가 [0,1] 구간에 더 고르게 분포하도록 보장하여 추정 분산을 줄이는 \citet{kingma2021variational}의 저-불일치 샘플러(low-discrepancy sampler)를 채택한다. 구체적으로, 각 블록 $b \in \{1, \dots, B\}$와 시퀀스 $k \in \{1, \dots, K\}$의 시간 단계를 균일 구간의 다른 분할 $t(k, b) \sim \mathcal{U}[ \frac{(k-1)B + b - 1}{KB}, \frac{(k-1)B + b}{KB} ]$로부터 표집한다.
 
-This low-discrepancy sampler is used for evaluation. For training, each masking probability may be sampled from a ``clipped" range $1 - \at \sim \mathcal{U}[\beta, \omega]$. During training, we uniformly sample $t \in [0, 1]$ under the low-discrepancy sampler. We then apply a linear interpolation to ensure that the masking probability is linear within the desired range: $1 - \at = \beta + (\omega - \beta) t$.
+이 저-불일치 샘플러는 평가에 사용된다. 학습에서는 각 마스킹 확률을 ``클리핑'' 범위 $1 - \at \sim \mathcal{U}[\beta, \omega]$로부터 표집할 수 있다. 학습 중 저-불일치 샘플러로 $t \in [0, 1]$을 균일 표집한 뒤, 마스킹 확률이 원하는 범위 안에서 선형이 되도록 선형 보간을 적용한다: $1 - \at = \beta + (\omega - \beta) t$.
 
-When reporting zero-shot likelihoods on benchmark datasets from~\citet{radford2019language} using models trained on OWT, we wrap all sequences to 1024 tokens and do not add [EOS] between sequences following~\citet{sahoo2024simple}.
+OWT로 학습한 모델로 \citet{radford2019language}의 벤치마크 데이터셋에서 제로샷 가능도를 보고할 때, \citet{sahoo2024simple}을 따라 모든 시퀀스를 1024 토큰으로 랩핑하고 시퀀스 사이에 [EOS]를 추가하지 않는다.
 
-\subsection{Inference}
+\subsection{추론}
 \label{suppl:eval-details}
-    \paragraph{Generative Perplexity}
-    We report generative perplexity under GPT2-Large from models trained on OWT using a context length of 1024 tokens. Since GPT2-Large uses a context size of 1024, we compute the generative perplexity for samples longer than 1024 tokens using a sliding window with a stride length of 512 tokens. 
+    \paragraph{생성 perplexity}
+    OWT에서 1024 토큰의 문맥 길이로 학습한 모델의 생성 perplexity를 GPT2-Large 하에서 보고한다. GPT2-Large가 문맥 크기 1024를 사용하므로, 1024 토큰보다 긴 샘플의 생성 perplexity는 보폭 512 토큰의 슬라이딩 윈도우로 계산한다.
 
-    \paragraph{Nucleus Sampling}
-    Following SSD-LM \citep{han2022ssd}, we employ nucleus sampling for \algos{} and our baselines. For SSD-LM, we use their default hyperparameters $p=0.95$ for block size $L'=25$. For \algos{}, AR and MDLM, we use $p=0.9$. For SEDD, we find that $p=0.99$ works best.
+    \paragraph{뉴클리어스 샘플링}
+    SSD-LM \citep{han2022ssd}을 따라, \algos{}와 기준선들에 뉴클리어스 샘플링을 사용한다. SSD-LM의 경우 블록 크기 $L'=25$에 그들의 기본 하이퍼파라미터 $p=0.95$를 사용한다. \algos{}, AR, MDLM에는 $p=0.9$를 사용하고, SEDD는 $p=0.99$가 가장 잘 동작함을 확인했다.
 
-     \paragraph{Number of Diffusion Steps} In Table \ref{tab:gen_ppl_2048}, \algos{} and MDLM use $T=5$K diffusion steps. \algos{} and MDLM use efficient sampling by caching the output of the denoising network as proposed by \citet{sahoo2024simple, ou2025your}, which ensures that the number of generation steps does not exceed the sample length $L$. Put simply, once a token is unmasked, it is never remasked as a result of the simplified denoising model (Suppl. \ref{supp:elbo}). We use MDLM's block-wise decoding algorithm for generating variable-length sequences, however these models are not trained with block diffusion. We adopt their default stride length of 512 tokens.
-    
-   SSD-LM (first row in Table \ref{tab:gen_ppl_2048}) and SEDD use $T=1$K diffusion steps. Since block diffusion performs $T$ diffusion steps for each block $b \in \{ 1, \dots, B \}$, SSD-LM undergoes $BT$ generation steps. Thus to fairly compare with SSD-LM, we also report generative perplexity for $T=25$ diffusion steps so that the number of generation steps does not exceed the sequence length (second row in Table \ref{tab:gen_ppl_2048}).
+     \paragraph{디퓨전 단계 수} 표 \ref{tab:gen_ppl_2048}에서 \algos{}와 MDLM은 $T=5$K 디퓨전 단계를 사용한다. \algos{}와 MDLM은 \citet{sahoo2024simple, ou2025your}이 제안한 대로 디노이징 네트워크 출력을 캐싱해 효율적으로 표집하며, 이로 인해 생성 단계 수가 샘플 길이 $L$을 초과하지 않는다. 단순화된 디노이징 모델(\supp{supp:elbo})에 의해 일단 토큰이 언마스크되면 다시 마스킹되지 않는다. 가변 길이 시퀀스 생성에는 MDLM의 블록 단위 디코딩 알고리즘을 사용한다(다만 이 모델들은 블록 디퓨전으로 학습되지 않았다). 그들의 기본 보폭 512 토큰을 채택한다.
 
-   \paragraph{Improved Categorical Sampling of Diffusion Models} We employ two improvements to Gumbel-based categorical sampling of diffusion models as proposed by~\citet{zheng2024masked}.
-   
-   First, we use the corrected Gumbel-based categorical sampling from \citet{zheng2024masked} by sampling 64-bit Gumbel variables. Reducing the precision to 32-bit has been shown to significantly truncate the Gumbel variables, lowering the temperature and decreasing the sentence entropy.
-   
-   Second, \citet{zheng2024masked} show that the MDLM sampling time scales with the diffusion steps $T$, even though the number of generation steps is bounded by the sequence length. For sample length $L$ and vocabulary size $V$, the sampler requires sampling $\mathcal{O}(T L V)$ uniform variables and performing logarithmic operations on them.
-   
-   We adopt the first-hitting sampler proposed by~\citet{zheng2024masked} that requires sampling $\mathcal{O}(L V)$ uniform variables, and thus greatly improves sampling speed especially when $T \gg L$. The first-hitting sampler is theoretically equivalent to the MDLM sampler and leverages two observations: (1) the transition probability is independent of the denoising network, (2) the transition probability is the same for all masked tokens for a given $t$. Thus, the first timestep where a token is unmasked can be analytically sampled as follows (assuming a linear schedule where $\at = 1 - t$):
+   SSD-LM(표 \ref{tab:gen_ppl_2048}의 첫 행)과 SEDD는 $T=1$K 디퓨전 단계를 사용한다. 블록 디퓨전은 각 블록 $b \in \{ 1, \dots, B \}$에 대해 $T$ 디퓨전 단계를 수행하므로 SSD-LM은 $BT$ 생성 단계를 거친다. SSD-LM과 공정하게 비교하기 위해, 생성 단계 수가 시퀀스 길이를 넘지 않는 $T=25$ 디퓨전 단계의 생성 perplexity도 보고한다(표 \ref{tab:gen_ppl_2048}의 두 번째 행).
+
+   \paragraph{디퓨전 모델의 개선된 범주 표집} \citet{zheng2024masked}이 제안한 디퓨전 모델의 검벨(Gumbel) 기반 범주 표집의 두 가지 개선을 사용한다.
+
+   첫째, \citet{zheng2024masked}의 보정된 검벨 기반 범주 표집을 사용하여 64비트 검벨 변수를 표집한다. 정밀도를 32비트로 낮추면 검벨 변수가 크게 잘려 온도가 낮아지고 문장 엔트로피가 줄어듦이 보고되었다.
+
+   둘째, \citet{zheng2024masked}는 생성 단계 수가 시퀀스 길이로 상한이지만 MDLM 표집 시간이 디퓨전 단계 $T$에 따라 늘어남을 보인다. 샘플 길이 $L$, 어휘 크기 $V$에서 샘플러는 $\mathcal{O}(T L V)$개의 균일 변수를 표집하고 그 위에 로그 연산을 수행해야 한다.
+
+   $\mathcal{O}(L V)$개의 균일 변수만 표집하는 \citet{zheng2024masked}의 first-hitting 샘플러를 채택한다. 이는 특히 $T \gg L$일 때 표집 속도를 크게 향상시킨다. first-hitting 샘플러는 이론적으로 MDLM 샘플러와 동치이며, 두 가지 관찰을 활용한다: (1) 전이 확률은 디노이징 네트워크와 무관하다, (2) 주어진 $t$에 대해 모든 마스크 토큰의 전이 확률이 동일하다. 따라서 토큰이 언마스크되는 첫 시간 단계는 다음과 같이 해석적으로 표집할 수 있다(선형 스케줄 $\at = 1 - t$ 가정).
    \begin{align}
        t_{n-1} = t_n u^{1 / n},
    \end{align}
-   \noindent where $n \in \{ L, \dots, 1\}$ denotes the number of masked tokens, $u_n \sim \mathcal{U}[0,1]$ and $t_{n-1}$ corresponds to the first timestep where $n-1$ tokens are masked.
+   \noindent 여기서 $n \in \{ L, \dots, 1\}$은 마스크된 토큰 수, $u_n \sim \mathcal{U}[0,1]$, $t_{n-1}$은 $n-1$개의 토큰이 마스크된 첫 시간 단계에 해당한다.
 
-    \paragraph{Variable-Length Sequence Generation}
-    For arbitrary-length sequence generation using \algos{} and AR in Table \ref{tab:owt-gen-lens}, we continue to sample tokens until the following stopping criteria are met: 
+    \paragraph{가변 길이 시퀀스 생성}
+    표 \ref{tab:owt-gen-lens}에서 \algos{}와 AR로 임의 길이 시퀀스를 생성할 때, 다음 정지 기준을 만족할 때까지 토큰을 계속 표집한다.
     \begin{enumerate}
-        \item an [EOS] token is sampled
-        % \item the average likelihood of the last 256-token chunk is below 0.1
-        \item the average entropy of the the last 256-token chunk is below 4
+        \item [EOS] 토큰이 표집됨
+        % \item 마지막 256-토큰 청크의 평균 가능도가 0.1 미만
+        \item 마지막 256-토큰 청크의 평균 엔트로피가 4 미만
     \end{enumerate}
-    \noindent where criterion 2 are necessary to prevent run-on samples from compounding errors (for example, a sequence of repeating tokens). We find that degenerate samples with low entropy result in significantly low perplexities under \texttt{GPT2} and lower the reported generative perplexity. Thus, when a sample meets criterion 2, we regenerate the sample when reporting generative perplexity in Table \ref{tab:gen_ppl_2048}.
-\section{Samples}\label{suppl:summaries}
+    \noindent 기준 2는 (예: 반복 토큰 시퀀스 같은) 도주성(run-on) 샘플이 누적 오류를 일으키는 것을 막기 위해 필요하다. 낮은 엔트로피의 퇴화 샘플이 \texttt{GPT2} 하에서 매우 낮은 perplexity를 유발해 보고된 생성 perplexity를 떨어뜨림을 확인했다. 따라서 표 \ref{tab:gen_ppl_2048}의 생성 perplexity 보고 시, 기준 2를 만족하는 샘플은 다시 생성한다.
+\section{샘플}\label{suppl:summaries}
 \input{samples/mdlm_samps}
 \newpage
 \input{samples/sar_samps}
