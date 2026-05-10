@@ -2,6 +2,7 @@
 title: "블록 디퓨전 요약: 자기회귀와 디퓨전 언어모델 사이를 보간하기"
 date: 2026-05-10
 draft: false
+math: true
 source_url: "https://arxiv.org/abs/2503.09573"
 author: "Arriola, Gokaslan, Chiu, Yang, Qi, Han, Sahoo, Kuleshov (Cornell · Stanford · Cohere)"
 tags: ["AI", "NLP", "디퓨전", "디퓨전 언어모델", "자기회귀", "블록 디퓨전", "ICLR 2025"]
@@ -16,7 +17,7 @@ summary: "BD3-LM은 블록 단위에서 자기회귀, 블록 안에서는 마스
 
 ## 핵심 아이디어
 
-1. **블록 단위 분해**: 길이 $L$ 시퀀스를 $B = L/L'$ 개의 블록으로 묶어 우도를 $\log p_\theta(\mathbf{x}) = \sum_{b=1}^{B} \log p_\theta(\mathbf{x}^b \mid \mathbf{x}^{<b})$ 로 분해. 각 조건부는 블록 길이 $L'$에 대한 마스킹 디퓨전(MDLM)으로 모델링.
+1. **블록 단위 분해**: 길이 $L$ 시퀀스를 $B = L/L'$ 개의 블록으로 묶어 우도를 $\log p_\theta(\mathbf{x}) = \sum_{b=1}^{B} \log p_\theta(\mathbf{x}^b \mid \mathbf{x}^{\lt b})$ 로 분해. 각 조건부는 블록 길이 $L'$에 대한 마스킹 디퓨전(MDLM)으로 모델링.
 2. **두 극단을 잇는 보간**: $L'=1$이면 사실상 AR, $L'=L$이면 표준 마스킹 디퓨전. 가운데 영역에서 *AR의 정확도와 디퓨전의 병렬성*을 동시에 누림.
 3. **벡터화 학습 알고리즘**: 노이즈 토큰 시퀀스 $\mathbf{x}_\text{noisy}$ 와 클린 시퀀스 $\mathbf{x}$를 이어 붙여 한 번의 forward에서 손실을 계산. 노이즈 토큰은 같은 블록 내 노이즈 토큰 + 이전 블록의 클린 토큰까지만 어텐션하도록 *블록-인과(block-causal) 마스크*를 설계 (FlashAttention/FlexAttention과 호환).
 4. **KV 캐싱 + 가변 길이**: 디퓨전 LM이 갖지 못했던 두 가지를 동시에 회복. 이전 블록의 K/V를 재사용해 추론을 빠르게 하고, EOS가 나올 때까지 블록을 추가해 학습 컨텍스트보다 긴 시퀀스를 생성.

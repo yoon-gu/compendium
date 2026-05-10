@@ -2,6 +2,7 @@
 title: "Diffusion-LM 요약: 연속 디퓨전으로 세밀 제어 가능한 텍스트 생성"
 date: 2026-05-10
 draft: false
+math: true
 source_url: "https://arxiv.org/abs/2205.14217"
 author: "Li, Thickstun, Gulrajani, Liang, Hashimoto (Stanford)"
 tags: ["AI", "NLP", "디퓨전", "디퓨전 언어모델", "제어 가능 생성", "NeurIPS 2022", "Stanford"]
