@@ -19,6 +19,7 @@ summary: "블록 디퓨전 언어모델(BD3-LM)은 블록 사이에는 자기회
 
 - [한국어 번역본 PDF](/compendium/papers/interpolating-ar-diffusion-lm.pdf) — XeLaTeX 기반 한국어 PDF판
 - [arxiv 원문 PDF](/compendium/papers/interpolating-ar-diffusion-lm-original.pdf)
+- [NotebookLM 한국어 오디오](https://github.com/yoon-gu/compendium/releases/download/compendium-media/notebooklm-block-diffusion-korean-audio-overview-160k.m4a) — 실무자 관점 한국어 오디오 요약
 
 ## 초록
 
