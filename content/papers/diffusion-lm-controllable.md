@@ -59,10 +59,10 @@ Diffusion-LM 의 제어를 보이기 위해, 저자들은 *세밀 속성 제어*
 LM 의 정형적 접근은 $p_\text{lm}$ 을 좌→우 자기회귀로 분해한다.
 
 $$
-p_\text{lm}(\mathbf{w}) = p_\text{lm}(w_1) \prod_{i=2}^{n} p_\text{lm}(w_i \mid w_{<i}).
+p_\text{lm}(\mathbf{w}) = p_\text{lm}(w_1) \prod_{i=2}^{n} p_\text{lm}(w_i \mid w_{\lt i}).
 $$
 
-이 경우 텍스트 생성은 *부분 시퀀스에 조건화된 다음 토큰 예측*의 반복으로 환원된다. 다음 토큰 예측 $p_\text{lm}(w_i \mid w_{<i})$ 는 흔히 트랜스포머(Transformer) 아키텍처로 매개변수화된다.
+이 경우 텍스트 생성은 *부분 시퀀스에 조건화된 다음 토큰 예측*의 반복으로 환원된다. 다음 토큰 예측 $p_\text{lm}(w_i \mid w_{\lt i})$ 는 흔히 트랜스포머(Transformer) 아키텍처로 매개변수화된다.
 
 ### 3.3 연속 영역의 디퓨전 모델
 
