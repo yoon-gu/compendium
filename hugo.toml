@@ -3,6 +3,9 @@ languageCode = "ko"
 title = "Compendium"
 theme = "PaperMod"
 
+# KST(+0900) 기준으로 쓴 글이 UTC 빌드 시점에 미래 날짜로 잡혀 누락되는 것을 방지
+buildFuture = true
+
 [params]
   defaultTheme = "auto"
   ShowReadingTime = true
