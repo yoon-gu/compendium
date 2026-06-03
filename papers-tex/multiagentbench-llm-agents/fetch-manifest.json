@@ -1,0 +1,14 @@
+{
+  "slug": "multiagentbench-llm-agents",
+  "arxiv_id": "2503.01935v1",
+  "source_url": "https://arxiv.org/e-print/2503.01935v1",
+  "pdf_url": "https://arxiv.org/pdf/2503.01935v1.pdf",
+  "fetched_at": "2026-06-03T22:35:07.970525+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/multiagentbench-llm-agents-original.pdf",
+  "source_dir": "papers-tex/multiagentbench-llm-agents",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "acl2023.tex"
+  ]
+}
