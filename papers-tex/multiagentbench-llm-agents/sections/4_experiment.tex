@@ -16,8 +16,8 @@
 %     | >{\columncolor{WereWolfColor}}S[table-format=6.3] >{\columncolor{WereWolfColor}}S[table-format=5.2]
 % }
 % \toprule
-% \multirow{2}{*}{\textbf{Model}} 
-% & \multicolumn{2}{c}{\textbf{Research}} 
+% \multirow{2}{*}{\textbf{Model}}
+% & \multicolumn{2}{c}{\textbf{Research}}
 % & \multicolumn{2}{c}{\textbf{Minecraft}}
 % & \multicolumn{2}{c}{\textbf{Database}}
 % & \multicolumn{2}{c|}{\textbf{Coding}}
@@ -89,8 +89,8 @@
     |>{\columncolor{WereWolfColor}}c>{\columncolor{WereWolfColor}}c
 }
 \toprule
-\multirow{2}{*}{\textbf{Model}} 
-& \multicolumn{2}{c}{\textbf{Research}} 
+\multirow{2}{*}{\textbf{Model}}
+& \multicolumn{2}{c}{\textbf{Research}}
 & \multicolumn{2}{c}{\textbf{Minecraft}}
 & \multicolumn{2}{c}{\textbf{Database}}
 & \multicolumn{2}{c|}{\textbf{Coding}}
@@ -146,7 +146,7 @@
 \bottomrule
 \end{tabular}
 }
-\caption{\textbf{Average Task Score} (\textbf{TS}) (\%) and the Coordination Score (\textbf{CS}) for Minecraft, Database, Coding, Bargaining, and WereWolf, scores are multiplied by 20. We can see that model abilities are still the key factor for task completion. CS is a good indicator for TS given three pairs of scenarios having the one model having the highest TS and CS at the same time.
+\caption{Minecraft, Database, Coding, Bargaining, WereWolf에 대한 \textbf{Average Task Score}(\textbf{TS})(\%)와 Coordination Score(\textbf{CS}). 점수는 20을 곱한 값이다. 모델 능력이 여전히 과제 완성의 핵심 요인임을 확인할 수 있다. 세 쌍의 시나리오에서 동일 모델이 가장 높은 TS와 CS를 동시에 보이므로 CS는 TS의 좋은 지표가 될 수 있다.
 }
 \label{tab:avg_task_score}
 \end{table*}
@@ -172,12 +172,12 @@
     % \midrule
     % \rowcolor{yellow!20} \multicolumn{6}{c}{\textit{Research}} \\
     % \midrule
-    
+
     % \rowcolor{blue!10} Graph-Mesh   & 4.369 & 4.200       & 0.755           & 86983     & 4.238          \\
     % \rowcolor{blue!10} Star   & \textbf{4.680} &  \textbf{4.786}    &      0.707      &   31365   &    4.227       \\
     % \rowcolor{blue!10} Chain     &  4.100 & ——       & ——  &  14833    &  4.240 \\
     % \rowcolor{blue!10} Tree     & 4.100  &  —— &      ——       &  \textbf{11880}    &     \textbf{4.253}      \\
-    
+
     % \bottomrule
     % \end{tabular}
     % \caption{Average Metrics for Research Tasks, Communication and KPI value are currently not available for Chain and Tree due to the current implementation mechanism. \jiaxuan{Add findings - what should readers learn from this?}}
@@ -191,18 +191,18 @@
 
 
 
-\section{Experiment Setup}
+\section{실험 설정}
 \label{sec:experiment-setup}
 
-\subsection{Experiment Settings}
-\paragraph{Models.} Since our MARBLE framework required function-calling abilities. Thus, we consider three open-source models: \textit{Meta-Llama-3.3-70B~\citep{dubey2024llama}}, \textit{Meta-Llama-3.1-70B-Instruct-Turbo~\citep{dubey2024llama}}, and \textit{Meta-Llama-3.1-8B-Instruct-Turbo}, as well as two closed-source models: \textit{GPT-3.5-turbo-0125} and \textit{GPT-4o-mini}\footnote{\href{https://www.openai.com}{https://www.openai.com}}.We access the open-souce models are provided by the \textit{togetherai}~\footnote{\href{https://www.together.ai}{https://www.together.ai}} service, utilizing the default parameter settings. 
+\subsection{실험 세팅}
+\paragraph{Models.} MARBLE 프레임워크는 function-calling 능력을 필요로 한다. 따라서 우리는 세 가지 open-source model, 즉 \textit{Meta-Llama-3.3-70B~\citep{dubey2024llama}}, \textit{Meta-Llama-3.1-70B-Instruct-Turbo~\citep{dubey2024llama}}, \textit{Meta-Llama-3.1-8B-Instruct-Turbo}와 두 가지 closed-source model인 \textit{GPT-3.5-turbo-0125}, \textit{GPT-4o-mini}\footnote{\href{https://www.openai.com}{https://www.openai.com}}를 고려한다. Open-source model은 기본 parameter setting을 사용하여 \textit{togetherai}~\footnote{\href{https://www.together.ai}{https://www.together.ai}} service를 통해 접근한다.
 
-For the agent actions, we configure the models with a maximum token number (\texttt{max\_token\_num}) of 1024, a temperature of 0.7, and a top\_p of 1.0, in order to balance the creativity and consistency of the agents' responses during interactions. The overall maximum iterations are set to 5 for research and 20 for Minecraft; more details can be found in the Appendix.  In our evaluation, which involves both Task Completion and Simulation scenarios, we assess the models along two primary axes: \emph{Task Score} (\textbf{TS}) and \emph{Coordination Score} (\textbf{CS}), using the same metrics as described in the Metrics section. The maximum communication iteration number is also set to 5. Furthermore, the long-term base memory for each agent is set to be unlimited. Finally, for the main experiment, a graph-mesh coordination protocol is adopted to facilitate interactions.
+Agent action에 대해서는 상호작용 중 에이전트 응답의 창의성과 일관성 사이의 균형을 맞추기 위해 maximum token number(\texttt{max\_token\_num}) 1024, temperature 0.7, top\_p 1.0으로 모델을 설정한다. 전체 maximum iteration은 research의 경우 5, Minecraft의 경우 20으로 설정하며, 자세한 내용은 Appendix에서 확인할 수 있다. Task Completion과 Simulation 시나리오를 모두 포함하는 평가에서 우리는 Metrics section에 설명된 동일 지표를 사용하여 \emph{Task Score}(\textbf{TS})와 \emph{Coordination Score}(\textbf{CS})라는 두 축을 따라 모델을 평가한다. Maximum communication iteration number도 5로 설정한다. 또한 각 에이전트의 long-term base memory는 무제한으로 설정한다. 마지막으로 main experiment에서는 상호작용을 촉진하기 위해 graph-mesh coordination protocol을 채택한다.
 
 %To ensure manageable computational overhead and consistency across all models and tasks, the maximum number of interaction iterations is generally limited to 5; however, for Task Score and Coordination Score evaluations as well as milestone detection, we set the maximum iterations to 40 and fix the temperature to 0.
 
 
-% \paragraph{Agent Action Parameters.} For the agent actions, we configure the models with the following parameters: maximum token number max\_token\_num set to 1024, temperature set to 0.7, and top\_p set to 1.0. These settings aim to balance the creativity and consistency of the agents' responses during interactions. The overall maximum iterations is set to 5 for research, 20 for Minecraft, and more details could refer to the Appendix \kunlun{appendix}. 
+% \paragraph{Agent Action Parameters.} For the agent actions, we configure the models with the following parameters: maximum token number max\_token\_num set to 1024, temperature set to 0.7, and top\_p set to 1.0. These settings aim to balance the creativity and consistency of the agents' responses during interactions. The overall maximum iterations is set to 5 for research, 20 for Minecraft, and more details could refer to the Appendix \kunlun{appendix}.
 
 
 % \kunlun{fix one model while doing the evaluation for the simulation scenario, fix to 4o}
@@ -214,48 +214,48 @@ For the agent actions, we configure the models with a maximum token number (\tex
 % \paragraph{Memory and Coordination Setup.} In the main experimental configuration, we adopt a \emph{long-term self-memory} approach to allow models to retain and utilize information from earlier interaction turns. Moreover, to better handle complex multi-agent interactions, we employ a \emph{star coordination} strategy: in the simulation scenario, multiple teams (or ``stars'') interact, requiring strategic coordination and information exchange among these entities.
 
 
-\subsection{Main Experiment One: Model Performance Across Different Scenarios}
+\subsection{주요 실험 1: 다양한 시나리오에서의 모델 성능}
 
 % In this experiment, we evaluate the performance of the five models across different scenarios. The results are summarized in Table~\ref{tab:avg_task_score}.
 
-% 1. result 1: gpt-4o-mini show superior results in most of the task; 
+% 1. result 1: gpt-4o-mini show superior results in most of the task;
 
 % 2. coordination score can some kina affect the task score in cases like,  but not necessarie, one extreme case mine-craft 3.1 70b, refer to \ref{fig:minecraft-function-call}, our explanation is that model abilities matter the most,
 
-In this experiment, we evaluate the performance of five models across diverse scenarios, with results summarized in Table~\ref{tab:avg_task_score}. Our analysis leads to several key insights:
+이 실험에서는 다섯 모델의 성능을 다양한 시나리오에서 평가하며, 결과는 Table~\ref{tab:avg_task_score}에 요약되어 있다. 분석을 통해 몇 가지 핵심 통찰을 얻었다.
 
-\paragraph{1. Superior Task Performance of \texttt{gpt-4o-mini}:}  
-Across multiple tasks, \texttt{gpt-4o-mini} consistently achieves high Task Scores (TS). For example, in the Research scenario it obtains a TS of \textbf{84.13}\%, outperforming other models such as \texttt{Meta-Llama-3.1-8B} (80.87\%) and \texttt{Meta-Llama-3.1-70B} (80.80\%). Similar trends are observed in the Coding domain, where \texttt{gpt-4o-mini} records a TS of 65.10 compared to lower scores from its competitors. These results indicate that the underlying model capabilities are a decisive factor in achieving superior task performance.
+\paragraph{1. \texttt{gpt-4o-mini}의 우수한 Task Performance:}
+여러 과제에서 \texttt{gpt-4o-mini}는 일관되게 높은 Task Score(TS)를 달성한다. 예를 들어 Research 시나리오에서 \textbf{84.13}\%의 TS를 얻어 \texttt{Meta-Llama-3.1-8B}(80.87\%)와 \texttt{Meta-Llama-3.1-70B}(80.80\%) 같은 다른 모델을 앞선다. Coding domain에서도 유사한 경향이 관찰되며, \texttt{gpt-4o-mini}는 경쟁 모델보다 높은 TS 65.10을 기록한다. 이러한 결과는 기반 모델 능력이 우수한 task performance를 달성하는 결정적 요인임을 보여 준다.
 
-\paragraph{2. The Nuanced Role of Coordination (Collaboration) Score:}  
-While the Collaboration Score (CS) is designed to measure coordination ability, our findings suggest that its impact on the overall task performance is complex. For instance, in the Minecraft scenario, \texttt{Meta-Llama-3.1-70B} exhibits a high CS of 75.00 but an extremely low TS of 0.21, a more deep analysis for this can refer to Appendix~\ref{fig:minecraft-function-call}. This discrepancy implies that, although coordination contributes to performance, it does not compensate for inherent deficiencies in task execution capabilities. In contrast, models that balance both high TS and moderate-to-high CS—such as \texttt{gpt-4o-mini}—demonstrate more robust and reliable performance across scenarios.
+\paragraph{2. Coordination (Collaboration) Score의 미묘한 역할:}
+Collaboration Score(CS)는 coordination ability를 측정하도록 설계되었지만, 우리의 결과는 전체 task performance에 대한 그 영향이 복잡함을 시사한다. 예를 들어 Minecraft 시나리오에서 \texttt{Meta-Llama-3.1-70B}는 75.00이라는 높은 CS를 보이지만 TS는 0.21로 매우 낮으며, 이에 대한 더 깊은 분석은 Appendix~\ref{fig:minecraft-function-call}에서 확인할 수 있다. 이 불일치는 coordination이 성능에 기여하더라도 task execution capability의 내재적 결핍을 보상하지는 못한다는 점을 의미한다. 반대로 \texttt{gpt-4o-mini}처럼 높은 TS와 중간 이상 CS를 함께 균형 있게 갖춘 모델은 시나리오 전반에서 더 강건하고 신뢰할 수 있는 성능을 보인다.
 
-\paragraph{3. Model-Specific Strengths and Context-Dependent Performance:}  
-Our results reveal that different models exhibit varied strengths depending on the task. For example, \texttt{Meta-Llama-3.3-70B} shows a notable CS in the Research (72.00) and WereWolf (76.30) tasks, yet its TS lags behind that of \texttt{gpt-4o-mini} in several scenarios. These variations emphasize that no single metric can fully capture a model’s effectiveness; instead, both task-specific abilities and coordination skills must be considered. Overall, our study underscores that while coordination plays a role, the intrinsic model capabilities are the primary drivers of success across diverse tasks.
-
-
-\subsection{Main Experiment Two: Effects of Collaboration Protocols and Planning Strategies}
+\paragraph{3. 모델별 강점과 맥락 의존적 성능:}
+우리의 결과는 서로 다른 모델이 과제에 따라 다양한 강점을 보인다는 점을 드러낸다. 예를 들어 \texttt{Meta-Llama-3.3-70B}는 Research(72.00)와 WereWolf(76.30) 과제에서 주목할 만한 CS를 보이지만, 여러 시나리오에서 TS는 \texttt{gpt-4o-mini}보다 뒤처진다. 이러한 차이는 어떤 단일 지표도 모델의 효과를 완전히 포착할 수 없으며, task-specific ability와 coordination skill을 함께 고려해야 함을 강조한다. 전반적으로 우리의 연구는 coordination이 역할을 하기는 하지만, 다양한 과제에서 성공을 이끄는 주요 동인은 모델의 내재적 능력임을 보여 준다.
 
 
-% According to Fig ~\ref{fig:coordination_protocol_comparison}, 
+\subsection{주요 실험 2: Collaboration Protocol과 Planning Strategy의 효과}
+
+
+% According to Fig ~\ref{fig:coordination_protocol_comparison},
 
 % 1. graph is superior in the research scenario best in task and planning, and token usage, star and graph have very similar task score results
 
 % 2. Tree don't perform good in research scenario, high token usage and worst task and coordination score
 
 
-% Acoording to Fig.~\ref{fig:research_metrics}, 1. Cognitive Evolving planing show case the best Coordination much better than others, demonstrate its effectiveness on elicit multiagent coordination, and achieve similar task score as COT which is the best. 
+% Acoording to Fig.~\ref{fig:research_metrics}, 1. Cognitive Evolving planing show case the best Coordination much better than others, demonstrate its effectiveness on elicit multiagent coordination, and achieve similar task score as COT which is the best.
 % 2. counter intuitively the group discussion received the worst in both three of the results, one reason could be if too many people joining in the planning group it actually won't be very effectly, such as in the real society a mall group of people manage the whole organization.
 
-We investigate the impact of different collaboration protocols—Star, Tree, Graph, and Chain—on model performance in the Research scenario. 
+우리는 Research 시나리오에서 Star, Tree, Graph, Chain이라는 서로 다른 collaboration protocol이 모델 성능에 미치는 영향을 조사한다.
 
-According to Fig.~\ref{fig:coordination_protocol_comparison}, the graph-based protocol excels in research scenarios with the best task performance, planning efficiency, and token usage, while both the star and graph protocols yield similar task scores. In contrast, the tree-based protocol performs poorly, with high token consumption and the lowest task and coordination scores. As shown in Fig.~\ref{fig:research_metrics}, Cognitive Evolving Planning demonstrates superior coordination—significantly outperforming the alternatives—and achieves a task score comparable to the best, COT. Counterintuitively, the group discussion method scores the worst across all metrics, possibly because an overly large planning group hinders effectiveness, similar to large organizations in real-world scenarios.
+Fig.~\ref{fig:coordination_protocol_comparison}에 따르면 graph-based protocol은 research scenario에서 가장 좋은 task performance, planning efficiency, token usage를 보이며, star와 graph protocol은 유사한 task score를 산출한다. 반대로 tree-based protocol은 높은 token consumption과 가장 낮은 task 및 coordination score로 좋지 않은 성능을 보인다. Fig.~\ref{fig:research_metrics}에 나타난 것처럼 Cognitive Evolving Planning은 대안들을 크게 앞서는 우수한 coordination을 보이며, 최고 성능인 COT와 비슷한 task score를 달성한다. 직관과 달리 group discussion 방법은 모든 metric에서 가장 낮은 점수를 받았는데, 이는 실제 조직에서처럼 지나치게 큰 planning group이 효과성을 저해하기 때문일 수 있다.
 
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{graphs/comparison_of_coordination_protocols.pdf}
-    \caption{Comparison of Different Coordination Protocols.—Tree, Star, Graph, and Chain—across multiple evaluation metrics. Specially, the token usages are scaled such that the lowest value is $0$ and the hightest value is $100$. Details about metrics used for research task can be found at \ref{research_task_metric}}
+    \caption{여러 evaluation metric에 걸친 서로 다른 Coordination Protocol(Tree, Star, Graph, Chain)의 비교. 특히 token usage는 최솟값이 $0$, 최댓값이 $100$이 되도록 scaling했다. Research task에 사용된 metric의 자세한 내용은 \ref{research_task_metric}에서 확인할 수 있다.}
     \label{fig:coordination_protocol_comparison}
 \end{figure}
 
@@ -267,7 +267,7 @@ According to Fig.~\ref{fig:coordination_protocol_comparison}, the graph-based pr
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{graphs/research_metrics_legend.pdf}
-    \caption{Average Metrics for Research Tasks for different planning prompt strategies. Cognitive Evolve Planning show best result in CS.}
+    \caption{서로 다른 planning prompt strategy에 대한 Research Task의 Average Metrics. Cognitive Evolve Planning이 CS에서 가장 좋은 결과를 보인다.}
     \label{fig:research_metrics}
 \end{figure}
 
@@ -275,37 +275,36 @@ According to Fig.~\ref{fig:coordination_protocol_comparison}, the graph-based pr
 
 % The interplay between coordination protocols and planning strategies underscores the importance of selecting appropriate frameworks based on the specific requirements of a task. For instance, tasks that demand high levels of coordination and strategic planning may benefit from centralized protocols like Star coupled with Cognitive Planning strategies. In contrast, tasks prioritizing efficiency and focused execution might be better served by hierarchical protocols like Tree alongside Group Discussion strategies.
 
-\section{Ablation Study}
+\section{절제 연구}
 
-The goal of our ablation study is to identify the key modules and parameters that affect performance.
+절제 연구의 목표는 성능에 영향을 미치는 핵심 module과 parameter를 식별하는 것이다.
 
-\paragraph{Ablation on Different Max Iteration Settings} We evaluate 10 tasks from the Minecraft scenario using six distinct maximum iteration settings. As shown in Fig.~\ref{fig:gpt4o_minecraft_scores}, both task and coordination scores increase from 1 to 7 iterations, but then drop sharply at 10 iterations. At 20 iterations, while the task score shows a recovery, the coordination score remains nearly unchanged beyond 7 iterations. This pattern suggests that, for highly challenging tasks, excessive iterations may lead to coordination degradation—possibly due to communication overhead or conflicting directives emerging over prolonged interactions. These findings underscore the need for adaptive iteration strategies that balance task execution with effective coordination.
+\paragraph{서로 다른 Max Iteration Setting에 대한 Ablation} 우리는 여섯 가지 maximum iteration setting을 사용하여 Minecraft 시나리오의 10개 과제를 평가한다. Fig.~\ref{fig:gpt4o_minecraft_scores}에 보이듯 task score와 coordination score는 1 iteration에서 7 iteration까지 증가하지만 10 iteration에서 급격히 하락한다. 20 iteration에서는 task score가 회복을 보이지만, coordination score는 7 iteration 이후 거의 변하지 않는다. 이 패턴은 매우 어려운 과제에서 과도한 iteration이 장기 상호작용 중 발생하는 communication overhead 또는 conflicting directive 때문에 coordination degradation으로 이어질 수 있음을 시사한다. 이러한 결과는 task execution과 effective coordination의 균형을 맞추는 adaptive iteration strategy의 필요성을 강조한다.
 
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{graphs/scaling_iterations.pdf}
-    \caption{Scores for \texttt{gpt-4o-mini} across different iterations in Minecraft. The figure presents Task Score (TS), Communication Score (CS), Planning Score (PS), and Collaboration Score (CoS) over multiple iterations.}
+    \caption{Minecraft에서 서로 다른 iteration에 따른 \texttt{gpt-4o-mini}의 점수. 이 그림은 여러 iteration에 걸친 Task Score(TS), Communication Score(CS), Planning Score(PS), Collaboration Score(CoS)를 제시한다.}
     \label{fig:gpt4o_minecraft_scores}
 \end{figure}
 
-\paragraph{Ablation on Different Agent Numbers} We assess configurations with 1, 3, 5, and 7 agents in the research scenario, selecting 20 papers that have at least 7 main authors. As illustrated in Fig.~\ref{fig:scaling_agents}, increasing the number of agents leads to a decrease in the overall KPI, which aligns with the anticipated trade-off between increased collaborative complexity and performance. Notably, the average coordination score improves significantly when moving from 1 to 3 agents, while the average task score increases more gradually. This indicates that a moderate expansion in team size can enhance coordination efficiency, although further increases may introduce additional coordination challenges that counterbalance task performance gains.
+\paragraph{서로 다른 Agent Number에 대한 Ablation} 우리는 research scenario에서 1, 3, 5, 7개 agent 구성을 평가하며, 주저자가 최소 7명인 논문 20편을 선택한다. Fig.~\ref{fig:scaling_agents}에 보이듯 agent 수가 증가하면 전체 KPI가 감소하는데, 이는 협업 복잡성 증가와 성능 사이의 예상된 trade-off와 일치한다. 특히 1명에서 3명으로 이동할 때 average coordination score가 크게 향상되는 반면, average task score는 더 완만히 증가한다. 이는 적당한 팀 규모 확장이 coordination efficiency를 높일 수 있지만, 추가 증가는 task performance gain을 상쇄하는 coordination challenge를 더 도입할 수 있음을 나타낸다.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{graphs/scaling_agents_research_scenario.pdf}
-    \caption{Scaling on Agents Number in Research Scenario. This figure shows the impact of agent number on KPI, Coordination Score, and Task Score.}
+    \caption{Research Scenario에서 Agent Number Scaling. 이 그림은 agent number가 KPI, Coordination Score, Task Score에 미치는 영향을 보여 준다.}
     \label{fig:scaling_agents}
 \end{figure}
 
-\section{Emergent Behaviors Analysis}
+\section{창발 행동 분석}
 \label{sec:emergent_behaviors}
-In MultiagentBench, goal-driven emergent behaviors are pivotal to team coordination—we argue that these “aha-moments” not only mark when individual agents align their actions toward shared objectives but also catalyze spontaneous multiagent dynamics, unveiling novel coordination strategies and adaptive collective intelligence. (see Appendix~\ref{sec:detailed-results-case-study}). Under information asymmetry and role conflicts, agents display three key patterns (refer to \ref{appendix:case2} and \ref{sec:case_llama33_gpt4o} for Werewolf scenarios, and Section~\ref{fig:negotiation-summary} for Bargaining):
+MultiagentBench에서 goal-driven emergent behavior는 team coordination의 핵심이다. 우리는 이러한 ``aha-moments''가 개별 에이전트가 공유 objective를 향해 행동을 정렬하는 순간을 표시할 뿐 아니라, spontaneous multiagent dynamics를 촉발하여 새로운 coordination strategy와 adaptive collective intelligence를 드러낸다고 주장한다(Appendix~\ref{sec:detailed-results-case-study} 참조). Information asymmetry와 role conflict 아래에서 에이전트는 세 가지 핵심 패턴을 보인다(Werewolf 시나리오는 \ref{appendix:case2} 및 \ref{sec:case_llama33_gpt4o}, Bargaining은 Section~\ref{fig:negotiation-summary} 참조).
 
-\paragraph{\textbf{Strategic Information Sharing}} Agents selectively disclose key information (e.g., the Seer withholding inspection results) based on trust and context, echoing the "strategic silence" seen in human interactions~\citep{Park2023}. For instance, in \ref{appendix:case2}, both the Seer and Witch (\texttt{gpt-4o}) were overly cautious, missing optimal sharing opportunities and leading to failure. Another case is shown in Fig~\ref{fig:bad_comm_case_1}, where two research agents strategically evolve the research proposal details, combining the strengths of both background knowledge.
+\paragraph{\textbf{Strategic Information Sharing}} 에이전트는 trust와 context에 따라 핵심 정보를 선택적으로 공개한다(예: Seer가 inspection result를 보류). 이는 인간 상호작용에서 나타나는 ``strategic silence''와 유사하다~\citep{Park2023}. 예를 들어 \ref{appendix:case2}에서 Seer와 Witch(\texttt{gpt-4o})는 모두 지나치게 신중하여 최적의 sharing opportunity를 놓쳤고 실패로 이어졌다. 또 다른 사례는 Fig~\ref{fig:bad_comm_case_1}에 제시되어 있으며, 두 research agent가 양쪽 background knowledge의 강점을 결합해 research proposal detail을 전략적으로 발전시킨다.
 
-\paragraph{\textbf{Trust-Polarized Collaboration}} Role identities drive collaboration splits: over-suspicious villagers may turn against their own, while werewolves can create a "false consensus" through deception~\citep{Fehr2000} and internal execution~\citep{Woolley2010}. As shown in \ref{appendix:case2}, villagers’ excessive caution allowed werewolves to exploit confusion; similar internal friction is evident in Bargaining (\ref{fig:negotiation-summary}).
+\paragraph{\textbf{Trust-Polarized Collaboration}} Role identity는 collaboration split을 유도한다. 지나치게 의심 많은 villager는 같은 편을 공격할 수 있고, werewolf는 기만~\citep{Fehr2000}과 internal execution~\citep{Woolley2010}을 통해 ``false consensus''를 만들 수 있다. \ref{appendix:case2}에서 보이듯 villager의 과도한 신중함은 werewolf가 혼란을 이용하게 했으며, Bargaining(\ref{fig:negotiation-summary})에서도 유사한 internal friction이 나타난다.
 
-\paragraph{\textbf{Role-Driven Strategy Iteration}} Throughout the game, roles such as the Seer and Witch adjust their strategies. The Seer, for example, shifts from a conservative to a leadership role (see \ref{sec:case_llama33_gpt4o}), while the Witch moves from hoarding to taking risks. These shifts support the notion that task objectives drive decision-making, aligning with the \textit{AutoGen} framework findings~\citep{Wu2023}.
-
+\paragraph{\textbf{Role-Driven Strategy Iteration}} 게임 전반에서 Seer와 Witch 같은 역할은 자신의 전략을 조정한다. 예를 들어 Seer는 보수적인 역할에서 leadership role로 이동하고(\ref{sec:case_llama33_gpt4o} 참조), Witch는 hoarding에서 risk-taking으로 이동한다. 이러한 변화는 task objective가 decision-making을 구동한다는 관점을 지지하며, \textit{AutoGen} framework의 발견과도 일치한다~\citep{Wu2023}.
 

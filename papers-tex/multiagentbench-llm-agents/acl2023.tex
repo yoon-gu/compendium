@@ -19,7 +19,7 @@
 \usepackage{amsmath}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{tcolorbox} 
+\usepackage{tcolorbox}
 \usepackage{colortbl}
 \usepackage{tabularx}
 % % \usepackage{xcolor}
@@ -41,13 +41,14 @@
 \definecolor{WereWolfColor}{HTML}{F8BBD0}   % Light Pink
 \usepackage{graphicx}
 % For proper rendering and hyphenation of words containing Latin characters (including in bib files)
-\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
 % For Vietnamese characters
 % \usepackage[T5]{fontenc}
 % See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
 
 % This assumes your files are encoded as UTF8
-\usepackage[utf8]{inputenc}
+% \usepackage[utf8]{inputenc}
+\usepackage{kotex}
 \newcommand{\todo}[1]{{{\textcolor{red}{[TODO: #1]}}}}
 \newcommand{\zhaochen}[1]{{{\textcolor{orange}{[Zhaochen: #1]}}}}
 \newcommand{\kunlun}[1]{{{\textcolor{blue}{[Kunlun: #1]}}}}
@@ -83,7 +84,7 @@
 % and set <dim> to something 5cm or larger.
 
 % \title{MultiAgentBench\icon: Exploring the Essence of LLM Multi-agents Evaluation at its Coordination and Competition}
-\title{MultiAgentBench\icon: Evaluating the Collaboration and Competition of LLM agents}
+\title{MultiAgentBench\icon: LLM 에이전트의 협업과 경쟁 평가}
 
 % \kunlun{should we still including coordination in the title like Evaluating the Coordination Dynamics of LLM Agents in Collaboration and Competition,  Assessing LLM Agents' Coordination Across Collaboration and Competition}
 
@@ -120,7 +121,7 @@
 %   \texttt{email@domain} \\}
 
 \author{
- Kunlun~Zhu$^{1\dag}$ \thanks{\ \ Team Leader.}, Hongyi Du$^{1\dag}$, Zhaochen Hong$^{1\dag}$,  Xiaocheng Yang$^{1\dag}$, Shuyi Guo$^{1\dag}$, Zhe Wang$^{1}$ \thanks{\ \  Core Contributors. Contributions are listed in the appendix~\ref{app_contrib}.} \\
+ Kunlun~Zhu$^{1\dag}$ \thanks{\ \ 팀 리더.}, Hongyi Du$^{1\dag}$, Zhaochen Hong$^{1\dag}$,  Xiaocheng Yang$^{1\dag}$, Shuyi Guo$^{1\dag}$, Zhe Wang$^{1}$ \thanks{\ \  핵심 기여자. 기여 내역은 부록~\ref{app_contrib}에 제시한다.} \\
  \textbf{Zhenhailong Wang}$^{1}$, \textbf{Cheng Qian}$^{1}$, \textbf{Xiangru Tang}, \textbf{Heng Ji}$^{1}$, \textbf{Jiaxuan You}$^{1}$ \\
  $^1$University of Illinois Urbana-Champaign\\
  kunlunz2@illinois.edu
@@ -141,7 +142,7 @@
 
 % Large Language Models (LLMs) are increasingly deployed as autonomous agents in complex, interactive multi-agent scenarios. \cheng{use one sentence to address current limitations in benchmark here to motivate your design?} In this paper, we introduce \textbf{MultiAgentBench}, a comprehensive benchmark that evaluates LLM-based multi-agent systems not only on task completion but also on coordination and competition. Our arena-style evaluation framework systematically compares both commercial and open-source LLMs using novel metrics that capture key aspects of multi-agent interactions—such as key performance indicator (\textbf{KPI})\cheng{Do not give confusing terms in abstract, if possible, explain it like i'm five}, \heng{since the main new thing compared to average performance is you check the performance for each milestone, maybe call it 'milestone based key performance indicator' will make it clearer} communication effectiveness, and planning quality. Furthermore, our dataset and extensible code framework enable easy integration and testing of diverse multi-agent coordination strategies and important modules, including planning and memory. \heng{elaborate a bit about your novel strategies, including leveraging graph topology, collaboration vs. competition, etc.} Our extensive experiments reveal persistent challenges in long-term reasoning and collaborative behaviors, offering valuable insights to guide the development of more robust and reliable LLM-based multi-agent systems\cheng{this later half of sentence is useless, instead give 1-2 more insights from your benchmarking results, and present them with concrete numerical value to capture the reader}. Code and dataset will be made publicly available.
 % \kunlun{make sure the appendix don't have name}
-Large Language Models (LLMs) have shown remarkable capabilities as autonomous agents; yet existing benchmarks either focus on single-agent tasks or are confined to narrow domains, failing to capture the dynamics of multi-agent coordination and competition. In this paper, we introduce \textbf{MultiAgentBench}, a comprehensive benchmark designed to evaluate LLM-based multi-agent systems across diverse, interactive scenarios. Our framework measures not only task completion but also the quality of collaboration and competition using novel, milestone-based key performance indicators. Moreover, we evaluate various coordination protocols (including star, chain, tree, and graph topologies) and innovative strategies such as group discussion and cognitive planning. Notably, gpt-4o-mini reaches the average highest task score, graph structure performs the best among coordination protocols in the research scenario,and cognitive planning improves milestone achievement rates by 3\%. Code and datasets are publicavailable at \url{https://github.com/MultiagentBench/MARBLE}.
+대규모 언어 모델(Large Language Models, LLMs)은 자율 에이전트로서 주목할 만한 역량을 보였지만, 기존 벤치마크는 단일 에이전트 과제에 초점을 맞추거나 좁은 도메인에 제한되어 다중 에이전트(multi-agent) 조정(coordination)과 경쟁의 동역학을 포착하지 못한다. 본 논문에서는 다양한 상호작용 시나리오에서 LLM 기반 다중 에이전트 시스템을 평가하도록 설계된 종합 벤치마크 \textbf{MultiAgentBench}를 소개한다. 우리의 프레임워크는 새로운 milestone 기반 핵심 성과 지표(key performance indicator)를 사용하여 과제 완성뿐 아니라 협업과 경쟁의 품질도 측정한다. 또한 star, chain, tree, graph topology를 포함한 여러 조정 프로토콜과 group discussion, cognitive planning 같은 혁신적 전략을 평가한다. 특히 gpt-4o-mini는 평균적으로 가장 높은 task score에 도달하고, research 시나리오에서는 graph 구조가 조정 프로토콜 중 가장 좋은 성능을 보이며, cognitive planning은 milestone 달성률을 3\% 향상시킨다. 코드와 데이터셋은 \url{https://github.com/MultiagentBench/MARBLE}에 공개되어 있다.
 
 \end{abstract}
 
@@ -160,5 +161,4 @@ Large Language Models (LLMs) have shown remarkable capabilities as autonomous ag
 
 
 \end{document}
-
 
