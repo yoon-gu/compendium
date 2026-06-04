@@ -1,0 +1,113 @@
+\section{통신 도메인}
+\label{app:telecom}
+
+서로 다른 사용자 의도에 걸친 과제 수와 전체 과제 수는 \Cref{tab:telecom_num_tasks}에 제시되어 있다.
+
+\input{tables/telecom_num_tasks}
+
+
+통신 도메인에는 \serviceissue, \mobiledataissue, \mmsissue 의 3가지 서로 다른 의도가 있다.
+문제를 해결하는 데 필요한 행동 수가 의도별로 어떻게 달라지는지는 \Cref{tab:telecom_intent_stats}에 제시되어 있다.
+
+\input{tables/telecom_intent_stats}
+
+\subsection{사용자 페르소나}
+\label{app:telecom-user-persona}
+
+기술 전문성과 기술에 대한 편안함의 서로 다른 수준을 나타내기 위해 두 가지 구별되는 사용자 페르소나를 정의한다:
+
+\begin{description}
+\item[Persona 1: Easy] 
+\begin{quote}
+41세의 사무 관리자이며, 업무와 개인 용도 모두에 휴대전화를 매일 사용한다. 일반적인 휴대전화 기능에는 익숙하지만 스스로를 기술 애호가라고 부르지는 않을 것이다.
+
+기술 역량은 평균적이다. 통화, 문자, 이메일, 기본 앱 같은 표준 스마트폰 기능은 쉽게 다룬다. 기본 설정은 이해하지만, 새로운 것을 시도할 때에는 명확한 단계별 안내를 선호한다.
+
+상호작용에서는 자연스럽게 친절하고 인내심이 있다. 도움을 받을 때에는 주의 깊게 듣고 질문하는 것을 두려워하지 않는다. 자신이 이해한 바를 확인하고, 받은 각 지시에 대해 자세한 피드백을 제공하려고 한다.
+\end{quote}
+
+\item[Persona 2: Hard]
+\begin{quote}
+64세이며 은퇴한 사서로, 휴대전화 사용은 주로 통화, 문자, 손주 사진 촬영 정도로 단순하게 유지한다. 기술 전반에 대해 불안하고 압도되는 느낌을 받는다.
+
+기술 지식은 상당히 제한적이다. 단계별 지시도 종종 혼란스럽고, "VPN"이나 "APN" 같은 기술 용어는 외국어처럼 느껴질 수 있다. 구체적으로 요청받을 때에만 정보를 공유한다.
+
+기술을 다룰 때에는 쉽게 당황하는 경향이 있다. 지속적인 안심이 필요하고, 불안한 질문으로 자주 끼어든다. "휴대전화를 재부팅하세요" 같은 간단한 요청도 소중한 사진을 잃을까 하는 걱정을 유발할 수 있다.
+\end{quote}
+\end{description}
+
+\subsection{예시 과제}
+\label{app:telecom-example-task}
+
+\begin{minted}[escapeinside=||, fontsize=\small, breaklines, breaksymbol=, breaksymbolleft=, breaksymbolright=, breakanywhere, bgcolor=gray!10]{markdown}
+# 과제 세부사항
+
+## ID
+[service_issue]airplane_mode_on|unseat_sim_card
+
+## 설명
+- **목적**: 해결 경로 테스트: 서비스 없음/연결 문제.
+
+## 사용자 시나리오
+- **지시사항**:
+  - **도메인**: telecom
+  - **전화 이유**: 지난 몇 시간 동안 휴대전화에 'No Service'가 표시되고 있습니다.
+  - **알려진 정보**: 당신은 John Smith이며 전화번호는 555-123-2002입니다.
+  - **알 수 없는 정보**: null
+  - **과제 지시사항**: 에이전트가 문제를 즉시 해결하지 못하는 조치를 제안하면,
+    그 안내를 따르되 첫 번째 실패한 시도 이후에는 약간의 답답함을 표현하세요.
+    상태 표시줄에 신호가 있다고 표시되면 문제가 해결된 것으로 간주합니다.
+    도구 호출이 업데이트된 상태 정보를 반환하지 않으면, 업데이트된 상태를 얻기 위해
+    다른 도구 호출을 수행해야 할 수도 있습니다.
+
+## 티켓
+사용자가 휴대전화 서비스 문제를 겪고 있습니다. 전화를 걸거나 받을 수 없고,
+상태 표시줄에는 'No Service'가 표시됩니다. 고객 이름: John Smith, 전화번호:
+555-123-2002. 상태 표시줄에 신호가 있다고 표시되면 문제가 해결된 것으로 간주합니다.
+
+## 초기 상태
+- **초기화 데이터**: null
+- **초기화 작업**:
+  1. **작업**: set_user_info
+     - **환경 유형**: user
+     - **인수**:
+       - name: John Smith
+       - phone_number: 555-123-2002
+  2. **작업**: turn_airplane_mode_on
+     - **환경 유형**: user
+     - **인수**: {}
+  3. **작업**: unseat_sim_card
+     - **환경 유형**: user
+     - **인수**: {}
+
+## 평가 기준
+### 작업
+1. **작업 ID**: toggle_airplane_mode_0
+   - **요청자**: user
+   - **이름**: toggle_airplane_mode
+   - **인수**: {}
+
+2. **작업 ID**: reseat_sim_card_1
+   - **요청자**: user
+   - **이름**: reseat_sim_card
+   - **인수**: {}
+
+### 환경 단언
+- **환경 유형**: user
+- **함수**: assert_service_status
+- **인수**:
+  - expected_status: connected
+- **단언 값**: true
+\end{minted}
+
+\subsection{예시 궤적 1: \basemode 모드}
+\label{app:telecom-example-trajectory-base}
+\Cref{app:telecom-example-task}의 과제를 \basemode 모드에서 수행한 궤적.
+
+\input{tables/trajectory}
+\subsection{예시 궤적 2: \solomode 모드}
+\label{app:telecom-example-trajectory-solo}
+\Cref{app:telecom-example-task}의 과제를 \solomode 모드에서 수행한 궤적.
+
+\input{tables/trajectory_solo}
+

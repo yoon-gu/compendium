@@ -1,0 +1,25 @@
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}[tb]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/results/pass_k_metrics_default_all_domains_gpt-4.1-2025-04-14.pdf}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[tb]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/results/pass_k_metrics_default_all_domains_o4-mini-2025-04-16.pdf}
+    \end{subfigure}
+    \vspace{1em}
+    \begin{subfigure}[tb]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/results/pass_k_metrics_default_all_domains_gpt-4.1-mini-2025-04-14.pdf}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[tb]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/results/pass_k_metrics_default_all_domains_claude-3-7-sonnet-20250219.pdf}
+    \end{subfigure}
+    \vspace{-1em}
+    \caption{평가한 모든 도메인(\airline, \retail, \telecom)에 걸친 \passk 지표. \textbf{왼쪽 위}: \gptmodelshort, \textbf{오른쪽 위}: \ofourmodelshort, \textbf{왼쪽 아래}: \gptminishort, \textbf{오른쪽 아래}: \claudesonnetshort.}
+    \label{fig:default_all_domains}
+\end{figure}

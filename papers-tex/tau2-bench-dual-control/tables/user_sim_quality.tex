@@ -1,0 +1,20 @@
+\begin{table}[tbp]
+    \centering
+    \caption{도메인별 사용자 시뮬레이터 오류 수(\textit{비율}). 치명 사용자 오류는 에이전트가 과제를 해결하지 못하게 하지만, 경미 오류는 과제 완료에 영향을 주지 않는다. 새로운 \telecom 도메인은 오류율이 훨씬 낮으며, 치명 오류가 보고되지 않았다. (추가 세부 사항은 \Cref{app:user-sim-quality} 참조).}
+    \label{tab:user_sim_error_rates}
+    \vspace{0.2em}
+    \begin{adjustbox}{width=0.8\linewidth}
+    \begin{tabular}{l|l|l|l|l}
+        \toprule
+        \textbf{도메인} & \textbf{대화 수} & \textbf{치명 오류} & \textbf{경미 오류} & \textbf{전체 오류}\\
+        \midrule
+        \airline & 100  & 13 (\textit{13\%}) & 34 (\textit{34\%}) & 47 (\textit{47\%})\\
+        \retail & 50  & 6 (\textit{12\%}) & 14 (\textit{28\%})& 20 (\textit{40\%}) \\
+        \telecom & 50  & 3 (\textit{6\%}) & 5 (\textit{10\%}) & 8 (\textit{16\%})\\
+        \bottomrule
+    \end{tabular}
+    \end{adjustbox}
+    \vspace{-0.5em}
+\end{table}
+
+

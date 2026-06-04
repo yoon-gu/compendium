@@ -1,0 +1,14 @@
+{
+  "slug": "tau2-bench-dual-control",
+  "arxiv_id": "2506.07982",
+  "source_url": "https://arxiv.org/e-print/2506.07982",
+  "pdf_url": "https://arxiv.org/pdf/2506.07982.pdf",
+  "fetched_at": "2026-06-04T22:23:26.242876+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/tau2-bench-dual-control-original.pdf",
+  "source_dir": "papers-tex/tau2-bench-dual-control",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "main.tex"
+  ]
+}

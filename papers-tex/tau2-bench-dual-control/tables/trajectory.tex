@@ -1,0 +1,143 @@
+\begin{quote}
+\noindent\textbf{어시스턴트:} \textit{안녕하세요! 오늘 무엇을 도와드릴까요?}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{안녕하세요! 지난 몇 시간 동안 휴대폰에 "No Service"가 표시되고 있습니다. 전화를 걸 수도 없고 모바일 데이터도 사용할 수 없습니다. 해결을 도와주실 수 있나요?}
+
+\vspace{0.5em}
+\noindent\textbf{어시스턴트:} \textit{"No Service" 문제를 도와드리려면 먼저 계정을 식별해야 합니다. 다음 중 하나를 알려주시겠습니까?}
+\begin{itemize}[leftmargin=*]
+\item 계정에 연결된 전화번호
+\item 고객 ID
+\item 성명과 생년월일
+\end{itemize}
+\textit{이 정보를 받으면 문제 해결을 시작할 수 있습니다.}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{네! 제 전화번호는 555-123-2002이고 이름은 John Smith입니다. 진행하는 데 더 필요한 것이 있으면 알려주세요.}
+
+\vspace{0.5em}
+\noindent\textbf{어시스턴트:} \textit{[시스템이 고객 정보를 검색함]}
+
+\vspace{0.5em}
+\noindent\textbf{도구:} \texttt{[Tool call: get\_customer\_by\_phone(phone\_number: "555-123-2002")]}
+
+\begin{verbatim}
+{
+    "customer_id": "C1001",
+    "full_name": "John Smith",
+    "date_of_birth": "1985-06-15",
+    "email": "john.smith@example.com",
+    "phone_number": "555-123-2002",
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "state": "CA",
+        "zip_code": "90210"
+    },
+    "account_status": "Active",
+    "payment_methods": [{
+        "method_type": "Credit Card",
+        "account_number_last_4": "1235",
+        "expiration_date": "12/2026"
+    }],
+    "line_ids": ["L1001", "L1002", "L1003"],
+    "bill_ids": ["B1001", "B1002", "B1003"],
+    "created_at": "2025-01-15 10:30:00",
+    "last_extension_date": null,
+    "goodwill_credit_used_this_year": 25.0
+}
+\end{verbatim}
+
+\vspace{0.5em}
+\noindent\textbf{어시스턴트:} \textit{정보를 제공해 주셔서 감사합니다. "No Service" 문제 해결을 시작하기 위해 휴대폰의 연결 상태를 확인해 주시겠습니까? 구체적으로 다음을 알려주세요.}
+\begin{itemize}[leftmargin=*]
+\item 현재 비행기 모드가 켜져 있나요, 꺼져 있나요?
+\item 신호 막대나 네트워크 이름이 표시되나요?
+\end{itemize}
+\textit{이 정보는 문제 해결을 위한 다음 단계를 정하는 데 도움이 됩니다.}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{[시스템이 네트워크 상태를 확인함]}
+
+\vspace{0.5em}
+\noindent\textbf{도구:} \texttt{[Tool call: get\_network\_status()]}
+
+\begin{verbatim}
+Airplane Mode: ON
+SIM Card Status: invalid
+Cellular Connection: no_service
+Cellular Signal: none
+Cellular Network Type: none
+Mobile Data Allowed: Yes
+Roaming: No
+Data Roaming Allowed: No
+Wi-Fi Radio: OFF
+Wi-Fi Connected: No
+\end{verbatim}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{비행기 모드가 현재 켜져 있고, 신호 막대나 네트워크 이름이 표시되지 않는 것 같습니다. 다음에는 무엇을 해야 하나요?}
+
+\vspace{0.5em}
+\noindent\textbf{어시스턴트:} \textit{휴대폰에서 비행기 모드를 꺼 주세요. 그런 다음 네트워크 연결이 복구되었는지 확인해 주세요(신호 막대나 통신사 이름이 나타나는지 확인).}
+
+\textit{이것으로 문제가 해결되는지, 아니면 여전히 "No Service"가 보이는지 알려주세요.}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{[시스템이 비행기 모드를 전환함]}
+
+\vspace{0.5em}
+\noindent\textbf{도구:} \texttt{[Tool call: toggle\_airplane\_mode()]}
+
+\begin{verbatim}
+Airplane Mode is now OFF.
+Status Bar: [No Signal] | [Battery 80%
+\end{verbatim}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{비행기 모드를 껐지만 휴대폰 상태 표시줄에는 여전히 "No Signal"이 표시됩니다. 다음에는 무엇을 시도해야 하나요?}
+
+\vspace{0.5em}
+\noindent\textbf{어시스턴트:} \textit{확인해 주셔서 감사합니다. 다음으로 휴대폰에서 SIM 카드 상태를 확인해 주세요. SIM 카드가 인식되는지, 없거나 잘못되었거나 잠겨 있는 것 같은 문제가 있는지 판단하는 데 도움이 됩니다.}
+
+\textit{SIM 상태를 확인하고 무엇이라고 표시되는지 알려주시겠습니까?}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{[시스템이 SIM 상태를 확인함]}
+
+\vspace{0.5em}
+\noindent\textbf{도구:} \texttt{[Tool call: get\_sim\_status()]}
+
+\textit{SIM 카드가 유효하지 않거나 인식되지 않습니다.}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{SIM 카드가 유효하지 않거나 휴대폰에서 인식되지 않는 것 같습니다. 이를 해결하려면 어떻게 해야 하나요?}
+
+\vspace{0.5em}
+\noindent\textbf{어시스턴트:} \textit{휴대폰에서 SIM 카드를 제거한 다음 단단히 다시 삽입해 보세요. 완료한 뒤 휴대폰이 이제 SIM 카드를 인식하는지, 네트워크 신호가 돌아오는지 확인해 주세요.}
+
+\textit{SIM 상태가 개선되는지, 아니면 문제가 지속되는지 알려주세요.}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{[시스템이 SIM 카드를 다시 삽입함]}
+
+\vspace{0.5em}
+\noindent\textbf{도구:} \texttt{[Tool call: reseat\_sim\_card()]}
+
+\begin{verbatim}
+SIM card re-seated successfully.
+Status Bar: [Signal 4] Excellent | 5G | [Data] Enabled | [Battery 80%
+\end{verbatim}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{SIM 카드를 다시 삽입했더니 이제 상태 표시줄에 5G 연결과 함께 신호 강도가 가득 표시됩니다. 문제가 해결된 것 같습니다! 감사합니다!}
+
+\vspace{0.5em}
+\noindent\textbf{어시스턴트:} \textit{SIM 카드를 다시 삽입해서 문제가 해결되었고 휴대폰에 이제 5G 연결과 가득 찬 신호 강도가 표시된다니 다행입니다.}
+
+\textit{추가 문제가 있거나 다른 질문이 있으면 언제든지 연락해 주세요. 좋은 하루 보내세요!}
+
+\vspace{0.5em}
+\noindent\textbf{사용자:} \textit{도와주셔서 정말 감사합니다! 이제 모든 것이 완벽하게 작동하는 것 같습니다. 멋진 하루 보내세요! [STOP]}
+\end{quote}
