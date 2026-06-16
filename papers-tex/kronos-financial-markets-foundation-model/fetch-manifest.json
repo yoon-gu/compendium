@@ -1,0 +1,14 @@
+{
+  "slug": "kronos-financial-markets-foundation-model",
+  "arxiv_id": "2508.02739",
+  "source_url": "https://arxiv.org/e-print/2508.02739",
+  "pdf_url": "https://arxiv.org/pdf/2508.02739.pdf",
+  "fetched_at": "2026-06-15T23:31:46.913250+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/kronos-financial-markets-foundation-model-original.pdf",
+  "source_dir": "papers-tex/kronos-financial-markets-foundation-model",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "main.tex"
+  ]
+}

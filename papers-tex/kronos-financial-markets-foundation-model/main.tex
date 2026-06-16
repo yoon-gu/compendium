@@ -1,0 +1,596 @@
+%File: anonymous-submission-latex-2026.tex
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+% --- Korean translation support (xelatex + kotex) ---
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{NanumMyeongjo}[AutoFakeSlant=0.167]
+\setsansfont{NanumGothic}[AutoFakeSlant=0.167]
+\setmainhangulfont{NanumMyeongjo}[AutoFakeSlant=0.167]
+\setsanshangulfont{NanumGothic}[AutoFakeSlant=0.167]
+\setmonohangulfont{NanumMyeongjo}[AutoFakeSlant=0.167]
+\setmonofont{Menlo}[AutoFakeSlant=0.167]
+\linespread{1.21}\selectfont
+\renewcommand{\figurename}{그림}
+\renewcommand{\tablename}{표}
+\setlength{\parindent}{1.2em}
+% --- end Korean support ---
+\usepackage[draft]{aaai2026}  % DO NOT CHANGE THIS
+\usepackage{times}  % DO NOT CHANGE THIS
+\usepackage{helvet}  % DO NOT CHANGE THIS
+\usepackage{courier}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+\setlength{\pdfpagewidth}{8.5in} % DO NOT CHANGE THIS
+\setlength{\pdfpageheight}{11in} % DO NOT CHANGE THIS
+%
+% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{makecell}
+\usepackage{siunitx}
+\usepackage{subcaption}
+\usepackage{cleveref}
+\usepackage{url}
+\usepackage{bm}
+
+% \captionsetup{position=bottom, labelfont=bf, singlelinecheck=false}
+
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \fancyfoot[C]{\thepage}
+% \renewcommand{\headrulewidth}{0pt}
+
+% These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
+\usepackage{newfloat}
+\usepackage{listings}
+\usepackage{amsmath}
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
+\lstset{%
+	basicstyle={\footnotesize\ttfamily},% footnotesize acceptable for monospace
+	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,% show line numbers, remove this entire line if you don't want the numbers.
+	aboveskip=0pt,belowskip=0pt,%
+	showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+%
+% Keep the \pdfinfo as shown here. There's no need
+% for you to add the /Title and /Author tags.
+% \pdfinfo is a pdfTeX primitive and is undefined under XeLaTeX.
+% \pdfinfo{
+% /TemplateVersion (2026.1)
+% }
+
+% DISALLOWED PACKAGES
+% \usepackage{authblk} -- This package is specifically forbidden
+% \usepackage{balance} -- This package is specifically forbidden
+% \usepackage{color (if used in text)
+% \usepackage{CJK} -- This package is specifically forbidden
+% \usepackage{float} -- This package is specifically forbidden
+% \usepackage{flushend} -- This package is specifically forbidden
+% \usepackage{fontenc} -- This package is specifically forbidden
+% \usepackage{fullpage} -- This package is specifically forbidden
+% \usepackage{geometry} -- This package is specifically forbidden
+% \usepackage{grffile} -- This package is specifically forbidden
+% \usepackage{hyperref}% -- This package is specifically forbidden
+% \usepackage{navigator} -- This package is specifically forbidden
+% (or any other package that embeds links such as navigator or hyperref)
+% \indentfirst} -- This package is specifically forbidden
+% \layout} -- This package is specifically forbidden
+% \multicol} -- This package is specifically forbidden
+% \nameref} -- This package is specifically forbidden
+% \usepackage{savetrees} -- This package is specifically forbidden
+% \usepackage{setspace} -- This package is specifically forbidden
+% \usepackage{stfloats} -- This package is specifically forbidden
+% \usepackage{tabu} -- This package is specifically forbidden
+% \usepackage{titlesec} -- This package is specifically forbidden
+% \usepackage{tocbibind} -- This package is specifically forbidden
+% \usepackage{ulem} -- This package is specifically forbidden
+% \usepackage{wrapfig} -- This package is specifically forbidden
+% DISALLOWED COMMANDS
+% \nocopyright -- Your paper will not be published if you use this command
+% \addtolength -- This command may not be used
+% \balance -- This command may not be used
+% \baselinestretch -- Your paper will not be published if you use this command
+% \clearpage -- No page breaks of any kind may be used for the final version of your paper
+% \columnsep -- This command may not be used
+% \newpage -- No page breaks of any kind may be used for the final version of your paper
+% \pagebreak -- No page breaks of any kind may be used for the final version of your paperr
+% \pagestyle -- This command may not be used
+% \tiny -- This is not an acceptable font size.
+% \vspace{- -- No negative value may be used in proximity of a caption, figure, table, section, subsection, subsubsection, or reference
+% \vskip{- -- No negative value may be used to alter spacing above or below a caption, figure, table, section, subsection, subsubsection, or reference
+
+\setcounter{secnumdepth}{1} %May be changed to 1 or 2 if section numbers are desired.
+
+% The file aaai2026.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+
+% Title
+
+% Your title must be in mixed case, not sentence case.
+% That means all verbs (including short verbs like be, is, using,and go),
+% nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
+% articles, conjunctions, and prepositions are lower case unless they
+% directly follow a colon or long dash
+
+\title{\includegraphics[height=0.6cm]{img/logo_paper.png}\hspace{0.3em}Kronos: 금융시장의 언어를 위한 파운데이션 모델}
+
+% \title{\includegraphics[height=0.6cm]{img/logo_paper.png}\hspace{0.3em}Kronos: An Foundation Model for Financial Time Series Forecasting and Generation}
+
+% \title{\includegraphics[height=0.6cm]{img/logo_paper.png}\hspace{0.3em}Kronos: Learning to Predict Financial Markets Like a Language Model}
+
+\author{
+  Yu Shi\textsuperscript{\rm 1,\dag},
+  Zongliang Fu\textsuperscript{\rm 2,\dag},
+  Shuo Chen\textsuperscript{\rm 1},
+  Bohan Zhao\textsuperscript{\rm 1},
+  Wei Xu\textsuperscript{\rm 1},
+  Changshui Zhang\textsuperscript{\rm 2},
+  Jian Li\textsuperscript{\rm 1}
+}
+\affiliations{
+  \textsuperscript{\rm 1}Institute for Interdisciplinary Information Sciences, \textsuperscript{\rm 2}Department of Automation\\
+  Tsinghua University\\
+  % Beijing, 100084, China \\
+  \{shi-y23, fzl22, zhaobh23\}@mails.tsinghua.edu.cn, ChenSh2003@outlook.com, weixu@tsinghua.edu.cn, zcs@mail.tsinghua.edu.cn, lapordge@gmail.com
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{AvgGray}{gray}{0.92}
+\definecolor{CntGray}{gray}{0.96}
+\newcommand{\best}[1]{\underline{\color{red}{#1}}}
+\newcommand{\second}[1]{\underline{\color{blue}{#1}}}
+\newcommand{\cnt}[1]{\multicolumn{1}{c}{#1}}
+\sisetup{
+  table-format=1.4,
+  table-number-alignment=center,
+  detect-weight=true
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\isChecklistMainFile}{}
+
+\renewcommand{\footnoterule}{\kern-3pt \hrule width 0.3\columnwidth \kern 2.6pt}
+
+\begin{document}
+
+\maketitle
+
+\let\thefootnote\relax
+\footnote{\textsuperscript{\dag}동등 기여}
+
+\begin{abstract}
+ \input{sections/Abstract}
+\end{abstract}
+
+\input{sections/Introduction}
+
+\input{sections/Preliminary}
+
+\input{sections/Methodology}
+
+\input{sections/Experiment}
+
+\input{sections/Conclusion}
+
+% \bibliography{aaai2026}
+
+\begin{thebibliography}{61}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Achiam et~al.(2023)Achiam, Adler, Agarwal, Ahmad, Akkaya, Aleman,
+  Almeida, Altenschmidt, Altman, Anadkat et~al.}]{achiam2023gpt}
+Achiam, J.; Adler, S.; Agarwal, S.; Ahmad, L.; Akkaya, I.; Aleman, F.~L.;
+  Almeida, D.; Altenschmidt, J.; Altman, S.; Anadkat, S.; et~al. 2023.
+\newblock Gpt-4 technical report.
+\newblock \emph{arXiv preprint arXiv:2303.08774}.
+
+\bibitem[{Ansari et~al.(2024)Ansari, Stella, Turkmen, Zhang, Mercado, Shen,
+  Shchur, Rangapuram, Arango, Kapoor et~al.}]{ansari2024chronos}
+Ansari, A.~F.; Stella, L.; Turkmen, C.; Zhang, X.; Mercado, P.; Shen, H.;
+  Shchur, O.; Rangapuram, S.~S.; Arango, S.~P.; Kapoor, S.; et~al. 2024.
+\newblock Chronos: Learning the language of time series.
+\newblock \emph{arXiv preprint arXiv:2403.07815}.
+
+\bibitem[{Baidya and Lee(2024)}]{baidya2024addressing}
+Baidya, R.; and Lee, S.-W. 2024.
+\newblock Addressing the Non-Stationarity and Complexity of Time Series Data
+  for Long-Term Forecasts.
+\newblock \emph{Applied Sciences}, 14(11): 4436.
+
+\bibitem[{Baker and Wurgler(2006)}]{baker2006investor}
+Baker, M.; and Wurgler, J. 2006.
+\newblock Investor sentiment and the cross-section of stock returns.
+\newblock \emph{The journal of Finance}, 61(4): 1645--1680.
+
+\bibitem[{Bollerslev(1986)}]{bollerslev1986generalized}
+Bollerslev, T. 1986.
+\newblock Generalized autoregressive conditional heteroskedasticity.
+\newblock \emph{Journal of econometrics}, 31(3): 307--327.
+
+\bibitem[{Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan, Dhariwal,
+  Neelakantan, Shyam, Sastry, Askell et~al.}]{brown2020language}
+Brown, T.; Mann, B.; Ryder, N.; Subbiah, M.; Kaplan, J.~D.; Dhariwal, P.;
+  Neelakantan, A.; Shyam, P.; Sastry, G.; Askell, A.; et~al. 2020.
+\newblock Language models are few-shot learners.
+\newblock \emph{Advances in neural information processing systems}, 33:
+  1877--1901.
+
+\bibitem[{Brownlees and Gallo(2006)}]{brownlees2006financial}
+Brownlees, C.~T.; and Gallo, G.~M. 2006.
+\newblock Financial econometric analysis at ultra-high frequency: Data handling
+  concerns.
+\newblock \emph{Computational statistics \& data analysis}, 51(4): 2232--2245.
+
+\bibitem[{Da, Engelberg, and Gao(2011)}]{da2011search}
+Da, Z.; Engelberg, J.; and Gao, P. 2011.
+\newblock In search of attention.
+\newblock \emph{The journal of finance}, 66(5): 1461--1499.
+
+\bibitem[{Das et~al.(2024)Das, Kong, Sen, and Zhou}]{das2024decoder}
+Das, A.; Kong, W.; Sen, R.; and Zhou, Y. 2024.
+\newblock A decoder-only foundation model for time-series forecasting.
+\newblock In \emph{Forty-first International Conference on Machine Learning}.
+
+\bibitem[{Desai et~al.(2021)Desai, Freeman, Wang, and
+  Beaver}]{desai2021timevae}
+Desai, A.; Freeman, C.; Wang, Z.; and Beaver, I. 2021.
+\newblock Timevae: A variational auto-encoder for multivariate time series
+  generation.
+\newblock \emph{arXiv preprint arXiv:2111.08095}.
+
+\bibitem[{Ding, Mittal, and Gopal(2025)}]{ding2025delphyne}
+Ding, X.; Mittal, A.; and Gopal, A. 2025.
+\newblock DELPHYNE: A Pre-Trained Model for General and Financial Time Series.
+\newblock \emph{arXiv preprint arXiv:2506.06288}.
+
+\bibitem[{Engle(1982)}]{engle1982autoregressive}
+Engle, R.~F. 1982.
+\newblock Autoregressive conditional heteroscedasticity with estimates of the
+  variance of United Kingdom inflation.
+\newblock \emph{Econometrica: Journal of the econometric society}, 987--1007.
+
+\bibitem[{Flannery and Protopapadakis(2002)}]{flannery2002macroeconomic}
+Flannery, M.~J.; and Protopapadakis, A.~A. 2002.
+\newblock Macroeconomic factors do influence aggregate stock returns.
+\newblock \emph{The review of financial studies}, 15(3): 751--782.
+
+\bibitem[{Gao et~al.(2024)Gao, Koker, Queen, Hartvigsen, Tsiligkaridis, and
+  Zitnik}]{gao2024units}
+Gao, S.; Koker, T.; Queen, O.; Hartvigsen, T.; Tsiligkaridis, T.; and Zitnik,
+  M. 2024.
+\newblock Units: Building a unified time series model.
+\newblock \emph{arXiv e-prints}, arXiv--2403.
+
+\bibitem[{Garza, Challu, and Mergenthaler-Canseco(2023)}]{garza2023timegpt}
+Garza, A.; Challu, C.; and Mergenthaler-Canseco, M. 2023.
+\newblock TimeGPT-1.
+\newblock \emph{arXiv preprint arXiv:2310.03589}.
+
+\bibitem[{Goswami et~al.(2024)Goswami, Szafer, Choudhry, Cai, Li, and
+  Dubrawski}]{goswami2024moment}
+Goswami, M.; Szafer, K.; Choudhry, A.; Cai, Y.; Li, S.; and Dubrawski, A. 2024.
+\newblock Moment: A family of open time-series foundation models.
+\newblock \emph{arXiv preprint arXiv:2402.03885}.
+
+\bibitem[{Holtzman et~al.(2019)Holtzman, Buys, Du, Forbes, and
+  Choi}]{holtzman2019curious}
+Holtzman, A.; Buys, J.; Du, L.; Forbes, M.; and Choi, Y. 2019.
+\newblock The curious case of neural text degeneration.
+\newblock \emph{arXiv preprint arXiv:1904.09751}.
+
+\bibitem[{Kaplan et~al.(2020)Kaplan, McCandlish, Henighan, Brown, Chess, Child,
+  Gray, Radford, Wu, and Amodei}]{kaplan2020scaling}
+Kaplan, J.; McCandlish, S.; Henighan, T.; Brown, T.~B.; Chess, B.; Child, R.;
+  Gray, S.; Radford, A.; Wu, J.; and Amodei, D. 2020.
+\newblock Scaling laws for neural language models.
+\newblock \emph{arXiv preprint arXiv:2001.08361}.
+
+\bibitem[{Kim and Verrecchia(1991)}]{kim1991trading}
+Kim, O.; and Verrecchia, R.~E. 1991.
+\newblock Trading volume and price reactions to public announcements.
+\newblock \emph{Journal of accounting research}, 29(2): 302--321.
+
+\bibitem[{Kirillov et~al.(2023)Kirillov, Mintun, Ravi, Mao, Rolland, Gustafson,
+  Xiao, Whitehead, Berg, Lo et~al.}]{kirillov2023segment}
+Kirillov, A.; Mintun, E.; Ravi, N.; Mao, H.; Rolland, C.; Gustafson, L.; Xiao,
+  T.; Whitehead, S.; Berg, A.~C.; Lo, W.-Y.; et~al. 2023.
+\newblock Segment anything.
+\newblock In \emph{Proceedings of the IEEE/CVF international conference on
+  computer vision}, 4015--4026.
+
+\bibitem[{Kohli and Kohers(1992)}]{kohli1992week}
+Kohli, R.~K.; and Kohers, T. 1992.
+\newblock The week-of-the-month effect in stock returns: The evidence from the
+  S\&P composite index.
+\newblock \emph{Journal of economics and finance}, 16(2): 129--137.
+
+\bibitem[{Li et~al.(2024)Li, Liu, Liu, Fang, Wang, Xu, and Bian}]{li2024mars}
+Li, J.; Liu, Y.; Liu, W.; Fang, S.; Wang, L.; Xu, C.; and Bian, J. 2024.
+\newblock MarS: a Financial Market Simulation Engine Powered by Generative
+  Foundation Model.
+\newblock \emph{arXiv preprint arXiv:2409.07486}.
+
+\bibitem[{Liu et~al.(2023)Liu, Hu, Zhang, Wu, Wang, Ma, and
+  Long}]{liuitransformer}
+Liu, Y.; Hu, T.; Zhang, H.; Wu, H.; Wang, S.; Ma, L.; and Long, M. 2023.
+\newblock itransformer: Inverted transformers are effective for time series
+  forecasting.
+\newblock \emph{arXiv preprint arXiv:2310.06625}.
+
+\bibitem[{Liu et~al.(2025)Liu, Qin, Shi, Chen, Yang, Huang, Wang, and
+  Long}]{liu2025sundial}
+Liu, Y.; Qin, G.; Shi, Z.; Chen, Z.; Yang, C.; Huang, X.; Wang, J.; and Long,
+  M. 2025.
+\newblock Sundial: A Family of Highly Capable Time Series Foundation Models.
+\newblock \emph{arXiv preprint arXiv:2502.00816}.
+
+\bibitem[{Liu et~al.(2022)Liu, Wu, Wang, and Long}]{liu2022non}
+Liu, Y.; Wu, H.; Wang, J.; and Long, M. 2022.
+\newblock Non-stationary transformers: Exploring the stationarity in time
+  series forecasting.
+\newblock \emph{Advances in neural information processing systems}, 35:
+  9881--9893.
+
+\bibitem[{Liu et~al.(2024)Liu, Zhang, Li, Huang, Wang, and Long}]{liu2024timer}
+Liu, Y.; Zhang, H.; Li, C.; Huang, X.; Wang, J.; and Long, M. 2024.
+\newblock Timer: Generative pre-trained transformers are large time series
+  models.
+\newblock \emph{arXiv preprint arXiv:2402.02368}.
+
+\bibitem[{Loshchilov and Hutter(2017)}]{loshchilov2017decoupled}
+Loshchilov, I.; and Hutter, F. 2017.
+\newblock Decoupled weight decay regularization.
+\newblock \emph{arXiv preprint arXiv:1711.05101}.
+
+\bibitem[{Mandelbrot et~al.(1963)}]{mandelbrot1963variation}
+Mandelbrot, B.; et~al. 1963.
+\newblock The variation of certain speculative prices.
+\newblock \emph{Journal of business}, 36(4): 394.
+
+\bibitem[{McKibbin, Noland, and Shuetrim(2025)}]{mckibbin2025global}
+McKibbin, W.; Noland, M.; and Shuetrim, G. 2025.
+\newblock The global economic effects of Trump's 2025 tariffs.
+\newblock Technical report, Peterson Institute for International Economics.
+
+\bibitem[{Nie et~al.(2022)Nie, Nguyen, Sinthong, and Kalagnanam}]{nie2022time}
+Nie, Y.; Nguyen, N.~H.; Sinthong, P.; and Kalagnanam, J. 2022.
+\newblock A time series is worth 64 words: Long-term forecasting with
+  transformers.
+\newblock \emph{arXiv preprint arXiv:2211.14730}.
+
+\bibitem[{Nison(2001)}]{nison2001japanese}
+Nison, S. 2001.
+\newblock \emph{Japanese candlestick charting techniques: a contemporary guide
+  to the ancient investment techniques of the Far East}.
+\newblock Penguin.
+
+\bibitem[{Ozenbas et~al.(2008)}]{ozenbas2008intra}
+Ozenbas, D.; et~al. 2008.
+\newblock Intra-day trading volume patterns of equity markets: A study of US
+  and European stock markets.
+\newblock \emph{International Business \& Economics Research Journal (IBER)},
+  7(8).
+
+\bibitem[{Podobnik et~al.(2009)Podobnik, Horvatic, Petersen, and
+  Stanley}]{podobnik2009cross}
+Podobnik, B.; Horvatic, D.; Petersen, A.~M.; and Stanley, H.~E. 2009.
+\newblock Cross-correlations between volume change and price change.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 106(52):
+  22079--22084.
+
+\bibitem[{Rabanser et~al.(2020)Rabanser, Januschowski, Flunkert, Salinas, and
+  Gasthaus}]{rabanser2020effectiveness}
+Rabanser, S.; Januschowski, T.; Flunkert, V.; Salinas, D.; and Gasthaus, J.
+  2020.
+\newblock The effectiveness of discretization in forecasting: An empirical
+  study on neural time series models.
+\newblock \emph{arXiv preprint arXiv:2005.10111}.
+
+\bibitem[{Radford et~al.(2021)Radford, Kim, Hallacy, Ramesh, Goh, Agarwal,
+  Sastry, Askell, Mishkin, Clark et~al.}]{radford2021learning}
+Radford, A.; Kim, J.~W.; Hallacy, C.; Ramesh, A.; Goh, G.; Agarwal, S.; Sastry,
+  G.; Askell, A.; Mishkin, P.; Clark, J.; et~al. 2021.
+\newblock Learning transferable visual models from natural language
+  supervision.
+\newblock In \emph{International conference on machine learning}, 8748--8763.
+  PmLR.
+
+\bibitem[{Rasul et~al.(2023)Rasul, Ashok, Williams, Khorasani, Adamopoulos,
+  Bhagwatkar, Bilo{\v{s}}, Ghonia, Hassen, Schneider et~al.}]{rasul2023lag}
+Rasul, K.; Ashok, A.; Williams, A.~R.; Khorasani, A.; Adamopoulos, G.;
+  Bhagwatkar, R.; Bilo{\v{s}}, M.; Ghonia, H.; Hassen, N.; Schneider, A.;
+  et~al. 2023.
+\newblock Lag-llama: Towards foundation models for time series forecasting.
+\newblock In \emph{R0-FoMo: Robustness of Few-shot and Zero-shot Learning in
+  Large Foundation Models}.
+
+\bibitem[{Shi et~al.(2025)Shi, Luo, Ge, Yang, Shan, and
+  Wang}]{shi2025scalableimagetokenizationindex}
+Shi, F.; Luo, Z.; Ge, Y.; Yang, Y.; Shan, Y.; and Wang, L. 2025.
+\newblock Scalable Image Tokenization with Index Backpropagation Quantization.
+\newblock arXiv:2412.02692.
+
+\bibitem[{Su et~al.(2024)Su, Ahmed, Lu, Pan, Bo, and Liu}]{su2024roformer}
+Su, J.; Ahmed, M.; Lu, Y.; Pan, S.; Bo, W.; and Liu, Y. 2024.
+\newblock Roformer: Enhanced transformer with rotary position embedding.
+\newblock \emph{Neurocomputing}, 568: 127063.
+
+\bibitem[{Talukder, Yue, and Gkioxari(2024)}]{talukder2024totem}
+Talukder, S.; Yue, Y.; and Gkioxari, G. 2024.
+\newblock Totem: Tokenized time series embeddings for general time series
+  analysis.
+\newblock \emph{arXiv preprint arXiv:2402.16412}.
+
+\bibitem[{Van Den~Oord, Vinyals et~al.(2017)}]{van2017neural}
+Van Den~Oord, A.; Vinyals, O.; et~al. 2017.
+\newblock Neural discrete representation learning.
+\newblock \emph{Advances in neural information processing systems}, 30.
+
+\bibitem[{Wang et~al.(2024{\natexlab{a}})Wang, Wu, Shi, Hu, Luo, Ma, Zhang, and
+  Zhou}]{wang2024timemixer}
+Wang, S.; Wu, H.; Shi, X.; Hu, T.; Luo, H.; Ma, L.; Zhang, J.~Y.; and Zhou, J.
+  2024{\natexlab{a}}.
+\newblock Timemixer: Decomposable multiscale mixing for time series
+  forecasting.
+\newblock \emph{arXiv preprint arXiv:2405.14616}.
+
+\bibitem[{Wang et~al.(2025)Wang, Lin, Teng, Zhu, Ren, Feng, and
+  Liu}]{wang2025bridging}
+Wang, Y.; Lin, Z.; Teng, Y.; Zhu, Y.; Ren, S.; Feng, J.; and Liu, X. 2025.
+\newblock Bridging continuous and discrete tokens for autoregressive visual
+  generation.
+\newblock \emph{arXiv preprint arXiv:2503.16430}.
+
+\bibitem[{Wang et~al.(2024{\natexlab{b}})Wang, Wu, Dong, Liu, Long, and
+  Wang}]{wang2024deep}
+Wang, Y.; Wu, H.; Dong, J.; Liu, Y.; Long, M.; and Wang, J. 2024{\natexlab{b}}.
+\newblock Deep time series models: A comprehensive survey and benchmark.
+\newblock \emph{arXiv preprint arXiv:2407.13278}.
+
+\bibitem[{Wang et~al.(2024{\natexlab{c}})Wang, Wu, Dong, Qin, Zhang, Liu, Qiu,
+  Wang, and Long}]{wang2024timexer}
+Wang, Y.; Wu, H.; Dong, J.; Qin, G.; Zhang, H.; Liu, Y.; Qiu, Y.; Wang, J.; and
+  Long, M. 2024{\natexlab{c}}.
+\newblock Timexer: Empowering transformers for time series forecasting with
+  exogenous variables.
+\newblock \emph{arXiv preprint arXiv:2402.19072}.
+
+\bibitem[{Wheeler and Varner(2024)}]{wheeler2024marketgpt}
+Wheeler, A.; and Varner, J.~D. 2024.
+\newblock MarketGPT: Developing a Pre-trained transformer (GPT) for Modeling
+  Financial Time Series.
+\newblock \emph{arXiv preprint arXiv:2411.16585}.
+
+\bibitem[{Woo et~al.(2024)Woo, Liu, Kumar, Xiong, Savarese, and
+  Sahoo}]{woo2024unified}
+Woo, G.; Liu, C.; Kumar, A.; Xiong, C.; Savarese, S.; and Sahoo, D. 2024.
+\newblock Unified Training of Universal Time Series Forecasting Transformers.
+\newblock In \emph{International Conference on Machine Learning}, 53140--53164.
+  PMLR.
+
+\bibitem[{Wu et~al.(2022)Wu, Hu, Liu, Zhou, Wang, and Long}]{wu2022timesnet}
+Wu, H.; Hu, T.; Liu, Y.; Zhou, H.; Wang, J.; and Long, M. 2022.
+\newblock Timesnet: Temporal 2d-variation modeling for general time series
+  analysis.
+\newblock \emph{arXiv preprint arXiv:2210.02186}.
+
+\bibitem[{Xiaoming et~al.(2025)Xiaoming, Shiyu, Yuqi, Dianqi, Zhou, Qingsong,
+  and Jin}]{xiaoming2025time}
+Xiaoming, S.; Shiyu, W.; Yuqi, N.; Dianqi, L.; Zhou, Y.; Qingsong, W.; and Jin,
+  M. 2025.
+\newblock Time-MoE: Billion-Scale Time Series Foundation Models with Mixture of
+  Experts.
+\newblock In \emph{ICLR 2025: The Thirteenth International Conference on
+  Learning Representations}. International Conference on Learning
+  Representations.
+
+\bibitem[{Xiong et~al.(2020)Xiong, Yang, He, Zheng, Zheng, Xing, Zhang, Lan,
+  Wang, and Liu}]{xiong2020layer}
+Xiong, R.; Yang, Y.; He, D.; Zheng, K.; Zheng, S.; Xing, C.; Zhang, H.; Lan,
+  Y.; Wang, L.; and Liu, T. 2020.
+\newblock On layer normalization in the transformer architecture.
+\newblock In \emph{International conference on machine learning}, 10524--10533.
+  PMLR.
+
+\bibitem[{Xu et~al.(2024)Xu, Liu, Hao, Li, Meng, and Zhang}]{xu2024plutus}
+Xu, Y.; Liu, A.; Hao, J.; Li, Z.; Meng, S.; and Zhang, G. 2024.
+\newblock PLUTUS: A Well Pre-trained Large Unified Transformer can Unveil
+  Financial Time Series Regularities.
+\newblock \emph{arXiv preprint arXiv:2408.10111}.
+
+\bibitem[{Yang et~al.(2020)Yang, Liu, Zhou, Bian, and Liu}]{yang2020qlib}
+Yang, X.; Liu, W.; Zhou, D.; Bian, J.; and Liu, T.-Y. 2020.
+\newblock Qlib: An ai-oriented quantitative investment platform.
+\newblock \emph{arXiv preprint arXiv:2009.11189}.
+
+\bibitem[{Yao et~al.(2024)Yao, Yang, Jiang, Liang, Jin, and
+  Pan}]{yao2024towards}
+Yao, Q.; Yang, C.-H.~H.; Jiang, R.; Liang, Y.; Jin, M.; and Pan, S. 2024.
+\newblock Towards Neural Scaling Laws for Time Series Foundation Models.
+\newblock \emph{arXiv preprint arXiv:2410.12360}.
+
+\bibitem[{Yoon, Jarrett, and Van~der Schaar(2019)}]{yoon2019time}
+Yoon, J.; Jarrett, D.; and Van~der Schaar, M. 2019.
+\newblock Time-series generative adversarial networks.
+\newblock \emph{Advances in neural information processing systems}, 32.
+
+\bibitem[{Yu et~al.(2023)Yu, Lezama, Gundavarapu, Versari, Sohn, Minnen, Cheng,
+  Birodkar, Gupta, Gu et~al.}]{yu2023language}
+Yu, L.; Lezama, J.; Gundavarapu, N.~B.; Versari, L.; Sohn, K.; Minnen, D.;
+  Cheng, Y.; Birodkar, V.; Gupta, A.; Gu, X.; et~al. 2023.
+\newblock Language Model Beats Diffusion--Tokenizer is Key to Visual
+  Generation.
+\newblock \emph{arXiv preprint arXiv:2310.05737}.
+
+\bibitem[{Yuan and Qiao(2024)}]{yuan2024diffusion}
+Yuan, X.; and Qiao, Y. 2024.
+\newblock Diffusion-ts: Interpretable diffusion for general time series
+  generation.
+\newblock \emph{arXiv preprint arXiv:2403.01742}.
+
+\bibitem[{Zeng et~al.(2023)Zeng, Chen, Zhang, and Xu}]{zeng2023transformers}
+Zeng, A.; Chen, M.; Zhang, L.; and Xu, Q. 2023.
+\newblock Are transformers effective for time series forecasting?
+\newblock In \emph{Proceedings of the AAAI conference on artificial
+  intelligence}, 9, 11121--11128.
+
+\bibitem[{Zhang and Sennrich(2019)}]{zhang2019root}
+Zhang, B.; and Sennrich, R. 2019.
+\newblock Root mean square layer normalization.
+\newblock \emph{Advances in Neural Information Processing Systems}, 32.
+
+\bibitem[{Zhang and Hua(2025)}]{zhang2025major}
+Zhang, L.; and Hua, L. 2025.
+\newblock Major Issues in High-Frequency Financial Data Analysis: A Survey of
+  Solutions.
+\newblock \emph{Mathematics}, 13(3): 347.
+
+\bibitem[{Zhao, Xiong, and Kr{\"a}henb{\"u}hl(2024)}]{zhao2024image}
+Zhao, Y.; Xiong, Y.; and Kr{\"a}henb{\"u}hl, P. 2024.
+\newblock Image and video tokenization with binary spherical quantization.
+\newblock \emph{arXiv preprint arXiv:2406.07548}.
+
+\bibitem[{Zhou et~al.(2022)Zhou, Ma, Wen, Wang, Sun, and
+  Jin}]{zhou2022fedformer}
+Zhou, T.; Ma, Z.; Wen, Q.; Wang, X.; Sun, L.; and Jin, R. 2022.
+\newblock Fedformer: Frequency enhanced decomposed transformer for long-term
+  series forecasting.
+\newblock In \emph{International conference on machine learning}, 27268--27286.
+  PMLR.
+
+\bibitem[{Zhu et~al.(2024)Zhu, Li, Xin, and Xu}]{zhu2024addressing}
+Zhu, Y.; Li, B.; Xin, Y.; and Xu, L. 2024.
+\newblock Addressing representation collapse in vector quantized models with
+  one linear layer.
+\newblock \emph{arXiv preprint arXiv:2411.02038}.
+
+\end{thebibliography}
+
+\clearpage
+\appendix
+
+\setcounter{secnumdepth}{1}
+
+\input{sections/Appendix}
+
+\end{document}
