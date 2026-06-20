@@ -1,0 +1,224 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{WXWL21}
+
+\bibitem[ADSS21]{awasthi2021benefits}
+Pranjal Awasthi, Abhimanyu Das, Rajat Sen, and Ananda~Theertha Suresh.
+\newblock On the benefits of maximum likelihood estimation for regression and forecasting.
+\newblock {\em arXiv preprint arXiv:2106.10370}, 2021.
+
+\bibitem[BBO17]{borovykh2017conditional}
+Anastasia Borovykh, Sander Bohte, and Cornelis~W Oosterlee.
+\newblock Conditional time series forecasting with convolutional neural networks.
+\newblock {\em arXiv preprint arXiv:1703.04691}, 2017.
+
+\bibitem[BJ68]{box1968some}
+George~EP Box and Gwilym~M Jenkins.
+\newblock Some recent advances in forecasting and control.
+\newblock {\em Journal of the Royal Statistical Society. Series C (Applied Statistics)}, 17(2):91--109, 1968.
+
+\bibitem[CLY{\etalchar{+}}23]{chen2023tsmixer}
+Si-An Chen, Chun-Liang Li, Nate Yoder, Sercan~O Arik, and Tomas Pfister.
+\newblock Tsmixer: An all-mlp architecture for time series forecasting.
+\newblock {\em arXiv preprint arXiv:2303.06053}, 2023.
+
+\bibitem[COO{\etalchar{+}}23]{challu2022nhits}
+Cristian Challu, Kin~G. Olivares, Boris~N. Oreshkin, Federico Garza, Max Mergenthaler, and Artur Dubrawski.
+\newblock {NHITS}: {N}eural {H}ierarchical {I}nterpolation for {T}ime {S}eries forecasting.
+\newblock In {\em The Association for the Advancement of Artificial Intelligence Conference 2023 (AAAI 2023)}, 2023.
+
+\bibitem[CPC23]{chang2023llm4ts}
+Ching Chang, Wen-Chih Peng, and Tien-Fu Chen.
+\newblock Llm4ts: Two-stage fine-tuning for time-series forecasting with pre-trained llms.
+\newblock {\em arXiv preprint arXiv:2308.08469}, 2023.
+
+\bibitem[DKL{\etalchar{+}}23]{das2023longterm}
+Abhimanyu Das, Weihao Kong, Andrew Leach, Shaan~K Mathur, Rajat Sen, and Rose Yu.
+\newblock Long-term forecasting with {TiDE}: Time-series dense encoder.
+\newblock {\em Transactions on Machine Learning Research}, 2023.
+
+\bibitem[FW86]{fleming1986not}
+Philip~J Fleming and John~J Wallace.
+\newblock How not to lie with statistics: the correct way to summarize benchmark results.
+\newblock {\em Communications of the ACM}, 29(3):218--221, 1986.
+
+\bibitem[GBW{\etalchar{+}}21]{godahewa2021monash}
+Rakshitha Godahewa, Christoph Bergmeir, Geoffrey~I Webb, Rob~J Hyndman, and Pablo Montero-Manso.
+\newblock Monash time series forecasting archive.
+\newblock {\em arXiv preprint arXiv:2105.06643}, 2021.
+
+\bibitem[GD23]{gu2023mamba}
+Albert Gu and Tri Dao.
+\newblock Mamba: Linear-time sequence modeling with selective state spaces.
+\newblock {\em arXiv preprint arXiv:2312.00752}, 2023.
+
+\bibitem[GFQW23]{gruver2023large}
+Nate Gruver, Marc Finzi, Shikai Qiu, and Andrew~Gordon Wilson.
+\newblock Large language models are zero-shot time series forecasters.
+\newblock {\em arXiv preprint arXiv:2310.07820}, 2023.
+
+\bibitem[GMC23]{garza2023timegpt}
+Azul Garza and Max Mergenthaler-Canseco.
+\newblock Timegpt-1.
+\newblock {\em arXiv preprint arXiv:2310.03589}, 2023.
+
+\bibitem[HBM{\etalchar{+}}22]{hoffmann2022training}
+Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, Elena Buchatskaya, Trevor Cai, Eliza Rutherford, Diego de~Las Casas, Lisa~Anne Hendricks, Johannes Welbl, Aidan Clark, et~al.
+\newblock Training compute-optimal large language models.
+\newblock {\em arXiv preprint arXiv:2203.15556}, 2022.
+
+\bibitem[HLP{\etalchar{+}}22]{herzen2022darts}
+Julien Herzen, Francesco L{\"a}ssig, Samuele~Giuliano Piazzetta, Thomas Neuer, L{\'e}o Tafti, Guillaume Raille, Tomas Van~Pottelbergh, Marek Pasieka, Andrzej Skrodzki, Nicolas Huguenin, et~al.
+\newblock Darts: User-friendly modern machine learning for time series.
+\newblock {\em The Journal of Machine Learning Research}, 23(1):5442--5447, 2022.
+
+\bibitem[KKN{\etalchar{+}}21]{pmlr-v133-kopp21a}
+Michael Kopp, David Kreil, Moritz Neun, David Jonietz, Henry Martin, Pedro Herruzo, Aleksandra Gruca, Ali Soleymani, Fanyou Wu, Yang Liu, Jingwei Xu, Jianjin Zhang, Jay Santokhi, Alabi Bojesomo, Hasan~Al Marzouqi, Panos Liatsis, Pak~Hay Kwok, Qi~Qi, and Sepp Hochreiter.
+\newblock Traffic4cast at neurips 2020 - yet more on the unreasonable effectiveness of gridded geo-spatial processes.
+\newblock In Hugo~Jair Escalante and Katja Hofmann, editors, {\em Proceedings of the NeurIPS 2020 Competition and Demonstration Track}, volume 133 of {\em Proceedings of Machine Learning Research}, pages 325--343. PMLR, 06--12 Dec 2021.
+
+\bibitem[KKT{\etalchar{+}}21]{kim2021reversible}
+Taesung Kim, Jinhee Kim, Yunwon Tae, Cheonbok Park, Jang-Ho Choi, and Jaegul Choo.
+\newblock Reversible instance normalization for accurate time-series forecasting against distribution shift.
+\newblock In {\em International Conference on Learning Representations}, 2021.
+
+\bibitem[KMH{\etalchar{+}}20]{kaplan2020scaling}
+Jared Kaplan, Sam McCandlish, Tom Henighan, Tom~B Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei.
+\newblock Scaling laws for neural language models.
+\newblock {\em arXiv preprint arXiv:2001.08361}, 2020.
+
+\bibitem[LSP{\etalchar{+}}18]{liu2018generating}
+Peter~J Liu, Mohammad Saleh, Etienne Pot, Ben Goodrich, Ryan Sepassi, Lukasz Kaiser, and Noam Shazeer.
+\newblock Generating wikipedia by summarizing long sequences.
+\newblock {\em arXiv preprint arXiv:1801.10198}, 2018.
+
+\bibitem[LVRH16]{lea2016temporal}
+Colin Lea, Rene Vidal, Austin Reiter, and Gregory~D Hager.
+\newblock Temporal convolutional networks: A unified approach to action segmentation.
+\newblock In {\em Computer Vision--ECCV 2016 Workshops: Amsterdam, The Netherlands, October 8-10 and 15-16, 2016, Proceedings, Part III 14}, pages 47--54. Springer, 2016.
+
+\bibitem[McK84]{mckenzie1984general}
+ED~McKenzie.
+\newblock General exponential smoothing and the equivalent arma process.
+\newblock {\em Journal of Forecasting}, 3(3):333--344, 1984.
+
+\bibitem[MLZ{\etalchar{+}}23]{ma2023survey}
+Qianli Ma, Zhen Liu, Zhenjing Zheng, Ziyang Huang, Siying Zhu, Zhongzhong Yu, and James~T Kwok.
+\newblock A survey on time-series pre-trained models.
+\newblock {\em arXiv preprint arXiv:2305.10716}, 2023.
+
+\bibitem[MSA22]{makridakis2022m5}
+Spyros Makridakis, Evangelos Spiliotis, and Vassilios Assimakopoulos.
+\newblock M5 accuracy competition: Results, findings, and conclusions.
+\newblock {\em International Journal of Forecasting}, 38(4):1346--1364, 2022.
+
+\bibitem[MWZ{\etalchar{+}}19]{mitchell2019model}
+Margaret Mitchell, Simone Wu, Andrew Zaldivar, Parker Barnes, Lucy Vasserman, Ben Hutchinson, Elena Spitzer, Inioluwa~Deborah Raji, and Timnit Gebru.
+\newblock Model cards for model reporting.
+\newblock In {\em Proceedings of the conference on fairness, accountability, and transparency}, pages 220--229, 2019.
+
+\bibitem[NNSK22]{nie2022time}
+Yuqi Nie, Nam~H Nguyen, Phanwadee Sinthong, and Jayant Kalagnanam.
+\newblock A time series is worth 64 words: Long-term forecasting with transformers.
+\newblock {\em International conference on learning representations}, 2022.
+
+\bibitem[OCCB19]{oreshkin2019n}
+Boris~N Oreshkin, Dmitri Carpov, Nicolas Chapados, and Yoshua Bengio.
+\newblock N-beats: Neural basis expansion analysis for interpretable time series forecasting.
+\newblock In {\em International Conference on Learning Representations}, 2019.
+
+\bibitem[OCCB21]{oreshkin2021meta}
+Boris~N Oreshkin, Dmitri Carpov, Nicolas Chapados, and Yoshua Bengio.
+\newblock Meta-learning framework with applications to zero-shot time-series forecasting.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial Intelligence}, volume~35, pages 9242--9250, 2021.
+
+\bibitem[ODZ{\etalchar{+}}16]{oord2016wavenet}
+Aaron van~den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew Senior, and Koray Kavukcuoglu.
+\newblock Wavenet: A generative model for raw audio.
+\newblock {\em arXiv preprint arXiv:1609.03499}, 2016.
+
+\bibitem[PGV{\etalchar{+}}18]{prokhorenkova2018catboost}
+Liudmila Prokhorenkova, Gleb Gusev, Aleksandr Vorobev, Anna~Veronika Dorogush, and Andrey Gulin.
+\newblock Catboost: unbiased boosting with categorical features.
+\newblock {\em Advances in neural information processing systems}, 31, 2018.
+
+\bibitem[RWC{\etalchar{+}}19]{radford2019language}
+Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever, et~al.
+\newblock Language models are unsupervised multitask learners.
+\newblock {\em OpenAI blog}, 1(8):9, 2019.
+
+\bibitem[SFGJ20]{salinas2020deepar}
+David Salinas, Valentin Flunkert, Jan Gasthaus, and Tim Januschowski.
+\newblock Deepar: Probabilistic forecasting with autoregressive recurrent networks.
+\newblock {\em International Journal of Forecasting}, 36(3):1181--1191, 2020.
+
+\bibitem[SYD19]{sen2019think}
+Rajat Sen, Hsiang-Fu Yu, and Inderjit~S Dhillon.
+\newblock Think globally, act locally: A deep neural network approach to high-dimensional time series forecasting.
+\newblock {\em Advances in neural information processing systems}, 32, 2019.
+
+\bibitem[TL18]{taylor2018forecasting}
+Sean~J Taylor and Benjamin Letham.
+\newblock Forecasting at scale.
+\newblock {\em The American Statistician}, 72(1):37--45, 2018.
+
+\bibitem[VSP{\etalchar{+}}17]{vaswani2017attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan~N Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock {\em Advances in neural information processing systems}, 30, 2017.
+
+\bibitem[VW23]{verdinelli2023feature}
+Isabella Verdinelli and Larry Wasserman.
+\newblock Feature importance: A closer look at shapley values and loco.
+\newblock {\em arXiv preprint arXiv:2303.05981}, 2023.
+
+\bibitem[WA13]{wilson2013gaussian}
+Andrew Wilson and Ryan Adams.
+\newblock Gaussian process kernels for pattern discovery and extrapolation.
+\newblock In {\em International conference on machine learning}, pages 1067--1075. PMLR, 2013.
+
+\bibitem[WJJ{\etalchar{+}}23]{libcitylong}
+Jingyuan Wang, Jiawei Jiang, Wenjun Jiang, Chengkai Han, and Wayne~Xin Zhao.
+\newblock Towards efficient and comprehensive urban spatial-temporal prediction: A unified library and performance benchmark.
+\newblock {\em arXiv preprint arXiv:2304.14343}, 2023.
+
+\bibitem[WTNM17]{wen2017multi}
+Ruofeng Wen, Kari Torkkola, Balakrishnan Narayanaswamy, and Dhruv Madeka.
+\newblock A multi-horizon quantile recurrent forecaster.
+\newblock {\em arXiv preprint arXiv:1711.11053}, 2017.
+
+\bibitem[WWS{\etalchar{+}}22]{wei2022chain}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed~Chi, Quoc~V Le, Denny Zhou, et~al.
+\newblock Chain-of-thought prompting elicits reasoning in large language models.
+\newblock {\em Advances in neural information processing systems}, 35:24824--24837, 2022.
+
+\bibitem[WXWL21]{wu2021autoformer}
+Haixu Wu, Jiehui Xu, Jianmin Wang, and Mingsheng Long.
+\newblock Autoformer: Decomposition transformers with auto-correlation for long-term series forecasting.
+\newblock {\em Advances in Neural Information Processing Systems}, 34:22419--22430, 2021.
+
+\bibitem[ZCZX23]{zeng2022transformers}
+Ailing Zeng, Muxi Chen, Lei Zhang, and Qiang Xu.
+\newblock Are transformers effective for time series forecasting?
+\newblock {\em Proceedings of the AAAI conference on artificial intelligence}, 2023.
+
+\bibitem[ZMW{\etalchar{+}}22]{zhou2022fedformer}
+Tian Zhou, Ziqing Ma, Qingsong Wen, Xue Wang, Liang Sun, and Rong Jin.
+\newblock Fedformer: Frequency enhanced decomposed transformer for long-term series forecasting.
+\newblock In {\em International Conference on Machine Learning}, pages 27268--27286. PMLR, 2022.
+
+\bibitem[ZNW{\etalchar{+}}23]{zhou2023one}
+Tian Zhou, Peisong Niu, Xue Wang, Liang Sun, and Rong Jin.
+\newblock One fits all: Power general time series analysis by pretrained lm.
+\newblock {\em arXiv preprint arXiv:2302.11939}, 2023.
+
+\bibitem[ZW06]{zivot2006vector}
+Eric Zivot and Jiahui Wang.
+\newblock Vector autoregressive models for multivariate time series.
+\newblock {\em Modeling financial time series with S-PLUS{\textregistered}}, pages 385--429, 2006.
+
+\bibitem[ZZP{\etalchar{+}}21]{zhou2021informer}
+Haoyi Zhou, Shanghang Zhang, Jieqi Peng, Shuai Zhang, Jianxin Li, Hui Xiong, and Wancai Zhang.
+\newblock Informer: Beyond efficient transformer for long sequence time-series forecasting.
+\newblock In {\em Proceedings of the AAAI conference on artificial intelligence}, 2021.
+
+\end{thebibliography}

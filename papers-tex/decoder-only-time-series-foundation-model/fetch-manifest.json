@@ -1,0 +1,14 @@
+{
+  "slug": "decoder-only-time-series-foundation-model",
+  "arxiv_id": "2310.10688",
+  "source_url": "https://arxiv.org/e-print/2310.10688",
+  "pdf_url": "https://arxiv.org/pdf/2310.10688.pdf",
+  "fetched_at": "2026-06-20T01:41:11.306126+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/decoder-only-time-series-foundation-model-original.pdf",
+  "source_dir": "papers-tex/decoder-only-time-series-foundation-model",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "foundation_ts.tex"
+  ]
+}
