@@ -1,0 +1,41 @@
+%!TEX root = ../main.tex
+
+\section{소개}
+\label{sec:intro}
+
+
+% 1st paragraph: introduce data bottle-neck, privacy and ethical concerns that hinder a loose usage of datasets. Mention synthetic data as a tool for addressing this issue.
+기계 학습 애플리케이션을 개발하려면 교육 데이터에 대한 광범위한 액세스가 필요합니다. 이러한 필요성은 최근 몇 년 동안 모델을 효과적으로 훈련하기 위해 대규모 데이터 세트가 필요한 딥 러닝의 출현으로 더욱 중요해졌습니다. 동시에 기업과 기관이 사용자 상호 작용과 배포된 애플리케이션을 통해 정기적으로 방대한 양의 데이터를 수집함에 따라 생성되는 데이터의 양이 급격히 증가했습니다. 그러나 이러한 기하급수적인 성장은 동등한 접근성으로 해석되지 않았습니다. 개인 정보 보호 규정, 독점 제한 및 윤리적 고려 사항으로 인해 개발을 위한 실제 데이터 세트의 가용성과 사용이 점점 더 제한되고 있습니다. 데이터 병목 현상 \cite{Shani_2023}라고 하는 이 현상은 테이블 형식 데이터 세트도 예외가 아닌 여러 도메인 및 데이터 양식에 영향을 미칩니다.
+
+% 2nd paragraph: deep learning for generating synthetic data, the challenges of doing this: different domains and types, arbitrary ddbb topologies, multivariate datasets of high dimensionality, privacy, fairness, missing data or imbalance, etc. What others do: they solve parts of the problem but not the whole thing at once, what we do.
+
+이러한 맥락에서 합성 데이터는 데이터 가용성 격차를 메우고 고품질 데이터 세트에 안전하게 액세스할 수 있는 수단을 제공하고 유용성을 보장하며 데이터 공유 \cite{drechsler2011synthetic, jordon2022synthetic, united2023synthetic, hu2023sokprivacypreservingdatasynthesis}와 관련된 개인 정보 보호 위험을 최소화하는 유망한 솔루션으로 부상합니다.
+합성 데이터 세트는 다용도 도구로 등장하며 개인 정보 보호 이외의 수많은 문제에 대한 솔루션도 제공합니다.
+예를 들어 데이터 볼륨 확장, 클래스 불균형 해결, 누락된 데이터 대치 또는 공정성 인식 평가 활성화 \cite{NEURIPS2021_ba9fab00}가 있습니다.
+이러한 문제를 전체적으로 해결하면 합성 데이터 \cite{vanbreugel2023privacynavigatingopportunitieschallenges}의 유용성과 실용성이 크게 향상됩니다.
+그러나 테이블 형식 데이터 합성을 위해 딥 러닝을 활용하는 문헌이 늘어나고 있음에도 불구하고 많은 방법은 특히 데이터 이질성, 충실도 및 개인 정보 보호 \cite{bauer2024,shi2025comprehensivesurveysynthetictabular}와 같은 문제를 고려할 때 데이터 합성의 여러 측면을 동시에 처리하는 전체적인 솔루션을 제공하는 데 부족합니다.
+
+
+% 3rd paragraph: introduce our SDK and contributions: flexibility, robustness to different data types, privacy mechanisms, fairness, industry-grade readily available package, runtime performance, solid user base, real use-cases?
+
+데이터 가용성과 접근성 사이의 격차를 해소하기 위해 우리는 포괄적인 기능 세트를 통합하고 합성 데이터 생성의 여러 중요한 측면을 동시에 해결하는 오픈 소스 툴킷인 MOSTLY AI 합성 데이터 소프트웨어 개발 키트(SDK)를 소개합니다.
+이 라이브러리는 현재의 데이터 가용성 격차를 메우고 데이터 민주화를 촉진하는 것을 목표로 다양한 분야의 광범위한 연구자 및 실무자에게 접근할 수 있도록 특별히 맞춤화되었습니다.
+유연성을 위해 설계된 SDK는 API 호출을 통해 맞춤형으로 개발된 클라우드 기반 서비스에 액세스하여 로컬 또는 '클라이언트 모드'에서 실행할 수 있습니다.
+그러나 이 작업에서는 로컬 배포 시나리오에 전적으로 초점을 맞춰 데이터 수집, 교육 및 생성 기능을 심층적으로 제시합니다.
+
+% At its core, the SDK leverages the TabularARGN auto-regressive framework \citep{tabularargn} which seamlessly supports various data domains and modalities including sequential data, while achieving substantial speed-ups over state-of-the-art (SOTA) methods.
+% Furthermore, our framework integrates advanced privacy mechanisms such as Differential Privacy (DP) \citep{dwo14-dp}, supports compatibility with Large Language Models (LLMs) for text generation, and produces synthetic data whose quality is competitive with current state-of-the-art methods.
+
+\subsection{기여}
+
+SDK는 다음과 같은 주요 기여를 제공합니다.
+\begin{itemize}
+\item \textit{단순한 디자인으로 높은 데이터 품질:} TabularARGN \cite{tabularargn}를 기반으로 하는 SDK는 단순성을 저하시키지 않으면서 최첨단(SOTA) 모델과 동등한 합성 데이터 품질을 제공합니다. 또한 현재 벤치마크에 비해 훈련 및 생성 시간이 크게 향상되었습니다.
+\item \textit{개인 정보 보호 및 공정성 기능:} 프레임워크는 샘플링을 위해 개인 정보 보호 값 범위를 고려하고, 내장된 정규화 레이어와 교육을 위한 조기 중지 기능을 갖추고 있으며 차등 개인 정보 보호(DP)가 \cite{dwo14-dp}를 보장하는 교육 메커니즘을 제공합니다. 세대에서는 민감한 속성 \cite{krc23} 전반에 걸쳐 공정성 통합을 지원합니다.
+    % \item \textit{Deployment as cloud service:} Our SDK can run as a client to access the MostlyAI platform, deployed as a cloud service accessible via API calls, with a credit-based system that allows an initial free usage tier. This allows users to seamlessly leverage remote computational resources.
+\item \textit{자동 품질 보증:} SDK는 내장된 품질 보증 모듈 \cite{qareport}를 제공하여 합성 데이터 세트의 개인 정보 보호와 데이터 충실도를 정량적으로 평가하는 표준화된 심층 보고서를 생성합니다.
+\item \textit{오픈 소스 패키지:} Python으로 완전히 작성된 SDK는 \verb|pip|를 통해 로컬로 설치할 수 있습니다. 패키지는 완전히 허용되는 Apache 버전 2.0 오픈 소스 라이선스\footnote{ \url{https://github.com/mostly-ai/mostlyai}}에 따라 오픈 소스로 제공됩니다.
+\item \textit{사용자 커뮤니티:} 사용자 및 기여자 커뮤니티가 성장함에 따라 SDK는 고품질 데이터 합성 서비스를 제공할 뿐만 아니라 실제 피드백의 이점을 활용하여 실제 요구 사항을 더 잘 충족할 수 있도록 툴킷을 지속적으로 개선할 수 있습니다.
+\end{itemize}
+
+이 문서의 나머지 부분은 다음과 같이 구성됩니다. 섹션 II는 SDK 아키텍처를 설명합니다. 섹션 III에서는 데이터 수집 및 처리 기능을 제시합니다. 섹션 IV에서는 교육 및 생성 기능을 자세히 설명합니다. 섹션 V에서는 실증적 성과 결과를 보고합니다. 섹션 VI에서는 커뮤니티 채택에 대해 논의합니다. 섹션 VII는 결론을 내립니다.

@@ -1,0 +1,53 @@
+%!TEX root = ../main.tex
+
+\section{생성 모델 훈련}
+
+데이터 세트가 로드되고 데이터 스키마가 정의되면 SDK는 모델 교육을 진행합니다.
+이 단계에서 SDK는 데이터세트 크기와 사용 가능한 메모리를 기반으로 배치 크기와 학습률을 자동으로 선택하고 학습률 스케줄러를 사용하여 수렴을 더욱 최적화합니다.
+사용자는 CPU와 GPU 하드웨어를 모두 활용하여 훈련을 가속화할 수 있으며, 훈련 실행을 투명하게 추적하고 관리할 수 있도록 실시간 진행 상황 모니터링이 제공됩니다.
+
+다음에서는 먼저 핵심 모델 접근 방식에 대한 개요를 제공한 다음 지원되는 LLM에 대한 세부 정보를 제공합니다. 마지막으로 SDK에 구현된 개인정보 보호 메커니즘이 제시됩니다.
+
+\subsection{자동 배열 테이블 형식 개요}
+
+생성기 아티팩트는 ~\cite{tabularargn}에 자세히 설명된 TabularARGN(Tabular Auto-Regressive Generative Network)을 사용하여 훈련됩니다.
+해당 아키텍처는 이산화된 기능에서 작동하고 범주형 교차 엔트로피 손실을 사용하여 최적화되는 얕은 임의 차수 자동 회귀 모델을 제공합니다.
+기본적으로 TabularARGN은 생성 프로세스를 자동 회귀 프레임워크에 매핑하여 데이터의 결합 확률 분포를 더 간단한 조건부 확률의 산물로 추정합니다.
+다중 테이블 데이터 세트를 처리하기 위해 모델은 자동 회귀 조건부 확률 프레임워크를 확장하여 데이터 스키마에 정의된 관련 테이블 간의 종속성을 캡처합니다.
+이러한 시나리오에서 SDK는 테이블이 처리되는 순서를 명시적으로 정의하여 테이블 간의 상위-하위 관계를 설정합니다.
+이런 방식으로 상위 테이블의 레코드는 \emph{context} 임베딩으로 압축된 다음 하위 테이블의 조건부 생성에 사용됩니다.
+
+TabularARGN의 중요한 측면은 테이블 내의 열이 모델링되는 순서입니다.
+SDK에서 \texttt{mostly.train()}를 호출할 때 사용자는 훈련을 위한 두 가지 열 순서 전략, 즉 고정 순서와 유연한 순서(또는 임의 순서) 중에서 선택할 수 있습니다.
+기본적으로 유연한 옵션이 활성화되어 있습니다. 이 모드에서 SDK는 각 훈련 배치에 대한 열 순서를 무작위로 섞습니다. 이 접근 방식을 통해 모델은 기능의 하위 집합에 따라 조건이 지정된 데이터를 생성하는 방법을 학습할 수 있으므로 데이터 대치, 조건부 시뮬레이션 또는 공정성 조정과 같은 작업에 다용도로 사용할 수 있습니다.
+유연한 교육을 통해 더 폭넓은 생성 기능을 사용할 수 있지만 학습 작업도 더욱 복잡해집니다. 이러한 추가적인 복잡성으로 인해 결과 합성 데이터의 정확성이 저하될 수 있습니다. 고정 열 순서를 선택하면 학습이 단순화되고 경우에 따라 정확도가 향상될 수 있습니다. 그러나 일단 고정 순서 모드로 훈련되면 모델은 임의의 기능 하위 집합에서 유연하게 데이터를 생성하는 기능을 잃게 됩니다.
+이는 생성 시 더 높은 정확성과 더 많은 유연성 사이의 절충안을 제시하며, 의도한 애플리케이션에 따라 최적의 선택이 가능합니다.
+% In the SDK, when calling \texttt{mostly.train}, users can control the auto-regressive order of the training process through the \verb|enable_flexible_generation| flag.
+% If set to \verb|False|, the order of the columns is kept fixed. 
+% When set to \verb|True|, the SDK dynamically shuffles the order of the columns for each training batch. 
+% This allows the model to learn conditional probabilities based on any subset of features.
+
+
+
+\subsection{LLM 절단 지원}
+
+HuggingFace 플랫폼에서 호스팅되는 LLM 미세 조정을 지원합니다.
+% As mentioned in Section~\ref{subsec:data_encoding}, the user can choose to encode columns using the language encoding types. 
+% When doing this, our SDK provides the option of processing language encoded columns with LLMs, as long as the user has a HuggingFace access token with read permissions. 
+섹션~2에서 설명한 대로 텍스트 열 모델링을 위해 사전 훈련된 LLM을 활용하도록 선택할 수 있습니다. 이 경우 사용자는 처음부터 훈련되는 기본 LSTM 모델에 의존하는 대신 데이터를 미세 조정하기 위해 원하는 LLM을 선택합니다. 이 옵션은 사용자에게 읽기 권한이 있는 HuggingFace 액세스 토큰이 있는 한 SDK에서 사용할 수 있습니다.
+현재 HuggingFace에서 사용 가능한 모든 텍스트 생성 LLM을 지원합니다.
+
+\subsection{개인 정보 보호}
+
+TabularARGN 훈련 절차는 훈련 데이터의 개별 기록을 보호하기 위한 강력한 개인 정보 보호 장치로 설계되었습니다. 민감한 정보를 기억하게 될 수 있는 과적합의 위험을 최소화하기 위해 모델은 전용 개인 정보 보호 중심 전략을 사용합니다.
+\begin{itemize}
+\item \textbf{조기 중지:} 훈련 중 데이터 세트의 최대 10\%를 검증 세트로 따로 둡니다. 각 epoch가 끝날 때 검증 손실을 계산합니다. 검증 손실이 연속 $N$ epoch 동안 개선되지 않으면(기본값: 5) 훈련을 조기에 중단합니다. 관측된 검증 손실이 가장 낮았던 모델 가중치를 최종 모델로 유지합니다.
+\item \textbf{드롭아웃 정규화:} 각 네트워크 계층에는 25\%의 드롭아웃 비율이 포함되어, 훈련 중 뉴런의 일부를 무작위로 비활성화함으로써 과적합 위험을 줄입니다.
+\end{itemize}
+
+\paragraph{차등 개인 정보 보호}
+SDK는 DP 보장을 통해 합성 데이터 생성기를 교육하는 옵션을 제공합니다. DP가 활성화되면 훈련 절차는 원본 데이터 세트의 개별 레코드가 개인 정보 보호 예산 매개변수 $\epsilon$로 정량화되는 것처럼 훈련된 모델에 수학적으로 제한된 영향을 미치도록 보장합니다. 개인 정보 보호 예산은 훈련 전반에 걸쳐 모니터링되며, 이 임계값에 도달하면 자동으로 훈련을 중단하도록 상한 $\epsilon$ 제한을 설정할 수 있습니다.
+
+SDK의 차등 개인 정보 보호는 그라데이션 클리핑, 노이즈 추가, 무작위 데이터 로딩 및 개인 정보 계정을 통해 개인 정보 보호를 보장하는 Opacus 라이브러리를 사용하여 구현됩니다. 사용자는 요구 사항에 따라 개인 정보 보호와 모델 유틸리티의 균형을 맞추기 위해 노이즈 수준과 클리핑 매개변수를 구성할 수 있습니다.
+
+비DP 훈련은 효율성과 정확성을 극대화하기 위한 기본값이지만, DP 옵션은 모델 성능과 계산 효율성에 영향을 미칠 수 있다는 점을 이해하고 엄격한 수학적 개인 정보 보호를 요구하는 사용자에게 제공됩니다.

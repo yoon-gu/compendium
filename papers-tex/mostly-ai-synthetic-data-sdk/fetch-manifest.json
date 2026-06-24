@@ -1,0 +1,14 @@
+{
+  "slug": "mostly-ai-synthetic-data-sdk",
+  "arxiv_id": "2508.00718",
+  "source_url": "https://arxiv.org/e-print/2508.00718",
+  "pdf_url": "https://arxiv.org/pdf/2508.00718.pdf",
+  "fetched_at": "2026-06-24T04:34:09.855778+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/mostly-ai-synthetic-data-sdk-original.pdf",
+  "source_dir": "papers-tex/mostly-ai-synthetic-data-sdk",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "main.tex"
+  ]
+}

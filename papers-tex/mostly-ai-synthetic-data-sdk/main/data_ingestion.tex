@@ -1,0 +1,155 @@
+%!TEX root = ../main.tex
+
+\section{데이터 수집 및 처리}
+\label{sec:data_ingestion}
+
+실제 데이터세트는 크기와 모양이 다양한 경우가 많고, 다양한 데이터 형식에 걸쳐 있으며, 복잡한 관계가 있는 여러 테이블로 구성되는 경우가 많습니다.
+SDK는 이러한 다양성을 처리하도록 정밀하게 설계되어 다양한 데이터 형식과 스키마를 수용할 수 있는 효과적이고 강력한 메커니즘을 제공합니다.
+이 섹션에서는 먼저 SDK가 특화된 전략을 통해 광범위한 데이터 유형을 지원하는 방법에 대해 자세히 설명합니다.
+그런 다음 지원되는 데이터 스키마에 대한 세부정보를 제공합니다.
+
+
+%\subsection{Data Encoding and Decoding}
+\subsection{데이터 준비}
+\label{subsec:data_encoding}
+
+% The SDK encodes columns depending on whether a \emph{tabular} model or a \emph{language} model is employed for processing the corresponding values.
+% The difference between these approaches is that tabular models treat values in each column as belonging to a specific domain, such as categories, real numbers, or geo-spatial locations, while language models process data as unstructured text. 
+% For columns where a tabular model is employed, the SDK can automatically detect and process several data types including categorical variables, numeric values, datetime, geospatial locations, and strings. 
+% This transformation splits columns into one or several categorical sub-columns, resulting in an encoded dataset of potentially higher-dimension comprising only categorical values.
+% In Table~\ref{table:supported_encodings} we summarize all the supported tabular encoding types.
+
+
+% In contrast, columns that are processed using language models are treated as free text with explicit constraints for categorical, numerical and datetime values to ensure they remain within known categories and ranges.
+% In Table~\ref{table:language_encoding_types} we specify the language encoding types.
+% The language encoding types need to be enforced by the user and are not automatically assigned.
+
+훈련 전에 원시 입력 데이터는 자동 유형 감지, 인코딩 할당, 개인 정보 보호 값 보호 메커니즘을 포함하는 포괄적인 전처리 파이프라인을 거칩니다.
+SDK는 \cite{tabularargn}에서 제안한 데이터 인코딩 프로토콜을 따릅니다.
+여기서 원본 데이터세트의 모든 열은 하나 이상의 범주형 하위 열로 변환됩니다.
+결과적으로 인코딩된 데이터 세트는 원래 데이터 세트의 도메인에 관계없이 범주형 변수로만 구성됩니다. Table~\ref{table:supported_encodings}에는 지원되는 모든 표 형식 인코딩 유형이 요약되어 있습니다.
+
+텍스트 기능의 경우 고유한 모델링 전략이 사용됩니다. 텍스트 열은 별도로 처리되므로 사용자는 먼저 적용할 언어 모델 유형을 선택할 수 있습니다. 기본적으로 맞춤형 토크나이저가 사용되며 LSTM 기반 시퀀스 모델이 처음부터 학습됩니다. 이 모델은 표 형식 열의 상황별 정보를 통합하면서 토큰 시퀀스와 동시 발생을 캡처합니다. 또는 사용자가 사전 훈련된 LLM을 선택할 수 있으며, 이 경우 모델의 토크나이저가 적용되어 텍스트 데이터를 토큰화합니다. 그런 다음 선택된 사전 훈련된 LLM은 LoRA(Low-Rank Adaptation)를 사용하여 데이터세트에서 미세 조정되며, 표 형식 기능의 추가 컨텍스트를 텍스트 생성 프로세스에 다시 통합합니다.
+
+누락된 값은 자동으로 별도의 범주로 처리되어 결과 합성 데이터에서 다른 기능과의 상관 관계를 유지합니다. 값 보호 메커니즘은 각 열에 적용되어(표 ~\ref{table:privacy_strategies} 참조) 민감하거나 이상치인 정보가 합성 데이터에서 제외되도록 보장합니다.
+
+% \begin{table}[!t]
+% % increase table row spacing, adjust to taste
+% \renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+% \caption{An Example of a Table}
+% \label{table_example}
+% \centering
+% % Some packages, such as MDW tools, offer better commands for making tables
+% % than the plain LaTeX2e tabular which is used here.
+% \begin{tabular}{|c||c|}
+% \hline
+% One & Two\\
+% \hline
+% Three & Four\\
+% \hline
+% \end{tabular}
+% \end{table}
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\caption{현재 SDK에서 지원하는 테이블 형식이 존재합니다.}
+\label{table:supported_encodings}
+\begin{tabular}{|c||p{0.63\linewidth}|}
+\hline
+\textbf{인코딩 유형} & \textbf{설명} \\
+\hline
+범주형 & 미리 정의된 고정된 값 집합으로 변수를 인코딩합니다(예: 티셔츠 크기).\\
+\hline
+숫자: 자동 & 데이터 휴리스틱을 기반으로 최상의 숫자 인코딩 전략을 자동으로 선택합니다. \\
+\hline
+숫자: 이산형 & 숫자 데이터를 범주형(예: 우편번호, 이진 값)으로 처리합니다. \\
+\hline
+숫자: 구간화 & 숫자 값을 100개의 개별 간격으로 구간화하고 각 구간 내에서 샘플링하여 합성 값을 생성합니다.\\
+\hline
+숫자: 숫자 & 숫자 값을 숫자의 각 숫자를 나타내는 여러 범주형 열로 분할합니다. \\
+\hline
+문자 & 일관된 형식 지정 패턴을 사용하는 짧은 문자열을 문자열의 각 문자를 나타내는 여러 범주형 열로 분할합니다. \\
+\hline
+Datetime & datetime 값을 연도, 월, 일, 시, 분, 초를 나타내는 범주형 하위 열로 분할합니다. \\
+\hline
+날짜/시간: 상대 & 순차적 이벤트 간의 정확한 간격을 모델링합니다.\\
+\hline
+위도, 경도 & 위도/경도 쌍을 계층적 사분위수로 변환하고 이를 점점 더 미세한 수준의 해상도를 나타내는 범주형 하위 열로 인코딩합니다.\\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[t]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\caption{데이터 유형별 가치 보호 전략 요약}
+\label{table:privacy_strategies}
+\begin{tabular}{|c||p{0.7\linewidth}|}
+\hline
+\textbf{컬럼 유형} & \textbf{개인정보 보호 전략} \\
+\hline
+% Categorical & Consolidate rare categories into a "\_RARE\_" category to reduce re-identification risk from unique values. \\
+범주형 & 고유 값을 "\_RARE\_" 범주로 통합하거나 보다 일반적인 범주에서 대체 값을 샘플링하여 고유 값으로 인한 재식별 위험을 줄입니다. \\
+\hline
+숫자 & 값을 백분위수로 분류하거나 숫자로 분해하여 정확한 숫자를 모호하게 하고 값을 잘라내어 이상값 식별을 제한합니다. \\
+\hline
+Datetime & 타임스탬프(연도, 월, 일)와 클립 범위를 분해하여 일반적이지 않은 날짜를 마스크합니다. \\
+\hline
+지리 공간적 & 위도-경도 쌍을 로컬 데이터 밀도에 맞게 해상도가 조정된 사분위수로 변환합니다. \\
+\hline
+텍스트 & 구문 누출을 방지하려면 데이터 독립적인 어휘가 포함된 표준 토크나이저를 적용하세요.\\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+% \begin{table}[t]
+% \centering
+% \small
+% \begin{tabularx}{\columnwidth}{l|X}
+%     \textbf{Language Encoding Type} & \textbf{Description} \\
+%     \hline
+%     Language: Categorical & Values are constrained to known categories. \\
+
+%     Language: Numeric & Numeric values are bounded within the original data's analyzed minimum and maximum values. \\
+
+%     Language: Datetime & Datetime values are bounded within the original data's analyzed minimum and maximum datetime range. \\
+
+%     Language: Text & Generates free-form textual data without explicit value constraints. \\
+% \end{tabularx}
+% \caption{Language encoding types currently supported by our SDK.}
+% \label{table:language_encoding_types}
+% \end{table}
+
+
+\subsection{다중 테이블 관계 관리}
+
+SDK는 \emph{주제 테이블} 및 \emph{연결된 테이블}이라는 두 가지 주요 테이블 유형이 있는 여러 테이블로 구성된 데이터 세트를 구성합니다.
+주제 테이블에는 주제당 정확히 하나의 레코드가 포함되어 있으며 학습 시 개인 정보 보호 메커니즘이 적용될 세분성 수준을 정의합니다.
+반면에 연결된 테이블은 주제와 관련된 이벤트, 시퀀스 또는 시간 인덱스 데이터를 나타내는 레코드로 구성됩니다.
+
+데이터 세트가 SDK로 처리되면 잠재적으로 두 가지 유형의 외래 키(\emph{컨텍스트 외래 키} 및 \emph{비컨텍스트 외래 키})를 통해 설정된 테이블 간의 관계와 함께 두 유형의 여러 테이블로 구성될 수 있습니다.
+주제와 연결된 테이블이 컨텍스트 외래 키를 통해 연결된 경우 구현된 알고리즘은 두 테이블의 레코드 간의 상관 관계가 생성 중에 모델링되고 유지되도록 보장합니다.
+반면, 비컨텍스트 외래 키를 사용하면 연결된 두 테이블이 독립적으로 모델링되더라도 참조 무결성이 유지됩니다.
+툴킷은 이러한 빌딩 블록을 사용하여 지정된 데이터 세트 내의 테이블을 연결하고 복잡한 계층 구조와 중첩 관계가 있는 임의의 데이터 스키마를 처리합니다.
+
+% At the heart of multi-table support is the subject-linked relationship:
+
+% \begin{itemize}
+%     \item \textbf{Subject Table:} The main table with one record per subject (such as a customer, user, or patient), whose privacy is protected.
+%     \item \textbf{Linked Tables:} Event or sequence tables referencing the subject table (e.g., transactions, visits, interactions). Each subject can be associated with one or more linked tables, representing sequences of related events.
+    
+%     Importantly, the model supports sequences of arbitrary and irregular lengths—without requiring equidistant time steps or specific timestamp formats—enabling the generation of both time series and unordered event data for each subject.
+% \end{itemize}
+
+% \paragraph{Multi-Table Schemas and Correlated Sequences:}
+% The SDK supports arbitrary multi-table schemas and always preserves referential integrity, regardless of complexity. Correlations are retained both within tables and, wherever the schema allows, across tables---including those between subjects and their linked sequences (events), as well as correlations between different sequences related to the same subject. Which correlations can be retained is determined by how tables are connected and organized in the schema.
+
+% For instance, a patient (subject table) may have both hospital admissions and prescription records as linked tables. The SDK generates new synthetic patients whose admissions and medication usage patterns reflect the same statistical correlations present in the original data.
+% It is important to note that synthetic records within a subject table are generated independently; correlations between different subjects are not modeled or retained.
+

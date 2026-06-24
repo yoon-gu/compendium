@@ -1,0 +1,56 @@
+%!TEX root = ../main.tex
+
+\section{합성 데이터 생성}
+훈련이 완료되면 생성기는 원본 데이터세트의 통계적 속성과 일치하는 합성 데이터를 생성합니다.
+합성 데이터 생성은 훈련된 생성기를 입력으로 사용하는 \texttt{mostly.generate()} 함수를 사용하여 수행됩니다.
+
+% For a single (subject) table, generation starts with an input vector of zeros. The model sequentially samples each feature, using the embedded values of previously generated features as context, to construct a synthetic record. By default, features follow the original schema order, but this can be configured as needed.
+
+두 개의 관련 테이블(예: 플랫 주제 테이블과 순차 연결 테이블)이 포함된 설정에서는 생성이 계층적으로 진행됩니다. 플랫 테이블이 먼저 샘플링되어 순차 테이블 모델에 필요한 컨텍스트를 제공합니다. 그런 다음 순차 테이블이 조건부로 생성되어 플랫 테이블의 종합 레코드를 상황별 입력으로 활용합니다.
+
+\paragraph{다중 테이블 생성}
+다중 테이블 스키마의 경우 생성 프로세스는 학습 중에 학습된 종속성과 상황별 관계에 따라 결정됩니다. 스키마 계층 구조는 샘플링 순서를 지정합니다. 즉, 상위 테이블과 상위 테이블이 먼저 합성되어 모든 다운스트림 테이블에 대한 컨텍스트를 제공합니다. 대상 테이블을 생성할 때 단일 홉 컨텍스트 테이블뿐만 아니라 컨텍스트 체인에 있는 모든 테이블의 합성 값에 대한 처리 조건입니다. 형제 순차 테이블의 경우 SDK는 조건부 생성을 지원하므로 한 시퀀스의 출력을 다른 시퀀스의 컨텍스트로 사용하여 관련 시퀀스 간의 상관 관계를 캡처할 수 있습니다. 컨텍스트 체인에 포함되지 않거나 단일 홉 컨텍스트로 포함되지 않은 테이블은 독립적으로 생성됩니다. 그러나 참조 무결성은 엄격하게 유지됩니다. 한 홉 이상 떨어진 테이블의 경우에도 모든 외래 키 관계는 합성 데이터 세트에 보존됩니다. 이를 통해 레코드 간의 모든 링크가 유효하고 현실적인 다중 테이블 데이터에 필요한 구조적 일관성을 유지하도록 보장됩니다.
+
+\subsection{유연한 시리즈}
+유연한 생성을 통해 모델은 단순히 훈련 데이터의 통계적 패턴을 재현하는 것 이상을 수행할 수 있습니다. 유연한 순서 열 순서로 학습된 모델에 사용할 수 있는 이 기능에는 소규모 샘플부터 대규모 데이터 세트까지 원하는 양의 합성 데이터를 생성하는 기능이 포함됩니다. 유연한 조건부 시뮬레이션을 통해 사용자는 선택한 열에 특정 값을 제공하고 나머지 열에 대해 생성된 합성 콘텐츠를 사용하여 특정 시나리오에 맞게 출력을 조정할 수 있습니다. 다양한 고급 변환(예: 재조정, 대치, 공정성 조정)의 경우 사용자는 대상 열만 지정하면 되며 SDK는 각 시나리오에 대한 최적의 열 순서를 자동으로 관리합니다.
+% : for rebalancing, the target column is generated first to condition all other features; for imputation, the column with missing values is generated last to utilize all available context; and for fairness, the target outcome is generated last and conditioned on the specified sensitive attribute (see Figure~\ref{fig:col_ordering}). Further details for each feature are provided below.
+
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[width=\columnwidth]{figures/col_order_final.pdf}
+%     \caption{Illustration of column ordering for three generation scenarios supported by the SDK: \textbf{(a) Rebalancing}, where the target (class) column is generated first to control class proportions; \textbf{(b) Imputation}, where columns with missing values are generated last to leverage full context; and \textbf{(c) Fairness}, where the target column is also generated last, conditioned on sensitive attributes and other features, to enforce statistical parity.
+% }
+%     \label{fig:col_ordering}
+% \end{figure}
+
+
+
+% Flexible generation allows the model to go beyond simply reproducing the statistical patterns of the training data. This is achieved through conditional generation, where specific columns can be selected to be generated first—so that the remaining features are conditioned on them—or last, enabling their values to be inferred from the available context. This approach supports a range of useful data transformations. In our experiments, these flexible generation features were demonstrated using the well-known Adult dataset~\citep{dua19-adult}.
+\paragraph{조건부 시뮬레이션}
+조건부 시뮬레이션을 사용하면 초기 속성에 따라 여러 합성 시나리오를 생성하여 단순한 예측을 뛰어넘을 수 있습니다. 단일 기대값만 제공하는 대신 모델은 가능한 결과의 범위와 가능성을 정량화하는 경험적 분포를 생성합니다. 예를 들어, 의료 분석에서는 사용 가능한 환자 데이터를 컨텍스트로 사용하고 그럴듯한 회복 시나리오를 샘플링하여 다양한 치료 계획에 따라 환자 회복 궤적을 시뮬레이션할 수 있습니다. 이러한 유연한 접근 방식은 불확실성과 가능한 미래에 대한 더 깊은 통찰력을 제공하여 더 많은 정보를 바탕으로 한 데이터 기반 의사 결정을 지원합니다.
+
+\paragraph{재조정}
+재조정을 통해 사용자는 데이터의 소수 그룹에 대한 추가 합성 샘플을 생성하여 클래스 불균형을 해결할 수 있습니다. 원하는 클래스 비율을 지정함으로써 사용자는 나머지 기능이 일관되고 현실적으로 유지되도록 하면서 과소대표된 결과의 표현을 늘릴 수 있습니다. \cite{upsampling} 비교 평가에서 TabularARGN 기반 업샘플링은 순진한 오버샘플링 \cite{imblearn_naive} 및 SMOTE-NC \cite{imblearn_smotenc}와 같은 기존 기술에 비해 장점을 보여주었습니다. 기존 레코드를 복제하거나 레코드 간에 보간하는 이러한 방법과 달리 TabularARGN은 기본 데이터 분포를 보다 정확하게 반영하는 다양한 현실적인 합성 샘플 세트를 생성하여 특히 소수 클래스가 매우 작은 경우 이러한 균형 잡힌 데이터 세트에서 훈련된 기계 학습 모델의 성능을 향상시킵니다. \footnote{재균형에 대한 지침은 SDK 사용 튜토리얼 참조: \url{https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/rebalancing}}
+
+
+\paragraph{대치}
+대치(Impputation)를 통해 사용자는 훈련 중에 학습한 통계적 관계를 활용하여 데이터의 누락된 값을 채울 수 있습니다. 예를 들어 데이터 세트에서 직업과 같은 범주형 열의 값이 누락된 경우 생성기는 교육, 연령, 소득과 같은 사용 가능한 기능을 사용하여 해당 개인에 대한 그럴듯한 직업을 추론할 수 있습니다.  누락된 패턴을 복제하는 대신 생성기는 누락된 범주를 마스크하고 그럴듯한 값을 샘플링하여 사용 가능한 모든 컨텍스트를 사용하도록 대치된 열을 마지막에 배치합니다. 조건부 대치의 경우 사용자는 누락된 항목과 관찰된 기능이 포함된 시드를 컨텍스트로 제공합니다. 그런 다음 SDK는 그에 따라 누락된 값을 채웁니다.
+% We evaluated the SDK imputation capabilities against state-of-the-art methods, including MICE \cite{mice}, MissForest \cite{missforest}, and Hyperimpute \cite{hyperimpute}. The SDK delivers competitive accuracy while also supporting both point and distributional estimates, handling high-cardinality categorical features, and accommodating diverse data types without manual preprocessing. 
+\footnote{리밸런싱 기능 사용에 대한 자세한 지침은 \url{https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/smart-imputation}의 SDK 사용 튜토리얼을 참조하세요.}
+
+
+\paragraph{공정성}
+공정성 조정을 통해 사용자는 통계적 패리티 기준을 충족하는 합성 데이터를 생성하여 민감한 그룹 간에 균형 잡힌 결과를 보장할 수 있습니다. 예를 들어 원본 데이터에서 여성은 고소득층 사이에서 과소 대표될 수 있으며 이로 인해 불공정한 다운스트림 모델 예측이 발생할 수 있습니다. SDK의 공정성 조정 기능은 데이터 생성 프로세스를 수정하여 민감한 그룹이 원래 데이터세트의 기존 편견에 관계없이 긍정적인 결과를 할당받을 수 있는 동일한 기회를 갖도록 합니다.
+
+이는 대상 열을 마지막으로 샘플링하고 이전에 생성된 민감한 속성을 기반으로 조건부 확률을 조정하여 통계적 패리티를 적용함으로써 달성됩니다. 결과적으로 사용자는 공정성을 인식하는 데이터 세트를 생성하여 실제 편향된 데이터를 평가할 때에도 다운스트림 모델이 더 공정하고 균형 잡힌 예측을 생성할 수 있습니다. 이러한 제약 조건은 생성 중에 동적으로 적용되므로 생성기를 재교육하지 않고도 공정성과 정확성 간의 균형을 유연하게 관리할 수 있습니다. ~\cite{krc23}\footnote{공정성 기능 사용에 대해 자세히 알아보려면 \url{https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/fairness}에서 SDK 튜토리얼을 확인하세요.}
+
+% As described in~\citet{krc23}, we evaluated the SDK’s fairness adjustment feature by measuring both fairness and predictive performance across several machine learning models. The results show that applying fairness adjustment substantially reduced statistical parity difference of downstream model predictions to near zero across, while only modestly affecting overall model accuracy.
+
+
+
+
+\paragraph{유연한 샘플링}
+유연한 생성 순서 외에도 엔진을 사용하면 온도 및 top-p 매개변수를 조정하여 샘플링 프로세스를 추가로 제어할 수 있습니다. 온도를 낮추면(예: $< 1$) 모델이 공통 값을 생성할 가능성이 높아집니다. 이는 사용자가 알려진 규칙이나 비즈니스 논리를 엄격하게 따르는 출력을 원할 때 유용합니다(예: 유효한 제품 코드만 생성하거나 일반적인 사용자 행동을 밀접하게 준수). 온도 상승(예: $> 1$)은 생성된 데이터의 다양성을 증가시키며, 이는 스트레스 테스트 모델이나 드문 시나리오 탐색에 유용할 수 있습니다.
+
+top-p 매개변수는 샘플링 중에 고려되는 누적 확률 질량에 대한 임계값을 설정합니다. top-p 값을 낮게 설정하면 가능성이 가장 높은 결과에 초점을 맞추고, 값을 높이면 가능성이 낮은 옵션을 포함하여 다양성을 높일 수 있습니다. 이러한 제어 기능을 통해 사용자는 일상적인 작업을 위한 현실적인 기록 생성 또는 강력한 모델 평가를 위한 엣지 케이스 생성과 같은 특정 요구 사항에 맞게 합성 데이터의 다양성과 대표성을 미세 조정할 수 있습니다.
+
