@@ -1,0 +1,61 @@
+\begin{table}[htbp]
+\centering
+\caption{심핵 벤치마크에서 VibeThinker-3B의 성능(최상위 모델 보유)}
+\label{tab:top-tier-reasoning-clr}
+
+\fontsize{6.2pt}{7.6pt}\selectfont
+\setlength{\tabcolsep}{1.8pt}
+\renewcommand{\arraystretch}{1.20}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}ll|ccccc|cc|c|cc@{}}
+\toprule
+\multicolumn{2}{c|}{\textbf{모델}} &
+\multicolumn{5}{c|}{\textit{수학}} &
+\multicolumn{2}{c|}{\textit{코딩}} &
+\multicolumn{1}{c|}{\textit{지식}} &
+\multicolumn{2}{c}{\textit{명령}} \\
+\textbf{이름} & \textbf{매개변수} &
+\textbf{AIME25} & \textbf{AIME26} & \textbf{HMMT25} & \textbf{BruMO25} & \textbf{IMO-Ans} &
+\textbf{LCBv6} & \textbf{OJBench} &
+\textbf{GPQA-D} &
+\textbf{IFEval} & \textbf{IFBench} \\
+\midrule
+\addlinespace[1.5pt]
+\multicolumn{12}{l}{\textit{오픈 소스 모델}} \\
+\addlinespace[1pt]
+GPT-OSS(높음) & 120B & 92.5 & 93.2 & 90.0 & 92.5 & 75.6 & 81.9 & 41.5 & 80.1 & 89.5 & 69.5 \\
+MiMo v2 플래시 & 309B & 94.1 & \na & 84.4 & \na & \na & 80.6 & \na & 83.7 & \na & 64.2 \\
+미니맥스 M2.7 & 229B & \na & 89.8 & \na & \na & 66.3 & \na & \na & 87.0 & \na & 76.0 \\
+딥시크 R1 0528 & 671B & 87.5 & \na & 79.4 & 92.5 & 60.8 & 68.7 & 33.6 & 81.0 & 79.1 & 39.6 \\
+Qwen3.5-397B-A17B & 397B & \na & 91.3 & 94.8 & \na & 80.9 & 83.6 & \na & 88.4 & 92.6 & 76.5 \\
+DeepSeek V3.2 & 671B & 93.1 & 94.2 & 90.2 & 96.7 & 78.3 & 80.8 & 48.4 & 82.4 & 92.6 & 60.7 \\
+키미 K2.5 & 1T & 96.1 & 93.3 & 95.4 & 98.3 & 81.8 & 85.0 & 54.7 & 87.6 & 93.9 & 70.0 \\
+GLM-5 & 744B & 96.7 & 95.8 & 97.9 & \na & 82.5 & 85.5 & 55.0 & 86.0 & 92.6 & 76.5 \\
+\addlinespace[1.5pt]
+\midrule
+\addlinespace[1.5pt]
+\multicolumn{12}{l}{\textit{독점 모델}} \\
+\addlinespace[1pt]
+제미니 2.5 플래시 & 해당 없음 & 72.0 & \na & 64.2 & 83.3 & \na & 61.2 & 23.5 & 82.8 & 89.8 & 36.1 \\
+OpenAI o3(높음) & 해당 없음 & 88.9 & \na & 77.5 & 95.8 & 61.1 & 75.8 & 25.4 & 83.3 & 92.1 & 69.3 \\
+제미니 2.5 프로 & 해당 없음 & 86.7 & \na & 82.5 & 90.0 & 68.2 & 72.5 & 38.9 & 86.4 & 90.8 & 48.7 \\
+그록 4 & 해당 없음 & 91.7 & \na & 90.0 & 95.0 & 73.1 & \na & \na & 87.5 & 88.0 & 53.7 \\
+클로드 오푸스 4.5 & 해당 없음 & 92.8 & 95.1 & 92.9 & \na & 78.5 & 84.8 & \na & 87.0 & \na & 58.0 \\
+GPT-5(높음) & 해당 없음 & 94.6 & \na & 88.3 & 91.7 & 76.0 & 84.5 & \na & 85.7 & \na & 73.1 \\
+Qwen3.6 플러스 & 해당 없음 & 93.3 & 95.3 & 96.7 & \na & 83.8 & 87.1 & \na & 90.4 & 94.3 & 74.2 \\
+제미니 3 프로 & 해당 없음 & 96.0 & 91.7 & 97.5 & 98.3 & 83.1 & 87.4 & 58.8 & 91.9 & \na & 70.4 \\
+\addlinespace[1.5pt]
+\midrule
+\addlinespace[1.5pt]
+\rowcolor{vibebg}
+\textbf{VibeThinker-3B} & &
+\our{91.4} & \our{94.3} & \our{89.3} & \our{93.8} & \our{76.4} &
+\our{80.2} & \our{38.6} & \our{70.2} & \our{93.4} & \our{74.5} \\
+\rowcolor{vibebg}
+\quad + CLR & \multirow{-2}{*}{3B} &
+\clrscore{96.7} & \clrscore{97.1} & \clrscore{95.4} & \clrscore{99.2} & \clrscore{80.6} &
+& & \clrscore{72.9} & & \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

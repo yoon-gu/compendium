@@ -1,0 +1,14 @@
+{
+  "slug": "vibethinker-3b-verifiable-reasoning",
+  "arxiv_id": "2606.16140",
+  "source_url": "https://arxiv.org/e-print/2606.16140",
+  "pdf_url": "https://arxiv.org/pdf/2606.16140.pdf",
+  "fetched_at": "2026-06-25T05:44:32.390614+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/vibethinker-3b-verifiable-reasoning-original.pdf",
+  "source_dir": "papers-tex/vibethinker-3b-verifiable-reasoning",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "neurips_2026.tex"
+  ]
+}
