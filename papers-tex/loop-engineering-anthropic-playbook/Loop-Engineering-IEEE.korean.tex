@@ -3,9 +3,9 @@
 \usepackage{kotex}
 \usepackage{fontspec}
 \setmainfont{NanumMyeongjo}[AutoFakeSlant=0.167]
-\setsansfont{NanumGothic}[AutoFakeSlant=0.167]
+\setsansfont{NanumGothic}[AutoFakeSlant=0.167,AutoFakeBold=2.0]
 \setmainhangulfont{NanumMyeongjo}[AutoFakeSlant=0.167]
-\setsanshangulfont{NanumGothic}[AutoFakeSlant=0.167]
+\setsanshangulfont{NanumGothic}[AutoFakeSlant=0.167,AutoFakeBold=2.0]
 \setmonohangulfont{NanumGothicCoding}[AutoFakeSlant=0.167]
 \setmonofont{NanumGothicCoding}[AutoFakeSlant=0.167]
 \linespread{1.20}\selectfont
@@ -16,9 +16,14 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{titlesec}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\titleformat{\section}{\normalfont\normalsize\bfseries\sffamily}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries\sffamily}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.5ex plus .5ex}{0.8ex}
+\titlespacing*{\subsection}{0pt}{1.2ex plus .4ex}{0.5ex}
 \title{Loop Engineering: 에이전트를 프롬프트하는 시스템 설계를 위한 Anthropic 플레이북}
 \author{공개 PDF에서 재구성한 한국어 번역본\\\textit{원본 TeX가 아닌, 공개 PDF 기반 재구성·번역본}}
 \begin{document}
