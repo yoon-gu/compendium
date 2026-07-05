@@ -1,0 +1,9 @@
+{
+  "source_type": "public_pdf_reconstruction",
+  "title": "Loop Engineering: The Anthropic Playbook for Designing Systems That Prompt Your Agents",
+  "slug": "loop-engineering-anthropic-playbook",
+  "original_pdf": "static/papers/loop-engineering-anthropic-playbook-original.pdf",
+  "source_note": "Original TeX was not publicly available. This workspace contains a reconstructed TeX source from the publicly shared PDF, with figures cropped from the original PDF.",
+  "fetched_timestamp": "2026-07-05T11:42:00Z",
+  "entrypoint_candidates": ["Loop-Engineering-IEEE.korean.tex", "Loop-Engineering-IEEE.reconstructed-with-figures.tex"]
+}
