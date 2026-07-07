@@ -1,0 +1,18 @@
+\section{관련 연구}
+\label{sec:related}
+
+
+\paragraph{Diffusion language models.} 
+연속 영역에서 diffusion model이 거둔 성공~\cite{ho2020denoising,rombach2022high}에 동기를 얻어, 최근 연구들은 diffusion을 이산 텍스트 생성으로 확장했다. 초기 embedding-space 접근법~\cite{diffusionlm,diffuseq,ssdlm}은 최적화와 이산화 문제에 직면했고, 이에 따라 random masking을 통해 이산 토큰 공간에서 직접 작동하는 masked diffusion model~\cite{sedd,mdlm,shi2024simplified,ou2024your}이 채택되었다.
+LLaDA~\cite{nie2025large}와 Dream~\cite{ye2025dream} 같은 최근의 대규모 모델은 autoregressive (AR) 모델과 경쟁할 만한 성능을 달성한다.
+문헌에서 논의된 dLLM의 여러 장점 가운데 두 가지 측면이 특히 주목받았다. 첫째, dLLM은 본질적으로 parallel decoding을 지원하여 상당한 inference 가속을 가능하게 한다~\cite{fastdllm,ben2025accelerated,labs2025mercury,geminidiffusion,song2025seed}. 둘째, dLLM의 non-autoregressive 정식화는 arbitrary-order 토큰 생성을 허용하며, 이는 엄격한 left-to-right 제약을 완화함으로써 복잡한 reasoning에 도움이 될 수 있다고 가정되어 왔다~\cite{ye2024beyond,kim2025train}.
+
+\paragraph{순서 임의성의 가치.} 초기 연구들이 제한된 과제에서 arbitrary order 생성을 검증한 반면~\cite{ye2024beyond,nie2025large,kim2025train}, 최근 연구는 이를 일반 reasoning으로 확장한다. 일부 연구는 dLLM이 자연스럽게 비표준 decoding 동작(\eg, sketch-first)을 보일 수 있음을 입증하고~\cite{xie2025dream,gong2025diffucoder}, 다른 연구는 성능 향상을 위해 decoding schedule을 명시적으로 최적화한다~\cite{Peng2025PathPF,huang2025reinforcing}.
+또한 일부 연구~\cite{gong2025diffucoder,hong2025improving,shen2026improvingdiffusionlanguagemodel}는 dLLM의 reasoning 잠재력을 측정하기 위해 Pass@$k$도 사용한다.
+이 잠재력을 인식한 이러한 연구들은 주로 arbitrary-order 패러다임 안에서 성능을 높이는 데 초점을 맞추며, 그 이점이 순서 임의성에 고유하게 묶여 있는지는 덜 검토된 채로 남겨 두었다.
+최근 \cite{du2025understanding}는 arbitrary order의 필요성에 의문을 제기하며, 모델이 uniform permutation을 학습하도록 강제하면 기저 데이터 분포에 대한 근사가 상당히 느슨해진다고 주장했다.
+그들의 분석은 pre-training에 초점을 두지만, 우리는 reasoning과 RL에서도 유사한 failure mode를 관찰하며, 이러한 유연성이 RL training에 필수적인 exploration을 저하시킬 수 있음을 시사한다.
+이는 sequence의 ordering이 그 내용뿐 아니라 유용한 구조적 정보도 담고 있으며 arbitrary-order 생성은 이를 간과하기 쉽다는 더 넓은 관점~\cite{varshney2006toward}과도 관련된다.
+
+\paragraph{Diffusion language model을 위한 reinforcement learning.} dLLM을 위한 reinforcement learning은 autoregressive 패러다임과 구별되는 구조적 최적화 장애물에 직면하며, 이는 주로 denoising trajectory의 조합적 폭발에서 비롯된다. 초기 시도들~\cite{zhao2025d1,yang2025mmada,gong2025diffucoder}은 token-level 정식화를 직접 적용하려 했지만, ill-defined state transition으로 인해 종종 제한되었고 mean-field approximation에 의존할 필요가 있었다. 그 결과 이 분야는 sequence-level 관점~\cite{wang2025spg,rojas2025improving,ou2025principled}으로 이동하여, 다루기 어려운 marginal likelihood를 근사하기 위한 다양한 surrogate를 사용하게 되었다. 그러나 이러한 방법 전반에는 off-policy misalignment가 종종 남아 있다. 효율적인 exploration에 필요한 heuristic-guided sampling이 기저 diffusion prior에서 벗어나며, 이는 원칙적인 보정 없이 gradient에 편향을 줄 수 있기 때문이다~\cite{schulman2015trust}.
+두 가지 주목할 만한 예외는 이러한 문제를 부분적으로 다룬다. LLaDOU~\cite{huang2025reinforcing}는 토큰 위치 선택을 모델링하기 위한 auxiliary policy를 도입하여 직접적인 trajectory likelihood 추정을 가능하게 하고, TraceRL~\cite{wang2025revolutionizing}은 shrinkage-based step-wise MDP를 통해 최적화를 inference trace와 정렬한다. 그럼에도 둘 다 전체 arbitrary-order 메커니즘을 유지하며 그 필요성을 암묵적으로 가정하는 반면, 우리는 arbitrary order 자체의 필요성을 재고함으로써 효과적인 RL training을 더 단순하게 달성할 수 있는지 질문한다.

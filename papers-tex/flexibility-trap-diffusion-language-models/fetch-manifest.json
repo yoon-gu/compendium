@@ -1,0 +1,18 @@
+{
+  "slug": "flexibility-trap-diffusion-language-models",
+  "arxiv_id": "2601.15165v4",
+  "source_url": "https://arxiv.org/e-print/2601.15165",
+  "pdf_url": "https://arxiv.org/pdf/2601.15165.pdf",
+  "abs_url": "https://arxiv.org/abs/2601.15165",
+  "html_url": "https://arxiv.org/html/2601.15165v4",
+  "title": "The Flexibility Trap: Rethinking the Value of Arbitrary Order in Diffusion Language Models",
+  "fetched_at": "2026-07-07T21:09:56.587752+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/flexibility-trap-diffusion-language-models-original.pdf",
+  "source_dir": "papers-tex/flexibility-trap-diffusion-language-models",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "main.tex"
+  ],
+  "notes": "Korean TeX/PDF translated from public arXiv source. tabularray package was unused in source and commented out for local TeX Live 2021 compatibility."
+}

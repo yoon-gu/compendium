@@ -1,0 +1,10 @@
+Diffusion Large Language Models (dLLMs)는 전통적인 LLM의 엄격한 left-to-right 제약을 깨고, token을 arbitrary order로 생성할 수 있게 한다.
+직관적으로 이러한 유연성은 고정된 autoregressive trajectory를 엄격히 포함하는 solution space를 의미하며, 이론적으로 더 뛰어난 reasoning 잠재력을 열어 준다.
+하지만 이 논문에서 우리는 일반 reasoning task(\eg, 수학과 코딩)의 경우 arbitrary order generation이 실제로는 dLLM의 reasoning 잠재력을 제한할 수 있음을 발견한다.
+우리는 dLLM이 exploration에 중요한 high-uncertainty token을 우회하기 위해 이러한 순서 유연성을 활용하는 경향이 있으며, 이는 solution coverage의 조기 붕괴로 이어질 수 있음을 관찰한다.
+이 관찰은 dLLM을 위한 RL 접근법을 재고하도록 동기를 부여한다. 기존 접근법에서는 combinatorial trajectory와 다루기 어려운 likelihood를 처리하는 등 상당한 복잡성이 종종 이러한 유연성을 보존하는 데 투입된다.
+우리는 arbitrary order를 단순히 포기하고 대신 표준 Group Relative Policy Optimization (GRPO)을 적용하는 것만으로 효과적인 reasoning을 이끌어낼 수 있음을 보인다.
+우리의 접근법인 \textbf{JustGRPO}는 미니멀하지만 놀라울 정도로 효과적이며(\eg, GSM8K에서 89.1\% 정확도), dLLM의 parallel decoding 능력은 완전히 유지한다.
+\begin{center}
+    프로젝트 페이지: \url{https://nzl-thu.github.io/the-flexibility-trap}
+\end{center}

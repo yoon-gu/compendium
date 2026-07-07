@@ -1,0 +1,91 @@
+\usepackage[table,x11names]{xcolor}
+\usepackage{relsize}        %
+
+\usepackage[utf8]{inputenc} %
+\usepackage[T1]{fontenc}    %
+\usepackage{url}            %
+\usepackage{booktabs}       %
+\usepackage{amsfonts}       %
+\usepackage{nicefrac}       %
+\usepackage{microtype}      %
+\usepackage{tabularx}   %
+\usepackage{enumitem}
+
+\usepackage[utf8]{inputenc} %
+\usepackage[T1]{fontenc}    %
+\usepackage{url}            %
+\usepackage{booktabs}       %
+\usepackage{amsfonts}       %
+\usepackage{nicefrac}       %
+\usepackage{microtype}      %
+\definecolor{citecolor}{HTML}{0071bc}
+\definecolor{shadecolor}{HTML}{EFEFEF}
+\definecolor{linkcolor}{HTML}{9A4D92}
+\usepackage{xurl}
+\usepackage[colorlinks, linkcolor=linkcolor, anchorcolor=blue, citecolor=citecolor, pagebackref=True]{hyperref}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{dsfont}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs} %
+\usepackage{caption}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{stfloats}
+
+\usepackage{titletoc} %
+
+\usepackage{subcaption}
+\usepackage[export]{adjustbox}
+\usepackage{footnote}
+\usepackage{tablefootnote}
+\usepackage{threeparttable}
+\usepackage[capitalize,noabbrev]{cleveref}
+
+% tabularray is unused in this source and unavailable in local TeX Live 2021
+% \usepackage{tabularray}
+% \UseTblrLibrary{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{mathrsfs}
+\usepackage{pifont}
+\usepackage{makecell}
+\usepackage{CJK}
+
+\usepackage{marvosym} %
+\usepackage[most]{tcolorbox}
+
+\newcommand{\wzk}[1]{\begin{CJK}{UTF8}{gbsn}\textcolor{blue}{[wzk: #1]}\end{CJK}}
+\newcommand{\YY}[1]{\begin{CJK}{UTF8}{gbsn}\textcolor{blue}{[YY: #1]}\end{CJK}}
+
+\newcommand{\etal}{\textit{et al}.~}
+\newcommand{\ie}{\textit{i}.\textit{e}.}
+\newcommand{\ieno}{\textit{i}.\textit{e}.}
+\newcommand{\eg}{\textit{e}.\textit{g}.}
+\newcommand{\egno}{\textit{e}.\textit{g}.} %
+\newcommand{\etc}{\textit{etc}.}
+\newcommand{\etcno}{\textit{etc}} %
+\renewcommand{\parallel}{\mathrel{/\mskip-4mu/}}\newcommand\blfootnote[1]{%
+\begingroup
+\renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+\newcommand{\tablestyle}[2]{\setlength{\tabcolsep}{#1}\renewcommand{\arraystretch}{#2}\centering\footnotesize}
+\newlength\savewidth\newcommand\shline{\noalign{\global\savewidth\arrayrulewidth
+\global\arrayrulewidth 1pt}\hline\noalign{\global\arrayrulewidth\savewidth}}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\mask}{\texttt{[MASK]}\xspace}
+
+\definecolor{lightblue}{RGB}{235, 242, 250} 
+\definecolor{lightorange}{RGB}{255, 245, 235}
+\newcommand{\gc}[1]{\textcolor{lightgray}{#1}}
+\renewcommand{\paragraph}[1]{\noindent\textbf{#1}}

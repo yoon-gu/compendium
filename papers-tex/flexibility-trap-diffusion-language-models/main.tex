@@ -1,0 +1,123 @@
+\documentclass{article}
+% --- Korean translation support (xelatex + kotex) ---
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{NanumMyeongjo}[AutoFakeSlant=0.167]
+\setsansfont{NanumGothic}[AutoFakeSlant=0.167]
+\setmainhangulfont{NanumMyeongjo}[AutoFakeSlant=0.167]
+\setsanshangulfont{NanumGothic}[AutoFakeSlant=0.167]
+\setmonohangulfont{NanumGothicCoding}[AutoFakeSlant=0.167]
+\setmonofont{NanumGothicCoding}[AutoFakeSlant=0.167]
+\linespread{1.22}\selectfont
+\renewcommand{\figurename}{그림}
+\renewcommand{\tablename}{표}
+\setlength{\parindent}{1.2em}
+% --- end Korean support ---
+\usepackage{leaplab}
+
+\input{config}
+
+\definecolor{paleviolet}{HTML}{E1EEFC}
+\definecolor{lightgrey}{RGB}{247, 247, 247}
+\definecolor{darkgrey}{rgb}{0.5, 0.5, 0.5}
+\definecolor{darkgreen}{rgb}{0, 0.5, 0}
+\newenvironment{leapabstract}{
+  \begin{tcolorbox}[
+    colback=lightgrey,
+    colframe=white,
+    boxrule=0pt,
+    arc=10pt,
+    left=16pt,
+    right=16pt,
+    top=12pt,
+    bottom=12pt,
+    width=\textwidth,
+    enlarge left by=0mm,
+    before skip=10pt,
+    after skip=10pt
+  ]
+}{
+  \end{tcolorbox}
+}
+
+
+\begin{document}
+
+
+\makeatletter
+\def\icmldate#1{\gdef\@icmldate{#1}}
+\icmldate{\today}
+\makeatother
+
+\makeatletter
+\fancypagestyle{fancytitlepage}{
+  \fancyhead{}  %
+  \lhead{\includegraphics[height=1.5cm]{figures/logos/leap.png}}
+  \rhead{\it \@icmldate}
+  \cfoot{}
+}
+\makeatother
+
+\icmltitlerunning{The Flexibility Trap}
+
+\icmltitle{유연성의 함정: Diffusion Language Models에서 arbitrary order의 가치 재고}
+
+\vskip -.05in
+
+\begin{icmlauthorlist}
+\mbox{Zanlin Ni$^{\,1\,}$},
+\mbox{Shenzhi Wang$^{\,1}$},
+\mbox{Yang Yue$^{\,1}$},
+\mbox{Tianyu Yu$^{\,2}$},
+\mbox{Weilin Zhao$^{\,2}$},
+\mbox{Yeguo Hua$^{\,3}$},
+\mbox{Tianyi Chen$^{\,3}$},
+\mbox{Jun Song$^{\,4}$},
+\mbox{Cheng Yu$^{\,4}$},
+\mbox{Bo Zheng$^{\,4}$},
+\mbox{Gao Huang$^{\,1,5\,\textrm{\Letter}}$}
+\end{icmlauthorlist}
+
+$^{1\,}$ LeapLab, Tsinghua University  \quad $^{2\,}$ NLPLab, Tsinghua University \\
+\quad $^{3\,}$ Tsinghua University \quad $^{4\,}$ Alibaba Group \quad $^{5\,}$ BNRist, Tsinghua University
+
+{
+\smaller
+\texttt{nzl22@mails.tsinghua.edu.cn, gaohuang@tsinghua.edu.cn}
+}
+
+\icmlcorrespondingauthor{gaohuang@tsinghua.edu.cn}
+
+
+\vskip -1in
+
+
+\begin{leapabstract}
+    \input{tex/0-abs}
+\end{leapabstract}
+
+
+\input{tex/1-intro}
+\input{tex/2.5-prelim}
+\input{tex/4-rethink_value_of_AO.tex}
+\input{tex/5-justGRPO.tex}
+\input{tex/6-experiments.tex}
+\input{tex/2-related.tex}
+\input{tex/7-conclusion}
+
+\section*{영향 진술}
+이 논문은 Machine Learning 분야, 특히 diffusion language model과 reasoning task를 위한 reinforcement learning 영역을 발전시키는 것을 목표로 하는 연구를 제시한다. 우리의 발견은 더 단순한 학습 접근법이 놀라울 정도로 효과적일 수 있음을 시사하며, 이는 계산 비용을 줄이고 이러한 기법의 접근성을 높일 수 있다. 본 연구에는 여러 잠재적인 사회적 영향이 있을 수 있지만, 주요 기여가 방법론적이며 language model의 이해와 학습을 개선하는 데 목적을 두고 있으므로 여기서 특별히 강조해야 할 사항은 없다고 본다.
+
+\section*{감사의 말}
+이 연구는 중국 국가 중점 R\&D 프로그램(Grant 2024YFB4708200), 중국 국가 자연과학기금(Grants U24B20173, U2541227, 625B2107), 그리고 청년 교원을 위한 과학연구 혁신역량 지원 프로젝트(Grant ZYGXQNJSKYCXNLZCXM-I20)의 부분적 지원을 받았다.
+
+\bibliography{main}
+\bibliographystyle{icml2025}
+
+
+\newpage
+\appendix
+\input{tex/appendix}
+
+
+\end{document}

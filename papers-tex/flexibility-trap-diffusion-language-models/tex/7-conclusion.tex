@@ -1,0 +1,6 @@
+\section{결론}
+\label{sec:conclusion}
+Diffusion language model의 직관적 매력은 순서 임의성에 있으며, 이는 종종 복잡한 reasoning 경로를 탐색하기 위한 유망한 메커니즘으로 여겨진다. 그러나 우리의 연구는 수학과 코딩 같은 일반 reasoning tasks에서 이러한 제한 없는 유연성이 오히려 reasoning 잠재력을 의도치 않게 제약할 수 있음을 시사한다.
+구체적으로, arbitrary-order 생성은 더 넓은 solution coverage보다 단일 trajectory의 refinement를 우선시하는 것으로 보인다.
+
+이 관찰은 dLLM의 reasoning capabilities를 끌어내기 위한 더 단순한 해법을 가리킨다. 표준 autoregressive objective를 사용해 모델을 정렬함으로써, 우리는 order arbitrariness에 맞춘 복잡한 adaptation 없이 Group Relative Policy Optimization (GRPO)을 직접 적용할 수 있게 한다. 이 접근법인 JustGRPO는 단순함에도 불구하고 training 동안 exploration order를 의도적으로 제약하는 것이 reasoning performance의 주목할 만한 향상을 가져올 수 있으며, inference에서는 dLLM의 parallel decoding capabilities를 완전히 보존한다는 점을 시사한다. 정렬을 위해 기본적인 left-to-right order로 돌아감으로써, 본 연구는 diffusion language model 개발에서 arbitrary \emph{vs.} AR order 사이의 trade-off를 재고하도록 한다.

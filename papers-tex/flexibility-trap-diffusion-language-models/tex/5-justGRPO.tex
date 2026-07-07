@@ -1,0 +1,62 @@
+\section{dLLMs를 위한 ``Just GRPO''}
+\label{sec:justgrpo}
+
+Section~\ref{sec:rethink_value_of_AO}의 발견은 arbitrary order가 RL이 접근할 수 있는 reasoning 잠재력을 제한할 수 있음을 시사한다. 그럼에도 현재 dLLMs를 위한 RL 방법들은 이 특정 유연성을 보존해야 한다는 필요에 여전히 크게 부담을 지고 있다.
+이 절에서는 이 유연성이 부과하는 ``tax''를 검토하고(Section~\ref{sec:justgrpo_revisit}), 이를 포기하면 minimalist하면서도 효과적인 solution인 \textbf{JustGRPO}가 가능해짐을 보인다(Section~\ref{sec:justgrpo_detail}).
+
+\subsection{dLLMs의 RL에서 Flexibility Tax}
+\label{sec:justgrpo_revisit}
+기존 diffusion RL 방법들은 arbitrary order generation을 보존하기 위해 policy가 denoising trajectories $\mathcal{T}$의 조합적 space를 수용해야 한다는 전제 아래 작동한다. 이 design choice는 개념적으로 일반적이지만, 몇 가지 challenges를 도입한다:
+
+\paragraph{Token-level decomposition의 ambiguity.}
+dLLMs에서 generation state $s_t$는 stochastic unmasking trajectory $\tau$에 condition된 noisy sequence이다.
+autoregressive models와 달리, dLLMs는 $\pi(o_t \mid s_t)$ 형태의 고유하고 index-aligned된 conditional probability를 허용하지 않으므로, token-level credit assignment가 모호해지고 표준 importance ratio $\rho_t = \frac{\pi_\theta(o_t \mid s_t)}{\pi_{\text{old}}(o_t \mid s_t)}$를 정의하기 어렵게 만든다.
+
+\paragraph{다루기 어려운 sequence likelihood.}
+Autoregressive models는 sequence likelihood를 $\log \pi(o) = \sum_t \log \pi(o_t \mid o_{<t}, q)$로 factorize하는 반면, dLLMs는 모든 valid denoising trajectories에 대한 marginalization을 요구한다,
+$\pi_\theta(o \mid q) = \sum_{\tau \in \mathcal{T}} \pi_\theta(o, \tau \mid q)$.
+길이 $N$의 sequence에 대해 trajectory space는 $|\mathcal{T}| = O(N!)$로 증가하여, exact likelihood computation을 infeasible하게 만들고 기존 방법들이 original objective 대신 ELBO 기반 surrogate에 의존하도록 강제한다~\cite{wang2025spg,ou2025principled}.
+
+\paragraph{Sampler-learner mismatch.}
+정확한 likelihood approximation이 있더라도, 더 subtle한 문제가 남아 있다.
+실제로 rollout samples는 조합적 space를 탐색하기 위해 보통 \emph{confidence-based} generation $o \sim \pi_{\theta}^{\text{conf}}(o \mid q)$로 생성된다.
+그러나 ELBO objective는 여전히 실제 sampling policy $\pi_{\theta}^{\text{conf}}(o \mid q)$가 아니라 \emph{original} model distribution $\pi_\theta(o \mid q)$의 likelihood를 목표로 하며, 이는 rollout과 optimization 사이의 mismatch를 초래하여 성능을 저하시킬 수 있다~\cite{schulman2015trust}.
+
+
+\subsection{JustGRPO}
+\label{sec:justgrpo_detail}
+우리는 단순함으로 돌아갈 것을 제안한다. 우리의 분석에서 순수 autoregressive order가 더 높은 reasoning 잠재력을 보이므로(Section~\ref{sec:rethink_value_of_AO}), RL stage 동안 arbitrary-order generation을 명시적으로 포기한다. 이 constraint는 dLLM을 혼란스러운 sequence denoiser에서 잘 정의된 autoregressive policy로 변환한다.
+
+\paragraph{Formulation.}
+Standard GRPO는 모든 tokens가 observed된 \emph{partial} sequence $o_{<k}$를 받아들이고 한 번에 \emph{one} token $o_k$를 예측하는 policy $\pi(o_k | o_{<k}, q)$를 가정하며, 여기서 $q$는 query이다.
+그러나 diffusion language models는 observed tokens와 masked tokens가 섞인 \emph{full} sequence를 받아들이고 모든 masked positions의 original values를 동시에 예측하는 sequence-level denoisers로 설계되어 있다.
+
+arbitrary-order generation을 포기함으로써, 우리는 위의 gap을 bridge하고 dLLMs에 대한 AR policy $\pi_{\theta}^{\text{AR}}$를 엄밀하게 정의할 수 있다.
+history $o_{<k}$가 주어졌을 때 next token $o_k$의 probability를 얻기 위해, past는 observed되고 future는 masked된 $\tilde{x}_k$를 구성한다:
+\begin{equation}
+    \tilde{x}_k = [\underbrace{o_1, \dots, o_{k-1}}_{\text{Observed}}, \underbrace{\texttt{[MASK]}, \dots, \texttt{[MASK]}}_{\text{Masked}}].
+\end{equation}
+diffusion language model은 모든 masked positions에 대한 predictions를 출력하지만, autoregressive policy는 next token $o_k$에만 관심을 둔다. 우리는 $\pi_{\theta}^{\text{AR}}(\cdot | o_{<k}, q)$를 다음과 같이 정의한다:
+\begin{equation}
+    \pi_{\theta}^{\text{AR}}(\cdot | o_{<k}, q) \triangleq \text{Softmax}(f_{\theta, k}(\tilde{x}_k, q)),
+\end{equation}
+여기서 $f_{\theta, k}$는 position $k$에서의 model logits를 나타낸다.
+dLLM backbone 위에 surrogate autoregressive policy $\pi_{\theta}^{AR}$를 정의함으로써, 우리는 permutations에 대한 다루기 어려운 marginalization을 정확하게 계산 가능한 likelihood로 변환한다:
+\begin{equation}
+    \pi_{\theta}^{\text{AR}}(o | q) = \prod_{k=1}^{|o|} \pi_{\theta}^{\text{AR}}(o_k | o_{<k}, q).
+\end{equation}
+
+\paragraph{Optimization.}
+위 formulation은 standard GRPO를 diffusion language models에 직접 적용할 수 있게 한다. 각 query $q$에 대해, 우리는 old policy $\pi_{\theta_{\text{old}}}^{\text{AR}}$를 사용해 outputs group $\{o_i\}_{i=1}^G$를 sample한다. objective는 다음과 같다:
+\begin{equation}
+    \label{eq:justgrpo-loss}
+    \mathcal{J}(\theta) = \mathbb{E}_{q \sim P(Q), \{o_i\}_{i=1}^G \sim \pi_{\theta_{\text{old}}}^{\text{AR}}} \Bigg[ \frac{1}{G} \sum_{i=1}^G \frac{1}{|o_i|} \sum_{k=1}^{|o_i|} \Big( \min \big( \rho_{i,k} \hat{A}_{i,k}, \text{clip}(\rho_{i,k}, 1-\varepsilon, 1+\varepsilon) \hat{A}_{i,k} \big) - \beta \mathbb{D}_{\text{KL}} \Big) \Bigg],
+\end{equation}
+여기서 $\rho_{i,k} = \frac{\pi_\theta^{\text{AR}}(o_{i,k} \mid o_{i,<k}, q)}{\pi_{\theta_{\text{old}}}^{\text{AR}}(o_{i,k} \mid o_{i,<k}, q)}$는 current policy와 old policy 사이의 probability ratio이고, $\hat{A}_{i,k}$는 group-standardized advantage를 나타낸다.
+
+\paragraph{Remarks.}
+AR mode에서 training하는 것이 diffusion model을 fundamentally standard autoregressive model로 바꾸는 것은 아닌지 우려할 수 있다. 
+그렇지 않다. AR constraint는 더 효과적인 exploration과 credit assignment를 위해 \emph{RL training 동안에만} 적용된다.
+중요하게도, 이는 underlying structure를 바꾸거나 dLLMs 고유의 parallel sampling을 훼손할 수 있는 structural constraints, \eg, causal masking을 부과하지 않고 model distribution을 정제한다.
+경험적으로 model은 inference에서 decoding을 가속하기 위해 parallel samplers~\cite{ben2025accelerated}와 계속 compatible하다. 따라서 JustGRPO는 dLLMs의 parallel capability를 보존하면서 AR 기반 reasoning exploration의 이점을 얻는다(Section~\ref{subsec:parallel_decoding} 참조).
+

@@ -1,0 +1,348 @@
+\begin{thebibliography}{50}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Achiam et~al.(2023)Achiam, Adler, Agarwal, Ahmad, Akkaya, Aleman,
+  Almeida, Altenschmidt, Altman, Anadkat, et~al.]{achiam2023gpt}
+Achiam, J., Adler, S., Agarwal, S., Ahmad, L., Akkaya, I., Aleman, F.~L.,
+  Almeida, D., Altenschmidt, J., Altman, S., Anadkat, S., et~al.
+\newblock {GPT}-4 technical report.
+\newblock \emph{arXiv preprint arXiv:2303.08774}, 2023.
+
+\bibitem[Ben-Hamu et~al.(2025)Ben-Hamu, Gat, Severo, Nolte, and
+  Karrer]{ben2025accelerated}
+Ben-Hamu, H., Gat, I., Severo, D., Nolte, N., and Karrer, B.
+\newblock Accelerated sampling from masked diffusion models via entropy bounded
+  unmasking.
+\newblock In \emph{NeurIPS}, 2025.
+
+\bibitem[Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan, Dhariwal,
+  Neelakantan, Shyam, Sastry, Askell, et~al.]{brown2020language}
+Brown, T., Mann, B., Ryder, N., Subbiah, M., Kaplan, J.~D., Dhariwal, P.,
+  Neelakantan, A., Shyam, P., Sastry, G., Askell, A., et~al.
+\newblock Language models are few-shot learners.
+\newblock In \emph{NeurIPS}, 2020.
+
+\bibitem[Chen et~al.(2021)Chen, Tworek, Jun, Yuan, Pinto, Kaplan, Edwards,
+  Burda, Joseph, Brockman, et~al.]{chen2021evaluating}
+Chen, M., Tworek, J., Jun, H., Yuan, Q., Pinto, H. P. d.~O., Kaplan, J.,
+  Edwards, H., Burda, Y., Joseph, N., Brockman, G., et~al.
+\newblock Evaluating large language models trained on code.
+\newblock \emph{arXiv preprint arXiv:2107.03374}, 2021.
+
+\bibitem[Cheng et~al.(2026)Cheng, Huang, Zhu, Dai, Zhao, Zhang, and
+  Wei]{cheng2025reasoning}
+Cheng, D., Huang, S., Zhu, X., Dai, B., Zhao, W.~X., Zhang, Z., and Wei, F.
+\newblock Reasoning with exploration: An entropy perspective.
+\newblock In \emph{AAAI}, 2026.
+
+\bibitem[{DeepMind}(2025)]{geminidiffusion}
+{DeepMind}.
+\newblock {Gemini Diffusion}, 2025.
+\newblock URL \url{https://deepmind.google/models/gemini-diffusion}.
+
+\bibitem[Du et~al.(2025)Du, Yang, Zhang, Hou, Yu, Lin, and
+  Du]{du2025understanding}
+Du, C., Yang, X., Zhang, F., Hou, Y., Yu, S., Lin, M., and Du, C.
+\newblock Understanding the limitations of diffusion {LLM}s through a
+  probabilistic perspective.
+\newblock Notion blog, 2025.
+\newblock URL
+  \url{https://www.notion.so/Understanding-the-Limitations-of-Diffusion-LLMs-through-a-Probabilistic-Perspective-2ae0ba07baa88053b838d5bf0b0aad41}.
+
+\bibitem[Gong et~al.(2023)Gong, Li, Feng, Wu, and Kong]{diffuseq}
+Gong, S., Li, M., Feng, J., Wu, Z., and Kong, L.
+\newblock {DiffuSeq}: Sequence to sequence text generation with diffusion
+  models.
+\newblock In \emph{ICLR}, 2023.
+
+\bibitem[Gong et~al.(2026)Gong, Zhang, Zheng, Gu, Jaitly, Kong, and
+  Zhang]{gong2025diffucoder}
+Gong, S., Zhang, R., Zheng, H., Gu, J., Jaitly, N., Kong, L., and Zhang, Y.
+\newblock {DiffuCoder}: Understanding and improving masked diffusion models for
+  code generation.
+\newblock In \emph{ICLR}, 2026.
+
+\bibitem[Han et~al.(2023)Han, Kumar, and Tsvetkov]{ssdlm}
+Han, X., Kumar, S., and Tsvetkov, Y.
+\newblock {SSD-LM}: Semi-autoregressive simplex-based diffusion language model
+  for text generation and modular control.
+\newblock In \emph{ACL}, 2023.
+
+\bibitem[Ho et~al.(2020)Ho, Jain, and Abbeel]{ho2020denoising}
+Ho, J., Jain, A., and Abbeel, P.
+\newblock Denoising diffusion probabilistic models.
+\newblock In \emph{NeurIPS}, 2020.
+
+\bibitem[Hong et~al.(2026)Hong, An, Kim, and Ye]{hong2025improving}
+Hong, C., An, S., Kim, M.-S., and Ye, J.~C.
+\newblock Improving discrete diffusion unmasking policies beyond explicit
+  reference policies.
+\newblock In \emph{ICLR}, 2026.
+
+\bibitem[Huang et~al.(2025{\natexlab{a}})Huang, Xu, Wang, Yi, Gong, Li, Xiong,
+  Li, Jiang, and Zhou]{huang2025low}
+Huang, G., Xu, T., Wang, M., Yi, Q., Gong, X., Li, S., Xiong, R., Li, K.,
+  Jiang, Y., and Zhou, B.
+\newblock Low-probability tokens sustain exploration in reinforcement learning
+  with verifiable reward.
+\newblock \emph{arXiv preprint arXiv:2510.03222}, 2025{\natexlab{a}}.
+
+\bibitem[Huang et~al.(2025{\natexlab{b}})Huang, Chen, Wang, Li, and
+  Qi]{huang2025reinforcing}
+Huang, Z., Chen, Z., Wang, Z., Li, T., and Qi, G.-J.
+\newblock Reinforcing the diffusion chain of lateral thought with diffusion
+  language models.
+\newblock In \emph{NeurIPS}, 2025{\natexlab{b}}.
+
+\bibitem[{Inception Labs} et~al.(2025){Inception Labs}, Khanna, Kharbanda, Li,
+  Varma, Wang, Birnbaum, Luo, Miraoui, Palrecha, et~al.]{labs2025mercury}
+{Inception Labs}, Khanna, S., Kharbanda, S., Li, S., Varma, H., Wang, E.,
+  Birnbaum, S., Luo, Z., Miraoui, Y., Palrecha, A., et~al.
+\newblock Mercury: Ultra-fast language models based on diffusion.
+\newblock \emph{arXiv preprint arXiv:2506.17298}, 2025.
+
+\bibitem[Kang et~al.(2026)Kang, Galim, Oh, Lee, Zeng, Zhang, Hooper, Hu, Koo,
+  Cho, and Lee]{kang2025parallelbench}
+Kang, W., Galim, K., Oh, S., Lee, M., Zeng, Y., Zhang, S., Hooper, C. R.~C.,
+  Hu, Y., Koo, H.~I., Cho, N.~I., and Lee, K.
+\newblock {ParallelBench}: Understanding the trade-offs of parallel decoding in
+  diffusion {LLM}s.
+\newblock In \emph{ICLR}, 2026.
+
+\bibitem[Kim et~al.(2025)Kim, Shah, Kontonis, Kakade, and Chen]{kim2025train}
+Kim, J., Shah, K., Kontonis, V., Kakade, S., and Chen, S.
+\newblock Train for the worst, plan for the best: Understanding token ordering
+  in masked diffusions.
+\newblock In \emph{ICML}, 2025.
+
+\bibitem[Li et~al.(2022)Li, Thickstun, Gulrajani, Liang, and
+  Hashimoto]{diffusionlm}
+Li, X.~L., Thickstun, J., Gulrajani, I., Liang, P.~S., and Hashimoto, T.~B.
+\newblock {Diffusion-LM} improves controllable text generation.
+\newblock In \emph{NeurIPS}, 2022.
+
+\bibitem[Liu et~al.(2025)Liu, Diao, Lu, Hu, Dong, Choi, Kautz, and
+  Dong]{liu2025prorl}
+Liu, M., Diao, S., Lu, X., Hu, J., Dong, X., Choi, Y., Kautz, J., and Dong, Y.
+\newblock {ProRL}: Prolonged reinforcement learning expands reasoning
+  boundaries in large language models.
+\newblock In \emph{NeurIPS}, 2025.
+
+\bibitem[Lou et~al.(2024)Lou, Meng, and Ermon]{sedd}
+Lou, A., Meng, C., and Ermon, S.
+\newblock Discrete diffusion modeling by estimating the ratios of the data
+  distribution.
+\newblock In \emph{ICML}, 2024.
+
+\bibitem[Nie et~al.(2025)Nie, Zhu, You, Zhang, Ou, Hu, Zhou, Lin, Wen, and
+  Li]{nie2025large}
+Nie, S., Zhu, F., You, Z., Zhang, X., Ou, J., Hu, J., Zhou, J., Lin, Y., Wen,
+  J.-R., and Li, C.
+\newblock Large language diffusion models.
+\newblock In \emph{NeurIPS}, 2025.
+
+\bibitem[Ou et~al.(2025)Ou, Nie, Xue, Zhu, Sun, Li, and Li]{ou2024your}
+Ou, J., Nie, S., Xue, K., Zhu, F., Sun, J., Li, Z., and Li, C.
+\newblock Your absorbing discrete diffusion secretly models the conditional
+  distributions of clean data.
+\newblock In \emph{ICLR}, 2025.
+
+\bibitem[Ou et~al.(2026)Ou, Han, Xu, Xu, Xie, Ermon, Wu, and
+  Li]{ou2025principled}
+Ou, J., Han, J., Xu, M., Xu, S., Xie, J., Ermon, S., Wu, Y., and Li, C.
+\newblock Principled {RL} for diffusion {LLM}s emerges from a sequence-level
+  perspective.
+\newblock In \emph{ICLR}, 2026.
+
+\bibitem[Pan et~al.(2026)Pan, Tao, Zhai, Fu, Fang, He, Zhang, Liu, Ding, Liu,
+  and Wen]{pan2025d}
+Pan, L., Tao, S., Zhai, Y., Fu, Z., Fang, L., He, M., Zhang, L., Liu, Z., Ding,
+  B., Liu, A., and Wen, L.
+\newblock {d-TreeRPO}: Towards more reliable policy optimization for diffusion
+  language models.
+\newblock In \emph{ACL}, 2026.
+
+\bibitem[Peng et~al.(2025)Peng, Bezemek, Patel, Rector-Brooks, Yao, Bose, Tong,
+  and Chatterjee]{Peng2025PathPF}
+Peng, F.~Z., Bezemek, Z., Patel, S., Rector-Brooks, J., Yao, S., Bose, A.~J.,
+  Tong, A., and Chatterjee, P.
+\newblock Path planning for masked diffusion model sampling.
+\newblock \emph{arXiv preprint arXiv:2502.03540}, 2025.
+
+\bibitem[Rojas et~al.(2026)Rojas, Lin, Rasul, Schneider, Nevmyvaka, Tao, and
+  Deng]{rojas2025improving}
+Rojas, K., Lin, J., Rasul, K., Schneider, A., Nevmyvaka, Y., Tao, M., and Deng,
+  W.
+\newblock Improving reasoning for diffusion language models via group diffusion
+  policy optimization.
+\newblock In \emph{ICLR}, 2026.
+
+\bibitem[Rombach et~al.(2022)Rombach, Blattmann, Lorenz, Esser, and
+  Ommer]{rombach2022high}
+Rombach, R., Blattmann, A., Lorenz, D., Esser, P., and Ommer, B.
+\newblock High-resolution image synthesis with latent diffusion models.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Sahoo et~al.(2024)Sahoo, Arriola, Schiff, Gokaslan, Marroquin, Chiu,
+  Rush, and Kuleshov]{mdlm}
+Sahoo, S., Arriola, M., Schiff, Y., Gokaslan, A., Marroquin, E., Chiu, J.,
+  Rush, A., and Kuleshov, V.
+\newblock Simple and effective masked diffusion language models.
+\newblock In \emph{NeurIPS}, 2024.
+
+\bibitem[Schulman et~al.(2015)Schulman, Levine, Abbeel, Jordan, and
+  Moritz]{schulman2015trust}
+Schulman, J., Levine, S., Abbeel, P., Jordan, M., and Moritz, P.
+\newblock Trust region policy optimization.
+\newblock In \emph{ICML}, 2015.
+
+\bibitem[Shao et~al.(2024)Shao, Wang, Zhu, Xu, Song, Bi, Zhang, Zhang, Li, Wu,
+  et~al.]{shao2024deepseekmath}
+Shao, Z., Wang, P., Zhu, Q., Xu, R., Song, J., Bi, X., Zhang, H., Zhang, M.,
+  Li, Y., Wu, Y., et~al.
+\newblock {DeepSeekMath}: Pushing the limits of mathematical reasoning in open
+  language models.
+\newblock \emph{arXiv preprint arXiv:2402.03300}, 2024.
+
+\bibitem[Shen et~al.(2026)Shen, Feng, Han, Wang, Chen, Shen, Leskovec, and
+  Ermon]{shen2026improvingdiffusionlanguagemodel}
+Shen, Y., Feng, T., Han, J., Wang, W., Chen, T., Shen, C., Leskovec, J., and
+  Ermon, S.
+\newblock Improving diffusion language model decoding through joint search in
+  generation order and token space.
+\newblock \emph{arXiv preprint arXiv:2601.20339}, 2026.
+
+\bibitem[Shi et~al.(2024)Shi, Han, Wang, Doucet, and
+  Titsias]{shi2024simplified}
+Shi, J., Han, K., Wang, Z., Doucet, A., and Titsias, M.
+\newblock Simplified and generalized masked diffusion for discrete data.
+\newblock In \emph{NeurIPS}, 2024.
+
+\bibitem[Song et~al.(2025)Song, Zhang, Luo, Gao, Xia, Luo, Li, Yang, Yu, Qu,
+  et~al.]{song2025seed}
+Song, Y., Zhang, Z., Luo, C., Gao, P., Xia, F., Luo, H., Li, Z., Yang, Y., Yu,
+  H., Qu, X., et~al.
+\newblock {Seed Diffusion}: A large-scale diffusion language model with
+  high-speed inference.
+\newblock \emph{arXiv preprint arXiv:2508.02193}, 2025.
+
+\bibitem[Tang et~al.(2026)Tang, Dolga, Yoon, and Bogunovic]{tang2025wd1}
+Tang, X., Dolga, R., Yoon, S., and Bogunovic, I.
+\newblock {wd1}: Weighted policy optimization for reasoning in diffusion
+  language models.
+\newblock In \emph{ICLR}, 2026.
+
+\bibitem[Varshney \& Goyal(2006)Varshney and Goyal]{varshney2006toward}
+Varshney, L.~R. and Goyal, V.~K.
+\newblock Toward a source coding theory for sets.
+\newblock In \emph{DCC}, 2006.
+
+\bibitem[Wang et~al.(2026{\natexlab{a}})Wang, Rashidinejad, Su, Jiang, Wang,
+  Zhao, Zhou, Shen, Chen, Jaakkola, Tian, and Liu]{wang2025spg}
+Wang, C., Rashidinejad, P., Su, D., Jiang, S., Wang, S., Zhao, S., Zhou, C.,
+  Shen, S.~Z., Chen, F., Jaakkola, T., Tian, Y., and Liu, B.
+\newblock {SPG}: Sandwiched policy gradient for masked diffusion language
+  models.
+\newblock In \emph{ICLR}, 2026{\natexlab{a}}.
+
+\bibitem[Wang et~al.(2025)Wang, Yu, Gao, Zheng, Liu, Lu, Dang, Chen, Yang,
+  Zhang, et~al.]{wang2025beyond}
+Wang, S., Yu, L., Gao, C., Zheng, C., Liu, S., Lu, R., Dang, K., Chen, X.,
+  Yang, J., Zhang, Z., et~al.
+\newblock Beyond the 80/20 rule: High-entropy minority tokens drive effective
+  reinforcement learning for {LLM} reasoning.
+\newblock In \emph{NeurIPS}, 2025.
+
+\bibitem[Wang et~al.(2026{\natexlab{b}})Wang, Yang, Li, Tian, Shen, and
+  Wang]{wang2025revolutionizing}
+Wang, Y., Yang, L., Li, B., Tian, Y., Shen, K., and Wang, M.
+\newblock Revolutionizing reinforcement learning framework for diffusion large
+  language models.
+\newblock In \emph{ICLR}, 2026{\natexlab{b}}.
+
+\bibitem[Wu et~al.(2026{\natexlab{a}})Wu, Zhang, Xue, Diao, Fu, Liu, Molchanov,
+  Luo, Han, and Xie]{wu2025fast}
+Wu, C., Zhang, H., Xue, S., Diao, S., Fu, Y., Liu, Z., Molchanov, P., Luo, P.,
+  Han, S., and Xie, E.
+\newblock {Fast-dLLM} v2: Efficient block-diffusion {LLM}.
+\newblock In \emph{ICLR}, 2026{\natexlab{a}}.
+
+\bibitem[Wu et~al.(2026{\natexlab{b}})Wu, Zhang, Xue, Liu, Diao, Zhu, Luo, Han,
+  and Xie]{fastdllm}
+Wu, C., Zhang, H., Xue, S., Liu, Z., Diao, S., Zhu, L., Luo, P., Han, S., and
+  Xie, E.
+\newblock {Fast-dLLM}: Training-free acceleration of diffusion {LLM} by
+  enabling {KV} cache and parallel decoding.
+\newblock In \emph{ICLR}, 2026{\natexlab{b}}.
+
+\bibitem[Xie et~al.(2025)Xie, Ye, Zheng, Gao, Dong, Wu, Zhao, Gong, Jiang, Li,
+  et~al.]{xie2025dream}
+Xie, Z., Ye, J., Zheng, L., Gao, J., Dong, J., Wu, Z., Zhao, X., Gong, S.,
+  Jiang, X., Li, Z., et~al.
+\newblock {Dream-Coder} 7{B}: An open diffusion language model for code.
+\newblock \emph{arXiv preprint arXiv:2509.01142}, 2025.
+
+\bibitem[Yang et~al.(2025)Yang, Tian, Li, Zhang, Shen, Tong, and
+  Wang]{yang2025mmada}
+Yang, L., Tian, Y., Li, B., Zhang, X., Shen, K., Tong, Y., and Wang, M.
+\newblock {MMaDA}: Multimodal large diffusion language models.
+\newblock In \emph{NeurIPS}, 2025.
+
+\bibitem[Ye et~al.(2025{\natexlab{a}})Ye, Gao, Gong, Zheng, Jiang, Li, and
+  Kong]{ye2024beyond}
+Ye, J., Gao, J., Gong, S., Zheng, L., Jiang, X., Li, Z., and Kong, L.
+\newblock Beyond autoregression: Discrete diffusion for complex reasoning and
+  planning.
+\newblock In \emph{ICLR}, 2025{\natexlab{a}}.
+
+\bibitem[Ye et~al.(2025{\natexlab{b}})Ye, Xie, Zheng, Gao, Wu, Jiang, Li, and
+  Kong]{ye2025dream}
+Ye, J., Xie, Z., Zheng, L., Gao, J., Wu, Z., Jiang, X., Li, Z., and Kong, L.
+\newblock {Dream} 7{B}: Diffusion large language models.
+\newblock \emph{arXiv preprint arXiv:2508.15487}, 2025{\natexlab{b}}.
+
+\bibitem[Yue et~al.(2025)Yue, Chen, Lu, Zhao, Wang, Yue, Song, and
+  Huang]{yue2025does}
+Yue, Y., Chen, Z., Lu, R., Zhao, A., Wang, Z., Yue, Y., Song, S., and Huang, G.
+\newblock Does reinforcement learning really incentivize reasoning capacity in
+  {LLM}s beyond the base model?
+\newblock In \emph{NeurIPS}, 2025.
+
+\bibitem[Zeng et~al.(2025)Zeng, Jiang, Wang, Nie, Chen, and
+  Chen]{zeng2025acecoder}
+Zeng, H., Jiang, D., Wang, H., Nie, P., Chen, X., and Chen, W.
+\newblock {ACECODER}: Acing coder {RL} via automated test-case synthesis.
+\newblock In \emph{ACL}, 2025.
+
+\bibitem[Zhang et~al.(2025{\natexlab{a}})Zhang, Neubig, and
+  Yue]{zhang2025interplay}
+Zhang, C., Neubig, G., and Yue, X.
+\newblock On the interplay of pre-training, mid-training, and {RL} on reasoning
+  language models.
+\newblock \emph{arXiv preprint arXiv:2512.07783}, 2025{\natexlab{a}}.
+
+\bibitem[Zhang et~al.(2025{\natexlab{b}})Zhang, Peng, Zhang, Pan, and
+  Chrysos]{zhang2025corrective}
+Zhang, S., Peng, F.~Z., Zhang, Y., Pan, J., and Chrysos, G.~G.
+\newblock Corrective diffusion language models.
+\newblock \emph{arXiv preprint arXiv:2512.15596}, 2025{\natexlab{b}}.
+
+\bibitem[Zhao et~al.(2025)Zhao, Gupta, Zheng, and Grover]{zhao2025d1}
+Zhao, S., Gupta, D., Zheng, Q., and Grover, A.
+\newblock {d1}: Scaling reasoning in diffusion large language models via
+  reinforcement learning.
+\newblock In \emph{NeurIPS}, 2025.
+
+\bibitem[Zhu et~al.(2025)Zhu, Wang, Nie, Zhang, Wu, Hu, Zhou, Chen, Lin, Wen,
+  et~al.]{zhu2025llada}
+Zhu, F., Wang, R., Nie, S., Zhang, X., Wu, C., Hu, J., Zhou, J., Chen, J., Lin,
+  Y., Wen, J.-R., et~al.
+\newblock {LLaDA} 1.5: Variance-reduced preference optimization for large
+  language diffusion models.
+\newblock \emph{arXiv preprint arXiv:2505.19223}, 2025.
+
+\end{thebibliography}

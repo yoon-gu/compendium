@@ -1,0 +1,49 @@
+\section{배경}
+\label{sec:prelim}
+\subsection{Diffusion Large Language Models}
+
+Diffusion Large Language Models (dLLMs), 특히 Masked Diffusion Models (MDMs)는 완전히 mask된 token에서 초기화된 masked state $x_t$를 반복적으로 denoise함으로써 sequence를 생성한다. 이 과정은 masking ratio를 나타내는 연속 시간 변수 $t \in [0,1]$로 index된다.
+깨끗한 sequence $x_0$가 주어지면, forward process는 각 token을 확률 $t$로 독립적으로 mask한다:
+\begin{equation}
+q(x_{t,k} \mid x_{0,k}) =
+\begin{cases}
+\mask, & \text{확률 } t, \\
+x_{0,k}, & \text{확률 } 1 - t,
+\end{cases}
+\end{equation}
+여기서 $k$는 token index이다.
+Neural network $p_\theta(x_0 \mid x_t)$는 masked position에서 원래 token distribution을 추정한다. Inference 중에는 $x_1$(모두 \mask)에서 generation을 시작하고 confidence score 같은 heuristic에 기반해 token subset의 mask를 반복적으로 제거하며, 완료될 때까지 $x_t \rightarrow x_{t-\Delta t}$를 업데이트한다. 특수한 경우로서 dLLM은 항상 가장 왼쪽 token의 mask를 제거함으로써 autoregressive하게 generation을 수행할 수도 있다.
+모델은 Negative Evidence Lower Bound를 최소화하여 학습되며, 이는 masked token에 대한 weighted cross entropy loss로 환원된다:
+\begin{equation}
+\mathcal{L}_{\mathrm{MDM}}(\theta)
+= -\mathbb{E}_{t \sim \mathcal{U}[0,1],\, x_t \sim q(x_t \mid x_0)}
+\left[
+\frac{1}{t}
+\sum_{k=1}^{L}
+\mathbf{1}[x_{t,k} = \mask]\,
+\log p_\theta(x_{0,k} \mid x_t)
+\right].
+\end{equation}
+
+\subsection{Group Relative Policy Optimization}
+\label{sec:prelim_grpo}
+
+Group Relative Policy Optimization (GRPO)은 group level reward normalization을 사용하여 value function estimation을 피하는 reinforcement learning 알고리즘이다. 이는 일반적으로 autoregressive policy $\pi_\theta(o_k \mid o_{<k}, q)$에 적용된다.
+각 query $q$에 대해 GRPO는 old policy $\pi_{\theta_{\text{old}}}$로부터 $G$개의 output group $\{o_1, \dots, o_G\}$를 sample한다. Advantage $\hat{A}_{i,k}$는 reward $r(o_i)$를 group statistics에 대해 standardize하여 계산된다: $\hat{A}_{i,k} = (r(o_i) - \mu_G) / \sigma_G$, 여기서 $\mu_G$와 $\sigma_G$는 group mean과 standard deviation이다.
+GRPO objective는 KL regularization term이 포함된 clipped surrogate function을 최대화한다:
+\begin{equation}
+\mathcal{J}(\theta) = \mathbb{E}_{q \sim P(Q), \{o_i\}_{i=1}^G \sim \pi_{\theta_{\text{old}}}} \Bigg[ \frac{1}{G} \sum_{i=1}^G \frac{1}{|o_i|} \sum_{k=1}^{|o_i|} \Big( \min \big( \rho_{i,k} \hat{A}_{i,k}, \text{clip}(\rho_{i,k}, 1-\epsilon, 1+\epsilon) \hat{A}_{i,k} \big) - \beta \mathbb{D}_{\text{KL}} \Big) \Bigg]
+\end{equation}
+token level importance ratio는 $\rho_{i,k} = \frac{\pi_\theta(o_{i,k} \mid o_{i,<k}, q)}{\pi_{\theta_{\text{old}}}(o_{i,k} \mid o_{i,<k}, q)}$이다.
+
+\subsection{Reasoning Potential의 Proxy로서 Pass@$k$}
+
+dLLM의 reasoning capability boundary를 엄밀하게 정량화하기 위해 우리는 Pass@$k$ metric~\cite{chen2021evaluating,yue2025does}를 채택한다. 현재 reasoning capability를 향상시키는 지배적 패러다임인 Reinforcement Learning with Verifiable Rewards (RLVR)의 맥락에서, exploration은 개선의 전제조건이다. RL agent는 exploration phase에서 올바른 reasoning path를 sampling하여 positive reward signal을 얻을 수 있을 때에만 이를 강화할 수 있다.
+
+따라서 Pass@$k$는 모델의 \textit{reasoning potential}에 대한 표준 measure로 널리 확립되어 왔다~\cite{yue2025does,liu2025prorl,zhang2025interplay}.
+이는 $k$개의 독립 sample 안에서 적어도 하나의 correct solution이 생성될 확률을 측정하며, RL optimization이 접근 가능한 solution space의 upper bound를 효과적으로 나타낸다. 형식적으로, unbiased estimator formulation~\cite{chen2021evaluating,yue2025does}을 따르면, $n$개의 sample 중 $c$개가 correct일 때 Pass@$k$는 다음과 같이 계산된다:
+\begin{equation}
+\text{Pass@}k = \mathbb{E}\left[1 - \frac{\binom{n-c}{k}}{\binom{n}{k}}\right]
+\end{equation}
+
+높은 Pass@$k$는 올바른 reasoning trajectory가 모델의 sampling distribution 안에 있으며 따라서 RL optimization을 통해 학습 가능함을 나타낸다. 반대로, 막대한 sampling budget에도 불구하고 모델이 일관되게 solution을 산출하지 못한다면, 해당 문제가 모델의 intrinsic reasoning boundary 바깥에 있음을 시사한다. 이러한 시나리오에서 표준 RLVR 방법론은 positive exploration signal의 부재로 인해 근본적으로 제한된다~\cite{yue2025does}.
