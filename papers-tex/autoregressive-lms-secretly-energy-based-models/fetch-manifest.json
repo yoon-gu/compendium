@@ -1,0 +1,14 @@
+{
+  "slug": "autoregressive-lms-secretly-energy-based-models",
+  "arxiv_id": "2512.15605",
+  "source_url": "https://arxiv.org/e-print/2512.15605",
+  "pdf_url": "https://arxiv.org/pdf/2512.15605.pdf",
+  "fetched_at": "2026-07-09T00:31:57.827769+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/autoregressive-lms-secretly-energy-based-models-original.pdf",
+  "source_dir": "papers-tex/autoregressive-lms-secretly-energy-based-models",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "main.tex"
+  ]
+}

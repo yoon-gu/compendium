@@ -1,0 +1,343 @@
+\begin{thebibliography}{51}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ackley et~al.(1985)Ackley, Hinton, and Sejnowski]{ackley1985learning}
+Ackley, D.~H., Hinton, G.~E., and Sejnowski, T.~J.
+\newblock A learning algorithm for {Boltzmann} machines.
+\newblock \emph{Cognitive Science}, 9\penalty0 (1):\penalty0 147--169, 1985.
+
+\bibitem[Amini et~al.(2025)Amini, Vieira, and Cotterell]{amini2025better}
+Amini, A., Vieira, T., and Cotterell, R.
+\newblock Better estimation of the {KL} divergence between language models.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2025.
+
+\bibitem[Attias(2003)]{attias2003planning}
+Attias, H.
+\newblock Planning by probabilistic inference.
+\newblock In \emph{International Workshop on Artificial Intelligence and
+  Statistics}, pp.\  9--16. PMLR, 2003.
+
+\bibitem[Azar et~al.(2012)Azar, G{\'o}mez, and Kappen]{azar2012dynamic}
+Azar, M.~G., G{\'o}mez, V., and Kappen, H.~J.
+\newblock Dynamic policy programming.
+\newblock \emph{The Journal of Machine Learning Research}, 13\penalty0
+  (1):\penalty0 3207--3245, 2012.
+
+\bibitem[Bachmann \& Nagarajan(2024)Bachmann and
+  Nagarajan]{bachmann2024pitfalls}
+Bachmann, G. and Nagarajan, V.
+\newblock The pitfalls of next-token prediction.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}. PMLR, 2024.
+
+\bibitem[Bengio et~al.(2021)Bengio, Jain, Korablyov, Precup, and
+  Bengio]{bengio2021flow}
+Bengio, E., Jain, M., Korablyov, M., Precup, D., and Bengio, Y.
+\newblock Flow network based generative models for non-iterative diverse
+  candidate generation.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  34:\penalty0 27381--27394, 2021.
+
+\bibitem[Bengio et~al.(2003)Bengio, Ducharme, Vincent, and
+  Jauvin]{bengio2003neural}
+Bengio, Y., Ducharme, R., Vincent, P., and Jauvin, C.
+\newblock A neural probabilistic language model.
+\newblock \emph{Journal of machine learning research}, 3\penalty0
+  (Feb):\penalty0 1137--1155, 2003.
+
+\bibitem[Bengio et~al.(2023)Bengio, Lahlou, Deleu, Hu, Tiwari, and
+  Bengio]{bengio2023gflownet}
+Bengio, Y., Lahlou, S., Deleu, T., Hu, E.~J., Tiwari, M., and Bengio, E.
+\newblock {GFlowNet} foundations.
+\newblock \emph{Journal of Machine Learning Research}, 24\penalty0
+  (210):\penalty0 1--55, 2023.
+
+\bibitem[Blondel \& Roulet(2024)Blondel and Roulet]{edpbook}
+Blondel, M. and Roulet, V.
+\newblock The {E}lements of {D}ifferentiable {P}rogramming.
+\newblock \emph{arXiv preprint arXiv:2403.14606}, 2024.
+
+\bibitem[Buesing et~al.(2020)Buesing, Heess, and Weber]{buesing2020approximate}
+Buesing, L., Heess, N., and Weber, T.
+\newblock Approximate inference in discrete distributions with {Monte Carlo}
+  tree search and value functions.
+\newblock In \emph{Proceedings of the International Conference on Artificial
+  Intelligence and Statistics}, pp.\  624--634. PMLR, 2020.
+
+\bibitem[Clavier et~al.(2025)Clavier, Grinsztajn, Avalos, Flet-Berliac, Ergun,
+  Domingues, Tarassov, Pietquin, Richemond, Strub, et~al.]{clavier2025shiq}
+Clavier, P., Grinsztajn, N., Avalos, R., Flet-Berliac, Y., Ergun, I.,
+  Domingues, O.~D., Tarassov, E., Pietquin, O., Richemond, P.~H., Strub, F.,
+  et~al.
+\newblock {ShiQ: Bringing back Bellman to LLMs}.
+\newblock \emph{arXiv preprint arXiv:2505.11081}, 2025.
+
+\bibitem[Cobbe et~al.(2021)Cobbe, Kosaraju, Bavarian, Chen, Jun, Kaiser,
+  Plappert, Tworek, Hilton, Nakano, et~al.]{cobbe2021training}
+Cobbe, K., Kosaraju, V., Bavarian, M., Chen, M., Jun, H., Kaiser, L., Plappert,
+  M., Tworek, J., Hilton, J., Nakano, R., et~al.
+\newblock Training verifiers to solve math word problems.
+\newblock \emph{arXiv preprint arXiv:2110.14168}, 2021.
+
+\bibitem[Cotterell et~al.(2023)Cotterell, Svete, Meister, Liu, and
+  Du]{cotterell2023formal}
+Cotterell, R., Svete, A., Meister, C., Liu, T., and Du, L.
+\newblock Formal aspects of language modeling.
+\newblock \emph{arXiv preprint arXiv:2311.04329}, 2023.
+
+\bibitem[Devlin et~al.(2019)Devlin, Chang, Lee, and Toutanova]{devlin2019bert}
+Devlin, J., Chang, M.-W., Lee, K., and Toutanova, K.
+\newblock {BERT}: Pre-training of deep bidirectional transformers for language
+  understanding.
+\newblock In \emph{Proceedings of the Annual Conference of the North American
+  Chapter of the Association for Computational Linguistics}, 2019.
+
+\bibitem[Eisenstein(2019)]{eisenstein2019introduction}
+Eisenstein, J.
+\newblock \emph{Introduction to Natural Language Processing}.
+\newblock The MIT Press, 2019.
+
+\bibitem[Foster et~al.(2024)Foster, Block, and Misra]{foster2024behavior}
+Foster, D.~J., Block, A., and Misra, D.
+\newblock Is behavior cloning all you need? understanding horizon in imitation
+  learning.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  37:\penalty0 120602--120666, 2024.
+
+\bibitem[Frydenlund(2024)]{frydenlund2024mystery}
+Frydenlund, A.
+\newblock The mystery of the pathological path-star task for language models.
+\newblock In \emph{Proceedings of the Conference on Empirical Methods in
+  Natural Language Processing}, 2024.
+
+\bibitem[Furuya et~al.(2025)Furuya, de~Hoop, and
+  Peyr{\'e}]{furuya2024transformers}
+Furuya, T., de~Hoop, M.~V., and Peyr{\'e}, G.
+\newblock Transformers are universal in-context learners.
+\newblock In \emph{Proceedings of the International Conference on Learning
+  Representations}, 2025.
+
+\bibitem[Geist et~al.(2019)Geist, Scherrer, and Pietquin]{geist2019theory}
+Geist, M., Scherrer, B., and Pietquin, O.
+\newblock A theory of regularized {Markov Decision Processes}.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, 2019.
+
+\bibitem[Go et~al.(2023)Go, Korbak, Kruszewski, Rozen, Ryu, and
+  Dymetman]{go2023aligning}
+Go, D., Korbak, T., Kruszewski, G., Rozen, J., Ryu, N., and Dymetman, M.
+\newblock Aligning language models with preferences through $f$-divergence
+  minimization.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, 2023.
+
+\bibitem[Haarnoja et~al.(2017)Haarnoja, Tang, Abbeel, and
+  Levine]{haarnoja2017reinforcement}
+Haarnoja, T., Tang, H., Abbeel, P., and Levine, S.
+\newblock Reinforcement learning with deep energy-based policies.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, 2017.
+
+\bibitem[Haarnoja et~al.(2018)Haarnoja, Zhou, Abbeel, and
+  Levine]{haarnoja2018soft}
+Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S.
+\newblock Soft actor-critic: off-policy maximum entropy deep reinforcement
+  learning with a stochastic actor.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, pp.\  1861--1870, 2018.
+
+\bibitem[Heek et~al.(2024)Heek, Levskaya, Oliver, Ritter, Rondepierre, Steiner,
+  and van {Z}ee]{flax2020github}
+Heek, J., Levskaya, A., Oliver, A., Ritter, M., Rondepierre, B., Steiner, A.,
+  and van {Z}ee, M.
+\newblock {F}lax: A neural network library and ecosystem for {JAX}, 2024.
+\newblock URL \url{http://github.com/google/flax}.
+
+\bibitem[Ho \& Ermon(2016)Ho and Ermon]{ho2016generative}
+Ho, J. and Ermon, S.
+\newblock Generative adversarial imitation learning.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2016.
+
+\bibitem[Hu et~al.(2023)Hu, Jain, Elmoznino, Kaddar, Lajoie, Bengio, and
+  Malkin]{hu2023amortizing}
+Hu, E.~J., Jain, M., Elmoznino, E., Kaddar, Y., Lajoie, G., Bengio, Y., and
+  Malkin, N.
+\newblock Amortizing intractable inference in large language models.
+\newblock \emph{arXiv preprint arXiv:2310.04363}, 2023.
+
+\bibitem[Kingma \& Ba(2014)Kingma and Ba]{kingma2014adam}
+Kingma, D.~P. and Ba, J.
+\newblock Adam: a method for stochastic optimization.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, 2014.
+
+\bibitem[Korbak et~al.(2022)Korbak, Perez, and Buckley]{korbak2022rl}
+Korbak, T., Perez, E., and Buckley, C.
+\newblock {RL} with {KL} penalties is better viewed as bayesian inference.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  EMNLP 2022}, pp.\  1083--1091, 2022.
+
+\bibitem[LeCun et~al.(2007)LeCun, Chopra, Hadsell, Ranzato, and
+  Huang]{lecun2006tutorial}
+LeCun, Y., Chopra, S., Hadsell, R., Ranzato, M., and Huang, F.~J.
+\newblock A tutorial on energy-based models.
+\newblock In \emph{Predicting Structured Data}. The MIT Press, 2007.
+
+\bibitem[Levine(2018)]{levine2018reinforcement}
+Levine, S.
+\newblock Reinforcement learning and control as probabilistic inference:
+  Tutorial and review.
+\newblock \emph{arXiv preprint arXiv:1805.00909}, 2018.
+
+\bibitem[Malkin et~al.(2022)Malkin, Jain, Bengio, Sun, and
+  Bengio]{malkin2022trajectory}
+Malkin, N., Jain, M., Bengio, E., Sun, C., and Bengio, Y.
+\newblock Trajectory balance: Improved credit assignment in {GFlowNets}.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem[Mensch \& Blondel(2018)Mensch and Blondel]{mensch2018differentiable}
+Mensch, A. and Blondel, M.
+\newblock Differentiable dynamic programming for structured prediction and
+  attention.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, pp.\  3462--3471. PMLR, 2018.
+
+\bibitem[Nachum et~al.(2017)Nachum, Norouzi, Xu, and
+  Schuurmans]{nachum2017bridging}
+Nachum, O., Norouzi, M., Xu, K., and Schuurmans, D.
+\newblock Bridging the gap between value and policy based reinforcement
+  learning.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2017.
+
+\bibitem[Neu et~al.(2017)Neu, Jonsson, and G{\'o}mez]{neu2017unified}
+Neu, G., Jonsson, A., and G{\'o}mez, V.
+\newblock A unified view of entropy-regularized {Markov Decision Processes}.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2017.
+
+\bibitem[O'Donoghue et~al.(2017)O'Donoghue, Munos, Kavukcuoglu, and
+  Mnih]{o2016pgq}
+O'Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V.
+\newblock Combining policy gradient and {Q-learning}.
+\newblock In \emph{Proceedings of the International Conference on Learning
+  Representations}, 2017.
+
+\bibitem[Ouyang et~al.(2022)Ouyang, Wu, Jiang, Almeida, Wainwright, Mishkin,
+  Zhang, Agarwal, Slama, Ray, et~al.]{ouyang2022training}
+Ouyang, L., Wu, J., Jiang, X., Almeida, D., Wainwright, C., Mishkin, P., Zhang,
+  C., Agarwal, S., Slama, K., Ray, A., et~al.
+\newblock Training language models to follow instructions with human feedback.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem[Richemond \& Maginnis(2017)Richemond and Maginnis]{richemond2017short}
+Richemond, P.~H. and Maginnis, B.
+\newblock A short variational proof of equivalence between policy gradients and
+  soft {Q learning}.
+\newblock \emph{arXiv preprint arXiv:1712.08650}, 2017.
+
+\bibitem[Richemond et~al.(2024)Richemond, Tang, Guo, Calandriello, Azar,
+  Rafailov, Pires, Tarassov, Spangher, Ellsworth, et~al.]{richemond2024offline}
+Richemond, P.~H., Tang, Y., Guo, D., Calandriello, D., Azar, M.~G., Rafailov,
+  R., Pires, B.~A., Tarassov, E., Spangher, L., Ellsworth, W., et~al.
+\newblock Offline regularised reinforcement learning for large language models
+  alignment.
+\newblock \emph{arXiv preprint arXiv:2405.19107}, 2024.
+
+\bibitem[Roulet et~al.(2025)Roulet, Liu, Vieillard, Sander, and
+  Blondel]{roulet2025loss}
+Roulet, V., Liu, T., Vieillard, N., Sander, M.~E., and Blondel, M.
+\newblock Loss functions and operators generated by $f$-divergences.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, 2025.
+
+\bibitem[Sander et~al.(2025)Sander, Roulet, Liu, and Blondel]{sander2025joint}
+Sander, M.~E., Roulet, V., Liu, T., and Blondel, M.
+\newblock Joint learning of energy-based models and their partition function.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, 2025.
+
+\bibitem[Schulman et~al.(2017)Schulman, Chen, and
+  Abbeel]{schulman2017equivalence}
+Schulman, J., Chen, X., and Abbeel, P.
+\newblock Equivalence between policy gradients and soft {Q-learning}.
+\newblock \emph{arXiv preprint arXiv:1704.06440}, 2017.
+
+\bibitem[Song \& Kingma(2021)Song and Kingma]{song2021train}
+Song, Y. and Kingma, D.~P.
+\newblock How to train your energy-based models.
+\newblock \emph{arXiv preprint arXiv:2101.03288}, 2021.
+
+\bibitem[Stiennon et~al.(2020)Stiennon, Ouyang, Wu, Ziegler, Lowe, Voss,
+  Radford, Amodei, and Christiano]{stiennon2020learning}
+Stiennon, N., Ouyang, L., Wu, J., Ziegler, D., Lowe, R., Voss, C., Radford, A.,
+  Amodei, D., and Christiano, P.~F.
+\newblock Learning to summarize with human feedback.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, 2020.
+
+\bibitem[Tiapkin et~al.(2024)Tiapkin, Morozov, Naumov, and
+  Vetrov]{tiapkin2024generative}
+Tiapkin, D., Morozov, N., Naumov, A., and Vetrov, D.~P.
+\newblock Generative flow networks as entropy-regularized {RL}.
+\newblock In \emph{Proceedings of the International Conference on Artificial
+  Intelligence and Statistics}, pp.\  4213--4221. PMLR, 2024.
+
+\bibitem[Toussaint et~al.(2009)]{toussaint2009probabilistic}
+Toussaint, M. et~al.
+\newblock Probabilistic inference as a model of planned behavior.
+\newblock \emph{K{\"u}nstliche Intell.}, 23\penalty0 (3):\penalty0 23--29,
+  2009.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez,
+  Kaiser, and Polosukhin]{vaswani2017attention}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
+  Kaiser, {\L}., and Polosukhin, I.
+\newblock Attention is all you need.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2017.
+
+\bibitem[Wainwright et~al.(2008)Wainwright, Jordan,
+  et~al.]{wainwright2008graphical}
+Wainwright, M.~J., Jordan, M.~I., et~al.
+\newblock Graphical models, exponential families, and variational inference.
+\newblock \emph{Foundations and Trends{\textregistered} in Machine Learning},
+  1\penalty0 (1--2):\penalty0 1--305, 2008.
+
+\bibitem[Wang et~al.(2024)Wang, Jiang, Yang, Liu, and Chen]{wang2023beyond}
+Wang, C., Jiang, Y., Yang, C., Liu, H., and Chen, Y.
+\newblock Beyond reverse {KL}: Generalizing direct preference optimization with
+  diverse divergence constraints.
+\newblock In \emph{Proceedings of the International Conference on Learning
+  Representations}, 2024.
+
+\bibitem[Zhao et~al.(2024)Zhao, Brekelmans, Makhzani, and
+  Grosse]{zhao2024probabilistic}
+Zhao, S., Brekelmans, R., Makhzani, A., and Grosse, R.
+\newblock Probabilistic inference in language models via twisted sequential
+  {Monte Carlo}.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, 2024.
+
+\bibitem[Ziebart(2010)]{ziebart2010modeling}
+Ziebart, B.~D.
+\newblock \emph{Modeling purposeful adaptive behavior with the principle of
+  maximum causal entropy}.
+\newblock Carnegie Mellon University, 2010.
+
+\bibitem[Ziebart et~al.(2008)Ziebart, Maas, Bagnell, Dey,
+  et~al.]{ziebart2008maximum}
+Ziebart, B.~D., Maas, A.~L., Bagnell, J.~A., Dey, A.~K., et~al.
+\newblock Maximum entropy inverse reinforcement learning.
+\newblock In \emph{Proceedings of the {AAAI} Conference on Artificial
+  Intelligence}, 2008.
+
+\bibitem[Ziegler et~al.(2019)Ziegler, Stiennon, Wu, Brown, Radford, Amodei,
+  Christiano, and Irving]{ziegler2019fine}
+Ziegler, D.~M., Stiennon, N., Wu, J., Brown, T.~B., Radford, A., Amodei, D.,
+  Christiano, P., and Irving, G.
+\newblock Fine-tuning language models from human preferences.
+\newblock \emph{arXiv preprint arXiv:1909.08593}, 2019.
+
+\end{thebibliography}
