@@ -1,4 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-labelledby="fig-001-title fig-001-desc" data-hero-stack>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-labelledby="fig-001-title fig-001-desc" data-hero-stack="">
+  <style><![CDATA[
+:root { --cobalt-600:#2563eb; }
+.fill-white { fill: #ffffff; }
+.fill-50 { fill: #eff6ff; }
+.fill-100 { fill: #dbeafe; }
+.fill-300 { fill: #93c5fd; }
+.stroke { stroke: #2563eb; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; fill: none; }
+.stroke-muted { stroke: #64748b; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; fill: none; }
+.dash { stroke-dasharray: 5 7; }
+.fill-white.stroke { fill: #ffffff; stroke: #2563eb; stroke-width: 2; }
+.fill-white.stroke-muted { fill: #ffffff; stroke: #64748b; stroke-width: 1.5; }
+.fill-50.stroke { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
+.fill-100.stroke { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; }
+.fill-100.stroke-muted { fill: #dbeafe; stroke: #64748b; stroke-width: 1.5; }
+.fill-300.stroke { fill: #93c5fd; stroke: #2563eb; stroke-width: 2; }
+.svg-label { fill: #0f172a; font: 700 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; letter-spacing: .02em; }
+.svg-label-muted { fill: #475569; font: 600 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; letter-spacing: .02em; }
+text { paint-order: stroke; stroke: none; }
+path, polygon, rect, ellipse, line { vector-effect: non-scaling-stroke; }
+]]></style>
     <title id="fig-001-title">Exploded vertical stack of the internal knowledge base</title>
     <desc id="fig-001-desc">Sources feed distillation, embeddings, retrieval, fusion, and synthesis layers.</desc>
     <defs>
