@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" role="img" aria-labelledby="fig-009-title">
+    <title id="fig-009-title">MCP exposes retrieval primitives while the web UI runs the complete agent pipeline</title>
+    <defs>
+      <marker id="arrow-009" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M0 0 10 5 0 10Z" fill="var(--cobalt-600)"/>
+      </marker>
+    </defs>
+    <g class="stroke">
+      <rect class="fill-white" x="50" y="52" width="286" height="276"/>
+      <rect class="fill-100" x="424" y="52" width="286" height="276"/>
+      <rect class="fill-white" x="84" y="104" width="218" height="42"/>
+      <rect class="fill-white" x="84" y="164" width="218" height="42"/>
+      <rect class="fill-white" x="84" y="224" width="218" height="42"/>
+      <rect class="fill-white" x="458" y="104" width="218" height="42"/>
+      <rect class="fill-white" x="458" y="164" width="218" height="42"/>
+      <rect class="fill-white" x="458" y="224" width="218" height="42"/>
+      <path marker-end="url(#arrow-009)" d="M567 146V156"/>
+      <path marker-end="url(#arrow-009)" d="M567 206V216"/>
+    </g>
+    <g class="svg-label" text-anchor="middle" dominant-baseline="middle">
+      <text x="193" y="80">MCP CLIENT</text>
+      <text x="567" y="80">WEB UI</text>
+      <text x="193" y="125">DIRECT TOOL CALLS</text>
+      <text x="193" y="185">RAW EVIDENCE ROWS</text>
+      <text x="193" y="245">CLIENT ORCHESTRATES</text>
+      <text x="567" y="125">PLANNER</text>
+      <text x="567" y="185">EXECUTOR</text>
+      <text x="567" y="245">SYNTHESIS</text>
+    </g>
+  </svg>

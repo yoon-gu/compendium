@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" aria-labelledby="fig-003-title">
+    <title id="fig-003-title">Slack event flow from Socket Mode through distillation and embedding</title>
+    <defs>
+      <marker id="arrow-003" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M0 0 10 5 0 10Z" fill="var(--cobalt-600)"/>
+      </marker>
+    </defs>
+    <g class="stroke">
+      <rect class="fill-white" x="38" y="172" width="132" height="58"/>
+      <polygon class="fill-100" points="232,201 282,157 332,201 282,245"/>
+      <rect class="fill-white" x="398" y="76" width="154" height="58"/>
+      <rect class="fill-white" x="386" y="172" width="178" height="58"/>
+      <rect class="fill-white" x="386" y="268" width="178" height="58"/>
+      <rect class="fill-100" x="636" y="172" width="152" height="58"/>
+      <rect class="fill-white" x="646" y="64" width="132" height="52"/>
+      <rect class="fill-white" x="646" y="274" width="132" height="52"/>
+      <rect class="fill-white" x="646" y="350" width="132" height="52"/>
+      <path marker-end="url(#arrow-003)" d="M170 201H224"/>
+      <path marker-end="url(#arrow-003)" d="M282 157V105H390"/>
+      <path marker-end="url(#arrow-003)" d="M332 201H378"/>
+      <path marker-end="url(#arrow-003)" d="M475 230V260"/>
+      <path marker-end="url(#arrow-003)" d="M564 297H598V201H628"/>
+      <path marker-end="url(#arrow-003)" d="M712 172V124"/>
+      <path marker-end="url(#arrow-003)" d="M712 230V266"/>
+      <path marker-end="url(#arrow-003)" d="M736 230V342"/>
+    </g>
+    <g class="svg-label" text-anchor="middle" dominant-baseline="middle">
+      <text x="104" y="201">SOCKET EVENT</text>
+      <text x="282" y="201">ROUTE</text>
+      <text x="475" y="105">BOT REPLY</text>
+      <text x="475" y="201">REINGEST_THREAD</text>
+      <text x="475" y="297">UPSERT THREAD</text>
+      <text x="712" y="201">SYNC_WORKER</text>
+      <text x="712" y="90">DISTILL</text>
+      <text x="712" y="300">THREAD VECTOR</text>
+      <text x="712" y="376">BURST VECTORS</text>
+    </g>
+    <g class="svg-label-muted">
+      <text x="376" y="48">@MENTION / DM</text>
+      <text x="368" y="156">TRACKED CHANNEL</text>
+      <text x="410" y="350">RESET WATERMARKS</text>
+    </g>
+  </svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" role="img" aria-labelledby="fig-005-title">
+    <title id="fig-005-title">A Slack thread split into same-author bursts and filtered by signal</title>
+    <defs>
+      <marker id="arrow-005" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M0 0 10 5 0 10Z" fill="var(--cobalt-600)"/>
+      </marker>
+    </defs>
+    <g class="stroke">
+      <rect class="fill-white" x="48" y="54" width="238" height="46"/>
+      <rect class="fill-white" x="48" y="110" width="238" height="46"/>
+      <rect class="fill-100" x="48" y="180" width="238" height="46"/>
+      <rect class="fill-100" x="48" y="236" width="238" height="46"/>
+      <rect class="fill-white" x="48" y="306" width="238" height="46"/>
+      <path d="M310 54h14v102h-14M310 180h14v102h-14"/>
+      <rect class="fill-white" x="410" y="92" width="278" height="72"/>
+      <rect class="fill-100" x="410" y="218" width="278" height="72"/>
+      <path marker-end="url(#arrow-005)" d="M324 105H402"/>
+      <path marker-end="url(#arrow-005)" d="M324 231H402"/>
+    </g>
+    <g class="svg-label">
+      <text x="76" y="82">AUTHOR A - SHORT</text>
+      <text x="76" y="138">AUTHOR A - FOLLOW-UP</text>
+      <text x="76" y="208">AUTHOR B - TECHNICAL DETAIL</text>
+      <text x="76" y="264">AUTHOR B - RESOLUTION</text>
+      <text x="76" y="334">AUTHOR C - ACK</text>
+      <text x="436" y="122">BURST 01 - FILTERED</text>
+      <text x="436" y="248">BURST 02 - EMBEDDED</text>
+    </g>
+    <g class="svg-label-muted">
+      <text x="436" y="146">SHORT - COMMON TOKENS - NO REACTIONS</text>
+      <text x="436" y="272">LONG - RARE TERMS - REACTED TO</text>
+    </g>
+  </svg>

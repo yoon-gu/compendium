@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-labelledby="fig-010-title">
+    <title id="fig-010-title">Projects reference shared data sources without duplicating them</title>
+    <defs>
+      <marker id="arrow-010" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M0 0 10 5 0 10Z" fill="var(--cobalt-600)"/>
+      </marker>
+    </defs>
+    <g class="stroke">
+      <rect class="fill-100" x="56" y="76" width="214" height="86"/>
+      <rect class="fill-100" x="56" y="258" width="214" height="86"/>
+      <rect class="fill-white" x="476" y="36" width="214" height="54"/>
+      <rect class="fill-white" x="476" y="112" width="214" height="54"/>
+      <rect class="fill-white" x="476" y="188" width="214" height="54"/>
+      <rect class="fill-white" x="476" y="264" width="214" height="54"/>
+      <rect class="fill-white" x="476" y="340" width="214" height="54"/>
+      <path marker-end="url(#arrow-010)" d="M270 108H404V63H468"/>
+      <path marker-end="url(#arrow-010)" d="M270 120H404V139H468"/>
+      <path marker-end="url(#arrow-010)" d="M270 132H404V215H468"/>
+      <path marker-end="url(#arrow-010)" d="M270 290H404V215H468"/>
+      <path marker-end="url(#arrow-010)" d="M270 302H404V291H468"/>
+      <path marker-end="url(#arrow-010)" d="M270 314H404V367H468"/>
+    </g>
+    <g class="svg-label" text-anchor="middle" dominant-baseline="middle">
+      <text x="163" y="108">COMPILER PROJECT</text>
+      <text x="163" y="290">PLATFORM PROJECT</text>
+      <text x="583" y="63">COMPILER SLACK</text>
+      <text x="583" y="139">MONOLITH REPO</text>
+      <text x="583" y="215">SHARED INCIDENTS</text>
+      <text x="583" y="291">PLATFORM REPO</text>
+      <text x="583" y="367">CLOUD RUNBOOKS</text>
+    </g>
+    <g class="svg-label-muted" text-anchor="middle" dominant-baseline="middle">
+      <text x="163" y="132">DEFAULT QUERY SCOPE</text>
+      <text x="163" y="314">DEFAULT QUERY SCOPE</text>
+    </g>
+  </svg>

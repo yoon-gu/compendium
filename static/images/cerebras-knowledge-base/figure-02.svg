@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="fig-002-title">
+    <title id="fig-002-title">Many data sources feeding one queryable embeddings table</title>
+    <defs>
+      <marker id="arrow-002" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M0 0 10 5 0 10Z" fill="var(--cobalt-600)"/>
+      </marker>
+    </defs>
+    <g class="stroke">
+      <rect class="fill-white" x="48" y="60" width="200" height="44"/>
+      <rect class="fill-white" x="48" y="126" width="200" height="44"/>
+      <rect class="fill-white" x="48" y="192" width="200" height="44"/>
+      <rect class="fill-white" x="48" y="258" width="200" height="44"/>
+      <rect class="fill-white" x="48" y="324" width="200" height="44"/>
+      <rect class="fill-white" x="48" y="390" width="200" height="44"/>
+      <rect class="fill-100" x="396" y="152" width="228" height="190"/>
+      <rect class="fill-50" x="700" y="210" width="160" height="74"/>
+      <path d="M248 82H322M248 148H322M248 214H322M248 280H322M248 346H322M248 412H322"/>
+      <path d="M322 82V412"/>
+      <path marker-end="url(#arrow-002)" d="M322 247H388"/>
+      <path marker-end="url(#arrow-002)" d="M624 247H692"/>
+      <path d="M396 200H624"/>
+    </g>
+    <g class="svg-label">
+      <text x="68" y="86">SLACK</text>
+      <text x="68" y="152">WIKI / CONFLUENCE</text>
+      <text x="68" y="218">CODE REPOS</text>
+      <text x="68" y="284">NETLISTS</text>
+      <text x="68" y="350">PRM DOCS</text>
+      <text x="68" y="416">CUSTOM DATABASES</text>
+      <text x="420" y="184">EMBEDDINGS</text>
+      <text x="780" y="247" text-anchor="middle" dominant-baseline="middle">QUERY</text>
+    </g>
+    <g class="svg-label-muted">
+      <text x="420" y="234">DOCUMENT</text>
+      <text x="420" y="264">EMBEDDING</text>
+      <text x="420" y="294">METADATA</text>
+      <text x="420" y="324">SOURCE + TIMESTAMPS</text>
+      <text x="700" y="196">MCP - WEB UI - AGENTS</text>
+      <text x="396" y="372">ONE EMBEDDINGS TABLE</text>
+      <text x="48" y="468">ONE CONNECTOR PER SOURCE</text>
+    </g>
+  </svg>

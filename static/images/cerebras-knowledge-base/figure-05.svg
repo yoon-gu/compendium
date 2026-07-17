@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" role="img" aria-labelledby="fig-007-title">
+    <title id="fig-007-title">Planner, parallel tool execution, evidence normalization, and synthesis</title>
+    <defs>
+      <marker id="arrow-007" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M0 0 10 5 0 10Z" fill="var(--cobalt-600)"/>
+      </marker>
+    </defs>
+    <g class="stroke">
+      <rect class="fill-white" x="58" y="188" width="142" height="64"/>
+      <rect class="fill-100" x="274" y="188" width="142" height="64"/>
+      <rect class="fill-white" x="492" y="48" width="150" height="52"/>
+      <rect class="fill-white" x="492" y="122" width="150" height="52"/>
+      <rect class="fill-white" x="492" y="196" width="150" height="52"/>
+      <rect class="fill-white" x="492" y="270" width="150" height="52"/>
+      <rect class="fill-white" x="492" y="344" width="150" height="52"/>
+      <rect class="fill-100" x="704" y="142" width="148" height="64"/>
+      <rect class="fill-100" x="704" y="264" width="148" height="64"/>
+      <path marker-end="url(#arrow-007)" d="M200 220H266"/>
+      <path marker-end="url(#arrow-007)" d="M416 220H458V74H484"/>
+      <path marker-end="url(#arrow-007)" d="M416 220H458V148H484"/>
+      <path marker-end="url(#arrow-007)" d="M416 220H484"/>
+      <path marker-end="url(#arrow-007)" d="M416 220H458V296H484"/>
+      <path marker-end="url(#arrow-007)" d="M416 220H458V370H484"/>
+      <path marker-end="url(#arrow-007)" d="M642 74H674V174H696"/>
+      <path marker-end="url(#arrow-007)" d="M642 148H696"/>
+      <path marker-end="url(#arrow-007)" d="M642 222H674V174H696"/>
+      <path marker-end="url(#arrow-007)" d="M642 296H674V296H696"/>
+      <path marker-end="url(#arrow-007)" d="M642 370H674V296H696"/>
+      <path marker-end="url(#arrow-007)" d="M778 206V256"/>
+    </g>
+    <g class="svg-label" text-anchor="middle" dominant-baseline="middle">
+      <text x="129" y="220">QUESTION</text>
+      <text x="345" y="220">PLANNER</text>
+      <text x="567" y="74">SEARCH</text>
+      <text x="567" y="148">SEARCH_SLACK</text>
+      <text x="567" y="222">SEARCH_CODE</text>
+      <text x="567" y="296">RECENT_PRS</text>
+      <text x="567" y="370">WHO_KNOWS</text>
+      <text x="778" y="166">EVIDENCE</text>
+      <text x="778" y="288">SYNTHESIS</text>
+    </g>
+    <g class="svg-label-muted" text-anchor="middle" dominant-baseline="middle">
+      <text x="778" y="190">NORMALIZED ROWS</text>
+      <text x="778" y="312">ANSWER + CITATIONS</text>
+    </g>
+  </svg>
