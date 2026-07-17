@@ -24,7 +24,7 @@ Cerebras의 team은 data center operations, chip design, hardware, training, inf
 
 Cerebras는 사람과 system이 유용한 information에 연결되도록 돕기 위해 Cerebras Knowledge를 만들었다.
 
-![Internal knowledge base stack](/compendium/images/cerebras-knowledge-base/figure-01.svg)
+![Internal knowledge base stack](/compendium/images/cerebras-knowledge-base/figure-01.svg?v=1966ef2)
 
 ## Meeting data where it lives
 
@@ -46,7 +46,7 @@ Core에는 여러 source의 embeddings, raw summary, metadata를 담는 단일 P
 
 Cerebras는 단순하면서도 대부분의 data form에 적용할 수 있는 data interface를 원했다. 또한 Cerebras의 다른 developer가 custom connector를 만들 수 있기를 원했다. 결과는 의도적으로 단순하다. Slack thread부터 netlist까지 모든 source는 같은 embeddings table에 들어가고, 그 table에 들어온 것은 모두 같은 interface로 즉시 query할 수 있다.
 
-![Many data sources feeding one queryable embeddings table](/compendium/images/cerebras-knowledge-base/figure-02.svg)
+![Many data sources feeding one queryable embeddings table](/compendium/images/cerebras-knowledge-base/figure-02.svg?v=1966ef2)
 
 각 data source는 data가 무엇인지, 어떻게 connect하는지, 얼마나 자주 fetch해야 하는지를 정의한다. 생성된 embedding row는 Slack, code repository, document system, custom database 중 어디에서 왔든 같은 interface를 따른다.
 
@@ -54,7 +54,7 @@ Cerebras는 단순하면서도 대부분의 data form에 적용할 수 있는 da
 
 Slack은 Cerebras가 가장 중요하게 설계해야 했던 data source였다. 회사 전반에서 가장 최신 engineering discussion이 벌어지는 곳이 Slack이기 때문이다.
 
-![Slack event flow from Socket Mode through distillation and embedding](/compendium/images/cerebras-knowledge-base/figure-03.svg)
+![Slack event flow from Socket Mode through distillation and embedding](/compendium/images/cerebras-knowledge-base/figure-03.svg?v=1966ef2)
 
 ## How we process unstructured Slack conversations
 
@@ -120,7 +120,7 @@ Low-signal data가 database에 들어가지 않도록, 각 burst는 weighted sig
 - Combined burst가 최소 200 characters 이상이다.
 - Burst 안의 하나 이상의 message에 reaction이 있어 social boost를 제공한다.
 
-![A Slack thread split into same-author bursts and filtered by signal](/compendium/images/cerebras-knowledge-base/figure-04.svg)
+![A Slack thread split into same-author bursts and filtered by signal](/compendium/images/cerebras-knowledge-base/figure-04.svg?v=1966ef2)
 
 Distillation 이후 qualifying burst는 embed되어 thread-level record와 함께 embeddings table에 저장된다.
 
@@ -161,7 +161,7 @@ Script가 다른 모든 embedding row와 같은 schema로 shared database에 wri
 
 Planner는 무엇이 index되어 있는지에 대한 compact description 위에서 동작한다. 어떤 project가 있고, 각 project에서 어떤 source를 사용할 수 있으며, 각 source가 어떤 question에 답하는 데 좋은지 설명한 것이다. User query와 active scope가 주어지면 planner는 tool selection을 emit하고, executor는 이를 parallel로 fan-out한다. 그런 다음 result를 common evidence format으로 normalize하고 final synthesis LLM에 전달한다.[^4]
 
-![Planner, parallel tool execution, evidence normalization, and synthesis](/compendium/images/cerebras-knowledge-base/figure-05.svg)
+![Planner, parallel tool execution, evidence normalization, and synthesis](/compendium/images/cerebras-knowledge-base/figure-05.svg?v=1966ef2)
 
 ## Reranking
 
@@ -199,7 +199,7 @@ Web UI에도 같은 tool이 있지만, 모든 user question에 대해 end-to-end
 
 User 관점에서 Web UI는 단순히 “question을 묻고 answer를 받는” 것이다. Under the hood에서는 MCP client가 명시적으로 재현할 수 있는 planner → executor → synthesizer pattern을 실행한다.
 
-![MCP exposes retrieval primitives while the web UI runs the complete agent pipeline](/compendium/images/cerebras-knowledge-base/figure-06.svg)
+![MCP exposes retrieval primitives while the web UI runs the complete agent pipeline](/compendium/images/cerebras-knowledge-base/figure-06.svg?v=1966ef2)
 
 ## Organization
 
@@ -211,7 +211,7 @@ Cerebras는 project를 query가 실행되는 workspace를 organize하는 기본 
 
 Project는 의도적으로 lightweight하다. Shared incidents channel이나 central platform repository 같은 같은 data source는 duplicate하지 않고 여러 project에서 reference할 수 있다.
 
-![Projects reference shared data sources without duplicating them](/compendium/images/cerebras-knowledge-base/figure-07.svg)
+![Projects reference shared data sources without duplicating them](/compendium/images/cerebras-knowledge-base/figure-07.svg?v=1966ef2)
 
 ## Onboarding and defaults
 
