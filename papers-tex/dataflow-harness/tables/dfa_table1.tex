@@ -1,0 +1,25 @@
+\begin{table*}[!h]
+\centering
+\caption{Agent orchestration performance by evaluation mode and description difficulty.}
+\label{tab:agent-orchestration-results-vertical}
+
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.15}
+\small
+
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Metric} & \textbf{Easy} & \textbf{Medium} & \textbf{Hard} & \textbf{Overall} \\
+\midrule
+
+\multicolumn{5}{l}{\textbf{Text spec evaluation (pipeline mode)}}\\
+\midrule
+Avg. LLM-Judge & 0.92 & 0.86 & 0.60 & 0.80 \\
+\midrule
+
+\multicolumn{5}{l}{\textbf{Code GT evaluation (code mode)}}\\
+\midrule
+Avg. LLM-Judge & 0.60 & 0.59 & 0.23 & 0.49 \\
+\bottomrule
+\end{tabular}
+\end{table*}

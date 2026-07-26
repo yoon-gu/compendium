@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Math Reasoning Pipeline: Performance comparison of Qwen2.5-32B-Instruct under different synthetic data training settings.}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccccccc}
+\toprule
+\textbf{Model} & \textbf{gsm8k} & \textbf{math} & \textbf{amc23} & \textbf{olympiad} & \textbf{gaokao24\_mix} & \textbf{minerva} & \textbf{AIME24@32} & \textbf{AIME25@32} & \textbf{Avg} \\
+\midrule
+\textbf{Qwen2.5-32B-Instruct} & 95.8 & 73.5 & 70.0 & 38.5 & 42.9 & 26.5 & 16.8 & 11.6 & 46.95 \\
+\midrule
+\rowcolor[rgb]{.867, .922, .969}
+\multicolumn{10}{c}{\textit{\textbf{Trained with 1 epoch}}} \\
+\midrule
+\textbf{+ SYNTHETIC-1-10k} & 92.9 & 71.8 & 52.5 & 38.4 & 23.1 & 24.3 & 35.6 & 34.0 & 46.6 \\
+\textbf{+ Open-R1-10k}     & 91.5 & 72.3 & 65.0 & 38.4 & 20.9 & 24.6 & 43.0 & 33.5 & 48.7 \\
+\textbf{+ DataFlow-Reasoning-10K} & 93.9 & 72.3 & 72.5 & 38.7 & 38.5 & 26.5 & 35.9 & 34.5 & \textbf{51.6} \\
+\midrule
+\rowcolor[rgb]{.867, .922, .969}
+\multicolumn{10}{c}{\textit{\textbf{Trained with 2 epochs}}} \\
+\midrule
+\textbf{+ SYNTHETIC-1-10k}  & 94.5 & 78.4 & 75.0 & 45.0 & 24.2 & 28.3 & 48.4 & 37.9 & 54.0 \\
+\textbf{+ Open-R1-10k}      & 93.9 & 77.2 & 80.0 & 44.1 & 20.9 & 25.4 & 51.0 & 40.7 & 54.2 \\
+\textbf{+ DataFlow-Reasoning-10K} & 94.4 & 76.6 & 75.0 & 45.2 & 42.9 & 25.7 & 45.4 & 40.0 & \textbf{55.7} \\
+\bottomrule
+\end{tabular}
+}
+\label{tab:reasoning}
+\end{table}

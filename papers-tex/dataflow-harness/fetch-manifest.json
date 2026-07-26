@@ -1,0 +1,16 @@
+{
+  "slug": "dataflow-harness",
+  "arxiv_id": "2607.16617",
+  "source_url": "https://arxiv.org/e-print/2607.16617",
+  "pdf_url": "https://arxiv.org/pdf/2607.16617.pdf",
+  "fetched_at": "2026-07-26T23:21:11.406953+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/dataflow-harness-original.pdf",
+  "source_dir": "papers-tex/dataflow-harness",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "paper.tex",
+    "sections/main.tex"
+  ],
+  "notes": "Renamed from fetch default 2607-16617 to descriptive Compendium slug dataflow-harness."
+}

@@ -1,0 +1,34 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Performance comparison of Qwen2.5-7B and Qwen2.5-14B under different SFT dataset settings (all numbers in \%).}
+\label{tab:code_1}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Model} & \textbf{HumanEval} & \textbf{MBPP} & \textbf{BigCodeBench} & \textbf{LiveCodeBench} & \textbf{Avg} \\
+\midrule
+\rowcolor[rgb]{.867, .922, .969}
+\multicolumn{6}{c}{\textit{\textbf{Trained on Qwen2.5-7B}}} \\
+\midrule
+Original & 57.9 & 74.9 & 37.5 & 2.5  & 43.2 \\
+Code Alpaca & 76.2 & 76.5 & 43.8 & 6.0  & 50.6 \\
+Self-OSS-Instruct-SC2-Exec-Filter-50k & 74.4 & 77.0 & 42.7 & 6.1  & 50.1 \\
+DataFlow-Code-1K & 75.0 & 75.4 & 46.2 & 21.5 & 54.5 \\
+DataFlow-Code-5K & 78.7 & 77.2 & 46.1 & 22.1 & 56.0 \\
+DataFlow-Code-10K & 78.7 & 78.3 & 45.9 & 23.0 & \textbf{56.5} \\
+\midrule
+\rowcolor[rgb]{.867, .922, .969}
+\multicolumn{6}{c}{\textit{\textbf{Trained on Qwen2.5-14B}}} \\
+\midrule
+Original & 56.7 & 76.7 & 53.4 & 21.2 & 52.0 \\
+Code Alpaca & 81.5 & 78.8 & 53.3 & 21.9 & 58.9 \\
+Self-OSS-Instruct-SC2-Exec-Filter-50k & 82.0 & 81.0 & 52.2 & 23.6 & 59.7 \\
+DataFlow-Code-1K & 77.6 & 82.5 & 53.9 & 27.6 & 60.4 \\
+DataFlow-Code-5K & 79.9 & 84.1 & 54.2 & 27.8 & 61.5 \\
+DataFlow-Code-10K & 81.1 & 84.5 & 54.1 & 30.0 & \textbf{62.4} \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+

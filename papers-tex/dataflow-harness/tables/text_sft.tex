@@ -1,0 +1,44 @@
+\begin{table}[t]
+\centering
+\small
+\caption{SFT Data Filtering: Comparison of different 5k dataset filtering methods across Math, Code, and Knowledge benchmarks.}
+\label{tab:SFT}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccccccccc}
+\toprule
+& \multicolumn{6}{c}{\textbf{Math}} & \multicolumn{3}{c}{\textbf{Code}} & \multicolumn{3}{c}{\textbf{Knowledge}} \\
+\cmidrule(lr){2-7} \cmidrule(lr){8-10} \cmidrule(lr){11-13}
+\textbf{Methods} & \textbf{math} & \textbf{gsm8k} & \textbf{aime24} & \textbf{minerva} & \textbf{olympiad} & \textbf{Avg} 
+& \textbf{HumanEval} & \textbf{MBPP} & \textbf{Avg} 
+& \textbf{MMLU} & \textbf{C-EVAL} & \textbf{Avg} \\
+\midrule
+\textbf{Alpaca(random)} 
+& 54.9 & 77.2 & 13.3 & 14.0 & 27.0 & 37.3 
+& 71.3 & 75.9 & 73.6 
+& 71.8 & 80.0 & 75.9 \\
+\textbf{Alpaca(filtered)} 
+& 60.3 & 80.0 & 13.3 & 14.7 & 30.7 & 39.8 
+& 73.8 & 75.7 & 74.8 
+& 71.8 & 80.0 & 75.9 \\
+\midrule
+\textbf{WizardLM(random)} 
+& 61.1 & 84.2 & 6.7 & 18.0 & 29.3 & 39.9 
+& 75.6 & 82.0 & \textbf{78.8} 
+& 71.8 & 79.2 & 75.5 \\
+\textbf{WizardLM(filtered)} 
+& 69.7 & 88.8 & 10.0 & 19.9 & 35.4 & 44.8 
+& 77.4 & 80.4 & \textbf{78.9} 
+& 71.9 & 79.6 & 75.8 \\
+\midrule
+\textbf{DataFlow-SFT-15K(random)} 
+& 72.6 & 89.6 & 13.3 & 37.9 & 32.9 & \textbf{49.3} 
+& 79.9 & 75.9 & 77.9 
+& 72.1 & 80.0 & \textbf{76.1} \\
+\textbf{DataFlow-SFT-15K(filtered)} 
+& 73.3 & 90.2 & 13.3 & 36.0 & 35.9 & \textbf{49.7} 
+& 82.9 & 74.9 & \textbf{78.9} 
+& 72.2 & 80.4 & \textbf{76.3} \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

@@ -1,0 +1,31 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Conversation Synthesis: Performance comparison on conversation-domain datasets and general benchmarks for Qwen2.5-7B under different 15K SFT data sources.}
+\label{tab:conversation}
+% \resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccccc}
+\toprule
+& \multicolumn{3}{c}{\textbf{Conversation Benchmarks}} 
+& \multicolumn{4}{c}{\textbf{General Benchmarks}} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-8}
+\textbf{Model} 
+& \textbf{TopDial} & \textbf{Light} & \textbf{Avg} 
+& \textbf{MMLU} & \textbf{AlpacaEval} & \textbf{Arena-Hard} & \textbf{Avg} \\
+\midrule
+\textbf{Qwen2.5-7B} 
+& 7.71 & 7.79 & 7.75 
+& 71.45 & 7.05 & 0.60 & 26.36 \\
+\textbf{+ ShareGPT-15K} 
+& 7.75 & 6.72 & 7.24 
+& 73.09 & 3.70 & 1.30 & 26.03 \\
+\textbf{+ UltraChat-15K} 
+& 7.72 & 6.83 & 7.28 
+& 72.97 & 3.97 & 0.80 & 25.91 \\
+\textbf{+ DataFlow-Chat-15K} 
+& 7.98 & 8.10 & 8.04 
+& 73.41 & 10.11 & 1.10 & \textbf{28.21} \\
+\bottomrule
+\end{tabular}
+% }
+\end{table}

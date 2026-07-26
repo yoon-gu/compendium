@@ -1,0 +1,85 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "paper.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "DataFlow/ByteSans-Bold.ttf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "DataFlow/ByteSans-Medium.ttf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "DataFlow/bytesans.tfm"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "DataFlow/bytesansmedium.tfm"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/webui_cropped.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "sections/x_appendix.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/agenticrag.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/code_1.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/code_2.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/dfa_table1.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/general_1.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/general_2.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/knowledge_cleaning.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/reasoning.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/text2sql.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/text_conversation.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/text_pt.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "tables/text_sft.tex"
+      }
+   ],
+   "spec_version" : 1,
+   "texlive_version" : "2025",
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}

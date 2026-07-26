@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Pre-training Data Filtering: Performance comparison across models trained with 30B-scale tokens on general evaluation benchmarks.}
+% \resizebox{\textwidth}{!}{
+\label{tab:PT}
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{Methods} & \textbf{ARC-C} & \textbf{ARC-E} & \textbf{MMLU} & \textbf{HellaSwag} & \textbf{WinoGrande} & \textbf{Gaokao-MathQA} & \textbf{Avg} \\
+\midrule
+\textbf{Random-30B}      & 25.26 & 43.94 & 27.03 & 37.02 & 50.99 & 27.35 & 35.26 \\
+\textbf{Qurating-30B}    & 25.00 & 43.14 & 27.50 & 37.03 & 50.67 & 26.78 & 35.02 \\
+\textbf{FineWeb-Edu-30B}  & 26.45 & 45.41 & 27.41 & 38.06 & 50.43 & 25.64 & 35.57 \\
+\textbf{DataFlow-30B}    & 25.51 & 45.58 & 27.42 & 37.58 & 50.67 & 27.35 & \textbf{35.69} \\
+\bottomrule
+\end{tabular}
+% }
+\end{table}

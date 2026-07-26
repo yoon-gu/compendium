@@ -1,0 +1,19 @@
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{\textbf{Downstream training으로 본 general SFT pipeline quality.} 두 pipeline은 Claude Code가 \emph{동일한} from-scratch synthesis prompt(Prompt~2)에서 작성하며, \emph{동일한} models와 API settings로 10K instruction--response pairs를 생성한다. 동일한 recipe(full-parameter SFT, LLaMA-Factory + DeepSpeed ZeRO-3, 8$\times$H20, lr $1\mathrm{e}{-5}$, cosine, warmup $0.03$, 3 epochs, global batch $128$, cutoff $4096$, bf16, seed $42$)로 Qwen2.5-7B-Base를 fine-tune하고 lm-evaluation-harness~\cite{eval-harness}로 평가한다. Code benchmarks는 EvalPlus~\cite{liu2023evalplus} variants(HE+/MBPP+)를 사용한다. \textbf{Avg}는 9개 benchmark 평균이며, column별 최고값은 \textbf{bold}로 표시했다.}
+\label{tab:cc_general}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lc|cccc|cccc|c}
+\toprule
+& \textbf{Knowledge} & \multicolumn{4}{c|}{\textbf{Math}} & \multicolumn{4}{c|}{\textbf{Code}} & \\
+\cmidrule(lr){2-2} \cmidrule(lr){3-6} \cmidrule(lr){7-10}
+\textbf{Pipeline (author)} & \textbf{MMLU} & \textbf{GSM8K} & \textbf{MATH} & \textbf{Minerva} & \textbf{Olympiad} & \textbf{HumanEval} & \textbf{HE+} & \textbf{MBPP} & \textbf{MBPP+} & \textbf{Avg} \\
+\midrule
+Vanilla CC                & \textbf{74.4} & \textbf{82.9} & 68.2 & 27.6 & 35.9 & 78.0 & 70.1 & 64.6 & 51.6 & 61.5 \\
+\textsc{DataFlow-Harness} & 74.2 & 79.5 & \textbf{70.1} & 27.6 & \textbf{36.3} & \textbf{80.5} & \textbf{72.6} & \textbf{75.4} & \textbf{58.2} & \textbf{63.8} \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

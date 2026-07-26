@@ -1,0 +1,28 @@
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{\textbf{Downstream training으로 본 math pipeline quality.} 두 pipeline은 Claude Code가 \emph{동일한} natural-language prompt(Prompt~1)에서 작성하며, \emph{동일한} models와 API settings로 data를 합성하고, \emph{동일한} LIMO recipe로 Qwen2.5-32B-Instruct를 fine-tune하는 데 사용된다. DataFlow~\cite{dataflow2025} Table~5 math suite에서 accuracy(\%)를 보고하며, AIME24/25는 avg@32로 보고한다. Matched epoch에서 \textsc{DataFlow-Harness}로 생성한 data는 더 높은 average를 산출하여 더 높은 quality의 pipeline임을 시사한다. Epoch별 최고 average는 \textbf{bold}로 표시했다.}
+\label{tab:cc_math}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccccccc}
+\toprule
+\textbf{Pipeline (author)} & \textbf{GSM8K} & \textbf{MATH} & \textbf{AMC23} & \textbf{Olympiad} & \textbf{Gaokao24\_mix} & \textbf{Minerva} & \textbf{AIME24@32} & \textbf{AIME25@32} & \textbf{Avg} \\
+\midrule
+\textbf{Qwen2.5-32B-Instruct (base)} & 95.8 & 73.5 & 70.0 & 38.5 & 42.9 & 26.5 & 16.8 & 11.6 & 46.95 \\
+\midrule
+\rowcolor[rgb]{.867, .922, .969}
+\multicolumn{10}{c}{\textit{\textbf{1 epoch로 학습}}} \\
+\midrule
+\quad Vanilla CC                    & 92.3 & 78.0 & 47.5 & 42.8 & 56.0 & 35.7 & 25.1 & 21.6 & 49.9 \\
+\quad \textsc{DataFlow-Harness}     & 93.9 & 72.3 & 72.5 & 38.7 & 38.5 & 26.5 & 35.9 & 34.5 & \textbf{51.6} \\
+\midrule
+\rowcolor[rgb]{.867, .922, .969}
+\multicolumn{10}{c}{\textit{\textbf{2 epochs로 학습}}} \\
+\midrule
+\quad Vanilla CC                    & 94.8 & 84.0 & 60.0 & 48.0 & 53.8 & 39.7 & 31.8 & 24.3 & 54.5 \\
+\quad \textsc{DataFlow-Harness}     & 94.4 & 76.6 & 75.0 & 45.2 & 42.9 & 25.7 & 45.4 & 40.0 & \textbf{55.7} \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}

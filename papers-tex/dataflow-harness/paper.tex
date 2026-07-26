@@ -1,0 +1,135 @@
+\documentclass[]{dataflow}
+
+% --- Korean translation support (xelatex + kotex) ---
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times}[AutoFakeSlant=0.167]
+\setsansfont{Helvetica}[AutoFakeSlant=0.167]
+\setmainhangulfont{NanumMyeongjo}[AutoFakeSlant=0.167]
+\setsanshangulfont{NanumGothic}[AutoFakeSlant=0.167]
+\setmonohangulfont{NanumGothicCoding}[AutoFakeSlant=0.167]
+\setmonofont{NanumGothicCoding}[AutoFakeSlant=0.167]
+\linespread{1.18}\selectfont
+\renewcommand{\figurename}{그림}
+\renewcommand{\tablename}{표}
+\setlength{\parindent}{1.2em}
+% --- end Korean support ---
+
+% single-column: \documentclass[]{opendcai}, 
+%Please prioritize using single-column。
+
+% twocolumn: \documentclass[twocolumn]opendcai}
+
+\usepackage[toc,page,header]{appendix}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{multirow}     % 支持 \multirow
+\usepackage{multicol}     % 支持多列排版（部分场景）
+\usepackage{booktabs}     % \toprule \midrule \bottomrule
+\usepackage{colortbl}     % 单元格或行着色
+\usepackage{makecell}     % 允许在表格中换行 / 对齐
+\usepackage{graphicx}     % 支持 \resizebox
+\usepackage{float}        % precise placement for selected tables
+% \usepackage{algorithm}
+% \usepackage{algpseudocode}
+
+% Prefer page-top placement and avoid excessive whitespace around floats.
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{1}
+\setcounter{totalnumber}{3}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.8}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+
+\title{DataFlow-Harness: Editable LLM Data Pipeline 구성을 위한 Grounded Code-Agent Platform}
+
+\author[*]{Runming He}
+\author[*]{Zhen Hao Wong}
+\author[*,\ddagger]{Hao Liang}
+\author[*]{Zimo Meng}
+\author[]{Chengyu Shen}
+\author[]{Xiaochen Ma}
+\author[\ddagger]{Wentao Zhang}
+
+\affiliation[]{$^{1}$Peking University, $^{2}$Institute for Advanced Algorithms Research, Shanghai, $^{3}$Zhongguancun Academy}
+% \contribution[*]{Work done at xxx}
+% \contribution[\dagger]{Corresponding authors}
+
+
+\abstract{
+\input{sections/0_abstract}
+}
+
+\date{\today}
+% \correspondence{Author1 at \email{xxx@pku.edu.com}, Author5 at \email{xxx}}
+
+
+
+\def\emailicon{\raisebox{-1.5pt}{\includegraphics[height=1.05em]{DataFlow/email_logo.pdf}}}
+\def\githubicon{\raisebox{-1.5pt}{\includegraphics[height=1.05em]{DataFlow/github_logo.pdf}}}
+\def\huggingfaceicon{\raisebox{-1.5pt}{\includegraphics[height=1.05em]{DataFlow/huggingface_logo.pdf}}}
+\def\platformicon{\raisebox{-1.5pt}{\includegraphics[height=1.05em]{DataFlow/dataflow_logo.pdf}}}
+
+% * Equal Contribution \quad $\dagger$ Project Leader \quad $\ddagger$ Corresponding author
+
+\contribution[*]{Equal Contribution}
+\contribution[\dagger]{Project Leader}
+\contribution[\ddagger]{Corresponding Author}
+
+
+\checkdata[ \emailicon \hspace{0.3em} Correspondence ]{\email{wentao.zhang@pku.edu.cn}}
+
+% define linking
+\newcommand{\sourcelink}{https://github.com/OpenDCAI/DataFlow-WebUI}
+
+% You can add additional info fields as follows 
+\checkdata[ \githubicon \hspace{0.3em} Source Code ]{ \url{\sourcelink} }
+ 
+
+\checkdata[ Codebase Documentation ]{ \url{https://opendcai.github.io/DataFlow-Doc/} }
+
+
+
+\begin{document}
+\maketitle
+
+% footnote
+\renewcommand{\thefootnote}{\fnsymbol{footnote}} 
+\setcounter{footnote}{0}
+
+% 
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{OpenDCAI Technical Report}
+\fancyhead[R]{\thepage}
+
+% Content
+\newpage
+\tableofcontents
+\newpage
+
+\input{sections/main}
+
+\bibliographystyle{plainnat}
+\bibliography{main}
+
+% \clearpage
+
+% \beginappendix
+
+% \input{sections/x_appendix}
+
+\end{document}
