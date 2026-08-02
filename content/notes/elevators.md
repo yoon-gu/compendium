@@ -10,17 +10,7 @@ summary: "엘리베이터 dispatch는 단순히 가장 가까운 차를 보내�
 
 > **원문:** [Elevators](https://john.fun/elevators) — John Herrick, 게시일 미표기
 >
-> 아래 글은 원문 글의 구조와 서술을 따라가며 한국어로 옮긴 것이다. 원문은 interactive simulation과 inline SVG demo가 핵심이므로, 상단에 원문 simulation을 iframe으로 함께 넣었다. 본문 번역에는 거대한 inline image data나 generated SVG를 그대로 덤프하지 않았다.
-
-## Interactive simulation
-
-원문의 핵심은 글 중간중간 삽입된 elevator simulation이다. 아래 embed에서 원문 simulation을 직접 조작할 수 있다. `flow`, `floors`, `cars`, traffic pattern, LOOK/RSR/Destination Dispatch 선택을 바꾸며 wait-time metric과 histogram이 어떻게 변하는지 확인해 보자.
-
-<div class="compendium-iframe-wrap" style="position:relative; width:100%; height:min(86vh, 920px); min-height:680px; margin:1.25rem 0; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--entry);">
-  <iframe src="/compendium/simulations/elevators/" title="Elevators interactive simulation by John Herrick" loading="eager" allow="fullscreen" style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
-</div>
-
-작은 화면이나 embed가 제대로 뜨지 않는 환경에서는 [원문 simulation을 새 창에서 열기](https://john.fun/elevators)를 권한다.
+> 아래 글은 원문 글의 구조와 서술을 따라가며 한국어로 옮긴 것이다. 원문은 interactive simulation과 inline SVG demo가 핵심인 글이지만, Compendium note에는 거대한 inline image data나 generated SVG를 그대로 넣지 않았다. 각 simulation은 원문 페이지에서 직접 조작해 보는 편이 가장 정확하다.
 
 ![Elevators social preview](https://john.fun/metadata/elevator/twitter-card.png)
 
@@ -116,7 +106,7 @@ LOOK은 elevator bank당 car 수가 적은 작은 building에서도 RSR보다 �
 
 원문 끝에는 모든 button과 knob를 조작할 수 있는 simulation이 있다. Morning, Lunch, Evening, Interfloor traffic pattern을 바꾸고, floors, cars, flow를 조정하며, LOOK, RSR, Destination Dispatch를 비교할 수 있다. histogram도 함께 볼 수 있다.
 
-상단 iframe에서도 simulation을 스크롤하며 조작할 수 있고, 더 넓은 화면으로 parameter를 움직여 보려면 [원문 Full Sim](https://john.fun/elevators)을 직접 여는 것이 좋다.
+Compendium에는 simulation UI를 그대로 복사하지 않았으므로, 실제 parameter를 움직여 보려면 [원문 Full Sim](https://john.fun/elevators)을 직접 여는 것이 좋다.
 
 ## Conclusion
 
