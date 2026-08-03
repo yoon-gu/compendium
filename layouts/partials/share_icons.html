@@ -1,7 +1,7 @@
 {{- $pageurl := .Permalink -}}
 {{- $sourceURL := .Params.source_url | default $pageurl -}}
 {{- $summary := .Params.summary | default .Description | default .Title -}}
-{{- $summary = $summary | plainify | htmlUnescape | strings.TrimSpace | truncate 180 -}}
+{{- $summary = $summary | plainify | htmlUnescape | strings.TrimSpace -}}
 {{- $shareText := printf "%s\n\n원본 URL: %s\n한글 번역본 URL: %s" $summary $sourceURL $pageurl -}}
 
 <div class="compendium-share" data-share-text="{{ $shareText }}" data-share-title="{{ .Title | plainify }}">
