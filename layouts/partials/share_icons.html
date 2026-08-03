@@ -2,7 +2,7 @@
 {{- $sourceURL := .Params.source_url | default $pageurl -}}
 {{- $summary := .Params.summary | default .Description | default .Title -}}
 {{- $summary = $summary | plainify | htmlUnescape | strings.TrimSpace | truncate 180 -}}
-{{- $shareText := printf "%s\n\n%s\n\n한국어 번역본 참고: %s" $sourceURL $summary $pageurl -}}
+{{- $shareText := printf "동료에게 공유하고 싶은 글입니다.\n\n%s\n\n원본 URL: %s\n한글 번역본 URL: %s" $summary $sourceURL $pageurl -}}
 
 <div class="compendium-share" data-share-text="{{ $shareText }}" data-share-title="{{ .Title | plainify }}">
   <button class="compendium-share-button" type="button" aria-label="공유하기">
