@@ -9,7 +9,7 @@ buildFuture = true
 [params]
   defaultTheme = "auto"
   ShowReadingTime = true
-  ShowShareButtons = false
+  ShowShareButtons = true
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
