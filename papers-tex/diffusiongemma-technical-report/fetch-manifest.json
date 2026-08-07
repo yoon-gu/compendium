@@ -1,0 +1,14 @@
+{
+  "slug": "diffusiongemma-technical-report",
+  "arxiv_id": "2608.00146v1",
+  "source_url": "https://arxiv.org/e-print/2608.00146v1",
+  "pdf_url": "https://arxiv.org/pdf/2608.00146v1.pdf",
+  "fetched_at": "2026-08-06T23:27:41.516741+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/diffusiongemma-technical-report-original.pdf",
+  "source_dir": "papers-tex/diffusiongemma-technical-report",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "main.tex"
+  ]
+}
