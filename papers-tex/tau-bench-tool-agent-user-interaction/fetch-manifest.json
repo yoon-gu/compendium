@@ -1,0 +1,17 @@
+{
+  "slug": "tau-bench-tool-agent-user-interaction",
+  "arxiv_id": "2406.12045",
+  "source_url": "https://arxiv.org/e-print/2406.12045",
+  "pdf_url": "https://arxiv.org/pdf/2406.12045.pdf",
+  "fetched_at": "2026-08-12T08:46:06.274226+00:00",
+  "repo": "/Users/yoon-gu/repos/compendium",
+  "pdf_path": "static/papers/tau-bench-tool-agent-user-interaction-original.pdf",
+  "source_dir": "papers-tex/tau-bench-tool-agent-user-interaction",
+  "archive_kind": "tar",
+  "entrypoint_candidates": [
+    "main.tex"
+  ],
+  "build_notes": [
+    "2026-08-12: XeLaTeX build verified with local Nanum font files from /Users/yoon-gu/Library/Fonts referenced via fontspec in main.tex."
+  ]
+}

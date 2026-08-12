@@ -1,0 +1,592 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{naturalnames}{hyperref}
+
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+    \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_data_2024
+
+% ready for submission
+\usepackage[preprint]{neurips_data_2024}
+
+% to compile a preprint version, add the [preprint] option, e.g.:
+%     \usepackage[preprint]{neurips_data_2024}
+% This will indicate that the work is currently under review.
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_data_2024}
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_data_2024}
+
+% Submissions to the datasets and benchmarks are typically non anonymous,
+% but anonymous submissions are allowed. If you feel that you must submit
+% anonymously, you can compile an anonymous version by adding the [anonymous]
+% option, e.g.:
+%     \usepackage[anonymous]{neurips_data_2024}
+% This will hide all author names.
+
+
+\usepackage{fontspec}
+\usepackage{kotex}
+\usepackage{setspace}
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage[outputdir=build,cachedir=.]{minted}
+\setmainhangulfont[
+  Path=/Users/yoon-gu/Library/Fonts/,
+  BoldFont=NanumMyeongjo-Bold.ttf,
+  ItalicFont=NanumMyeongjo-Regular.ttf,
+  BoldItalicFont=NanumMyeongjo-Bold.ttf,
+  AutoFakeSlant=0.2
+]{NanumMyeongjo-Regular.ttf}
+\setsanshangulfont[
+  Path=/Users/yoon-gu/Library/Fonts/,
+  BoldFont=NanumGothic-Bold.ttf
+]{NanumGothic-Regular.ttf}
+\setmonohangulfont[
+  Path=/Users/yoon-gu/Library/Fonts/,
+  BoldFont=NanumGothicCoding-Bold.ttf
+]{NanumGothicCoding-Regular.ttf}
+\setstretch{1.2}
+\newcommand{\benchmark}{$\tau$-bench}
+\newcommand{\retail}{$\tau$-retail}  % Shouldn't need to use these
+\newcommand{\airline}{$\tau$-airline}
+\usepackage{enumitem}
+\usepackage{wrapfig}
+% \usepackage{emoji}
+% \newcommand{\sy}[1]{{\color{blue}[sy: #1]}}
+% \newcommand{\kn}[1]{{\color{magenta}[KN: #1]}}
+% \newcommand{\ns}[1]{{\color{red}[NS: #1]}}
+
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+
+
+
+\title{{$\tau$}-bench: 실제 domain에서의 \underline{T}ool-\underline{A}gent-\underline{U}ser 상호작용 benchmark}
+
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+
+\author{%
+  Shunyu Yao\thanks{인턴십 기간 중 수행한 작업. Code와 data: \url{https://github.com/sierra-research/tau-bench}.} \quad  \quad  Noah Shinn \quad  \quad Pedram Razavi \quad \quad  Karthik Narasimhan\\\\\large{Sierra}}
+\begin{document}
+
+
+\maketitle
+
+
+\begin{abstract}
+기존 benchmark는 language agent가 인간 user와 상호작용하는 방식이나 domain-specific 규칙을 따르는 능력을 평가하지 않는데, 이 둘은 실제 애플리케이션에 agent를 배치하는 데 모두 핵심적이다. 우리는 domain-specific API tool과 policy guideline이 주어진 language agent와 user(language model이 시뮬레이션함) 사이의 동적인 대화를 모사하는 benchmark인 \benchmark{}를 제안한다.
+우리는 대화 종료 시점의 database state를 주석된 목표 state와 비교하는 효율적이고 faithful한 evaluation 절차를 사용한다. 또한 여러 trial에 걸친 agent 행동의 신뢰성을 평가하기 위한 새로운 metric(pass\textasciicircum k)을 제안한다. 실험 결과, state-of-the-art function calling agent(\texttt{gpt-4o} 등)조차 $<50\%$의 task만 성공하며, 일관성도 상당히 낮다(retail에서 pass\textasciicircum 8 < 25\%). 우리의 결과는 agent가 일관되게 행동하고 규칙을 신뢰성 있게 따르는 능력을 개선할 수 있는 방법이 필요함을 보여준다.
+
+\end{abstract}
+
+
+
+\section{서론}
+
+language agent가 여러 산업 전반에서 새로운 수준의 자동화를 가능하게 할 잠재력에 대한 기대가 커지고 있다~\citep{sumers2023cognitive, yao2022react, schick2023toolformer, ahn2022can}. 그러나 이를 실제 시스템에 배치하려면 몇 가지 핵심 desiderata를 충족해야 한다. agent는 (1) 긴 horizon에 걸쳐 인간과 programmatic API 모두와 자연스럽게 상호작용하며 정보를 점진적으로 수집하고 intent를 해결해야 하고, (2) task 또는 domain에 특화된 복잡한 policy와 규칙을 정확히 준수해야 하며, (3) 수백만 건의 상호작용 규모에서도 일관성과 신뢰성을 유지해야 한다. 예를 들어 항공 예약 agent의 경우를 생각해 보자(그림~\ref{fig:teaser}). user가 자신의 항공편 reservation을 다른 목적지 공항으로 변경하고 싶어 할 때, agent는 user와 상호작용해 필요한 정보를 모으고, 제공된 guideline으로 항공사 policy를 확인하며, 복잡한 reservation API를 사용해 새 항공편을 찾고 가능하다면 user를 다시 예약해야 한다. 또한 agent는 동일한 요청을 하는 서로 다른 유형의 user에게도 일관되게 행동해야 하며, 최종 결과에 영향을 주지 않아야 하는 대화 흐름의 작은 변화에도 robust해야 한다.
+
+agent evaluation에서 현실적인 인간 상호작용과 규칙 준수를 모델링하는 일은, 실제 환경에서 신뢰할 수 있는 agent를 개발하고 배치하는 데 필수적이며, long-context reasoning과 planning 같은 과제를 체계적으로 다루는 데도 중요하다. 기존의 language agent benchmark~\citep{yao2022webshop, zhou2023webarena, jimenez2023swe, liu2023agentbench, ruan2023identifying}는 흔히 단순화된 instruction-following 설정을 사용한다. 이 설정에서는 agent가 모든 정보를 처음부터 받은 상태에서 환경(web, code terminal, 또는 API)과 자율적으로 상호작용하며, human-in-the-loop 상호작용도 없고 domain-specific guideline을 참고할 필요도 없다.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{figs/teaser.pdf}
+    % \includegraphics[width=.95\textwidth]{figs2/teaser.pdf}
+    \caption{(a) \benchmark{}에서 agent는 task를 완료하기 위해 database API tool 및 \textbf{LM-simulated user}와 상호작용한다. 이 benchmark는 agent가 여러 번의 상호작용을 통해 user로부터/에게 필요한 정보를 모두 수집하고 전달하는 능력, 그리고 domain-specific policy 문서에 제시된 \textbf{guideline을 준수}하면서 즉석에서 복잡한 문제를 해결하는 능력을 평가한다. (b) \airline{}의 trajectory 예시. 여기서 agent는 domain policy를 따라 user 요청(기본 이코노미 항공편 변경)을 거절하고 새로운 해결책(취소 후 재예약)을 제안해야 한다. 이는 복잡한 database, 규칙, user intent에 대한 long-context zero-shot reasoning을 agent에게 요구한다.
+    }
+    \label{fig:teaser}
+    \vspace{-10pt}
+\end{figure}
+
+\noindent 이 연구에서 우리는 \benchmark{}(Tool-Agent-User Interaction Benchmark의 약자)를 소개한다. 이는 domain-specific policy를 일관되게 따르면서 (시뮬레이션된) 인간 user 및 programmatic API와 상호작용하는 agent의 능력을 측정하기 위한 benchmark다. \benchmark{}는 (1) 현실적인 database와 API, (2) domain-specific policy 문서, (3) 다양한 user 시나리오를 위한 instruction과 그에 대응하는 ground truth annotation으로 이루어진 modular framework 위에 구축된다. 첫 번째 시연으로, 우리는 customer service 영역에 초점을 맞춰 agent가 다양한 요청을 가진 시뮬레이션 user를 도와야 하는 두 개의 서로 다른 domain(\textit{\retail{}}과 \textit{\airline{}})을 만든다. 우리는 data 생성과 현실적인 인간 user simulation을 위해 language model(LM)의 생성 능력~\cite{park2023generative}을 활용하고, 이를 수작업 annotation 및 verification과 결합한다.
+
+\benchmark{}는 세 단계로 구축했다. 수작업 schema 및 API 설계, LM 보조 data entry 생성, 그리고 user simulator를 위한 수작업 시나리오 생성 및 verification이 그것이다.
+우리의 evaluation scheme은 각 episode가 끝났을 때의 database state를 ground truth 기대 state와 비교한다. 이렇게 하면 agent의 의사결정을 객관적으로 측정할 수 있고, 동시에 대화 자체의 stochastic variation도 허용할 수 있다. user가 같은 요청을 서로 다른 방식으로 표현하더라도 database의 최종 state는 같을 수 있기 때문이다. 또한 우리는 $k$개의 i.i.d.\,trial 전반에서 agent의 일관성과 robust함을 측정하는 metric인 pass\textasciicircum k를 도입한다.
+
+우리의 실험은 function calling이나 ReAct 같은 단순한 LM 구성 요소로 만든 agent의 성능이 낮음을 보여주며, 더 정교한 agent architecture가 필요하다는 점을 부각한다. 예를 들어, \texttt{gpt-4o} 같은 state-of-the-art LM조차 function calling을 사용할 때 낮은 task 성공률(pass\textasciicircum 1)을 보인다(\retail{}에서 $\sim$61\%, \airline{}에서 $\sim$35\%). $k$가 증가할수록 task를 일관되게 해결할 확률은 빠르게 떨어져, 같은 모델의 \retail{} pass\textasciicircum 8은 $\sim$25\%까지 낮아진다. 이는 인간-agent 상호작용에서 흔한 stochasticity와 부분 정보에 이런 agent가 얼마나 취약한지를 보여준다. 실패 사례를 분석해 보면, 현재 agent는 database에 대한 복잡한 reasoning, ad-hoc policy의 이해와 준수, compound(둘 이상) 요청 처리에 어려움을 겪는다. 우리는 \benchmark{}가 인간 상호작용이 포함된 실제 디지털 task를 위해 더 일관되고 더 유능한 agent를 평가하고 개발하는 데 기여하길 바란다.
+
+
+%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+\section{관련 연구}
+
+기존의 agent 및 task-oriented dialogue system benchmark 대부분은 conversational 능력이나 tool-use 능력 중 하나만 평가하는 데 초점을 둔다. \benchmark{}는 이 둘을 보다 현실적인 설정 아래 통합하고, 동시에 agent가 domain-specific policy를 얼마나 일관되게 따를 수 있는지도 시험하는 것을 목표로 한다.
+
+\textbf{language agent 및 tool use를 위한 benchmark.} LM으로 구동되는 agent를 평가하기 위한 여러 benchmark가 개발되어 왔다~\citep{yao2022webshop, zhou2023webarena, jimenez2023swe, liu2023agentbench, ruan2023identifying}. 최근의 노력은 특히 LM의 tool use 능력, 즉 API 안의 함수 집합에서 올바른 function call을 생성하는 능력을 평가하는 데 집중해 왔다. Berkeley Function Calling Leaderboard(BFCL)~\cite{berkeley-function-calling-leaderboard}, ToolBench~\cite{xu2023tool}, MetaTool~\cite{huang2023metatool} 같은 프로젝트는 여러 프로그래밍 언어에서 tool use/function calling을 시험하고 function call의 정확도를 평가하는 다양한 방법을 제안한다. ToolEmu~\cite{ruan2023identifying}는 language model 자체를 사용해 tool 실행을 에뮬레이션하며, LM agent가 tool을 잘못 사용할 때 드러나는 잠재적 안전성 위험을 노출하는 데 초점을 둔다.
+그러나 이 모든 연구는 단일 단계의 user 상호작용만 포함하며, 이때 agent와 상호작용하는 인간은 필요한 모든 정보를 담은 초기 instruction 하나를 제공한다. 반면 우리의 benchmark는 agent가 정보와 authorization을 수집하기 위해 인간 user와 상호작용해야 하는 보다 현실적인 설정에 초점을 둔다.
+
+\textbf{Task-oriented dialogue.} Task-oriented dialogue는 NLP에서 오랫동안 이어진 도전 과제로, 여러 해에 걸쳐 domain-specific offline dataset이나 user simulator를 구축하려는 시도가 있었다. 전자의 benchmark는 정적이며, 사전에 수집된 conversation trajectory에서만 conversational agent를 시험한다~\cite{chen2021action, budzianowski2018multiwoz, andreas2020task}. 후자는 rule-based user simulator에 의존하거나 symbolic specification에 기반하거나~\cite{schatzmann2007evaluating,gur2018hidden}, crowdsourcing 플랫폼을 통해 실제 인간으로 테스트를 수행한다~\cite{he2018decoupling}. 아주 최근의 일부 연구는 dialogue system을 학습시키기 위해 LM을 response rater로 사용하는 방식을 탐구하거나~\cite{Hu_2023}, user 시뮬레이션 능력을 평가한다~\cite{yoon2024evaluating}. \benchmark{}는 state-of-the-art LM의 강력한 텍스트 생성 능력을 활용해 \textit{textual} 시나리오 설명만으로 현실적인 user 발화와 long-context 대화를 시뮬레이션하며, 목표는 agent를 평가하는 데 있다. LM의 stochastic sampling은 정확히 같은 시나리오를 다시 실행할 때도 다양하지만 faithful한 대화 variation을 허용하는데, 이는 \S~\ref{sec:results}에서 보이듯 agent의 일관성을 시험하는 데 매우 유용하다.
+
+\textbf{LM을 활용한 user simulation.} 우리의 연구는 LM을 인간 캐릭터 simulator로 사용하는 최근의 노력과도 관련이 있다. 여기에는 텍스트 어드벤처 게임의 non-player character(NPC)를 시뮬레이션하는 연구~\cite{kim2022plm}, 인간 사회와 유사한 환경의 multiple agent~\cite{park2023generative} 또는 특정 협업 task~\cite{wu2023autogen}를 다루는 연구, 그리고 온라인 쇼핑~\cite{chen2024chatshop}이나 웹 검색~\cite{zhang2024usimagent} 같은 task에서 human-in-the-loop 상호작용을 가능하게 하는 연구가 포함된다. 그러나 이러한 선행 연구는 이런 simulator를 agent의 신뢰성을 benchmark하는 데 사용하지 않았고, 대신 LM이 현실적인 simulation을 가능하게 한다는 점을 보여주는 데 초점을 맞추었다. 우리의 연구는 이런 현실적인 user simulation을 사용해, 실제 환경에서 수백만 건의 인간 상호작용을 처리하는 시스템에 AI agent를 배치할 때 필요한 신뢰성과 robustness를 정확히 평가한다.
+
+
+\section{\texorpdfstring{\benchmark{}: \underline{T}ool-\underline{A}gent-\underline{U}ser 상호작용을 위한 benchmark}{TAU-bench: Tool-Agent-User 상호작용 benchmark}}
+
+
+ \benchmark{}의 각 개별 task는 상태 공간 $\mathcal{S}$, 행동 공간 $\mathcal{A}$, 관측 공간 $\mathcal{O}$, 전이 함수 $\mathcal{T}: \mathcal{S} \times \mathcal{A} \to \mathcal{S} \times \mathcal{O}$, 보상 함수 $\mathcal{R}: \mathcal{S} \to [0, 1]$, instruction 공간 $\mathcal{U}$를 갖는 부분 관측 마르코프 결정 과정(POMDP) $(\mathcal{S}, \mathcal{A}, \mathcal{O}, \mathcal{T}, \mathcal{R}, \mathcal{U})$으로 정식화할 수 있다. agent는 task를 완료하기 위해 (1) API tool을 통해 database($db$)와, (2) (시뮬레이션된) user($user$)와 모두 상호작용한다. 즉, $\mathcal{S}=\mathcal{S}_{db} \otimes \mathcal{S}_{user}$, $\mathcal{A} = \mathcal{A}_{db} \cup \mathcal{A}_{user}$, $\mathcal{O} = \mathcal{O}_{db} \cup \mathcal{O}_{user}$이다. 또한 agent에는 반드시 준수해야 하는 규칙을 담은 domain-specific policy 문서가 제공되는데, 이는 domain의 world model을 부분적으로 설명하는 것으로 볼 수 있다. 아래에서는 각 구성 요소를 더 자세히 설명한다.
+
+
+\textbf{Database와 API.} 각 \benchmark{} domain에는 여러 database와 그에 대응하는 API가 있다. database의 내용은 상태 ${s}_{db}$를 이룬다(그림~\ref{fig:data}). 이 상태는 agent와 user에게 숨겨져 있으며, 보통 \texttt{tool\_name(**kwargs)} 형태인 API action ${a}_{db}$를 사용해야만 읽거나 쓸 수 있다. database에서 action이 실행되면 전이 $\mathcal{T}_{db}: (s_{db}, a_{db}) \mapsto (s'_{db}, o_{db})$는 결정적이며 Python 함수로 구현된다(그림~\ref{fig:api}).
+
+
+
+
+
+\textbf{Domain policy.} 각 domain에는 agent가 상호작용 중 따라야 할 domain database, task 절차, 제약을 설명하는 policy가 있다(그림~\ref{fig:policy}). 일부 제약은 API 내부의 check로 구현된다. 예를 들어 user profile에 없는 payment ID를 사용하면 $o_{db}=$ \texttt{"Error: payment not found"}가 된다. 반면 일부 제약은 그렇지 않다. 예를 들어 airline policy는 membership status와 cabin class에 따라 서로 다른 수하물 허용량을 규정하지만, agent는 실제 환경의 agent에게 주어지는 자유와 비슷하게 \texttt{book\_reservation} API에 결제 대상 수하물 개수를 직접 채워 넣어야 한다.
+
+
+
+
+
+
+
+\textbf{User simulation.} 우리는 agent와 상호작용하는 인간 user를 시뮬레이션하기 위해 language model(\texttt{gpt-4-0613})을 사용한다. user 상태 $s_{user}$는 task instruction이 들어 있는 초기 system prompt(그림~\ref{fig:task})와, 현재까지의 user-agent 전체 대화 이력으로 구성된다. user는 agent와 API tool 사이의 상호작용 이력을 볼 수 없다. agent는 어떤 자연어 메시지로도 user와 상호작용할 수 있으며, 예를 들어 $a_{user}$는 \texttt{"Your reservation has been updated,\,is there anything else I can help with?"}가 될 수 있다. 전이 $\mathcal{T}_{user}: (s_{user}, a_{user}) \mapsto (s'_{user}, o_{user})$는 stochastic하며, agent의 메시지를 채팅 이력에 붙인 뒤 LM으로부터 새로운 user 메시지를 샘플링한다. 예를 들어 그 결과 $o_{user}$는 \texttt{"Yes,\,I also want to cancel another flight."}가 될 수 있다. user가 $o_{user}$=\texttt{"\#\#\#STOP\#\#\#"}를 내보내면 episode가 종료되고 agent를 평가한다.
+
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}[t]{0.43\textwidth}
+\vspace{0pt}
+\begin{minted}[fontsize=\footnotesize, breaklines, breaksymbol=, breaksymbolleft=, breaksymbolright=, frame=single]{json}
+{"order_id": "#W2890441",
+"user_id": "mei_davis_8935",
+"items": [{
+    "name": "Water Bottle",
+    "product_id": "8310926033",
+    "item_id": "2366567022",
+    "price": 54.04,
+    "options": {
+        "capacity": "1000ml",
+        "material": "stainless steel",
+        "color": "blue"
+    }}, ...], ...}
+\end{minted}
+\vspace{-5pt}
+\caption{\retail{}의 \texttt{orders} database entry 예시.}
+\label{fig:data}
+\begin{minted}[fontsize=\footnotesize, frame=single]{python}
+def return_delivered_order_items(
+    order_id: str,
+    item_ids: List[str],
+    payment_method_id: str,
+) -> str: ...
+
+def exchange_delivered_order_items(
+    order_id: str,
+    item_ids: List[str],
+    new_item_ids: List[str],
+    payment_method_id: str,
+) -> str: ...
+\end{minted}
+\vspace{-5pt}
+\caption{\retail{}의 API tool 예시.}
+\label{fig:api}
+\end{subfigure} \hfill
+\begin{subfigure}[t]{0.56\textwidth}
+\vspace{0pt}
+\begin{minted}[fontsize=\footnotesize, frame=single, breaklines, breaksymbol=, breaksymbolleft=, breaksymbolright=,]{markdown}
+## 배송 완료된 order return
+- user가 확인하면 order 상태는 'return requested'로 변경된다...
+
+## 배송 완료된 order exchange
+- order는 상태가 'delivered'일 때만 exchange할 수 있다...
+\end{minted}
+\vspace{-5pt}
+\caption{\retail{}의 domain policy 발췌문.}
+\label{fig:policy}
+\begin{minted}[fontsize=\footnotesize, breaklines, breaksymbol=, breaksymbolleft=, breaksymbolright=, frame=single]{json}
+{"instruction": "당신은 80217에 사는 Mei Davis입니다. water bottle을 return하고, pet bed와 office chair를 가장 저렴한 버전으로 exchange하고 싶습니다. 두 요청은 함께 언급하세요. 둘 중 하나만 할 수 있다면 더 많은 돈을 아끼는 쪽을 선호하지만, 두 경우 모두 얼마를 절약할 수 있는지는 알고 싶습니다. 오늘은 빚이 있어 우울하지만, 말은 매우 짧게 합니다.",
+"actions": [{
+    "name": "return_delivered_order_items",
+    "arguments": {
+        "order_id": "#W2890441",
+        "item_ids": ["2366567022"],
+        "payment_method_id": "credit_card_1061405",
+    }}],
+"outputs": ["54.04", "41.64"]}
+\end{minted}
+\vspace{-5pt}
+
+\caption{User instruction은 가능한 outcome이 하나뿐이 되도록 보장한다.}
+\label{fig:task}
+\end{subfigure}
+\caption{\benchmark{}는 여러 구성 요소를 갖는 modular한 방식으로 구축된다: (a) JSON database, (b) Python API tool, (c) Markdown domain policy, (d) JSON task instance. agent는 API tool과 domain policy만 직접 접근할 수 있고, API tool을 통해서만 database에 간접 접근할 수 있다. Task annotation은 \textbf{agent에게 보이지 않으며} user simulation과 evaluation에만 사용된다.}
+\label{fig:examples}
+\vspace{-10pt}
+\end{figure}
+
+
+
+\textbf{Task instance.} 그림~\ref{fig:task}에 보이듯이, 각 \benchmark{} task instance는 두 부분으로 구성된다. 하나는 user simulation을 위한 instruction(agent에게는 숨겨짐)이고, 다른 하나는 ground truth database write action의 annotation(그리고 선택적으로는 user 질문에 대한 ground truth output)이다. instruction은 user의 신원, intent, 선호를 설정해 domain policy 아래에서 가능한 outcome이 정확히 하나가 되도록 만든다. 각 task episode는 시뮬레이션된 user가 요청을 시작하는 것으로 이루어지며, agent는 제공된 policy를 참고하면서 언제든 tool을 호출할 수 있는 대화형 방식으로 이를 처리한다. episode가 끝나면 database state와 agent-to-user 메시지를 사용해 reward를 계산한다.
+
+
+\textbf{Reward.} task episode의 reward $r = r_\text{action} \times r_\text{output} \in \{0, 1\}$는 (1) 최종 database가 유일한 ground truth outcome database와 동일한지($r_\text{action}$), (2) user에 대한 agent의 응답이 필요한 모든 정보를 포함하는지($r_\text{output}$)에 기반한다. 따라서 그림~\ref{fig:task}의 task에서는 agent-user 대화가 다양하게 전개될 수 있고 agent가 여러 (read) action을 호출할 수 있지만, 유일한 database write action이 \texttt{return\_delivered\_order\_items(order\_id="\#W2890441", item\_ids=["2366567022"], payment\_method\_id="credit\_card\_1061405")}이며 user 응답에 \texttt{"54.04"}, \texttt{"41.64"}가 부분 문자열로 포함될 때 agent는 성공한 것이다. $r=1$이 성공한 episode의 필요조건일 수는 있지만 충분조건은 아닐 수 있다는 점에 유의하자. 예를 들어 agent가 명시적인 user 확인 없이 return을 실행했다면 이는 policy 위반이다. 그럼에도 우리가 제안하는 rule-based reward는 계산이 빠르고 faithful하며, \S~\ref{sec:experiments}에서 보이듯 현재 모델과 방법에 이미 상당한 도전을 제기한다.
+
+
+\textbf{Pass\textasciicircum k metric.} 좋은 verification 기법(unit test 등)이 있는 code generation 같은 task의 경우, 커뮤니티는 $k$개의 i.i.d.\,task trial 중 적어도 하나가 성공할 확률로서 pass@k(pass at k) metric을 정의해 왔다. 이는 inference-time compute를 늘릴수록 agent가 해법을 \emph{발견}할 가능성이 높아지는 경향을 포착한다~\citep{chen2021evaluating}. customer service처럼 \textit{신뢰성과 일관성}이 필요한 실제 agent task를 위해 우리는 새로운 metric인 pass\textasciicircum k(pass hat k)를 제안한다. 이는 $k$개의 i.i.d.\,task trial이 \textit{모두} 성공할 확률을 task 평균으로 정의한다. 따라서 어떤 task를 $n$회 실행했고 그중 $c$개의 trial이 성공했다면($r=1$), pass\textasciicircum k와 pass@k의 불편 추정치는 다음과 같다.
+\begin{equation*}
+    \text{pass\textasciicircum k} = \mathbb{E}_{\text{task}}\left[ \binom{c}{k} \middle/ \binom{n}{k} \right], \quad \text{pass@k} = 1 - \mathbb{E}_{\text{task}}\left[ \binom{n-c}{k} \middle/  \binom{n}{k}\right].
+\end{equation*}
+우리의 경우 같은 task에서는 user prompt와 database transition은 동일하고, user 및 agent 메시지의 LM sampling만이 충분한 stochasticity를 만들어낸다. 따라서 pass\textasciicircum k는 동일한 근본 의미를 가지는 대화 variation을 처리하면서도 domain policy와 규칙을 준수하는 agent의 신뢰성을 포착할 수 있다. 기본적으로 우리는 task 전반의 평균 reward, 즉 pass\textasciicircum 1=pass@1=$\mathbb{E}[r]=\mathbb{E}[c / n]$를 agent 비교의 주요 metric으로 보고한다.
+
+
+\section{Benchmark 구축}
+
+% \subsection{Design and Data generation}
+\benchmark{}는 여러 domain이 공유하는 domain-agnostic environment 및 user simulation class를 정의하고, database JSON 파일, database API Python code와 documentation, domain policy 텍스트, task instance 형태의 domain-specific data를 제공한다. 각 domain은 LM과 code 실행, 그리고 인간의 labeling 및 checking을 혼합한 3단계 접근법으로 만들어진다.
+
+\textbf{Stage I: database schema, API, policy의 수작업 설계.} 우리는 실제 대응물에서 영감을 얻고 이를 단순화하면서, 가능한 한 가장 단순한 database schema, API, policy를 공동 설계하는 것으로 시작한다. 단순성은 여러 구성 요소의 논리적 일관성과 API 및 task annotation의 용이성에 중요하다. 그럼에도 최소한으로 현실적인 domain을 만들려면 적어도 수십 개의 schema, API, 규칙이 필요하며, 이는 기존 agent에게 충분히 어려운 과제로 드러난다. 자세한 내용은 \S~\ref{sec:stage1}을 보라.
+
+\textbf{Stage II: LM을 활용한 자동 data 생성.} data schema가 준비되면 예시 entry를 하나 만들고, gpt-4를 사용해 확장 가능한 entry를 샘플링하는 체계적인 code snippet을 생성한 뒤, code의 사소한 bug를 수작업으로 다듬는다. 예시 snippet과 자세한 내용은 \S~\ref{sec:stage2}를 보라.
+
+\textbf{Stage III: agent 실행을 통한 수작업 task annotation 및 검증.}
+여기서 핵심 과제는 user instruction이 유일한 database outcome으로 이어지도록 보장하는 것이다. 예를 들어 선호 payment method가 명시되지 않으면 user가 trial마다 다르게 답할 수 있고, 그 결과 최종 database가 달라질 수 있다. 그래서 우리는 초기 user instruction을 작성하고, \texttt{gpt-4-turbo} function calling agent로 trial을 실행한 뒤, trajectory를 살펴보며 user instruction을 다듬고, 모호함이 남지 않았다고 확신할 때까지 이를 반복한다(\S~\ref{sec:additional}의 그림~\ref{fig:task_hist} 참조. 여기서 우리는 각 \retail{} task를 \texttt{gpt-4-turbo}로 $>40$회 실행하고 성공률이 0이거나 낮은 task를 모두 점검한다). ground truth annotation을 위해 agent action과 output을 복사해 수정할 수 있는데, 이는 처음부터 annotation하는 것보다 쉽다.
+
+
+
+실제로는 data나 task를 만드는 과정에서 database schema나 policy의 사소한 세부 사항을 업데이트할 수 있지만, 세 단계는 대체로 선형적이며 구축된 data는 modular 구조로 정리된다.
+
+\subsection{Domain}
+위 절차를 사용해 우리는 \retail{}과 \airline{}이라는 두 domain을 modular하게 구축한다.
+이 두 domain을 선택한 이유는 data(예: 제품, 가격, 항공편)를 합성하기 비교적 쉽고, 상식에 기반한 policy(예: 제품 return, 수하물 허용량)를 만들기 쉬우며, 다양한 task를 허용하고, 실제 애플리케이션과도 가깝기 때문이다. 미래에 더 강력한 agent를 다루게 되면, 더 복잡한 data와 규칙을 가진 고급 domain(예: 의료, 세금, 법률)도 연구할 수 있다. 아래에서는 두 domain의 policy를 간략히 설명한다(domain의 전체 세부사항은 \S~\ref{sec:stage1}).
+\begin{table}[t]
+
+\centering
+\begin{tabular}{lll}
+\toprule
+ & \textbf{\retail{}} & \textbf{\airline{}} \\
+\midrule
+\textbf{Database} & 사용자 500명, 제품 50개, order 1,000개 & 사용자 500명, 항공편 300개, reservation 2,000개 \\
+\textbf{API tool} & write 7개, non-write 8개 & write 6개, non-write 7개 \\
+\textbf{Task} & 115 & 50 \\
+\bottomrule
+\end{tabular}
+\vspace{10pt}
+\caption{\retail{}과 \airline{}의 핵심 통계.}
+\label{tab:domains}
+\vspace{-15pt}
+\end{table}
+
+\textbf{\retail{}.} 이 domain에서 agent는 user가 pending order를 취소하거나 수정하고, delivered order를 return 또는 exchange하며, user 주소를 변경하거나 정보를 제공하는 일을 돕는다. 각 제품(예: 그림~\ref{fig:data}의 ``Water Bottle'')은 고유 ID를 가진 여러 item option(예: 1000ml, stainless steel, blue)을 가진다. 각 pending order는 한 번만 취소 또는 수정할 수 있고, 각 delivered order는 한 번만 return 또는 exchange할 수 있다. item은 다른 제품 유형으로 수정되거나 exchange될 수 없다. 이러한 제약은 task와 API 설계를 단순화하는 동시에, agent가 domain-specific 규칙을 따르고 action을 취하기 전에 user에게 필요한 모든 정보를 알리고 수집하도록 만든다.
+
+
+\textbf{\airline{}.} 여기서 agent는 user가 항공 reservation을 예약, 변경, 취소하거나 refund를 받는 일을 도와야 한다. 우리는 미국 20개 도시 사이의 항공편 300개를 현실적인 소요 시간과 가격으로 구성하고, 직항 또는 1회 경유 항공편을 조회하는 API tool을 만든다. 이 domain의 policy는 \retail{}보다 더 복잡하며, payment method 조합, 위탁 수하물 허용량, 항공편 변경 및 취소 등에 관한 ad-hoc 제약을 포함한다. 이러한 제약은 membership tier와 cabin class에 따라 달라질 수도 있어, agent에게 까다로운 multi-hop reasoning 문제를 만든다.
+
+
+
+\subsection{핵심 특성}
+
+
+\textbf{현실적인 dialogue와 tool use.} 이전의 task-oriented dialogue benchmark와 비교하면, \benchmark{}는 LM의 발전 덕분에 더 복잡한 database와 더 현실적인 user simulation을 갖는다. 일부 trajectory는 \S~\ref{sec:retail_trajs}와 \S~\ref{sec:airline_trajs}에서 볼 수 있다. 특히 user instruction이 synthetic하더라도, LM을 통해 생성된 user 발화는 open-ended하며 자연스럽다.
+
+\textbf{Open-ended하고 다양한 task.} 각 \benchmark{} domain의 data schema, API, 규칙은 실제 domain보다 단순화되어 있지만, 매우 다양하고 open-ended하며 때로는 창의적인 task를 만들기에 충분히 풍부하다(\S~\ref{sec:additional}, \S~\ref{sec:retail_trajs}, \S~\ref{sec:airline_trajs} 참조).
+중요한 점은, 우리는 양보다 질을 택한다는 것이다. \S~\ref{sec:experiments}에서 보이듯, 고품질 task의 작은 집합을 여러 번 trial로 실행하면(pass\textasciicircum k metric 사용) 서로 다른 모델, 방법, 연구 과제에 대한 풍부한 통찰을 신뢰성 있게 드러낼 수 있다.
+
+\textbf{Faithful한 rule-based evaluation.} 실제 agent는 같은 task에서도 trajectory가 매우 다양할 수 있고 성공 기준도 다면적이기 때문에 평가가 어렵다. 그 결과, task 해결 여부는 최종 user가 판단하고 규칙 준수 여부는 domain 전문가가 판단하는 식의 human evaluation이 자주 필요하다. \benchmark{}에서는 느리지만 세심한 task annotation과 빠르면서 faithful한 evaluation을 맞바꾼다. domain policy와 user의 바람에 따라 가능한 database outcome이 오직 하나가 되도록 보장함으로써, 주관적이고 잡음이 있는 인간 판단을 단순하고 객관적인 database state 비교로 대체할 수 있다.
+
+
+\textbf{Modular한 확장.} \benchmark{}의 codebase 구조는 modular하며, 새로운 domain을 추가하거나 기존 domain data와 일관성을 유지하는 한 database entry, domain functionality, 규칙, API, task, evaluation metric을 쉽게 추가하거나 업데이트할 수 있다. 우리는 커뮤니티가 \benchmark{}를 위한 새로운 task와 domain을 만들도록 장려하기 위해 codebase를 공개한다.
+
+
+
+
+
+\section{실험} \label{sec:experiments}
+
+
+
+
+\textbf{모델.} 우리는 API를 통해 agent용 다양한 state-of-the-art proprietary/open language model을 테스트한다.
+% \begin{itemize}
+    % \item
+    \href{https://openai.com/api/}{OpenAI GPT API} (\texttt{gpt-4o}, \texttt{gpt-4-turbo}, \texttt{gpt-4-32k}, \texttt{gpt-3.5-turbo}),
+    % \item
+    \href{https://www.anthropic.com/api}{Anthropic Claude API} (\texttt{claude-3-opus}, \texttt{claude-3-sonnet}, \texttt{claude-3-haiku}), %
+    % \item
+    \href{https://ai.google.dev/gemini-api/}{Google Gemini API} (\texttt{gemini-1.5-pro-latest}, \texttt{gemini-1.5-flash-latest}), %
+    % \item
+    \href{https://docs.mistral.ai/api/}{Mistral API} (\texttt{mistral-large}, \texttt{open-mixtral-8x22b}),
+    % \item
+    \href{https://console.anyscale.com}{AnyScale API} (\texttt{meta-llama-3-70B-instruct}).
+% \end{itemize}
+마지막 두 모델만 weight를 공개한다. 이 benchmark의 난이도 때문에 작은 모델(7/13B)은 테스트하지 않는다.
+
+\textbf{방법.} agent를 구축하는 우리의 주요 방법은 function calling(FC)이며, 이는 Llama-3를 제외한 모든 테스트 LM이 네이티브로 지원한다. FC 모드에서는 모델의 system prompt를 domain policy로 설정하고, 각 turn마다 모델이 user 응답 메시지를 생성할지 tool call을 생성할지 자율적으로 결정한다. 우리는 또한 text-formatted ReAct~\citep{yao2023react}와 그 Act-only ablation도 테스트한다. 여기서는 모델에게 zero-shot으로 ``Thought: \{some reasoning\} Action: \{some JSON format action argument\}'' 또는 action 부분만 생성하도록 지시한다. 주목할 점은, 일부 agent 방법은 user-in-the-loop 설정에 적합하지 않다는 것이다. 예를 들어 self-reflection~\cite{shinn2023reflexion}은 실제 agent가 user를 응대할 기회가 한 번뿐이라는 점에서 비현실적이고, planning 기반 접근~\cite{yao2023tree}은 실시간으로 user를 돕기엔 너무 느릴 수 있다.
+
+우리는 각 task를 최대 30개의 agent action(tool call 또는 user 응답)으로 제한한다. 주요 결과(표~\ref{tab:main})를 위해 각 task당 최소 3회의 trial을 실행한다.
+LM temperature는 agent에 대해 0.0, user에 대해 1.0으로 둔다.
+
+
+\subsection{주요 결과}
+\label{sec:results}
+
+
+
+\begin{table}[t]
+\centering
+\begin{minipage}[t]{0.47\textwidth}
+    \vspace{0pt} % Add this line
+
+    \centering
+
+        \small
+    \begin{tabular}{l|cc|c}
+    \toprule
+      모델  & retail & airline & 평균\\
+       \midrule
+       \texttt{gpt-4o}  & {\color{black}\textbf{61.2}} & {\color{black}\textbf{35.2}} & \textbf{48.2} \\
+       \texttt{gpt-4-turbo} & 57.7 & 32.4 & 45.1 \\
+       \texttt{gpt-4-32k} & 56.5 & 33.0 & 44.8 \\
+        \texttt{gpt-3.5-turbo} & 20.0 & 10.8 & 15.4 \\
+        \midrule
+       \texttt{claude-3-opus} & {44.2} & 34.7 & 39.5 \\
+       \texttt{claude-3-sonnet} & 26.3 & 27.6 & 27.0 \\
+       \texttt{claude-3-haiku} & 19.0 & 14.4 & 16.7 \\
+       \midrule
+       \texttt{gemini-1.5-pro} & {21.7} & 14.0 & 17.9 \\
+       \texttt{gemini-1.5-flash} & 17.4 & 26.0 & 21.7 \\
+       \midrule
+        \texttt{mistral-large} & {30.7} & 22.4 & 26.6 \\
+       \texttt{mixtral-8x22b} & 17.7 & 31.6 & 24.7 \\ % $^{\text{o}}$
+        \midrule
+        % \midrule
+       \texttt{meta-llama-3-70B} & 14.8 & 14.4 & 14.6 \\ % $^{\text{o}*}$
+       \bottomrule
+    \end{tabular}
+% \end{table}
+\vspace{10pt}
+\captionof{table}{모델별 Pass\textasciicircum 1. 단, Llama-3는 function calling 대신 text-ReAct를 사용했다. 평균은 task 기준이 아니라 domain 가중 평균이다.}
+\label{tab:main}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.52\textwidth}
+    \vspace{0pt} % Add this line
+% \begin{table}[t]
+\centering
+        \includegraphics[width=.98\linewidth]{figs/method.pdf}
+        \captionof{figure}{\retail{}에서 모델/방법별 pass\textasciicircum 1.}
+        \label{fig:method}
+        \vspace{-9pt}
+        \includegraphics[width=.98\linewidth]{figs/passatk.pdf}
+        \captionof{figure}{\retail{}에서의 pass\textasciicircum k (--) 및 pass@k (..).}
+        \label{fig:passhatk}
+% \end{table}
+\end{minipage}
+% \end{minipage}
+\vspace{-15pt}
+\end{table}
+
+
+\textbf{모델 비교.} 표~\ref{tab:main}에서 보듯 \texttt{gpt-4o}는 function calling에서 가장 좋은 모델이며, 여러 모델 사이에는 성능 스펙트럼이 넓게 퍼져 있다. 특히 SoTA open-weight 모델(llama-3-70b, mistral-8x22b)은 여전히 SoTA proprietary 모델(gpt-4o, claude-3-opus)과 큰 격차가 있다. 모든 모델은 아직 \benchmark{}를 해결하기에는 멀었고, 특히 더 어려운 \airline{}에서는 gpt-4o조차 task의 $35.2\%$만 해결한다.
+모델 성능의 다양성(표~\ref{tab:main})과 task 난이도의 다양성(\S~\ref{sec:additional}의 그림~\ref{fig:task_hist}) 그리고 완벽한 해결까지 남아 있는 큰 격차는 \benchmark{}를 agent, tool use, dialogue용 새로운 모델을 benchmark하고 개발하기에 이상적인 환경으로 만든다.
+
+\textbf{방법 비교.} 그림~\ref{fig:method}는 state-of-the-art 모델에서 네이티브 function calling이 text-formatted agent 방법보다 일관되게 우수함을 보여준다. text-formatted agent 방법의 경우 reasoning trace를 추가하면(ReAct와 Act 열 비교) 여전히 일관된 도움이 된다. 이는 익숙하지 않은 형식의 관측과 action 사이의 간극을 메우는 데 도움이 되기 때문이다. 우리는 function-calling agent에 ``think'' 함수를 추가하는 실험도 했지만 성능 향상은 없었다. 아마도 대부분의 FC 모델이 그런 reasoning 방향으로 학습되지 않았기 때문일 것이다.%\sy{Claude-3 has reasoning traces built-in for function calling, but still does not beat gpt-4}
+
+\textbf{pass\textasciicircum k로 본 agent 일관성.} 그림~\ref{fig:passhatk}에서 보이듯이, 같은 task를 여러 번 안정적이고 일관되게 해결할 확률은 trial 수 $k$가 증가할수록 크게 떨어진다. 평균 task 성공률이 $>60\%$인 최고 성능의 gpt-4o function calling agent조차 pass\textasciicircum 8은 $<25\%$로 떨어진다. 실제 시나리오에서는 높은 평균 성공률(pass\textasciicircum 1)을 가진 agent를 만드는 것뿐 아니라, 더 robust하고 더 일관적인 agent(pass\textasciicircum k의 추세)를 만드는 것도 중요하고 어렵다.
+
+\textbf{비용 분석.} \retail{}에서 \texttt{gpt-4o} FC agent와 \texttt{gpt-4} user simulation을 짝지으면, task당 agent / user simulation 비용은 각각 \$0.38 / \$0.23이어서 task별로 trial 1회를 실행하는 데 약 200달러가 든다. agent 비용에서는 입력 prompt / completion output이 각각 가격의 $95.9\%$ / $4.1\%$를 차지하므로, 비용의 대부분은 긴 system prompt(domain policy + function definition)에서 발생한다.
+%More details are in \sy{appendix}.
+
+
+\subsection{연구 과제 분석}
+
+
+
+
+
+이 절에서는 \retail{} split과 가장 발전된 baseline인 \texttt{gpt-4o} function calling agent에 초점을 맞춰, \benchmark{}의 도전 과제를 정량적·정성적으로 분석한다.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \centering
+  \vspace{-20pt}
+    \includegraphics[width=0.4\textwidth]{figs/breakdown2.pdf}
+    \caption{\retail{}에서 실패한 \texttt{gpt-4o} FC agent trajectory 36개의 분해.}
+    \label{fig:breakdown}
+    \vspace{-20pt}
+\end{wrapfigure}
+
+
+\textbf{실패 분해.} 우리는 \retail{}에서 gpt-4o FC agent trajectory 115개를 샘플링했다(task당 1회 trial). 이 중 40개 task가 실패했다(pass\textasciicircum $1$=$65.2\%$). 이 실패들을 수작업으로 검토한 결과, 4개는 user instruction의 오타 또는 모호성 때문이었고(이후 수정됨), 나머지 36개 실패 사례는 agent 문제였으며, 아래와 그림~\ref{fig:breakdown}에서 더 자세히 분해한다.
+
+
+
+\textbf{실패 1: 잘못된 argument 또는 정보 제공: 복잡한 database reasoning의 도전.} ``wrong argument''의 경우, \texttt{gpt-4o} FC agent는 대체로 올바른 유형의 tool call을 하긴 하지만 하나 이상의 argument를 잘못 채운다. \S~\ref{sec:wrong_argument}의 예시에서 user는 lamp를 더 어둡고, battery나 USB보다 AC adapter를 선호하는 것으로 exchange하고 싶어 한다. agent는 lamp의 복잡한 inventory를 reasoning해 이런 선호에 맞는 유일한 option을 찾는 데 실패한다. 더 약한 모델과 방법은 argument hallucination 같은 더 기본적인 실패에도 어려움을 겪는다. 예를 들어 \texttt{gpt-4o} FC agent는 \retail{} task당 존재하지 않는 user/product/order/item ID를 넣은 tool call을 평균 $0.46$회만 하지만, \texttt{gpt-3.5-turbo} FC / Act agent는 각각 $2.08$ / $6.34$회를 만든다.
+
+``wrong info''의 경우, agent는 user가 요구한 정보를 누락하거나(예: user가 tracking ID를 묻지만 agent가 주지 않음), 잘못된 정보를 계산하거나(예: 총가격 오산), user 요청이 다른 방향으로 흘러가게 만드는 잘못된 정보를 user에게 제공한다(예: agent가 잘못 알려준 가격 정보를 바탕으로 user가 취소 또는 exchange를 결정할 수 있음). 이런 실패는 전체 실패의 \~55\%를 차지하며, 미래 모델에는 복잡한 database와 user intent에 대한 더 나은 상식 및 수치 reasoning이 필요함을 보여준다.
+
+
+\textbf{실패 2: 잘못된 의사결정: domain 이해와 규칙 준수의 도전.} 위의 실패는 domain policy를 보지 않아도 인식할 수 있지만, ``wrong decision-making'' 실패(전체 실패의 25\%)는 agent가 domain-specific 지식이나 규칙을 이해하지 못해 잘못된 유형의 tool call을 할 때 발생한다. \S~\ref{sec:wrong_decision}의 예에서 user는 ``몇 개의 item''을 exchange하고 싶어 하며, domain policy에 따르면 ``Exchange or modify order tools can only be called once. Be sure that all items to be exchanged are collected into a list before making the tool call''이다. 그러나 gpt-4o FC agent는 이 domain 지식과 규칙을 놓치고 먼저 item 하나만 exchange하기로 결정해, 두 번째 item은 결국 exchange되지 못한다.
+
+\begin{wraptable}{r}{0.4\textwidth}
+\vspace{-10pt}
+
+    \small
+    \begin{tabular}{l|ll}
+    \toprule
+        & \retail & \airline \\
+    \midrule
+    \texttt{gpt-4o} & 61.2 $\to$ 56.8 & \textbf{33.2 $\to$ 10.8} \\
+    \texttt{gpt-3.5} & 20.0 $\to$ 14.5 & 10.8 $\to$ 9.6\\
+    \bottomrule
+    \end{tabular}
+    \caption{agent의 system prompt에 domain policy를 제공하지 않으면 pass\textasciicircum 1 점수가 하락한다.}
+    \label{tab:ablate_policy}
+    \vspace{0pt}
+\end{wraptable}
+% \kn{We should frame this more as - FC agents don't really seem to be reading and following the policy docs much; most of their performance seems to come from prior knowledge}
+서로 다른 domain에서 서로 다른 agent가 규칙을 어떻게 따르는지 더 잘 이해하기 위해, 우리는 FC agent의 system prompt에서 domain policy를 제거하는 ablation study를 수행한다. 표~\ref{tab:ablate_policy}에서 보듯, 규칙이 더 단순하고 상식에 가까운 \retail{}에서는 \texttt{gpt-4o}와 \texttt{gpt-3.5-turbo} agent의 pass\textasciicircum 1이 각각 $4.4\%$, $5.5\%$만 하락한다. 이는 이들의 성공 사례가 대체로 직관적이고 상식적인 방식의 tool 사용에서 비롯되며, 실제로 policy 문서를 가능한 수준까지 활용하고 있지 않을 수 있음을 시사한다. 반면 규칙이 더 복잡하고 ad-hoc한 \airline{}에서는(예: 수하물 허용량이 membership tier와 cabin에 따라 달라짐), policy 제거가 \texttt{gpt-4o}에는 크게 타격을 주지만($-22.4\%$), \texttt{gpt-3.5-turbo}에는 미미한 영향만 준다($-1.2\%$). 이는 전자는 때때로 규칙을 따르지만 후자는 복잡한 airline 규칙을 처리할 capacity 자체가 부족함을 시사한다. 전반적으로 \benchmark{}는 function calling agent가 복잡한 domain dynamics와 규칙을 따르는 데 상당한 도전을 제기하며, 이 방향에서 여전히 많은 연구가 필요함을 보여준다. Domain-specific fine-tuning이나 agent code scaffolding은 일부 해결책이 될 수 있으며, 이는 중요한 미래 연구 주제다.
+
+\begin{wrapfigure}{r}{0.32\textwidth}
+\small
+  \centering
+  \vspace{-10pt}
+    \includegraphics[width=0.32\textwidth]{figs/action_decay.pdf}
+    % \vspace{-5pt}
+    \caption{Database write가 많은 retail task일수록 더 어렵다.}
+    \label{fig:decay}
+    \vspace{-15pt}
+\end{wrapfigure}
+\textbf{실패 3: compound 요청의 부분적 해결.}
+마지막으로 그림~\ref{fig:decay}에서 보이듯, task에 많은 user 요청이 포함될수록(database에 대한 ground truth write action 수로 표현됨) function calling agent에게는 더 어려워진다(사례의 19\%).
+때로 agent는 대화 초반의 명시적 user 요청을 놓치는데, 이는 더 나은 long-context 및 memory 능력이 필요함을 시사한다. 다른 경우에는 \S~\ref{sec:partially_solve}처럼 암묵적 action을 놓친다. 여기서 user는 모든 order의 잘못된 주소를 고치고 싶어 하지만, agent는 order 하나만 확인한 뒤 멈춘다. 이런 사례를 처리하는 데서 agent는 일관성과 체계성을 더 개선해야 한다.
+
+
+
+
+
+\section{논의}
+\label{sec:discuss}
+
+우리는 동적이고 현실적인 설정에서 인간 및 tool과 상호작용하는 agent의 신뢰성을 평가하기 위한 새로운 benchmark인 \benchmark{}를 제시했다. 이 benchmark는 user를 시뮬레이션하기 위해 최신 LM의 발전을 활용하고, agent의 자동 테스트를 가능하게 하며, domain-specific 규칙을 일관되게 따르는 agent의 능력을 평가한다. 우리의 결과는 SOTA LM조차 실제 환경에서 신뢰성 있게 사용되기에는 아직 멀었다는 점을 보여준다.
+
+\textbf{개선 방향.}
+\benchmark{}는 실제 시나리오에서 agent를 동적으로 평가하는 방향으로 나아가는 한 걸음이지만, 여전히 여러 개선 방향이 있다. 시뮬레이션된 user에는 몇 가지 한계가 있을 수 있다. (1) user instruction에 오타나 모호성이 있을 수 있으며, 이는 annotator가 검토하고 수정할 수 있다. (2) user instruction이 모든 domain 지식을 담고 있지 않을 수 있다. 예를 들어 \S~\ref{sec:wrong_decision}에서는 user가 agent가 exchange action을 한 번만 실행할 수 있다는 사실을 모른 채 단일 item exchange를 승인하는데, 이는 실제 세계의 user가 복잡한 domain policy를 (정당하게도) 모른다는 점을 반영한다. (3) user simulation LM은 reasoning, 계산, long-context 기억, instruction prompt와의 alignment 측면에서 capacity가 제한될 수 있다. 예를 들어 \S~\ref{sec:wrong_argument}에서는 user가 특징을 다시 확인하지 않은 채 agent가 추천한 lamp를 승인한다. 이런 점들은 모두 미래 연구에서 개선될 수 있지만, 동시에 이는 skill set과 지식 수준이 매우 다양한 user가 존재하는 현실 세계를 반영하는 것이라고 볼 수도 있으며, 다양한 user를 다루는 책임은 agent에게 있다.
+
+또한 unique outcome을 보장하기 위해 simulator에 더 체계적인 check를 추가할 수 있다. domain policy 역시 실제 시나리오에 더 가깝도록 더 복잡하게 만들 수 있다. agent 성공을 정의하기 위한 더 많은 evaluation metric도 추가할 수 있다(예: 특정 규칙이 지켜졌는지 LM으로 검사). benchmark의 수작업 annotation 과정은 어렵고, domain과 agent capability를 모두 깊이 이해해야 한다. 또한 user의 system prompt를 조정하는 데 \texttt{gpt-4-turbo} FC agent를 사용하므로, task 큐레이션 과정에는 암묵적 편향 요소도 어느 정도 존재한다. 미래 연구에서는 data curation과 user simulation을 개선하기 위해 LM을 활용하는 다른 방법을 탐구할 수 있다. 마지막으로, 우리는 이 연구가 직접적인 부정적 사회적 함의를 갖는다고 보지는 않지만, 이는 실제 agent를 돕는 연구이며, 그런 agent는 미래의 경제와 사회에 다양한 결과를 가져올 수 있다.
+
+\paragraph{Agent를 위한 도전 과제.}
+핵심적으로, 우리의 실험 결과는 한 가지 중대한 사실을 보여준다. LM function calling 위에 구축된 agent는 실제 애플리케이션을 신뢰성 있게 만들기에는 충분한 일관성과 규칙 준수 능력이 부족하다. 이 두 문제를 해결하면 여러 실제 task의 자동화와 더 매끄러운 human-in-the-loop 상호작용에 큰 영향을 줄 수 있다. 그 밖에 개선이 필요한 구체적 능력으로는 긴 horizon에 걸친 정보 추적과 memory, 그리고 특히 상충하는 사실이 존재할 수 있을 때 현재 결정에 필요한 적절한 정보 조각에 context 안에서 집중하는 능력이 있다.
+
+\section*{감사의 말}
+초기 초안에 피드백을 준 Clay Bavor, Honghua Dong, Yangjun Ruan, 그리고 실험을 위한 다양한 LLM API 설정을 도와준 Nate White에게 감사한다.
+
+\bibliographystyle{abbrvnat}
+\bibliography{main}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{체크리스트}
+
+% %%% BEGIN INSTRUCTIONS %%%
+% The checklist follows the references.  Please
+% read the checklist guidelines carefully for information on how to answer these
+% questions.  For each question, change the default \answerTODO{} to \answerYes{},
+% \answerNo{}, or \answerNA{}.  You are strongly encouraged to include a {\bf
+% justification to your answer}, either by referencing the appropriate section of
+% your paper or providing a brief inline description.  For example:
+% \begin{itemize}
+%   \item Did you include the license to the code and datasets? \answerYes{See Section~\ref{gen_inst}.}
+%   \item Did you include the license to the code and datasets? \answerNo{The code and the data are proprietary.}
+%   \item Did you include the license to the code and datasets? \answerNA{}
+% \end{itemize}
+% Please do not modify the questions and only use the provided macros for your
+% answers.  Note that the Checklist section does not count towards the page
+% limit.  In your paper, please delete this instructions block and only keep the
+% Checklist section heading above along with the questions/answers below.
+% %%% END INSTRUCTIONS %%%
+
+\begin{enumerate}
+
+\item 모든 저자에 대해...
+\begin{enumerate}
+  \item 초록과 서론의 주요 주장이 논문의 기여와 범위를 정확히 반영하는가?
+    \answerYes{}
+  \item 이 연구의 한계를 기술했는가?
+    \answerYes{}
+  \item 이 연구가 가질 수 있는 잠재적 부정적 사회적 영향을 논의했는가?
+    \answerYes{}
+  \item 윤리 심사 가이드라인을 읽고 논문이 이를 준수하는지 확인했는가?
+    \answerYes{}
+\end{enumerate}
+
+\item 이론적 결과를 포함한다면...
+\begin{enumerate}
+  \item 모든 이론적 결과의 가정을 빠짐없이 명시했는가?
+    \answerNA{}
+	\item 모든 이론적 결과에 대한 완전한 증명을 포함했는가?
+    \answerNA{}
+\end{enumerate}
+
+\item 실험을 수행했다면(예: benchmark)...
+\begin{enumerate}
+  \item 주요 실험 결과를 재현하는 데 필요한 code, data, instruction을 포함했는가(보충 자료 또는 URL 형태)?
+    \answerYes{}
+  \item 모든 학습 세부사항(예: data split, hyperparameter, 선택 방식)을 명시했는가?
+    \answerYes{}
+	\item error bar를 보고했는가(예: 여러 번 실험한 뒤 random seed에 대한 변동)?
+    \answerYes{}
+	\item 총 compute 사용량과 사용한 자원 유형(예: GPU 종류, 내부 cluster, cloud provider)을 포함했는가?
+    \answerYes{}
+\end{enumerate}
+
+\item 기존 asset(예: code, data, model)을 사용하거나 새로운 asset을 큐레이션/공개한다면...
+\begin{enumerate}
+  \item 기존 asset을 사용했다면 제작자를 인용했는가?
+    \answerYes{}
+  \item asset의 라이선스를 언급했는가?
+    \answerYes{}
+  \item 새로운 asset을 보충 자료 또는 URL 형태로 포함했는가?
+    \answerYes{}
+  \item 사용/큐레이션하는 data의 당사자로부터 동의를 받았는지, 받았다면 어떻게 받았는지 논의했는가?
+    \answerNA{}
+  \item 사용/큐레이션하는 data에 개인식별정보 또는 공격적 콘텐츠가 포함되는지 논의했는가?
+    \answerNA{}
+\end{enumerate}
+
+\item crowdsourcing을 사용했거나 인간 대상 연구를 수행했다면...
+\begin{enumerate}
+  \item 참가자에게 제공한 instruction 전문과 필요한 경우 스크린샷을 포함했는가?
+    \answerNA{}
+  \item 참가자에게 발생할 수 있는 위험을 설명했고, 필요한 경우 IRB 승인 링크를 포함했는가?
+    \answerNA{}
+  \item 참가자에게 지급한 예상 시급과 총 보상 비용을 포함했는가?
+    \answerNA{}
+\end{enumerate}
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\appendix
+
+\input{appendix}
+\end{document}
