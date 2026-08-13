@@ -1,0 +1,20 @@
+{
+  "source_type": "pdf-only reconstruction",
+  "openreview_url": "https://openreview.net/forum?id=2GmDdhBdDk",
+  "pmlr_url": "https://proceedings.mlr.press/v267/patil25a.html",
+  "original_pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/patil25a/patil25a.pdf",
+  "software_url": "https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard",
+  "title": "The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models",
+  "authors": "Shishir G. Patil, Huanzhi Mao, Fanjia Yan, Charlie Cheng-Jie Ji, Vishnu Suresh, Ion Stoica, Joseph E. Gonzalez",
+  "venue": "Proceedings of the 42nd International Conference on Machine Learning, PMLR 267, 2025",
+  "fetched_at": "2026-08-13T12:51:24.587548+00:00",
+  "pdf_pages": 22,
+  "source_availability_notes": [
+    "OpenReview direct API/PDF access returned challenge/403 from this environment.",
+    "PMLR proceedings page exposes PDF and software links but no TeX/source archive was found at checked PMLR/GitHub raw/supplementary candidate paths.",
+    "Korean TeX source in this workspace is reconstructed from the public PDF text extraction, not the authors original TeX source."
+  ],
+  "extraction_tools": [
+    "pdftotext -layout"
+  ]
+}
