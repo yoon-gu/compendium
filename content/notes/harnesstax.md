@@ -71,3 +71,5 @@ Pi가 제공하는 도구는 read, write, edit, bash 네 개뿐인데도 두 벤
 ```
 
 원문에는 파레토 프론티어 그래프, 누적 비용-성공 곡선, 초기 컨텍스트 비교 등 인터랙티브 차트가 함께 있으니 수치를 직접 보려면 [원문 사이트](https://harnesstax.github.io/)를 참고하는 편이 좋다. 프로파일링 트레이스도 공개 예정이라고 밝히고 있다.
+
+**관련 노트:** harness를 통째로가 아니라 부품 단위로 뜯어본 후속 연구 — [코딩 에이전트 harness 설계에 대한 실증 연구](/compendium/notes/harness-design-empirical-study/)
