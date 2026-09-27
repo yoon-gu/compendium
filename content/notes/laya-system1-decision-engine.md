@@ -94,3 +94,5 @@ MASSIVE 벤치마크 51개 언어 스윕(선택지 20개, 무작위 기준선 0.
 - 데모: [convaiinnovations/laya-demo](https://huggingface.co/spaces/convaiinnovations/laya-demo)
 - 코드: [github.com/NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) — 재현용 벤치마크 하니스는 research 브랜치
 - 선행 논문: [arXiv:2503.23303](https://arxiv.org/abs/2503.23303), [arXiv:2510.01237](https://arxiv.org/abs/2510.01237)
+
+**관련 노트:** 전용 모델을 훈련하는 대신 기성 LLM의 logprob 한 자리를 읽어 같은 일을 하는 접근, 그리고 Laya·Jev와의 제로샷 비교 — [GLM-5.3-Flash를 Jev 같은 System One 모델로 바꾸기](/compendium/notes/typed-decisions-from-glm-flash/)
