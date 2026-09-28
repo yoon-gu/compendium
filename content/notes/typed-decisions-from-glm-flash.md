@@ -10,6 +10,8 @@ summary: "선택지에 번호를 붙이고 어시스턴트 턴을 'choice_index:
 
 > **원문:** [Turn GLM-5.3-Flash into a Jev-like System One model](https://www.privatemode.ai/blog/system-one-from-glm-flash) — Johannes Hötter(VP Growth), Marko Rosenmüller(Technical Lead AI), Privatemode, 2026-09-24
 >
+> 절 단위로 더 자세히 옮긴 글은 [/papers/typed-decisions-from-glm-flash/](/compendium/papers/typed-decisions-from-glm-flash/)
+>
 > 아래는 원문을 한국어로 정리한 노트다. Privatemode는 기밀 컴퓨팅 기반 LLM 서비스를 파는 회사이므로 자사 서비스 홍보 글이라는 점을 감안해 읽되, 아래 '이 글의 정직한 부분'도 함께 볼 것.
 
 ## 문제: 결정 하나에 JSON 한 덩이를 쓰게 만드는 낭비
