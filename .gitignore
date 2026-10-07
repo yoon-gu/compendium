@@ -18,6 +18,10 @@ papers-tex/**/build/
 # arxiv source tarball (can be re-downloaded)
 papers-tex/**/src.tar.gz
 
+# video narration builds (wav cache, slide PNGs, mp4 — too big for git)
+video/*/work/
+video/*/out/
+
 # macOS metadata
 .DS_Store
 
