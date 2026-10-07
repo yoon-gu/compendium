@@ -3,7 +3,9 @@
 카미유 푸르니에의 "The Manager's Path in the Age of AI"(Medium, 2026-09-19)를 한 사람이 들려주듯 풀어 쓴 대본.
 원문 번역이 아니라 [정리 노트](../../content/notes/managers-path-in-the-age-of-ai.md)를 바탕으로 요지를 다시 서술한 것이다.
 
-형식: `## 번호 | 라벨 | 슬라이드 제목` 다음에 `>`로 시작하는 줄이 화면 글(`!` 큰 문장, `#` 카드, `“` 인용), 나머지 줄은 나레이션 문단(한 줄 = 한 문단). `build.py`가 이 파일을 읽는다.
+형식: `## 번호 | 라벨 | 슬라이드 제목` 다음에 `>`로 시작하는 줄이 화면 글(`!` 큰 문장, `#` 카드, `“` 인용), 나머지 줄은 나레이션 문단(한 줄 = 한 문단). `python3 ../build.py managers-path-in-the-age-of-ai`로 굽는다.
+
+푸터: Camille Fournier — The Manager's Path in the Age of AI (Medium, 2026-09) · 한국어 정리·해설
 
 ## 1 | 들어가며 | AI 시대의 매니저의 길
 > The Manager's Path in the Age of AI

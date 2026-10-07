@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""script.md 를 읽어 타입캐스트 나레이션 + 텍스트 슬라이드 mp4 를 굽는다.
+"""video/<슬러그>/script.md 를 읽어 타입캐스트 나레이션 + 텍스트 슬라이드 mp4 를 굽는다.
 
-    python3 build.py                 # 진우 목소리로 out/managers-path-in-the-age-of-ai.mp4
-    python3 build.py --voice=준호     # 다른 목소리(이름 또는 tc_ 아이디). 목소리마다 캐시가 따로다
-    python3 build.py --slides-only   # 슬라이드 PNG 만 굽는다(크레딧 안 씀)
+    python3 build.py managers-path-in-the-age-of-ai              # 진우 목소리로 <슬러그>/out/<슬러그>.mp4
+    python3 build.py <슬러그> --voice=준호                         # 다른 목소리(이름 또는 tc_ 아이디). 목소리마다 캐시가 따로다
+    python3 build.py <슬러그> --slides-only                       # 슬라이드 PNG 만 굽는다(크레딧 안 씀)
 
 흐름은 toys/world-flags/build 의 퀴즈 빌더와 같다: 장면마다 문단 단위로 타입캐스트 wav(내용으로 캐시) →
 장면 wav 로 이어 붙이고 → 슬라이드 HTML 을 Chrome 으로 PDF → pdftoppm PNG → ffmpeg concat(장면 길이 = 그 장면 음성 길이).
+
+script.md 형식: 첫 장면 앞의 `푸터: …` 줄이 모든 슬라이드 아래 출처 표기. `## 번호 | 라벨 | 제목` 다음에 `>` 줄이 화면 글
+(`!` 큰 문장, `#` 카드(제목 — 내용), `“` 인용), 나머지 줄은 나레이션 문단(한 줄 = 한 문단).
 """
 
 from __future__ import annotations
@@ -23,8 +26,10 @@ import urllib.request
 import wave
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-SCRIPT, WORK, OUT = HERE / "script.md", HERE / "work", HERE / "out" / "managers-path-in-the-age-of-ai.mp4"
+SLUG = next((a for a in sys.argv[1:] if not a.startswith("--")), None)
+assert SLUG, "사용법: python3 build.py <슬러그> [--voice=이름] [--slides-only]"
+HERE = Path(__file__).resolve().parent / SLUG
+SCRIPT, WORK, OUT = HERE / "script.md", HERE / "work", HERE / "out" / f"{SLUG}.mp4"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 TTS_URL = "https://api.typecast.ai/v1/text-to-speech"
 KEY_PATH = Path.home() / ".config/typecast-key.txt"
@@ -36,19 +41,23 @@ MODEL, EMOTION = "ssfm-v30", "normal"
 MAX_CHARS = 300                     # 한 요청에 보내는 글자 수 상한(문장 경계로 자른다)
 GAP_CHUNK, GAP_PARA, GAP_SCENE = 0.25, 0.6, 1.0   # 초. 요청 조각 / 문단 / 장면 사이 쉼
 W, H = 1920, 1080
-FOOT = "Camille Fournier — The Manager's Path in the Age of AI (Medium, 2026-09) · 한국어 정리·해설"
 
 
 # ---------- 대본 ----------
-def parse(text: str) -> list[dict]:
-    scenes: list[dict] = []
+def parse(text: str) -> tuple[str, list[dict]]:
+    """(푸터 문구, 장면 목록)."""
+    foot, scenes = "", []
     for raw in text.splitlines():
         line = raw.strip()
         m = re.match(r"^## (\d+) \| (.+?) \| (.+)$", line)
         if m:
             scenes.append({"n": int(m[1]), "kicker": m[2], "title": m[3], "slide": [], "narration": []})
             continue
-        if not scenes or not line or line.startswith("<!--"):
+        if not scenes:
+            if line.startswith("푸터:"):
+                foot = line[3:].strip()
+            continue
+        if not line or line.startswith("<!--"):
             continue
         if line.startswith(">"):
             scenes[-1]["slide"].append(line[1:].strip())
@@ -56,7 +65,7 @@ def parse(text: str) -> list[dict]:
             scenes[-1]["narration"].append(line)
     assert scenes and [s["n"] for s in scenes] == list(range(1, len(scenes) + 1)), "장면 번호가 1부터 차례여야 한다"
     assert all(s["narration"] for s in scenes), "나레이션이 없는 장면이 있다"
-    return scenes
+    return foot, scenes
 
 
 def chunks(paragraph: str) -> list[str]:
@@ -169,7 +178,7 @@ def inline(s: str) -> str:
     return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", html.escape(s, quote=False))
 
 
-def slide_html(scene: dict, total: int) -> str:
+def slide_html(scene: dict, total: int, foot: str) -> str:
     lines, cards, body = scene["slide"], [], []
     for ln in lines:
         if ln.startswith("# "):
@@ -186,15 +195,15 @@ def slide_html(scene: dict, total: int) -> str:
     cls = "f title" if scene["n"] == 1 else ("f dense" if len(lines) >= 5 or sum(len(l) for l in lines) > 260 else "f")
     return (f'<section class="{cls}"><div class=kicker>{inline(scene["kicker"])}</div><h1>{inline(scene["title"])}</h1>'
             f'<div class=body>{"".join(body)}</div>'
-            f'<div class=foot><span>{html.escape(FOOT)}</span><span>{scene["n"]} / {total}</span></div></section>')
+            f'<div class=foot><span>{html.escape(foot)}</span><span>{scene["n"]} / {total}</span></div></section>')
 
 
-def render_slides(scenes: list[dict]) -> list[Path]:
+def render_slides(scenes: list[dict], foot: str) -> list[Path]:
     work = WORK / "slides"
     work.mkdir(parents=True, exist_ok=True)
     page, pdf = work / "slides.html", work / "slides.pdf"
     page.write_text(f'<!doctype html><meta charset="utf-8"><style>{CSS}</style>'
-                    + "".join(slide_html(s, len(scenes)) for s in scenes), encoding="utf-8")
+                    + "".join(slide_html(s, len(scenes), foot) for s in scenes), encoding="utf-8")
     for old in work.glob("s-*.png"):
         old.unlink()
     subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-pdf-header-footer",
@@ -224,8 +233,8 @@ def encode(shots: list[Path], seconds: list[float], track: Path) -> Path:
 
 
 def build() -> tuple[Path, list[float]]:
-    scenes = parse(SCRIPT.read_text(encoding="utf-8"))
-    shots = render_slides(scenes)
+    foot, scenes = parse(SCRIPT.read_text(encoding="utf-8"))
+    shots = render_slides(scenes, foot)
     if "--slides-only" in sys.argv:
         print(f"슬라이드 {len(shots)}장: {shots[0].parent}")
         sys.exit(0)
@@ -245,7 +254,7 @@ def demo() -> None:
     assert (width, height) == (W, H), f"해상도가 다르다: {width}x{height}"
     assert "audio" in info, "소리가 들어가지 않았다"
     assert abs(total - sum(seconds)) < 1, f"길이가 어긋난다: {total:.1f} vs {sum(seconds):.1f}"
-    chars = sum(len(p) for s in parse(SCRIPT.read_text(encoding="utf-8")) for p in s["narration"])
+    chars = sum(len(p) for s in parse(SCRIPT.read_text(encoding="utf-8"))[1] for p in s["narration"])
     print(f"{out.name} · {width}x{height} · {total / 60:.1f}분 · {out.stat().st_size / 1e6:.0f}MB · 대본 {chars:,}자 · 목소리 {VOICE}")
 
 
