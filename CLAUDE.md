@@ -155,6 +155,8 @@ arxiv가 아닌 출처(블로그, transformer-circuits.pub 등)는 보통 LaTeX 
 - 대본을 새로 쓰거나 크게 고치면 `/humanize-korean:humanize`로 윤문 → 화면(`>`) 줄·헤더·줄 구조는 원문과 동일한지 확인 후 반영.
 - 업로드: `uv run video/upload.py <mp4> "<제목>" "<설명>"` (OAuth: `video/client_secret.json`, `video/token.json` — 커밋 금지).
   미감사 API 프로젝트라 비공개로 올라가며, 공개 전환은 YouTube Studio에서 사용자가 한다.
+  제목: `<한국어 핵심 한 줄> | <원제 또는 한국어 부제>` (유튜브 제한 100자 이내). 앞쪽은 보통 대본 표지(`## 1`의 첫 `>` 줄)를 쓴다.
+  예: `만드는 사람들이 직접 쓴 생성형 AI 노동 보고서 | AI Workers' Inquiry 2026`, `AI 시대의 매니저의 길 | 관리직 종말론에 대한 반론`
   설명란: 요약 + 원문 링크 + 블로그 글 링크 + 챕터. **TTS(타입캐스트)로 나레이션했다는 문구는 넣지 않는다.**
 - 블로그 연결: 업로드 후 해당 `content/notes/<slug>.md` frontmatter에 `youtube: "<영상 ID>"`를 넣는다.
   `layouts/partials/youtube.html`이 본문 위에 세로 영상을 붙이고, 공유 버튼 문구(`share_icons.html`)에 `영상 URL`이 함께 실린다.
