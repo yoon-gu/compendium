@@ -26,3 +26,5 @@ video/__pycache__/
 # macOS metadata
 .DS_Store
 
+video/client_secret.json
+video/token.json
