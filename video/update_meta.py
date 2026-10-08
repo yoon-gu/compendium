@@ -51,7 +51,9 @@ def main():
     title, rest = meta.split("\n", 1)
     tagline, desc = rest.split("\n\n", 1)
     tags = [t.strip() for t in tagline.removeprefix("태그:").split(",") if t.strip()]
-    assert sum(len(t) for t in tags) <= 480 and len(title) <= 100, "제목 100자, 태그 합계 500자 한도"
+    # 유튜브는 띄어쓰기 든 태그를 따옴표로 감싸 세고 쉼표까지 더한다(실측: 501자에서 invalidTags)
+    tag_len = sum(len(t) + (2 if " " in t else 0) for t in tags) + len(tags) - 1
+    assert tag_len <= 500 and len(title) <= 100, f"제목 100자, 태그 500자 한도(태그 {tag_len}자)"
     desc = desc.replace("{챕터}", chapters(slug)).strip()
     assert len(desc.encode()) <= 5000
     yt = build("youtube", "v3", credentials=credentials())
