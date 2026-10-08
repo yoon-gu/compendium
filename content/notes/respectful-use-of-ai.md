@@ -3,6 +3,7 @@ title: "AI를 예의 있게 쓰는 법: 팀을 위한 가이드라인"
 date: 2026-10-09
 draft: false
 source_url: "https://skamille.medium.com/guidelines-for-respectful-use-of-ai-affcc85d7072"
+youtube: "yBLFGCFUgeE"
 author: "Camille Fournier"
 tags: ["AI", "매니지먼트", "리더십", "조직문화", "코드리뷰", "블로그"]
 summary: "『The Manager's Path』의 저자가 팀 차원의 AI 사용 규범을 제안한다. 내가 읽지 않은 것을 남에게 읽히지 말 것, 짧을수록 좋다는 것, AI가 머리와 마음을 끄는 핑계가 되어선 안 된다는 것. 개인의 산출량이 늘수록 동료가 떠안는 검증 비용을 리더가 규범으로 막아야 한다는 이야기."
