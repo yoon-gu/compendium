@@ -21,6 +21,7 @@ papers-tex/**/src.tar.gz
 # video narration builds (wav cache, slide PNGs, mp4 — too big for git)
 video/*/work/
 video/*/out/
+video/__pycache__/
 
 # macOS metadata
 .DS_Store
