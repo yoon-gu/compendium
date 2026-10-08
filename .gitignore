@@ -28,3 +28,4 @@ video/__pycache__/
 
 video/client_secret.json
 video/token.json
+video/token-manage.json
