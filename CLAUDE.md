@@ -142,6 +142,23 @@ summary: "1-3문장 요약"
 
 arxiv가 아닌 출처(블로그, transformer-circuits.pub 등)는 보통 LaTeX 소스가 없으므로 **마크다운 번역만** 합니다. PDF 빌드 단계 없음.
 
+## 나레이션 영상 (video/)
+
+노트 글을 한 사람이 들려주는 나레이션 영상으로 만들어 유튜브에 올린다.
+
+- 대본: `video/<slug>/script.md` (형식은 `video/build.py` 머리말). 나레이션 문단만 TTS로 읽히고 `>` 줄은 화면 문구.
+- 빌드: `cd video && python3 build.py <slug>` → `video/<slug>/out/<slug>.mp4`(세로 1080x1920) + `<slug>-chapters.txt`(유튜브 챕터).
+  - 타입캐스트 TTS, 글자 1개 = 1크레딧. 문단 조각 단위로 캐시되므로 바뀐 문단만 과금된다. 화면만 바꿀 땐 크레딧 0.
+  - 남은 크레딧: `curl -s -H "X-API-KEY: $(cat ~/.config/typecast-key.txt)" https://api.typecast.ai/v1/users/me/subscription`
+- 화면 규칙(유튜브 세로 최적화): 폰트는 제목 나눔명조 ExtraBold + 본문 나눔고딕(OFL). 배경 6종을 화면마다 순환, 오른쪽 위에 `쪽 / 전체쪽`.
+  아래 약 20%와 오른쪽 가장자리는 유튜브 UI가 덮으므로 글자를 두지 않는다(장 이름은 위쪽 출처 밑).
+- 대본을 새로 쓰거나 크게 고치면 `/humanize-korean:humanize`로 윤문 → 화면(`>`) 줄·헤더·줄 구조는 원문과 동일한지 확인 후 반영.
+- 업로드: `uv run video/upload.py <mp4> "<제목>" "<설명>"` (OAuth: `video/client_secret.json`, `video/token.json` — 커밋 금지).
+  미감사 API 프로젝트라 비공개로 올라가며, 공개 전환은 YouTube Studio에서 사용자가 한다.
+  설명란: 요약 + 원문 링크 + 블로그 글 링크 + 챕터. **TTS(타입캐스트)로 나레이션했다는 문구는 넣지 않는다.**
+- 블로그 연결: 업로드 후 해당 `content/notes/<slug>.md` frontmatter에 `youtube: "<영상 ID>"`를 넣는다.
+  `layouts/partials/youtube.html`이 본문 위에 세로 영상을 붙이고, 공유 버튼 문구(`share_icons.html`)에 `영상 URL`이 함께 실린다.
+
 ## Hugo 빌드/배포
 
 - 로컬: `hugo server` (시스템에 hugo가 없으면 GitHub Actions가 push 시 자동 빌드)

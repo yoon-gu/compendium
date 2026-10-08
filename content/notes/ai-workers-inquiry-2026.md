@@ -3,6 +3,7 @@ title: "AI Workers' Inquiry 2026: 만드는 사람들이 직접 쓴 생성형 AI
 date: 2026-09-29
 draft: false
 source_url: "https://techworkersinquiry.org/ai"
+youtube: "zzAYe3pQIng"
 author: "Lynda Ouazar, Eleanor Payne, Lamian Pheres (UTAW — United Tech & Allied Workers, CWU)"
 tags: ["AI", "노동", "조직", "정책", "생성형AI", "보고서", "영국"]
 summary: "영국 기술노동조합 UTAW가 조합원 인터뷰로 만든 36쪽 보고서. 결론은 한 문장 — 'AI 애플리케이션은 일을 없애는 경우가 드물고, 일을 재분배하고 강화한다.' 토큰 사용량이 성과 지표가 되고, 검토 노동은 KPI에 잡히지 않으며, 성실한 직원만 손해 보는 catch-22가 생긴다."

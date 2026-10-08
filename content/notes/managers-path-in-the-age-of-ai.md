@@ -3,6 +3,7 @@ title: "AI 시대의 The Manager's Path: 관리직 종말론에 대한 반론"
 date: 2026-10-06
 draft: false
 source_url: "https://skamille.medium.com/the-managers-path-in-the-age-of-ai-279cb6611d66"
+youtube: "BYF4YI8QPDM"
 author: "Camille Fournier"
 tags: ["AI", "매니지먼트", "리더십", "조직문화", "블로그"]
 summary: "『The Manager's Path』의 저자가 LDX3 New York 발표를 글로 옮겼다. 책을 기술 역량·신호 처리·사람의 세 축으로 압축하고, AI가 각 축을 어떻게 흔드는지 짚는다. 처방은 생산성 이득의 일부를 회의·설계 리뷰·대화처럼 느려 보이는 일에 다시 쓰고, Claude보다 사람과 더 많이 이야기하라는 것."

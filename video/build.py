@@ -159,7 +159,7 @@ def css(ink: str) -> str:
     return f"""
 @page {{ size: {W}px {H}px; margin: 0; }}
 * {{ box-sizing: border-box; margin: 0; }}
-body {{ background: #F4F4F1; color: #141414; font-family: "Apple SD Gothic Neo", "NanumGothic", sans-serif; }}
+body {{ background: #F4F4F1; color: #141414; font-family: "NanumGothic", "Nanum Gothic", sans-serif; }}
 .f {{ width: {W}px; height: {H}px; padding: 150px 96px 140px; position: relative; break-after: page; background: #F4F4F1;
      word-break: keep-all; overflow-wrap: break-word; }}
 .f:last-child {{ break-after: auto; }}
@@ -175,7 +175,16 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 .sup {{ font-size: 42px; line-height: 1.55; color: #4A4A48; }}
 .q {{ font-family: "NanumMyeongjo", serif; font-weight: 700; font-size: 60px; line-height: 1.5; }}
 .by {{ font-size: 36px; line-height: 1.5; color: #6B6B68; margin-top: -24px; }}
-.sec {{ position: absolute; left: 96px; bottom: 140px; font-size: 32px; color: #6B6B68; }}
+/* 유튜브 세로 재생은 아래 ~20%를 제목·채널·진행바가, 오른쪽 가장자리를 버튼이 덮는다. 장 이름은 위쪽 출처 밑에 둔다 */
+.sec {{ position: absolute; left: 96px; top: 205px; font-size: 30px; color: #6B6B68; }}
+.pg {{ position: absolute; right: 96px; top: 150px; font-size: 30px; line-height: 1.5; color: #6B6B68; font-variant-numeric: tabular-nums; }}
+/* 배경 6종을 화면마다 돌려 쓴다: 미색 / 크림 / 잉크 틴트 / 어두운 반전 / 상단 색 띠 / 청회 */
+.b1 {{ background: #F3EFE6; }}
+.b2 {{ background: color-mix(in srgb, {ink} 8%, #F4F4F1); }}
+.b3 {{ background: #1E1E1C; color: #F4F4F1; }}
+.b3 .src, .b3 .sec, .b3 .pg, .b3 .sup, .b3 .by {{ color: #B9B9B4; }}
+.b4 {{ background: linear-gradient(180deg, color-mix(in srgb, {ink} 16%, #F4F4F1) 0 300px, #F4F4F1 300px); }}
+.b5 {{ background: #EAEEF0; }}
 """
 
 
@@ -184,7 +193,7 @@ def inline(s: str) -> str:
     return re.sub(r"\*\*(.+?)\*\*", r'<span class=u>\1</span>', html.escape(s, quote=False)).replace(" / ", "<br>")
 
 
-def frame_html(frame: dict, scene: dict, meta: dict, cover: bool) -> str:
+def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1, pages: int = 1) -> str:
     head, *rest = frame["slide"]
     parts = []
     for ln in rest:
@@ -194,20 +203,18 @@ def frame_html(frame: dict, scene: dict, meta: dict, cover: bool) -> str:
             parts.append(f"<p class=by>{inline(ln[1:].strip())}</p>")
         else:
             parts.append(f"<p class=sup>{inline(ln)}</p>")
-    cls = "f" + (" cover" if cover else "") + (" long" if len(re.sub(r"\*", "", head)) > 44 else "")
+    cls = f"f b{(page - 1) % 6}" + (" cover" if cover else "") + (" long" if len(re.sub(r"\*", "", head)) > 44 else "")
     return (f'<section class="{cls}"><div class=src>{inline(meta["출처"])}</div>'
             f'<div class=main><h1>{inline(head)}</h1>{"".join(parts)}</div>'
-            f'<div class=sec>{inline(scene["label"])}</div></section>')
+            f'<div class=sec>{inline(scene["label"])}</div><div class=pg>{page} / {pages}</div></section>')
 
 
 def render_slides(meta: dict, scenes: list[dict]) -> list[Path]:
     work = WORK / "slides"
     work.mkdir(parents=True, exist_ok=True)
     page, pdf = work / "slides.html", work / "slides.pdf"
-    sections, first = [], True
-    for s in scenes:
-        for fr in s["frames"]:
-            sections.append(frame_html(fr, s, meta, first)); first = False
+    flat = [(fr, s) for s in scenes for fr in s["frames"]]
+    sections = [frame_html(fr, s, meta, i == 0, i + 1, len(flat)) for i, (fr, s) in enumerate(flat)]
     page.write_text(f'<!doctype html><meta charset="utf-8"><style>{css(meta["잉크"])}</style>{"".join(sections)}', encoding="utf-8")
     for old in work.glob("s-*.png"):
         old.unlink()
@@ -243,12 +250,18 @@ def build() -> tuple[Path, list[float]]:
     if "--slides-only" in sys.argv:
         print(f"화면 {len(shots)}장: {shots[0].parent}")
         sys.exit(0)
-    wavs, seconds = [], []
+    wavs, seconds, chapters = [], [], []
     for s in scenes:
         wav, secs = scene_audio(s)
+        t = int(sum(seconds))
+        if not chapters or not chapters[-1].endswith(" " + s["label"]):   # 같은 장이 이어지면 한 챕터
+            chapters.append(f"{t // 60}:{t % 60:02d} {s['label']}")
         wavs.append(wav); seconds += secs
         print(f"장면 {s['n']:2d} {sum(secs):6.1f}초  화면 {len(secs)}개 {[round(x) for x in secs]}  {s['label']}")
     assert len(seconds) == len(shots)
+    # 유튜브 설명란에 붙이면 챕터가 된다(0:00 시작, 3개 이상, 각 10초 이상)
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.with_name(f"{SLUG}-chapters.txt").write_text("\n".join(chapters) + "\n", encoding="utf-8")
     return encode(shots, seconds, join_audio(wavs)), seconds
 
 

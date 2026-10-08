@@ -1,0 +1,13 @@
+{{- /* frontmatter 의 youtube: "<영상 ID>" 가 있으면 본문 위에 세로 영상을 붙인다 */ -}}
+{{- with .Params.youtube }}
+<figure class="compendium-youtube">
+  <iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="YouTube 영상" loading="lazy"
+    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <figcaption><a href="https://youtu.be/{{ . }}">유튜브에서 보기</a></figcaption>
+</figure>
+<style>
+  .compendium-youtube { margin: 16px auto 24px; max-width: 360px; text-align: center; }
+  .compendium-youtube iframe { width: 100%; aspect-ratio: 9 / 16; border: 0; border-radius: var(--radius); }
+  .compendium-youtube figcaption { margin-top: 8px; font-size: 14px; color: var(--secondary); }
+</style>
+{{- end }}
