@@ -150,6 +150,7 @@ arxiv가 아닌 출처(블로그, transformer-circuits.pub 등)는 보통 LaTeX 
 - 빌드: `cd video && python3 build.py <slug>` → `video/<slug>/out/<slug>.mp4`(세로 1080x1920) + `<slug>-chapters.txt`(유튜브 챕터).
   - 타입캐스트 TTS, 글자 1개 = 1크레딧. 문단 조각 단위로 캐시되므로 바뀐 문단만 과금된다. 화면만 바꿀 땐 크레딧 0.
   - 남은 크레딧: `curl -s -H "X-API-KEY: $(cat ~/.config/typecast-key.txt)" https://api.typecast.ai/v1/users/me/subscription`
+  - 외부 음성(예: NotebookLM 오디오 오버뷰)에 화면만 입힐 땐 `--audio=work/<파일>` — 화면마다 첫 나레이션 줄을 `@분:초`로 시작해 전환 시각을 준다. 크레딧 0.
 - 화면 규칙(유튜브 세로 최적화): 폰트는 제목 나눔명조 ExtraBold + 본문 나눔고딕(OFL). 배경 6종을 화면마다 순환, 오른쪽 위에 `쪽 / 전체쪽`.
   아래 약 20%와 오른쪽 가장자리는 유튜브 UI가 덮으므로 글자를 두지 않는다(장 이름은 위쪽 출처 밑).
 - 대본을 새로 쓰거나 크게 고치면 `/humanize-korean:humanize`로 윤문 → 화면(`>`) 줄·헤더·줄 구조는 원문과 동일한지 확인 후 반영.

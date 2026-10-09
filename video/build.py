@@ -4,6 +4,8 @@
     python3 build.py managers-path-in-the-age-of-ai              # 진우 목소리로 <슬러그>/out/<슬러그>.mp4
     python3 build.py <슬러그> --voice=준호                         # 다른 목소리(이름 또는 tc_ 아이디). 목소리마다 캐시가 따로다
     python3 build.py <슬러그> --slides-only                       # 화면 PNG 만 굽는다(크레딧 안 씀)
+    python3 build.py <슬러그> --audio=work/overview.m4a           # 녹음 대신 외부 음성(예: NotebookLM 오디오 오버뷰)을 입힌다.
+                                                                  # 이때 각 화면의 첫 나레이션 줄은 `@분:초 …` 로 시작해 그 화면의 시작 시각을 준다(크레딧 안 씀)
 
 흐름은 toys/world-flags/build 의 퀴즈 빌더와 같다: 문단 단위로 타입캐스트 wav(내용으로 캐시) → 장면 wav 로 이어 붙이고 →
 화면 HTML 을 Chrome 으로 PDF → pdftoppm PNG → ffmpeg concat(화면 길이 = 그 화면에 딸린 나레이션 길이).
@@ -250,6 +252,9 @@ def build() -> tuple[Path, list[float]]:
     if "--slides-only" in sys.argv:
         print(f"화면 {len(shots)}장: {shots[0].parent}")
         sys.exit(0)
+    audio = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--audio=")), None)
+    if audio:
+        return build_on_audio(scenes, shots, HERE / audio), None
     wavs, seconds, chapters = [], [], []
     for s in scenes:
         wav, secs = scene_audio(s)
@@ -265,8 +270,31 @@ def build() -> tuple[Path, list[float]]:
     return encode(shots, seconds, join_audio(wavs)), seconds
 
 
+def build_on_audio(scenes: list[dict], shots: list[Path], track: Path) -> Path:
+    """화면마다 적힌 `@분:초` 시작 시각으로 길이를 정하고 외부 음성을 그대로 입힌다."""
+    total = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(track)],
+                                 check=True, capture_output=True, text=True).stdout)
+    starts, chapters = [], []
+    for s in scenes:
+        for i, f in enumerate(s["frames"]):
+            m = re.match(r"@(\d+):(\d\d)\b", f["narration"][0])
+            assert m, f"장면 {s['n']} 화면 {i + 1}: 첫 나레이션 줄이 @분:초 로 시작해야 한다"
+            t = int(m[1]) * 60 + int(m[2])
+            assert not starts or t > starts[-1], f"장면 {s['n']}: 시작 시각 {m[0]} 이 앞 화면보다 늦지 않다"
+            if i == 0 and (not chapters or not chapters[-1].endswith(" " + s["label"])):
+                chapters.append(f"{t // 60}:{t % 60:02d} {s['label']}")
+            starts.append(t)
+    assert starts[0] == 0 and starts[-1] < total, f"첫 화면은 @0:00, 마지막 화면은 음성 길이({total:.0f}초) 안이어야 한다"
+    seconds = [b - a for a, b in zip(starts, starts[1:] + [total])]
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.with_name(f"{SLUG}-chapters.txt").write_text("\n".join(chapters) + "\n", encoding="utf-8")
+    return encode(shots, seconds, track)
+
+
 def demo() -> None:
     out, seconds = build()
+    if seconds is None:   # --audio 모드: 길이 검증은 encode 의 -t 가 보장한다
+        print(f"{out.name} · 외부 음성 · {out.stat().st_size / 1e6:.0f}MB"); return
     info = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "stream=codec_type,width,height:format=duration",
                            "-of", "default=nw=1:nk=1", str(out)], check=True, capture_output=True, text=True).stdout.split()
     width, height, total = int(info[1]), int(info[2]), float(info[-1])
