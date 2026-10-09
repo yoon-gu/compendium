@@ -33,7 +33,10 @@ def credentials():
 
 
 def chapters(slug: str) -> str:
-    """장면 wav 길이로 '0:00 장 이름' 줄을 만든다(같은 장 이름은 첫 장면만)."""
+    """build.py 가 남긴 out/<슬러그>-chapters.txt 를 쓰고, 없으면 장면 wav 길이로 '0:00 장 이름' 줄을 만든다(같은 장 이름은 첫 장면만)."""
+    made = HERE / slug / "out" / f"{slug}-chapters.txt"
+    if made.exists():
+        return made.read_text(encoding="utf-8").strip()
     text = (HERE / slug / "script.md").read_text(encoding="utf-8")
     labels = re.findall(r"^## (\d+) \| (.+?) \|", text, re.M)
     t, out, seen = 0.0, [], set()
