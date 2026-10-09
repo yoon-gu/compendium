@@ -164,6 +164,7 @@ arxiv가 아닌 출처(블로그, transformer-circuits.pub 등)는 보통 LaTeX 
   - 태그는 한국어 검색어 + 영어 원제/저자/주제어 + `듣는편람`, 합계 500자 이내로 꽉 채운다.
   - 링크는 반드시 `원문(영어): <원문 URL>`과 `한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/<slug>/` 둘 다. 다른 회차는 `함께 보기`로 잇는다.
   - **타입캐스트(TTS)나 AI 음성으로 나레이션했다는 문구는 넣지 않는다.**
+- 썸네일: `python3 video/thumbnail.py <slug>` → `out/<slug>-thumb.png`(1280x720, 대본 표지 문구) → `uv run video/upload_thumb.py <videoId> <slug>`로 영상에 건다.
 - 블로그 연결: 업로드 후 해당 `content/notes/<slug>.md` frontmatter에 `youtube: "<영상 ID>"`를 넣는다.
   `layouts/partials/youtube.html`이 본문 위에 세로 영상을 붙이고, 공유 버튼 문구(`share_icons.html`)에 `영상 URL`이 함께 실린다.
 
