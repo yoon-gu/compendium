@@ -19,6 +19,8 @@
 화면에 쓴 자료
 - 루브 골드버그 장치 영상: Purdue Engineering, "2019 Purdue National Chain Reaction Competition Winner", CC BY 3.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:2019_Purdue_National_Chain_Reaction_Competition_Winner.webm)
 - 루브 골드버그 장치 사진: Mbrickn, Imagination Station, CC0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Rube_Goldberg_Machine_at_Imagination_Station.jpg)
+- 루브 골드버그 장치 사진: jclarson, CC BY 2.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Rube_goldberg_machine.jpg)
+- 루브 골드버그 만화 "Self-Operating Napkin"(1931): 퍼블릭 도메인, via Wikimedia Commons
 
 듣는편람은 읽을 만한 글을 골라 한국어로 풀어 읽어 주는 채널입니다. 구독하시면 매주 한 편씩 받아 보실 수 있어요.
 
