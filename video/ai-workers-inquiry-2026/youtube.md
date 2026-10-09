@@ -15,6 +15,8 @@ AI가 일을 없앤다는 말은 많지만, AI를 직접 만들고 쓰는 사람
 원문(영어): https://techworkersinquiry.org/ai
 한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/ai-workers-inquiry-2026/
 함께 보기, AI 시대의 매니저의 길: https://youtu.be/BYF4YI8QPDM
+함께 보기, AI를 예의 있게 쓰는 법: https://youtu.be/yBLFGCFUgeE
+함께 보기, 넷플릭스 GenRec 논문 해설: https://youtu.be/9DMu9XuaiZ0
 
 듣는편람은 읽을 만한 글을 골라 한국어로 풀어 읽어 주는 채널입니다. 구독하시면 매주 한 편씩 받아 보실 수 있어요.
 

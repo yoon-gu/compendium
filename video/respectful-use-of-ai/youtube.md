@@ -14,7 +14,9 @@ AI로 만든 천 줄짜리 PR, 스무 쪽짜리 문서를 받아 본 적 있나�
 
 원문(영어): https://skamille.medium.com/guidelines-for-respectful-use-of-ai-affcc85d7072
 한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/respectful-use-of-ai/
+함께 보기, AI Workers' Inquiry 2026: https://youtu.be/zzAYe3pQIng
 함께 보기, AI 시대의 매니저의 길: https://youtu.be/BYF4YI8QPDM
+함께 보기, 넷플릭스 GenRec 논문 해설: https://youtu.be/9DMu9XuaiZ0
 
 듣는편람은 읽을 만한 글을 골라 한국어로 풀어 읽어 주는 채널입니다. 구독하시면 매주 한 편씩 받아 보실 수 있어요.
 

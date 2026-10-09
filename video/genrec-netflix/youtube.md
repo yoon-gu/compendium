@@ -14,7 +14,9 @@
 
 원문(영어): https://arxiv.org/abs/2608.10257
 한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/genrec-netflix/
+함께 보기, AI Workers' Inquiry 2026: https://youtu.be/zzAYe3pQIng
 함께 보기, AI 시대의 매니저의 길: https://youtu.be/BYF4YI8QPDM
+함께 보기, AI를 예의 있게 쓰는 법: https://youtu.be/yBLFGCFUgeE
 
 화면에 쓴 자료
 - 루브 골드버그 장치 영상: Purdue Engineering, "2019 Purdue National Chain Reaction Competition Winner", CC BY 3.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:2019_Purdue_National_Chain_Reaction_Competition_Winner.webm)
