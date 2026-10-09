@@ -15,6 +15,7 @@ script.md 형식
 - `## 번호 | 장 이름 | 메모` 로 장면 시작. 장 이름이 화면 아래에 작게 들어간다.
 - 장면 안에서 `>` 줄 묶음 하나 + 뒤따르는 나레이션 문단(한 줄 = 한 문단)이 화면 하나. `>` 줄이 다시 나오면 새 화면.
   `>` 첫 줄이 큰 문장(명조), 나머지는 보조 줄(고딕). 「 로 시작하면 인용, — 로 시작하면 말한 사람. `**…**` 는 잉크색 밑줄.
+  `> ![](figures/x.svg)` 는 그림(슬러그 폴더 기준 경로, 가로 888px 안에 맞춤), `> $$…$$` 는 KaTeX 수식 한 줄.
 - 나레이션 문단을 고치면 그 문단만 다시 생성된다(300자 넘는 문단은 문장 경계로 잘라 보내므로, 조각 경계에서 나누면 재생성 없음).
 """
 
@@ -163,7 +164,7 @@ def css(ink: str) -> str:
 * {{ box-sizing: border-box; margin: 0; }}
 body {{ background: #F4F4F1; color: #141414; font-family: "NanumGothic", "Nanum Gothic", sans-serif; }}
 .f {{ width: {W}px; height: {H}px; padding: 150px 96px 140px; position: relative; break-after: page; background: #F4F4F1;
-     word-break: keep-all; overflow-wrap: break-word; }}
+     word-break: keep-all; overflow-wrap: break-word; overflow: hidden; }}   /* 가로로 넘치면 Chrome 이 문서 전체를 축소 인쇄하므로 잘라낸다 */
 .f:last-child {{ break-after: auto; }}
 .src {{ font-size: 30px; line-height: 1.5; color: #6B6B68; max-width: 760px; }}
 .cover .src {{ visibility: hidden; }}
@@ -179,6 +180,11 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 .by {{ font-size: 36px; line-height: 1.5; color: #6B6B68; margin-top: -24px; }}
 /* 유튜브 세로 재생은 아래 ~20%를 제목·채널·진행바가, 오른쪽 가장자리를 버튼이 덮는다. 장 이름은 위쪽 출처 밑에 둔다 */
 .sec {{ position: absolute; left: 96px; top: 205px; font-size: 30px; color: #6B6B68; }}
+.fig {{ margin: 8px 0 0; }}
+.fig img {{ display: block; max-width: 888px; max-height: 640px; }}
+.math {{ font-size: 40px; line-height: 1.6; margin-top: 8px; }}
+.math .katex-display {{ margin: 0; text-align: left; }}
+.b3 .fig img {{ filter: invert(1) hue-rotate(180deg); }}
 .pg {{ position: absolute; right: 96px; top: 150px; font-size: 30px; line-height: 1.5; color: #6B6B68; font-variant-numeric: tabular-nums; }}
 /* 배경 6종을 화면마다 돌려 쓴다: 미색 / 크림 / 잉크 틴트 / 어두운 반전 / 상단 색 띠 / 청회 */
 .b1 {{ background: #F3EFE6; }}
@@ -199,7 +205,12 @@ def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1,
     head, *rest = frame["slide"]
     parts = []
     for ln in rest:
-        if ln.startswith("「"):
+        if ln.startswith("![") and ln.endswith(")"):
+            src = (HERE / ln[ln.index("](") + 2:-1]).resolve().as_uri()
+            parts.append(f'<figure class=fig><img src="{src}"></figure>')
+        elif ln.startswith("$$") and ln.endswith("$$"):
+            parts.append(f"<p class=math>{html.escape(ln, quote=False)}</p>")
+        elif ln.startswith("「"):
             parts.append(f"<p class=q>{inline(ln)}</p>")
         elif ln.startswith("—"):
             parts.append(f"<p class=by>{inline(ln[1:].strip())}</p>")
@@ -217,10 +228,15 @@ def render_slides(meta: dict, scenes: list[dict]) -> list[Path]:
     page, pdf = work / "slides.html", work / "slides.pdf"
     flat = [(fr, s) for s in scenes for fr in s["frames"]]
     sections = [frame_html(fr, s, meta, i == 0, i + 1, len(flat)) for i, (fr, s) in enumerate(flat)]
-    page.write_text(f'<!doctype html><meta charset="utf-8"><style>{css(meta["잉크"])}</style>{"".join(sections)}', encoding="utf-8")
+    katex = ('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">'
+             '<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>'
+             '<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>'
+             '<script>document.addEventListener("DOMContentLoaded",()=>renderMathInElement(document.body,'
+             '{delimiters:[{left:"$$",right:"$$",display:true}],throwOnError:false}))</script>')
+    page.write_text(f'<!doctype html><meta charset="utf-8">{katex}<style>{css(meta["잉크"])}</style>{"".join(sections)}', encoding="utf-8")
     for old in work.glob("s-*.png"):
         old.unlink()
-    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-pdf-header-footer",
+    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-pdf-header-footer", "--virtual-time-budget=8000",
                     f"--print-to-pdf={pdf}", page.as_uri()], check=True, capture_output=True)
     # CSS px -> PDF pt 는 0.75배라 96dpi 로 되돌리면 정확히 1080x1920 이 된다
     subprocess.run(["pdftoppm", "-png", "-r", "96", str(pdf), str(work / "s")], check=True)

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 490" width="888" height="490"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="36" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">원시 로그 (예시)</text>
+<rect x="0" y="60" width="888" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="16" y="90" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">10/05  재생  〈드라마 A〉 1-8화 전부, 각 40분+</text>
+<rect x="0" y="110" width="888" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="16" y="140" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">10/06  좋아요  〈영화 B〉</text>
+<rect x="0" y="160" width="888" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="16" y="190" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">10/07  재생  〈영화 C〉 4분 후 중단</text>
+<rect x="0" y="210" width="888" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="16" y="240" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">10/07  클릭  〈예고편 D〉 (조회만)</text>
+<line x1="444.0" y1="268" x2="444.0" y2="316" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
+<text x="460.0" y="302.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">언어화</text>
+<rect x="0" y="322" width="888" height="150" rx="14" fill="#FFFFFF" stroke="#8A1C2B" stroke-width="4"/>
+<text x="24" y="372" font-size="30" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">“지난주 〈드라마 A〉 시즌 전체를 정주행했고,</text>
+<text x="24" y="416" font-size="30" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">〈영화 B〉에 좋아요를 눌렀다.”</text>
+<text x="24" y="456" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">짧게 보다 만 C 와 조회만 한 D 는 뺀다 · 8편 → ‘정주행’ 하나로 압축</text></svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 420" width="888" height="420"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="36" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">오프라인 랭킹 지표(MRR) 상대 개선</text>
+<text x="0" y="100" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">Phase 1  (기성 LLM 백본 대비)</text>
+<rect x="0" y="116" width="888" height="40" rx="8" fill="#ECECE8"/>
+<rect x="0" y="116" width="88" height="40" rx="8" fill="#8A1C2B"/>
+<rect x="88" y="116" width="88" height="40" fill="#8A1C2B" opacity="0.45"/>
+<text x="193" y="146" font-size="28" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">+10-20%</text>
+<text x="0" y="220" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">Phase 2  (갓 학습한 Phase 1 대비)</text>
+<rect x="0" y="236" width="888" height="40" rx="8" fill="#ECECE8"/>
+<rect x="0" y="236" width="310" height="40" rx="8" fill="#8A1C2B"/>
+<rect x="310" y="236" width="133" height="40" fill="#8A1C2B" opacity="0.45"/>
+<text x="460" y="266" font-size="28" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">+35-50%</text>
+<text x="0" y="340" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">Phase 2, 2주 뒤</text>
+<rect x="0" y="356" width="888" height="40" rx="8" fill="#ECECE8"/>
+<rect x="0" y="356" width="692" height="40" rx="8" fill="#8A1C2B"/>
+<rect x="692" y="356" width="35" height="40" fill="#8A1C2B" opacity="0.45"/>
+<text x="744" y="386" font-size="28" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">≈ +80%</text></svg>
