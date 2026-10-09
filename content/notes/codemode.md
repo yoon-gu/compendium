@@ -10,7 +10,9 @@ summary: "Armin Ronacher가 자신의 에이전트 하니스 Pi에 넣은 Codemo
 
 > **원문:** [What is Codemode](https://lucumr.pocoo.org/2026/10/6/codemode/) — Armin Ronacher, 2026-10-06
 >
-> 아래는 원문의 절 순서를 따라 요지를 정리하고 해설을 붙인 노트다. 요지 정리와 해설은 옮긴 이의 것이고 전문은 위 링크에서 읽을 수 있다. 저자는 Flask를 만든 사람이고 지금은 에이전트 하니스(harness) Pi를 만들고 있다.
+> **저자:** 아르민 로나허(Armin Ronacher) — 파이썬 웹 프레임워크 Flask와 템플릿 엔진 Jinja, WSGI 라이브러리 Werkzeug를 만든 개발자. 오류 모니터링 회사 Sentry에서 오래 일했고, 지금은 자신의 에이전트 하니스(harness) Pi를 만들며 에이전트와 도구 설계에 대한 글을 꾸준히 쓴다. 이 글은 그 Pi에 넣은 Codemode를 설명한다.
+>
+> 아래는 원문의 절 순서를 따라 요지를 정리하고 해설을 붙인 노트다. 요지 정리와 해설은 옮긴 이의 것이고 전문은 위 링크에서 읽을 수 있다.
 
 ## 한눈에 보기
 
