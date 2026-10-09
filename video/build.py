@@ -181,7 +181,7 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 .by {{ font-size: 36px; line-height: 1.5; color: #6B6B68; margin-top: -24px; }}
 /* 유튜브 세로 재생은 아래 ~20%를 제목·채널·진행바가, 오른쪽 가장자리를 버튼이 덮는다. 장 이름은 위쪽 출처 밑에 둔다 */
 .sec {{ position: absolute; left: 96px; top: 205px; font-size: 30px; color: #6B6B68; }}
-.abbr {{ position: absolute; left: 96px; right: 96px; bottom: 470px; font-size: 34px; line-height: 1.5; color: #4A4A48; }}   /* 유튜브 UI 위, 본문 아래 */
+.abbr {{ position: absolute; left: 96px; right: 96px; bottom: 450px; font-size: 34px; line-height: 1.4; color: #4A4A48; }}   /* 약어 하나에 한 줄 */   /* 유튜브 UI 위, 본문 아래 */
 .abbr b {{ color: #141414; font-weight: 800; }}
 .b3 .abbr, .b3 .abbr b {{ color: #B9B9B4; }}
 .clip {{ width: 888px; height: 500px; background: #D9D9D4; border-radius: 6px; }}   /* 16:9 영상 자리 */
@@ -215,7 +215,7 @@ def abbr_note(frame: dict, meta: dict, seen: set) -> str:
             text += " " + re.sub(r"<[^>]+>", " ", (HERE / ln[ln.index("](") + 2:-1]).read_text(encoding="utf-8"))
     hits = [k for k in table if re.search(rf"(?<![A-Za-z]){re.escape(k)}(?![A-Za-z])", text) and k not in seen]
     seen.update(hits)
-    return "<div class=abbr>" + " · ".join(f"<b>{html.escape(k)}</b> {html.escape(table[k])}" for k in hits) + "</div>" if hits else ""
+    return "<div class=abbr>" + "".join(f"<div><b>{html.escape(k)}</b> {html.escape(table[k])}</div>" for k in hits) + "</div>" if hits else ""
 
 
 def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1, pages: int = 1, seen: set | None = None) -> str:
