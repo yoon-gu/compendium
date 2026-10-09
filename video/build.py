@@ -207,6 +207,7 @@ h1 { font-size: 72px; } .long h1 { font-size: 60px; } .cover h1 { font-size: 84p
 .math { font-size: 36px; }
 .abbr { bottom: 70px; }
 .sec { top: 195px; }
+.src { max-width: 1400px; }
 """ if WIDE else "") + f"""
 .pg {{ position: absolute; right: 96px; top: 150px; font-size: 30px; line-height: 1.5; color: #6B6B68; font-variant-numeric: tabular-nums; }}
 /* 배경 6종을 화면마다 돌려 쓴다: 미색 / 크림 / 잉크 틴트 / 어두운 반전 / 상단 색 띠 / 청회 */
