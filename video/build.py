@@ -11,11 +11,12 @@
 화면 HTML 을 Chrome 으로 PDF → pdftoppm PNG → ffmpeg concat(화면 길이 = 그 화면에 딸린 나레이션 길이).
 
 script.md 형식
-- 첫 장면 앞: `출처: …`(모든 화면 위에 작게), `잉크: #rrggbb`(밑줄 색).
+- 첫 장면 앞: `출처: …`(모든 화면 위에 작게), `잉크: #rrggbb`(밑줄 색), `약어: LLM=Large Language Model; MRR=…`(화면 글에 처음 나오는 약어의 전체 표기를 화면 아래에 단다).
 - `## 번호 | 장 이름 | 메모` 로 장면 시작. 장 이름이 화면 아래에 작게 들어간다.
 - 장면 안에서 `>` 줄 묶음 하나 + 뒤따르는 나레이션 문단(한 줄 = 한 문단)이 화면 하나. `>` 줄이 다시 나오면 새 화면.
   `>` 첫 줄이 큰 문장(명조), 나머지는 보조 줄(고딕). 「 로 시작하면 인용, — 로 시작하면 말한 사람. `**…**` 는 잉크색 밑줄.
   `> ![](figures/x.svg)` 는 그림(슬러그 폴더 기준 경로, 가로 888px 안에 맞춤), `> $$…$$` 는 KaTeX 수식 한 줄.
+  `> ![](work/x.webm#t=28,40)` 는 소리 없는 영상 클립(--audio 모드 전용, 큰 문장 바로 다음 줄, 16:9, 화면 길이만큼 반복).
 - 나레이션 문단을 고치면 그 문단만 다시 생성된다(300자 넘는 문단은 문장 경계로 잘라 보내므로, 조각 경계에서 나누면 재생성 없음).
 """
 
@@ -53,7 +54,7 @@ W, H = 1080, 1920
 # ---------- 대본 ----------
 def parse(text: str) -> tuple[dict, list[dict]]:
     """(머리말 {출처, 잉크}, 장면 목록). 장면 = {n, label, frames: [{slide: [...], narration: [...]}]}."""
-    meta, scenes = {"출처": "", "잉크": "#1C2E6B"}, []
+    meta, scenes = {"출처": "", "잉크": "#1C2E6B", "약어": ""}, []
     for raw in text.splitlines():
         line = raw.strip()
         m = re.match(r"^## (\d+) \| (.+?) \| (.+)$", line)
@@ -180,6 +181,10 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 .by {{ font-size: 36px; line-height: 1.5; color: #6B6B68; margin-top: -24px; }}
 /* 유튜브 세로 재생은 아래 ~20%를 제목·채널·진행바가, 오른쪽 가장자리를 버튼이 덮는다. 장 이름은 위쪽 출처 밑에 둔다 */
 .sec {{ position: absolute; left: 96px; top: 205px; font-size: 30px; color: #6B6B68; }}
+.abbr {{ position: absolute; left: 96px; right: 96px; bottom: 470px; font-size: 26px; line-height: 1.5; color: #6B6B68; }}   /* 유튜브 UI 위, 본문 아래 */
+.abbr b {{ color: #4A4A48; font-weight: 700; }}
+.b3 .abbr, .b3 .abbr b {{ color: #B9B9B4; }}
+.clip {{ width: 888px; height: 500px; background: #D9D9D4; border-radius: 6px; }}   /* 16:9 영상 자리 */
 .fig {{ margin: 8px 0 0; }}
 .fig img {{ display: block; max-width: 888px; max-height: 640px; }}
 .math {{ font-size: 40px; line-height: 1.6; margin-top: 8px; }}
@@ -201,11 +206,25 @@ def inline(s: str) -> str:
     return re.sub(r"\*\*(.+?)\*\*", r'<span class=u>\1</span>', html.escape(s, quote=False)).replace(" / ", "<br>")
 
 
-def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1, pages: int = 1) -> str:
+def abbr_note(frame: dict, meta: dict, seen: set) -> str:
+    """이 화면 글에 처음 나오는 약어들의 전체 표기 한 줄(예: LLM = Large Language Model)."""
+    table = {k.strip(): v.strip() for k, v in (kv.split("=", 1) for kv in meta["약어"].split(";") if "=" in kv)}
+    text = " ".join(frame["slide"])
+    for ln in frame["slide"]:   # 그림(SVG) 안의 글자도 본다
+        if ln.startswith("![") and ln.endswith(".svg)"):
+            text += " " + re.sub(r"<[^>]+>", " ", (HERE / ln[ln.index("](") + 2:-1]).read_text(encoding="utf-8"))
+    hits = [k for k in table if re.search(rf"(?<![A-Za-z]){re.escape(k)}(?![A-Za-z])", text) and k not in seen]
+    seen.update(hits)
+    return "<div class=abbr>" + " · ".join(f"<b>{html.escape(k)}</b> {html.escape(table[k])}" for k in hits) + "</div>" if hits else ""
+
+
+def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1, pages: int = 1, seen: set | None = None) -> str:
     head, *rest = frame["slide"]
     parts = []
     for ln in rest:
-        if ln.startswith("![") and ln.endswith(")"):
+        if ln.startswith("![") and ln.endswith(")") and re.search(r"\.(webm|mp4|mov)(#|\))", ln):
+            parts.append('<div class=clip></div>')   # 영상 자리. 위치는 build_on_audio 의 clip_y 규칙과 맞춰야 한다
+        elif ln.startswith("![") and ln.endswith(")"):
             src = (HERE / ln[ln.index("](") + 2:-1]).resolve().as_uri()
             parts.append(f'<figure class=fig><img src="{src}"></figure>')
         elif ln.startswith("$$") and ln.endswith("$$"):
@@ -219,7 +238,8 @@ def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1,
     cls = f"f b{(page - 1) % 6}" + (" cover" if cover else "") + (" long" if len(re.sub(r"\*", "", head)) > 44 else "")
     return (f'<section class="{cls}"><div class=src>{inline(meta["출처"])}</div>'
             f'<div class=main><h1>{inline(head)}</h1>{"".join(parts)}</div>'
-            f'<div class=sec>{inline(scene["label"])}</div><div class=pg>{page} / {pages}</div></section>')
+            f'<div class=sec>{inline(scene["label"])}</div><div class=pg>{page} / {pages}</div>'
+            f'{abbr_note(frame, meta, seen) if seen is not None else ""}</section>')
 
 
 def render_slides(meta: dict, scenes: list[dict]) -> list[Path]:
@@ -227,7 +247,8 @@ def render_slides(meta: dict, scenes: list[dict]) -> list[Path]:
     work.mkdir(parents=True, exist_ok=True)
     page, pdf = work / "slides.html", work / "slides.pdf"
     flat = [(fr, s) for s in scenes for fr in s["frames"]]
-    sections = [frame_html(fr, s, meta, i == 0, i + 1, len(flat)) for i, (fr, s) in enumerate(flat)]
+    seen: set = set()
+    sections = [frame_html(fr, s, meta, i == 0, i + 1, len(flat), seen) for i, (fr, s) in enumerate(flat)]
     katex = ('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">'
              '<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>'
              '<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>'
@@ -304,7 +325,32 @@ def build_on_audio(scenes: list[dict], shots: list[Path], track: Path) -> Path:
     seconds = [b - a for a, b in zip(starts, starts[1:] + [total])]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.with_name(f"{SLUG}-chapters.txt").write_text("\n".join(chapters) + "\n", encoding="utf-8")
-    return encode(shots, seconds, track)
+    out = encode(shots, seconds, track)
+    clips = []
+    for (f, _), t0, dur in zip([(f, s) for s in scenes for f in s["frames"]], starts, seconds):
+        for ln in f["slide"][1:]:
+            m = re.match(r"!\[.*?\]\((.+?\.(?:webm|mp4|mov))(?:#t=([\d.]+),([\d.]+))?\)$", ln)
+            if m:
+                assert f["slide"].index(ln) == 1, "영상은 큰 문장 바로 다음 줄에 둔다(세로 위치를 제목 줄 수로 계산하므로)"
+                lines = f["slide"][0].count(" / ") + 1          # 제목은 ' / ' 로만 줄을 나눈다는 전제
+                clips.append((HERE / m[1], float(m[2] or 0), float(m[3] or 0), t0, dur, 150 + 300 + 116 * lines + 56))
+    return overlay_clips(out, clips) if clips else out
+
+
+def overlay_clips(video: Path, clips: list[tuple]) -> Path:
+    """(파일, 시작초, 끝초, 화면 시작, 화면 길이, y) 마다 소리 없는 클립을 888px 폭으로 화면 위에 얹는다. 짧으면 반복."""
+    inputs, chain, prev = ["-i", str(video)], [], "0:v"
+    for i, (src, a, b, t0, dur, y) in enumerate(clips, 1):
+        seg = WORK / f"clip-{i}.mp4"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{a}", "-to", f"{b}" if b else f"{a + dur}", "-i", str(src),
+                        "-an", "-vf", "scale=888:-2", "-c:v", "libx264", "-preset", "fast", "-crf", "20", "-pix_fmt", "yuv420p", str(seg)], check=True)
+        inputs += ["-stream_loop", "-1", "-i", str(seg)]
+        chain.append(f"[{i}:v]setpts=PTS+{t0}/TB[c{i}];[{prev}][c{i}]overlay=96:{y}:enable='between(t,{t0},{t0 + dur})'[v{i}]"); prev = f"v{i}"
+    tmp = video.with_suffix(".clips.mp4")
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(chain), "-map", f"[{prev}]", "-map", "0:a",
+                    "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-c:a", "copy", "-movflags", "+faststart", "-shortest", str(tmp)], check=True)
+    tmp.replace(video)
+    return video
 
 
 def demo() -> None:

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 284" width="888" height="284"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">토큰 (token) · 토큰 예산</text>
+<text x="0" y="78" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">LLM이 글을 읽는 최소 단위 · 한 번에 읽을 수 있는 양의 한도</text>
+<rect x="0" y="100" width="118" height="56" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="59.0" y="138" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">지난주</text>
+<rect x="128" y="100" width="222" height="56" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="239.0" y="138" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">〈드라마 A〉</text>
+<rect x="360" y="100" width="66" height="56" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="393.0" y="138" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">를</text>
+<rect x="436" y="100" width="118" height="56" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="495.0" y="138" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">정주행</text>
+<rect x="564" y="100" width="92" height="56" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="610.0" y="138" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">했고</text>
+<rect x="666" y="100" width="66" height="56" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="699.0" y="138" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">…</text>
+<text x="0" y="204" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">토큰 예산</text>
+<rect x="0" y="220" width="888" height="44" rx="8" fill="#ECECE8"/>
+<rect x="0" y="220" width="301" height="44" rx="8" fill="#8A1C2B"/>
+<text x="16" y="250" font-size="24" fill="#FFFFFF" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">꼭 필요한 기록</text>
+<text x="317" y="250" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">넘치면 비용↑, 어텐션 희석 → 하이라이트만 남긴다</text></svg>

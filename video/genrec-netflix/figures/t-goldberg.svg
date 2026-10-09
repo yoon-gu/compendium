@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 460" width="888" height="460"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">루브 골드버그 장치</text>
+<text x="360" y="40" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">일부러 복잡하게 만든 연쇄 기계</text>
+<circle cx="60" cy="90" r="16" fill="#8A1C2B"/>
+<text x="84" y="80" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">구슬(영화·드라마)</text>
+<line x1="40" y1="110" x2="300" y2="190" stroke="#141414" stroke-width="5"/>
+<circle cx="340" cy="230" r="42" fill="none" stroke="#141414" stroke-width="5"/>
+<circle cx="340" cy="230" r="14" fill="#141414"/>
+<line x1="382" y1="230" x2="396" y2="230" stroke="#141414" stroke-width="5"/>
+<line x1="370" y1="260" x2="380" y2="270" stroke="#141414" stroke-width="5"/>
+<line x1="340" y1="272" x2="340" y2="286" stroke="#141414" stroke-width="5"/>
+<line x1="310" y1="260" x2="300" y2="270" stroke="#141414" stroke-width="5"/>
+<line x1="298" y1="230" x2="284" y2="230" stroke="#141414" stroke-width="5"/>
+<line x1="310" y1="200" x2="300" y2="190" stroke="#141414" stroke-width="5"/>
+<line x1="340" y1="188" x2="340" y2="174" stroke="#141414" stroke-width="5"/>
+<line x1="370" y1="200" x2="380" y2="190" stroke="#141414" stroke-width="5"/>
+<line x1="400" y1="300" x2="640" y2="260" stroke="#141414" stroke-width="5"/>
+<polygon points="520,282 505,310 535,310" fill="#141414"/>
+<line x1="640" y1="260" x2="640" y2="150" stroke="#141414" stroke-width="4" stroke-dasharray="8 8"/>
+<path d="M700 120 q40 -40 80 0 v70 h-80z" fill="none" stroke="#8A1C2B" stroke-width="5"/>
+<circle cx="740" cy="196" r="8" fill="#8A1C2B"/>
+<text x="700" y="230" font-size="30" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">땡!</text>
+<text x="0" y="360" font-size="27" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">구슬 전용으로 정밀하게 짜인 장치라서</text>
+<text x="0" y="398" font-size="27" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">탁구공(게임·라이브·팟캐스트)이 오면</text>
+<text x="0" y="436" font-size="27" fill="#8A1C2B" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">경사로와 톱니를 전부 다시 깎아야 한다 = 기존 추천 시스템</text></svg>

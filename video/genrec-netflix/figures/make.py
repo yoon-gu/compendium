@@ -151,6 +151,90 @@ h, b = stack([("학습 예시 하나 (회원의 실제 참여)", ["예: 오래 �
               ("w × 랭킹 손실", ["가치 높은 참여는 크게, 바람직하지 않은 행동은 작게. RL(GRPO)보다 단순·저비용"], False)])
 figs["reward"] = svg(h, b)
 
+# ---------- 용어 그림: 처음 듣는 말을 그림 한 장으로 ----------
+def term(title, caption):
+    """용어 카드 머리글과 아래 설명 한 줄."""
+    return text(0, 40, title, 36, INK, weight="bold"), text(0, 0, caption, 28, GRAY)
+
+# 11. 루브 골드버그 장치: 구슬 하나가 경사로·톱니·지렛대를 지나 종을 친다
+b = [text(0, 40, "루브 골드버그 장치", 36, INK, weight="bold"), text(360, 40, "일부러 복잡하게 만든 연쇄 기계", 26, GRAY),
+     f'<circle cx="60" cy="90" r="16" fill="{INK}"/>', text(84, 80, "구슬(영화·드라마)", 24, GRAY),
+     f'<line x1="40" y1="110" x2="300" y2="190" stroke="{TXT}" stroke-width="5"/>',           # 경사로
+     f'<circle cx="340" cy="230" r="42" fill="none" stroke="{TXT}" stroke-width="5"/>',          # 톱니
+     f'<circle cx="340" cy="230" r="14" fill="{TXT}"/>']
+for k in range(8):
+    import math as _m
+    a = k * _m.pi / 4; b.append(f'<line x1="{340 + 42 * _m.cos(a):.0f}" y1="{230 + 42 * _m.sin(a):.0f}" x2="{340 + 56 * _m.cos(a):.0f}" y2="{230 + 56 * _m.sin(a):.0f}" stroke="{TXT}" stroke-width="5"/>')
+b += [f'<line x1="400" y1="300" x2="640" y2="260" stroke="{TXT}" stroke-width="5"/>', f'<polygon points="520,282 505,310 535,310" fill="{TXT}"/>',   # 지렛대
+      f'<line x1="640" y1="260" x2="640" y2="150" stroke="{TXT}" stroke-width="4" stroke-dasharray="8 8"/>',
+      f'<path d="M700 120 q40 -40 80 0 v70 h-80z" fill="none" stroke="{INK}" stroke-width="5"/>', f'<circle cx="740" cy="196" r="8" fill="{INK}"/>',  # 종
+      text(700, 230, "땡!", 30, INK, weight="bold"),
+      text(0, 360, "구슬 전용으로 정밀하게 짜인 장치라서", 27, TXT),
+      text(0, 398, "탁구공(게임·라이브·팟캐스트)이 오면", 27, TXT),
+      text(0, 436, "경사로와 톱니를 전부 다시 깎아야 한다 = 기존 추천 시스템", 27, INK)]
+figs["t-goldberg"] = svg(460, "\n".join(b))
+
+# 12. 피처(feature): 사람이 정의한 숫자 특징
+b = [text(0, 40, "피처 (feature)", 36, INK, weight="bold"), text(300, 40, "모델에 넣으려고 사람이 미리 정의한 숫자 특징", 28, GRAY)]
+cells = ["액션 클릭 3회", "평균 시청 42분", "마지막 접속 2일 전", "주말 시청 비율 0.7", "…수천 개"]
+for i, c in enumerate(cells):
+    x = i * 178
+    b.append(f'<rect x="{x}" y="70" width="168" height="90" rx="10" fill="{FILL}" stroke="{LINE if i < 4 else INK}" stroke-width="3"/>')
+    b.append(text(x + 84, 122, c, 24, TXT if i < 4 else INK, "middle"))
+b += [arrow(W / 2, 170, W / 2, 230), box(0, 236, W, 86, "기존 랭커: 피처 수천 개를 조합해 점수", ["새 콘텐츠 유형마다 피처를 새로 정의·검증해야 한다"]),
+      text(0, 370, "GenRec: 피처 대신 시청 기록을 문장으로 그대로 넣는다", 28, INK)]
+figs["t-feature"] = svg(390, "\n".join(b))
+
+# 13. 토큰과 토큰 예산
+b = [text(0, 40, "토큰 (token) · 토큰 예산", 36, INK, weight="bold"), text(0, 78, "LLM이 글을 읽는 최소 단위 · 한 번에 읽을 수 있는 양의 한도", 26, GRAY)]
+toks = ["지난주", "〈드라마 A〉", "를", "정주행", "했고", "…"]
+x = 0
+for t in toks:
+    w = 40 + 26 * len(t)
+    b.append(f'<rect x="{x}" y="100" width="{w}" height="56" rx="8" fill="{FILL}" stroke="{LINE}" stroke-width="3"/>'); b.append(text(x + w / 2, 138, t, 26, TXT, "middle")); x += w + 10
+b += [text(0, 204, "토큰 예산", 28, TXT), f'<rect x="0" y="220" width="{W}" height="44" rx="8" fill="#ECECE8"/>',
+      f'<rect x="0" y="220" width="{int(W * 0.34)}" height="44" rx="8" fill="{INK}"/>', text(16, 250, "꼭 필요한 기록", 24, FILL, weight="bold"),
+      text(int(W * 0.34) + 16, 250, "넘치면 비용↑, 어텐션 희석 → 하이라이트만 남긴다", 24, GRAY)]
+figs["t-token"] = svg(284, "\n".join(b))
+
+# 14. 환각(hallucination)
+b = [text(0, 40, "환각 (hallucination)", 36, INK, weight="bold"), text(0, 78, "그럴듯하지만 사실이 아닌 것을 모델이 지어내는 현상", 26, GRAY),
+     box(0, 100, 420, 200, "카탈로그 (실제 목록)", ["〈드라마 A〉", "〈영화 B〉", "〈영화 C〉"]),
+     box(468, 100, 420, 200, "자유 생성 LLM", ["〈드라마 A〉", "〈영화 B〉", "〈심야 식당 3〉  ✗ 없는 작품"], True),
+     f'<line x1="490" y1="268" x2="700" y2="268" stroke="{INK}" stroke-width="5"/>',
+     text(0, 348, "출력을 카탈로그 안의 점수로 제한 → 없는 작품은 나올 수 없다", 27, TXT)]
+figs["t-halluc"] = svg(370, "\n".join(b))
+
+# 15. 강화학습 vs 보상 가중
+b = [text(0, 40, "강화학습(RL) vs 보상 가중", 36, INK, weight="bold"),
+     box(0, 70, 420, 250, "강화학습", ["추천 → 보상 → 갱신을", "수없이 반복 (예: GRPO)", "효과 컸지만 비용이 크다"]),
+     box(468, 70, 420, 250, "보상 가중 손실 (채택)", ["예시마다 보상으로 w 결정", "손실에 w를 곱하기만", "단순·안정·저비용"], True),
+     f'<path d="M60 330 q150 -60 300 0" fill="none" stroke="{INK}" stroke-width="4" marker-end="url(#a)"/>', f'<path d="M360 350 q-150 60 -300 0" fill="none" stroke="{INK}" stroke-width="4" marker-end="url(#a)"/>',
+     text(210, 345, "반복 루프", 24, GRAY, "middle")]
+figs["t-rl"] = svg(420, "\n".join(b))
+
+# 16. MLP 인프라 vs LLM 인프라
+b = [text(0, 40, "MLP (다층 퍼셉트론) 와 LLM 인프라", 36, INK, weight="bold")]
+for li, n in enumerate([3, 4, 2]):
+    for k in range(n):
+        cx, cy = 60 + li * 120, 110 + k * 50 + (4 - n) * 25
+        b.append(f'<circle cx="{cx}" cy="{cy}" r="14" fill="{FILL}" stroke="{TXT}" stroke-width="3"/>')
+        if li < 2:
+            for j in range([3, 4, 2][li + 1]):
+                b.append(f'<line x1="{cx + 14}" y1="{cy}" x2="{60 + (li + 1) * 120 - 14}" y2="{110 + j * 50 + (4 - [3, 4, 2][li + 1]) * 25}" stroke="{LINE}" stroke-width="2"/>')
+b += [text(0, 330, "고전 추천: 작은 신경망·행렬 분해", 26, TXT), text(0, 364, "CPU 로도 충분, 입력은 숫자 피처", 24, GRAY),
+      box(468, 70, 420, 240, "LLM 인프라", ["수십억 파라미터 트랜스포머", "GPU + vLLM 서빙", "KV 캐시·프리픽스 캐시·프리필 전용"], True),
+      text(468, 364, "입력은 긴 문장(수천 토큰) → 서빙 효율이 설계의 중심", 24, GRAY)]
+figs["t-infra"] = svg(390, "\n".join(b))
+
+# 17. A/B 테스트
+b = [text(0, 40, "A/B 테스트", 36, INK, weight="bold"), text(230, 40, "실제 사용자를 둘로 나눠 두 버전을 같은 기간 동안 비교", 28, GRAY),
+     box(0, 70, 300, 120, "전체 회원", ["같은 기간, 같은 화면"]),
+     arrow(304, 110, 460, 110), arrow(304, 150, 460, 200), text(330, 96, "약 90%", 24, GRAY), text(300, 214, "약 10%", 24, INK),
+     box(468, 70, 420, 80, "A · 기존 프로덕션 랭커", []), box(468, 170, 420, 80, "B · GenRec", [], True),
+     text(0, 300, "4주 뒤 단기·장기 지표를 비교 → 차이가 우연이 아닌지 통계적으로 검정", 27, TXT)]
+figs["t-abtest"] = svg(320, "\n".join(b))
+
 for name, s in figs.items():
     Path(__file__).with_name(f"{name}.svg").write_text(s, encoding="utf-8")
 print("made", ", ".join(figs))

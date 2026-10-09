@@ -16,6 +16,10 @@
 한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/genrec-netflix/
 함께 보기, AI 시대의 매니저의 길: https://youtu.be/BYF4YI8QPDM
 
+화면에 쓴 자료
+- 루브 골드버그 장치 영상: Purdue Engineering, "2019 Purdue National Chain Reaction Competition Winner", CC BY 3.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:2019_Purdue_National_Chain_Reaction_Competition_Winner.webm)
+- 루브 골드버그 장치 사진: Mbrickn, Imagination Station, CC0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Rube_Goldberg_Machine_at_Imagination_Station.jpg)
+
 듣는편람은 읽을 만한 글을 골라 한국어로 풀어 읽어 주는 채널입니다. 구독하시면 매주 한 편씩 받아 보실 수 있어요.
 
 #넷플릭스 #추천시스템 #LLM
