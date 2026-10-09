@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 320" width="888" height="320"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">A/B 테스트</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 370" width="888" height="370"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">A/B 테스트</text>
 <text x="230" y="40" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">실제 사용자를 둘로 나눠 두 버전을 같은 기간 동안 비교</text>
-<rect x="0" y="70" width="300" height="120" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="24" y="120" font-size="38" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">전체 회원</text>
-<text x="24" y="166" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">같은 기간, 같은 화면</text>
-<line x1="304" y1="110" x2="460" y2="110" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
-<line x1="304" y1="150" x2="460" y2="200" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
-<text x="330" y="96" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">약 90%</text>
-<text x="300" y="214" font-size="24" fill="#8A1C2B" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">약 10%</text>
-<rect x="468" y="70" width="420" height="80" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="492" y="120" font-size="38" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">A · 기존 프로덕션 랭커</text>
-<rect x="468" y="170" width="420" height="80" rx="14" fill="#FFFFFF" stroke="#8A1C2B" stroke-width="4"/>
-<text x="492" y="220" font-size="38" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">B · GenRec</text>
-<text x="0" y="300" font-size="27" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">4주 뒤 단기·장기 지표를 비교 → 차이가 우연이 아닌지 통계적으로 검정</text></svg>
+<rect x="0" y="70" width="300" height="150" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="128" font-size="38" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">전체 회원</text>
+<text x="28" y="182" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">같은 기간, 같은 화면</text>
+<line x1="304" y1="118" x2="460" y2="118" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
+<line x1="304" y1="170" x2="460" y2="250" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
+<text x="330" y="104" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">약 90%</text>
+<text x="300" y="262" font-size="24" fill="#8A1C2B" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">약 10%</text>
+<rect x="468" y="70" width="420" height="96" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="496" y="128" font-size="38" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">A · 기존 프로덕션 랭커</text>
+<rect x="468" y="200" width="420" height="96" rx="14" fill="#FFFFFF" stroke="#8A1C2B" stroke-width="4"/>
+<text x="496" y="258" font-size="38" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">B · GenRec</text>
+<text x="0" y="350" font-size="27" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">4주 뒤 단기·장기 지표를 비교 → 차이가 우연이 아닌지 통계적으로 검정</text></svg>

@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 420" width="888" height="420"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">강화학습(RL) vs 보상 가중</text>
-<rect x="0" y="70" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="24" y="120" font-size="38" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">강화학습</text>
-<text x="24" y="166" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">추천 → 보상 → 갱신을</text>
-<text x="24" y="206" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">수없이 반복 (예: GRPO)</text>
-<text x="24" y="246" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">효과 컸지만 비용이 크다</text>
-<rect x="468" y="70" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#8A1C2B" stroke-width="4"/>
-<text x="492" y="120" font-size="38" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">보상 가중 손실 (채택)</text>
-<text x="492" y="166" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">예시마다 보상으로 w 결정</text>
-<text x="492" y="206" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">손실에 w를 곱하기만</text>
-<text x="492" y="246" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">단순·안정·저비용</text>
-<path d="M60 330 q150 -60 300 0" fill="none" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
-<path d="M360 350 q-150 60 -300 0" fill="none" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
-<text x="210" y="345" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">반복 루프</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 440" width="888" height="440"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">강화학습(RL) vs 보상 가중</text>
+<rect x="0" y="70" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="128" font-size="38" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">강화학습</text>
+<text x="28" y="182" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">추천 → 보상 → 갱신을</text>
+<text x="28" y="232" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">수없이 반복 (예: GRPO)</text>
+<text x="28" y="282" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">효과 컸지만 비용이 크다</text>
+<rect x="468" y="70" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#8A1C2B" stroke-width="4"/>
+<text x="496" y="128" font-size="38" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">보상 가중 손실 (채택)</text>
+<text x="496" y="182" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">예시마다 보상으로 w 결정</text>
+<text x="496" y="232" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">손실에 w를 곱하기만</text>
+<text x="496" y="282" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">단순·안정·저비용</text>
+<path d="M60 350 q150 -60 300 0" fill="none" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
+<path d="M360 370 q-150 60 -300 0" fill="none" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
+<text x="210" y="366" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">반복 루프</text></svg>

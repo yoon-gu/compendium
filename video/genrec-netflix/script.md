@@ -143,8 +143,7 @@ NotebookLM 오디오 오버뷰(두 진행자의 대화, 21분 54초)에 맞춰 �
 
 > **보상 가중 랭킹 손실**
 > ![](figures/reward.svg)
-> $$\mathcal{L}=\alpha\,\mathcal{L}_{\text{rank}}+\beta\,\mathcal{L}_{\text{lang}}+\gamma\,\mathcal{L}_{\text{misc}}$$
-> 가중치 α, β, γ 는 합이 1인 하이퍼파라미터. 추론 때는 랭킹 과제만 쓴다
+> $$\mathcal{L}=\alpha\,\mathcal{L}_{\text{rank}}+\beta\,\mathcal{L}_{\text{lang}}+\gamma\,\mathcal{L}_{\text{misc}}\quad(\alpha+\beta+\gamma=1)$$
 
 @12:38 비용이 큰 강화학습 대신 보상 가중치를 둔 랭킹 손실. 단기 클릭보다 구독 유지와 탐색에 높은 보상. 콘텐츠 유형 균형.
 

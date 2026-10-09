@@ -186,7 +186,7 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 .b3 .abbr, .b3 .abbr b {{ color: #B9B9B4; }}
 .clip {{ width: 888px; height: 500px; background: #D9D9D4; border-radius: 6px; }}   /* 16:9 영상 자리 */
 .fig {{ margin: 8px 0 0; }}
-.fig img {{ display: block; max-width: 888px; max-height: 640px; }}
+.fig img {{ display: block; max-width: 888px; max-height: 700px; }}
 .math {{ font-size: 40px; line-height: 1.6; margin-top: 8px; }}
 .math .katex-display {{ margin: 0; text-align: left; }}
 .b3 .fig img {{ filter: invert(1) hue-rotate(180deg); }}

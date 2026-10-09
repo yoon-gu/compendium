@@ -1,26 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 440" width="888" height="440"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">MRR: 보고 싶은 작품이 얼마나 앞에 뜨는가</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 480" width="888" height="480"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">MRR: 보고 싶은 작품이 얼마나 앞에 뜨는가</text>
 <text x="0" y="86" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">추천 목록 ①</text>
-<rect x="0" y="100" width="420" height="42" rx="8" fill="#8A1C2B" stroke="#8A1C2B" stroke-width="2"/>
-<text x="16" y="129" font-size="25" fill="#FFFFFF" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">1위  내가 보고 싶던 작품 ★</text>
-<rect x="0" y="148" width="420" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
-<text x="16" y="177" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">2위  다른 작품</text>
-<rect x="0" y="196" width="420" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
-<text x="16" y="225" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">3위  다른 작품</text>
-<rect x="0" y="244" width="420" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
-<text x="16" y="273" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">4위  다른 작품</text>
-<rect x="0" y="292" width="420" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
-<text x="16" y="321" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">5위  다른 작품</text>
-<text x="0" y="372" font-size="28" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">역순위 = 1/1 = 1.0</text>
+<rect x="0" y="104" width="420" height="46" rx="8" fill="#8A1C2B" stroke="#8A1C2B" stroke-width="2"/>
+<text x="16" y="135" font-size="25" fill="#FFFFFF" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">1위  내가 보고 싶던 작품 ★</text>
+<rect x="0" y="158" width="420" height="46" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="16" y="189" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">2위  다른 작품</text>
+<rect x="0" y="212" width="420" height="46" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="16" y="243" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">3위  다른 작품</text>
+<rect x="0" y="266" width="420" height="46" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="16" y="297" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">4위  다른 작품</text>
+<rect x="0" y="320" width="420" height="46" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="16" y="351" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">5위  다른 작품</text>
+<text x="0" y="408" font-size="28" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">역순위 = 1/1 = 1.0</text>
 <text x="460" y="86" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">추천 목록 ②</text>
-<rect x="460" y="100" width="420" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
-<text x="476" y="129" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">1위  다른 작품</text>
-<rect x="460" y="148" width="420" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
-<text x="476" y="177" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">2위  다른 작품</text>
-<rect x="460" y="196" width="420" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
-<text x="476" y="225" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">3위  다른 작품</text>
-<rect x="460" y="244" width="420" height="42" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
-<text x="476" y="273" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">4위  다른 작품</text>
-<rect x="460" y="292" width="420" height="42" rx="8" fill="#8A1C2B" stroke="#8A1C2B" stroke-width="2"/>
-<text x="476" y="321" font-size="25" fill="#FFFFFF" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">5위  내가 보고 싶던 작품 ★</text>
-<text x="460" y="372" font-size="28" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">역순위 = 1/5 = 0.2</text>
-<text x="0" y="420" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">여러 요청의 역순위를 평균 → MRR. 1에 가까울수록 좋다</text></svg>
+<rect x="460" y="104" width="420" height="46" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="476" y="135" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">1위  다른 작품</text>
+<rect x="460" y="158" width="420" height="46" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="476" y="189" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">2위  다른 작품</text>
+<rect x="460" y="212" width="420" height="46" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="476" y="243" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">3위  다른 작품</text>
+<rect x="460" y="266" width="420" height="46" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="476" y="297" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">4위  다른 작품</text>
+<rect x="460" y="320" width="420" height="46" rx="8" fill="#8A1C2B" stroke="#8A1C2B" stroke-width="2"/>
+<text x="476" y="351" font-size="25" fill="#FFFFFF" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">5위  내가 보고 싶던 작품 ★</text>
+<text x="460" y="408" font-size="28" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">역순위 = 1/5 = 0.2</text>
+<text x="0" y="458" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">여러 요청의 역순위를 평균 → MRR. 1에 가까울수록 좋다</text></svg>
