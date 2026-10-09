@@ -4,7 +4,7 @@ date: 2026-10-09
 draft: false
 math: true
 source_url: "https://arxiv.org/abs/2608.10257"
-youtube: "KSga5bNfmzY"
+youtube: "9DMu9XuaiZ0"
 author: "Ying Li, Shradha Sehgal, Arjun Rao, Rein Houthooft, Yunan Hu, Yaochen Zhu, Sourabh Medapati, Yun Li, Linas Baltrunas, Grace Huang, Ashish Rastogi, Kamelia Aryafar (Netflix)"
 tags: ["AI", "LLM", "추천시스템", "랭킹", "컨텍스트엔지니어링", "넷플릭스", "논문"]
 summary: "넷플릭스가 수천 개의 손설계 피처로 돌던 추천 랭커를, 사용자 이력을 문장으로 풀어 넣는 LLM 랭커로 바꿨다. Phase-2 학습 데이터를 약 40분의 1만 쓰고도 오프라인 MRR +1.6%, 트래픽 10% A/B 테스트에서 단기·장기 지표 모두 유의미한 개선. 핵심은 피처 엔지니어링에서 컨텍스트 엔지니어링으로의 전환이다."
