@@ -62,9 +62,9 @@ h, b = stack([("Phase 1 · 기반 LLM", ["오픈소스 LLM + 넷플릭스 카탈
 figs["two-phase"] = svg(h, b)
 
 # 3. 랭킹 헤드
-b = [box(0, 0, 520, 150, "x = V(H, {Mᵢ}, τ)", ["이력·작품 메타데이터·맥락을 문장으로"]),
+b = [box(0, 0, 520, 150, "x = V(H, {Mᵢ}, τ)", ["이력·메타데이터·맥락을 문장으로"]),
      arrow(260, 154, 260, 210),
-     box(0, 214, 520, 150, "LLM → h (d차원)", ["풀링 위치의 은닉 상태 = 취향·맥락 요약"], True),
+     box(0, 214, 520, 150, "LLM → h (d차원)", ["취향과 맥락을 요약한 벡터"], True),
      text(600, 40, "작품 임베딩", 28, GRAY),
      ]
 for i, lab in enumerate(["e₁", "e₂", "e₃", "⋮", "e_N"]):
@@ -72,7 +72,7 @@ for i, lab in enumerate(["e₁", "e₂", "e₃", "⋮", "e_N"]):
     b.append(f'<rect x="600" y="{y}" width="200" height="44" rx="10" fill="{FILL}" stroke="{LINE}" stroke-width="3"/>')
     b.append(text(700, y + 32, lab, 28, TXT, "middle"))
 b += [arrow(524, 289, 596, 289),
-      box(0, 420, W, 150, "sᵢ = φ(h, eᵢ) → softmax → 순위 π", ["LLM·φ·{eᵢ} 를 함께 학습 · 출력 공간이 카탈로그 = 없는 작품은 못 나온다"], True)]
+      box(0, 420, W, 150, "sᵢ = φ(h, eᵢ) → softmax → 순위 π", ["출력 공간이 카탈로그이므로 없는 작품은 나올 수 없다"], True)]
 figs["head"] = svg(580, "\n".join(b))
 
 # 4. 컨텍스트 압축
