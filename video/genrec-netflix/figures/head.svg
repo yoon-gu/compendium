@@ -19,4 +19,4 @@
 <line x1="524" y1="289" x2="596" y2="289" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
 <rect x="0" y="420" width="888" height="150" rx="14" fill="#FFFFFF" stroke="#8A1C2B" stroke-width="4"/>
 <text x="28" y="478" font-size="38" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">sᵢ = φ(h, eᵢ) → softmax → 순위 π</text>
-<text x="28" y="532" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">LLM·φ·{eᵢ} 를 함께 학습. 출력 공간이 카탈로그라 없는 작품은 못 나온다</text></svg>
+<text x="28" y="532" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">LLM·φ·{eᵢ} 를 함께 학습 · 출력 공간이 카탈로그 = 없는 작품은 못 나온다</text></svg>
