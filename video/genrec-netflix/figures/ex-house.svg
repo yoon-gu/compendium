@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 440" width="888" height="440"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">기초공사와 인테리어 공사를 분리</text>
+<rect x="60" y="300" width="760" height="70" fill="#141414"/>
+<text x="440" y="345" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">기초 = Phase 1 기반 LLM · 가끔 갱신</text>
+<rect x="100" y="150" width="680" height="150" fill="#FFFFFF" stroke="#141414" stroke-width="4"/>
+<polygon points="80,150 440,70 800,150" fill="none" stroke="#141414" stroke-width="4"/>
+<text x="440" y="215" font-size="30" fill="#8A1C2B" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">인테리어 = Phase 2 랭커</text>
+<text x="440" y="258" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">신작·최신 시청 반영 · 자주 갱신</text>
+<text x="0" y="420" font-size="27" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">무거운 공사는 드물게, 가벼운 공사는 자주 — 지능은 그대로, 운영은 가볍게</text></svg>

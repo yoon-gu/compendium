@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 440" width="888" height="440"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">디지털 발자국이 하나의 이야기가 된다</text>
+<ellipse cx="50" cy="110" rx="16" ry="24" fill="#B9B9B4"/>
+<ellipse cx="50" cy="80" rx="7" ry="9" fill="#B9B9B4"/>
+<text x="80" y="118" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">주말 드라마 정주행</text>
+<ellipse cx="265" cy="150" rx="16" ry="24" fill="#B9B9B4"/>
+<ellipse cx="265" cy="120" rx="7" ry="9" fill="#B9B9B4"/>
+<text x="295" y="158" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">지루해서 끈 다큐</text>
+<ellipse cx="480" cy="110" rx="16" ry="24" fill="#B9B9B4"/>
+<ellipse cx="480" cy="80" rx="7" ry="9" fill="#B9B9B4"/>
+<text x="510" y="118" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">좋아요 누른 영화</text>
+<ellipse cx="695" cy="150" rx="16" ry="24" fill="#B9B9B4"/>
+<ellipse cx="695" cy="120" rx="7" ry="9" fill="#B9B9B4"/>
+<text x="725" y="158" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">새벽에 본 예고편</text>
+<line x1="444.0" y1="200" x2="444.0" y2="250" stroke="#8A1C2B" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="256" width="888" height="120" rx="14" fill="#FFFFFF" stroke="#8A1C2B" stroke-width="4"/>
+<text x="24" y="304" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">"주말엔 몰아보고, 다큐는 금방 질려 하지만,</text>
+<text x="24" y="346" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">좋아요 누른 영화 같은 작품을 새벽에 찾는 사람"</text>
+<text x="0" y="420" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">변수의 묶음이 아니라 한 사람의 서사로 읽는다 — 다음 클릭이 아니라 장기 만족을 위해</text></svg>

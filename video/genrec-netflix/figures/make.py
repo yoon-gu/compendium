@@ -235,6 +235,103 @@ b = [text(0, 40, "A/B 테스트", 36, INK, weight="bold"), text(230, 40, "실제
      text(0, 300, "4주 뒤 단기·장기 지표를 비교 → 차이가 우연이 아닌지 통계적으로 검정", 27, TXT)]
 figs["t-abtest"] = svg(320, "\n".join(b))
 
+# ---------- 진행자의 비유·예시 그림 ----------
+# 18. 스프레드시트 추천 (0:17)
+b = [text(0, 40, "기존 추천 = 거대한 스프레드시트", 36, INK, weight="bold")]
+hdr = ["회원", "액션 클릭", "로맨스 클릭", "평균 시청", "→ 추천"]
+rows = [["A", "3", "0", "42분", "액션 영화"], ["B", "0", "5", "18분", "로맨스 영화"], ["C", "1", "1", "7분", "인기작"]]
+cw = [100, 170, 190, 170, 258]
+for r, row in enumerate([hdr] + rows):
+    x = 0
+    for c, val in enumerate(row):
+        fill = "#ECECE8" if r == 0 else FILL
+        b.append(f'<rect x="{x}" y="{70 + r * 58}" width="{cw[c]}" height="56" fill="{fill}" stroke="{LINE}" stroke-width="2"/>')
+        b.append(text(x + cw[c] / 2, 70 + r * 58 + 38, val, 26, INK if (c == 4 and r > 0) else TXT, "middle", "bold" if r == 0 else "normal"))
+        x += cw[c]
+b.append(text(0, 350, "규칙: 액션을 3번 클릭했으니 액션 영화 — 차갑고 기계적인 공식", 27, GRAY))
+figs["ex-spreadsheet"] = svg(370, "\n".join(b))
+
+# 19. MRR 예시 (5:07)
+b = [text(0, 40, "MRR: 보고 싶은 작품이 얼마나 앞에 뜨는가", 36, INK, weight="bold")]
+for col, (lab, want, score) in enumerate([("추천 목록 ①", 1, "1/1 = 1.0"), ("추천 목록 ②", 5, "1/5 = 0.2")]):
+    x0 = col * 460
+    b.append(text(x0, 86, lab, 28, TXT, weight="bold"))
+    for i in range(5):
+        y = 100 + i * 48
+        hit = (i + 1 == want)
+        b.append(f'<rect x="{x0}" y="{y}" width="420" height="42" rx="8" fill="{INK if hit else FILL}" stroke="{INK if hit else LINE}" stroke-width="2"/>')
+        b.append(text(x0 + 16, y + 29, f"{i + 1}위  " + ("내가 보고 싶던 작품 ★" if hit else "다른 작품"), 25, FILL if hit else GRAY))
+    b.append(text(x0, 372, f"역순위 = {score}", 28, INK, weight="bold"))
+b.append(text(0, 420, "여러 요청의 역순위를 평균 → MRR. 1에 가까울수록 좋다", 27, GRAY))
+figs["ex-mrr"] = svg(440, "\n".join(b))
+
+# 20. 모기 잡는 데 대포 (6:05)
+b = [text(0, 40, "모기 잡는 데 대포를 쏜다?", 36, INK, weight="bold"),
+     f'<rect x="40" y="200" width="60" height="70" rx="8" fill="{TXT}"/>', f'<circle cx="70" cy="280" r="28" fill="{TXT}"/>',
+     f'<rect x="90" y="150" width="200" height="44" rx="10" fill="{TXT}" transform="rotate(-25 90 172)"/>',   # 포신
+     text(40, 330, "거대 LLM", 28, TXT, weight="bold"), text(40, 362, "수억 명에게 매초?", 24, GRAY),
+     f'<circle cx="700" cy="150" r="6" fill="{INK}"/>', f'<path d="M694 144 l-14 -10 M706 144 l14 -10 M700 156 l0 14" stroke="{INK}" stroke-width="3" fill="none"/>',
+     text(640, 200, "영화 순위 몇 개", 28, INK, weight="bold"),
+     f'<path d="M300 140 q200 -120 390 10" fill="none" stroke="{LINE}" stroke-width="3" stroke-dasharray="10 8"/>',
+     text(0, 420, "→ 답: 대포(Phase 1)는 가끔만, 가벼운 Phase 2만 자주 돌린다", 27, TXT)]
+figs["ex-cannon"] = svg(440, "\n".join(b))
+
+# 21. 기초공사 vs 인테리어 (6:46)
+b = [text(0, 40, "기초공사와 인테리어 공사를 분리", 36, INK, weight="bold"),
+     f'<rect x="60" y="300" width="760" height="70" fill="{TXT}"/>', text(440, 345, "기초 = Phase 1 기반 LLM · 가끔 갱신", 28, FILL, "middle", "bold"),
+     f'<rect x="100" y="150" width="680" height="150" fill="{FILL}" stroke="{TXT}" stroke-width="4"/>',
+     f'<polygon points="80,150 440,70 800,150" fill="none" stroke="{TXT}" stroke-width="4"/>',
+     text(440, 215, "인테리어 = Phase 2 랭커", 30, INK, "middle", "bold"), text(440, 258, "신작·최신 시청 반영 · 자주 갱신", 26, GRAY, "middle"),
+     text(0, 420, "무거운 공사는 드물게, 가벼운 공사는 자주 — 지능은 그대로, 운영은 가볍게", 27, TXT)]
+figs["ex-house"] = svg(440, "\n".join(b))
+
+# 22. 휴가 이야기 (9:01)
+b = [text(0, 40, "친구에게 휴가 이야기를 할 때", 36, INK, weight="bold"),
+     box(0, 70, 420, 230, "자잘한 기록 전부", ["3시 2분 기상", "3시 10분 화장실", "3시 15분 물 마심", "… (친구가 도망간다)"]),
+     box(468, 70, 420, 230, "하이라이트만", ["비행기 연착, 최악", "도착해서 먹은 저녁은", "정말 환상적!"], True),
+     text(0, 350, "넷플릭스도 같다: 5분 보다 만 영화·잡음 클릭은 버리고", 27, TXT),
+     text(0, 388, "끝까지 본 드라마·좋아요만 문장으로 남긴다", 27, TXT)]
+figs["ex-vacation"] = svg(410, "\n".join(b))
+
+# 23. 객관식 (11:20)
+b = [text(0, 40, "객관식처럼 보기 안에서만 고르게", 36, INK, weight="bold"),
+     f'<rect x="0" y="70" width="{W}" height="270" rx="14" fill="{FILL}" stroke="{LINE}" stroke-width="3"/>',
+     text(24, 112, "문제: 이 회원에게 다음으로 보여 줄 작품은?", 28, TXT, weight="bold")]
+for i, (t, pick) in enumerate([("① 〈드라마 A〉", False), ("② 〈영화 B〉", True), ("③ 〈영화 C〉", False), ("④ 〈다큐 D〉", False)]):
+    y = 150 + i * 44
+    b.append(f'<circle cx="44" cy="{y}" r="14" fill="{INK if pick else "none"}" stroke="{INK if pick else LINE}" stroke-width="3"/>')
+    b.append(text(72, y + 9, t + ("   ← 카탈로그 안에서 점수가 가장 높은 작품" if pick else ""), 26, INK if pick else TXT))
+b.append(text(0, 380, "주관식(자유 생성)이 아니라서 보기에 없는 작품은 답이 될 수 없다", 27, GRAY))
+figs["ex-choice"] = svg(400, "\n".join(b))
+
+# 24. 똑똑한 학생 (16:54)
+b = [text(0, 40, "A부터 Z까지 떠먹이지 않아도 된다", 36, INK, weight="bold"),
+     box(0, 70, 420, 230, "백지 학생 (기존 랭커)", ["\"이건 액션, 저건 코미디\"", "수많은 라벨로 일일이", "처음부터 가르쳐야 한다"]),
+     box(468, 70, 420, 230, "똑똑한 학생 (Phase 1)", ["언어·문맥·넷플릭스를", "이미 안다", "→ 40배 적은 라벨로 충분"], True),
+     text(0, 350, "하나를 가르치면 열을 아는 기반 모델 덕에 Phase 2 가 가볍다", 27, TXT)]
+figs["ex-student"] = svg(370, "\n".join(b))
+
+# 25. 발자국 → 이야기 (19:13)
+b = [text(0, 40, "디지털 발자국이 하나의 이야기가 된다", 36, INK, weight="bold")]
+steps = ["주말 드라마 정주행", "지루해서 끈 다큐", "좋아요 누른 영화", "새벽에 본 예고편"]
+for i, t in enumerate(steps):
+    x, y = 30 + i * 215, 110 + (i % 2) * 40
+    b.append(f'<ellipse cx="{x + 20}" cy="{y}" rx="16" ry="24" fill="{LINE}"/>'); b.append(f'<ellipse cx="{x + 20}" cy="{y - 30}" rx="7" ry="9" fill="{LINE}"/>')
+    b.append(text(x + 50, y + 8, t, 24, GRAY))
+b += [arrow(W / 2, 200, W / 2, 250),
+      f'<rect x="0" y="256" width="{W}" height="120" rx="14" fill="{FILL}" stroke="{INK}" stroke-width="4"/>',
+      text(24, 304, "\"주말엔 몰아보고, 다큐는 금방 질려 하지만,", 28, TXT), text(24, 346, "좋아요 누른 영화 같은 작품을 새벽에 찾는 사람\"", 28, TXT),
+      text(0, 420, "변수의 묶음이 아니라 한 사람의 서사로 읽는다 — 다음 클릭이 아니라 장기 만족을 위해", 26, GRAY)]
+figs["ex-footprints"] = svg(440, "\n".join(b))
+
+# 스케일링 그래프에 '기존 모델의 유리 천장' 곡선 추가
+_old = figs["scaling"]
+ceiling = (f'<line x1="60" y1="250" x2="{W}" y2="250" stroke="{GRAY}" stroke-width="3" stroke-dasharray="12 8"/>'
+           + text(70, 240, "유리 천장", 24, GRAY)
+           + f'<polyline points="' + " ".join(f"{60 + i * (W - 70) / 20:.0f},{420 - (0.30 + 0.18 * (1 - 2.718 ** (-i / 4))) * 330:.0f}" for i in range(21)) + f'" fill="none" stroke="{GRAY}" stroke-width="4"/>'
+           + text(W - 4, 420 - 0.48 * 330 + 36, "기존 추천 모델 (정체)", 24, GRAY, "end"))
+figs["scaling"] = _old.replace("</svg>", ceiling + "</svg>")
+
 for name, s in figs.items():
     Path(__file__).with_name(f"{name}.svg").write_text(s, encoding="utf-8")
 print("made", ", ".join(figs))

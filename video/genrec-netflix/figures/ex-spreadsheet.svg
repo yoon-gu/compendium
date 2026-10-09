@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 370" width="888" height="370"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A1C2B"/></marker></defs><text x="0" y="40" font-size="36" fill="#8A1C2B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">기존 추천 = 거대한 스프레드시트</text>
+<rect x="0" y="70" width="100" height="56" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="50.0" y="108" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">회원</text>
+<rect x="100" y="70" width="170" height="56" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="185.0" y="108" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">액션 클릭</text>
+<rect x="270" y="70" width="190" height="56" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="365.0" y="108" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">로맨스 클릭</text>
+<rect x="460" y="70" width="170" height="56" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="545.0" y="108" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">평균 시청</text>
+<rect x="630" y="70" width="258" height="56" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="759.0" y="108" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">→ 추천</text>
+<rect x="0" y="128" width="100" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="50.0" y="166" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">A</text>
+<rect x="100" y="128" width="170" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="185.0" y="166" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">3</text>
+<rect x="270" y="128" width="190" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="365.0" y="166" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">0</text>
+<rect x="460" y="128" width="170" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="545.0" y="166" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">42분</text>
+<rect x="630" y="128" width="258" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="759.0" y="166" font-size="26" fill="#8A1C2B" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">액션 영화</text>
+<rect x="0" y="186" width="100" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="50.0" y="224" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">B</text>
+<rect x="100" y="186" width="170" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="185.0" y="224" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">0</text>
+<rect x="270" y="186" width="190" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="365.0" y="224" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">5</text>
+<rect x="460" y="186" width="170" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="545.0" y="224" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">18분</text>
+<rect x="630" y="186" width="258" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="759.0" y="224" font-size="26" fill="#8A1C2B" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">로맨스 영화</text>
+<rect x="0" y="244" width="100" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="50.0" y="282" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">C</text>
+<rect x="100" y="244" width="170" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="185.0" y="282" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">1</text>
+<rect x="270" y="244" width="190" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="365.0" y="282" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">1</text>
+<rect x="460" y="244" width="170" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="545.0" y="282" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">7분</text>
+<rect x="630" y="244" width="258" height="56" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="759.0" y="282" font-size="26" fill="#8A1C2B" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">인기작</text>
+<text x="0" y="350" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">규칙: 액션을 3번 클릭했으니 액션 영화 — 차갑고 기계적인 공식</text></svg>
