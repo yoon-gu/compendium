@@ -184,7 +184,8 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 .abbr {{ position: absolute; left: 96px; right: 96px; bottom: 450px; font-size: 34px; line-height: 1.4; color: #4A4A48; }}   /* 약어 하나에 한 줄 */   /* 유튜브 UI 위, 본문 아래 */
 .abbr b {{ color: #141414; font-weight: 800; }}
 .b3 .abbr, .b3 .abbr b {{ color: #B9B9B4; }}
-.clip {{ width: 888px; height: 500px; background: #D9D9D4; border-radius: 6px; }}   /* 16:9 영상 자리 */
+.clip {{ width: {W}px; height: 608px; margin-left: -96px; background: #D9D9D4; }}   /* 16:9 영상 자리, 양끝까지 */
+.photo img {{ width: {W}px; max-width: none; margin-left: -96px; max-height: 760px; object-fit: cover; }}
 .fig {{ margin: 8px 0 0; }}
 .fig img {{ display: block; max-width: 888px; max-height: 700px; }}
 .math {{ font-size: 40px; line-height: 1.6; margin-top: 8px; }}
@@ -225,8 +226,10 @@ def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1,
         if ln.startswith("![") and ln.endswith(")") and re.search(r"\.(webm|mp4|mov)(#|\))", ln):
             parts.append('<div class=clip></div>')   # 영상 자리. 위치는 build_on_audio 의 clip_y 규칙과 맞춰야 한다
         elif ln.startswith("![") and ln.endswith(")"):
-            src = (HERE / ln[ln.index("](") + 2:-1]).resolve().as_uri()
-            parts.append(f'<figure class=fig><img src="{src}"></figure>')
+            path = ln[ln.index("](") + 2:-1]
+            src = (HERE / path).resolve().as_uri()
+            cls = "fig" if path.endswith(".svg") else "fig photo"   # 사진은 화면 양끝까지 꽉 채운다
+            parts.append(f'<figure class="{cls}"><img src="{src}"></figure>')
         elif ln.startswith("$$") and ln.endswith("$$"):
             parts.append(f"<p class=math>{html.escape(ln, quote=False)}</p>")
         elif ln.startswith("「"):
@@ -338,14 +341,14 @@ def build_on_audio(scenes: list[dict], shots: list[Path], track: Path) -> Path:
 
 
 def overlay_clips(video: Path, clips: list[tuple]) -> Path:
-    """(파일, 시작초, 끝초, 화면 시작, 화면 길이, y) 마다 소리 없는 클립을 888px 폭으로 화면 위에 얹는다. 짧으면 반복."""
+    """(파일, 시작초, 끝초, 화면 시작, 화면 길이, y) 마다 소리 없는 클립을 화면 폭(1080px) 그대로 얹는다. 짧으면 반복."""
     inputs, chain, prev = ["-i", str(video)], [], "0:v"
     for i, (src, a, b, t0, dur, y) in enumerate(clips, 1):
         seg = WORK / f"clip-{i}.mp4"
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{a}", "-to", f"{b}" if b else f"{a + dur}", "-i", str(src),
-                        "-an", "-vf", "scale=888:-2", "-c:v", "libx264", "-preset", "fast", "-crf", "20", "-pix_fmt", "yuv420p", str(seg)], check=True)
+                        "-an", "-vf", "scale=1080:-2", "-c:v", "libx264", "-preset", "fast", "-crf", "20", "-pix_fmt", "yuv420p", str(seg)], check=True)
         inputs += ["-stream_loop", "-1", "-i", str(seg)]
-        chain.append(f"[{i}:v]setpts=PTS+{t0}/TB[c{i}];[{prev}][c{i}]overlay=96:{y}:enable='between(t,{t0},{t0 + dur})'[v{i}]"); prev = f"v{i}"
+        chain.append(f"[{i}:v]setpts=PTS+{t0}/TB[c{i}];[{prev}][c{i}]overlay=0:{y}:enable='between(t,{t0},{t0 + dur})'[v{i}]"); prev = f"v{i}"
     tmp = video.with_suffix(".clips.mp4")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(chain), "-map", f"[{prev}]", "-map", "0:a",
                     "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-c:a", "copy", "-movflags", "+faststart", "-shortest", str(tmp)], check=True)
