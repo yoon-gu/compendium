@@ -185,9 +185,9 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 .abbr b {{ color: #141414; font-weight: 800; }}
 .b3 .abbr, .b3 .abbr b {{ color: #B9B9B4; }}
 .clip {{ width: {W}px; height: 608px; margin-left: -96px; background: #D9D9D4; }}   /* 16:9 영상 자리, 양끝까지 */
-.photo img {{ width: {W}px; max-width: none; margin-left: -96px; max-height: 760px; object-fit: cover; }}
 .fig {{ margin: 8px 0 0; }}
 .fig img {{ display: block; max-width: 888px; max-height: 700px; }}
+.photo img {{ width: {W}px; max-width: none; margin-left: -96px; max-height: 760px; object-fit: cover; }}   /* .fig img 뒤에 둬야 폭 제한을 이긴다 */
 .math {{ font-size: 40px; line-height: 1.6; margin-top: 8px; }}
 .math .katex-display {{ margin: 0; text-align: left; }}
 .b3 .fig img {{ filter: invert(1) hue-rotate(180deg); }}
