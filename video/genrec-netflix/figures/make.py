@@ -265,21 +265,23 @@ for col, (lab, want, score) in enumerate([("추천 목록 ①", 1, "1/1 = 1.0"),
 b.append(text(0, 420, "여러 요청의 역순위를 평균 → MRR. 1에 가까울수록 좋다", 27, GRAY))
 figs["ex-mrr"] = svg(440, "\n".join(b))
 
-# 20. 모기 잡는 데 대포 (6:05)
+# 20. 모기 잡는 데 대포 (6:05) — CC0 아이콘(위키미디어 공용)을 안에 심는다
+def icon(name, x, y, w, h, color):
+    """figures/<name>.svg 를 중첩 <svg> 로 넣는다(<img> 로 읽는 SVG 는 외부 파일 참조가 막히므로 인라인)."""
+    import re as _re
+    raw = Path(__file__).with_name(f"{name}.svg").read_text(encoding="utf-8")
+    vb = _re.search(r'viewBox="([^"]+)"', raw)[1]
+    inner = raw[raw.index(">", raw.index("<svg")) + 1:raw.rindex("</svg>")].replace("#000000", color).replace("#000", color)
+    return f'<svg x="{x}" y="{y}" width="{w}" height="{h}" viewBox="{vb}" fill="{color}">{inner}</svg>'
+
 b = [text(0, 40, "모기 잡는 데 대포를 쏜다?", 36, INK, weight="bold"),
-     # 대포: 바퀴 + 포신 + 포탄
-     f'<circle cx="150" cy="330" r="54" fill="{FILL}" stroke="{TXT}" stroke-width="8"/>', f'<circle cx="150" cy="330" r="12" fill="{TXT}"/>',
-     f'<polygon points="100,300 130,250 360,130 400,170 170,290 150,330" fill="{TXT}"/>',
-     f'<rect x="60" y="326" width="180" height="22" rx="6" fill="{TXT}"/>',
-     f'<circle cx="420" cy="140" r="18" fill="{INK}"/>',
-     f'<path d="M440 130 q150 -110 290 20" fill="none" stroke="{LINE}" stroke-width="4" stroke-dasharray="12 10"/>',
-     # 모기: 몸통 + 날개 + 다리
-     f'<ellipse cx="760" cy="168" rx="14" ry="8" fill="{INK}"/>', f'<ellipse cx="748" cy="156" rx="12" ry="5" fill="none" stroke="{INK}" stroke-width="3" transform="rotate(-30 748 156)"/>',
-     f'<ellipse cx="772" cy="156" rx="12" ry="5" fill="none" stroke="{INK}" stroke-width="3" transform="rotate(30 772 156)"/>',
-     f'<path d="M750 174 l-14 16 M760 176 l0 18 M770 174 l14 16 M774 166 l22 -4" stroke="{INK}" stroke-width="3" fill="none"/>',
-     text(60, 410, "거대 LLM = 대포", 30, TXT, weight="bold"), text(60, 444, "수억 명에게 매초 쏜다면 비용 폭탄", 25, GRAY),
-     text(620, 230, "영화 순위 몇 개 = 모기", 28, INK, weight="bold")]
-figs["ex-cannon"] = svg(470, "\n".join(b))
+     icon("icon-cannon", 20, 90, 320, 320, TXT),
+     f'<path d="M330 150 q180 -120 380 40" fill="none" stroke="{LINE}" stroke-width="4" stroke-dasharray="12 10"/>',
+     icon("icon-mosquito", 700, 150, 90, 108, INK),
+     text(40, 450, "거대 LLM = 대포", 30, TXT, weight="bold"), text(40, 484, "수억 명에게 매초 쏜다면 비용 폭탄", 25, GRAY),
+     text(600, 300, "영화 순위 몇 개 = 모기", 28, INK, weight="bold"),
+     text(0, 540, "아이콘: viglino, Marco Hernandez (CC0, Wikimedia Commons)", 22, GRAY)]
+figs["ex-cannon"] = svg(560, "\n".join(b))
 
 # 21. 기초공사 vs 인테리어 (6:46)
 b = [text(0, 40, "기초공사와 인테리어 공사를 분리", 36, INK, weight="bold"),
