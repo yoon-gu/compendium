@@ -4,6 +4,7 @@
     python3 build.py managers-path-in-the-age-of-ai              # 진우 목소리로 <슬러그>/out/<슬러그>.mp4
     python3 build.py <슬러그> --voice=준호                         # 다른 목소리(이름 또는 tc_ 아이디). 목소리마다 캐시가 따로다
     python3 build.py <슬러그> --slides-only                       # 화면 PNG 만 굽는다(크레딧 안 씀)
+    python3 build.py <슬러그> --wide                              # 가로(1920x1080)판 → out/<슬러그>-가로.mp4. 녹음은 같은 캐시를 쓴다(크레딧 0)
     python3 build.py <슬러그> --audio=work/overview.m4a           # 녹음 대신 외부 음성(예: NotebookLM 오디오 오버뷰)을 입힌다.
                                                                   # 이때 각 화면의 첫 나레이션 줄은 `@분:초 …` 로 시작해 그 화면의 시작 시각을 준다(크레딧 안 씀)
 
@@ -37,7 +38,8 @@ from pathlib import Path
 SLUG = next((a for a in sys.argv[1:] if not a.startswith("--")), None)
 assert SLUG, "사용법: python3 build.py <슬러그> [--voice=이름] [--slides-only]"
 HERE = Path(__file__).resolve().parent / SLUG
-SCRIPT, WORK, OUT = HERE / "script.md", HERE / "work", HERE / "out" / f"{SLUG}.mp4"
+WIDE = "--wide" in sys.argv                                   # 가로(1920x1080)판: 왼쪽 글, 오른쪽 그림의 두 단
+SCRIPT, WORK, OUT = HERE / "script.md", HERE / "work", HERE / "out" / (f"{SLUG}-가로.mp4" if WIDE else f"{SLUG}.mp4")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 TTS_URL = "https://api.typecast.ai/v1/text-to-speech"
 KEY_PATH = Path.home() / ".config/typecast-key.txt"
@@ -48,7 +50,7 @@ VOICE_ID = VOICES.get(VOICE, VOICE)
 MODEL, EMOTION = "ssfm-v30", "normal"
 MAX_CHARS = 300                     # 한 요청에 보내는 글자 수 상한(문장 경계로 자른다)
 GAP_CHUNK, GAP_PARA, GAP_SCENE = 0.25, 0.6, 1.0   # 초. 요청 조각 / 문단 / 장면 사이 쉼
-W, H = 1080, 1920
+W, H = (1920, 1080) if WIDE else (1080, 1920)
 
 
 # ---------- 대본 ----------
@@ -191,6 +193,21 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 .math {{ font-size: 40px; line-height: 1.6; margin-top: 8px; }}
 .math .katex-display {{ margin: 0; text-align: left; }}
 .b3 .fig img {{ filter: invert(1) hue-rotate(180deg); }}
+""" + ("""
+.f { padding: 140px 96px 100px; }
+.main { margin-top: 36px; flex-direction: row; gap: 64px; align-items: flex-start; }
+.col1 { width: 760px; display: flex; flex-direction: column; gap: 40px; }
+.col1.solo { width: 1300px; }
+.col2 { width: 904px; display: flex; flex-direction: column; gap: 32px; }
+h1 { font-size: 72px; } .long h1 { font-size: 60px; } .cover h1 { font-size: 84px; }
+.sup { font-size: 36px; } .q { font-size: 48px; } .by { font-size: 32px; }
+.fig img { max-width: 904px; max-height: 720px; }
+.photo img { width: 904px; max-height: 720px; }
+.clip { width: 904px; height: 508px; }
+.math { font-size: 36px; }
+.abbr { bottom: 70px; }
+.sec { top: 195px; }
+""" if WIDE else "") + f"""
 .pg {{ position: absolute; right: 96px; top: 150px; font-size: 30px; line-height: 1.5; color: #6B6B68; font-variant-numeric: tabular-nums; }}
 /* 배경 6종을 화면마다 돌려 쓴다: 미색 / 크림 / 잉크 틴트 / 어두운 반전 / 상단 색 띠 / 청회 */
 .b1 {{ background: #F3EFE6; }}
@@ -239,14 +256,21 @@ def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1,
         else:
             parts.append(f"<p class=sup>{inline(ln)}</p>")
     cls = f"f b{(page - 1) % 6}" + (" cover" if cover else "") + (" long" if len(re.sub(r"\*", "", head)) > 44 else "")
+    if WIDE:   # 그림·클립·수식은 오른쪽 단, 글은 왼쪽 단
+        visual = [x for x in parts if x.startswith(("<div class=clip", "<figure", "<p class=math"))]
+        words = [x for x in parts if x not in visual]
+        main = (f'<div class=main><div class="col1{"" if visual else " solo"}"><h1>{inline(head)}</h1>{"".join(words)}</div>'
+                f'<div class=col2>{"".join(visual)}</div></div>')
+    else:
+        main = f'<div class=main><h1>{inline(head)}</h1>{"".join(parts)}</div>'
     return (f'<section class="{cls}"><div class=src>{inline(meta["출처"])}</div>'
-            f'<div class=main><h1>{inline(head)}</h1>{"".join(parts)}</div>'
+            f'{main}'
             f'<div class=sec>{inline(scene["label"])}</div><div class=pg>{page} / {pages}</div>'
             f'{abbr_note(frame, meta, seen) if seen is not None else ""}</section>')
 
 
 def render_slides(meta: dict, scenes: list[dict]) -> list[Path]:
-    work = WORK / "slides"
+    work = WORK / ("slides-wide" if WIDE else "slides")
     work.mkdir(parents=True, exist_ok=True)
     page, pdf = work / "slides.html", work / "slides.pdf"
     flat = [(fr, s) for s in scenes for fr in s["frames"]]
@@ -336,19 +360,20 @@ def build_on_audio(scenes: list[dict], shots: list[Path], track: Path) -> Path:
             if m:
                 assert f["slide"].index(ln) == 1, "영상은 큰 문장 바로 다음 줄에 둔다(세로 위치를 제목 줄 수로 계산하므로)"
                 lines = f["slide"][0].count(" / ") + 1          # 제목은 ' / ' 로만 줄을 나눈다는 전제
-                clips.append((HERE / m[1], float(m[2] or 0), float(m[3] or 0), t0, dur, 150 + 300 + 116 * lines + 56))
+                clips.append((HERE / m[1], float(m[2] or 0), float(m[3] or 0), t0, dur,
+                              (920, 176, 904) if WIDE else (96, 150 + 300 + 116 * lines + 56, 888)))
     return overlay_clips(out, clips) if clips else out
 
 
 def overlay_clips(video: Path, clips: list[tuple]) -> Path:
     """(파일, 시작초, 끝초, 화면 시작, 화면 길이, y) 마다 소리 없는 클립을 본문 폭(888px)으로 화면 위에 얹는다. 짧으면 반복."""
     inputs, chain, prev = ["-i", str(video)], [], "0:v"
-    for i, (src, a, b, t0, dur, y) in enumerate(clips, 1):
+    for i, (src, a, b, t0, dur, (x, y, w)) in enumerate(clips, 1):
         seg = WORK / f"clip-{i}.mp4"
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{a}", "-to", f"{b}" if b else f"{a + dur}", "-i", str(src),
-                        "-an", "-vf", "scale=888:-2", "-c:v", "libx264", "-preset", "fast", "-crf", "20", "-pix_fmt", "yuv420p", str(seg)], check=True)
+                        "-an", "-vf", f"scale={w}:-2", "-c:v", "libx264", "-preset", "fast", "-crf", "20", "-pix_fmt", "yuv420p", str(seg)], check=True)
         inputs += ["-stream_loop", "-1", "-i", str(seg)]
-        chain.append(f"[{i}:v]setpts=PTS+{t0}/TB[c{i}];[{prev}][c{i}]overlay=96:{y}:enable='between(t,{t0},{t0 + dur})'[v{i}]"); prev = f"v{i}"
+        chain.append(f"[{i}:v]setpts=PTS+{t0}/TB[c{i}];[{prev}][c{i}]overlay={x}:{y}:enable='between(t,{t0},{t0 + dur})'[v{i}]"); prev = f"v{i}"
     tmp = video.with_suffix(".clips.mp4")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(chain), "-map", f"[{prev}]", "-map", "0:a",
                     "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-c:a", "copy", "-movflags", "+faststart", "-shortest", str(tmp)], check=True)
