@@ -184,10 +184,10 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 .abbr {{ position: absolute; left: 96px; right: 96px; bottom: 450px; font-size: 34px; line-height: 1.4; color: #4A4A48; }}   /* 약어 하나에 한 줄 */   /* 유튜브 UI 위, 본문 아래 */
 .abbr b {{ color: #141414; font-weight: 800; }}
 .b3 .abbr, .b3 .abbr b {{ color: #B9B9B4; }}
-.clip {{ width: {W}px; height: 608px; margin-left: -96px; background: #D9D9D4; }}   /* 16:9 영상 자리, 양끝까지 */
+.clip {{ width: 888px; height: 500px; background: #D9D9D4; border-radius: 6px; }}   /* 16:9 영상 자리, 본문 폭 */
 .fig {{ margin: 8px 0 0; }}
 .fig img {{ display: block; max-width: 888px; max-height: 700px; }}
-.photo img {{ width: {W}px; max-width: none; margin-left: -96px; max-height: 760px; object-fit: cover; }}   /* .fig img 뒤에 둬야 폭 제한을 이긴다 */
+.photo img {{ width: 888px; max-height: 700px; object-fit: cover; border-radius: 6px; }}   /* 사진은 본문 폭(888px)을 꽉 채운다. .fig img 뒤에 둘 것 */
 .math {{ font-size: 40px; line-height: 1.6; margin-top: 8px; }}
 .math .katex-display {{ margin: 0; text-align: left; }}
 .b3 .fig img {{ filter: invert(1) hue-rotate(180deg); }}
@@ -341,14 +341,14 @@ def build_on_audio(scenes: list[dict], shots: list[Path], track: Path) -> Path:
 
 
 def overlay_clips(video: Path, clips: list[tuple]) -> Path:
-    """(파일, 시작초, 끝초, 화면 시작, 화면 길이, y) 마다 소리 없는 클립을 화면 폭(1080px) 그대로 얹는다. 짧으면 반복."""
+    """(파일, 시작초, 끝초, 화면 시작, 화면 길이, y) 마다 소리 없는 클립을 본문 폭(888px)으로 화면 위에 얹는다. 짧으면 반복."""
     inputs, chain, prev = ["-i", str(video)], [], "0:v"
     for i, (src, a, b, t0, dur, y) in enumerate(clips, 1):
         seg = WORK / f"clip-{i}.mp4"
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{a}", "-to", f"{b}" if b else f"{a + dur}", "-i", str(src),
-                        "-an", "-vf", "scale=1080:-2", "-c:v", "libx264", "-preset", "fast", "-crf", "20", "-pix_fmt", "yuv420p", str(seg)], check=True)
+                        "-an", "-vf", "scale=888:-2", "-c:v", "libx264", "-preset", "fast", "-crf", "20", "-pix_fmt", "yuv420p", str(seg)], check=True)
         inputs += ["-stream_loop", "-1", "-i", str(seg)]
-        chain.append(f"[{i}:v]setpts=PTS+{t0}/TB[c{i}];[{prev}][c{i}]overlay=0:{y}:enable='between(t,{t0},{t0 + dur})'[v{i}]"); prev = f"v{i}"
+        chain.append(f"[{i}:v]setpts=PTS+{t0}/TB[c{i}];[{prev}][c{i}]overlay=96:{y}:enable='between(t,{t0},{t0 + dur})'[v{i}]"); prev = f"v{i}"
     tmp = video.with_suffix(".clips.mp4")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(chain), "-map", f"[{prev}]", "-map", "0:a",
                     "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-c:a", "copy", "-movflags", "+faststart", "-shortest", str(tmp)], check=True)
