@@ -130,7 +130,7 @@ for i in range(6):
     if i < 5: b.append(arrow(x + 124, 84, x + 146, 84))
 b += [text(0, 190, "프리필 전용 (GenRec)", 30, INK, weight="bold"), text(360, 190, "입력을 한 번 읽고 카탈로그 전체 점수를 한 번에", 26, GRAY),
       box(0, 210, 380, 150, "프롬프트 1회 읽기", ["시청 기록 + 맥락"]),
-      arrow(384, 285, 500, 285, "순전파 1번"),
+      arrow(384, 285, 500, 285), text(442, 262, "순전파 1번", 24, GRAY, "middle"),
       box(504, 210, 384, 150, "전체 점수", ["수천 개 작품 동시에"], True)]
 figs["prefill"] = svg(380, "\n".join(b))
 
@@ -176,14 +176,15 @@ figs["t-goldberg"] = svg(460, "\n".join(b))
 
 # 12. 피처(feature): 사람이 정의한 숫자 특징
 b = [text(0, 40, "피처 (feature)", 36, INK, weight="bold"), text(300, 40, "모델에 넣으려고 사람이 미리 정의한 숫자 특징", 28, GRAY)]
-cells = ["액션 클릭 3회", "평균 시청 42분", "마지막 접속 2일 전", "주말 시청 비율 0.7", "…수천 개"]
+cells = ["액션 클릭 3회", "평균 시청 42분", "마지막 접속 2일 전", "주말 시청 비율 0.7", "시리즈 완주 5편", "…수천 개"]
 for i, c in enumerate(cells):
-    x = i * 178
-    b.append(f'<rect x="{x}" y="76" width="168" height="100" rx="10" fill="{FILL}" stroke="{LINE if i < 4 else INK}" stroke-width="3"/>')
-    b.append(text(x + 84, 134, c, 25, TXT if i < 4 else INK, "middle"))
-b += [arrow(W / 2, 186, W / 2, 246), box(0, 252, W, 150, "기존 랭커: 피처 수천 개를 조합해 점수", ["새 콘텐츠 유형마다 피처를 새로 정의·검증해야 한다"]),
-      text(0, 460, "GenRec: 피처 대신 시청 기록을 문장으로 그대로 넣는다", 28, INK)]
-figs["t-feature"] = svg(480, "\n".join(b))
+    x, y = (i % 3) * 300, 76 + (i // 3) * 90
+    last = i == len(cells) - 1
+    b.append(f'<rect x="{x}" y="{y}" width="288" height="76" rx="10" fill="{FILL}" stroke="{INK if last else LINE}" stroke-width="3"/>')
+    b.append(text(x + 144, y + 48, c, 27, INK if last else TXT, "middle"))
+b += [arrow(W / 2, 262, W / 2, 322), box(0, 328, W, 150, "기존 랭커: 피처 수천 개를 조합해 점수", ["새 콘텐츠 유형마다 피처를 새로 정의·검증해야 한다"]),
+      text(0, 536, "GenRec: 피처 대신 시청 기록을 문장으로 그대로 넣는다", 28, INK)]
+figs["t-feature"] = svg(556, "\n".join(b))
 
 # 13. 토큰과 토큰 예산
 b = [text(0, 40, "토큰 (token) · 토큰 예산", 36, INK, weight="bold"), text(0, 78, "LLM이 글을 읽는 최소 단위 · 한 번에 읽을 수 있는 양의 한도", 26, GRAY)]
@@ -199,11 +200,11 @@ figs["t-token"] = svg(284, "\n".join(b))
 
 # 14. 환각(hallucination)
 b = [text(0, 40, "환각 (hallucination)", 36, INK, weight="bold"), text(0, 78, "그럴듯하지만 사실이 아닌 것을 모델이 지어내는 현상", 26, GRAY),
-     box(0, 100, 420, 260, "카탈로그 (실제 목록)", ["〈드라마 A〉", "〈영화 B〉", "〈영화 C〉"]),
-     box(468, 100, 420, 260, "자유 생성 LLM", ["〈드라마 A〉", "〈영화 B〉", "〈심야 식당 3〉  ✗ 없는 작품"], True),
-     f'<line x1="494" y1="302" x2="704" y2="302" stroke="{INK}" stroke-width="5"/>',
-     text(0, 416, "출력을 카탈로그 안의 점수로 제한 → 없는 작품은 나올 수 없다", 27, TXT)]
-figs["t-halluc"] = svg(440, "\n".join(b))
+     box(0, 100, 420, 310, "카탈로그 (실제 목록)", ["〈드라마 A〉", "〈영화 B〉", "〈영화 C〉"]),
+     box(468, 100, 420, 310, "자유 생성 LLM", ["〈드라마 A〉", "〈영화 B〉", "〈심야 식당 3〉", "✗ 카탈로그에 없는 작품"], True),
+     f'<line x1="494" y1="302" x2="700" y2="302" stroke="{INK}" stroke-width="5"/>',
+     text(0, 466, "출력을 카탈로그 안의 점수로 제한 → 없는 작품은 나올 수 없다", 27, TXT)]
+figs["t-halluc"] = svg(490, "\n".join(b))
 
 # 15. 강화학습 vs 보상 가중
 b = [text(0, 40, "강화학습(RL) vs 보상 가중", 36, INK, weight="bold"),
