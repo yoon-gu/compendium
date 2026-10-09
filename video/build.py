@@ -181,8 +181,8 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 .by {{ font-size: 36px; line-height: 1.5; color: #6B6B68; margin-top: -24px; }}
 /* 유튜브 세로 재생은 아래 ~20%를 제목·채널·진행바가, 오른쪽 가장자리를 버튼이 덮는다. 장 이름은 위쪽 출처 밑에 둔다 */
 .sec {{ position: absolute; left: 96px; top: 205px; font-size: 30px; color: #6B6B68; }}
-.abbr {{ position: absolute; left: 96px; right: 96px; bottom: 470px; font-size: 26px; line-height: 1.5; color: #6B6B68; }}   /* 유튜브 UI 위, 본문 아래 */
-.abbr b {{ color: #4A4A48; font-weight: 700; }}
+.abbr {{ position: absolute; left: 96px; right: 96px; bottom: 470px; font-size: 34px; line-height: 1.5; color: #4A4A48; }}   /* 유튜브 UI 위, 본문 아래 */
+.abbr b {{ color: #141414; font-weight: 800; }}
 .b3 .abbr, .b3 .abbr b {{ color: #B9B9B4; }}
 .clip {{ width: 888px; height: 500px; background: #D9D9D4; border-radius: 6px; }}   /* 16:9 영상 자리 */
 .fig {{ margin: 8px 0 0; }}
