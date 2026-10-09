@@ -10,7 +10,7 @@ summary: "Armin Ronacher가 자신의 에이전트 하니스 Pi에 넣은 Codemo
 
 > **원문:** [What is Codemode](https://lucumr.pocoo.org/2026/10/6/codemode/) — Armin Ronacher, 2026-10-06
 >
-> **저자:** 아르민 로나허(Armin Ronacher) — 파이썬 웹 프레임워크 Flask와 템플릿 엔진 Jinja, WSGI 라이브러리 Werkzeug를 만든 개발자. 오류 모니터링 회사 Sentry에서 오래 일했고, 지금은 자신의 에이전트 하니스(harness) Pi를 만들며 에이전트와 도구 설계에 대한 글을 꾸준히 쓴다. 이 글은 그 Pi에 넣은 Codemode를 설명한다.
+> **저자:** 아르민 로나허(Armin Ronacher) — 파이썬 웹 프레임워크 Flask와 템플릿 엔진 Jinja, WSGI 라이브러리 Werkzeug를 만든 개발자. 오류 모니터링 회사 Sentry[^sentry]에서 오래 일했고, 지금은 자신의 에이전트 하니스(harness) Pi[^pi]를 만들며 에이전트와 도구 설계에 대한 글을 꾸준히 쓴다. 이 글은 그 Pi에 넣은 Codemode를 설명한다.
 >
 > 아래는 원문의 절 순서를 따라 요지를 정리하고 해설을 붙인 노트다. 요지 정리와 해설은 옮긴 이의 것이고 전문은 위 링크에서 읽을 수 있다.
 
@@ -29,6 +29,46 @@ summary: "Armin Ronacher가 자신의 에이전트 하니스 Pi에 넣은 Codemo
 | 병렬 처리 | 어렵다(한 번에 하나) | `Promise.all`로 여러 호출을 동시에 |
 | 중간 집계 | 모델이 직접 읽고 세야 한다 | 코드가 집계한다 |
 
+**파이썬으로 비유하면.** Pi의 Codemode는 JavaScript로 돌지만, 차이를 보기 쉽게 파이썬으로 옮겨 보면 이렇다. 먼저 MCP[^mcp] 도구를 하나씩 부르는 보통의 방식이다. 아래에서 `model.next_action()`은 모델이 다음에 할 일을 정하는 한 번의 추론이고, 그때마다 지금까지의 결과가 모두 컨텍스트에 실린다.
+
+```python
+# 보통의 도구 호출: 모델이 매번 "다음에 뭘 할지" 정하고, 하니스가 도구를 하나 부른다
+context = ["열린 이슈 100개의 감정을 분석해 가장 좌절한 12개를 골라 줘"]
+issues = call_tool("github.list_issues", state="open")   # MCP 도구 호출 1번
+context.append(issues)                                   # 이슈 100개가 통째로 컨텍스트에
+
+for issue in issues:                                     # 모델이 100번 "다음 도구"를 고른다
+    action = model.next_action(context)                  # 추론 1번 = 왕복 1번
+    result = call_tool("jev.classify", text=issue.body,  # MCP 도구 호출
+                       question="좌절 점수 0-10")
+    context.append(result)                               # 결과 100개가 또 컨텍스트에
+
+answer = model.next_action(context)                      # 모델이 101개 결과를 읽고 12개를 고른다
+```
+
+왕복이 101번이고, 컨텍스트에는 이슈 100개와 분류 결과 100개가 그대로 쌓인다. 결과가 길면 뒷부분이 잘린다.
+
+다음은 Codemode다. 모델은 추론 한 번으로 스크립트를 쓰고, 하니스가 그 스크립트를 격리된 런타임에서 실행한다. 도구 호출은 스크립트 안에서 일어나고, 모델에게 돌아오는 것은 스크립트의 반환값뿐이다.
+
+```python
+# Codemode: 모델이 "스크립트 한 편"을 쓰고, 하니스가 실행한다 (실제 Pi는 JavaScript)
+async def script(tools, models, store):
+    issues = await tools.github.list_issues(state="open")       # 100개, 컨텍스트에는 안 들어감
+
+    async def score(issue):                                     # 이슈 하나를 분류기에
+        r = await models.classify(
+            {"text": issue["body"]},
+            question="좌절 점수 0-10", kind="score")
+        return (r["value"], issue["number"], issue["title"])
+
+    scored = await asyncio.gather(*[score(i) for i in issues])   # 병렬 (Pi는 동시 4개로 제한)
+    top = sorted(scored, reverse=True)[:12]
+    store("frustrated_issues", [n for _, n, _ in top])            # 다음 호출에서 쓸 수 있게 저장
+    return "\n".join(f"#{n} ({v}/10) {t}" for v, n, t in top)   # 이 12줄만 모델에게 돌아간다
+```
+
+모델의 추론은 스크립트를 쓸 때 한 번, 결과를 읽을 때 한 번으로 끝난다. 컨텍스트에 들어오는 것은 12줄짜리 반환값이다. 이슈 본문 100개와 분류 결과 100개는 런타임 안에서만 오가고 사라진다. 위 두 코드의 차이가 곧 원문이 말하는 "피처가 아니라 조합의 힘"이다.
+
 **모델이 쓰는 코드의 모양.** 스크립트는 `async` 함수의 본문처럼 실행되어 `await`와 `return`을 바로 쓸 수 있다. 안에서 쓸 수 있는 것은 대략 이렇다.
 
 - `tools.<이름>(인자)` — Pi의 다른 도구를 부른다. `bash`, `read` 같은 기본 도구와 MCP 서버의 도구가 여기에 들어온다.
@@ -37,7 +77,7 @@ summary: "Armin Ronacher가 자신의 에이전트 하니스 Pi에 넣은 Codemo
 - `searchTools()`, `describeTool()`, `ALL_TOOLS` — 쓸 수 있는 도구를 코드 안에서 찾아본다.
 - `models.classify()`, `models.generateImages()` — 분류기, 이미지 생성기처럼 대화형이 아닌 모델을 부른다. 한 스크립트에서 모델 호출은 동시에 4개까지 돌고 나머지는 기다린다.
 
-**샌드박스의 제약.** 스크립트는 WASM 위의 QuickJS에서 돌며 Node API, 파일시스템, 네트워크, 타이머가 없고 메모리는 256MB다. 바깥 세상과 닿는 길은 `tools`와 `models`뿐이다. 스크립트가 다른 Codemode 스크립트를 띄울 수도 없다. 그래서 모델이 쓴 코드가 아무리 길어도 할 수 있는 일은 "허용된 도구를 부르고 그 결과를 가공하는 것"으로 묶인다.
+**샌드박스의 제약.** 스크립트는 WASM[^wasm] 위의 QuickJS[^quickjs]에서 돌며 Node API, 파일시스템, 네트워크, 타이머가 없고 메모리는 256MB다. 바깥 세상과 닿는 길은 `tools`와 `models`뿐이다. 스크립트가 다른 Codemode 스크립트를 띄울 수도 없다. 그래서 모델이 쓴 코드가 아무리 길어도 할 수 있는 일은 "허용된 도구를 부르고 그 결과를 가공하는 것"으로 묶인다.
 
 **MCP 서버는 어떻게 보이나.** MCP 서버의 도구는 서버별 네임스페이스 아래 `tools.<서버>.<도구>()`로 들어온다. 기본값은 "지연 노출(deferred)"이라 `codemode` 도구 설명에 목록이 실리지 않고 스크립트가 `searchTools()` 같은 것으로 필요할 때 찾는다. 서버가 늘어도 도구 설명의 길이가 흔들리지 않게 하려는 설계다.
 
@@ -65,7 +105,7 @@ summary: "Armin Ronacher가 자신의 에이전트 하니스 Pi에 넣은 Codemo
 
 ## 뇌와 손 (Brains vs Hands)
 
-저자는 하니스를 뇌, 도구가 실제로 실행되는 환경을 손이라고 부른다. 둘은 같은 기계에 있을 수도 있지만 파일시스템과 신뢰 수준이 다르다. 뇌는 신뢰하는 쪽이고 손은 격리할 수 있는 쪽이다. Gondolin 같은 샌드박스는 bash를 가둘 수 있지만 하니스 자체를 가두지는 않는다.
+저자는 하니스를 뇌, 도구가 실제로 실행되는 환경을 손이라고 부른다. 둘은 같은 기계에 있을 수도 있지만 파일시스템과 신뢰 수준이 다르다. 뇌는 신뢰하는 쪽이고 손은 격리할 수 있는 쪽이다. Gondolin[^gondolin] 같은 샌드박스는 bash를 가둘 수 있지만 하니스 자체를 가두지는 않는다.
 
 > 해설 — 이 구분이 글 전체의 전제다. Codemode가 "하니스 쪽에서 코드를 돌린다"고 할 때 그 코드는 손이 아니라 뇌 안에서 도는 것이고 그래서 뒤에 나오는 강한 격리(네트워크·파일시스템·타이머 없음)가 필요해진다.
 
@@ -80,7 +120,7 @@ Codemode는 모델이 복잡한 작업을 코드로 표현하면 그 코드를 �
 - `store()` 함수로 상태를 트랜스크립트에 남겨 다음 호출에서 쓸 수 있다.
 - 이미지 생성이나 일회성 분류처럼 일반 도구로 노출하면 어색한 API를 컨텍스트 낭비 없이 쓸 수 있다.
 
-이름은 Cloudflare가 먼저 쓴 것을 가져왔다고 밝힌다.
+이름은 Cloudflare[^cloudflare]가 먼저 쓴 것을 가져왔다고 밝힌다.
 
 > 해설 — 핵심은 "토큰을 아끼자"가 아니라 "컨텍스트를 거치지 않아도 되는 데이터는 거치지 말자"에 가깝다. 100개의 결과를 모델이 읽고 하나씩 판단하는 대신, 코드가 결과를 받아 집계하고 모델에게는 요약만 돌려준다. 모델은 계획을 세우고 코드는 노동을 한다.
 
@@ -94,7 +134,7 @@ Codemode는 모델이 복잡한 작업을 코드로 표현하면 그 코드를 �
 
 ### 분류하기
 
-Jev 분류기로 열린 GitHub 이슈 100개의 감정, 좌절 점수, 이슈 종류를 분석해 저장하고 가장 좌절한 이슈 12개를 돌려준다. `Promise.all`로 한꺼번에 던져도 안전한 이유는 Pi가 동시 도구 실행을 4개로 제한하고 나머지를 줄 세우기 때문이다.
+Jev[^jev] 분류기로 열린 GitHub 이슈 100개의 감정, 좌절 점수, 이슈 종류를 분석해 저장하고 가장 좌절한 이슈 12개를 돌려준다. `Promise.all`로 한꺼번에 던져도 안전한 이유는 Pi가 동시 도구 실행을 4개로 제한하고 나머지를 줄 세우기 때문이다.
 
 두 번째 예시는 같은 분류기로 탱크 게임을 30단계 루프로 조종한다. 매 단계 게임 상태를 분류기에 넣고 공격·접근·회피·파워업 중 하나를 고르게 한다. 게임 상태와 분류기 판단 사이를 오가는 루프 패턴을 보여 준다.
 
@@ -122,7 +162,7 @@ Codemode와 잘 맞으려면 MCP 서버가 갖춰야 할 것으로 네 가지를
 저자는 이것이 예전 CLI 권고를 뒤집는 게 아니라고 말한다. MCP가 자신이 권했던 코드 기반 접근 쪽으로 움직였고 Codemode는 그것을 하니스 안으로 확장한 것이라는 입장이다. 남은 문제도 솔직하게 적는다.
 
 - 내구성(durability): 호출을 스냅샷해 이어 가려면 내구성 워크플로 엔진의 아이디어가 필요할 수 있다.
-- 언어 선택: 결정적(deterministic)인 조합 언어로는 JavaScript보다 Starlark가 나을지 모른다.
+- 언어 선택: 결정적(deterministic)인 조합 언어로는 JavaScript보다 Starlark[^starlark]가 나을지 모른다.
 - 바이너리 데이터와 이미지, 그리고 작은 모델에서 이 패턴이 약하다는 점.
 
 결론은 아직 완성된 답이 아니지만 앞으로 더 쓰게 될 패턴이라는 것이다.
@@ -136,3 +176,13 @@ Codemode와 잘 맞으려면 MCP 서버가 갖춰야 할 것으로 네 가지를
 ## 남는 생각
 
 CLI를 쓰라는 예전 조언과 Codemode는 같은 생각의 두 모습이다. 모델에게 선택지를 많이 보여 주는 대신 조합의 힘을 주라는 것. 차이는 조합이 일어나는 자리다. CLI는 손(실행 환경)에서, Codemode는 뇌(하니스) 안의 격리된 방에서 조합한다. 이 글이 짚는 대로, 그 방에서 무엇을 어디까지 할 수 있게 할지가 다음 설계 과제다.
+
+[^pi]: Pi: 아르민 로나허가 만든 오픈소스 코딩 에이전트 하니스(CLI). 모델에 도구·샌드박스·세션 관리를 붙여 주는 실행기다. 문서는 pi.dev.
+[^mcp]: MCP(Model Context Protocol): Anthropic이 2024년에 공개한 개방 규격. 에이전트가 외부 서비스의 도구·데이터를 같은 방식으로 찾고 부를 수 있게 서버-클라이언트 형식을 정한다.
+[^quickjs]: QuickJS: 파브리스 벨라르(Fabrice Bellard)가 만든 작고 내장하기 쉬운 JavaScript 엔진. 브라우저나 Node.js 없이 JS를 돌릴 때 쓴다.
+[^wasm]: WASM(WebAssembly): 여러 언어로 짠 프로그램을 안전한 샌드박스 안에서 빠르게 돌리기 위한 바이너리 형식. 여기서는 QuickJS 자체를 WASM으로 돌려 격리를 한 겹 더 두었다.
+[^gondolin]: Gondolin: 에이전트가 실행하는 bash 명령을 가두는 샌드박스 도구. 본문에서는 '손'(실행 환경)을 격리하는 예로 든다.
+[^jev]: Jev: 텍스트나 이미지에 대해 '선택·점수·예/아니오' 같은 짧은 질문에 답하는 작은 분류 모델. 대화형 LLM이 아니라 Codemode의 `models.classify()`로 부른다.
+[^sentry]: Sentry: 애플리케이션 오류·성능 모니터링 서비스. 저자가 오래 일한 회사이기도 하고, 본문 예시에서는 MCP 서버로 등장한다.
+[^cloudflare]: Cloudflare: CDN·엣지 컴퓨팅 회사. 'Code Mode'라는 이름으로 모델이 코드를 써서 MCP 도구를 부르게 하는 방식을 먼저 공개했다.
+[^starlark]: Starlark: 구글이 빌드 도구 Bazel용으로 만든 파이썬 닮은 설정 언어. 실행이 결정적이고 부작용이 제한되어 안전한 조합 언어로 거론된다.
