@@ -11,7 +11,7 @@ NotebookLM 오디오 오버뷰(두 진행자의 대화, 21분 54초)에 맞춰 �
 약어: LLM=Large Language Model, 거대 언어 모델; MRR=Mean Reciprocal Rank, 평균 역순위; GPU=Graphics Processing Unit; MLP=Multi-Layer Perceptron, 다층 퍼셉트론; RL=Reinforcement Learning, 강화학습; GRPO=Group Relative Policy Optimization; KV 캐시=Key-Value cache, 어텐션 키·값 저장; A/B 테스트=두 버전(A, B)을 사용자 집단을 나눠 비교하는 실험; AI=Artificial Intelligence
 
 ## 1 | 들어가며 | 표지
-> 수학 공식을 버린 / 넷플릭스의 LLM 추천
+> GenRec: 넷플릭스의 / LLM 기반 추천 랭커
 > GenRec: An LLM-Backed Recommendation Ranker at Netflix, arXiv 2608.10257
 > Netflix, 2026년 8월 · 두 진행자가 대화로 풀어 읽는 논문
 

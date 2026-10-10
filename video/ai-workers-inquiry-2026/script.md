@@ -9,7 +9,7 @@
 잉크: #B5302A
 
 ## 1 | 들어가며 | 표지
-> 만드는 사람들이 직접 쓴 생성형 AI 노동 보고서
+> AI 노동자 조사 / 2026
 > AI Workers' Inquiry 2026, 영국 기술노조 UTAW, 2026년 9월, 36쪽
 > Lynda Ouazar, Eleanor Payne, Lamian Pheres
 

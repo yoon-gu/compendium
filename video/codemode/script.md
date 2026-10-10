@@ -10,7 +10,7 @@
 약어: MCP=Model Context Protocol, 에이전트가 외부 도구를 부르는 개방 규격; CLI=Command-Line Interface, 명령줄 프로그램; LLM=Large Language Model, 거대 언어 모델; JSON=JavaScript Object Notation, 구조화된 데이터 형식; WASM=WebAssembly, 샌드박스용 바이너리 형식; API=Application Programming Interface
 
 ## 1 | 들어가며 | 표지
-> 도구를 하나씩 부르지 말고 / 코드로 묶어 부르게
+> Codemode란 / 무엇인가
 > 아르민 로나허, What is Codemode, 2026년 10월
 > Flask를 만든 개발자가 자신의 에이전트 하니스 Pi에 넣은 설계
 

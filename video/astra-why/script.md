@@ -10,7 +10,7 @@ Armin Ronacher의 "Astra for Coding: Why Are We Doing This Again?"(lucumr.pocoo.
 약어: AI=Artificial Intelligence, 인공지능; GPT=Generative Pre-trained Transformer; API=Application Programming Interface; AGI=Artificial General Intelligence, 범용 인공지능
 
 ## 1 | 들어가며 | 표지
-> 35시간, 10억 토큰, / **쓸 만한 것 없음**
+> 코딩용 Astra: / 우리는 왜 또 이러고 있나
 > Armin Ronacher, Astra for Coding: Why Are We Doing This Again?, 2026년 9월
 > Flask를 만든 개발자가 GPT 6 Astra에게 주말 동안 소프트웨어 공장을 맡겨 본 기록
 

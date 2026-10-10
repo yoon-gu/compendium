@@ -10,7 +10,7 @@
 약어: xG=expected goals, 기대 득점; ASI=Artificial Superintelligence, 초지능; LLM=Large Language Model, 거대 언어 모델
 
 ## 1 | 들어가며 | 표지
-> 채점할 수 없는 / **일을 하라**
+> AI 시대의 / 커리어 조언
 > 필 첸, Career advice in the age of AI, X 아티클, 2026년 7월
 > OpenAI·DeepMind·Scale AI를 거쳐 창업한 사람이 사회 초년생에게 주는 여섯 가지 조언
 
