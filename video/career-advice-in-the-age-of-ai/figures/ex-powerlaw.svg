@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 516" width="888" height="516"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B0472D"/></marker></defs><text x="0" y="36" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">멱법칙 (power law)</text>
+<text x="330" y="36" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">소수가 대부분을 가져가는 분포 (예시)</text>
+<rect x="10" y="100" width="35" height="300" rx="4" fill="#B0472D"/>
+<rect x="53" y="278" width="35" height="122" rx="4" fill="#B0472D"/>
+<rect x="97" y="328" width="35" height="72" rx="4" fill="#B9B9B4"/>
+<rect x="140" y="351" width="35" height="49" rx="4" fill="#B9B9B4"/>
+<rect x="184" y="363" width="35" height="37" rx="4" fill="#B9B9B4"/>
+<rect x="227" y="371" width="35" height="29" rx="4" fill="#B9B9B4"/>
+<rect x="270" y="376" width="35" height="24" rx="4" fill="#B9B9B4"/>
+<rect x="314" y="380" width="35" height="20" rx="4" fill="#B9B9B4"/>
+<rect x="357" y="383" width="35" height="17" rx="4" fill="#B9B9B4"/>
+<rect x="401" y="385" width="35" height="15" rx="4" fill="#B9B9B4"/>
+<rect x="444" y="387" width="35" height="13" rx="4" fill="#B9B9B4"/>
+<rect x="487" y="388" width="35" height="12" rx="4" fill="#B9B9B4"/>
+<rect x="531" y="389" width="35" height="11" rx="4" fill="#B9B9B4"/>
+<rect x="574" y="390" width="35" height="10" rx="4" fill="#B9B9B4"/>
+<rect x="618" y="391" width="35" height="9" rx="4" fill="#B9B9B4"/>
+<rect x="661" y="392" width="35" height="8" rx="4" fill="#B9B9B4"/>
+<rect x="704" y="392" width="35" height="8" rx="4" fill="#B9B9B4"/>
+<rect x="748" y="393" width="35" height="7" rx="4" fill="#B9B9B4"/>
+<rect x="791" y="393" width="35" height="7" rx="4" fill="#B9B9B4"/>
+<rect x="835" y="394" width="35" height="6" rx="4" fill="#B9B9B4"/>
+<line x1="0" y1="400" x2="888" y2="400" stroke="#B9B9B4" stroke-width="3"/>
+<text x="116.8" y="288.1621405465647" font-size="28" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">상위 10%가 전체의 약 54%</text>
+<text x="0" y="444" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">회사·커리어의 결과 순위 →</text>
+<text x="0" y="496" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">AI로 단순한 것은 누구나 만들게 되면서 쏠림이 더 가팔라졌다</text></svg>

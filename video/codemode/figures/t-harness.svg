@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 470" width="888" height="470"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5F7A"/></marker></defs><rect x="0" y="0" width="888" height="470" rx="14" fill="#FFFFFF" stroke="#1F5F7A" stroke-width="4"/>
+<text x="28" y="54" font-size="32" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">하니스 (harness) = 모델에 채우는 마구</text>
+<rect x="294" y="170" width="300" height="130" rx="14" fill="#ECECE8" stroke="#141414" stroke-width="4"/>
+<text x="444" y="228" font-size="36" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델</text>
+<text x="444" y="270" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">(LLM)</text>
+<rect x="28" y="96" width="300" height="70" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="178" y="142" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구 정의·실행</text>
+<rect x="560" y="96" width="300" height="70" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="710" y="142" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">샌드박스</text>
+<rect x="28" y="340" width="300" height="70" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="178" y="386" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">세션·기록</text>
+<rect x="560" y="340" width="300" height="70" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="710" y="386" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">권한·설정</text>
+<text x="28" y="446" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예: Pi, Claude Code, Codex CLI — 모델을 에이전트로 만드는 실행기</text></svg>

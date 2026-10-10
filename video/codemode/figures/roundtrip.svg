@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 700" width="888" height="700"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5F7A"/></marker></defs><text x="0" y="36" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">보통의 도구 호출</text>
+<text x="468" y="36" font-size="32" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Codemode</text>
+<rect x="10" y="60" width="120" height="54" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="70" y="97" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델</text>
+<line x1="70" y1="114" x2="70" y2="500" stroke="#B9B9B4" stroke-width="3" stroke-dasharray="8 8"/>
+<rect x="290" y="60" width="120" height="54" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="350" y="97" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구</text>
+<line x1="350" y1="114" x2="350" y2="500" stroke="#B9B9B4" stroke-width="3" stroke-dasharray="8 8"/>
+<line x1="74" y1="150" x2="344" y2="150" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<text x="210" y="140" font-size="25" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">호출 1</text>
+<line x1="346" y1="194" x2="76" y2="194" stroke="#6B6B68" stroke-width="3" marker-end="url(#a)"/>
+<text x="210" y="186" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">결과 1</text>
+<line x1="74" y1="250" x2="344" y2="250" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<text x="210" y="240" font-size="25" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">호출 2</text>
+<line x1="346" y1="294" x2="76" y2="294" stroke="#6B6B68" stroke-width="3" marker-end="url(#a)"/>
+<text x="210" y="286" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">결과 2</text>
+<line x1="74" y1="350" x2="344" y2="350" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<text x="210" y="340" font-size="25" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">호출 3</text>
+<line x1="346" y1="394" x2="76" y2="394" stroke="#6B6B68" stroke-width="3" marker-end="url(#a)"/>
+<text x="210" y="386" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">결과 3</text>
+<text x="210" y="470" font-size="28" fill="#1F5F7A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">⋮  100번 왕복</text>
+<rect x="478" y="60" width="120" height="54" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="538" y="97" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델</text>
+<line x1="538" y1="114" x2="538" y2="500" stroke="#B9B9B4" stroke-width="3" stroke-dasharray="8 8"/>
+<rect x="690" y="60" width="194" height="440" rx="14" fill="#FFFFFF" stroke="#1F5F7A" stroke-width="4"/>
+<text x="787" y="94" font-size="24" fill="#1F5F7A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">하니스 런타임</text>
+<line x1="542" y1="150" x2="684" y2="150" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<text x="613" y="136" font-size="25" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">스크립트 1편</text>
+<circle cx="714" cy="140" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="743" cy="140" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="772" cy="140" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="801" cy="140" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="830" cy="140" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="859" cy="140" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="714" cy="168" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="743" cy="168" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="772" cy="168" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="801" cy="168" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="830" cy="168" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="859" cy="168" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="714" cy="196" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="743" cy="196" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="772" cy="196" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="801" cy="196" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="830" cy="196" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="859" cy="196" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="714" cy="224" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="743" cy="224" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="772" cy="224" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="801" cy="224" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="830" cy="224" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="859" cy="224" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="714" cy="252" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="743" cy="252" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="772" cy="252" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="801" cy="252" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="830" cy="252" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="859" cy="252" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="714" cy="280" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="743" cy="280" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="772" cy="280" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="801" cy="280" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="830" cy="280" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="859" cy="280" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="714" cy="308" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="743" cy="308" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="772" cy="308" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="801" cy="308" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="830" cy="308" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="859" cy="308" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="714" cy="336" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="743" cy="336" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="772" cy="336" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="801" cy="336" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="830" cy="336" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="859" cy="336" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="714" cy="364" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="743" cy="364" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="772" cy="364" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="801" cy="364" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="830" cy="364" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="859" cy="364" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="714" cy="392" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="743" cy="392" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="772" cy="392" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="801" cy="392" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="830" cy="392" r="9" fill="#1F5F7A" opacity="0.55"/>
+<circle cx="859" cy="392" r="9" fill="#1F5F7A" opacity="0.55"/>
+<text x="787" y="438" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구 호출 100번</text>
+<text x="787" y="466" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">(병렬, 안에서만)</text>
+<line x1="686" y1="484" x2="544" y2="484" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<text x="613" y="474" font-size="24" fill="#1F5F7A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">12줄</text>
+<text x="0" y="560" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">컨텍스트에 쌓이는 것</text>
+<rect x="0" y="580" width="420" height="44" rx="8" fill="#1F5F7A" stroke="#B9B9B4" stroke-width="0"/>
+<text x="16" y="611" font-size="24" fill="#FFFFFF" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">결과 100개 전부</text>
+<rect x="468" y="580" width="420" height="44" rx="8" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<rect x="468" y="580" width="60" height="44" rx="8" fill="#1F5F7A" stroke="#B9B9B4" stroke-width="0"/>
+<text x="544" y="611" font-size="24" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">반환값 12줄만</text>
+<text x="0" y="680" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델 추론 101번</text>
+<text x="468" y="680" font-size="30" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델 추론 2번</text></svg>

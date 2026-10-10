@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 642" width="888" height="642"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C4A12"/></marker></defs><text x="0" y="40" font-size="36" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코드골프 (code golf)</text>
+<text x="0" y="82" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 일을 하는 프로그램을 가장 적은 글자로 쓰는 놀이</text>
+<rect x="0" y="100" width="888" height="296" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="148" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람이 읽기 좋게 · 5줄</text>
+<text x="24" y="200" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">total = 0</text>
+<text x="24" y="240" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">for n in range(1, 101):</text>
+<text x="24" y="280" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">    if n % 2 == 0:</text>
+<text x="24" y="320" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        total += n</text>
+<text x="24" y="360" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">print(total)</text>
+<rect x="0" y="436" width="888" height="136" rx="14" fill="#FFFFFF" stroke="#8C4A12" stroke-width="4"/>
+<text x="24" y="484" font-size="28" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코드골프 · 26글자</text>
+<text x="24" y="536" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">print(sum(range(2,101,2)))</text>
+<text x="0" y="622" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">둘 다 1부터 100까지 짝수의 합 · 지어낸 예시</text></svg>

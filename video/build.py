@@ -3,6 +3,7 @@
 
     python3 build.py managers-path-in-the-age-of-ai              # 진우 목소리로 <슬러그>/out/<슬러그>.mp4
     python3 build.py <슬러그> --voice=준호                         # 다른 목소리(이름 또는 tc_ 아이디). 목소리마다 캐시가 따로다
+    python3 build.py <슬러그> --voice=유나                         # macOS 내장 Yuna(say) — 타입캐스트 크레딧 0
     python3 build.py <슬러그> --slides-only                       # 화면 PNG 만 굽는다(크레딧 안 씀)
     python3 build.py <슬러그> --wide                              # 가로(1920x1080)판 → out/<슬러그>-가로.mp4. 녹음은 같은 캐시를 쓴다(크레딧 0)
     python3 build.py <슬러그> --audio=work/overview.m4a           # 녹음 대신 외부 음성(예: NotebookLM 오디오 오버뷰)을 입힌다.
@@ -44,7 +45,8 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 TTS_URL = "https://api.typecast.ai/v1/text-to-speech"
 KEY_PATH = Path.home() / ".config/typecast-key.txt"
 VOICES = {"진우": "tc_632293f759d649937b97f323", "준호": "tc_632a7588e7c78a412f5a36cd",
-          "다은": "tc_692799c46508f6b9468c54c7", "소혜": "tc_642f9d147ce3f79717423466"}
+          "다은": "tc_692799c46508f6b9468c54c7", "소혜": "tc_642f9d147ce3f79717423466", "유나": "Yuna"}
+MAC_VOICES = {"Yuna"}               # macOS `say` 목소리(타입캐스트 대신, 크레딧 0)
 VOICE = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--voice=")), "진우")
 VOICE_ID = VOICES.get(VOICE, VOICE)
 MODEL, EMOTION = "ssfm-v30", "normal"
@@ -102,6 +104,9 @@ def tts(text: str) -> Path:
     cache.mkdir(parents=True, exist_ok=True)
     dest = cache / (hashlib.sha1(f"{VOICE_ID}|{EMOTION}|{MODEL}|{text}".encode()).hexdigest()[:12] + ".wav")
     if dest.exists():
+        return dest
+    if VOICE_ID in MAC_VOICES:   # macOS 내장 목소리: 크레딧 0
+        subprocess.run(["say", "-v", VOICE_ID, "--file-format=WAVE", "--data-format=LEI16@24000", "-o", str(dest), text], check=True)
         return dest
     body = json.dumps({"voice_id": VOICE_ID, "text": text, "model": MODEL, "emotion": EMOTION}).encode()
     for attempt in range(5):

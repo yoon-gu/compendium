@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 796" width="888" height="796"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C4A12"/></marker></defs><rect x="0" y="0" width="888" height="160" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="58" font-size="36" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람 · 프롬프트 한 번</text>
+<text x="28" y="110" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">‘가상 스레드와 어휘적 범위가 있는 파이썬 포크’</text>
+<line x1="444.0" y1="164" x2="444.0" y2="208" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="212" width="888" height="160" rx="14" fill="#FFFFFF" stroke="#8C4A12" stroke-width="4"/>
+<text x="28" y="270" font-size="36" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">주 에이전트 (GPT 6 Astra)</text>
+<text x="28" y="322" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">작업 흐름을 스스로 정하고, 자기 컨텍스트를 관리</text>
+<line x1="444.0" y1="376" x2="444.0" y2="420" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="424" width="888" height="160" rx="14" fill="#FFFFFF" stroke="#8C4A12" stroke-width="4"/>
+<text x="28" y="482" font-size="36" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">agent-notes 폴더 · 하위 에이전트들</text>
+<text x="28" y="534" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">메모를 남기고, 일을 쪼개 하위 에이전트에게</text>
+<line x1="444.0" y1="588" x2="444.0" y2="632" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="636" width="888" height="160" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="694" font-size="36" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">커밋 → 다시 계획 → 다시 커밋 …</text>
+<text x="28" y="746" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람이 중간에 들여다보지 않는 채로 주말 내내</text></svg>

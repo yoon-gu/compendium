@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 710" width="888" height="710"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C4A12"/></marker></defs><text x="0" y="40" font-size="34" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">저자가 본 코드골프식 도구 호출</text>
+<rect x="0" y="70" width="888" height="112" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="118" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">C 소스를 파이썬 문자열로</text>
+<text x="24" y="162" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">패치 도구 대신 잘라 붙이기, 빌드·테스트까지</text>
+<rect x="0" y="198" width="888" height="112" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="246" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">소켓 코드골프</text>
+<text x="24" y="290" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">파일 디스크립터 전달을 압축 스크립트로 시험</text>
+<rect x="0" y="326" width="888" height="112" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="374" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">메모 고치기</text>
+<text x="24" y="418" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">정규식 치환 한 줄 + 바로 git 명령</text>
+<rect x="0" y="454" width="888" height="112" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="502" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">파이썬으로 Node.js</text>
+<text x="24" y="546" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">가상 머신 속 윈도우에서 클립보드 시험</text>
+<rect x="0" y="582" width="888" height="112" rx="14" fill="#FFFFFF" stroke="#8C4A12" stroke-width="4"/>
+<text x="24" y="630" font-size="30" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Bash → Python → Node → PowerShell</text>
+<text x="24" y="674" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">명령 하나가 네 겹의 사슬로</text></svg>

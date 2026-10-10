@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 474" width="888" height="474"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5F7A"/></marker></defs><rect x="0" y="0" width="888" height="474" rx="14" fill="#1E1E1C" stroke="#2A2A28" stroke-width="0"/>
+<text x="28" y="56" font-size="26" fill="#9FC6D6" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">// 모델이 쓴 스크립트 (요약)</text>
+<text x="28" y="102" font-size="26" fill="#F4F4F1" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">const issues = await tools.github.list_issues(</text>
+<text x="28" y="148" font-size="26" fill="#F4F4F1" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">    { state: "open" });</text>
+<text x="28" y="194" font-size="26" fill="#F4F4F1" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">const scored = await Promise.all(issues.map(i =&gt;</text>
+<text x="28" y="240" font-size="26" fill="#F4F4F1" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">    models.classify({ text: i.body },</text>
+<text x="28" y="286" font-size="26" fill="#F4F4F1" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        { question: "좌절 점수 0-10" })));</text>
+<text x="28" y="332" font-size="26" fill="#F4F4F1" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">const top = scored.sort(byScore).slice(0, 12);</text>
+<text x="28" y="378" font-size="26" fill="#F4F4F1" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">store("frustrated_issues", top);</text>
+<text x="28" y="424" font-size="26" fill="#9FC6D6" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">return top;   // 이 값만 모델에게</text></svg>

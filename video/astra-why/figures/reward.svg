@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 574" width="888" height="574"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C4A12"/></marker></defs><text x="0" y="36" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">저자의 추측 · 훈련이 무엇에 보상을 주는가</text>
+<text x="0" y="100" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">긴 과제를 끝까지 완료</text>
+<rect x="0" y="116" width="888" height="42" rx="8" fill="#ECECE8"/>
+<rect x="0" y="116" width="843" height="42" rx="8" fill="#8C4A12"/>
+<text x="0" y="216" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">토큰 효율</text>
+<rect x="0" y="232" width="888" height="42" rx="8" fill="#ECECE8"/>
+<rect x="0" y="232" width="666" height="42" rx="8" fill="#8C4A12"/>
+<text x="0" y="332" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">단순한 지표 (순환 복잡도 등)</text>
+<rect x="0" y="348" width="888" height="42" rx="8" fill="#ECECE8"/>
+<rect x="0" y="348" width="532" height="42" rx="8" fill="#8C4A12"/>
+<text x="0" y="448" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람이 읽기 좋은 코드</text>
+<rect x="0" y="464" width="888" height="42" rx="8" fill="#ECECE8"/>
+<rect x="0" y="464" width="53" height="42" rx="8" fill="#6B6B68"/>
+<text x="0" y="554" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">막대 길이는 개념 그림 · 실제 측정값 아님</text></svg>

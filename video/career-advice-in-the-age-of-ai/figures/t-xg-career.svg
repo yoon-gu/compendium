@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 416" width="888" height="416"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B0472D"/></marker></defs><text x="0" y="40" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">커리어로 옮기면</text>
+<rect x="0" y="70" width="420" height="270" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="126" font-size="36" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">xG 높이기</text>
+<text x="26" y="178" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">기회가 보이는 자리에 서기</text>
+<text x="26" y="228" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">← 평판</text>
+<text x="26" y="278" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">← 관심 문제에 쏟은 시간</text>
+<rect x="468" y="70" width="420" height="270" rx="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="4"/>
+<text x="494" y="126" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">결정력 높이기</text>
+<text x="494" y="178" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">온 기회를 골로 바꾸기</text>
+<text x="494" y="228" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">← 판단의 질</text>
+<text x="494" y="278" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">← 결정 전 데이터 모으기</text>
+<text x="0" y="396" font-size="27" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">저자의 반성은 오른쪽: 데이터를 더 모았으면 좋았겠다</text></svg>

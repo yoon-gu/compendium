@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 390" width="888" height="390"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B0472D"/></marker></defs><text x="0" y="40" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">에이전트 시대의 면접</text>
+<rect x="0" y="70" width="420" height="300" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="126" font-size="36" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">예전 면접</text>
+<text x="26" y="178" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">리트코드 문제</text>
+<text x="26" y="228" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">시스템 설계 질문</text>
+<line x1="26" y1="168" x2="220" y2="168" stroke="#6B6B68" stroke-width="4"/>
+<line x1="26" y1="218" x2="250" y2="218" stroke="#6B6B68" stroke-width="4"/>
+<text x="26" y="330" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">실제 성과와 상관이 없다</text>
+<rect x="468" y="70" width="420" height="300" rx="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="4"/>
+<text x="494" y="126" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">지금 면접</text>
+<text x="494" y="178" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">① 낯선 환경 빨리 이해</text>
+<text x="494" y="228" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">② 풀 가치 있는 문제 찾기</text>
+<text x="494" y="278" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">③ 제약 안에서 실제로 풀기</text></svg>

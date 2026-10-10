@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 820" width="888" height="820"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C4A12"/></marker></defs><text x="0" y="40" font-size="34" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">순환 복잡도 (cyclomatic complexity)</text>
+<text x="0" y="82" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코드 안의 독립된 실행 경로 수 · 낮을수록 단순하다고 본다</text>
+<line x1="444.0" y1="178.0" x2="444.0" y2="208.2" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<line x1="411.68282618686305" y1="269.9900044204971" x2="285.5488911944507" y2="348.01099513745316" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<line x1="476.31717381313695" y1="269.9900044204971" x2="602.4511088055493" y2="348.01099513745316" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<line x1="282.31717381313695" y1="389.9900044204971" x2="408.4511088055493" y2="468.01099513745316" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<line x1="605.682826186863" y1="389.9900044204971" x2="479.5488911944507" y2="468.01099513745316" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<line x1="444.0" y1="528.0" x2="444.0" y2="558.2" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<rect x="354" y="108" width="180" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="444" y="150" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시작</text>
+<rect x="354" y="218" width="180" height="64" rx="32" fill="#FFFFFF" stroke="#8C4A12" stroke-width="4"/>
+<text x="444" y="260" font-size="28" fill="#8C4A12" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">if 조건</text>
+<rect x="160" y="338" width="180" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="250" y="380" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">A</text>
+<rect x="548" y="338" width="180" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="638" y="380" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">B</text>
+<rect x="354" y="458" width="180" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="444" y="500" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">합류</text>
+<rect x="354" y="568" width="180" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="444" y="610" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">끝</text>
+<text x="0" y="700" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">M = E − N + 2  →  6 − 6 + 2 = 2 (경로 둘)</text>
+<text x="0" y="750" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">분기를 숫자 표로 숨기면 M 은 1로 떨어진다</text>
+<text x="0" y="794" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지표는 좋아지지만, 사람에게는 매직 넘버만 남는다</text></svg>

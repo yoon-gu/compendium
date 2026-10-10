@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 610" width="888" height="610"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C4A12"/></marker></defs><text x="0" y="40" font-size="36" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">내권 (内卷, involution)</text>
+<text x="0" y="82" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모두가 더 많이 일하는데, 아무도 나아지지 않는 상태</text>
+<line x1="70" y1="440" x2="878" y2="440" stroke="#B9B9B4" stroke-width="3"/>
+<line x1="70" y1="120" x2="70" y2="440" stroke="#B9B9B4" stroke-width="3"/>
+<text x="474.0" y="484" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시간 →</text>
+<polyline points="70,430 110,428 150,423 190,417 230,409 270,400 310,390 350,378 390,366 430,353 470,338 510,323 550,307 590,291 630,273 670,255 710,236 750,216 790,195 830,174 870,152" fill="none" stroke="#8C4A12" stroke-width="6"/>
+<polyline points="70,372 110,371 150,370 190,369 230,368 270,368 310,368 350,368 390,368 430,368 470,368 510,368 550,368 590,368 630,368 670,368 710,368 750,368 790,368 830,368 870,368" fill="none" stroke="#6B6B68" stroke-width="6" stroke-dasharray="14 8"/>
+<text x="874" y="170" font-size="28" fill="#8C4A12" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">들어가는 토큰·시간</text>
+<text x="874" y="352" font-size="28" fill="#6B6B68" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">나오는 소프트웨어의 질</text>
+<text x="0" y="540" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">원래는 농업을 두고 쓴 인류학 개념 → 중국 인터넷의 '소모적 경쟁'</text>
+<text x="0" y="590" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">저자: 지금의 AI 엔지니어링이 이 모양이다</text></svg>

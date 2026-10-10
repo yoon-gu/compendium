@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 310" width="888" height="310"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C4A12"/></marker></defs><text x="0" y="36" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 테스트 코드의 토큰 수</text>
+<rect x="0" y="60" width="888" height="70" rx="10" fill="#B9B9B4"/>
+<text x="20" y="106" font-size="30" fill="#FFFFFF" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">ruff format 을 돌린 뒤 · 100</text>
+<rect x="0" y="160" width="799" height="70" rx="10" fill="#8C4A12"/>
+<text x="20" y="206" font-size="30" fill="#FFFFFF" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델이 쓴 그대로 · 약 90</text>
+<text x="0" y="290" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">아낀 것은 약 10% · 잃은 것은 사람이 읽을 수 있는 모양</text></svg>

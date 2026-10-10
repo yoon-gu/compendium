@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 480" width="888" height="480"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5F7A"/></marker></defs><rect x="0" y="0" width="888" height="300" rx="14" fill="#FFFFFF" stroke="#1F5F7A" stroke-width="4"/>
+<text x="26" y="50" font-size="30" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Pi Codemode (바깥 스크립트)</text>
+<rect x="40" y="80" width="808" height="190" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="66" y="126" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">MCP 서버 자체의 Code Mode (안쪽 스크립트)</text>
+<text x="66" y="176" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코드를 문자열로 넘기고, 결과도 문자열 안의 JSON</text>
+<text x="66" y="226" font-size="25" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">"{\"result\": \"{\\\"id\\\": 1}\"}"</text>
+<text x="0" y="360" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">· JSON 이 두 번 이스케이프된다</text>
+<text x="0" y="410" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">· 작은 모델은 헷갈린다</text>
+<text x="0" y="460" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">· 안쪽 코드는 바깥 도구를 부를 수 없다</text></svg>

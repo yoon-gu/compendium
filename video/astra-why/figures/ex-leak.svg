@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 868" width="888" height="868"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C4A12"/></marker></defs><rect x="0" y="0" width="888" height="476" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="48" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람이 쓰는 모양 · 이름 붙인 상수, 들여쓰기</text>
+<text x="24" y="100" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">MAX_RETRIES = 3</text>
+<text x="24" y="138" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">TIMEOUT_SEC = 5</text>
+<text x="24" y="176" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"></text>
+<text x="24" y="214" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">def fetch_with_retry(url):</text>
+<text x="24" y="252" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">    for attempt in range(MAX_RETRIES):</text>
+<text x="24" y="290" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        try:</text>
+<text x="24" y="328" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">            return fetch(url, timeout=TIMEOUT_SEC)</text>
+<text x="24" y="366" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        except TimeoutError:</text>
+<text x="24" y="404" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">            log(f"retry {attempt + 1}")</text>
+<text x="24" y="442" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">    raise FetchFailed(url)</text>
+<rect x="0" y="512" width="888" height="286" rx="14" fill="#FFFFFF" stroke="#8C4A12" stroke-width="4"/>
+<text x="24" y="560" font-size="28" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코드골프식 · 매직 넘버, 들여쓰기 최소</text>
+<text x="24" y="612" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">def f(u):</text>
+<text x="24" y="650" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> for i in range(3):</text>
+<text x="24" y="688" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">  try:return g(u,timeout=5)</text>
+<text x="24" y="726" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">  except TimeoutError:p(i+1)</text>
+<text x="24" y="764" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> raise E(u)</text>
+<text x="0" y="848" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 동작 · 지어낸 예시 (원문 코드 아님)</text></svg>

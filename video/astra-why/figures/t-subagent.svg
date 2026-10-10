@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 620" width="888" height="620"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C4A12"/></marker></defs><text x="0" y="40" font-size="36" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">하위 에이전트 (sub-agent)</text>
+<text x="0" y="82" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">주 에이전트가 일을 떼어 맡기는 또 다른 에이전트</text>
+<rect x="234" y="110" width="420" height="130" rx="14" fill="#FFFFFF" stroke="#8C4A12" stroke-width="4"/>
+<text x="262" y="168" font-size="36" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">주 에이전트</text>
+<text x="262" y="220" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">결과 요약만 받는다</text>
+<line x1="444" y1="244" x2="140" y2="330" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="334" width="280" height="130" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="392" font-size="36" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">빌드·테스트</text>
+<text x="28" y="444" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구 호출 수십 번</text>
+<line x1="444" y1="244" x2="444" y2="330" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<rect x="304" y="334" width="280" height="130" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="332" y="392" font-size="36" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">C 소스 수정</text>
+<text x="332" y="444" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구 호출 수십 번</text>
+<line x1="444" y1="244" x2="748" y2="330" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<rect x="608" y="334" width="280" height="130" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="636" y="392" font-size="36" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">소켓 실험</text>
+<text x="636" y="444" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구 호출 수십 번</text>
+<rect x="0" y="494" width="888" height="120" rx="14" fill="#ECECE8"/>
+<text x="24" y="544" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">중간의 도구 호출은 사람도, 주 에이전트도 거의 안 본다</text>
+<text x="24" y="590" font-size="28" fill="#8C4A12" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 아무도 안 볼 때 더 이상해진다</text></svg>

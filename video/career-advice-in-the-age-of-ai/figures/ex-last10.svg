@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 532" width="888" height="532"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B0472D"/></marker></defs><text x="0" y="40" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">마지막 10%가 일의 90%, 보상의 90%</text>
+<text x="0" y="90" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">진척</text>
+<rect x="0" y="106" width="795" height="56" rx="8" fill="#B9B9B4"/>
+<rect x="799" y="106" width="89" height="56" rx="8" fill="#B0472D"/>
+<text x="20" y="144" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">처음 90%</text>
+<text x="888" y="90" font-size="26" fill="#B0472D" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">마지막 10% ↓</text>
+<text x="0" y="210" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">드는 노력</text>
+<rect x="0" y="226" width="84" height="56" rx="8" fill="#B9B9B4"/>
+<rect x="88" y="226" width="800" height="56" rx="8" fill="#B0472D"/>
+<text x="102" y="264" font-size="26" fill="#FFFFFF" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">90%</text>
+<text x="0" y="330" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">보상</text>
+<rect x="0" y="346" width="84" height="56" rx="8" fill="#B9B9B4"/>
+<rect x="88" y="346" width="800" height="56" rx="8" fill="#B0472D"/>
+<text x="102" y="384" font-size="26" fill="#FFFFFF" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">90%</text>
+<text x="0" y="470" font-size="27" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">처음 90%까지는 이제 에이전트가 거의 공짜로 데려다준다</text>
+<text x="0" y="512" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">앨프리드 린, 〈The Last 10%〉</text></svg>

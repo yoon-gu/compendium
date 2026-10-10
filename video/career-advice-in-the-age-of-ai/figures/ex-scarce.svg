@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 490" width="888" height="490"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B0472D"/></marker></defs><text x="0" y="40" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">무엇이 흔해지고, 무엇이 귀해졌나</text>
+<rect x="0.0" y="70" width="432.0" height="160" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24.0" y="150" font-size="56" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">자본</text>
+<text x="24.0" y="198" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">어느 때보다 구하기 쉽다</text>
+<line x1="20.0" y1="132" x2="150.0" y2="132" stroke="#6B6B68" stroke-width="5"/>
+<rect x="456.0" y="70" width="432.0" height="160" rx="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="3"/>
+<text x="480.0" y="150" font-size="56" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">시간</text>
+<text x="480.0" y="198" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">사람의 진짜 시간</text>
+<rect x="0.0" y="250" width="432.0" height="160" rx="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="3"/>
+<text x="24.0" y="330" font-size="56" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">관계</text>
+<text x="24.0" y="378" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">끈끈한 관계</text>
+<rect x="456.0" y="250" width="432.0" height="160" rx="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="3"/>
+<text x="480.0" y="330" font-size="56" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">평판</text>
+<text x="480.0" y="378" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">이미 보여 준 탁월함</text>
+<text x="0" y="470" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">퀀트 연봉 차이보다 Scale의 네트워크와 배움이 더 컸다는 저자의 회고</text></svg>

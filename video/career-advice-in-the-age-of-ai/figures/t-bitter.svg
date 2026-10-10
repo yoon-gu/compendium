@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 530" width="888" height="530"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B0472D"/></marker></defs><text x="0" y="36" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">쓴 교훈 (The Bitter Lesson)</text>
+<line x1="70" y1="420" x2="888" y2="420" stroke="#B9B9B4" stroke-width="3"/>
+<line x1="70" y1="70" x2="70" y2="420" stroke="#B9B9B4" stroke-width="3"/>
+<text x="474.0" y="464" font-size="27" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">계산 규모 →</text>
+<text x="0" y="96" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">성능</text>
+<polyline points="70,311 97,299 124,289 151,281 178,274 205,268 232,264 259,260 285,257 312,254 339,252 366,251 393,249 420,248 447,247 474,247 501,246 528,245 555,245 582,245 609,244 636,244 663,244 689,244 716,244 743,244 770,244 797,244 824,243 851,243 878,243" fill="none" stroke="#6B6B68" stroke-width="4"/>
+<polyline points="70,393 97,392 124,389 151,386 178,381 205,376 232,371 259,365 285,358 312,351 339,343 366,335 393,326 420,317 447,307 474,297 501,287 528,276 555,265 582,254 609,242 636,229 663,217 689,204 716,191 743,177 770,163 797,149 824,134 851,119 878,104" fill="none" stroke="#B0472D" stroke-width="6"/>
+<text x="882" y="283.2" font-size="25" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">과제별로 공들인 방법</text>
+<text x="638" y="90" font-size="26" fill="#B0472D" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">범용 방법을 키우기</text>
+<text x="0" y="516" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">리치 서튼, 2019 · 개형만 그린 그림</text></svg>

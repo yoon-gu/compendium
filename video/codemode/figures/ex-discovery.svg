@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 520" width="888" height="520"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5F7A"/></marker></defs><text x="0" y="34" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">목록 통째로 싣기</text>
+<text x="468" y="34" font-size="30" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">필요할 때 찾기</text>
+<rect x="0" y="56" width="420" height="400" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<rect x="20" y="74" width="380" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="101" width="343" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="128" width="306" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="155" width="269" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="182" width="372" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="209" width="335" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="236" width="298" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="263" width="261" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="290" width="364" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="317" width="327" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="344" width="290" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="371" width="253" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="398" width="356" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="20" y="425" width="319" height="16" rx="4" fill="#B9B9B4"/>
+<rect x="468" y="56" width="420" height="400" rx="14" fill="#FFFFFF" stroke="#1F5F7A" stroke-width="4"/>
+<text x="490" y="108" font-size="24" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">searchTools("sentry")</text>
+<line x1="678" y1="128" x2="678" y2="186" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="490" y="196" width="376" height="56" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="508" y="233" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">sentry.list_orgs</text>
+<rect x="490" y="266" width="376" height="56" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="508" y="303" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">sentry.list_projects</text>
+<text x="490" y="380" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구 설명 길이는</text>
+<text x="490" y="416" font-size="26" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서버가 늘어도 그대로</text>
+<text x="0" y="500" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">MCP 서버마다 도구 수십 개 → 매 요청 컨텍스트에</text></svg>

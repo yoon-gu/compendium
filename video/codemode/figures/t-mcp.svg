@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 520" width="888" height="520"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5F7A"/></marker></defs><rect x="0" y="110" width="300" height="200" rx="14" fill="#FFFFFF" stroke="#1F5F7A" stroke-width="4"/>
+<text x="26" y="164" font-size="34" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트</text>
+<text x="26" y="216" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">(하니스)</text>
+<rect x="468" y="40" width="420" height="100" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="494" y="84" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">GitHub MCP 서버</text>
+<text x="494" y="122" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구 목록 + 실행</text>
+<line x1="304" y1="210" x2="462" y2="90" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="468" y="170" width="420" height="100" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="494" y="214" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Sentry MCP 서버</text>
+<text x="494" y="252" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구 목록 + 실행</text>
+<line x1="304" y1="210" x2="462" y2="220" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="468" y="300" width="420" height="100" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="494" y="344" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Cloudflare MCP 서버</text>
+<text x="494" y="382" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구 목록 + 실행</text>
+<line x1="304" y1="210" x2="462" y2="350" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<text x="330" y="30" font-size="25" fill="#1F5F7A" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 규격으로 연결</text>
+<text x="0" y="460" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서비스마다 따로 붙이지 않고, 한 가지 꽂는 방식으로</text>
+<text x="0" y="500" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구를 찾고 부른다 (Anthropic, 2024 공개)</text></svg>

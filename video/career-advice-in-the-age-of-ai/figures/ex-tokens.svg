@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 490" width="888" height="490"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B0472D"/></marker></defs><text x="0" y="40" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">같은 문제, 다른 비용</text>
+<text x="340" y="40" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">답에 이르는 시간과 토큰 (예시)</text>
+<text x="0" y="120" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">지원자 A</text>
+<rect x="150" y="90" width="738" height="44" rx="8" fill="#ECECE8"/>
+<rect x="150" y="90" width="206" height="44" rx="8" fill="#B0472D"/>
+<text x="370" y="122" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">직관 + 바깥 맥락</text>
+<text x="0" y="212" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">지원자 B</text>
+<rect x="150" y="182" width="738" height="44" rx="8" fill="#ECECE8"/>
+<rect x="150" y="182" width="405" height="44" rx="8" fill="#B9B9B4"/>
+<text x="0" y="304" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">지원자 C</text>
+<rect x="150" y="274" width="738" height="44" rx="8" fill="#ECECE8"/>
+<rect x="150" y="274" width="575" height="44" rx="8" fill="#B9B9B4"/>
+<text x="0" y="396" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">지원자 D</text>
+<rect x="150" y="366" width="738" height="44" rx="8" fill="#ECECE8"/>
+<rect x="150" y="366" width="738" height="44" rx="8" fill="#B9B9B4"/>
+<text x="166" y="398" font-size="24" fill="#FFFFFF" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">에이전트에게 통째로</text>
+<text x="0" y="470" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">에이전트가 같아도 문제를 어떻게 나눠 맡기느냐에서 차이가 난다</text></svg>

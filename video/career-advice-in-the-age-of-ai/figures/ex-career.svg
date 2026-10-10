@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 620" width="888" height="620"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B0472D"/></marker></defs><text x="0" y="40" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">필 첸의 6년</text>
+<text x="240" y="40" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">직원 15명 회사부터 10만 명 넘는 회사까지</text>
+<circle cx="24" cy="110" r="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="4"/>
+<line x1="24" y1="126" x2="24" y2="194" stroke="#B9B9B4" stroke-width="4"/>
+<text x="60" y="120" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">Helm AI</text>
+<text x="60" y="160" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">자율주행 스타트업, 직원 15명</text>
+<circle cx="24" cy="220" r="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="4"/>
+<line x1="24" y1="236" x2="24" y2="304" stroke="#B9B9B4" stroke-width="4"/>
+<text x="60" y="230" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">Scale AI</text>
+<text x="60" y="270" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">퀀트 오퍼 대신 선택</text>
+<circle cx="24" cy="330" r="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="4"/>
+<line x1="24" y1="346" x2="24" y2="414" stroke="#B9B9B4" stroke-width="4"/>
+<text x="60" y="340" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">Google DeepMind</text>
+<text x="60" y="380" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">프런티어 모델 추론·훈련</text>
+<circle cx="24" cy="440" r="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="4"/>
+<line x1="24" y1="456" x2="24" y2="524" stroke="#B9B9B4" stroke-width="4"/>
+<text x="60" y="450" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">OpenAI</text>
+<circle cx="24" cy="550" r="14" fill="#B0472D" stroke="#B0472D" stroke-width="4"/>
+<text x="60" y="560" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">창업</text>
+<text x="60" y="600" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">에이전트 네이티브 스타트업</text>
+<rect x="470" y="272" width="418" height="96" rx="12" fill="#FFFFFF" stroke="#B0472D" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="490" y="312" font-size="25" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">2023 · Anthropic(약 50명)</text>
+<text x="490" y="350" font-size="25" fill="#B0472D" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">Cursor(직원 2명) 오퍼 거절</text>
+<rect x="470" y="382" width="418" height="96" rx="12" fill="#FFFFFF" stroke="#B0472D" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="490" y="422" font-size="25" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">2024 · 두 곳을</text>
+<text x="490" y="460" font-size="25" fill="#B0472D" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">다시 거절</text></svg>

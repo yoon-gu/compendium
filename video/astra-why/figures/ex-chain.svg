@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 700" width="888" height="700"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C4A12"/></marker></defs><text x="0" y="40" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">명령 하나를 실행하려고 거친 길</text>
+<rect x="160" y="70" width="568" height="100" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="444.0" y="134" font-size="36" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Bash</text>
+<line x1="444.0" y1="174" x2="444.0" y2="216" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<rect x="160" y="220" width="568" height="100" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="444.0" y="284" font-size="36" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Python</text>
+<line x1="444.0" y1="324" x2="444.0" y2="366" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<rect x="160" y="370" width="568" height="100" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="444.0" y="434" font-size="36" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Node.js</text>
+<line x1="444.0" y1="474" x2="444.0" y2="516" stroke="#8C4A12" stroke-width="4" marker-end="url(#a)"/>
+<rect x="160" y="520" width="568" height="100" rx="14" fill="#FFFFFF" stroke="#8C4A12" stroke-width="4"/>
+<text x="444.0" y="584" font-size="36" fill="#8C4A12" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">PowerShell</text>
+<text x="444.0" y="680" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람이 따라가며 읽기에는 너무 먼 길</text></svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 664" width="888" height="664"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B0472D"/></marker></defs><text x="0" y="40" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">직관을 평가로 증류한다</text><rect x="0" y="70" width="888" height="160" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="126" font-size="36" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">모델을 직접 써 보며 생긴 직관</text>
+<text x="26" y="178" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">"이 모델은 이런 문제에서 자꾸 틀린다"</text>
+<line x1="444.0" y1="234" x2="444.0" y2="278" stroke="#B0472D" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="282" width="888" height="160" rx="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="4"/>
+<text x="26" y="338" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">평가 (eval)로 증류</text>
+<text x="26" y="390" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">문제 묶음 + 채점 기준 = 숫자로 잴 수 있게</text>
+<line x1="444.0" y1="446" x2="444.0" y2="490" stroke="#B0472D" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="494" width="888" height="160" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="550" font-size="36" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">채점할 수 있게 된 일</text>
+<text x="26" y="602" font-size="30" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">이제 모델이 배울 수 있다 — 경계를 사람이 먼저 옮긴다</text></svg>

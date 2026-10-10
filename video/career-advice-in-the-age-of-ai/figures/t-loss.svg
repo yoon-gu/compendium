@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 520" width="888" height="520"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B0472D"/></marker></defs><text x="0" y="40" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">손실 함수 (loss function)</text>
+<text x="0" y="82" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">모델의 답이 얼마나 틀렸는지 숫자로 매기는 채점표</text>
+<rect x="0" y="112" width="420" height="330" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="168" font-size="36" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">채점할 수 있는 일</text>
+<text x="26" y="220" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">정답이 있는 시험</text>
+<text x="26" y="270" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">코딩 테스트 문제</text>
+<text x="26" y="320" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">기준이 정해진 과제</text>
+<text x="26" y="410" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">→ 모델이 따라잡는다</text>
+<rect x="468" y="112" width="420" height="330" rx="14" fill="#FFFFFF" stroke="#B0472D" stroke-width="4"/>
+<text x="494" y="168" font-size="36" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">채점할 수 없는 일</text>
+<text x="494" y="220" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">무엇을 풀지 고르기</text>
+<text x="494" y="270" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">시간·토큰 배분</text>
+<text x="494" y="320" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">관계와 평판</text>
+<text x="494" y="410" font-size="28" fill="#B0472D" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif">→ 사람에게 남는 일</text>
+<text x="0" y="500" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif">단, '훈련 중에는' 채점할 수 없다는 뜻 — 채점표가 생기면 왼쪽으로 옮겨 간다</text></svg>

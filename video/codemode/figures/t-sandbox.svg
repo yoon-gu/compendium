@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 500" width="888" height="500"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5F7A"/></marker></defs><rect x="0" y="0" width="888" height="500" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="46" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">하니스(뇌) 안</text>
+<rect x="40" y="70" width="500" height="400" rx="14" fill="#FFFFFF" stroke="#1F5F7A" stroke-width="4"/>
+<text x="66" y="120" font-size="30" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">QuickJS · WASM 런타임</text>
+<text x="66" y="160" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">메모리 256MB</text>
+<text x="66" y="214" font-size="30" fill="#A23B3B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✗</text>
+<text x="106" y="214" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">네트워크 없음</text>
+<text x="66" y="274" font-size="30" fill="#A23B3B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✗</text>
+<text x="106" y="274" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">파일시스템 없음</text>
+<text x="66" y="334" font-size="30" fill="#A23B3B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✗</text>
+<text x="106" y="334" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">타이머 없음</text>
+<text x="66" y="394" font-size="30" fill="#A23B3B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✗</text>
+<text x="106" y="394" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Node API 없음</text>
+<line x1="544" y1="200" x2="690" y2="200" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="694" y="160" width="170" height="80" rx="14" fill="#FFFFFF" stroke="#1F5F7A" stroke-width="3"/>
+<text x="779" y="210" font-size="28" fill="#1F5F7A" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">tools.*</text>
+<line x1="544" y1="330" x2="690" y2="330" stroke="#1F5F7A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="694" y="290" width="170" height="80" rx="14" fill="#FFFFFF" stroke="#1F5F7A" stroke-width="3"/>
+<text x="779" y="340" font-size="28" fill="#1F5F7A" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">models.*</text>
+<text x="570" y="420" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">바깥으로 나가는 길은</text>
+<text x="570" y="452" font-size="24" fill="#1F5F7A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이 둘뿐</text></svg>
