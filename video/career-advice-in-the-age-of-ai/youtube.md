@@ -1,4 +1,4 @@
-채점할 수 없는 일을 하라, AI 시대의 커리어 조언 (필 첸)
+채점할 수 없는 일을 하라, AI 시대의 커리어 조언 (Phil Chen)
 태그: AI 시대 커리어, 커리어 조언, 사회초년생, 신입 개발자, 개발자 커리어, 취업, 이직, 채용, 면접, 개발자 면접, 코딩 에이전트, 에이전트 네이티브, 바이브코딩, AI 일자리, AI와 일자리, 문제 해결, 문제 정의, 손실 함수, 쓴 교훈, 멱법칙, 마지막 10%, 기대 득점, xG, 결정력, 스타트업, 스타트업 취업, 창업, 평판, 네트워크, AI 연구, 연구자, 생성형 AI, 인공지능, 필 첸, phil chen, career advice in the age of ai, career advice, ai careers, agent-native, coding agents, the bitter lesson, power law, the last 10%, alfred lin, expected goals, openai, deepmind, anthropic, cursor, scale ai, rich sutton, 진로, AI취업, 일의 미래, 커리어 전략, 듣는편람
 
 AI가 코드를 다 써 주는데, 막 일을 시작하는 사람은 무엇을 준비해야 할까요? OpenAI·DeepMind·Scale AI를 거쳐 창업한 필 첸은 "채점할 수 없는 일을 하라"고 답합니다.

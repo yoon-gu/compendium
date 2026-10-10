@@ -181,7 +181,7 @@ arxiv가 아닌 출처(블로그, transformer-circuits.pub 등)는 보통 LaTeX 
 - 대본을 새로 쓰거나 크게 고치면 `/humanize-korean:humanize`로 윤문 → 화면(`>`) 줄·헤더·줄 구조는 원문과 동일한지 확인 후 반영.
 - 업로드: `uv run video/upload.py <mp4> "<제목>" "<설명>"` (OAuth: `video/client_secret.json`, `video/token.json` — 커밋 금지).
   미감사 API 프로젝트라 비공개로 올라가며, 공개 전환은 YouTube Studio에서 사용자가 한다.
-  채널은 '듣는편람'. 제목·회차 규칙은 `video/README-naming.md`를 따른다 — 제목은 `핵심 주장, 무슨 글인지 (원저자 또는 기관)`,
+  채널은 '듣는편람'. 제목·회차 규칙은 `video/README-naming.md`를 따른다 — 제목은 `핵심 주장, 무슨 글인지 (원저자 또는 기관 — 원문 표기)`,
   주차 회차 ID(`YYYY-Www`)는 제목에 넣지 않고 `episodes.tsv`에만. 올린 뒤 `video/episodes.tsv`에 한 줄 추가.
 - 메타데이터: `video/<slug>/youtube.md`(1행 제목, `태그:` 줄, 빈 줄 뒤 설명)를 쓰고 `uv run video/update_meta.py <videoId> <slug>`로 반영
   (`youtube` 권한 토큰 `video/token-manage.json`, 커밋 금지).

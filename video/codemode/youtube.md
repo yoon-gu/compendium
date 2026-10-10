@@ -1,4 +1,4 @@
-AI 에이전트는 도구를 하나씩 부르지 말고 코드로 묶어 불러야 한다, Codemode 해설 (아르민 로나허)
+AI 에이전트는 도구를 하나씩 부르지 말고 코드로 묶어 불러야 한다, Codemode 해설 (Armin Ronacher)
 태그: AI 에이전트, 에이전트, 코딩 에이전트, MCP, 엠씨피, 도구 호출, 툴 호출, 함수 호출, 하니스, 에이전트 하니스, 컨텍스트 엔지니어링, 컨텍스트 윈도우, 토큰 절약, 샌드박스, 자바스크립트, 프롬프트 엔지니어링, 클로드 코드, 생성형 AI, 거대언어모델, LLM, 개발자, 인공지능, ai, codemode, code mode, what is codemode, armin ronacher, pi agent, pi harness, model context protocol, mcp server, tool calling, function calling, agent harness, context engineering, quickjs, webassembly, cloudflare code mode, progressive discovery, sentry, flask, claude code, ai agents, llm agents, 아르민 로나허, 듣는편람
 
 AI 에이전트에 MCP 서버를 붙일수록 왜 더 느리고 헷갈려질까요? Flask를 만든 아르민 로나허는 모델에게 도구 수십 개를 보여 주는 대신, 도구 하나 안에서 코드를 쓰게 하라고 말합니다.
