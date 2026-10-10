@@ -1,4 +1,4 @@
-2026-W41-2 | AI를 예의 있게 쓰는 법, 팀을 위한 AI 사용 가이드라인 (카미유 푸르니에)
+AI를 예의 있게 쓰는 법, 팀을 위한 AI 사용 가이드라인 (카미유 푸르니에)
 태그: AI 사용 가이드라인, AI 사용 정책, AI 협업, AI 에티켓, AI 매너, 코드 리뷰, AI 코드 리뷰, 풀 리퀘스트, PR 리뷰, 개발자, 개발팀, 팀장, 매니저, 엔지니어링 매니저, 리더십, 조직문화, 업무 문서, 생성형 AI, 챗GPT, 클로드, 코딩 에이전트, 바이브코딩, AI 슬롭, 검증 비용, 개발 7년차 매니저 1일차, 카미유 푸르니에, AI 생산성, 직장인, 인공지능, ai, respectful use of ai, ai guidelines, ai etiquette, ai slop, code review, pull request, camille fournier, the manager's path, engineering management, 팀 생산성, 개발 문화, 업무 커뮤니케이션, AI 문서 작성, 슬랙, AI 도입, ai policy, team productivity, leaddev, 듣는편람
 
 AI로 만든 천 줄짜리 PR, 스무 쪽짜리 문서를 받아 본 적 있나요? 『개발 7년차, 매니저 1일차』의 저자 카미유 푸르니에는 이것을 동료에게 무례한 일이라고 말합니다.

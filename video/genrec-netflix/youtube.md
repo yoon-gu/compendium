@@ -1,4 +1,4 @@
-2026-W41-3 | 수학 공식을 버린 넷플릭스의 LLM 추천, GenRec 논문 해설 (Netflix)
+수학 공식을 버린 넷플릭스의 LLM 추천, GenRec 논문 해설 (Netflix)
 태그: 넷플릭스 추천 알고리즘, 넷플릭스 알고리즘, 추천 시스템, 추천시스템, LLM 추천, LLM 추천 시스템, 생성형 추천, 거대언어모델, LLM, 컨텍스트 엔지니어링, 피처 엔지니어링, 랭킹 모델, 추천 랭커, 사후 학습, 파인튜닝, 보상 모델, 환각, 할루시네이션, 스케일링 법칙, A/B 테스트, vLLM, 프리필, 머신러닝, 딥러닝, 데이터 사이언스, 데이터 사이언티스트, ML 엔지니어, 추천 엔진, 개인화, 논문 리뷰, 논문 해설, AI 논문, 인공지능, ai, netflix recommendation, netflix algorithm, recommender system, llm recommendation, genrec, context engineering, ranking model, post-training, reward model, scaling laws, paper review, 듣는편람
 
 넷플릭스 추천이 더 이상 수학 공식이 아니라면? 넷플릭스가 2026년 8월에 낸 논문 GenRec은 수천 개의 손설계 피처로 돌던 추천 랭커를, 시청 기록을 문장으로 풀어 읽는 LLM 랭커로 바꾼 과정을 담고 있습니다.
