@@ -19,6 +19,7 @@ script.md 형식
   `>` 첫 줄이 큰 문장(명조), 나머지는 보조 줄(고딕). 「 로 시작하면 인용, — 로 시작하면 말한 사람. `**…**` 는 잉크색 밑줄.
   `> ![](figures/x.svg)` 는 그림(슬러그 폴더 기준 경로, 가로 888px 안에 맞춤), `> $$…$$` 는 KaTeX 수식 한 줄.
   `> ![](figures/x.mp4)` 나 `> ![](work/x.webm#t=28,40)` 는 소리 없는 영상 클립(애니메이션 포함, 큰 문장 바로 다음 줄, 가로 888px, 화면 길이만큼 반복).
+- 나레이션 속 `‖` 는 생각할 쉼(GAP_THINK). 그 자리에서 조각을 잘라 보내고 무음을 넣는다(TTS에는 안 간다).
 - 나레이션 문단을 고치면 그 문단만 다시 생성된다(300자 넘는 문단은 문장 경계로 잘라 보내므로, 조각 경계에서 나누면 재생성 없음).
 """
 
@@ -54,7 +55,11 @@ VOICE = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--voice=")),
 VOICE_ID = VOICES.get(VOICE, VOICE)
 MODEL, EMOTION = "ssfm-v30", "normal"
 MAX_CHARS = 300                     # 한 요청에 보내는 글자 수 상한(문장 경계로 자른다)
-GAP_CHUNK, GAP_PARA, GAP_SCENE = 0.25, 0.6, 1.0   # 초. 요청 조각 / 문단 / 장면 사이 쉼
+# 쉼 정책(초). 무음은 TTS가 아니라 여기서 넣으므로 바꿔도 크레딧 0, 녹음 캐시도 그대로다.
+GAP_CHUNK, GAP_PARA = 0.25, 0.6      # 300자 조각 사이 / 한 화면 안 문단 사이
+GAP_FRAME, GAP_SCENE = 1.2, 2.0      # 화면이 넘어갈 때 / 장면(장)이 바뀔 때
+LOOK_FIG, LOOK_MATH = 0.8, 1.5       # 그림·수식이 있는 화면은 나레이션 뒤에 볼 시간을 더 준다
+GAP_THINK = 1.2                      # 나레이션 속 `‖` 자리: 생각할 쉼(질문 뒤, 핵심 주장 뒤, 숫자 비교 뒤. 1분에 두 번 이하)
 W, H = (1920, 1080) if WIDE else (1080, 1920)
 
 
@@ -139,26 +144,54 @@ def tts(text: str) -> Path:
     raise AssertionError("unreachable")
 
 
+def clip_seconds(frame: dict) -> float:
+    """화면에 얹을 클립(애니메이션) 1회 길이. 없으면 0."""
+    for ln in frame["slide"][1:]:
+        m = re.match(r"!\[.*?\]\((.+?\.(?:webm|mp4|mov))(?:#t=([\d.]+),([\d.]+))?\)$", ln)
+        if m:
+            if m[3]:
+                return float(m[3]) - float(m[2])
+            return float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(HERE / m[1])],
+                                        check=True, capture_output=True, text=True).stdout)
+    return 0.0
+
+
 def scene_audio(scene: dict) -> tuple[Path, list[float]]:
-    """장면의 문단 wav 들을 쉼을 두고 이어 붙인 wav 와 화면별 길이(초)."""
+    """장면의 문단 wav 들을 쉼 정책(GAP_*, LOOK_*)대로 이어 붙인 wav 와 화면별 길이(초)."""
     dest = WORK / f"voice-{VOICE}" / f"scene-{scene['n']:02d}.wav"
     frames = scene["frames"]
     params, data, seconds = None, [], []
+
+    def silence(sec: float) -> int:
+        n = int(sec * params.framerate)
+        data.append(b"\x00" * n * params.nchannels * params.sampwidth)
+        return n
+
     for fi, frame in enumerate(frames):
         samples = 0
         for p, para in enumerate(frame["narration"]):
-            cs = chunks(para)
-            for c, text in enumerate(cs):
-                last_in_scene = fi == len(frames) - 1 and p == len(frame["narration"]) - 1
-                gap = GAP_CHUNK if c < len(cs) - 1 else (GAP_SCENE if last_in_scene else GAP_PARA)
-                with wave.open(str(tts(text))) as f:
-                    if params is None:
-                        params = f.getparams()
-                    assert (f.getnchannels(), f.getsampwidth(), f.getframerate()) == params[:3], f"wav 형식이 다르다: {text[:20]}"
-                    data.append(f.readframes(f.getnframes()))
-                    silence = int(gap * f.getframerate())
-                    data.append(b"\x00" * silence * f.getnchannels() * f.getsampwidth())
-                    samples += f.getnframes() + silence
+            parts = [x.strip() for x in para.split("‖") if x.strip()]
+            for k, part in enumerate(parts):
+                cs = chunks(part)
+                for c, text in enumerate(cs):
+                    with wave.open(str(tts(text))) as f:
+                        if params is None:
+                            params = f.getparams()
+                        assert (f.getnchannels(), f.getsampwidth(), f.getframerate()) == params[:3], f"wav 형식이 다르다: {text[:20]}"
+                        data.append(f.readframes(f.getnframes()))
+                        samples += f.getnframes()
+                    if c < len(cs) - 1:
+                        samples += silence(GAP_CHUNK)
+                if k < len(parts) - 1 or para.rstrip().endswith("‖"):
+                    samples += silence(GAP_THINK)
+            if p < len(frame["narration"]) - 1:
+                samples += silence(GAP_PARA)
+        look = (LOOK_MATH if any(ln.startswith("$$") for ln in frame["slide"]) else 0) or \
+               (LOOK_FIG if any(ln.startswith("![") for ln in frame["slide"]) else 0)
+        samples += silence((GAP_SCENE if fi == len(frames) - 1 else GAP_FRAME) + look)
+        short = clip_seconds(frame) - samples / params.framerate   # 애니메이션은 적어도 한 번은 끝까지 보이게
+        if short > 0:
+            samples += silence(short)
         seconds.append(samples / params.framerate)
     with wave.open(str(dest), "wb") as out:
         out.setnchannels(params.nchannels); out.setsampwidth(params.sampwidth); out.setframerate(params.framerate)

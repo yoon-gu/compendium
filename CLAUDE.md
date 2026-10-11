@@ -167,6 +167,7 @@ arxiv가 아닌 출처(블로그, transformer-circuits.pub 등)는 보통 LaTeX 
 
 - 대본: `video/<slug>/script.md` (형식은 `video/build.py` 머리말). 나레이션 문단만 TTS로 읽히고 `>` 줄은 화면 문구.
 - 빌드: `cd video && python3 build.py <slug>` → `video/<slug>/out/<slug>.mp4`(세로 1080x1920) + `<slug>-chapters.txt`(유튜브 챕터).
+  - 쉼 정책(생각할 시간): 화면 전환 1.2초, 장면 전환 2.0초, 그림 화면 +0.8초, 수식 화면 +1.5초, 애니메이션 화면은 클립 1회 길이 이상(`build.py`의 `GAP_*`·`LOOK_*`, 무음이라 크레딧 0). 대본을 쓸 때 시청자에게 던지는 질문 뒤·핵심 주장 뒤·숫자 비교 직후에만 `‖`(1.2초)를 넣는다. 1분에 두 번 이하, 문단 끝에는 넣지 않는다(화면 전환 쉼과 겹침).
   - 초안 대본을 쓰면 `python3 video/words.py <slug>` → `video/<slug>/words.md`(나레이션 속 영어 단어·약어 | 횟수 | 지금 읽기 | 제안 읽기 | 문맥)를 만들고 '제안 읽기'를 채워 사용자에게 보여 준다. 사용자가 확정한 것만 `pronounce.tsv`로 옮긴다.
   - 발음 교정: `video/pronounce.tsv`(원문<TAB>읽기)에 적은 단어는 TTS로 보낼 때만 바꿔 읽힌다(대본·화면 글자는 그대로). 잘못 읽히는 단어를 발견하면 여기에 추가한다.
   - 목소리는 `--voice=<이름>`. 나레이션 후보는 진우(기본, 기존 회차)·진한·준규·연우·김건(`build.py`의 `VOICES`). 크레딧 없이 미리 들을 땐 `--voice=유나`(macOS).
