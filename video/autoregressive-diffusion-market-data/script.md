@@ -12,9 +12,7 @@ James Somers의 "Can you use autoregressive diffusion to generate market data?"(
 
 ## 1 | 들어가며 | 표지
 > 자기회귀 확산으로 / 시장 데이터를 생성할 수 있을까?
-> James Somers, Jane Street 블로그, 2026년 9월
-> 원제 Can you use autoregressive diffusion to generate market data?
-> 퀀트 회사 Jane Street의 여름 연구 인턴 Kavish가 한 프로젝트
+> ![](figures/rollout.mp4)
 
 주식 시장의 호가창을 통째로 지어내는 모델이 있다면 어떨까요? ‖ 가격 하나를 맞히는 데서 끝나지 않고 주문이 들어오고 빠지고 체결되는 이벤트 하나하나를 거래소에 도착하는 시각까지 만들어 내는 모델이요. 오늘 소개할 글은 퀀트 트레이딩 회사 Jane Street의 블로그에 2026년 9월에 올라온 글입니다. James Somers가 여름 연구 인턴 Kavish의 프로젝트를 소개해요. 질문은 제목 그대로, 자기회귀 확산 모델로 시장 데이터를 생성할 수 있을까입니다.
 

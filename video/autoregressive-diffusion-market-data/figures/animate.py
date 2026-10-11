@@ -2,11 +2,12 @@
 """화면에 얹는 소리 없는 개념 애니메이션 세 편(1776x1000, 25fps)을 matplotlib 으로 프레임마다 그려 ffmpeg 로 굽는다.
 화면 디자인과 같은 결: 종이 바탕, 잉크색 하나, 나눔고딕, 글자는 크고 적게. build.py 가 가로 888px 로 줄여 16:9 자리에 얹는다.
 
-    python3 animate.py            # → traj.mp4, ar-loop.mp4, atom.mp4 (+ 확인용 *-sheet.png)
+    python3 animate.py            # → traj.mp4, ar-loop.mp4, atom.mp4, rollout.mp4 (+ 확인용 *-sheet.png)
     python3 animate.py atom       # 하나만
 
 - traj.mp4    ε 예측(DDPM식) 궤적이 초반에 8σ 밖으로 튀어 나가는 모습 vs flow matching 의 곧은 궤적 (개념 그림, 8초)
 - ar-loop.mp4 자기회귀 생성: 종류를 뽑고, 값을 만들고, 흐름 끝에 붙이고, 다시 (9초)
+- rollout.mp4 표지: 모델이 앞날을 여러 갈래로 그려 보고 하나씩 골라 호가 경로를 이어 간다 (개념 그림, 지어낸 데이터, 10초)
 - atom.mp4    atom smoothing: 한 점에 몰린 84.9% 를 N(0,1)의 한 구간으로 폈다가, 생성 후 다시 0으로 접는다 (10초)
 """
 import math
@@ -28,11 +29,6 @@ for f in ["NanumGothic-Regular.ttf", "NanumGothic-Bold.ttf", "NanumGothic-ExtraB
 plt.rcParams.update({"font.family": ["NanumGothic", "DejaVu Sans"], "axes.unicode_minus": False})
 
 W, H, FPS = 1776, 1000, 25
-# build.py 의 클립 y 계산(150 + 300 + 116*줄 + 56)은 출처 줄(.src, 30px x 1.5 = 45px) 높이를 빼먹어 클립이 회색 자리보다 45px 위에 얹힌다.
-# build.py 를 고치기 전까지는 위쪽에 그 화면 배경색 띠(화면 기준 46px = 프레임 기준 92px)를 덧대 자리를 정확히 덮는다.
-# 화면 배경은 쪽 번호로 돈다(build.py css 의 b0-b5). 화면 순서가 바뀌면 이 색도 다시 맞춰야 한다.
-PAD = 0   # build.py 가 회색 자리를 직접 찾으므로 덧대기 불필요
-PAD_COLOR = {"ar-loop": "#F3EFE6", "traj": "#F4F4F1", "atom": "#F3EFE6"}   # 8쪽 b1, 11쪽 b4(위 300px 아래는 종이색), 20쪽 b1
 PAPER, INK, TXT, GRAY, LINE, SOFT, WARN = "#F4F4F1", "#2F6B4F", "#141414", "#6B6B68", "#B9B9B4", "#ECECE8", "#A23B3B"
 
 
@@ -54,9 +50,7 @@ def pixel_axes(fig):
 
 def render(name, seconds, draw):
     out = HERE / f"{name}.mp4"
-    pad = bytes(int(PAD_COLOR[name][k:k + 2], 16) for k in (1, 3, 5)) + b"\xff"
-    pad = pad * (W * PAD)
-    proc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgba", "-s", f"{W}x{H + PAD}", "-r", str(FPS),
+    proc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgba", "-s", f"{W}x{H}", "-r", str(FPS),
                              "-i", "-", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", str(out)],
                             stdin=subprocess.PIPE)
     n = int(seconds * FPS)
@@ -68,7 +62,7 @@ def render(name, seconds, draw):
         draw(fig, t)
         fig.canvas.draw()
         buf = fig.canvas.buffer_rgba()
-        proc.stdin.write(pad + bytes(buf))
+        proc.stdin.write(bytes(buf))
         if any(abs(t - s) < 0.5 / FPS for s in sheet_times):
             shots.append((t, bytes(buf)))
         plt.close(fig)
@@ -292,7 +286,63 @@ def draw_atom(fig, t):
     fig.text(0.06, 0.05, "z (분위수 변환한 값)    점선 = 목표 N(0,1)", fontsize=30, color=GRAY)
 
 
-ANIMS = {"traj": (8.0, draw_traj), "ar-loop": (9.0, draw_ar), "atom": (10.0, draw_atom)}
+def step_paths(seed, n, start, drift=0.0, widen=0.0):
+    """(매수, 매도) 호가 계단 경로. 이벤트마다 0·±1틱으로 움직이고, widen 만큼 스프레드가 점점 벌어진다."""
+    rng = random.Random(seed)
+    bid, ask, out = start, start + 2, []
+    for i in range(n):
+        r = rng.random()
+        if r < 0.35:
+            move = rng.choice([-1, 1]) + ((1 if drift > 0 else -1) if rng.random() < abs(drift) else 0)
+            bid += move; ask += move
+        elif r < 0.5:
+            ask += 1 if rng.random() < 0.5 + widen else -1
+            ask = max(ask, bid + 1)
+        out.append((bid, ask))
+    return out
+
+
+ROLL_N, ROLL_FAN, ROLL_AHEAD = 64, 9, 12
+ROLL_TRUE = step_paths(7, ROLL_N, 0)
+ROLL_GEN = step_paths(11, ROLL_N, 0, drift=0.15, widen=0.12)
+
+
+def draw_rollout(fig, t):
+    ax = pixel_axes(fig)
+    x0, x1, y0, y1 = 110, 1690, 120, 860
+    lo, hi = -9, 15
+    px = lambda i: x0 + (x1 - x0) * i / ROLL_N
+    py = lambda v: y1 - (y1 - y0) * (v - lo) / (hi - lo)
+    ax.add_patch(Rectangle((x0, y0), x1 - x0, y1 - y0, facecolor="white", edgecolor=LINE, lw=1.5))
+    k = int(ease(t / 8.6) * ROLL_N)        # 지금까지 확정된 이벤트 수(끝 1.4초는 정지)
+
+    def steps(path, upto, color, lw):
+        for side, ls in ((0, "-"), (1, (0, (6, 4)))):   # 실선 매수, 점선 매도
+            ax.plot([px(i) for i in range(upto + 1)], [py(path[0][side])] + [py(path[i][side]) for i in range(upto)],
+                    color=color, lw=lw, ls=ls, drawstyle="steps-pre")
+
+    steps(ROLL_TRUE, k, TXT, 2.4)                         # 실제 호가(검정)
+    steps(ROLL_GEN, k, INK, 3.6)                          # 모델이 만든 호가(잉크색)
+    if k < ROLL_N:                                        # 앞날 후보 부채꼴: 여러 갈래를 흐리게 그려 보고 하나를 고른다
+        head = ROLL_GEN[k - 1] if k else (0, 2)
+        ahead = min(ROLL_AHEAD, ROLL_N - k)                # 그림 오른쪽 끝을 넘지 않게
+        for j in range(ROLL_FAN):                          # 갈래마다 기울기를 달리해 부채꼴로 퍼지게
+            fut = step_paths(1000 * k + j, ahead, head[0], drift=-0.6 + 1.2 * j / (ROLL_FAN - 1), widen=0.12)
+            fut = [(b, a + head[1] - head[0] - 2) for b, a in fut]
+            xs = [px(k + i + 1) for i in range(ahead)]
+            for side in (0, 1):
+                ax.plot([px(k)] + xs, [py(head[side])] + [py(v[side]) for v in fut], color=INK, lw=1.4,
+                        alpha=0.16, drawstyle="steps-pre", ls="-" if side == 0 else (0, (6, 4)))
+        ax.add_patch(plt.Circle((px(k), py(head[0])), 9, color=INK))
+    # 범례·표기(글자는 크고 적게)
+    ax.plot([x0 + 20, x0 + 80], [y0 + 40, y0 + 40], color=TXT, lw=2.4); ax.text(x0 + 95, y0 + 40, "실제 호가", va="center", fontsize=30, color=TXT)
+    ax.plot([x0 + 300, x0 + 360], [y0 + 40, y0 + 40], color=INK, lw=3.6); ax.text(x0 + 375, y0 + 40, "모델이 생성한 호가", va="center", fontsize=30, color=INK, weight="bold")
+    ax.text(x0 + 760, y0 + 40, "실선 매수 · 점선 매도 · 흐린 갈래 = 모델이 그려 본 앞날", va="center", fontsize=24, color=GRAY)
+    ax.text(x0, y1 + 50, "이벤트 →", fontsize=26, color=GRAY, va="center")
+    ax.text(x1, y1 + 50, "개념 그림 · 지어낸 데이터", fontsize=24, color=GRAY, ha="right", va="center")
+
+
+ANIMS = {"traj": (8.0, draw_traj), "ar-loop": (9.0, draw_ar), "atom": (10.0, draw_atom), "rollout": (10.0, draw_rollout)}
 
 if __name__ == "__main__":
     for name in (sys.argv[1:] or ANIMS):
