@@ -14,12 +14,7 @@ AI로 만든 천 줄짜리 PR, 스무 쪽짜리 문서를 받아 본 적 있나�
 
 원문(영어): https://skamille.medium.com/guidelines-for-respectful-use-of-ai-affcc85d7072
 한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/respectful-use-of-ai/
-함께 보기, AI Workers' Inquiry 2026: https://youtu.be/zzAYe3pQIng
 함께 보기, AI 시대의 매니저의 길: https://youtu.be/BYF4YI8QPDM
-함께 보기, 넷플릭스 GenRec 논문 해설: https://youtu.be/9DMu9XuaiZ0
-함께 보기, Codemode란 무엇인가: https://youtu.be/lzKaQiJ6_dU
-함께 보기, 코딩용 Astra, 우리는 왜 또 이러고 있나: https://youtu.be/Yqb3h5GK60U
-함께 보기, AI 시대의 커리어 조언: https://youtu.be/UavMBrL3VxY
 
 AI 사용 안내: 원문 정리와 대본 작성에 AI(Claude)를 썼고, 나레이션은 AI 음성(Typecast)입니다.
 

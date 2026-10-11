@@ -14,12 +14,7 @@ AI 에이전트에 MCP 서버를 붙일수록 왜 더 느리고 헷갈려질까�
 
 원문(영어): https://lucumr.pocoo.org/2026/10/6/codemode/
 한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/codemode/
-함께 보기, AI Workers' Inquiry 2026: https://youtu.be/zzAYe3pQIng
-함께 보기, AI 시대의 매니저의 길: https://youtu.be/BYF4YI8QPDM
-함께 보기, AI를 예의 있게 쓰는 법: https://youtu.be/yBLFGCFUgeE
-함께 보기, 넷플릭스 GenRec 논문 해설: https://youtu.be/9DMu9XuaiZ0
 함께 보기, 코딩용 Astra, 우리는 왜 또 이러고 있나: https://youtu.be/Yqb3h5GK60U
-함께 보기, AI 시대의 커리어 조언: https://youtu.be/UavMBrL3VxY
 
 AI 사용 안내: 원문 정리와 대본 작성에 AI(Claude)를 썼고, 나레이션은 AI 음성(Typecast)입니다.
 
