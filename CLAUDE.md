@@ -167,7 +167,7 @@ arxiv가 아닌 출처(블로그, transformer-circuits.pub 등)는 보통 LaTeX 
 
 - 대본: `video/<slug>/script.md` (형식은 `video/build.py` 머리말). 나레이션 문단만 TTS로 읽히고 `>` 줄은 화면 문구.
 - 빌드: `cd video && python3 build.py <slug>` → `video/<slug>/out/<slug>.mp4`(세로 1080x1920) + `<slug>-chapters.txt`(유튜브 챕터).
-  - 목소리는 `--voice=<이름>`. 나레이션 후보는 진한·준규·연우·김건(`build.py`의 `VOICES`), 기존 회차는 진우. 크레딧 없이 미리 들을 땐 `--voice=유나`(macOS).
+  - 목소리는 `--voice=<이름>`. 나레이션 후보는 진우(기본, 기존 회차)·진한·준규·연우·김건(`build.py`의 `VOICES`). 크레딧 없이 미리 들을 땐 `--voice=유나`(macOS).
   - 타입캐스트 TTS, 글자 1개 = 1크레딧. 문단 조각 단위로 캐시되므로 바뀐 문단만 과금된다. 화면만 바꿀 땐 크레딧 0.
   - 남은 크레딧: `curl -s -H "X-API-KEY: $(cat ~/.config/typecast-key.txt)" https://api.typecast.ai/v1/users/me/subscription`
   - 외부 음성(예: NotebookLM 오디오 오버뷰)에 화면만 입힐 땐 `--audio=work/<파일>` — 화면마다 첫 나레이션 줄을 `@분:초`로 시작해 전환 시각을 준다. 크레딧 0.
