@@ -17,6 +17,9 @@ AI 시대의 매니저의 길, 관리직 종말론에 대한 반론 (Camille Fou
 함께 보기, AI Workers' Inquiry 2026: https://youtu.be/zzAYe3pQIng
 함께 보기, AI를 예의 있게 쓰는 법: https://youtu.be/yBLFGCFUgeE
 함께 보기, 넷플릭스 GenRec 논문 해설: https://youtu.be/9DMu9XuaiZ0
+함께 보기, Codemode란 무엇인가: https://youtu.be/lzKaQiJ6_dU
+함께 보기, 코딩용 Astra, 우리는 왜 또 이러고 있나: https://youtu.be/Yqb3h5GK60U
+함께 보기, AI 시대의 커리어 조언: https://youtu.be/UavMBrL3VxY
 
 듣는편람은 읽을 만한 글을 골라 한국어로 풀어 읽어 주는 채널입니다. 구독하시면 매주 한 편씩 받아 보실 수 있어요.
 

@@ -1,5 +1,5 @@
 채점할 수 없는 일을 하라, AI 시대의 커리어 조언 (Phil Chen)
-태그: AI 시대 커리어, 커리어 조언, 사회초년생, 신입 개발자, 개발자 커리어, 취업, 이직, 채용, 면접, 개발자 면접, 코딩 에이전트, 에이전트 네이티브, 바이브코딩, AI 일자리, AI와 일자리, 문제 해결, 문제 정의, 손실 함수, 쓴 교훈, 멱법칙, 마지막 10%, 기대 득점, xG, 결정력, 스타트업, 스타트업 취업, 창업, 평판, 네트워크, AI 연구, 연구자, 생성형 AI, 인공지능, 필 첸, phil chen, career advice in the age of ai, career advice, ai careers, agent-native, coding agents, the bitter lesson, power law, the last 10%, alfred lin, expected goals, openai, deepmind, anthropic, cursor, scale ai, rich sutton, 진로, AI취업, 일의 미래, 커리어 전략, 듣는편람
+태그: AI 시대 커리어, AI 커리어, 커리어 조언, 커리어조언, 사회초년생, 신입 개발자, 주니어 개발자, 개발자 커리어, 개발자 취업, AI 취업, 취업, 이직, 개발자 면접, 기술 면접, 채용, AI 일자리, AI 일자리 대체, 일의 미래, 코딩 에이전트, AI 코딩, 바이브코딩, 바이브 코딩, 에이전트 네이티브, 스타트업 취업, 창업, 문제 정의, 손실 함수, 쓴 교훈, 멱법칙, 기대 득점, 필 첸, 필첸, Phil Chen, career advice in the age of ai, career advice, AI careers, future of work, agent-native, coding agents, the bitter lesson, power law, the last 10%, Alfred Lin, xG, OpenAI, DeepMind, Anthropic, Cursor, Scale AI, 앤트로픽, 오픈AI, 듣는편람
 
 AI가 코드를 다 써 주는데, 막 일을 시작하는 사람은 무엇을 준비해야 할까요? OpenAI·DeepMind·Scale AI를 거쳐 창업한 필 첸은 "채점할 수 없는 일을 하라"고 답합니다.
 
@@ -14,9 +14,12 @@ X 아티클 "Career advice in the age of AI"를 11장면으로 풀어 읽습니�
 
 원문(영어): https://x.com/philhchen/status/2072793818945167475
 한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/career-advice-in-the-age-of-ai/
+함께 보기, AI Workers' Inquiry 2026: https://youtu.be/zzAYe3pQIng
 함께 보기, AI 시대의 매니저의 길: https://youtu.be/BYF4YI8QPDM
 함께 보기, AI를 예의 있게 쓰는 법: https://youtu.be/yBLFGCFUgeE
-함께 보기, AI Workers' Inquiry 2026: https://youtu.be/zzAYe3pQIng
+함께 보기, 넷플릭스 GenRec 논문 해설: https://youtu.be/9DMu9XuaiZ0
+함께 보기, Codemode란 무엇인가: https://youtu.be/lzKaQiJ6_dU
+함께 보기, 코딩용 Astra, 우리는 왜 또 이러고 있나: https://youtu.be/Yqb3h5GK60U
 
 듣는편람은 읽을 만한 글을 골라 한국어로 풀어 읽어 주는 채널입니다. 구독하시면 매주 한 편씩 받아 보실 수 있어요.
 

@@ -3,6 +3,7 @@ title: "AI 시대의 커리어 조언: 채점할 수 없는 일을 하라"
 date: 2026-10-10
 draft: false
 source_url: "https://x.com/philhchen/status/2072793818945167475"
+youtube: "UavMBrL3VxY"
 author: "Phil Chen"
 tags: ["AI", "커리어", "채용", "에이전트", "스타트업", "X 아티클"]
 summary: "OpenAI·DeepMind·Scale AI를 거쳐 에이전트 네이티브 스타트업을 차린 Phil Chen이 사회 초년생에게 주는 여섯 가지 조언. 손실 함수를 쓸 수 있는 일은 모델이 점점 잘하게 되니, 앞으로 10년의 값진 일은 훈련 중에 채점할 수 없는 일이라는 것. 시간·관계·평판에 집중하고, 문제를 푸는 것만큼 찾는 법을 익히고, 가장 야심 찬 형태의 문제를 고르고, 마지막 10%를 전력으로 달리라고 한다."

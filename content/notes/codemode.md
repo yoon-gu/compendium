@@ -3,6 +3,7 @@ title: "Codemode란 무엇인가: 모델이 도구를 하나씩 부르는 대신
 date: 2026-10-10
 draft: false
 source_url: "https://lucumr.pocoo.org/2026/10/6/codemode/"
+youtube: "lzKaQiJ6_dU"
 author: "Armin Ronacher"
 tags: ["AI", "에이전트", "MCP", "도구 사용", "하니스", "블로그"]
 summary: "Armin Ronacher가 자신의 에이전트 하니스 Pi에 넣은 Codemode를 설명한다. 모델에게 도구 수십 개를 그대로 보여 주는 대신, 하니스 안의 격리된 JavaScript 런타임에서 도구를 코드로 엮어 부르게 하는 방식이다. 큰 출력을 자르지 않고 다루고, 병렬 호출과 간단한 워크플로가 가능해지며, MCP 서버는 코드가 점진적으로 발견한다. 다만 지금의 MCP 서버 대부분과는 잘 맞지 않는다."

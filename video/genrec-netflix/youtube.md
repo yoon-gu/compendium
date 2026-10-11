@@ -17,6 +17,9 @@
 함께 보기, AI Workers' Inquiry 2026: https://youtu.be/zzAYe3pQIng
 함께 보기, AI 시대의 매니저의 길: https://youtu.be/BYF4YI8QPDM
 함께 보기, AI를 예의 있게 쓰는 법: https://youtu.be/yBLFGCFUgeE
+함께 보기, Codemode란 무엇인가: https://youtu.be/lzKaQiJ6_dU
+함께 보기, 코딩용 Astra, 우리는 왜 또 이러고 있나: https://youtu.be/Yqb3h5GK60U
+함께 보기, AI 시대의 커리어 조언: https://youtu.be/UavMBrL3VxY
 
 화면에 쓴 자료
 - 루브 골드버그 장치 영상: Purdue Engineering, "2019 Purdue National Chain Reaction Competition Winner", CC BY 3.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:2019_Purdue_National_Chain_Reaction_Competition_Winner.webm)

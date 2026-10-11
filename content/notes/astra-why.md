@@ -3,6 +3,7 @@ title: "코딩용 Astra: 우리는 왜 또 이러고 있나 — 35시간, 10억 
 date: 2026-10-10
 draft: false
 source_url: "https://lucumr.pocoo.org/2026/9/7/astra-why/"
+youtube: "Yqb3h5GK60U"
 author: "Armin Ronacher"
 tags: ["AI", "에이전트", "코딩 에이전트", "소프트웨어 공학", "LLM", "블로그"]
 summary: "Armin Ronacher가 GPT 6 Astra에게 주말 동안 '소프트웨어 공장'을 맡겨 본 기록. 35시간, 토큰 약 10억 개, 1,200달러를 쓰고 75,000줄을 얻었지만 쓸 만한 것은 없었다. 모델은 긴 과제를 끝까지 밀어붙이도록 훈련된 듯하지만 코드 품질에는 거의 벌점을 받지 않는 것 같고, 그 결과 사람이 읽을 수 없는 코드골프식 코드가 도구 호출을 넘어 커밋까지 스며든다. 저자는 이 방향이 지금의 소프트웨어 공학에 득이 되는지 묻는다."
