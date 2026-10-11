@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 405" width="888" height="405"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F6B4F"/></marker></defs><rect x="0" y="0" width="420" height="330" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">연속 공간</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">“매도 잔량 10% 증가”</text>
+<rect x="26" y="170" width="300" height="40" rx="6" fill="#B9B9B4"/>
+<rect x="26" y="230" width="330" height="40" rx="6" fill="#6B6B68"/>
+<text x="340" y="200" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">100</text>
+<text x="370" y="260" font-size="22" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">110</text>
+<rect x="468" y="0" width="420" height="330" rx="14" fill="#FFFFFF" stroke="#2F6B4F" stroke-width="4"/>
+<text x="494" y="54" font-size="32" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이산 행동 공간</text>
+<text x="494" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">“매수 호가를 한 틱 개선”</text>
+<rect x="494" y="170" width="368" height="44" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="510" y="201" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">170.01</text>
+<rect x="494" y="234" width="368" height="44" rx="6" fill="#FFFFFF" stroke="#2F6B4F" stroke-width="4"/>
+<text x="510" y="265" font-size="26" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">170.02  ← 한 틱 위로</text>
+<text x="0" y="390" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 것을 보는 두 가지 방식, 생성하려면 그 섞임을 모델링해야</text></svg>

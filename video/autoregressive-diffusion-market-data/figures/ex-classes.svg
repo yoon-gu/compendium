@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 595" width="888" height="595"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F6B4F"/></marker></defs><text x="0" y="32" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">처음: 범주 2개</text>
+<rect x="0" y="50" width="71" height="64" rx="6" fill="#A23B3B"/>
+<rect x="75" y="50" width="813" height="64" rx="6" fill="#B9B9B4"/>
+<text x="12" y="92" font-size="24" fill="#FFFFFF" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">8%</text>
+<text x="100" y="92" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">BBO 변화 92%   (체결은 8%뿐 → 체결을 과대 예측)</text>
+<line x1="444" y1="126" x2="444" y2="170" stroke="#2F6B4F" stroke-width="4" marker-end="url(#a)"/>
+<text x="0" y="210" font-size="28" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">나중: 범주 20개</text>
+<rect x="0" y="232" width="432" height="60" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="20" y="272" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">체결</text>
+<rect x="456" y="232" width="432" height="60" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="476" y="272" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">잔량만 바뀜 (가격 그대로)</text>
+<rect x="0" y="308" width="432" height="60" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="20" y="348" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">매도 호가 상승</text>
+<rect x="456" y="308" width="432" height="60" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="476" y="348" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">매수 호가 하락</text>
+<rect x="0" y="384" width="432" height="60" rx="8" fill="#FFFFFF" stroke="#2F6B4F" stroke-width="4"/>
+<text x="20" y="424" font-size="26" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">경과 시간 = 0</text>
+<rect x="456" y="384" width="432" height="60" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="476" y="424" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">… 모두 20개</text>
+<rect x="0" y="480" width="888" height="110" rx="12" fill="#ECECE8" stroke="#2F6B4F" stroke-width="0"/>
+<text x="24" y="524" font-size="28" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">확산이 맡는 일은 크기만</text>
+<text x="24" y="568" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0이 아닌 간격은 얼마나 컸나 · 호가가 얼마나 움직였나</text></svg>

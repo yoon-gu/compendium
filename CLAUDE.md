@@ -167,6 +167,7 @@ arxiv가 아닌 출처(블로그, transformer-circuits.pub 등)는 보통 LaTeX 
 
 - 대본: `video/<slug>/script.md` (형식은 `video/build.py` 머리말). 나레이션 문단만 TTS로 읽히고 `>` 줄은 화면 문구.
 - 빌드: `cd video && python3 build.py <slug>` → `video/<slug>/out/<slug>.mp4`(세로 1080x1920) + `<slug>-chapters.txt`(유튜브 챕터).
+  - 발음 교정: `video/pronounce.tsv`(원문<TAB>읽기)에 적은 단어는 TTS로 보낼 때만 바꿔 읽힌다(대본·화면 글자는 그대로). 잘못 읽히는 단어를 발견하면 여기에 추가한다.
   - 목소리는 `--voice=<이름>`. 나레이션 후보는 진우(기본, 기존 회차)·진한·준규·연우·김건(`build.py`의 `VOICES`). 크레딧 없이 미리 들을 땐 `--voice=유나`(macOS).
   - 타입캐스트 TTS, 글자 1개 = 1크레딧. 문단 조각 단위로 캐시되므로 바뀐 문단만 과금된다. 화면만 바꿀 땐 크레딧 0.
   - 남은 크레딧: `curl -s -H "X-API-KEY: $(cat ~/.config/typecast-key.txt)" https://api.typecast.ai/v1/users/me/subscription`

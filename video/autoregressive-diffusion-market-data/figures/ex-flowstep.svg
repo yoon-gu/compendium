@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 380" width="888" height="380"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F6B4F"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">노이즈 0.3, 데이터 2.0  →  속도 v = 2.0 − 0.3 = 1.7</text>
+<line x1="40" y1="180" x2="860" y2="180" stroke="#141414" stroke-width="3"/>
+<line x1="60" y1="172" x2="60" y2="188" stroke="#141414" stroke-width="2"/>
+<text x="60" y="222" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0</text>
+<line x1="220.0" y1="172" x2="220.0" y2="188" stroke="#141414" stroke-width="2"/>
+<text x="220.0" y="222" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.5</text>
+<line x1="380" y1="172" x2="380" y2="188" stroke="#141414" stroke-width="2"/>
+<text x="380" y="222" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">1</text>
+<line x1="540.0" y1="172" x2="540.0" y2="188" stroke="#141414" stroke-width="2"/>
+<text x="540.0" y="222" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">1.5</text>
+<line x1="700" y1="172" x2="700" y2="188" stroke="#141414" stroke-width="2"/>
+<text x="700" y="222" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">2</text>
+<path d="M156.0 166 Q292.0 90 422.0 162" fill="none" stroke="#2F6B4F" stroke-width="4" marker-end="url(#a)"/>
+<text x="292.0" y="98" font-size="24" fill="#2F6B4F" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">+0.5 × 1.7</text>
+<path d="M428.0 166 Q564.0 90 694.0 162" fill="none" stroke="#2F6B4F" stroke-width="4" marker-end="url(#a)"/>
+<text x="564.0" y="98" font-size="24" fill="#2F6B4F" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">+0.5 × 1.7</text>
+<circle cx="156.0" cy="180" r="13" fill="#6B6B68"/>
+<circle cx="428.0" cy="180" r="11" fill="#2F6B4F" opacity="0.6"/>
+<circle cx="700.0" cy="180" r="14" fill="#2F6B4F"/>
+<text x="156.0" y="262" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.3</text>
+<text x="428.0" y="262" font-size="26" fill="#2F6B4F" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">1.15</text>
+<text x="700.0" y="262" font-size="26" fill="#2F6B4F" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">2.0</text>
+<text x="0" y="320" font-size="27" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">x ← x + Δt · v  (Δt = 0.5, 두 걸음)</text>
+<text x="0" y="364" font-size="27" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">나누는 곳이 없으니 오차가 부풀려질 곳도 없다</text></svg>

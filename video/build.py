@@ -18,7 +18,7 @@ script.md 형식
 - 장면 안에서 `>` 줄 묶음 하나 + 뒤따르는 나레이션 문단(한 줄 = 한 문단)이 화면 하나. `>` 줄이 다시 나오면 새 화면.
   `>` 첫 줄이 큰 문장(명조), 나머지는 보조 줄(고딕). 「 로 시작하면 인용, — 로 시작하면 말한 사람. `**…**` 는 잉크색 밑줄.
   `> ![](figures/x.svg)` 는 그림(슬러그 폴더 기준 경로, 가로 888px 안에 맞춤), `> $$…$$` 는 KaTeX 수식 한 줄.
-  `> ![](work/x.webm#t=28,40)` 는 소리 없는 영상 클립(--audio 모드 전용, 큰 문장 바로 다음 줄, 16:9, 화면 길이만큼 반복).
+  `> ![](figures/x.mp4)` 나 `> ![](work/x.webm#t=28,40)` 는 소리 없는 영상 클립(애니메이션 포함, 큰 문장 바로 다음 줄, 가로 888px, 화면 길이만큼 반복).
 - 나레이션 문단을 고치면 그 문단만 다시 생성된다(300자 넘는 문단은 문장 경계로 잘라 보내므로, 조각 경계에서 나누면 재생성 없음).
 """
 
@@ -102,7 +102,19 @@ def chunks(paragraph: str) -> list[str]:
 
 
 # ---------- 음성 ----------
+PRONOUNCE = [ln.split("\t") for ln in (Path(__file__).parent / "pronounce.tsv").read_text(encoding="utf-8").splitlines()
+             if ln.strip() and not ln.startswith("#")]
+
+
+def spoken(text: str) -> str:
+    """pronounce.tsv 대로 TTS가 읽을 글자로 바꾼다(화면 글자는 그대로)."""
+    for src, say in PRONOUNCE:
+        text = re.sub(rf"(?<![A-Za-z]){re.escape(src)}(?![A-Za-z])", say, text, flags=re.I)
+    return text
+
+
 def tts(text: str) -> Path:
+    text = spoken(text)
     cache = WORK / f"voice-{VOICE}"
     cache.mkdir(parents=True, exist_ok=True)
     dest = cache / (hashlib.sha1(f"{VOICE_ID}|{EMOTION}|{MODEL}|{text}".encode()).hexdigest()[:12] + ".wav")
@@ -340,7 +352,8 @@ def build() -> tuple[Path, list[float]]:
     # 유튜브 설명란에 붙이면 챕터가 된다(0:00 시작, 3개 이상, 각 10초 이상)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.with_name(f"{SLUG}-chapters.txt").write_text("\n".join(chapters) + "\n", encoding="utf-8")
-    return encode(shots, seconds, join_audio(wavs)), seconds
+    starts = [sum(seconds[:i]) for i in range(len(seconds))]
+    return with_clips(encode(shots, seconds, join_audio(wavs)), scenes, shots, starts, seconds), seconds
 
 
 def build_on_audio(scenes: list[dict], shots: list[Path], track: Path) -> Path:
@@ -361,16 +374,23 @@ def build_on_audio(scenes: list[dict], shots: list[Path], track: Path) -> Path:
     seconds = [b - a for a, b in zip(starts, starts[1:] + [total])]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.with_name(f"{SLUG}-chapters.txt").write_text("\n".join(chapters) + "\n", encoding="utf-8")
-    out = encode(shots, seconds, track)
+    return with_clips(encode(shots, seconds, track), scenes, shots, starts, seconds)
+
+
+def with_clips(out: Path, scenes: list[dict], shots: list[Path], starts: list[float], seconds: list[float]) -> Path:
+    """화면 줄의 `![](x.mp4#t=a,b)` 클립(애니메이션 등)을 그 화면이 떠 있는 동안 얹는다. 녹음·외부 음성 공통.
+    위치는 구운 화면 PNG에서 회색 자리(.clip, #D9D9D4)를 찾아 정한다 — 제목·출처 줄 수를 셈하지 않아도 된다."""
+    import numpy as np
+    from PIL import Image
     clips = []
-    for (f, _), t0, dur in zip([(f, s) for s in scenes for f in s["frames"]], starts, seconds):
+    for (f, _), shot, t0, dur in zip([(f, s) for s in scenes for f in s["frames"]], shots, starts, seconds):
         for ln in f["slide"][1:]:
             m = re.match(r"!\[.*?\]\((.+?\.(?:webm|mp4|mov))(?:#t=([\d.]+),([\d.]+))?\)$", ln)
             if m:
-                assert f["slide"].index(ln) == 1, "영상은 큰 문장 바로 다음 줄에 둔다(세로 위치를 제목 줄 수로 계산하므로)"
-                lines = f["slide"][0].count(" / ") + 1          # 제목은 ' / ' 로만 줄을 나눈다는 전제
-                clips.append((HERE / m[1], float(m[2] or 0), float(m[3] or 0), t0, dur,
-                              (920, 176, 904) if WIDE else (96, 150 + 300 + 116 * lines + 56, 888)))
+                ys, xs = np.nonzero((np.asarray(Image.open(shot).convert("RGB")) == (0xD9, 0xD9, 0xD4)).all(axis=2))
+                assert len(xs) > 100_000, f"{shot.name}: 클립 자리(회색 상자)를 찾지 못했다"
+                x0, y0, x1 = int(xs.min()), int(ys.min()), int(xs.max()) + 1
+                clips.append((HERE / m[1], float(m[2] or 0), float(m[3] or 0), t0, dur, (x0, y0, x1 - x0)))
     return overlay_clips(out, clips) if clips else out
 
 

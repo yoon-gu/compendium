@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 510" width="888" height="510"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F6B4F"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">AUC: ROC 곡선 아래 넓이</text>
+<text x="0" y="74" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">진짜·가짜 한 쌍을 판별기가 바르게 줄 세울 확률</text>
+<line x1="40.0" y1="220" x2="840.0" y2="220" stroke="#141414" stroke-width="4"/>
+<line x1="40.0" y1="208" x2="40.0" y2="232" stroke="#141414" stroke-width="3"/>
+<text x="40.0" y="268" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.5</text>
+<line x1="199.99999999999997" y1="208" x2="199.99999999999997" y2="232" stroke="#141414" stroke-width="3"/>
+<text x="199.99999999999997" y="268" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.6</text>
+<line x1="359.99999999999994" y1="208" x2="359.99999999999994" y2="232" stroke="#141414" stroke-width="3"/>
+<text x="359.99999999999994" y="268" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.7</text>
+<line x1="520.0" y1="208" x2="520.0" y2="232" stroke="#141414" stroke-width="3"/>
+<text x="520.0" y="268" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.8</text>
+<line x1="680.0" y1="208" x2="680.0" y2="232" stroke="#141414" stroke-width="3"/>
+<text x="680.0" y="268" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.9</text>
+<line x1="840.0" y1="208" x2="840.0" y2="232" stroke="#141414" stroke-width="3"/>
+<text x="840.0" y="268" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">1.0</text>
+<circle cx="453" cy="220" r="16" fill="#2F6B4F"/>
+<text x="452.8" y="180" font-size="26" fill="#2F6B4F" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">newrep 0.758</text>
+<text x="452.8" y="148" font-size="22" fill="#2F6B4F" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">정확도 0.694</text>
+<circle cx="827" cy="220" r="16" fill="#6B6B68"/>
+<text x="827.2" y="180" font-size="26" fill="#6B6B68" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">smoothed 0.992</text>
+<text x="827.2" y="148" font-size="22" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">정확도 0.959</text>
+<text x="40.0" y="312" font-size="26" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">구별 불가</text>
+<text x="840.0" y="312" font-size="26" fill="#6B6B68" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">완벽히 구별</text>
+<line x1="680.0" y1="360" x2="120.00000000000007" y2="360" stroke="#2F6B4F" stroke-width="4" marker-end="url(#a)"/>
+<text x="391.99999999999994" y="404" font-size="26" fill="#2F6B4F" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">생성기에게는 이쪽이 좋다</text>
+<text x="0" y="460" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">범례 두 이름이 정확히 어떤 설정인지는 본문이 밝히지 않는다</text>
+<text x="0" y="494" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">원문 그림의 범례 값을 옮김</text></svg>

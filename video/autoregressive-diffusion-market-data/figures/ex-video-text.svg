@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 400" width="888" height="400"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F6B4F"/></marker></defs><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#1E1E1C"/><stop offset="1" stop-color="#F4F4F1"/></linearGradient></defs>
+<rect x="0" y="0" width="280" height="400" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="22" y="52" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">영상</text>
+<rect x="304" y="0" width="280" height="400" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="326" y="52" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">텍스트</text>
+<rect x="608" y="0" width="280" height="400" rx="14" fill="#FFFFFF" stroke="#2F6B4F" stroke-width="4"/>
+<text x="630" y="52" font-size="32" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시장 데이터</text>
+<rect x="22" y="90" width="236" height="90" rx="6" fill="url(#g)"/>
+<text x="22" y="230" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">밝기·색이</text>
+<text x="22" y="270" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">매끈하게 이어진다</text>
+<text x="22" y="360" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">연속</text>
+<rect x="326" y="104" width="72" height="60" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="362" y="144" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시장</text>
+<rect x="406" y="104" width="72" height="60" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="442" y="144" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">데이터</text>
+<rect x="486" y="104" width="72" height="60" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="522" y="144" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">는</text>
+<text x="326" y="230" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">토큰이 하나씩</text>
+<text x="326" y="270" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이어진다</text>
+<text x="326" y="360" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이산</text>
+<text x="630" y="120" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">행동</text>
+<text x="700" y="120" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이산</text>
+<text x="630" y="176" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">가격</text>
+<text x="700" y="176" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">거의 연속</text>
+<text x="630" y="232" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시각</text>
+<text x="700" y="232" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">연속</text>
+<text x="630" y="360" font-size="34" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">둘 다</text></svg>

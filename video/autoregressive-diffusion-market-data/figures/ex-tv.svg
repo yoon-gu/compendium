@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 436" width="888" height="436"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F6B4F"/></marker></defs><rect x="520" y="8" width="26" height="22" fill="#B9B9B4"/>
+<text x="556" y="28" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실제</text>
+<rect x="630" y="8" width="26" height="22" fill="#2F6B4F"/>
+<text x="666" y="28" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델</text>
+<line x1="0" y1="290" x2="888" y2="290" stroke="#141414" stroke-width="2"/>
+<rect x="60" y="274" width="80" height="16" fill="#B9B9B4"/>
+<rect x="150" y="235" width="80" height="55" fill="#2F6B4F"/>
+<text x="100" y="263.5" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.075</text>
+<text x="190" y="225.0" font-size="22" fill="#2F6B4F" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.25</text>
+<text x="145" y="326" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">음수</text>
+<text x="145" y="364" font-size="24" fill="#A23B3B" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">차이 0.175</text>
+<rect x="350" y="103" width="80" height="187" fill="#B9B9B4"/>
+<rect x="440" y="180" width="80" height="110" fill="#2F6B4F"/>
+<text x="390" y="93.0" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.85</text>
+<text x="480" y="170.0" font-size="22" fill="#2F6B4F" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.5</text>
+<text x="435" y="326" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0</text>
+<text x="435" y="364" font-size="24" fill="#A23B3B" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">차이 0.35</text>
+<rect x="640" y="274" width="80" height="16" fill="#B9B9B4"/>
+<rect x="730" y="235" width="80" height="55" fill="#2F6B4F"/>
+<text x="680" y="263.5" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.075</text>
+<text x="770" y="225.0" font-size="22" fill="#2F6B4F" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.25</text>
+<text x="725" y="326" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">양수</text>
+<text x="725" y="364" font-size="24" fill="#A23B3B" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">차이 0.175</text>
+<text x="0" y="420" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">TV = ½ × (0.175 + 0.35 + 0.175) = 0.35  (예시)</text>
+<text x="888" y="28" font-size="1" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve"></text></svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 548" width="888" height="548"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F6B4F"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">매도 잔량을 생성할 때 8σ 밖으로 나간 비율</text>
+<text x="0" y="110" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">DDIM 100단계, η=0</text>
+<rect x="330" y="80" width="440" height="44" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<rect x="330" y="80" width="416" height="44" rx="6" fill="#A23B3B"/>
+<text x="733.8" y="112" font-size="26" fill="#FFFFFF" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">94.5%</text>
+<text x="0" y="188" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">DDIM 100단계, η=1</text>
+<rect x="330" y="158" width="440" height="44" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<rect x="330" y="158" width="387" height="44" rx="6" fill="#A23B3B"/>
+<text x="705.2" y="190" font-size="26" fill="#FFFFFF" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">88.0%</text>
+<text x="0" y="266" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">DDIM 1,000단계, η=0</text>
+<rect x="330" y="236" width="440" height="44" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<rect x="330" y="236" width="43" height="44" rx="6" fill="#6B6B68"/>
+<text x="384.68" y="268" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">9.7%</text>
+<text x="0" y="344" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">DDIM 1,000단계, η=1</text>
+<rect x="330" y="314" width="440" height="44" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<rect x="330" y="314" width="4" height="44" rx="6" fill="#6B6B68"/>
+<text x="346" y="346" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.5%</text>
+<text x="0" y="422" font-size="26" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">flow matching 50단계</text>
+<rect x="330" y="392" width="440" height="44" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<text x="346" y="424" font-size="26" fill="#2F6B4F" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.00%</text>
+<text x="0" y="494" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">ε 예측은 1,000단계에 무작위성(η=1)까지 더해야 0.5%</text>
+<text x="0" y="532" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">원문 그림을 바탕으로 다시 그림</text></svg>
