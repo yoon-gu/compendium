@@ -27,6 +27,8 @@
 - 루브 골드버그 장치 사진: jclarson, CC BY 2.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Rube_goldberg_machine.jpg)
 - 루브 골드버그 만화 "Self-Operating Napkin"(1931): 퍼블릭 도메인, via Wikimedia Commons
 
+AI 사용 안내: 원문 정리와 화면 대본 작성에 AI(Claude)를 썼고, 두 진행자의 대화 음성은 Google NotebookLM이 만든 AI 음성입니다.
+
 듣는편람은 읽을 만한 글을 골라 한국어로 풀어 읽어 주는 채널입니다. 구독하시면 매주 한 편씩 받아 보실 수 있어요.
 
 #넷플릭스 #추천시스템 #LLM

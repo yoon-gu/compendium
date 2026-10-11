@@ -44,7 +44,7 @@ def main():
         body={
             "snippet": {"title": title, "description": desc, "categoryId": "27", "defaultLanguage": "ko"},
             # ponytail: 감사 안 받은 API 프로젝트는 어차피 private 로 잠긴다
-            "status": {"privacyStatus": "private", "selfDeclaredMadeForKids": False},
+            "status": {"privacyStatus": "private", "selfDeclaredMadeForKids": False, "containsSyntheticMedia": True},  # AI 음성 나레이션 표시
         },
         media_body=MediaFileUpload(path, resumable=True, chunksize=8 * 1024 * 1024),
     )

@@ -21,6 +21,8 @@ AI 시대의 매니저의 길, 관리직 종말론에 대한 반론 (Camille Fou
 함께 보기, 코딩용 Astra, 우리는 왜 또 이러고 있나: https://youtu.be/Yqb3h5GK60U
 함께 보기, AI 시대의 커리어 조언: https://youtu.be/UavMBrL3VxY
 
+AI 사용 안내: 원문 정리와 대본 작성에 AI(Claude)를 썼고, 나레이션은 AI 음성(Typecast)입니다.
+
 듣는편람은 읽을 만한 글을 골라 한국어로 풀어 읽어 주는 채널입니다. 구독하시면 매주 한 편씩 받아 보실 수 있어요.
 
 #AI시대 #매니저 #리더십

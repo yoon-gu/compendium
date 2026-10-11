@@ -21,6 +21,8 @@ X 아티클 "Career advice in the age of AI"를 11장면으로 풀어 읽습니�
 함께 보기, Codemode란 무엇인가: https://youtu.be/lzKaQiJ6_dU
 함께 보기, 코딩용 Astra, 우리는 왜 또 이러고 있나: https://youtu.be/Yqb3h5GK60U
 
+AI 사용 안내: 원문 정리와 대본 작성에 AI(Claude)를 썼고, 나레이션은 AI 음성(Typecast)입니다.
+
 듣는편람은 읽을 만한 글을 골라 한국어로 풀어 읽어 주는 채널입니다. 구독하시면 매주 한 편씩 받아 보실 수 있어요.
 
 #AI커리어 #커리어조언 #코딩에이전트

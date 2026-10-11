@@ -60,9 +60,11 @@ def main():
     desc = desc.replace("{챕터}", chapters(slug)).strip()
     assert len(desc.encode()) <= 5000
     yt = build("youtube", "v3", credentials=credentials())
-    cur = yt.videos().list(id=vid, part="snippet").execute()["items"][0]["snippet"]
+    item = yt.videos().list(id=vid, part="snippet,status").execute()["items"][0]
+    cur, status = item["snippet"], item["status"]
     cur.update(title=title.strip(), description=desc, tags=tags, categoryId="27", defaultLanguage="ko", defaultAudioLanguage="ko")
-    yt.videos().update(part="snippet", body={"id": vid, "snippet": cur}).execute()
+    status["containsSyntheticMedia"] = True   # AI 음성 나레이션 → 유튜브 '변경되었거나 합성된 콘텐츠' 표시
+    yt.videos().update(part="snippet,status", body={"id": vid, "snippet": cur, "status": status}).execute()
     print(f"{vid}: 제목 {len(title)}자, 설명 {len(desc)}자, 태그 {len(tags)}개({sum(len(t) for t in tags)}자)")
 
 

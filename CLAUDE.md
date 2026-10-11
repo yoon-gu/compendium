@@ -188,8 +188,8 @@ arxiv가 아닌 출처(블로그, transformer-circuits.pub 등)는 보통 LaTeX 
   (`youtube` 권한 토큰 `video/token-manage.json`, 커밋 금지).
   - 조회수를 노린다: 설명 첫 두 줄은 검색어가 들어간 질문형 훅, 이어서 요약·"이런 분께 맞습니다"·챕터(`{챕터}` 자리 자동)·링크·해시태그 3개.
   - 태그는 한국어 검색어 + 영어 원제/저자/주제어 + `듣는편람`, 합계 500자 이내로 꽉 채운다.
-  - 링크는 반드시 `원문(영어): <원문 URL>`과 `한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/<slug>/` 둘 다. 다른 회차는 `함께 보기`로 잇는다.
-  - **타입캐스트(TTS)나 AI 음성으로 나레이션했다는 문구는 넣지 않는다.**
+  - 링크는 반드시 `원문(영어): <원문 URL>`과 `한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/<slug>/` 둘 다. `함께 보기`는 가장 관련 깊은 회차 **딱 1개**만 넣는다(2026-10-11부터 새 회차에 적용).
+  - **AI 사용을 반드시 밝힌다.** 채널 소개 줄 바로 위에 `AI 사용 안내: 원문 정리와 대본 작성에 AI(Claude)를 썼고, 나레이션은 AI 음성(Typecast)입니다.`(외부 음성이면 그 출처로 바꿔 쓴다). `upload.py`·`update_meta.py`는 유튜브의 합성 콘텐츠 표시(`containsSyntheticMedia`)도 켠다.
 - 썸네일: `python3 video/thumbnail.py <slug>` → `out/<slug>-thumb.png`(1280x720, 대본 표지 문구) → `uv run video/upload_thumb.py <videoId> <slug>`로 영상에 건다.
 - 블로그 연결: 업로드 후 해당 `content/notes/<slug>.md` frontmatter에 `youtube: "<영상 ID>"`를 넣는다.
   `layouts/partials/youtube.html`이 본문 위에 세로 영상을 붙이고, 공유 버튼 문구(`share_icons.html`)에 `영상 URL`이 함께 실린다.
