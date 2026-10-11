@@ -4,6 +4,7 @@ date: 2026-10-11
 draft: false
 math: true
 source_url: "https://blog.janestreet.com/can-you-use-autoregressive-diffusion-to-generate-market-data/"
+youtube: "SPLx5_vGdl8"
 author: "James Somers (Jane Street)"
 tags: ["AI", "확산 모델", "flow matching", "생성 모델", "시장 데이터", "퀀트", "블로그"]
 summary: "Jane Street의 2026년 여름 연구 인턴이 미국 주식 4년치 호가·체결 데이터를 이벤트 단위로 생성하는 자기회귀 확산 모델을 만들었다. DDPM식 노이즈 예측은 발산했고 flow matching이 바로 잘 돌았다. 진짜 난관은 시장 데이터가 연속이면서 이산이라는 점이었다. 0초 간격, 1틱 개선처럼 한 점에 몰린 확률을 범주로 떼어 내거나 '아톰 스무딩'으로 펴서 다루자 분포가 크게 나아졌지만, 아직 실전 생성기로 쓸 수준은 아니다."
