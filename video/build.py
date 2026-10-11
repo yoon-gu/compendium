@@ -3,6 +3,7 @@
 
     python3 build.py managers-path-in-the-age-of-ai              # 진우 목소리로 <슬러그>/out/<슬러그>.mp4
     python3 build.py <슬러그> --voice=준호                         # 다른 목소리(이름 또는 tc_ 아이디). 목소리마다 캐시가 따로다
+    python3 build.py <슬러그> --voice=준규 --emotion=smart        # Smart Emotion: 앞뒤 문맥으로 감정을 모델이 정한다
     python3 build.py <슬러그> --voice=유나                         # macOS 내장 Yuna(say) — 타입캐스트 크레딧 0
     python3 build.py <슬러그> --slides-only                       # 화면 PNG 만 굽는다(크레딧 안 씀)
     python3 build.py <슬러그> --wide                              # 가로(1920x1080)판 → out/<슬러그>-가로.mp4. 녹음은 같은 캐시를 쓴다(크레딧 0)
@@ -53,7 +54,10 @@ VOICES = {"진우": "tc_632293f759d649937b97f323", "준호": "tc_632a7588e7c78a4
 MAC_VOICES = {"Yuna"}               # macOS `say` 목소리(타입캐스트 대신, 크레딧 0)
 VOICE = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--voice=")), "진우")
 VOICE_ID = VOICES.get(VOICE, VOICE)
-MODEL, EMOTION = "ssfm-v30", "normal"
+MODEL = "ssfm-v30"
+# 감정: --emotion=smart 면 앞뒤 조각을 문맥으로 주고 모델이 감정을 정한다(Smart Emotion). 아니면 프리셋(normal, happy, …)
+EMOTION = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--emotion=")), "normal")
+CONTEXT: dict[str, tuple[str, str]] = {}   # 조각 → (앞 조각, 뒤 조각). build() 가 채운다
 MAX_CHARS = 300                     # 한 요청에 보내는 글자 수 상한(문장 경계로 자른다)
 # 쉼 정책(초). 무음은 TTS가 아니라 여기서 넣으므로 바꿔도 크레딧 0, 녹음 캐시도 그대로다.
 GAP_CHUNK, GAP_PARA = 0.25, 0.6      # 300자 조각 사이 / 한 화면 안 문단 사이
@@ -119,7 +123,7 @@ def spoken(text: str) -> str:
 
 
 def tts(text: str) -> Path:
-    text = spoken(text)
+    raw, text = text, spoken(text)
     cache = WORK / f"voice-{VOICE}"
     cache.mkdir(parents=True, exist_ok=True)
     dest = cache / (hashlib.sha1(f"{VOICE_ID}|{EMOTION}|{MODEL}|{text}".encode()).hexdigest()[:12] + ".wav")
@@ -128,7 +132,13 @@ def tts(text: str) -> Path:
     if VOICE_ID in MAC_VOICES:   # macOS 내장 목소리: 크레딧 0
         subprocess.run(["say", "-v", VOICE_ID, "--file-format=WAVE", "--data-format=LEI16@24000", "-o", str(dest), text], check=True)
         return dest
-    body = json.dumps({"voice_id": VOICE_ID, "text": text, "model": MODEL, "emotion": EMOTION}).encode()
+    if EMOTION == "smart":
+        # ponytail: 캐시 키에 문맥은 넣지 않는다 — 이웃 문단을 고쳐도 이 조각은 다시 사지 않는다
+        prev, nxt = CONTEXT.get(raw, ("", ""))
+        prompt = {"emotion_type": "smart", "previous_text": spoken(prev)[-2000:], "next_text": spoken(nxt)[:2000]}
+    else:
+        prompt = {"emotion_type": "preset", "emotion_preset": EMOTION}
+    body = json.dumps({"voice_id": VOICE_ID, "text": text, "model": MODEL, "prompt": prompt}).encode()
     for attempt in range(5):
         req = urllib.request.Request(TTS_URL, data=body, headers={
             "X-API-KEY": KEY_PATH.read_text().strip(), "Content-Type": "application/json"})
@@ -373,6 +383,9 @@ def build() -> tuple[Path, list[float]]:
     audio = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--audio=")), None)
     if audio:
         return build_on_audio(scenes, shots, HERE / audio), None
+    seq = [c for s in scenes for f in s["frames"] for para in f["narration"]
+           for part in para.split("‖") if part.strip() for c in chunks(part.strip())]
+    CONTEXT.update({c: (seq[i - 1] if i else "", seq[i + 1] if i + 1 < len(seq) else "") for i, c in enumerate(seq)})
     wavs, seconds, chapters = [], [], []
     for s in scenes:
         wav, secs = scene_audio(s)
