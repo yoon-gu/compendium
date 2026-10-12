@@ -6,7 +6,7 @@
     python3 podcast.py <슬러그> --preview    # macOS 목소리(Reed·Yuna)로 미리 듣기 — 크레딧 0
 
 podcast.md 형식
-- 첫 `##` 앞: `화자: 지민=진우, 서연=다은`(이름=build.py VOICES 이름 또는 tc_ 아이디).
+- 첫 `##` 앞: `화자: 지민=준호, 서연=다은`(이름=build.py VOICES 이름 또는 tc_ 아이디). 나레이션 목소리(NARRATORS)는 쓸 수 없다.
 - `이름: 말` 한 줄이 말 한 차례. 줄 앞 `(짧게) ` 는 앞 말에 바로 붙는 맞장구(쉼을 짧게).
 - 말 속 `‖` 는 생각하는 쉼. `## …` 줄은 구간(읽지 않음, 유튜브 챕터 이름이 된다).
 
@@ -41,6 +41,8 @@ VOICES = {"진우": "tc_632293f759d649937b97f323", "준호": "tc_632a7588e7c78a4
           "다은": "tc_692799c46508f6b9468c54c7", "소혜": "tc_642f9d147ce3f79717423466",
           "진한": "tc_673ecaa071c8f61f01459243", "준규": "tc_6436dbbb602bde66c6b39504",
           "연우": "tc_5eb55cf1f0b0a700071f89c7", "김건": "tc_61c2f7741330d213c238cba6"}
+# 나레이션 전용 목소리(build.py VOICES 주석). 대화편 진행자는 나레이터와 다른 인물이어야 한다 → 준호·다은·소혜
+NARRATORS = {"진우", "진한", "준규", "연우", "김건"}
 MAC_VOICES = ["Reed", "Yuna"]       # --preview 때 화자 순서대로
 MAX_CHARS = 300
 # 쉼(초). 무음이라 바꿔도 크레딧 0
@@ -66,6 +68,8 @@ def parse(text: str) -> tuple[dict[str, str], list[dict]]:
                 turns.append({"who": m[2], "text": m[3], "quick": bool(m[1]), "section": section})
                 section = None
     assert speakers and turns, "화자: 줄과 `이름: 말` 줄이 필요하다"
+    taken = NARRATORS & set(speakers.values())
+    assert not taken, f"{taken}은 나레이션 목소리다. 대화편은 준호·다은·소혜 중에서 고른다"
     return speakers, turns
 
 

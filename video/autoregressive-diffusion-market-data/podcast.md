@@ -7,7 +7,7 @@ James Somers의 "Can you use autoregressive diffusion to generate market data?"(
 지민 = 데이터 과학은 알지만 시장 미시구조·확산 모델은 처음인 청취자 대변. 서연 = 글을 읽고 온 설명 담당.
 
 출처: James Somers, Jane Street 블로그, 2026년 9월
-화자: 지민=진우, 서연=다은
+화자: 지민=준호, 서연=다은
 
 ## 1 | 오프닝
 
