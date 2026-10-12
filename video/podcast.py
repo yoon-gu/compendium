@@ -10,6 +10,7 @@ podcast.md 형식
 - `이름: 말` 한 줄이 말 한 차례. 줄 앞 `(짧게) ` 는 앞 말에 바로 붙는 맞장구(쉼을 짧게).
 - 말 속 `‖` 는 생각하는 쉼. `## …` 줄은 구간(읽지 않음, 유튜브 챕터 이름이 된다).
 
+차례마다 시작 시각은 work/podcast-turns.tsv 에 남는다(화면을 입힐 때 `@분:초` 기준).
 녹음은 build.py 와 같은 캐시(work/voice-<목소리>/<내용 해시>.wav)를 쓰므로 고친 줄만 다시 산다. 쉼은 무음이라 바꿔도 크레딧 0.
 """
 
@@ -137,7 +138,7 @@ def main() -> None:
     with ThreadPoolExecutor(4) as pool:   # 타입캐스트 동시 요청 한도 5
         list(pool.map(lambda job: tts(*job), todo))
 
-    params, data, marks, samples = None, [], [], 0
+    params, data, marks, starts, samples = None, [], [], [], 0
 
     def add_silence(sec: float) -> None:
         nonlocal samples
@@ -150,6 +151,7 @@ def main() -> None:
             add_silence(GAP_SECTION if t["section"] else GAP_QUICK if t["quick"] else GAP_TURN)
         if t["section"]:
             marks.append((samples, t["section"]))
+        starts.append(samples)
         cs = chunks(t["text"])
         for k, (text, think) in enumerate(cs):
             with wave.open(str(tts(text, speakers[t["who"]]))) as f:
@@ -172,6 +174,9 @@ def main() -> None:
     rate = params.framerate
     chapters = "\n".join(f"{int(s / rate // 60)}:{int(s / rate % 60):02d} {name}" for s, name in marks)
     (out / f"{SLUG}-podcast-chapters.txt").write_text(chapters + "\n", encoding="utf-8")
+    # 화면 대본(script-podcast.md)의 `@분:초` 를 잡을 때 쓴다
+    (HERE / "work" / "podcast-turns.tsv").write_text("".join(
+        f"{s / rate // 60:.0f}:{s / rate % 60:05.2f}\t{t['who']}\t{t['text']}\n" for s, t in zip(starts, turns)), encoding="utf-8")
     print(f"{m4a.name} · {samples / rate / 60:.1f}분 · 차례 {len(turns)}\n{chapters}")
 
 

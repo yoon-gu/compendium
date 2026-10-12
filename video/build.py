@@ -7,6 +7,7 @@
     python3 build.py <슬러그> --voice=유나                         # macOS 내장 Yuna(say) — 타입캐스트 크레딧 0
     python3 build.py <슬러그> --slides-only                       # 화면 PNG 만 굽는다(크레딧 안 씀)
     python3 build.py <슬러그> --wide                              # 가로(1920x1080)판 → out/<슬러그>-가로.mp4. 녹음은 같은 캐시를 쓴다(크레딧 0)
+    python3 build.py <슬러그> --script=script-podcast.md --audio=out/<슬러그>-podcast.m4a --wide   # 다른 대본 → out/<슬러그>-podcast-가로.mp4
     python3 build.py <슬러그> --audio=work/overview.m4a           # 녹음 대신 외부 음성(예: NotebookLM 오디오 오버뷰)을 입힌다.
                                                                   # 이때 각 화면의 첫 나레이션 줄은 `@분:초 …` 로 시작해 그 화면의 시작 시각을 준다(크레딧 안 씀)
 
@@ -42,7 +43,9 @@ SLUG = next((a for a in sys.argv[1:] if not a.startswith("--")), None)
 assert SLUG, "사용법: python3 build.py <슬러그> [--voice=이름] [--slides-only]"
 HERE = Path(__file__).resolve().parent / SLUG
 WIDE = "--wide" in sys.argv                                   # 가로(1920x1080)판: 왼쪽 글, 오른쪽 그림의 두 단
-SCRIPT, WORK, OUT = HERE / "script.md", HERE / "work", HERE / "out" / (f"{SLUG}-가로.mp4" if WIDE else f"{SLUG}.mp4")
+SCRIPT_NAME = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--script=")), "script.md")
+KIND = "" if SCRIPT_NAME == "script.md" else "-" + Path(SCRIPT_NAME).stem.removeprefix("script-")   # script-podcast.md → -podcast
+SCRIPT, WORK, OUT = HERE / SCRIPT_NAME, HERE / "work", HERE / "out" / f"{SLUG}{KIND}{'-가로' if WIDE else ''}.mp4"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 TTS_URL = "https://api.typecast.ai/v1/text-to-speech"
 KEY_PATH = Path.home() / ".config/typecast-key.txt"
@@ -334,7 +337,7 @@ def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1,
 
 
 def render_slides(meta: dict, scenes: list[dict]) -> list[Path]:
-    work = WORK / ("slides-wide" if WIDE else "slides")
+    work = WORK / f"slides{KIND}{'-wide' if WIDE else ''}"
     work.mkdir(parents=True, exist_ok=True)
     page, pdf = work / "slides.html", work / "slides.pdf"
     flat = [(fr, s) for s in scenes for fr in s["frames"]]
@@ -397,7 +400,7 @@ def build() -> tuple[Path, list[float]]:
     assert len(seconds) == len(shots)
     # 유튜브 설명란에 붙이면 챕터가 된다(0:00 시작, 3개 이상, 각 10초 이상)
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.with_name(f"{SLUG}-chapters.txt").write_text("\n".join(chapters) + "\n", encoding="utf-8")
+    OUT.with_name(f"{SLUG}{KIND}-chapters.txt").write_text("\n".join(chapters) + "\n", encoding="utf-8")
     starts = [sum(seconds[:i]) for i in range(len(seconds))]
     return with_clips(encode(shots, seconds, join_audio(wavs)), scenes, shots, starts, seconds), seconds
 
@@ -419,7 +422,7 @@ def build_on_audio(scenes: list[dict], shots: list[Path], track: Path) -> Path:
     assert starts[0] == 0 and starts[-1] < total, f"첫 화면은 @0:00, 마지막 화면은 음성 길이({total:.0f}초) 안이어야 한다"
     seconds = [b - a for a, b in zip(starts, starts[1:] + [total])]
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.with_name(f"{SLUG}-chapters.txt").write_text("\n".join(chapters) + "\n", encoding="utf-8")
+    OUT.with_name(f"{SLUG}{KIND}-chapters.txt").write_text("\n".join(chapters) + "\n", encoding="utf-8")
     return with_clips(encode(shots, seconds, track), scenes, shots, starts, seconds)
 
 
