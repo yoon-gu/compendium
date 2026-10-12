@@ -2,6 +2,7 @@
 """video/<슬러그>/script.md 표지(1장)로 유튜브 썸네일(1280x720 PNG)을 만든다. 화면 디자인과 같은 결(종이 바탕, 명조 제목, 잉크색 밑줄).
 
     python3 thumbnail.py <슬러그> [<슬러그> …]          # → <슬러그>/out/<슬러그>-thumb.png
+    python3 thumbnail.py <슬러그> --podcast             # 대화편(podcast.py) 표지 → out/<슬러그>-podcast-thumb.png
 
 유튜브에 올리려면 update_meta.py 처럼 youtube 권한 토큰이 필요하다:  uv run upload_thumb.py <videoId> <슬러그>
 """
@@ -14,6 +15,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 W, H = 1280, 720
+KIND = "-podcast" if "--podcast" in sys.argv else ""   # 대화편: 부제를 바꾸고 episodes.tsv 에서 <슬러그>-podcast 회차를 찾는다
 
 
 def parse(slug: str) -> dict:
@@ -22,8 +24,8 @@ def parse(slug: str) -> dict:
     cover = re.search(r"^## 1 \|.*\n((?:> .*\n)+)", text, re.M)[1]
     lines = [ln[2:].strip() for ln in cover.splitlines() if not ln[2:].strip().startswith("![")]   # 그림·영상 줄은 썸네일에 안 쓴다
     weeks = {r[1]: r[0] for r in (ln.split("\t") for ln in (HERE / "episodes.tsv").read_text(encoding="utf-8").splitlines()[1:])}
-    return {"title": lines[0], "sub": lines[1] if len(lines) > 1 else "", "ink": meta.get("잉크", "#1C2E6B"),
-            "src": meta.get("출처", ""), "week": weeks.get(slug, "")}
+    return {"title": lines[0], "sub": "두 진행자가 묻고 답하는 대화편" if KIND else lines[1] if len(lines) > 1 else "", "ink": meta.get("잉크", "#1C2E6B"),
+            "src": meta.get("출처", ""), "week": weeks.get(slug + KIND, "")}
 
 
 def inline(s: str) -> str:
@@ -52,12 +54,12 @@ h1 {{ font-family: "NanumMyeongjo ExtraBold", "NanumMyeongjoExtraBold", "NanumMy
 <div class=sub>{inline(m["sub"])}</div>"""
     work = HERE / slug / "work"; work.mkdir(parents=True, exist_ok=True)
     (work / "thumb.html").write_text(page, encoding="utf-8")
-    out = HERE / slug / "out" / f"{slug}-thumb.png"; out.parent.mkdir(parents=True, exist_ok=True)
+    out = HERE / slug / "out" / f"{slug}{KIND}-thumb.png"; out.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars", f"--screenshot={out}", f"--window-size={W},{H}",
                     (work / "thumb.html").as_uri()], check=True, capture_output=True)
     return out
 
 
 if __name__ == "__main__":
-    for slug in sys.argv[1:]:
+    for slug in (a for a in sys.argv[1:] if not a.startswith("--")):
         print(render(slug))

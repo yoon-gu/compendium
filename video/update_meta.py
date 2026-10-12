@@ -5,6 +5,7 @@
 `youtube` 권한의 별도 토큰 video/token-manage.json 을 쓴다(처음 한 번 브라우저 로그인, .gitignore 대상).
 
     uv run video/update_meta.py <videoId> <슬러그>      # video/<슬러그>/youtube.md 의 제목·설명·태그를 반영
+    uv run video/update_meta.py <videoId> <슬러그> --podcast   # 대화편: youtube-podcast.md + out/<슬러그>-podcast-chapters.txt
 
 youtube.md 형식: 1행 제목, `태그:` 줄(쉼표 구분), 빈 줄 뒤 설명 전문. 챕터 시각은 build 산출 wav 길이로 넣는다(`{챕터}` 자리).
 """
@@ -17,6 +18,7 @@ from googleapiclient.discovery import build
 HERE = pathlib.Path(__file__).parent
 SCOPES = ["https://www.googleapis.com/auth/youtube"]
 TOKEN = HERE / "token-manage.json"
+KIND = "-podcast" if "--podcast" in sys.argv else ""
 
 
 def credentials():
@@ -34,7 +36,7 @@ def credentials():
 
 def chapters(slug: str) -> str:
     """build.py 가 남긴 out/<슬러그>-chapters.txt 를 쓰고, 없으면 장면 wav 길이로 '0:00 장 이름' 줄을 만든다(같은 장 이름은 첫 장면만)."""
-    made = HERE / slug / "out" / f"{slug}-chapters.txt"
+    made = HERE / slug / "out" / f"{slug}{KIND}-chapters.txt"
     if made.exists():
         return made.read_text(encoding="utf-8").strip()
     text = (HERE / slug / "script.md").read_text(encoding="utf-8")
@@ -50,7 +52,7 @@ def chapters(slug: str) -> str:
 
 def main():
     vid, slug = sys.argv[1:3]
-    meta = (HERE / slug / "youtube.md").read_text(encoding="utf-8")
+    meta = (HERE / slug / f"youtube{KIND}.md").read_text(encoding="utf-8")
     title, rest = meta.split("\n", 1)
     tagline, desc = rest.split("\n\n", 1)
     tags = [t.strip() for t in tagline.removeprefix("태그:").split(",") if t.strip()]
