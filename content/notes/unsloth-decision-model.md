@@ -40,7 +40,7 @@ LLM을 분류기로 쓰는 흔한 방법은 "billing, technical, sales 중 하�
 |---|---|---|
 | `noul` | 예/아니요 | '예'일 확률(0-1) |
 | `choice` | 여러 선택지 중 하나 | 가장 그럴듯한 선택지와 선택지별 확률 |
-| `score` | 순서 있는 척도(예: 안 급함 < 곧 < 오늘) | 척도 위의 위치(0부터)와 수준별 확률 |
+| `score` | 순서 있는 척도(예: not urgent < soon < today) | 척도 위의 위치(0부터)와 수준별 확률 |
 
 한 요청에 질문은 최대 64개, `choice`의 선택지는 최대 255개, `score`의 수준은 최대 10단계까지 넣을 수 있다. 문서는 행동을 정할 때 `confidence` 값보다 선택지별 `probabilities`를 보라고 권한다. 예를 들어 `technical` 확률이 0.8을 넘을 때만 버그 리포트를 만드는 식이다.
 
@@ -48,10 +48,10 @@ LLM을 분류기로 쓰는 흔한 방법은 "billing, technical, sales 중 하�
 
 ```python
 # 보통 방식: 생성형 LLM에게 글로 답하게 하고 파싱한다
-prompt = f"""고객 문의: {ticket}
-담당 팀을 billing / technical / sales 중 하나로만 답하라."""
+prompt = f"""Customer message: {ticket}
+Answer with one of: billing / technical / sales."""
 text = llm.generate(prompt, max_new_tokens=5)   # 토큰을 하나씩 생성
-team = text.strip().lower()                      # "Billing." "결제팀입니다" 같은 답이 오면 파싱 실패
+team = text.strip().lower()                      # "Billing." "The billing team." 같은 답이 오면 파싱 실패
 # 질문이 셋(팀, 환불 여부, 긴급도)이면 호출도 세 번이거나, JSON을 시켜 놓고 형식이 깨질까 걱정해야 한다
 # 확률이 없다: 0.51로 고른 건지 0.99로 고른 건지 모른다
 ```

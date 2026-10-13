@@ -60,8 +60,8 @@ figs = {}
 
 # ---------- 배경 ----------
 # 보통의 방식: 생성 → 파싱
-h, b = stack([("① 프롬프트", ["“담당 팀을 billing / technical / sales", "  중 하나로만 답하라”"], False),
-              ("② 토큰을 하나씩 생성", ["“Billing.”  “결제팀입니다!”  …"], False),
+h, b = stack([("① 프롬프트", ["“Answer with one of:", "  billing / technical / sales”"], False),
+              ("② 토큰을 하나씩 생성", ["“Billing.”  “The billing team.”  …"], False),
               ("③ 글자를 파싱", ["형식이 깨지면 실패, 질문마다 다시 호출", "확률 없음: 망설였는지 확신했는지 모른다"], True)])
 figs["t-generate"] = svg(h, b)
 
@@ -105,18 +105,18 @@ figs["t-types"] = svg(668, "\n".join(b))
 
 # 티켓 예시
 b = [rect(0, 0, W, 150, LINE, SOFT, 3),
-     text(28, 56, "“인보이스 #4411이 두 번 청구됐어요.", 28, TXT),
-     text(28, 106, "  중복분을 오늘 환불해 주세요.”", 28, TXT),
+     text(28, 56, "“Hi, I was charged twice for invoice #4411.", 28, TXT),
+     text(28, 106, "  Please refund the duplicate today.”", 28, TXT),
      arrow(W / 2, 158, W / 2, 214)]
 y = 222
-for title, opts in [("어느 팀?  (choice)", [("결제", 0.99), ("기술", 0.0), ("영업", 0.0)]),
-                    ("환불 요청?  (noul)", [("예", 0.98)]),
-                    ("얼마나 급한가?  (score)", [("안 급함", 0.0), ("곧", 0.09), ("오늘", 0.90)])]:
+for title, opts in [("어느 팀?  (choice)", [("billing", 0.99), ("technical", 0.0), ("sales", 0.0)]),
+                    ("환불 요청?  (noul)", [("yes", 0.98)]),
+                    ("얼마나 급한가?  (score)", [("not urgent", 0.0), ("soon", 0.09), ("today", 0.90)])]:
     hh = 70 + 46 * len(opts)
     b += [rect(0, y, W, hh, LINE), text(28, y + 46, title, 28, TXT, weight="bold")]
     for j, (lab, p) in enumerate(opts):
         yy = y + 70 + j * 46
-        b += [text(28, yy + 26, lab, 26, GRAY), bar(170, yy + 4, 560, 28, p), text(860, yy + 28, f"{p:.2f}", 26, INK if p > 0.5 else GRAY, "end", "bold")]
+        b += [text(28, yy + 26, lab, 26, GRAY, mono=True), bar(220, yy + 4, 520, 28, p), text(860, yy + 28, f"{p:.2f}", 26, INK if p > 0.5 else GRAY, "end", "bold")]
     y += hh + 20
 b += [text(0, y + 30, "생성 토큰 0개 · 순전파 한 번", 28, INK, weight="bold")]
 figs["ex-ticket"] = svg(y + 50, "\n".join(b))
