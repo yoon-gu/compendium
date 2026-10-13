@@ -25,6 +25,9 @@ buildFuture = true
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/yoon-gu/compendium"
+  [[params.socialIcons]]
+    name = "rss"
+    url = "https://yoon-gu.github.io/compendium/index.xml"
 
 [menu]
   [[menu.main]]
