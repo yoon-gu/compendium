@@ -4,6 +4,7 @@ date: 2026-10-13
 draft: false
 math: true
 source_url: "https://unsloth.ai/docs/new/train-your-own-decision-model-with-unsloth"
+youtube: "OkZ6GpledYY"
 author: "Unsloth"
 tags: ["AI", "LLM", "파인튜닝", "LoRA", "분류", "결정 모델", "Unsloth", "문서"]
 summary: "Unsloth가 Qwen·Gemma·Llama 같은 LLM을 '결정 모델'로 파인튜닝하는 기능을 냈다. 글을 쓰는 대신 입력과 질문 목록을 한 번 읽고, 작은 헤드가 선택지마다 점수를 매겨 보정된 확률과 함께 답을 고른다. Qwen3.5-0.8B는 4GB VRAM, 42분 학습으로 홀드아웃 정확도 78%를 냈고, 학습한 모델은 Jev 호환 Decision API로 바로 서빙할 수 있다."

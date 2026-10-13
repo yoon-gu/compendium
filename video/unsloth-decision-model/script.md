@@ -8,6 +8,7 @@ Unsloth 공식 문서 "Train your own Decision Model"(2026년 10월)을 한 사�
 
 출처: Unsloth 공식 문서, 2026년 10월
 잉크: #8A4B2A
+부제: 글을 쓰는 대신 선택지에 확률을 매기는 결정 모델, Unsloth로 직접 학습하기
 약어: LLM=Large Language Model, 거대 언어 모델; LoRA=Low-Rank Adaptation, 저랭크 적응; GPU=Graphics Processing Unit
 
 ## 1 | 들어가며 | 표지
