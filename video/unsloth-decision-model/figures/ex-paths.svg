@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 920" width="888" height="920"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A4B2A"/></marker></defs><rect x="0" y="0" width="280" height="330" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">앱</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델 고르고</text>
+<text x="26" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Decision</text>
+<text x="26" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">model로</text>
+<text x="26" y="256" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Start</text>
+<rect x="304" y="0" width="280" height="330" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="330" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">노트북</text>
+<text x="330" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Colab·Kaggle</text>
+<text x="330" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">무료 GPU</text>
+<text x="330" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">단계별 안내</text>
+<rect x="608" y="0" width="280" height="330" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="634" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코드</text>
+<text x="634" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">FastDecision</text>
+<text x="634" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Model</text>
+<text x="634" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">+ Decision</text>
+<text x="634" y="256" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Trainer</text>
+<line x1="140" y1="338" x2="444.0" y2="420" stroke="#8A4B2A" stroke-width="4" marker-end="url(#a)"/>
+<line x1="444" y1="338" x2="444.0" y2="420" stroke="#8A4B2A" stroke-width="4" marker-end="url(#a)"/>
+<line x1="748" y1="338" x2="444.0" y2="420" stroke="#8A4B2A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="426" width="888" height="200" rx="14" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="4"/>
+<text x="26" y="480" font-size="34" fill="#8A4B2A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">학습 → 보정 → 저장</text>
+<text x="26" y="532" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">홀드아웃으로 정확도·보정 오차 확인</text>
+<line x1="444.0" y1="634" x2="444.0" y2="690" stroke="#8A4B2A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="696" width="888" height="150" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="750" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Decision API로 서빙</text>
+<text x="0" y="900" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">재현 설정: 에폭 2 · LoRA 랭크 16 · 학습률 2e-4</text></svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 570" width="888" height="570"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A4B2A"/></marker></defs><line x1="20" y1="120" x2="868" y2="120" stroke="#B9B9B4" stroke-width="6"/>
+<circle cx="20" cy="120" r="16" fill="#6B6B68"/>
+<text x="20" y="60" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">분류기</text>
+<text x="20" y="190" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">BERT + 분류 헤드</text>
+<text x="20" y="230" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">정해진 레이블만</text>
+<circle cx="444" cy="120" r="22" fill="#8A4B2A"/>
+<text x="444" y="60" font-size="32" fill="#8A4B2A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">결정 모델</text>
+<text x="444" y="190" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">LLM + 결정 헤드</text>
+<text x="444" y="230" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">선택지를 글로 받는다</text>
+<circle cx="868" cy="120" r="16" fill="#6B6B68"/>
+<text x="868" y="60" font-size="32" fill="#141414" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">생성기</text>
+<text x="868" y="190" font-size="24" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">LLM + 언어 모델 헤드</text>
+<text x="868" y="230" font-size="24" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">아무 말이나 한다</text>
+<rect x="0" y="300" width="888" height="250" rx="14" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="4"/>
+<text x="26" y="354" font-size="34" fill="#8A4B2A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">가운데 자리의 이점</text>
+<text x="26" y="406" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">못 본 선택지도 설명만 바꿔 넣으면 고른다</text>
+<text x="26" y="456" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">질문 문장과 선택지 설명을 읽고 이해한다</text></svg>

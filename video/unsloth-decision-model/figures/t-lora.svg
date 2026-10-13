@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 660" width="888" height="660"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A4B2A"/></marker></defs><rect x="0" y="40" width="400" height="400" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="200" y="230" font-size="32" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">원래 가중치 W</text>
+<text x="200" y="280" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">얼려 둔다 (학습 안 함)</text>
+<text x="200" y="330" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수십억 개</text>
+<text x="440" y="250" font-size="60" fill="#8A4B2A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">+</text>
+<rect x="490" y="40" width="60" height="400" rx="8" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="4"/>
+<text x="520" y="476" font-size="30" fill="#8A4B2A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">A</text>
+<text x="586" y="250" font-size="44" fill="#8A4B2A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">×</text>
+<rect x="620" y="210" width="268" height="60" rx="8" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="4"/>
+<text x="754" y="306" font-size="30" fill="#8A4B2A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">B</text>
+<text x="0" y="540" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">작은 행렬 두 개(어댑터)만 학습한다</text>
+<text x="0" y="590" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">랭크 16 = 작은 행렬의 폭이 16</text>
+<text x="0" y="640" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 큰 모델도 GPU 하나로 파인튜닝</text></svg>

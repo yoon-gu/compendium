@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 626" width="888" height="626"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A4B2A"/></marker></defs><rect x="0" y="0" width="888" height="170" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Jev를 쓰던 코드</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">그대로 둔다</text>
+<line x1="444.0" y1="178" x2="444.0" y2="236" stroke="#8A4B2A" stroke-width="4" marker-end="url(#a)"/>
+<text x="464.0" y="216" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서버 주소·키만 바꾼다</text>
+<rect x="0" y="244" width="420" height="200" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="298" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">TypeSafe Jev</text>
+<text x="26" y="350" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">클라우드</text>
+<rect x="468" y="244" width="420" height="200" rx="14" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="4"/>
+<text x="494" y="298" font-size="34" fill="#8A4B2A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">로컬 Unsloth</text>
+<text x="494" y="350" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Decision API</text>
+<text x="494" y="400" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">내가 학습한 모델</text>
+<text x="0" y="510" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">주의: confidence 계산식이 다르다</text>
+<text x="0" y="558" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ Jev에서 맞춘 confidence 문턱은 쓰지 말고</text>
+<text x="0" y="606" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">   선택지 확률에 문턱을 다시 건다</text></svg>

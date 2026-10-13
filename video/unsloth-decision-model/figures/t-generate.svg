@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 648" width="888" height="648"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A4B2A"/></marker></defs><rect x="0" y="0" width="888" height="198" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">① 프롬프트</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">“담당 팀을 billing / technical / sales</text>
+<text x="26" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">  중 하나로만 답하라”</text>
+<line x1="444.0" y1="202" x2="444.0" y2="246" stroke="#8A4B2A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="250" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="304" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">② 토큰을 하나씩 생성</text>
+<text x="26" y="356" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">“Billing.”  “결제팀입니다!”  …</text>
+<line x1="444.0" y1="402" x2="444.0" y2="446" stroke="#8A4B2A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="450" width="888" height="198" rx="14" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="4"/>
+<text x="26" y="504" font-size="34" fill="#8A4B2A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">③ 글자를 파싱</text>
+<text x="26" y="556" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">형식이 깨지면 실패, 질문마다 다시 호출</text>
+<text x="26" y="606" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">확률 없음: 망설였는지 확신했는지 모른다</text></svg>

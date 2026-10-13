@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 668" width="888" height="668"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A4B2A"/></marker></defs><rect x="0" y="0" width="888" height="150" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="62" font-size="38" fill="#8A4B2A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">noul</text>
+<text x="28" y="118" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예 / 아니요</text>
+<text x="860" y="118" font-size="28" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">‘예’일 확률 0-1</text>
+<rect x="0" y="182" width="888" height="150" rx="14" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="4"/>
+<text x="28" y="244" font-size="38" fill="#8A4B2A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">choice</text>
+<text x="28" y="300" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">선택지 중 하나</text>
+<text x="860" y="300" font-size="28" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">선택지마다 확률</text>
+<rect x="0" y="364" width="888" height="150" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="426" font-size="38" fill="#8A4B2A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">score</text>
+<text x="28" y="482" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">순서 있는 척도</text>
+<text x="860" y="482" font-size="28" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수준마다 확률</text>
+<text x="0" y="600" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">한 요청에 질문 최대 64개</text>
+<text x="0" y="648" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">choice 선택지 최대 255개, score 최대 10단계</text></svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 780" width="888" height="780"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A4B2A"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">① 프롬프트 하나에 입력 + 질문 + 선택지</text>
+<rect x="0" y="60" width="208" height="60" rx="8" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="104.0" y="100" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">입력</text>
+<rect x="220" y="60" width="64" height="60" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="252.0" y="100" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">질문1</text>
+<rect x="296" y="60" width="208" height="60" rx="8" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="3"/>
+<text x="400.0" y="100" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">선택지</text>
+<rect x="516" y="60" width="64" height="60" rx="8" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="548.0" y="100" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">질문2</text>
+<rect x="592" y="60" width="136" height="60" rx="8" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="3"/>
+<text x="660.0" y="100" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">선택지</text>
+<line x1="444.0" y1="130" x2="444.0" y2="186" stroke="#8A4B2A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="192" width="888" height="110" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="444.0" y="240" font-size="28" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">② LLM이 한 번 읽는다 (LoRA)</text>
+<text x="444.0" y="280" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">자리마다 은닉 상태</text>
+<line x1="444.0" y1="310" x2="444.0" y2="366" stroke="#8A4B2A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="372" width="888" height="110" rx="14" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="4"/>
+<text x="444.0" y="420" font-size="28" fill="#8A4B2A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">③ 결정 헤드 (Clef와 같은 설계)</text>
+<text x="444.0" y="460" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">질문·선택지 자리를 보고 모든 질문을 함께 채점</text>
+<line x1="444.0" y1="490" x2="444.0" y2="546" stroke="#8A4B2A" stroke-width="4" marker-end="url(#a)"/>
+<text x="0" y="590" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">billing</text>
+<rect x="200" y="566" width="560" height="30" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="200" y="566" width="554.4" height="30" rx="6" fill="#8A4B2A" stroke="#8A4B2A" stroke-width="0"/>
+<text x="888" y="592" font-size="26" fill="#8A4B2A" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.99</text>
+<text x="0" y="644" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">technical</text>
+<rect x="200" y="620" width="560" height="30" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="200" y="620" width="5.6000000000000005" height="30" rx="6" fill="#8A4B2A" stroke="#8A4B2A" stroke-width="0"/>
+<text x="888" y="646" font-size="26" fill="#8A4B2A" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.01</text>
+<text x="0" y="698" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">sales</text>
+<rect x="200" y="674" width="560" height="30" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="200" y="674" width="4" height="30" rx="6" fill="#8A4B2A" stroke="#8A4B2A" stroke-width="0"/>
+<text x="888" y="700" font-size="26" fill="#8A4B2A" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.00</text>
+<text x="0" y="760" font-size="28" fill="#8A4B2A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">글자는 하나도 쓰지 않는다</text></svg>

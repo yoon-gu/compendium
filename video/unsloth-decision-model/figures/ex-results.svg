@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 730" width="888" height="730"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A4B2A"/></marker></defs><text x="0" y="34" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Qwen3.5 8억(0.8B) · 정확도</text>
+<rect x="0" y="56" width="24" height="24" rx="4" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/>
+<text x="34" y="77" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">학습 전</text>
+<rect x="170" y="56" width="24" height="24" rx="4" fill="#8A4B2A" stroke="#8A4B2A" stroke-width="0"/>
+<text x="204" y="77" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">학습 후</text>
+<text x="0" y="150" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">typed-decisions</text>
+<rect x="0" y="170" width="760" height="40" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="0" y="170" width="273.59999999999997" height="40" rx="6" fill="#B9B9B4" stroke="#B9B9B4" stroke-width="0"/>
+<text x="888" y="202" font-size="28" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">36%</text>
+<rect x="0" y="220" width="760" height="40" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="0" y="220" width="554.8" height="40" rx="6" fill="#8A4B2A" stroke="#8A4B2A" stroke-width="0"/>
+<text x="888" y="252" font-size="28" fill="#8A4B2A" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">73%</text>
+<text x="0" y="340" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">BANKING77 (의도 77개)</text>
+<rect x="0" y="360" width="760" height="40" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="0" y="360" width="53.2" height="40" rx="6" fill="#B9B9B4" stroke="#B9B9B4" stroke-width="0"/>
+<text x="888" y="392" font-size="28" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">7%</text>
+<rect x="0" y="410" width="760" height="40" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="0" y="410" width="562.4" height="40" rx="6" fill="#8A4B2A" stroke="#8A4B2A" stroke-width="0"/>
+<text x="888" y="442" font-size="28" fill="#8A4B2A" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">74%</text>
+<text x="0" y="530" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">CLINC150 (의도 150개)</text>
+<rect x="0" y="550" width="760" height="40" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="0" y="550" width="144.4" height="40" rx="6" fill="#B9B9B4" stroke="#B9B9B4" stroke-width="0"/>
+<text x="888" y="582" font-size="28" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">19%</text>
+<rect x="0" y="600" width="760" height="40" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="0" y="600" width="577.6" height="40" rx="6" fill="#8A4B2A" stroke="#8A4B2A" stroke-width="0"/>
+<text x="888" y="632" font-size="28" fill="#8A4B2A" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">76%</text>
+<text x="0" y="710" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">테스트 세트는 학습 데이터와 겹치지 않게 걸렀다</text></svg>

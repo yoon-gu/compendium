@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 690" width="888" height="690"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A4B2A"/></marker></defs><text x="0" y="34" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">“비 올 확률 80%”라고 한 날 10일</text>
+<text x="0" y="110" font-size="28" fill="#8A4B2A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">보정이 잘 된 예보</text>
+<circle cx="40" cy="180" r="30" fill="#8A4B2A"/>
+<circle cx="124" cy="180" r="30" fill="#8A4B2A"/>
+<circle cx="208" cy="180" r="30" fill="#8A4B2A"/>
+<circle cx="292" cy="180" r="30" fill="#8A4B2A"/>
+<circle cx="376" cy="180" r="30" fill="#8A4B2A"/>
+<circle cx="460" cy="180" r="30" fill="#8A4B2A"/>
+<circle cx="544" cy="180" r="30" fill="#8A4B2A"/>
+<circle cx="628" cy="180" r="30" fill="#8A4B2A"/>
+<circle cx="712" cy="180" r="30" fill="#ECECE8"/>
+<circle cx="796" cy="180" r="30" fill="#ECECE8"/>
+<text x="0" y="260" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실제로 비 온 날 8일 → 믿을 만하다</text>
+<text x="0" y="360" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">보정이 안 된 예보</text>
+<circle cx="40" cy="430" r="30" fill="#A23B3B"/>
+<circle cx="124" cy="430" r="30" fill="#A23B3B"/>
+<circle cx="208" cy="430" r="30" fill="#A23B3B"/>
+<circle cx="292" cy="430" r="30" fill="#A23B3B"/>
+<circle cx="376" cy="430" r="30" fill="#A23B3B"/>
+<circle cx="460" cy="430" r="30" fill="#ECECE8"/>
+<circle cx="544" cy="430" r="30" fill="#ECECE8"/>
+<circle cx="628" cy="430" r="30" fill="#ECECE8"/>
+<circle cx="712" cy="430" r="30" fill="#ECECE8"/>
+<circle cx="796" cy="430" r="30" fill="#ECECE8"/>
+<text x="0" y="510" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실제로 비 온 날 5일 → 80%를 믿을 수 없다</text>
+<text x="0" y="620" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델도 같다: 80% 확신한 답은 80% 맞아야</text>
+<text x="0" y="670" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">그래야 확률에 문턱을 걸 수 있다</text></svg>

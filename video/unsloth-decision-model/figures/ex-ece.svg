@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 720" width="888" height="720"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A4B2A"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예측 100개를 확신도 구간으로 묶으면</text>
+<text x="0" y="100" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">90% 구간 · 50개</text>
+<text x="0" y="150" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">확신</text>
+<rect x="90" y="126" width="640" height="32" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="90" y="126" width="576.0" height="32" rx="6" fill="#B9B9B4" stroke="#B9B9B4" stroke-width="0"/>
+<text x="888" y="152" font-size="26" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">90%</text>
+<text x="0" y="200" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실제</text>
+<rect x="90" y="176" width="640" height="32" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="90" y="176" width="512.0" height="32" rx="6" fill="#8A4B2A" stroke="#8A4B2A" stroke-width="0"/>
+<text x="888" y="202" font-size="26" fill="#8A4B2A" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">80%</text>
+<text x="0" y="250" font-size="26" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">차이 10%p</text>
+<text x="0" y="330" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">60% 구간 · 50개</text>
+<text x="0" y="380" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">확신</text>
+<rect x="90" y="356" width="640" height="32" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="90" y="356" width="384.0" height="32" rx="6" fill="#B9B9B4" stroke="#B9B9B4" stroke-width="0"/>
+<text x="888" y="382" font-size="26" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">60%</text>
+<text x="0" y="430" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실제</text>
+<rect x="90" y="406" width="640" height="32" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="90" y="406" width="384.0" height="32" rx="6" fill="#8A4B2A" stroke="#8A4B2A" stroke-width="0"/>
+<text x="888" y="432" font-size="26" fill="#8A4B2A" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">60%</text>
+<text x="0" y="480" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">차이 0%p</text>
+<rect x="0" y="540" width="888" height="110" rx="14" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="4"/>
+<text x="28" y="608" font-size="32" fill="#8A4B2A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">ECE = 0.5 × 0.10 + 0.5 × 0 = 0.05</text>
+<text x="0" y="700" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0에 가까울수록 확률을 믿을 수 있다</text></svg>
