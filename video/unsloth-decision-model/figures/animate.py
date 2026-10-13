@@ -87,10 +87,10 @@ def arrow(ax, x1, y1, x2, y2, color=INK, lw=5):
 OPTS = [("billing", 0.99), ("technical", 0.01), ("sales", 0.00)]
 
 
-def option_bars(ax, x, y, fill, w=520, gap=96, label_w=250):
-    for i, (lab, p) in enumerate(OPTS):
+def option_bars(ax, x, y, fill, w=520, gap=96, label_w=250, opts=OPTS, mono=True):
+    for i, (lab, p) in enumerate(opts):
         yy = y + i * gap
-        ax.text(x, yy + 26, lab, fontsize=34, color=TXT, va="center", family="NanumGothicCoding")
+        ax.text(x, yy + 26, lab, fontsize=34, color=TXT, va="center", **({"family": "NanumGothicCoding"} if mono else {}))
         bar(ax, x + label_w, yy, w, 52, p * fill)
         if fill > 0.05:
             ax.text(x + label_w + w + 20, yy + 26, f"{p * fill:.2f}", fontsize=32, color=INK, va="center", fontweight="bold")
@@ -119,7 +119,7 @@ def draw_gen_vs_dec(ax, t):
     ax.text(60, 840, "한 글자에 한 번씩 계산", fontsize=36, color=GRAY)
     # 오른쪽: 막대가 한 번에
     fill = ease((t - 1.0) / 1.0)
-    option_bars(ax, 948, 250, fill, w=360, gap=150, label_w=230)
+    option_bars(ax, 948, 250, fill, w=400, gap=150, label_w=190, opts=[("결제팀", 0.99), ("기술팀", 0.01), ("영업팀", 0.00)], mono=False)
     ax.text(948, 760, "토큰 0개 생성", fontsize=44, color=INK, fontweight="bold")
     ax.text(948, 840, "한 번 읽고 선택지마다 확률", fontsize=36, color=GRAY)
 
