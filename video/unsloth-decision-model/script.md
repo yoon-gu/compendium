@@ -4,22 +4,21 @@ Unsloth 공식 문서 "Train your own Decision Model"(2026년 10월)을 한 사�
 원문 번역이 아니라 [정리 노트](../../content/notes/unsloth-decision-model.md)를 바탕으로 요지와 해설을 다시 서술한 것이다.
 
 형식은 `../build.py` 머리말 참고. `python3 ../build.py unsloth-decision-model --voice=유나`로 미리 듣는다(세로 1080x1920).
-그림은 `figures/make.py`(SVG). 원문 스크린샷은 쓰지 않고 개념을 새로 그렸다.
+그림은 `figures/make.py`(SVG), 애니메이션은 `figures/animate.py`(gen-vs-dec·parse-fail·one-pass·threshold mp4). 원문 스크린샷은 쓰지 않고 개념을 새로 그렸다.
 
 출처: Unsloth 공식 문서, 2026년 10월
 잉크: #8A4B2A
 약어: LLM=Large Language Model, 거대 언어 모델; LoRA=Low-Rank Adaptation, 저랭크 적응; GPU=Graphics Processing Unit
 
 ## 1 | 들어가며 | 표지
-> LLM을 / **생성형에서 결정형**으로
-> Unsloth, Train your own Decision Model, 2026년 10월
-> 글을 쓰는 대신 선택지에 확률을 매기는 결정 모델 만들기
+> LLM을 생성형에서 / **결정형**으로
+> ![](figures/gen-vs-dec.mp4)
 
 고객 문의가 하루에 만 건 들어온다고 해 볼게요. 이걸 결제팀, 기술팀, 영업팀으로 나누고 환불 요청인지, 얼마나 급한지도 매겨야 합니다. 요즘은 이런 일에 LLM을 많이 쓰죠. ‖ 그런데 이 일에 정말 글을 쓰는 모델이 필요할까요? 오늘 소개할 글은 LLM 파인튜닝 도구로 유명한 Unsloth의 공식 문서입니다. LLM을 글 대신 결정을 내놓는 모델로 바꿔 학습하는 방법을 다뤄요.
 
 ## 2 | 배경 | 보통의 방식
 > LLM에게 / **글로 답하게** 하면
-> ![](figures/t-generate.svg)
+> ![](figures/parse-fail.mp4)
 
 보통은 이렇게 합니다. 문의 내용을 프롬프트에 넣고 billing, technical, sales 중 하나로만 답하라고 시켜요. 모델은 토큰을 하나씩 생성하고 우리는 나온 글자를 파싱합니다. 여기서 세 가지가 걸려요. 첫째, 모델이 Billing 뒤에 마침표를 찍거나 결제팀입니다 하고 친절하게 답하면 파싱이 깨집니다. 둘째, 질문이 셋이면 호출도 세 번이거나, JSON으로 한꺼번에 답하라고 시켜 놓고 형식이 깨질까 걱정해야 하죠. 셋째, 확률이 없습니다. 모델이 반쯤 망설이다 고른 건지 확신하고 고른 건지 알 수가 없어요.
 
@@ -47,7 +46,7 @@ Unsloth 공식 문서 "Train your own Decision Model"(2026년 10월)을 한 사�
 
 ## 5 | 결정 모델이란 | 확률로 행동하기
 > 행동은 **확률의 문턱값**으로
-> ![](figures/ex-threshold.svg)
+> ![](figures/threshold.mp4)
 
 확률이 있으면 행동 규칙을 코드로 정할 수 있어요. 문서가 드는 예는 이렇습니다. 기술팀일 확률이 0.8을 넘을 때만 버그 리포트를 자동으로 만들고 그보다 낮으면 사람이 한 번 보게 하는 거죠. 문서는 confidence라는 값보다 선택지별 확률에 문턱을 걸라고 권합니다. confidence는 확률이 한쪽으로 쏠렸는지를 보여 주는 값이라 계산식이 모델마다 다르거든요.
 
@@ -94,7 +93,7 @@ Unsloth 공식 문서 "Train your own Decision Model"(2026년 10월)을 한 사�
 
 ## 10 | 동작 원리 | 한 번 읽고 점수 매기기
 > 한 번 읽고, / 헤드가 **선택지마다** 점수
-> ![](figures/t-decision.svg)
+> ![](figures/one-pass.mp4)
 
 동작 원리는 단순합니다. 입력을 프롬프트 하나에 넣고 그 뒤에 모든 질문과 선택지를 이어 붙여요. LLM은 이걸 딱 한 번 읽습니다. 그다음 Cloudflare의 Clef와 같은 설계의 작은 헤드가 질문과 선택지 자리의 은닉 상태를 보고 선택지마다 점수를 매겨요. 모든 질문을 함께 결정합니다.
 
