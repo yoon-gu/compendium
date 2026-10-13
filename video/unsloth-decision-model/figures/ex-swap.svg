@@ -11,5 +11,5 @@
 <text x="494" y="350" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Decision API</text>
 <text x="494" y="400" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">내가 학습한 모델</text>
 <text x="0" y="510" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">주의: confidence 계산식이 다르다</text>
-<text x="0" y="558" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ Jev에서 맞춘 confidence 문턱은 쓰지 말고</text>
-<text x="0" y="606" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">   선택지 확률에 문턱을 다시 건다</text></svg>
+<text x="0" y="558" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ Jev에서 맞춘 confidence threshold는 쓰지 말고</text>
+<text x="0" y="606" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">   선택지 확률에 threshold를 다시 건다</text></svg>

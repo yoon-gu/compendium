@@ -183,7 +183,7 @@ def draw_one_pass(ax, t):
     ax.text(60, 860, "생성 토큰 0개 · 순전파 1번", fontsize=46, color=INK if t >= 4.6 else LINE, fontweight="bold")
 
 
-# ---------- (d) 문턱값 ----------
+# ---------- (d) threshold ----------
 def draw_threshold(ax, t):
     p = 0.30 + 0.62 * ease((t - 1.0) / 5.0)
     ax.text(60, 90, "technical 확률", fontsize=46, color=TXT, fontweight="bold", va="center")
@@ -192,7 +192,7 @@ def draw_threshold(ax, t):
     bar(ax, bx, 170, bw, 90, p, INK if p >= 0.8 else GRAY)
     tx = bx + bw * 0.8
     ax.plot([tx, tx], [145, 285], color=TXT, lw=5)
-    ax.text(tx, 330, "문턱 0.8", fontsize=36, color=TXT, ha="center", va="center", fontweight="bold")
+    ax.text(tx, 330, "threshold 0.8", fontsize=36, color=TXT, ha="center", va="center", fontweight="bold")
     ax.text(bx, 330, "0", fontsize=32, color=GRAY, va="center")
     ax.text(bx + bw, 330, "1", fontsize=32, color=GRAY, va="center", ha="right")
     for i, (title, sub, active) in enumerate([("사람이 한 번 본다", "0.8 미만", p < 0.8), ("버그 리포트 자동 생성", "0.8 이상", p >= 0.8)]):

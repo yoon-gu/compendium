@@ -4,7 +4,7 @@ date: 2026-10-13
 draft: false
 math: true
 source_url: "https://unsloth.ai/docs/new/train-your-own-decision-model-with-unsloth"
-youtube: "OkZ6GpledYY"
+youtube: "pvrkJ7Ak6AU"
 author: "Unsloth"
 tags: ["AI", "LLM", "파인튜닝", "LoRA", "분류", "결정 모델", "Unsloth", "문서"]
 summary: "Unsloth가 Qwen·Gemma·Llama 같은 LLM을 '결정 모델'로 파인튜닝하는 기능을 냈다. 글을 쓰는 대신 입력과 질문 목록을 한 번 읽고, 작은 헤드가 선택지마다 점수를 매겨 보정된 확률과 함께 답을 고른다. Qwen3.5-0.8B는 4GB VRAM, 42분 학습으로 홀드아웃 정확도 78%를 냈고, 학습한 모델은 Jev 호환 Decision API로 바로 서빙할 수 있다."
@@ -69,7 +69,7 @@ answers = FastDecisionModel.predict(model, tokenizer, ticket, {
                 "criteria": ["not urgent", "soon", "today"]},
 })
 # 순전파 한 번에 세 질문이 함께 결정된다. 생성 토큰은 0개
-# answers["team"]["probabilities"] → {"billing": 0.99, ...}: 문턱값을 코드에서 정하면 된다
+# answers["team"]["probabilities"] → {"billing": 0.99, ...}: threshold를 코드에서 정하면 된다
 # 답은 언제나 정해진 선택지 키 중 하나라서 파싱할 일이 없다
 ```
 
@@ -101,7 +101,7 @@ Unsloth는 Clef 헤드를 단 LLM을 LoRA로 파인튜닝했다. 학습 전에�
 ### 1. Unsloth 앱에서
 
 1. Unsloth 데스크톱 앱을 설치한다(macOS, Windows, Linux). 터미널에서 설치 스크립트를 써도 된다.
-2. Train 탭에서 LLM(예: `unsloth/Qwen3.5-4B`)을 고르고 **Train as**를 **Decision model**로 바꾼다. 쓸 만한 설정이 자동으로 채워진다. 문서의 결과를 재현하려면 에폭 2, LoRA 랭크 16, 학습률 2e-4로 맞춘다.
+2. Train 탭에서 LLM(예: `unsloth/Qwen3.5-4B`)을 고르고 **Train as**를 **Decision model**로 바꾼다. 쓸 만한 설정이 자동으로 채워진다. 문서의 결과를 재현하려면 에폭 2, LoRA rank 16, 학습률 2e-4로 맞춘다.
 3. 파일을 올리거나 Hugging Face[^hf]의 데이터셋을 고른다. typed-decisions라면 Subset을 `all`로 둔다.
 4. Start Training을 누른다. 학습 전후 홀드아웃 정확도를 보여 주고 모델의 확신도를 보정(calibration)해 준다.
 5. Use in Decision API를 누르면 `laya`, `default`, `jev-latest`로 오는 요청이 내 모델로 간다. Decision API의 Try It에서 바로 시험해 볼 수도 있다.
@@ -143,7 +143,7 @@ model.save_pretrained_merged("qwen-decisions-merged")      # 16비트 통합 모
 
 Llama나 Gemma 4를 쓰려면 `model_name`만 `unsloth/Llama-3.2-3B-Instruct`나 `unsloth/gemma-4-E4B-it`로 바꾸면 된다. 자기 데이터를 쓸 때는 한 행에 입력(state), 판단할 질문들, 정답을 넣는 데이터셋 형식을 따른다.
 
-보정은 `split_holdout`이 떼어 둔 행으로 한다. 목적은 모델이 내는 확률이 실제로 맞는 비율과 일치하게 만드는 것이다. 결과에는 기대 보정 오차(expected calibration error, ECE)가 함께 나온다. 예를 들어 모델이 "80% 확신"이라고 한 답들을 모았을 때 실제로 80%쯤 맞아야 보정이 잘 된 것이다. 이게 맞아야 앞에서 말한 "확률 0.8 넘을 때만 처리" 같은 문턱값이 의미가 있다. 문서는 어떤 보정 기법을 쓰는지는 밝히지 않는다.
+보정은 `split_holdout`이 떼어 둔 행으로 한다. 목적은 모델이 내는 확률이 실제로 맞는 비율과 일치하게 만드는 것이다. 결과에는 기대 보정 오차(expected calibration error, ECE)가 함께 나온다. 예를 들어 모델이 "80% 확신"이라고 한 답들을 모았을 때 실제로 80%쯤 맞아야 보정이 잘 된 것이다. 이게 맞아야 앞에서 말한 "확률 0.8 넘을 때만 처리" 같은 threshold가 의미가 있다. 문서는 어떤 보정 기법을 쓰는지는 밝히지 않는다.
 
 예측은 `predict`에 입력과 질문을 데이터셋과 같은 형식으로 넘긴다(앞 절의 예시). `answer`는 `choice`면 선택지 키, `noul`이면 `True`/`False`, `score`면 수준 번호다. 레이블 붙은 테스트 세트로 정확도를 재려면 `evaluate`를 쓴다.
 
@@ -157,7 +157,7 @@ UNSLOTH_SYSTEMONE_MODEL=/path/to/qwen-decisions-merged unsloth studio -H 0.0.0.0
 
 Settings → API에서 Decision API를 켜면 `laya`, `default`, `jev-latest`로 오는 요청이 내 모델로 가고 답의 형식도 Laya와 같다. 모델은 GPU가 필요하고 첫 요청 때 올라오는데 몇 분 걸릴 수 있다. 학습이 GPU를 쓰는 동안 Decision API는 기다렸다가 학습이 끝나면 다시 답한다.
 
-Jev를 쓰던 코드는 TypeSafe SDK의 주소와 키 환경 변수만 로컬 Unsloth로 바꾸면 그대로 돈다. 다만 `confidence` 계산식이 Jev와 달라서 Jev에서 맞춘 `confidence` 문턱값은 옮겨 쓸 수 없다. 문턱값은 `probabilities`에 걸어야 한다.
+Jev를 쓰던 코드는 TypeSafe SDK의 주소와 키 환경 변수만 로컬 Unsloth로 바꾸면 그대로 돈다. 다만 `confidence` 계산식이 Jev와 달라서 Jev에서 맞춘 `confidence` threshold는 옮겨 쓸 수 없다. threshold는 `probabilities`에 걸어야 한다.
 
 ## 어떻게 동작하나
 
@@ -169,13 +169,13 @@ Unsloth는 입력을 프롬프트 하나에 넣고 그 뒤에 모든 질문과 �
 
 ## 권장 설정
 
-- 4비트 LoRA, 랭크 16, 학습률 2e-4에서 시작한다. 새로 붙는 헤드는 기본 1e-4로 학습되며 `DecisionTrainer`의 `head_learning_rate`로 바꿀 수 있다.
+- 4비트 LoRA, rank 16, 학습률 2e-4에서 시작한다. 새로 붙는 헤드는 기본 1e-4로 학습되며 `DecisionTrainer`의 `head_learning_rate`로 바꿀 수 있다.
 - typed-decisions에서는 2에폭을 썼다. 데이터가 적으면 3-4에폭을 써 본다.
 - 빨리 시험해 보려면 `max_steps = 60`. Qwen3.5-4B가 L4 GPU에서 10분 만에 76%에 이르렀다.
 - 메모리가 모자라면 배치 크기를 반으로 줄이고 그래디언트 누적(gradient accumulation)을 두 배로 늘린다.
 - `max_seq_length`는 학습 때 가장 긴 입력이다. 입력이 길면 질문과 선택지는 남기고 입력의 끝을 잘라 맞춘다. 예측 때는 16,384 토큰까지 읽는다.
 
-> 해설 — 문서 안에서 숫자가 조금씩 어긋난다. 성능표 옆 설명은 "LoRA r=64로 1에폭"이라 하고 앱 안내와 권장 설정은 "랭크 16, 2에폭, 학습률 2e-4"라 한다. 코드 예시는 학습률이 2e-5이고 에폭 대신 `max_steps = 240`을 쓴다. 재현하려면 어느 설정으로 표의 숫자가 나왔는지 원문에서 다시 확인하는 것이 좋다.
+> 해설 — 문서 안에서 숫자가 조금씩 어긋난다. 성능표 옆 설명은 "LoRA r=64로 1에폭"이라 하고 앱 안내와 권장 설정은 "rank 16, 2에폭, 학습률 2e-4"라 한다. 코드 예시는 학습률이 2e-5이고 에폭 대신 `max_steps = 240`을 쓴다. 재현하려면 어느 설정으로 표의 숫자가 나왔는지 원문에서 다시 확인하는 것이 좋다.
 
 ## 정리
 

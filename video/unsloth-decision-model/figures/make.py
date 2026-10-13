@@ -84,7 +84,7 @@ b = [rect(0, 40, 400, 400, LINE, SOFT, 3), text(200, 230, "원래 가중치 W", 
      text(586, 250, "×", 44, INK, "middle", "bold"),
      rect(620, 210, 268, 60, INK, FILL, 4, 8), text(754, 306, "B", 30, INK, "middle", "bold"),
      text(0, 540, "작은 행렬 두 개(어댑터)만 학습한다", 30, TXT, weight="bold"),
-     text(0, 590, "랭크 16 = 작은 행렬의 폭이 16", 28, GRAY),
+     text(0, 590, "rank 16 = 작은 행렬의 폭이 16", 28, GRAY),
      text(0, 640, "→ 큰 모델도 GPU 하나로 파인튜닝", 28, GRAY)]
 figs["t-lora"] = svg(660, "\n".join(b))
 
@@ -121,14 +121,14 @@ for title, opts in [("어느 팀?  (choice)", [("billing", 0.99), ("technical", 
 b += [text(0, y + 30, "생성 토큰 0개 · 순전파 한 번", 28, INK, weight="bold")]
 figs["ex-ticket"] = svg(y + 50, "\n".join(b))
 
-# 문턱값
+# threshold
 b = [text(0, 34, "technical 확률", 28, TXT, weight="bold")]
 b += [bar(0, 60, W, 50, 1.0, SOFT, SOFT), rect(W * 0.8, 60, W * 0.2, 50, INK, INK, 0, 6),
       f'<line x1="{W * 0.8}" y1="44" x2="{W * 0.8}" y2="130" stroke="{TXT}" stroke-width="4"/>',
       text(W * 0.8, 160, "0.8", 28, TXT, "middle", "bold"), text(0, 160, "0", 26, GRAY), text(W, 160, "1", 26, GRAY, "end"),
       box(0, 210, 420, 210, "0.8 미만", ["사람이 한 번 본다"]),
       box(468, 210, 420, 210, "0.8 이상", ["버그 리포트 자동 생성"], True),
-      text(0, 480, "문턱은 선택지 확률에 건다", 30, TXT, weight="bold"),
+      text(0, 480, "threshold는 선택지 확률에 건다", 30, TXT, weight="bold"),
       text(0, 528, "confidence는 계산식이 모델마다 다르다", 28, GRAY)]
 figs["ex-threshold"] = svg(548, "\n".join(b))
 
@@ -165,7 +165,7 @@ for x in (140, 444, 748):
 b += [box(0, 426, W, 200, "학습 → 보정 → 저장", ["홀드아웃으로 정확도·보정 오차 확인"], True),
       arrow(W / 2, 634, W / 2, 690),
       box(0, 696, W, 150, "Decision API로 서빙", []),
-      text(0, 900, "재현 설정: 에폭 2 · LoRA 랭크 16 · 학습률 2e-4", 28, GRAY)]
+      text(0, 900, "재현 설정: 에폭 2 · LoRA rank 16 · 학습률 2e-4", 28, GRAY)]
 figs["ex-paths"] = svg(920, "\n".join(b))
 
 # 보정: 일기예보 비유
@@ -179,7 +179,7 @@ for row, (label, rain, ok) in enumerate([("보정이 잘 된 예보", 8, True), 
         b.append(f'<circle cx="{cx}" cy="{y + 100}" r="30" fill="{fill}"/>')
     b += [text(0, y + 180, f"실제로 비 온 날 {rain}일" + (" → 믿을 만하다" if ok else " → 80%를 믿을 수 없다"), 28, GRAY)]
 b += [text(0, 620, "모델도 같다: 80% 확신한 답은 80% 맞아야", 30, TXT, weight="bold"),
-      text(0, 670, "그래야 확률에 문턱을 걸 수 있다", 28, GRAY)]
+      text(0, 670, "그래야 확률에 threshold를 걸 수 있다", 28, GRAY)]
 figs["t-calibration"] = svg(690, "\n".join(b))
 
 # ECE 예시 계산
@@ -201,8 +201,8 @@ b = [box(0, 0, W, 170, "Jev를 쓰던 코드", ["그대로 둔다"]),
      box(0, 244, 420, 200, "TypeSafe Jev", ["클라우드"]),
      box(468, 244, 420, 200, "로컬 Unsloth", ["Decision API", "내가 학습한 모델"], True),
      text(0, 510, "주의: confidence 계산식이 다르다", 28, BAD, weight="bold"),
-     text(0, 558, "→ Jev에서 맞춘 confidence 문턱은 쓰지 말고", 28, GRAY),
-     text(0, 606, "   선택지 확률에 문턱을 다시 건다", 28, GRAY)]
+     text(0, 558, "→ Jev에서 맞춘 confidence threshold는 쓰지 말고", 28, GRAY),
+     text(0, 606, "   선택지 확률에 threshold를 다시 건다", 28, GRAY)]
 figs["ex-swap"] = svg(626, "\n".join(b))
 
 # ---------- 동작 원리 ----------

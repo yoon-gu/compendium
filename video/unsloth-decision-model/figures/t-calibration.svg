@@ -24,4 +24,4 @@
 <circle cx="796" cy="430" r="30" fill="#ECECE8"/>
 <text x="0" y="510" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실제로 비 온 날 5일 → 80%를 믿을 수 없다</text>
 <text x="0" y="620" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델도 같다: 80% 확신한 답은 80% 맞아야</text>
-<text x="0" y="670" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">그래야 확률에 문턱을 걸 수 있다</text></svg>
+<text x="0" y="670" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">그래야 확률에 threshold를 걸 수 있다</text></svg>

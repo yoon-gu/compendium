@@ -9,5 +9,5 @@
 <rect x="620" y="210" width="268" height="60" rx="8" fill="#FFFFFF" stroke="#8A4B2A" stroke-width="4"/>
 <text x="754" y="306" font-size="30" fill="#8A4B2A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">B</text>
 <text x="0" y="540" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">작은 행렬 두 개(어댑터)만 학습한다</text>
-<text x="0" y="590" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">랭크 16 = 작은 행렬의 폭이 16</text>
+<text x="0" y="590" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">rank 16 = 작은 행렬의 폭이 16</text>
 <text x="0" y="640" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 큰 모델도 GPU 하나로 파인튜닝</text></svg>
