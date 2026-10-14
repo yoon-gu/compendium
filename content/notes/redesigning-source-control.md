@@ -4,6 +4,7 @@ date: 2026-10-14
 draft: false
 math: false
 source_url: "https://www.anthropic.com/engineering/redesigning-source-control"
+youtube: "_5CwoS3gOt0"
 author: "Nick G. 외 Anthropic 소스 컨트롤 팀"
 tags: ["AI", "에이전트", "소스 컨트롤", "git", "모노레포", "CI", "인프라", "Anthropic", "블로그"]
 summary: "Claude가 코드를 쓰면서 Anthropic 모노레포에 하루 병합되는 변경이 다섯 달 만에 2,500건에서 30,000건 넘게 늘었다. 병목은 코딩이 아니라 사람 규모로 설계된 git·빌드·CI였다. 일곱 명이 다섯 달 만에 사내 버전 관리 시스템 Scion을 만들어 옮겼고, 체크아웃이 분 단위에서 초 단위로 줄고 인프라 사용량은 200분의 1이 됐다."
