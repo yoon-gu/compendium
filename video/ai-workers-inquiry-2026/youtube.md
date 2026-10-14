@@ -1,4 +1,4 @@
-UTAW가 낸 AI Workers' Inquiry 2026, 만드는 사람들이 직접 쓴 생성형 AI 노동 보고서
+AI Workers' Inquiry 2026, 만드는 사람들이 직접 쓴 생성형 AI 노동 보고서 (UTAW)
 태그: UTAW, AI Workers' Inquiry, AI 노동 보고서, AI 노동, AI 일자리, AI 때문에 일이 늘었다, AI 업무 강화, 개발자 번아웃, 번아웃, 탈숙련, 주니어 개발자, 토큰 사용량, AI 성과 평가, AI 감시, 생산성 압박, AI 도입 부작용, AI 정리해고, 테크 노동조합, 노동조합, 일의 미래, 직장 내 AI, AI 코드 리뷰, 코딩 에이전트, 바이브코딩, ai workers inquiry, utaw, future of work, ai layoffs, tech layoffs, deskilling, ai burnout, ai productivity, tech workers union, ai at work, 듣는편람
 
 AI가 일을 없앤다는 말은 많지만, AI를 직접 만들고 쓰는 사람들은 뭐라고 할까요. 영국 기술노조 UTAW가 조합원들을 서로 인터뷰해 만든 36쪽 보고서의 결론은 이렇습니다. AI는 일을 없애기보다 재분배하고 강화한다.

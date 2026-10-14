@@ -1,4 +1,4 @@
-Armin Ronacher가 GPT 6 Astra에게 35시간 코딩을 맡긴 기록, 안 보면 AGI다
+안 보면 AGI다, GPT 6 Astra에게 35시간 코딩을 맡긴 기록 (Armin Ronacher)
 태그: Armin Ronacher, 아르민 로나허, GPT 6 Astra, GPT 6, GPT6, 아스트라, AI 코딩 에이전트, 코딩 에이전트, AI 코딩, 바이브코딩, 바이브 코딩, 소프트웨어 공장, 서브에이전트, 코드 품질, 기술 부채, AI 슬롭, 코드 리뷰, 클린 코드, 코드골프, 순환 복잡도, 오픈AI, 코덱스, 플라스크, Astra for Coding, OpenAI, Codex, coding agent, AI coding, software factory, sub-agent, code quality, cyclomatic complexity, AI slop, vibe coding, Pi agent, Flask, CPython, 듣는편람
 
 AI 코딩 에이전트에게 큰 일을 맡기고 주말 내내 안 들여다보면 무슨 일이 생길까요? Flask를 만든 아르민 로나허가 GPT 6 Astra에게 35시간, 토큰 약 10억 개, 약 1,200달러를 써 본 결과는 75,000줄, 그리고 쓸 만한 것 없음이었습니다.

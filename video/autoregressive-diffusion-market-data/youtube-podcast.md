@@ -1,4 +1,4 @@
-Jane Street 자기회귀 확산 글 대화편, 시장 데이터는 연속이면서 이산이다
+시장 데이터는 연속이면서 이산이다, 자기회귀 확산 글을 두 진행자가 묻고 답하며 읽기 (Jane Street)
 태그: Jane Street, 제인 스트리트, 제인스트리트, 자기회귀 확산, 확산 모델, 디퓨전 모델, 플로우 매칭, 시장 데이터 생성, 호가창, 오더북, 주식 데이터, 금융 데이터, 퀀트, 퀀트 트레이딩, 시계열 생성, 합성 데이터, 영과잉 모형, AI 팟캐스트, 팟캐스트, 대화형 해설, AI 논문, James Somers, Kavish, autoregressive diffusion, diffusion model, flow matching, rectified flow, DDPM, atom smoothing, market data, order book, synthetic data, quant, podcast, 듣는편람
 
 AUC가 0.992에서 0.758로 떨어졌는데 왜 좋아진 걸까요? 확산 모델로 주식 호가창을 통째로 지어내려 한 Jane Street 인턴의 실험을 두 진행자가 묻고 답하며 풀어 봅니다.

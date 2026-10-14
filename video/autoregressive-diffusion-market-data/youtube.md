@@ -1,4 +1,4 @@
-Jane Street 인턴의 자기회귀 확산 실험, 시장 데이터는 연속이면서 이산이다
+시장 데이터는 연속이면서 이산이다, 자기회귀 확산으로 호가창 생성하기 (Jane Street)
 태그: Jane Street, 제인 스트리트, 제인스트리트, 자기회귀 확산, 확산 모델, 디퓨전 모델, 플로우 매칭, 자기회귀 모델, 시장 데이터 생성, 호가창, 오더북, 주식 데이터, 금융 데이터, 퀀트, 퀀트 트레이딩, 알고리즘 트레이딩, 시계열 생성, 합성 데이터, 분위수 변환, 영과잉 모형, 판별기, AI 논문, James Somers, Kavish, autoregressive diffusion, diffusion model, flow matching, rectified flow, DDPM, DDIM, atom smoothing, market data, order book, limit order book, synthetic data, quant, 듣는편람
 
 확산 모델로 주식 호가창을 통째로 지어낼 수 있을까요? 퀀트 트레이딩 회사 Jane Street의 여름 인턴이 미국 주식 4년치로 도전했고, 진짜 난관은 "시장 데이터는 연속이면서 이산이다"라는 점이었습니다.
