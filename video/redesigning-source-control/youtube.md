@@ -1,5 +1,5 @@
-에이전트가 코드를 쓰면 git이 병목이 된다, Anthropic이 Scion을 만든 이유 (Anthropic)
-태그: 소스 컨트롤, 버전 관리, 깃, 모노레포, CI, 지속적 통합, 개발 인프라, 개발자 생산성, AI 에이전트, 코딩 에이전트, AI 코딩, 클로드, 앤트로픽, 사이온, 체크아웃, 병합 큐, 캐시, 분산 시스템, 백엔드, 소프트웨어 엔지니어링, 플랫폼 엔지니어링, DevOps, 개발 문화, Anthropic, Claude, Claude Code, Scion, Antique, git, monorepo, source control, version control, CI/CD, merge queue, sparse checkout, shallow clone, content addressed storage, Spanner, Piper, Sapling, GitHub, GitLab, agentic coding, developer infrastructure, 코드 리뷰, 사내 도구, 에이전트 인프라, code review, Claude Tag, internal tools, 듣는편람
+Anthropic이 git을 떠나 Scion을 만든 이유, 에이전트가 코드를 쓰면 git이 병목이 된다
+태그: Anthropic Scion, 앤트로픽, 클로드, git 병목, 깃 대안, 모노레포, 모노레포 git, 소스 컨트롤, 버전 관리, AI 에이전트, 코딩 에이전트, AI 코딩, 클로드 코드, 개발 인프라, CI/CD, 병합 큐, 코드 리뷰, 플랫폼 엔지니어링, 개발자 생산성, 소프트웨어 엔지니어링, 사이온, Anthropic, Claude, Claude Code, Scion, git, monorepo, source control, version control, merge queue, sparse checkout, shallow clone, agentic coding, AI agents, developer infrastructure, developer productivity, platform engineering, Google Piper, Meta Sapling, Spanner, 듣는편람
 
 AI 에이전트가 코드를 쓰기 시작하면 무엇이 먼저 무너질까요? Anthropic에서는 git이었습니다. 하루 병합 변경이 다섯 달 만에 2,500건에서 3만 건으로 늘자, 사람 속도에 맞춰 만든 소스 컨트롤과 CI가 병목이 됐습니다.
 
