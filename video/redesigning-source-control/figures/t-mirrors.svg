@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 506" width="888" height="506"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B3F8C"/></marker></defs><rect x="334" y="0" width="220" height="90" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="444" y="56" font-size="28" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">원본 git</text>
+<line x1="444" y1="96" x2="64" y2="176" stroke="#B9B9B4" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="182" width="128" height="70" rx="10" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="3"/>
+<text x="64" y="226" font-size="24" fill="#5B3F8C" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">미러</text>
+<line x1="444" y1="96" x2="212" y2="176" stroke="#B9B9B4" stroke-width="4" marker-end="url(#a)"/>
+<rect x="148" y="182" width="128" height="70" rx="10" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="3"/>
+<text x="212" y="226" font-size="24" fill="#5B3F8C" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">미러</text>
+<line x1="444" y1="96" x2="360" y2="176" stroke="#B9B9B4" stroke-width="4" marker-end="url(#a)"/>
+<rect x="296" y="182" width="128" height="70" rx="10" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="3"/>
+<text x="360" y="226" font-size="24" fill="#5B3F8C" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">미러</text>
+<line x1="444" y1="96" x2="508" y2="176" stroke="#B9B9B4" stroke-width="4" marker-end="url(#a)"/>
+<rect x="444" y="182" width="128" height="70" rx="10" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="3"/>
+<text x="508" y="226" font-size="24" fill="#5B3F8C" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">미러</text>
+<line x1="444" y1="96" x2="656" y2="176" stroke="#B9B9B4" stroke-width="4" marker-end="url(#a)"/>
+<rect x="592" y="182" width="128" height="70" rx="10" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="3"/>
+<text x="656" y="226" font-size="24" fill="#5B3F8C" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">미러</text>
+<line x1="444" y1="96" x2="804" y2="176" stroke="#B9B9B4" stroke-width="4" marker-end="url(#a)"/>
+<rect x="740" y="182" width="128" height="70" rx="10" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="3"/>
+<text x="804" y="226" font-size="24" fill="#5B3F8C" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">미러</text>
+<rect x="10" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="69" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="128" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="187" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="246" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="305" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="364" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="423" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="482" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="541" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="600" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="659" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="718" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="777" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="836" y="300" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="10" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="69" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="128" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="187" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="246" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="305" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="364" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="423" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="482" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="541" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="600" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="659" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="718" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="777" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<rect x="836" y="344" width="40" height="30" rx="5" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="0" y="440" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">얕은 클론 · 희소 체크아웃 · promisor 원격 · 시드</text>
+<text x="0" y="486" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">가장 많을 때 미러 수백 대 → 병합이 늘수록 운영이 버거워졌다</text></svg>

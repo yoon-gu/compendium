@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 464" width="888" height="464"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B3F8C"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">git → Scion 데이터 이전 프로그램</text>
+<text x="0" y="100" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">메모리</text>
+<rect x="140" y="76" width="600" height="40" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="140" y="76" width="600.0" height="40" rx="6" fill="#B9B9B4" stroke="#B9B9B4" stroke-width="0"/>
+<text x="760" y="106" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">손으로 짠 시제품</text>
+<rect x="140" y="126" width="600" height="40" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="140" y="126" width="30.0" height="40" rx="6" fill="#5B3F8C" stroke="#5B3F8C" stroke-width="0"/>
+<text x="760" y="156" font-size="26" fill="#5B3F8C" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">1/20</text>
+<text x="0" y="260" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">속도</text>
+<rect x="140" y="236" width="600" height="40" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="140" y="236" width="150.0" height="40" rx="6" fill="#B9B9B4" stroke="#B9B9B4" stroke-width="0"/>
+<text x="760" y="266" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">1×</text>
+<rect x="140" y="286" width="600" height="40" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="140" y="286" width="600.0" height="40" rx="6" fill="#5B3F8C" stroke="#5B3F8C" stroke-width="0"/>
+<text x="760" y="316" font-size="26" fill="#5B3F8C" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">4×</text>
+<text x="0" y="400" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Claude Mythos Preview 초기 내부 버전이 다시 씀</text>
+<text x="0" y="444" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지켜야 할 처리 순서 규칙은 그대로</text></svg>

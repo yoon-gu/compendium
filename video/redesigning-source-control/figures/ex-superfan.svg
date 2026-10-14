@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 474" width="888" height="474"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B3F8C"/></marker></defs><rect x="0" y="0" width="888" height="100" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="44" font-size="26" fill="#5B3F8C" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">#scion-daemon</text>
+<text x="28" y="80" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">노드마다 도는 daemon</text>
+<circle cx="820" cy="50" r="28" fill="#5B3F8C"/>
+<text x="820" y="60" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">C</text>
+<rect x="0" y="120" width="888" height="100" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="164" font-size="26" fill="#5B3F8C" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">#scion-cache</text>
+<text x="28" y="200" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지역 캐시</text>
+<circle cx="820" cy="170" r="28" fill="#5B3F8C"/>
+<text x="820" y="180" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">C</text>
+<rect x="0" y="240" width="888" height="100" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="284" font-size="26" fill="#5B3F8C" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">#antique-merge-queue</text>
+<text x="28" y="320" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">병합 큐</text>
+<circle cx="820" cy="290" r="28" fill="#5B3F8C"/>
+<text x="820" y="300" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">C</text>
+<text x="0" y="410" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">채널마다 Claude 하나가 그 구성 요소만 지켜본다</text>
+<text x="0" y="454" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">텔레메트리·로그 → 알림이 놓치는 미묘한 문제</text></svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 440" width="888" height="440"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B3F8C"/></marker></defs><rect x="0" y="0" width="888" height="110" rx="14" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="4"/>
+<text x="28" y="48" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">인프라 CPU·메모리</text>
+<text x="28" y="88" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예전 git 미러 대비</text>
+<text x="860" y="72" font-size="50" fill="#5B3F8C" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">1/200</text>
+<rect x="0" y="130" width="888" height="110" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="178" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">체크아웃 시간</text>
+<text x="28" y="218" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">약 100배</text>
+<text x="860" y="202" font-size="50" fill="#5B3F8C" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">분 → 초</text>
+<rect x="0" y="260" width="888" height="110" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="308" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">CI CPU 용량</text>
+<text x="28" y="348" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">여유가 생김</text>
+<text x="860" y="332" font-size="50" fill="#5B3F8C" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">+25%</text>
+<text x="0" y="420" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">층마다 캐시 적중률 99% 이상, 오래 남는 상태 없음</text></svg>

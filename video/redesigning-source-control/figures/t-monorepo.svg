@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 458" width="888" height="458"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B3F8C"/></marker></defs><rect x="0" y="0" width="888" height="330" rx="14" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="4"/>
+<text x="28" y="50" font-size="30" fill="#5B3F8C" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">저장소 하나 (monorepo)</text>
+<rect x="28" y="84" width="262" height="90" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="159" y="138" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">services/billing</text>
+<rect x="310" y="84" width="262" height="90" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="441" y="138" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">services/search</text>
+<rect x="592" y="84" width="262" height="90" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="723" y="138" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">libs/auth</text>
+<rect x="28" y="196" width="262" height="90" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="159" y="250" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">research/train</text>
+<rect x="310" y="196" width="262" height="90" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="441" y="250" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">infra/ci</text>
+<rect x="592" y="196" width="262" height="90" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="723" y="250" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">tools/…</text>
+<text x="0" y="390" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">변경 하나로 여러 프로젝트를 함께 고친다</text>
+<text x="0" y="438" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예: 구글, 메타 — 그리고 Anthropic</text></svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 370" width="888" height="370"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B3F8C"/></marker></defs><text x="0" y="60" font-size="50" fill="#5B3F8C" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">≈100GB</text>
+<text x="0" y="104" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">main 이력</text>
+<text x="300" y="60" font-size="50" fill="#5B3F8C" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">25GB+</text>
+<text x="300" y="104" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">압축 작업 사본</text>
+<text x="600" y="60" font-size="50" fill="#5B3F8C" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">2,500만</text>
+<text x="600" y="104" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">하루 CI 체크아웃</text>
+<rect x="0" y="150" width="888" height="140" rx="14" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="4"/>
+<text x="444.0" y="212" font-size="40" fill="#5B3F8C" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">25GB × 2,500만 회 ≈ 625PB</text>
+<text x="444.0" y="260" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">하루에, 아무 요령 없이 git으로 받는다면</text>
+<text x="0" y="350" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 원문: “하루 600PB가 넘는 git 트래픽”</text></svg>

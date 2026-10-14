@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 420" width="888" height="420"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B3F8C"/></marker></defs><rect x="0" y="0" width="420" height="420" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">git 커밋</text>
+<text x="26" y="100" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 트리 전체</text>
+<rect x="26" y="130" width="200" height="42" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="40" y="160" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">a.py</text>
+<rect x="26" y="184" width="200" height="42" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="40" y="214" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">b.py</text>
+<rect x="26" y="238" width="200" height="42" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="40" y="268" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">c.py</text>
+<rect x="26" y="292" width="200" height="42" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="40" y="322" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">d.py</text>
+<rect x="26" y="346" width="200" height="42" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="40" y="376" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">e.py</text>
+<rect x="468" y="0" width="420" height="420" rx="14" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="4"/>
+<text x="494" y="54" font-size="34" fill="#5B3F8C" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Scion 체인지셋</text>
+<text x="494" y="100" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 바뀐 파일만</text>
+<rect x="494" y="130" width="160" height="50" rx="6" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="3"/>
+<text x="510" y="163" font-size="22" fill="#5B3F8C" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">b.py</text>
+<line x1="658" y1="155" x2="712" y2="155" stroke="#5B3F8C" stroke-width="4" marker-end="url(#a)"/>
+<rect x="716" y="130" width="150" height="50" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="730" y="163" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">9f2c…</text>
+<rect x="494" y="200" width="160" height="50" rx="6" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="3"/>
+<text x="510" y="233" font-size="22" fill="#5B3F8C" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">d.py</text>
+<line x1="658" y1="225" x2="712" y2="225" stroke="#5B3F8C" stroke-width="4" marker-end="url(#a)"/>
+<rect x="716" y="200" width="150" height="50" rx="6" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="730" y="233" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">41ae…</text>
+<text x="494" y="320" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">첫 번째 부모와의 차이</text>
+<text x="494" y="360" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">내용 = 해시가 이름</text>
+<text x="494" y="396" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 한번 저장되면 안 바뀐다</text></svg>

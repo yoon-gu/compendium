@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 408" width="888" height="408"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B3F8C"/></marker></defs><rect x="0" y="40" width="200" height="150" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="100" y="108" font-size="30" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코딩</text>
+<text x="100" y="152" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Claude가 빠르게</text>
+<line x1="202" y1="115" x2="220" y2="115" stroke="#5B3F8C" stroke-width="4" marker-end="url(#a)"/>
+<rect x="222" y="40" width="200" height="150" rx="14" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="4"/>
+<text x="322" y="108" font-size="30" fill="#5B3F8C" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">소스 컨트롤</text>
+<text x="322" y="152" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">git</text>
+<line x1="424" y1="115" x2="442" y2="115" stroke="#5B3F8C" stroke-width="4" marker-end="url(#a)"/>
+<rect x="444" y="40" width="200" height="150" rx="14" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="4"/>
+<text x="544" y="108" font-size="30" fill="#5B3F8C" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">빌드</text>
+<text x="544" y="152" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve"></text>
+<line x1="646" y1="115" x2="664" y2="115" stroke="#5B3F8C" stroke-width="4" marker-end="url(#a)"/>
+<rect x="666" y="40" width="200" height="150" rx="14" fill="#FFFFFF" stroke="#5B3F8C" stroke-width="4"/>
+<text x="766" y="108" font-size="30" fill="#5B3F8C" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">CI</text>
+<text x="766" y="152" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">테스트</text>
+<text x="111" y="26" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">더 이상 병목 아님</text>
+<path d="M 222 220 L 888 220" stroke="#A23B3B" stroke-width="6"/>
+<text x="555" y="262" font-size="28" fill="#A23B3B" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람 규모로 만든 개발 인프라 = 새 병목</text>
+<text x="0" y="340" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">병목 하나를 없애면 산출이 더 늘어난다</text>
+<text x="0" y="388" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 병합량 증가는 계속될 것</text></svg>
