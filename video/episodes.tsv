@@ -1,12 +1,12 @@
 주차	슬러그	제목	노트 작성일	유튜브(비공개)	업로드일
-2026-W40	ai-workers-inquiry-2026	AI Workers' Inquiry 2026, 만드는 사람들이 직접 쓴 생성형 AI 노동 보고서 (UTAW)	2026-09-29	https://youtu.be/zzAYe3pQIng	2026-10-09
-2026-W41	managers-path-in-the-age-of-ai	AI 시대의 매니저의 길, 관리직 종말론에 대한 반론 (Camille Fournier)	2026-10-06	https://youtu.be/BYF4YI8QPDM	2026-10-09
-2026-W41-2	respectful-use-of-ai	AI를 예의 있게 쓰는 법, 팀을 위한 AI 사용 가이드라인 (Camille Fournier)	2026-10-09	https://youtu.be/yBLFGCFUgeE	2026-10-09
-2026-W41-3	genrec-netflix	수학 공식을 버린 넷플릭스의 LLM 추천, GenRec 논문 해설 (Netflix)	2026-10-09	https://youtu.be/9DMu9XuaiZ0	2026-10-09
-2026-W41-4	codemode	AI 에이전트는 도구를 하나씩 부르지 말고 코드로 묶어 불러야 한다, Codemode 해설 (Armin Ronacher)	2026-10-10	https://youtu.be/lzKaQiJ6_dU	2026-10-11
-2026-W41-5	astra-why	안 보면 AGI다, GPT 6 Astra에게 35시간 코딩을 맡긴 기록 (Armin Ronacher)	2026-10-10	https://youtu.be/Yqb3h5GK60U	2026-10-11
-2026-W41-6	career-advice-in-the-age-of-ai	채점할 수 없는 일을 하라, AI 시대의 커리어 조언 (Phil Chen)	2026-10-10	https://youtu.be/UavMBrL3VxY	2026-10-11
-2026-W41-7	autoregressive-diffusion-market-data	시장 데이터는 연속이면서 이산이다, 자기회귀 확산으로 호가창 생성하기 (Jane Street)	2026-10-11	https://youtu.be/SPLx5_vGdl8	2026-10-12
-2026-W41-8	autoregressive-diffusion-market-data-podcast	시장 데이터는 연속이면서 이산이다, 자기회귀 확산 글을 두 진행자가 묻고 답하며 읽기 (Jane Street)	2026-10-11	https://youtu.be/15194iidhvs	2026-10-12
-2026-W42	unsloth-decision-model	LLM을 생성형에서 결정형으로, 나만의 결정 모델 학습하기 (Unsloth)	2026-10-13	https://youtu.be/pvrkJ7Ak6AU	2026-10-13
+2026-W40	ai-workers-inquiry-2026	UTAW가 낸 AI Workers' Inquiry 2026, 만드는 사람들이 직접 쓴 생성형 AI 노동 보고서	2026-09-29	https://youtu.be/zzAYe3pQIng	2026-10-09
+2026-W41	managers-path-in-the-age-of-ai	Camille Fournier가 말하는 AI 시대의 매니저의 길, 관리직 종말론에 대한 반론	2026-10-06	https://youtu.be/BYF4YI8QPDM	2026-10-09
+2026-W41-2	respectful-use-of-ai	Camille Fournier의 팀 AI 사용 가이드라인, AI를 예의 있게 쓰는 법	2026-10-09	https://youtu.be/yBLFGCFUgeE	2026-10-09
+2026-W41-3	genrec-netflix	Netflix GenRec 논문 해설, 수학 공식을 버린 넷플릭스의 LLM 추천	2026-10-09	https://youtu.be/9DMu9XuaiZ0	2026-10-09
+2026-W41-4	codemode	Armin Ronacher의 Codemode 해설, AI 에이전트는 도구를 코드로 묶어 불러야 한다	2026-10-10	https://youtu.be/lzKaQiJ6_dU	2026-10-11
+2026-W41-5	astra-why	Armin Ronacher가 GPT 6 Astra에게 35시간 코딩을 맡긴 기록, 안 보면 AGI다	2026-10-10	https://youtu.be/Yqb3h5GK60U	2026-10-11
+2026-W41-6	career-advice-in-the-age-of-ai	Phil Chen의 AI 시대 커리어 조언, 채점할 수 없는 일을 하라	2026-10-10	https://youtu.be/UavMBrL3VxY	2026-10-11
+2026-W41-7	autoregressive-diffusion-market-data	Jane Street 인턴의 자기회귀 확산 실험, 시장 데이터는 연속이면서 이산이다	2026-10-11	https://youtu.be/SPLx5_vGdl8	2026-10-12
+2026-W41-8	autoregressive-diffusion-market-data-podcast	Jane Street 자기회귀 확산 글 대화편, 시장 데이터는 연속이면서 이산이다	2026-10-11	https://youtu.be/15194iidhvs	2026-10-12
+2026-W42	unsloth-decision-model	Unsloth로 LLM을 생성형에서 결정형으로, 나만의 결정 모델 학습하기	2026-10-13	https://youtu.be/pvrkJ7Ak6AU	2026-10-13
 2026-W42-2	redesigning-source-control	Anthropic이 git을 떠나 Scion을 만든 이유, 에이전트가 코드를 쓰면 git이 병목이 된다	2026-10-14	https://youtu.be/_5CwoS3gOt0	2026-10-14

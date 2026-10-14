@@ -1,5 +1,5 @@
-AI 시대의 매니저의 길, 관리직 종말론에 대한 반론 (Camille Fournier)
-태그: AI 시대 매니저, AI 시대 리더십, 중간관리자, 팀장, 매니저, 관리자, 리더십, 조직문화, 개발자, 개발 7년차 매니저 1일차, 매니저의 길, 카미유 푸르니에, AI와 일자리, AI 생산성, 코딩 에이전트, 바이브코딩, 직장인, 인공지능, ai, the manager's path, camille fournier, middle management, leadership, engineering management, future of work, ai layoffs, management in the age of ai, 개발팀장, 엔지니어링 매니저, 팀장 리더십, 관리직 축소, 중간관리자 해고, 매니저 필요없다, 1on1, 원온원, 피드백, 성과 평가, 개발 조직, IT 리더십, 조직 관리, AI 시대 일자리, 일의 미래, 개발자 커리어, ldx3, leaddev, ai management, flattening, manager layoffs, 듣는편람
+Camille Fournier가 말하는 AI 시대의 매니저의 길, 관리직 종말론에 대한 반론
+태그: Camille Fournier, 카미유 푸르니에, 매니저의 길, 개발 7년차 매니저 1일차, AI 시대 매니저, AI 시대 리더십, 중간관리자, 중간관리자 해고, 매니저 필요없다, 관리직 축소, 엔지니어링 매니저, 개발팀장, 팀장 리더십, 원온원, 1on1, 성과 평가, 개발 조직, 조직 관리, 코딩 에이전트, 일의 미래, the manager's path, engineering management, middle management, management in the age of ai, manager layoffs, flattening, leaddev, ldx3, leadership, future of work, 듣는편람
 
 "AI가 있으니 관리자는 필요 없다"는 말, 요즘 자주 들리죠. 『개발 7년차, 매니저 1일차』의 저자 카미유 푸르니에는 반대로 말합니다. AI 시대일수록 사람과 더 많이 이야기해야 한다고요.
 

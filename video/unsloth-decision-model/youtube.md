@@ -1,5 +1,5 @@
-LLM을 생성형에서 결정형으로, 나만의 결정 모델 학습하기 (Unsloth)
-태그: 결정 모델, LLM 분류, LLM 파인튜닝, 파인튜닝, 로라, 텍스트 분류, 의도 분류, 고객 문의 분류, 확률 보정, 기대 보정 오차, 헤드, 트랜스포머, 소형 언어 모델, 로컬 LLM, 큐웬, 젬마, 라마, 언슬로스, 생성형 AI, 머신러닝, 딥러닝, 데이터 사이언스, AI 실무, Unsloth, decision model, Laya, Clef, Jev, TypeSafe, Cloudflare, Qwen, Gemma, Llama, LoRA, fine-tuning, classification, calibration, ECE, BANKING77, CLINC150, typed-decisions, Decision API, 구조화 출력, 고객 지원 자동화, 문의 라우팅, 분류 모델, structured output, text classification, intent classification, small language model, local LLM, Hugging Face, 듣는편람
+Unsloth로 LLM을 생성형에서 결정형으로, 나만의 결정 모델 학습하기
+태그: Unsloth, 언슬로스, Unsloth 파인튜닝, LLM 분류, LLM 파인튜닝, 결정 모델, 텍스트 분류, 의도 분류, 고객 문의 분류, 문의 라우팅, LoRA 파인튜닝, 로라, Qwen 파인튜닝, 로컬 LLM, 소형 언어 모델, 확률 보정, 기대 보정 오차, LLM threshold, 구조화 출력, 고객 지원 자동화, 큐웬, 젬마, decision model, Laya, Clef, Jev, Qwen, Gemma, Llama, LoRA, fine-tuning, text classification, intent classification, calibration, BANKING77, CLINC150, Decision API, local LLM, 듣는편람
 
 LLM으로 고객 문의를 분류하는데 답 형식이 자꾸 깨지나요? 모델이 얼마나 확신하는지도 알 수 없어서 곤란하셨나요? 글을 쓰는 대신 선택지마다 확률을 매기는 '결정 모델'로 바꾸면 이 문제들이 한꺼번에 풀립니다.
 
