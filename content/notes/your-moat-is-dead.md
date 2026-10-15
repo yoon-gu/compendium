@@ -4,6 +4,7 @@ date: 2026-10-15
 draft: false
 math: false
 source_url: "https://www.techfounderstack.com/p/your-moat-is-dead-anyone-can-rebuild"
+youtube: "H1pcXDsvlJI"
 author: "Mathias Klenk (Tech Founder Stack)"
 tags: ["AI", "스타트업", "해자", "비즈니스 전략", "오픈소스", "클린룸", "에이전트", "블로그"]
 summary: "작은 팀이 Rust로 Photoshop을 다시 구현한 PhotoCraft가 일주일 만에 수천 개의 GitHub 별을 받았다. 저자는 이것이 '코드 해자(moat)'의 종말이라고 본다. 사용자가 관찰할 수 있는 것은 명세가 되고, 명세는 에이전트를 쓰는 작은 팀이 몇 주 만에 다시 만든다. 기능·UX·파일 형식·연동·좌석 과금이라는 해자는 새고, 책임·살아 있는 데이터·신뢰와 유통·물리 세계는 버틴다. 그중 계속 커지는 해자는 '결과를 책임지는 것'이다."
