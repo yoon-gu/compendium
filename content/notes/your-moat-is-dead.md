@@ -1,12 +1,12 @@
 ---
-title: "당신의 해자는 죽었다 — 누구나 제품을 다시 만들 수 있을 때 남는 방어력"
+title: "당신의 해자(moat)는 죽었다 — 누구나 제품을 다시 만들 수 있을 때 남는 방어력"
 date: 2026-10-15
 draft: false
 math: false
 source_url: "https://www.techfounderstack.com/p/your-moat-is-dead-anyone-can-rebuild"
 author: "Mathias Klenk (Tech Founder Stack)"
 tags: ["AI", "스타트업", "해자", "비즈니스 전략", "오픈소스", "클린룸", "에이전트", "블로그"]
-summary: "작은 팀이 Rust로 Photoshop을 다시 구현한 PhotoCraft가 일주일 만에 수천 개의 GitHub 별을 받았다. 저자는 이것이 '코드 해자'의 종말이라고 본다. 사용자가 관찰할 수 있는 것은 명세가 되고, 명세는 에이전트를 쓰는 작은 팀이 몇 주 만에 다시 만든다. 기능·UX·파일 형식·연동·좌석 과금이라는 해자는 새고, 책임·살아 있는 데이터·신뢰와 유통·물리 세계는 버틴다. 그중 계속 커지는 해자는 '결과를 책임지는 것'이다."
+summary: "작은 팀이 Rust로 Photoshop을 다시 구현한 PhotoCraft가 일주일 만에 수천 개의 GitHub 별을 받았다. 저자는 이것이 '코드 해자(moat)'의 종말이라고 본다. 사용자가 관찰할 수 있는 것은 명세가 되고, 명세는 에이전트를 쓰는 작은 팀이 몇 주 만에 다시 만든다. 기능·UX·파일 형식·연동·좌석 과금이라는 해자는 새고, 책임·살아 있는 데이터·신뢰와 유통·물리 세계는 버틴다. 그중 계속 커지는 해자는 '결과를 책임지는 것'이다."
 ---
 
 > **원문:** [Your Moat Is Dead. Anyone Can Rebuild Your Product.](https://www.techfounderstack.com/p/your-moat-is-dead-anyone-can-rebuild) — Mathias Klenk, Tech Founder Stack, 2026-10-07
@@ -17,7 +17,7 @@ summary: "작은 팀이 Rust로 Photoshop을 다시 구현한 PhotoCraft가 일�
 
 ## 한눈에 보기
 
-AI 에이전트 덕분에 코드를 짜는 비용이 급격히 떨어졌다. 저자는 이것이 소프트웨어 회사의 방어력을 어떻게 바꾸는지 묻는다. 답은 "코드는 더 이상 해자가 아니지만, 코드가 아닌 해자는 오히려 더 귀해졌다"이다.
+AI 에이전트 덕분에 코드를 짜는 비용이 급격히 떨어졌다. 저자는 이것이 소프트웨어 회사의 방어력을 어떻게 바꾸는지 묻는다. 답은 "코드는 더 이상 해자(moat)가 아니지만, 코드가 아닌 해자는 오히려 더 귀해졌다"이다.
 
 | 항목 | 내용 |
 |---|---|
