@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 548" width="888" height="548"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7A2E3A"/></marker></defs><rect x="0" y="0" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">① 사용자가 관찰한다</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">화면, 메뉴, 파일, 동작</text>
+<line x1="444.0" y1="152" x2="444.0" y2="196" stroke="#7A2E3A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="200" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="254" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">② 명세가 된다</text>
+<text x="26" y="306" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">공개 문서 + 관찰한 동작</text>
+<line x1="444.0" y1="352" x2="444.0" y2="396" stroke="#7A2E3A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="400" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#7A2E3A" stroke-width="4"/>
+<text x="26" y="454" font-size="34" fill="#7A2E3A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">③ 다시 만들어진다</text>
+<text x="26" y="506" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트를 쓰는 작은 팀, 몇 주</text></svg>

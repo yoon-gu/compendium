@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 540" width="888" height="540"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7A2E3A"/></marker></defs><rect x="0" y="0" width="888" height="300" rx="20" fill="#8FB3C9" opacity="0.35"/>
+<rect x="294" y="50" width="300" height="200" rx="8" fill="#FFFFFF" stroke="#7A2E3A" stroke-width="4"/>
+<rect x="304" y="22" width="40" height="34" fill="#7A2E3A"/>
+<rect x="364" y="22" width="40" height="34" fill="#7A2E3A"/>
+<rect x="424" y="22" width="40" height="34" fill="#7A2E3A"/>
+<rect x="484" y="22" width="40" height="34" fill="#7A2E3A"/>
+<rect x="544" y="22" width="40" height="34" fill="#7A2E3A"/>
+<text x="444" y="165" font-size="32" fill="#7A2E3A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">성 = 회사</text>
+<text x="80" y="290" font-size="26" fill="#2F5A73" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">해자 = 물길</text>
+<text x="0" y="360" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">소프트웨어 회사가 믿어 온 다섯 해자</text>
+<rect x="0" y="390" width="276" height="58" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="138" y="428" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">쌓아 온 기능</text>
+<rect x="296" y="390" width="276" height="58" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="434" y="428" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">손에 익은 화면</text>
+<rect x="592" y="390" width="276" height="58" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="730" y="428" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">독자 파일 형식</text>
+<rect x="0" y="464" width="276" height="58" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="138" y="502" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수많은 연동</text>
+<rect x="296" y="464" width="276" height="58" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
+<text x="434" y="502" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">좌석 과금</text></svg>
