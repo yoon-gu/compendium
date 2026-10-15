@@ -15,11 +15,12 @@ Mathias Klenk의 "Your Moat Is Dead. Anyone Can Rebuild Your Product."(Tech Foun
 > 당신의 해자는 / **죽었다**
 > ![](figures/moat.mp4)
 
-엔지니어 열몇 명이 Photoshop을 다시 만들었습니다. 몇 년이 아니라 몇 주 만에요. 그러면 Adobe가 수십 년 쌓은 코드는 이제 무엇을 지켜 줄까요? ‖ 오늘 소개할 글은 창업자 뉴스레터 Tech Founder Stack에 2026년 10월에 올라온 글입니다. 제목은 당신의 해자는 죽었다, 누구나 당신의 제품을 다시 만들 수 있다예요.
+엔지니어 열몇 명이 Photoshop을 다시 만들었습니다. 몇 년이 아니라 몇 주 만에요. 그러면 Adobe가 수십 년 쌓은 코드는 이제 무엇을 지켜 줄까요? ‖ 오늘 소개할 글은 창업자 뉴스레터 Tech Founder Stack에 2026년 10월에 올라온 글입니다. 글쓴이 마티아스 클렝크는 신원 인증 스타트업 Passbase를 함께 세우고 기술 책임자로 일했던 사람이에요. 제목은 당신의 해자는 죽었다, 누구나 당신의 제품을 다시 만들 수 있다예요.
 
 ## 2 | 배경 | 먼저 알아 둘 말
 > **해자**란
-> ![](figures/t-moat.svg)
+> ![](figures/moat-photo.jpg)
+> — 사진: Michael Gaylard, 영국 보디엄 성(Bodiam Castle), CC BY 2.0, Wikimedia Commons
 
 먼저 해자라는 말부터 짚고 갈게요. 해자는 성을 둘러싼 물길입니다. 적이 쉽게 건너오지 못하게 막아 주죠. 사업에서는 경쟁자가 쉽게 따라오지 못하게 하는 방어력을 해자라고 부릅니다. 소프트웨어 회사는 오랫동안 다섯 가지를 해자로 믿었어요. 쌓아 온 기능, 손에 익은 화면, 독자 파일 형식, 수많은 연동, 그리고 사람 수만큼 받는 좌석 과금입니다.
 
@@ -30,9 +31,16 @@ Mathias Klenk의 "Your Moat Is Dead. Anyone Can Rebuild Your Product."(Tech Foun
 
 ## 3 | 무슨 일이 | PhotoCraft
 > Photoshop을 다시 만든 / **PhotoCraft**
-> ![](figures/ex-photocraft.svg)
+> ![](figures/gh-photocraft-repo.png)
+> — 화면: github.com/storytold/photocraft, MIT 또는 Apache-2.0, 2026년 10월 16일 갈무리
 
-이야기의 계기는 PhotoCraft입니다. 작은 팀이 Rust로 Photoshop을 다시 구현해 공개했고 일주일 만에 GitHub 별을 수천 개 받았어요. Premiere, Lightroom, InDesign, Word를 겨냥한 형제 프로젝트도 이어서 나왔습니다. PSD 파서는 Adobe가 공개한 파일 명세로 만들었고 실제 Photoshop 파일로 테스트해서 렌더 결과를 맞대어 봤다고 해요. 모든 명령은 MCP 서버로도 열려 있어서 에이전트가 직접 조작할 수 있습니다.
+이야기의 계기는 PhotoCraft입니다. 작은 팀이 Rust로 Photoshop을 다시 구현해 공개했고 일주일 만에 GitHub 별을 수천 개 받았어요. Premiere, Lightroom, InDesign, Word를 겨냥한 형제 프로젝트도 이어서 나왔습니다.
+
+> 실제 앱 화면은 / **Photoshop을 닮았다**
+> ![](figures/gh-photocraft-demo.jpg)
+> — 화면: PhotoCraft README 스크린샷(MIT 또는 Apache-2.0), 그림: 가쓰시카 호쿠사이, 퍼블릭 도메인
+
+PSD 파서는 Adobe가 공개한 파일 명세로 만들었고 실제 Photoshop 파일로 테스트해서 렌더 결과를 맞대어 봤다고 해요. 모든 명령은 MCP 서버로도 열려 있어서 에이전트가 직접 조작할 수 있습니다.
 
 > 완성도보다 / **비용**을 보라
 > 기능 수준은 Photoshop의 절반 이하라는 추정(WebProNews)

@@ -8,7 +8,7 @@
 - moat.mp4      표지: '코드'라는 해자의 물이 빠지고, 성 둘레에 책임·데이터·신뢰·물리 세계 벽이 선다 (개념 그림, 9초)
 - cleanroom.mp4 클린룸: 관찰 팀 → 명세 → 벽 → 구현 팀. 1984년 몇 달, 지금은 에이전트로 몇 주 (9초)
 - leak.mp4      새는 해자 다섯: 기능·화면·파일 형식·연동·좌석 과금 물탱크가 새어 내려간다 (개념 그림, 9초)
-- compound.mp4  커지는 해자: '결과 책임'이 돌기 시작하면 데이터·책임·유통·서버가 붙어 커진다 (개념 그림, 10초)
+- compound.mp4  커지는 해자: '결과 책임' 둘레의 데이터·책임·유통·자기 서버가 나레이션에서 언급될 때마다 하나씩 굵게 켜진다 (길이·시각은 compound-timing.json)
 """
 import math
 import random
@@ -171,32 +171,37 @@ def draw_leak(ax, t):
 
 
 # ---------- (d) 커지는 해자 ----------
-SPOKES = [("데이터 루프", -90), ("책임", 0), ("유통", 90), ("자기 서버", 180)]
+# 네 가지가 나레이션에서 언급되는 순간 하나씩 굵게 켜진다. 시각은 compound-timing.json(녹음 뒤 계산)에서 읽는다.
+import json
+TIMING = HERE / "compound-timing.json"
+SPOKES = [("데이터 루프", 0, -310), ("책임", 470, 0), ("유통", 0, 310), ("자기 서버", -470, 0)]   # 언급 순서대로 위·오른쪽·아래·왼쪽
+
+
+def compound_timing():
+    if TIMING.exists():
+        d = json.loads(TIMING.read_text())
+        return d["duration"], d["marks"]
+    return 10.0, [3.0, 4.6, 6.2, 7.8]
 
 
 def draw_compound(ax, t):
-    cx, cy = 888, 500
-    grow = ease((t - 0.8) / 6.0)
-    r_core = 130 + 40 * grow
-    ax.add_patch(plt.Circle((cx, cy), r_core, color=INK))
-    ax.text(cx, cy - 18, "결과", fontsize=48, color="#FFFFFF", ha="center", va="center", fontweight="bold")
-    ax.text(cx, cy + 40, "책임", fontsize=40, color="#FFFFFF", ha="center", va="center", fontweight="bold")
-    ang0 = t * 25   # 천천히 돈다
-    ax.add_patch(plt.Circle((cx, cy), 330, fill=False, ec=LINE, lw=3, ls="--"))
-    for k, (lab, base) in enumerate(SPOKES):
-        a = ease((t - 1.5 - k * 1.0) / 0.8)
-        if a <= 0:
-            continue
-        ang = math.radians(base + ang0)
-        x, y = cx + 330 * math.cos(ang), cy + 330 * math.sin(ang)
-        ax.plot([cx, x], [cy, y], color=INK, lw=4, alpha=0.5 * a)
-        bw, bh = 230 + 30 * grow, 84 + 10 * grow
-        box(ax, x - bw / 2, y - bh / 2, bw, bh, ec=INK, fc="#FFFFFF", lw=5, r=40, alpha=a)
-        ax.text(x, y, lab, fontsize=32, color=INK, ha="center", va="center", fontweight="bold", alpha=a)
-    ax.text(888, 930, "도구는 주말에 복제된다. 약속은 매달 지켜야 한다.", fontsize=34, color=GRAY, ha="center", va="center")
+    _, marks = compound_timing()
+    cx, cy = 888, 470
+    for k, (lab, dx, dy) in enumerate(SPOKES):
+        on = ease((t - marks[k]) / 0.35)
+        x, y = cx + dx, cy + dy
+        ax.plot([cx, x], [cy, y], color=INK if on > 0.5 else LINE, lw=3 + 3 * on, zorder=1)
+        bw, bh = 300 + 30 * on, 100 + 10 * on
+        box(ax, x - bw / 2, y - bh / 2, bw, bh, ec=INK if on > 0 else LINE, fc=INK if on > 0.5 else "#FFFFFF", lw=3 + 3 * on, r=48)
+        ax.text(x, y, lab, fontsize=34 + 6 * on, color="#FFFFFF" if on > 0.5 else (GRAY if on == 0 else INK),
+                ha="center", va="center", fontweight="bold" if on > 0 else "normal", zorder=3)
+    ax.add_patch(plt.Circle((cx, cy), 165, color=INK, zorder=2))
+    ax.text(cx, cy - 34, "결과", fontsize=48, color="#FFFFFF", ha="center", va="center", fontweight="bold", zorder=3)
+    ax.text(cx, cy + 34, "책임", fontsize=48, color="#FFFFFF", ha="center", va="center", fontweight="bold", zorder=3)
+    ax.text(888, 940, "도구는 주말에 복제된다. 약속은 매달 지켜야 한다.", fontsize=34, color=GRAY, ha="center", va="center")
 
 
-ANIMS = {"moat": (9, draw_moat), "cleanroom": (9, draw_cleanroom), "leak": (9, draw_leak), "compound": (10, draw_compound)}
+ANIMS = {"moat": (9, draw_moat), "cleanroom": (9, draw_cleanroom), "leak": (9, draw_leak), "compound": (compound_timing()[0], draw_compound)}
 
 if __name__ == "__main__":
     for name in sys.argv[1:] or ANIMS:

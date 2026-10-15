@@ -11,7 +11,7 @@ summary: "작은 팀이 Rust로 Photoshop을 다시 구현한 PhotoCraft가 일�
 
 > **원문:** [Your Moat Is Dead. Anyone Can Rebuild Your Product.](https://www.techfounderstack.com/p/your-moat-is-dead-anyone-can-rebuild) — Mathias Klenk, Tech Founder Stack, 2026-10-07
 >
-> **저자:** 마티아스 클렝크(Mathias Klenk) — 창업자를 위한 뉴스레터 Tech Founder Stack을 쓴다. 글에서 신원 인증 회사 Passbase에서 일하며 은행 고객을 상대했던 경험을 근거로 든다.
+> **저자:** 마티아스 클렝크(Mathias Klenk) — 신원 인증 스타트업 Passbase의 공동 창업자이자 기술 책임자(CTO)였고, 스스로를 두 번 창업한 기술 창업자로 소개한다. 창업자를 위한 뉴스레터 Tech Founder Stack을 쓴다. 이 글에서 '책임'이 해자라는 주장의 근거로 Passbase 시절 은행을 상대한 경험을 든다.
 >
 > 아래는 원문의 절 순서를 따라 요지를 정리하고 해설을 붙인 노트다. 요지 정리와 해설은 옮긴 이의 것이고 전문은 위 링크에서 읽을 수 있다.
 
