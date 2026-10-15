@@ -2,12 +2,13 @@
 """화면에 얹는 소리 없는 개념 애니메이션 네 편(1776x1000, 25fps)을 matplotlib 으로 프레임마다 그려 ffmpeg 로 굽는다.
 화면 디자인과 같은 결: 종이 바탕, 잉크색 하나, 나눔고딕, 글자는 크고 적게. build.py 가 가로 888px 로 줄여 얹는다.
 
-    python3 animate.py            # → moat.mp4, cleanroom.mp4, leak.mp4, compound.mp4 (+ 확인용 *-sheet.png)
+    python3 animate.py            # → moat.mp4, moats.mp4, cleanroom.mp4, leak.mp4, compound.mp4 (+ 확인용 *-sheet.png)
     python3 animate.py leak       # 하나만
 
 - moat.mp4      표지: '코드'라는 해자의 물이 빠지고, 성 둘레에 책임·데이터·신뢰·물리 세계 벽이 선다 (개념 그림, 9초)
 - cleanroom.mp4 클린룸: 관찰 팀 → 명세 → 벽 → 구현 팀. 1984년 몇 달, 지금은 에이전트로 몇 주 (9초)
 - leak.mp4      새는 해자 다섯: 기능·화면·파일 형식·연동·좌석 과금 물탱크가 새어 내려간다 (개념 그림, 9초)
+- moats.mp4     해자란: 성(회사)을 두른 물길 위에 기능·화면·파일 형식·연동·좌석 과금이 나레이션에서 언급될 때마다 하나씩 떠오른다 (길이·시각은 moats-timing.json)
 - compound.mp4  커지는 해자: '결과 책임' 둘레의 데이터·책임·유통·자기 서버가 나레이션에서 언급될 때마다 하나씩 굵게 켜진다 (길이·시각은 compound-timing.json)
 """
 import math
@@ -177,11 +178,11 @@ TIMING = HERE / "compound-timing.json"
 SPOKES = [("데이터 루프", 0, -310), ("책임", 470, 0), ("유통", 0, 310), ("자기 서버", -470, 0)]   # 언급 순서대로 위·오른쪽·아래·왼쪽
 
 
-def compound_timing():
-    if TIMING.exists():
-        d = json.loads(TIMING.read_text())
+def compound_timing(path=TIMING, default=(10.0, [3.0, 4.6, 6.2, 7.8])):
+    if path.exists():
+        d = json.loads(path.read_text())
         return d["duration"], d["marks"]
-    return 10.0, [3.0, 4.6, 6.2, 7.8]
+    return default
 
 
 def draw_compound(ax, t):
@@ -201,7 +202,32 @@ def draw_compound(ax, t):
     ax.text(888, 940, "도구는 주말에 복제된다. 약속은 매달 지켜야 한다.", fontsize=34, color=GRAY, ha="center", va="center")
 
 
-ANIMS = {"moat": (9, draw_moat), "cleanroom": (9, draw_cleanroom), "leak": (9, draw_leak), "compound": (compound_timing()[0], draw_compound)}
+# ---------- (e) 해자란: 예전의 다섯 해자가 언급될 때마다 떠오른다 ----------
+MOATS_TIMING = HERE / "moats-timing.json"
+OLD_MOATS = [("쌓아 온 기능", 888, 150), ("손에 익은 화면", 1480, 390), ("독자 파일 형식", 1250, 800),
+             ("수많은 연동", 526, 800), ("좌석 과금", 296, 390)]   # 언급 순서대로 위에서 시계 방향
+
+
+def draw_moats(ax, t):
+    _, marks = compound_timing(MOATS_TIMING, (10.0, [2.0, 3.0, 4.0, 5.0, 6.0]))
+    cx, cy = 888, 480
+    ax.add_patch(FancyBboxPatch((cx - 700, cy - 380), 1400, 760, boxstyle="round,pad=0,rounding_size=120",
+                                fc=WATER, ec="none", alpha=0.55))
+    ax.add_patch(FancyBboxPatch((cx - 360, cy - 200), 720, 400, boxstyle="round,pad=0,rounding_size=40", fc=PAPER, ec="none"))
+    castle(ax, cx, cy + 20, 380, 240)
+    current = max((k for k, m in enumerate(marks) if t >= m), default=-1)
+    for k, (lab, x, y) in enumerate(OLD_MOATS):
+        a = ease((t - marks[k]) / 0.35)
+        if a <= 0:
+            continue
+        now = k == current
+        bw, bh = 380 * (0.85 + 0.15 * a), 112 * (0.85 + 0.15 * a)
+        box(ax, x - bw / 2, y - bh / 2, bw, bh, ec=INK, fc=INK if now else "#FFFFFF", lw=6 if now else 4, r=40, alpha=a)
+        ax.text(x, y, lab, fontsize=40 if now else 36, color="#FFFFFF" if now else INK, ha="center", va="center",
+                fontweight="bold", alpha=a, zorder=3)
+
+
+ANIMS = {"moat": (9, draw_moat), "moats": (compound_timing(MOATS_TIMING)[0], draw_moats), "cleanroom": (9, draw_cleanroom), "leak": (9, draw_leak), "compound": (compound_timing()[0], draw_compound)}
 
 if __name__ == "__main__":
     for name in sys.argv[1:] or ANIMS:

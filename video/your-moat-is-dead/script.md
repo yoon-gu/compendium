@@ -4,7 +4,7 @@ Mathias Klenk의 "Your Moat Is Dead. Anyone Can Rebuild Your Product."(Tech Foun
 원문 번역이 아니라 [정리 노트](../../content/notes/your-moat-is-dead.md)를 바탕으로 요지와 해설을 다시 서술한 것이다. 말투는 노트와 같은 해설 문체(짧은 문장, 물음과 답).
 
 형식은 `../build.py` 머리말 참고. `python3 ../build.py your-moat-is-dead --voice=유나`로 미리 듣는다(세로 1080x1920).
-그림은 `figures/make.py`(SVG), 애니메이션은 `figures/animate.py`(moat·cleanroom·leak·compound mp4). 원문 그림은 쓰지 않고 개념을 새로 그렸다.
+그림은 `figures/make.py`(SVG), 애니메이션은 `figures/animate.py`(moat·moats·cleanroom·leak·compound mp4). 원문 그림은 쓰지 않고 개념을 새로 그렸다.
 
 출처: Tech Founder Stack, 2026년 10월
 잉크: #7A2E3A
@@ -22,7 +22,12 @@ Mathias Klenk의 "Your Moat Is Dead. Anyone Can Rebuild Your Product."(Tech Foun
 > ![](figures/moat-photo.jpg)
 > — 사진: Michael Gaylard, 영국 보디엄 성(Bodiam Castle), CC BY 2.0, Wikimedia Commons
 
-먼저 해자라는 말부터 짚고 갈게요. 해자는 성을 둘러싼 물길입니다. 적이 쉽게 건너오지 못하게 막아 주죠. 사업에서는 경쟁자가 쉽게 따라오지 못하게 하는 방어력을 해자라고 부릅니다. 소프트웨어 회사는 오랫동안 다섯 가지를 해자로 믿었어요. 쌓아 온 기능, 손에 익은 화면, 독자 파일 형식, 수많은 연동, 그리고 사람 수만큼 받는 좌석 과금입니다.
+먼저 해자라는 말부터 짚고 갈게요. 해자는 성을 둘러싼 물길입니다. 적이 쉽게 건너오지 못하게 막아 주죠. 사업에서는 경쟁자가 쉽게 따라오지 못하게 하는 방어력을 해자라고 부릅니다.
+
+> 오랫동안 믿어 온 / **다섯 해자**
+> ![](figures/moats.mp4)
+
+소프트웨어 회사는 오랫동안 다섯 가지를 해자로 믿었어요. 쌓아 온 기능, 손에 익은 화면, 독자 파일 형식, 수많은 연동, 그리고 사람 수만큼 받는 좌석 과금입니다.
 
 > **클린룸**이란
 > ![](figures/cleanroom.mp4)
