@@ -1,5 +1,5 @@
 아이디어를 낸 사람이 직접 만든다, AI 에이전트 시대의 마케팅 엔지니어 (Greg Isenberg)
-태그: 마케팅 엔지니어, AI 마케팅, AI 에이전트, 그로스 마케팅, 그로스 해킹, 퍼포먼스 마케팅, 마케팅 자동화, 클로드 코드, 코딩 에이전트, 캠페인 ID, UTM, 광고 크리에이티브, 랜딩 페이지, 스타트업 마케팅, 1인 마케터, 마케팅 실험, A/B 테스트, CRM, MCP, 마케팅 조직, marketing engineer, AI marketing, AI agents, growth marketing, growth hacking, Claude Code, MCP, marketing automation, startup marketing, Greg Isenberg, Startup Ideas Podcast, Late Checkout, 마케팅 전략, 디지털 마케팅, 광고 운영, 메타 광고, 고객 인터뷰, 마케팅 조직 개편, AI 업무 자동화, 노코드 자동화, 마케팅 데이터, 고객 언어, marketing experiments, growth engineer, ad creative testing, customer research, 듣는편람
+태그: 마케팅 엔지니어, AI 마케팅, AI 에이전트, 그로스 마케팅, 그로스 해킹, 퍼포먼스 마케팅, 마케팅 자동화, 클로드 코드, 코딩 에이전트, 캠페인 ID, UTM, 광고 크리에이티브, 랜딩 페이지, 스타트업 마케팅, 1인 마케터, 마케팅 실험, A/B 테스트, CRM, MCP, 마케팅 조직, marketing engineer, AI marketing, AI agents, growth marketing, growth hacking, Claude Code, marketing automation, startup marketing, Greg Isenberg, Startup Ideas Podcast, Late Checkout, 마케팅 전략, 디지털 마케팅, 광고 운영, 메타 광고, 고객 인터뷰, AI 업무 자동화, 마케팅 데이터, 고객 언어, marketing experiments, 듣는편람
 
 마케팅 아이디어는 많은데 왜 실행은 늘 6주씩 걸릴까요? AI 에이전트를 붙였는데 왜 뻔한 결과만 나올까요?
 
