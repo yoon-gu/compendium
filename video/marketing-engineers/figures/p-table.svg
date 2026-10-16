@@ -3,16 +3,16 @@
 <rect x="359.0" y="4.0" width="170" height="92" rx="46" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="3"/>
 <text x="444.0" y="46.0" font-size="26" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사회자</text>
 <text x="444.0" y="78.0" font-size="17" fill="#FFFFFF" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">진행</text>
-<rect x="622.8486503774006" y="142.19660112501052" width="270" height="92" rx="46" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="757.8486503774006" y="184.19660112501052" font-size="26" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">마케팅기획부</text>
-<text x="757.8486503774006" y="216.19660112501052" font-size="17" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">캠페인 기획·브리프</text>
-<rect x="502.9691332565161" y="365.8033988749895" width="270" height="92" rx="46" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="637.9691332565161" y="407.8033988749895" font-size="26" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">타깃 모델 운영부</text>
-<text x="637.9691332565161" y="439.8033988749895" font-size="17" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고객 타깃군 모델 학습·운영</text>
-<rect x="115.0308667434839" y="365.8033988749895" width="270" height="92" rx="46" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="250.0308667434839" y="407.8033988749895" font-size="26" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">마케팅실행부</text>
-<text x="250.0308667434839" y="439.8033988749895" font-size="17" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">문자·앱 푸시·이메일 발송</text>
-<rect x="-4.848650377400702" y="142.19660112501055" width="270" height="92" rx="46" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="130.1513496225993" y="184.19660112501055" font-size="26" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">플랫폼 개발부</text>
-<text x="130.1513496225993" y="216.19660112501055" font-size="17" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사내 플랫폼 기획·개발</text>
+<rect x="584.8063897255945" y="142.19660112501052" width="270" height="92" rx="46" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="719.8063897255945" y="184.19660112501052" font-size="26" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">마케팅기획부</text>
+<text x="719.8063897255945" y="216.19660112501052" font-size="17" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">캠페인 기획·브리프</text>
+<rect x="479.45772316481725" y="365.8033988749895" width="270" height="92" rx="46" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="614.4577231648173" y="407.8033988749895" font-size="26" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">타깃 모델 운영부</text>
+<text x="614.4577231648173" y="439.8033988749895" font-size="17" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고객 타깃군 모델 학습·운영</text>
+<rect x="138.54227683518286" y="365.8033988749895" width="270" height="92" rx="46" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="273.54227683518286" y="407.8033988749895" font-size="26" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">마케팅실행부</text>
+<text x="273.54227683518286" y="439.8033988749895" font-size="17" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">문자·앱 푸시·이메일 발송</text>
+<rect x="33.193610274405444" y="142.19660112501055" width="270" height="92" rx="46" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="168.19361027440544" y="184.19660112501055" font-size="26" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">플랫폼 개발부</text>
+<text x="168.19361027440544" y="216.19660112501055" font-size="17" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사내 플랫폼 기획·개발</text>
 <text x="444" y="520" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">회사·인물은 가상, 규제 설명은 일반 안내(법률 자문 아님)</text></svg>

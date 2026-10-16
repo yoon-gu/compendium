@@ -136,7 +136,7 @@ b = [f'<ellipse cx="444" cy="250" rx="250" ry="120" fill="{SOFT}" stroke="{LINE}
 for i, (r, d) in enumerate([("사회자", "진행"), ("마케팅기획부", "캠페인 기획·브리프"), ("타깃 모델 운영부", "고객 타깃군 모델 학습·운영"),
                             ("마케팅실행부", "문자·앱 푸시·이메일 발송"), ("플랫폼 개발부", "사내 플랫폼 기획·개발")]):
     a = math.radians(-90 + i * 72)
-    x, y = 444 + 330 * math.cos(a), 250 + 200 * math.sin(a)
+    x, y = 444 + 290 * math.cos(a), 250 + 200 * math.sin(a)   # 양 끝 이름표(폭 270)가 그림 틀 안에 들도록
     w = 270 if i else 170
     b += [rect(x - w / 2, y - 46, w, 92, INK if i == 0 else LINE, INK if i == 0 else FILL, 3, 46),
           text(x, y - 4, r, 26, FILL if i == 0 else INK, "middle", "bold"), text(x, y + 28, d, 17, FILL if i == 0 else GRAY, "middle")]

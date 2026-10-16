@@ -36,11 +36,11 @@ def chips(names: list[str], roles: dict, active: int, ink: str) -> Image.Image:
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     font = ImageFont.truetype(str(FONTS / "NanumGothic-ExtraBold.ttf"), 27)
-    w = (W - GAP * (len(names) - 1)) / len(names)
+    w = (W - 4 - GAP * (len(names) - 1)) / len(names)   # 양 끝 테두리가 잘리지 않게 2px씩 안쪽으로
     for k, n in enumerate(names):
-        x0 = k * (w + GAP)
+        x0 = 2 + k * (w + GAP)
         on = k == active
-        d.rounded_rectangle([x0, 0, x0 + w, H - 1], radius=22, fill=ink if on else (255, 255, 255, 225),
+        d.rounded_rectangle([x0, 2, x0 + w, H - 3], radius=22, fill=ink if on else (255, 255, 255, 225),
                             outline=ink if on else (185, 185, 180, 255), width=3)
         lines = roles.get(n, n).split("/")
         for i, ln in enumerate(lines):
