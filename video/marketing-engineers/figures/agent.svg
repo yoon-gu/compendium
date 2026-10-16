@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 400" width="888" height="400"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><rect x="0" y="0" width="420" height="330" rx="14" fill="#FFFFFF" stroke="#2B4C7E" stroke-width="4"/>
+<text x="26" y="54" font-size="34" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">내 폴더</text>
+<text x="26" y="110" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코딩 에이전트</text>
+<text x="26" y="160" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">파일을 읽고 쓴다</text>
+<text x="26" y="206" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코드를 돌린다</text>
+<text x="26" y="252" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예약해 두면 밤에도</text>
+<text x="26" y="296" font-size="26" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">= 아주 빠른 신입</text>
+<rect x="560" y="10" width="328" height="66" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="724" y="53" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">CRM</text>
+<line x1="424" y1="165" x2="556" y2="43" stroke="#2B4C7E" stroke-width="3"/>
+<rect x="560" y="92" width="328" height="66" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="724" y="135" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">결제·매출</text>
+<line x1="424" y1="165" x2="556" y2="125" stroke="#2B4C7E" stroke-width="3"/>
+<rect x="560" y="174" width="328" height="66" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="724" y="217" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">슬랙</text>
+<line x1="424" y1="165" x2="556" y2="207" stroke="#2B4C7E" stroke-width="3"/>
+<rect x="560" y="256" width="328" height="66" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="724" y="299" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">광고 관리자</text>
+<line x1="424" y1="165" x2="556" y2="289" stroke="#2B4C7E" stroke-width="3"/>
+<rect x="450" y="140" width="84" height="50" rx="25" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="492" y="174" font-size="22" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">MCP</text>
+<text x="444" y="380" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">MCP = 에이전트에 도구를 꽂는 만능 플러그</text></svg>

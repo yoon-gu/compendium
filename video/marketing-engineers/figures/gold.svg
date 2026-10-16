@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 600" width="888" height="600"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><rect x="0" y="0" width="420" height="140" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">영업</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">매주 듣는 반론 다섯 가지</text>
+<rect x="468" y="0" width="420" height="140" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="494" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고객 지원</text>
+<text x="494" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">환불로 이어지는 약속</text>
+<rect x="0" y="160" width="420" height="140" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="214" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">창업자</text>
+<text x="26" y="266" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">업계에 대한 강한 의견</text>
+<rect x="468" y="160" width="420" height="140" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="494" y="214" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">분석 도구</text>
+<text x="494" y="266" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">오래 남는 고객이 오는 페이지</text>
+<rect x="0" y="350" width="888" height="90" rx="14" fill="#FFFFFF" stroke="#A23B3B" stroke-width="3"/>
+<text x="444" y="405" font-size="28" fill="#A23B3B" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">흩어져 있어서 캠페인에는 분기에 한 번</text>
+<line x1="444" y1="448" x2="444" y2="500" stroke="#2B4C7E" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="506" width="888" height="90" rx="14" fill="#ECECE8" stroke="#2B4C7E" stroke-width="4"/>
+<text x="444" y="561" font-size="28" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">마케팅 엔지니어: 오후 한나절에 캠페인으로</text></svg>

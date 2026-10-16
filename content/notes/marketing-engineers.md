@@ -4,6 +4,7 @@ date: 2026-10-16
 draft: false
 math: false
 source_url: "https://x.com/gregisenberg/status/2108188646973313195"
+youtube: "yQg4evQORao"
 author: "Greg Isenberg (Late Checkout)"
 tags: ["AI", "에이전트", "마케팅", "그로스", "스타트업", "Claude Code", "MCP", "블로그"]
 summary: "마케팅 아이디어는 늘 쉬웠고 실행이 어려웠다. 브리프, 디자이너, 개발자, 분석가, 회의 두 번을 넘어야 했기 때문이다. 그레그 아이젠버그는 그 병목이 AI 에이전트로 무너졌다고 본다. 아이디어를 낸 사람이 직접 만들고 띄우는 '마케팅 엔지니어'가 나타났다는 것이다. 회사에 대한 맥락을 담은 '두뇌' 폴더, 캠페인 ID로 지출과 매출을 잇는 표, 고객의 말을 읽는 첫 에이전트, 도구 안에 박은 안전장치, 주간 검토 루프까지 여덟 단계로 짓는 법을 정리한다."

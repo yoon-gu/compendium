@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 630" width="888" height="630"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><rect x="0" y="0" width="888" height="150" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">프롬프트 속 문장</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">"보내기 전에 꼭 물어봐" → 공손한 제안일 뿐</text>
+<text x="0" y="200" font-size="28" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구에 박은 안전장치</text>
+<rect x="0" y="224" width="888" height="66" rx="14" fill="#FFFFFF" stroke="#2B4C7E" stroke-width="3"/>
+<text x="24" y="267" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">메일</text>
+<text x="864" y="267" font-size="24" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">초안 쓰기 권한만</text>
+<rect x="0" y="304" width="888" height="66" rx="14" fill="#FFFFFF" stroke="#2B4C7E" stroke-width="3"/>
+<text x="24" y="347" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">광고</text>
+<text x="864" y="347" font-size="24" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">일시정지 상태로만 올린다, 켜는 건 사람</text>
+<rect x="0" y="384" width="888" height="66" rx="14" fill="#FFFFFF" stroke="#2B4C7E" stroke-width="3"/>
+<text x="24" y="427" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예산</text>
+<text x="864" y="427" font-size="24" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람이 쥔다</text>
+<rect x="0" y="464" width="888" height="66" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="507" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">정확한 규칙</text>
+<text x="864" y="507" font-size="24" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지출 상한·수신 거부·중복 제거 = 평범한 코드</text>
+<rect x="0" y="544" width="888" height="66" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="587" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">판단</text>
+<text x="864" y="587" font-size="24" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">맞는 고객인가, 우리 말투인가 = 모델</text></svg>

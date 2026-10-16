@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 500" width="888" height="500"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><rect x="0" y="0" width="888" height="170" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">기능 이름으로 쓴 광고</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">"자동 예약 시스템"</text>
+<rect x="0" y="210" width="888" height="210" rx="14" fill="#FFFFFF" stroke="#2B4C7E" stroke-width="4"/>
+<text x="26" y="264" font-size="34" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고객의 말로 쓴 광고</text>
+<text x="26" y="316" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">"저녁 먹다가 전화 받는 거, 이제 그만"</text>
+<text x="26" y="366" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">영업 통화에서 사장들이 자꾸 하던 말</text>
+<text x="0" y="480" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고객 언어 에이전트: 통화 20-50개에서 이런 말을 뽑는다</text></svg>

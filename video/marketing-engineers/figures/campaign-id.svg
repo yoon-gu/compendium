@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 625" width="888" height="625"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 ID를 모든 곳에</text>
+<rect x="0" y="60" width="888" height="60" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="22" y="99" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">광고 링크</text>
+<text x="866" y="99" font-size="24" fill="#2B4C7E" text-anchor="end" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">?utm_campaign=BK014</text>
+<rect x="0" y="134" width="888" height="60" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="22" y="173" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">광고 이름</text>
+<text x="866" y="173" font-size="24" fill="#2B4C7E" text-anchor="end" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">BK014_dinner-angle_v2</text>
+<rect x="0" y="208" width="888" height="60" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="22" y="247" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이메일 이름</text>
+<text x="866" y="247" font-size="24" fill="#2B4C7E" text-anchor="end" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">BK014_followup</text>
+<rect x="0" y="282" width="888" height="60" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="22" y="321" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">CRM 거래</text>
+<text x="866" y="321" font-size="24" fill="#2B4C7E" text-anchor="end" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">campaign: BK014</text>
+<line x1="444" y1="362" x2="444" y2="412" stroke="#2B4C7E" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="420" width="140" height="50" rx="6" fill="#ECECE8" stroke="#2B4C7E" stroke-width="2"/>
+<text x="70" y="453" font-size="22" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">ID</text>
+<rect x="0" y="474" width="140" height="50" rx="6" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="70" y="507" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">BK014</text>
+<rect x="148" y="420" width="140" height="50" rx="6" fill="#ECECE8" stroke="#2B4C7E" stroke-width="2"/>
+<text x="218" y="453" font-size="22" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지출</text>
+<rect x="148" y="474" width="140" height="50" rx="6" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="218" y="507" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">$2,000</text>
+<rect x="296" y="420" width="140" height="50" rx="6" fill="#ECECE8" stroke="#2B4C7E" stroke-width="2"/>
+<text x="366" y="453" font-size="22" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">리드</text>
+<rect x="296" y="474" width="140" height="50" rx="6" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="366" y="507" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">41</text>
+<rect x="444" y="420" width="140" height="50" rx="6" fill="#ECECE8" stroke="#2B4C7E" stroke-width="2"/>
+<text x="514" y="453" font-size="22" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">거래</text>
+<rect x="444" y="474" width="140" height="50" rx="6" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="514" y="507" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">6</text>
+<rect x="592" y="420" width="140" height="50" rx="6" fill="#ECECE8" stroke="#2B4C7E" stroke-width="2"/>
+<text x="662" y="453" font-size="22" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">매출</text>
+<rect x="592" y="474" width="140" height="50" rx="6" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="662" y="507" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">$18,000</text>
+<rect x="740" y="420" width="140" height="50" rx="6" fill="#ECECE8" stroke="#2B4C7E" stroke-width="2"/>
+<text x="810" y="453" font-size="22" fill="#2B4C7E" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이탈</text>
+<rect x="740" y="474" width="140" height="50" rx="6" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="2"/>
+<text x="810" y="507" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0</text>
+<text x="0" y="570" font-size="25" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">한 줄에 놓이면: 어떤 마케팅이 남는 고객을 데려왔나?</text>
+<text x="0" y="610" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">표의 숫자는 설명을 위한 예시 값</text></svg>
