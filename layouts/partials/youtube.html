@@ -9,5 +9,17 @@
   .compendium-youtube { margin: 16px auto 24px; max-width: 360px; text-align: center; }
   .compendium-youtube iframe { width: 100%; aspect-ratio: 9 / 16; border: 0; border-radius: var(--radius); }
   .compendium-youtube figcaption { margin-top: 8px; font-size: 14px; color: var(--secondary); }
+  .compendium-top { display: flex; flex-direction: column; }
+  .compendium-top .compendium-youtube { order: -1; }
+  @media (min-width: 768px) {   /* 아이패드·데스크톱: 왼쪽 목차, 오른쪽 영상 */
+    .compendium-top { flex-direction: row; align-items: flex-start; gap: var(--gap); margin: 16px 0 24px; }
+    .compendium-top-toc { flex: 1; min-width: 0; }
+    .compendium-top-toc .toc { margin: 0; }
+    .compendium-top .compendium-youtube { order: 0; flex: 0 0 300px; margin: 0; }
+  }
 </style>
+<script>   /* 나란히 놓일 때는 목차를 펼쳐 둔다(영상 옆이 비지 않게) */
+  if (matchMedia("(min-width: 768px)").matches)
+    document.querySelectorAll(".compendium-top-toc details").forEach(d => d.open = true);
+</script>
 {{- end }}

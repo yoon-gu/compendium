@@ -31,11 +31,19 @@
   {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
   {{- partial "share_icons.html" . -}}
   {{- end }}
-  {{- partial "youtube.html" . -}}
   {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
+  {{- if .Params.youtube }}
+  {{- /* 영상이 있으면 목차(왼쪽)와 세로 영상(오른쪽)을 나란히. 좁은 화면에선 영상이 먼저 */}}
+  <div class="compendium-top">
+    {{- if (.Param "ShowToc") }}<div class="compendium-top-toc">{{ partial "toc.html" . }}</div>{{ end }}
+    {{- partial "youtube.html" . -}}
+  </div>
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
+  {{- else }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
   {{- if (.Param "ShowToc") }}
   {{- partial "toc.html" . }}
+  {{- end }}
   {{- end }}
 
   {{- if .Content }}
