@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 600" width="888" height="600"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5C4A"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">트레이스 한 건을 처음부터 끝까지 읽는다</text>
+<rect x="0" y="64" width="888" height="80" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="22" y="114" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">1</text>
+<text x="62" y="114" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">search_trades(id="T-8812")</text>
+<rect x="0" y="160" width="888" height="80" rx="14" fill="#FFFFFF" stroke="#A23B3B" stroke-width="3"/>
+<text x="22" y="210" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">2</text>
+<text x="62" y="210" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">생각: 음… 다시 확인해 볼까</text>
+<line x1="62" y1="222" x2="286" y2="224" stroke="#A23B3B" stroke-width="4" stroke-linecap="round"/>
+<text x="868" y="190" font-size="22" fill="#A23B3B" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">머뭇거림</text>
+<rect x="0" y="256" width="888" height="80" rx="14" fill="#FFFFFF" stroke="#A23B3B" stroke-width="3"/>
+<text x="22" y="306" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">3</text>
+<text x="62" y="306" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">ledger_lookup(account="ACC-0000")</text>
+<line x1="62" y1="318" x2="524" y2="320" stroke="#A23B3B" stroke-width="4" stroke-linecap="round"/>
+<text x="868" y="286" font-size="22" fill="#A23B3B" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지어낸 인자</text>
+<rect x="0" y="352" width="888" height="80" rx="14" fill="#FFFFFF" stroke="#A23B3B" stroke-width="3"/>
+<text x="22" y="402" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">4</text>
+<text x="62" y="402" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">send_email(to="broker")</text>
+<line x1="62" y1="414" x2="384" y2="416" stroke="#A23B3B" stroke-width="4" stroke-linecap="round"/>
+<text x="868" y="382" font-size="22" fill="#A23B3B" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">잘못 고른 도구</text>
+<rect x="0" y="448" width="888" height="80" rx="14" fill="#FFFFFF" stroke="#A23B3B" stroke-width="3"/>
+<text x="22" y="498" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">5</text>
+<text x="62" y="498" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">최종 답: 확인 결과를 길게 늘어놓음…</text>
+<line x1="62" y1="510" x2="356" y2="512" stroke="#A23B3B" stroke-width="4" stroke-linecap="round"/>
+<text x="868" y="478" font-size="22" fill="#A23B3B" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">말이 길어짐</text>
+<text x="0" y="580" font-size="26" fill="#1F5C4A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이렇게 스무 개쯤 → 실패 유형이 보인다</text></svg>

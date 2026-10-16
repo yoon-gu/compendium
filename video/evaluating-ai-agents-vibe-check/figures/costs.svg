@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 580" width="888" height="580"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5C4A"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">최종 답만 보면 안 보이는 것들</text>
+<rect x="0" y="60" width="888" height="90" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="100" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">청구서가 불어난다</text>
+<text x="28" y="136" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">클라우드 · 토큰 비용</text>
+<rect x="0" y="164" width="888" height="90" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="204" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">할당량이 바닥난다</text>
+<text x="28" y="240" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">API 호출 한도</text>
+<rect x="0" y="268" width="888" height="90" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="308" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사용자가 기다린다</text>
+<text x="28" y="344" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">돌기만 하는 로딩 화면</text>
+<rect x="0" y="372" width="888" height="90" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="412" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 일이 두 번</text>
+<text x="28" y="448" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">중복 실행되는 작업</text>
+<rect x="0" y="476" width="888" height="90" rx="14" fill="#FFFFFF" stroke="#A23B3B" stroke-width="4"/>
+<text x="28" y="516" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">신뢰를 잃는다</text>
+<text x="28" y="552" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">결국 사용자가 떠난다</text></svg>

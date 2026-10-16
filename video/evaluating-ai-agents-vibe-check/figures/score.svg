@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 490" width="888" height="490"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5C4A"/></marker></defs><rect x="0" y="0" width="420" height="420" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">1-5점으로 물으면</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">얼마나 도움이 됐나?</text>
+<rect x="468" y="0" width="420" height="420" rx="14" fill="#FFFFFF" stroke="#1F5C4A" stroke-width="4"/>
+<text x="494" y="54" font-size="34" fill="#1F5C4A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예/아니요로 물으면</text>
+<text x="494" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">계정 ID를 먼저 확인했나?</text>
+<text x="26" y="216" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">어제</text>
+<rect x="110" y="190" width="240" height="34" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="110" y="190" width="192.0" height="34" rx="6" fill="#A23B3B" stroke="#A23B3B" stroke-width="0"/>
+<text x="394" y="218" font-size="28" fill="#A23B3B" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">4점</text>
+<text x="494" y="216" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">어제</text>
+<rect x="580" y="184" width="120" height="46" rx="23" fill="#1F5C4A" stroke="#1F5C4A" stroke-width="0"/>
+<text x="640" y="216" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예</text>
+<text x="26" y="316" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">오늘</text>
+<rect x="110" y="290" width="240" height="34" rx="6" fill="#ECECE8" stroke="#ECECE8" stroke-width="0"/><rect x="110" y="290" width="144.0" height="34" rx="6" fill="#A23B3B" stroke="#A23B3B" stroke-width="0"/>
+<text x="394" y="318" font-size="28" fill="#A23B3B" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">3점</text>
+<text x="494" y="316" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">오늘</text>
+<rect x="580" y="284" width="120" height="46" rx="23" fill="#1F5C4A" stroke="#1F5C4A" stroke-width="0"/>
+<text x="640" y="316" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예</text>
+<text x="26" y="400" font-size="22" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 답인데 점수가 흔들린다</text>
+<text x="494" y="400" font-size="22" fill="#1F5C4A" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">판정이 흔들릴 틈이 좁다</text>
+<text x="0" y="470" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">점수는 설명을 위한 예시 값</text></svg>

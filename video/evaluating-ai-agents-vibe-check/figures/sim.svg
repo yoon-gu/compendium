@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 480" width="888" height="480"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F5C4A"/></marker></defs><rect x="0" y="0" width="400" height="300" rx="14" fill="#FFFFFF" stroke="#1F5C4A" stroke-width="4"/>
+<text x="26" y="54" font-size="34" fill="#1F5C4A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시뮬레이션 사용자</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">LLM이 연기한다</text>
+<text x="26" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">첫 메시지</text>
+<text x="26" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이뤄야 할 목표</text>
+<text x="26" y="256" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">페르소나(선택)</text>
+<rect x="488" y="0" width="400" height="300" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="514" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트</text>
+<text x="514" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시험 대상</text>
+<text x="514" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">되묻고, 도구를 쓰고</text>
+<text x="514" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">답한다</text>
+<line x1="404" y1="70" x2="482" y2="70" stroke="#1F5C4A" stroke-width="4" marker-end="url(#a)"/>
+<line x1="482" y1="150" x2="406" y2="150" stroke="#1F5C4A" stroke-width="4" marker-end="url(#a)"/>
+<line x1="404" y1="230" x2="482" y2="230" stroke="#1F5C4A" stroke-width="4" marker-end="url(#a)"/>
+<text x="444" y="340" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">대본 대신 목표만 준다 (즉흥 연기)</text>
+<rect x="0" y="380" width="888" height="90" rx="14" fill="#ECECE8" stroke="#1F5C4A" stroke-width="3"/>
+<text x="444" y="436" font-size="26" fill="#1F5C4A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실제 사용자가 생기면 → 운영 트레이스로 교체</text></svg>
