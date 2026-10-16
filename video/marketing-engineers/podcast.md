@@ -9,6 +9,7 @@ Greg Isenberg의 "Marketing Engineers: 100x More Experiments with AI agents"(X �
 
 출처: Greg Isenberg, X 아티클, 2026년 10월
 화자: 사회=다은, 기획=예진, 모델=도윤, 실행=민정, 플랫폼=현준
+배역: 사회=사회자, 기획=마케팅/기획부, 모델=타깃 모델/운영부, 실행=마케팅/실행부, 플랫폼=플랫폼/개발부
 
 ## 1 | 여는 말
 

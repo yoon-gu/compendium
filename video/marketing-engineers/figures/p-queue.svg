@@ -1,15 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 794" width="888" height="794"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><rect x="0" y="0" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">브리프</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 370" width="888" height="370"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><rect x="0" y="0" width="420" height="130" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">① 브리프</text>
 <text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">기획부가 쓴다</text>
-<line x1="444.0" y1="152" x2="444.0" y2="188" stroke="#2B4C7E" stroke-width="4" marker-end="url(#a)"/>
-<rect x="0" y="192" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="26" y="246" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">타깃 추출 대기열</text>
-<text x="26" y="298" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">한 주에 수십 건, 급한 것부터</text>
-<line x1="444.0" y1="344" x2="444.0" y2="380" stroke="#2B4C7E" stroke-width="4" marker-end="url(#a)"/>
-<rect x="0" y="384" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="26" y="438" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">문구 심의</text>
-<text x="26" y="490" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">내보내기 전 내부 심의</text>
-<line x1="444.0" y1="536" x2="444.0" y2="572" stroke="#2B4C7E" stroke-width="4" marker-end="url(#a)"/>
-<rect x="0" y="576" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#2B4C7E" stroke-width="4"/>
-<text x="26" y="630" font-size="34" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">발송 칸</text>
-<text x="26" y="682" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고객당 주간 광고 수 제한</text><text x="888" y="774" font-size="30" fill="#A23B3B" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">짧으면 3주, 보통 6주</text></svg>
+<rect x="468" y="0" width="420" height="130" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="494" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">② 타깃 추출 대기열</text>
+<text x="494" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">한 주에 수십 건, 급한 것부터</text>
+<rect x="0" y="150" width="420" height="130" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="204" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">③ 문구 심의</text>
+<text x="26" y="256" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">내보내기 전 내부 심의</text>
+<rect x="468" y="150" width="420" height="130" rx="14" fill="#FFFFFF" stroke="#2B4C7E" stroke-width="4"/>
+<text x="494" y="204" font-size="34" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">④ 발송 칸</text>
+<text x="494" y="256" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고객당 주간 광고 수 제한</text>
+<text x="888" y="350" font-size="30" fill="#A23B3B" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">짧으면 3주, 보통 6주</text></svg>

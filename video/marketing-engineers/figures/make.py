@@ -133,21 +133,24 @@ figs["loop"] = svg(530, "\n".join(b))
 import math
 b = [f'<ellipse cx="444" cy="250" rx="250" ry="120" fill="{SOFT}" stroke="{LINE}" stroke-width="3"/>',
      text(444, 260, "가상의 카드사", 30, GRAY, "middle", "bold")]
-for i, (r, d) in enumerate([("사회", "진행"), ("기획", "마케팅기획부"), ("모델", "타깃군 모델 학습·운영부"),
-                            ("실행", "마케팅실행부"), ("플랫폼", "사내 플랫폼 기획·개발부")]):
+for i, (r, d) in enumerate([("사회자", "진행"), ("마케팅기획부", "캠페인 기획·브리프"), ("타깃 모델 운영부", "고객 타깃군 모델 학습·운영"),
+                            ("마케팅실행부", "문자·앱 푸시·이메일 발송"), ("플랫폼 개발부", "사내 플랫폼 기획·개발")]):
     a = math.radians(-90 + i * 72)
-    x, y = 444 + 340 * math.cos(a), 250 + 200 * math.sin(a)
-    w = 250 if i else 170
+    x, y = 444 + 330 * math.cos(a), 250 + 200 * math.sin(a)
+    w = 270 if i else 170
     b += [rect(x - w / 2, y - 46, w, 92, INK if i == 0 else LINE, INK if i == 0 else FILL, 3, 46),
-          text(x, y - 4, r, 30, FILL if i == 0 else INK, "middle", "bold"), text(x, y + 30, d, 19, FILL if i == 0 else GRAY, "middle")]
+          text(x, y - 4, r, 26, FILL if i == 0 else INK, "middle", "bold"), text(x, y + 28, d, 17, FILL if i == 0 else GRAY, "middle")]
 b += [text(444, 520, "회사·인물은 가상, 규제 설명은 일반 안내(법률 자문 아님)", 22, GRAY, "middle")]
 figs["p-table"] = svg(540, "\n".join(b))
 
-# 병목: 아이디어에서 발송까지
-h, b = stack([("브리프", ["기획부가 쓴다"], False), ("타깃 추출 대기열", ["한 주에 수십 건, 급한 것부터"], False),
-              ("문구 심의", ["내보내기 전 내부 심의"], False), ("발송 칸", ["고객당 주간 광고 수 제한"], True)], gap=44)
-b += text(W, h + 50, "짧으면 3주, 보통 6주", 30, BAD, "end", "bold")
-figs["p-queue"] = svg(h + 70, b)
+# 병목: 아이디어에서 발송까지 (2x2 — 아래 이름표 줄과 겹치지 않게 낮게)
+b = []
+for i, (t, sub) in enumerate([("① 브리프", "기획부가 쓴다"), ("② 타깃 추출 대기열", "한 주에 수십 건, 급한 것부터"),
+                              ("③ 문구 심의", "내보내기 전 내부 심의"), ("④ 발송 칸", "고객당 주간 광고 수 제한")]):
+    x, y = (i % 2) * 468, (i // 2) * 150
+    b.append(box(x, y, 420, 130, t, [sub], i == 3))
+b += [text(W, 350, "짧으면 3주, 보통 6주", 30, BAD, "end", "bold")]
+figs["p-queue"] = svg(370, "\n".join(b))
 
 # 두뇌 폴더 카드사판
 b = []
@@ -227,13 +230,15 @@ figs["p-week"] = svg(520, "\n".join(b))
 
 # 내일부터
 b = []
-for i, (r, t) in enumerate([("기획", "상담 녹취 스무 건 마스킹 → 고객 언어 에이전트, 심의 통과 문구 목록"),
-                            ("모델", "캠페인 ID 표: 발송부터 6개월 유지까지 한 줄"),
-                            ("실행", "동의·야간·광고 표기·발송 횟수를 엔진 규칙으로"),
-                            ("플랫폼", "에이전트 권한 표: 읽기 전용·가명·초안만·일시정지만")]):
+for i, (r, t) in enumerate([("마케팅기획부", "상담 녹취 스무 건 마스킹 → 고객 언어 에이전트, 심의 통과 문구 목록"),
+                            ("타깃 모델 운영부", "캠페인 ID 표: 발송부터 6개월 유지까지 한 줄"),
+                            ("마케팅실행부", "동의·야간·광고 표기·발송 횟수를 엔진 규칙으로"),
+                            ("플랫폼 개발부", "에이전트 권한 표: 읽기 전용·가명·초안만·일시정지만")]):
     y = i * 112
-    b += [rect(0, y, 150, 96, INK, INK, 0, 10), text(75, y + 58, r, 26, FILL, "middle", "bold"),
-          rect(164, y, W - 164, 96, LINE, FILL, 3, 10), text(184, y + 58, t, 21, TXT)]
+    b += [rect(0, y, 230, 96, INK, INK, 0, 10), text(115, y + 57, r, 22, FILL, "middle", "bold"),
+          rect(244, y, W - 244, 96, LINE, FILL, 3, 10)]
+    for j, ln in enumerate([t[:t.index(",")+1], t[t.index(",")+1:].strip()] if "," in t and len(t) > 30 else [t]):
+        b.append(text(262, y + (40 if "," in t and len(t) > 30 else 57) + j * 32, ln, 20, TXT))
 figs["p-todo"] = svg(450, "\n".join(b))
 
 for name, s in figs.items():

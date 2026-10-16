@@ -1,16 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 450" width="888" height="450"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><rect x="0" y="0" width="150" height="96" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
-<text x="75" y="58" font-size="26" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">기획</text>
-<rect x="164" y="0" width="724" height="96" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="184" y="58" font-size="21" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">상담 녹취 스무 건 마스킹 → 고객 언어 에이전트, 심의 통과 문구 목록</text>
-<rect x="0" y="112" width="150" height="96" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
-<text x="75" y="170" font-size="26" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델</text>
-<rect x="164" y="112" width="724" height="96" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="184" y="170" font-size="21" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">캠페인 ID 표: 발송부터 6개월 유지까지 한 줄</text>
-<rect x="0" y="224" width="150" height="96" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
-<text x="75" y="282" font-size="26" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실행</text>
-<rect x="164" y="224" width="724" height="96" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="184" y="282" font-size="21" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">동의·야간·광고 표기·발송 횟수를 엔진 규칙으로</text>
-<rect x="0" y="336" width="150" height="96" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
-<text x="75" y="394" font-size="26" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">플랫폼</text>
-<rect x="164" y="336" width="724" height="96" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="184" y="394" font-size="21" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트 권한 표: 읽기 전용·가명·초안만·일시정지만</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 450" width="888" height="450"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><rect x="0" y="0" width="230" height="96" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="115" y="57" font-size="22" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">마케팅기획부</text>
+<rect x="244" y="0" width="644" height="96" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="262" y="40" font-size="20" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">상담 녹취 스무 건 마스킹 → 고객 언어 에이전트,</text>
+<text x="262" y="72" font-size="20" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">심의 통과 문구 목록</text>
+<rect x="0" y="112" width="230" height="96" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="115" y="169" font-size="22" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">타깃 모델 운영부</text>
+<rect x="244" y="112" width="644" height="96" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="262" y="169" font-size="20" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">캠페인 ID 표: 발송부터 6개월 유지까지 한 줄</text>
+<rect x="0" y="224" width="230" height="96" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="115" y="281" font-size="22" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">마케팅실행부</text>
+<rect x="244" y="224" width="644" height="96" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="262" y="281" font-size="20" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">동의·야간·광고 표기·발송 횟수를 엔진 규칙으로</text>
+<rect x="0" y="336" width="230" height="96" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="115" y="393" font-size="22" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">플랫폼 개발부</text>
+<rect x="244" y="336" width="644" height="96" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="262" y="393" font-size="20" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트 권한 표: 읽기 전용·가명·초안만·일시정지만</text></svg>
