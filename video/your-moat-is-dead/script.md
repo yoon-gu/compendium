@@ -4,7 +4,7 @@ Mathias Klenk의 "Your Moat Is Dead. Anyone Can Rebuild Your Product."(Tech Foun
 원문 번역이 아니라 [정리 노트](../../content/notes/your-moat-is-dead.md)를 바탕으로 요지와 해설을 다시 서술한 것이다. 말투는 노트와 같은 해설 문체(짧은 문장, 물음과 답).
 
 형식은 `../build.py` 머리말 참고. `python3 ../build.py your-moat-is-dead --voice=유나`로 미리 듣는다(세로 1080x1920).
-그림은 `figures/make.py`(SVG), 애니메이션은 `figures/animate.py`(moat·moats·cleanroom·leak·compound mp4). 원문 그림은 쓰지 않고 개념을 새로 그렸다.
+그림은 `figures/make.py`(SVG), 애니메이션은 `figures/animate.py`(moat·moats·cleanroom·leak·hold·compound mp4). 원문 그림은 쓰지 않고 개념을 새로 그렸다.
 
 출처: Tech Founder Stack, 2026년 10월
 잉크: #7A2E3A
@@ -72,7 +72,7 @@ PSD 파서는 Adobe가 공개한 파일 명세로 만들었고 실제 Photoshop 
 
 ## 6 | 버티는 해자 | 코드 밖의 방어력
 > 코드 밖에서 / **버티는 것들**
-> ![](figures/ex-hold.svg)
+> ![](figures/hold.mp4)
 
 반대로 코드 밖에서 버티는 것들도 있습니다. 먼저 책임입니다. 저자는 신원 인증 회사에서 일하며 은행을 상대했습니다. 은행은 기댈 수 있는 상대에게 돈을 냈다고 해요. 계약으로도 규제 당국 앞에서도 기댈 수 있는 상대 말이에요. 인가와 감사, 인증, 보험은 명세로 복제할 수 없습니다. 살아 있는 데이터도 버텨요. 정적인 데이터는 근사할 수 있지만 운영이 계속 만들어 내는 데이터는 다릅니다. 그 운영을 따라 하기 어렵다면요. 신뢰와 유통도 그렇고요. 에이전트는 코드를 쓸 수 있어도 대기업 보안 심사를 통과하지는 못하죠. 마지막은 창고나 설치 현장 같은 물리 세계입니다.
 
@@ -115,6 +115,6 @@ Adobe를 보죠. 저자가 인용한 3분기 매출은 67억 6천만 달러로 1
 다만 짚어 둘 점도 있어요. 주가와 실적 숫자는 저자가 인용한 것이고 일부 반응은 SNS 게시물입니다. PhotoCraft는 아직 Photoshop의 절반에도 못 미친다는 추정이 있고요. 클린룸이 법적으로 안전한지도 아직 열려 있습니다.
 
 > 화면에 보이는 것은 복제되고 / **보이지 않는 책임**은 남는다
-> 원문 techfounderstack.com, 정리 노트 yoon-gu.github.io/compendium
+> 원문 techfounderstack.com
 
 화면에 보이는 것은 복제됩니다. 보이지 않는 책임과 관계와 운영은 남아요. 결과를 판다는 처방이 모든 소프트웨어에 맞지는 않겠지만, 무엇을 지켜야 할지 한 번 묻게 되는 글입니다. 여기까지, Tech Founder Stack의 글이었습니다.

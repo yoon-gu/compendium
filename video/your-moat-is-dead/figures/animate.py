@@ -2,13 +2,14 @@
 """화면에 얹는 소리 없는 개념 애니메이션 네 편(1776x1000, 25fps)을 matplotlib 으로 프레임마다 그려 ffmpeg 로 굽는다.
 화면 디자인과 같은 결: 종이 바탕, 잉크색 하나, 나눔고딕, 글자는 크고 적게. build.py 가 가로 888px 로 줄여 얹는다.
 
-    python3 animate.py            # → moat.mp4, moats.mp4, cleanroom.mp4, leak.mp4, compound.mp4 (+ 확인용 *-sheet.png)
+    python3 animate.py            # → moat.mp4, moats.mp4, hold.mp4, cleanroom.mp4, leak.mp4, compound.mp4 (+ 확인용 *-sheet.png)
     python3 animate.py leak       # 하나만
 
 - moat.mp4      표지: '코드'라는 해자의 물이 빠지고, 성 둘레에 책임·데이터·신뢰·물리 세계 벽이 선다 (개념 그림, 9초)
 - cleanroom.mp4 클린룸: 관찰 팀 → 명세 → 벽 → 구현 팀. 1984년 몇 달, 지금은 에이전트로 몇 주 (9초)
 - leak.mp4      새는 해자 다섯: 기능·화면·파일 형식·연동·좌석 과금 물탱크가 새어 내려간다 (개념 그림, 9초)
 - moats.mp4     해자란: 성(회사)을 두른 물길 위에 기능·화면·파일 형식·연동·좌석 과금이 나레이션에서 언급될 때마다 하나씩 떠오른다 (길이·시각은 moats-timing.json)
+- hold.mp4      버티는 해자: 책임·살아 있는 데이터·신뢰와 유통·물리 세계 네 칸이 나레이션에서 언급될 때마다 하나씩 뜨고 방금 말한 칸이 칠해진다 (hold-timing.json)
 - compound.mp4  커지는 해자: '결과 책임' 둘레의 데이터·책임·유통·자기 서버가 나레이션에서 언급될 때마다 하나씩 굵게 켜진다 (길이·시각은 compound-timing.json)
 """
 import math
@@ -227,7 +228,29 @@ def draw_moats(ax, t):
                 fontweight="bold", alpha=a, zorder=3)
 
 
-ANIMS = {"moat": (9, draw_moat), "moats": (compound_timing(MOATS_TIMING)[0], draw_moats), "cleanroom": (9, draw_cleanroom), "leak": (9, draw_leak), "compound": (compound_timing()[0], draw_compound)}
+# ---------- (f) 버티는 해자: 네 칸이 언급될 때마다 ----------
+HOLD = [("책임", "인가 · 감사 · 인증 · 보험"), ("살아 있는 데이터", "운영이 계속 만드는 데이터"),
+        ("신뢰와 유통", "보안 심사, 이미 회사 안에"), ("물리 세계", "창고 · 설치 · 차량")]
+
+
+def draw_hold(ax, t):
+    _, marks = compound_timing(HERE / "hold-timing.json", (12.0, [1.0, 3.5, 6.0, 8.5]))
+    current = max((k for k in range(4) if t >= marks[k]), default=-1)
+    for k, (head, sub) in enumerate(HOLD):
+        x, y = 70 + (k % 2) * 830, 60 + (k // 2) * 400
+        a = ease((t - marks[k]) / 0.35)
+        if a <= 0:
+            box(ax, x, y, 806, 360, ec=SOFT, fc=PAPER, lw=3, r=28)
+            continue
+        now = k == current
+        box(ax, x, y, 806, 360, ec=INK, fc=INK if now else "#FFFFFF", lw=6 if now else 4, r=28, alpha=a)
+        ax.text(x + 403, y + 150, head, fontsize=60 if now else 54, color="#FFFFFF" if now else INK, ha="center", va="center",
+                fontweight="bold", alpha=a)
+        ax.text(x + 403, y + 250, sub, fontsize=36, color="#F1E4E6" if now else GRAY, ha="center", va="center", alpha=a)
+    ax.text(888, 925, "생태계·네트워크 효과도 버티지만 가장자리부터 깎인다", fontsize=34, color=GRAY, ha="center", va="center")
+
+
+ANIMS = {"moat": (9, draw_moat), "hold": (compound_timing(HERE / "hold-timing.json")[0], draw_hold), "moats": (compound_timing(MOATS_TIMING)[0], draw_moats), "cleanroom": (9, draw_cleanroom), "leak": (9, draw_leak), "compound": (compound_timing()[0], draw_compound)}
 
 if __name__ == "__main__":
     for name in sys.argv[1:] or ANIMS:
