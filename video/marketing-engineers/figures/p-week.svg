@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 520" width="888" height="520"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><rect x="0" y="0" width="150" height="116" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="75" y="70" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">월</text>
+<rect x="164" y="0" width="724" height="116" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="184" y="48" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고객 언어: "해외 수수료가 얼마 나갔는지 모르겠다"</text>
+<text x="184" y="90" font-size="21" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">제안: 해외 결제 수수료 우대 카드 (심의필 문구)</text>
+<rect x="0" y="130" width="150" height="116" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="75" y="200" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">화</text>
+<rect x="164" y="130" width="724" height="116" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="184" y="178" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">해외 결제 잦고 우대 카드 없는 고객 목록</text>
+<text x="184" y="220" font-size="21" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">캠페인 ID를 붙인다</text>
+<rect x="0" y="260" width="150" height="116" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="75" y="330" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수</text>
+<rect x="164" y="260" width="724" height="116" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="184" y="308" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">발송 엔진이 동의·야간 시간대를 걸러 낸다</text>
+<text x="184" y="350" font-size="21" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">새 문구 두 개는 심의 대기열로</text>
+<rect x="0" y="390" width="150" height="116" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="75" y="460" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">2주 뒤</text>
+<rect x="164" y="390" width="724" height="116" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="184" y="438" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">발급 → 첫 이용 → 해외 결제 이용액</text>
+<text x="184" y="480" font-size="21" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">표본이 작으면 작다고 적는다</text></svg>

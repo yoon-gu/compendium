@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 530" width="888" height="530"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><rect x="0" y="0" width="888" height="160" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="50" font-size="30" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고객 정의</text>
+<text x="26" y="98" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">해외 결제 월 3회 이상 + 해외 수수료 혜택 카드 없음</text>
+<text x="26" y="138" font-size="23" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 모델 세그먼트 정의와 같은 말로</text>
+<rect x="0" y="180" width="888" height="160" rx="14" fill="#FFFFFF" stroke="#2B4C7E" stroke-width="4"/>
+<text x="26" y="230" font-size="30" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">제안</text>
+<text x="26" y="278" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">심의를 통과한 문구만</text>
+<text x="26" y="318" font-size="23" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 약속해도 되는 말 = 심의필</text>
+<rect x="0" y="360" width="888" height="160" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="410" font-size="30" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실패 기록</text>
+<text x="26" y="458" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">무이자 할부 혜택만 쓰고 떠난 고객</text>
+<text x="26" y="498" font-size="23" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 같은 실수를 막는 한 줄</text></svg>

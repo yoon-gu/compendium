@@ -53,7 +53,9 @@ VOICES = {"진우": "tc_632293f759d649937b97f323", "준호": "tc_632a7588e7c78a4
           "다은": "tc_692799c46508f6b9468c54c7", "소혜": "tc_642f9d147ce3f79717423466", "유나": "Yuna",
           # 나레이션 후보(2026-10-11 사용자 지정): 진우(기본)와 아래 넷. 김건 = Typecast "Gunn Kim"
           "진한": "tc_673ecaa071c8f61f01459243", "준규": "tc_6436dbbb602bde66c6b39504",
-          "연우": "tc_5eb55cf1f0b0a700071f89c7", "김건": "tc_61c2f7741330d213c238cba6"}
+          "연우": "tc_5eb55cf1f0b0a700071f89c7", "김건": "tc_61c2f7741330d213c238cba6",
+          # 토의(여러 진행자)용 2026-10-16: 사회·기획·모델·실행·플랫폼 배역
+          "예진": "tc_67c90ad544cf859417f2fc3a", "도윤": "tc_6a3350f8e5a50a4abe948fa8", "민정": "tc_6699eb0f10b8e361d6a9aba1", "현준": "tc_6a6194d59eea84806aea652c"}
 MAC_VOICES = {"Yuna"}               # macOS `say` 목소리(타입캐스트 대신, 크레딧 0)
 VOICE = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--voice=")), "진우")
 VOICE_ID = VOICES.get(VOICE, VOICE)

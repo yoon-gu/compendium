@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 520" width="888" height="520"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2B4C7E"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">망분리 개선 (금융당국)</text>
+<rect x="0" y="60" width="190" height="80" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="95" y="110" font-size="24" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">2024년 8월</text>
+<rect x="204" y="60" width="684" height="80" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="224" y="110" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">개선 로드맵: 가명처리 정보부터 생성형 AI 처리 허용 시작</text>
+<rect x="0" y="160" width="190" height="80" rx="10" fill="#2B4C7E" stroke="#2B4C7E" stroke-width="0"/>
+<text x="95" y="210" font-size="24" fill="#FFFFFF" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">2026년</text>
+<rect x="204" y="160" width="684" height="80" rx="10" fill="#FFFFFF" stroke="#A23B3B" stroke-width="3"/>
+<text x="224" y="210" font-size="22" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">전면 해제 추진 방침 — 아직 방침 단계</text>
+<text x="0" y="300" font-size="26" fill="#2B4C7E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">우리 회사 원칙(토의)</text>
+<rect x="0" y="320" width="888" height="54" rx="8" fill="#ECECE8" stroke="#2B4C7E" stroke-width="2"/>
+<text x="24" y="356" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">가명처리한 데이터와 집계된 표부터</text>
+<rect x="0" y="384" width="888" height="54" rx="8" fill="#ECECE8" stroke="#2B4C7E" stroke-width="2"/>
+<text x="24" y="420" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">읽기 전용으로</text>
+<rect x="0" y="448" width="888" height="54" rx="8" fill="#ECECE8" stroke="#2B4C7E" stroke-width="2"/>
+<text x="24" y="484" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">원본을 고칠 권한은 아주 나중에</text></svg>

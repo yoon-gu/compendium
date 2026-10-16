@@ -52,7 +52,7 @@ def render(name, seconds, draw):
                              "-i", "-", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", str(out)],
                             stdin=subprocess.PIPE)
     n = int(seconds * FPS)
-    sheet_frames = {int(n * k / 5) for k in range(1, 5)}
+    sheet_frames = {int(n * k / 5) + int(FPS * 0.8) for k in range(0, 4)}
     shots = []
     for i in range(n):
         fig = plt.figure(figsize=(W / 100, H / 100), dpi=100, facecolor=PAPER)
@@ -192,8 +192,39 @@ def draw_week(ax, t):
             label(ax, 330, y + 70 + i * 76, s, 36, ON if now else TXT, "left", i == 0, a)
 
 
+# ---------- (e) 대화편: 발송 엔진의 규제 관문 ----------
+GATES = ["광고성 정보\n수신 동의", "야간(21-08시)\n별도 동의", "(광고) 표시·\n수신 거부 안내", "혜택 한도\n(연회비 10%)"]
+MSGS = [("고객 A · 오후 2시", None), ("고객 B · 동의 없음", 0), ("고객 C · 밤 10시", 1), ("고객 D · 표시 누락", 2), ("고객 E · 혜택 과다", 3)]
+
+
+def draw_consent(ax, t):
+    label(ax, 888, 60, "에이전트가 만든 메시지 → 발송 엔진의 코드", 40, TXT, bold=True)
+    gx = [420, 720, 1020, 1320]
+    for k, g in enumerate(GATES):
+        box(ax, gx[k] - 120, 160, 240, 560, ec=INK, fc="#FFFFFF", lw=4, r=20)
+        ax.text(gx[k], 230, g, fontsize=26, color=INK, ha="center", va="center", fontweight="bold", linespacing=1.4, zorder=4)
+    box(ax, 1500, 380, 230, 120, ec=INK, fc=INK, lw=0, r=60)
+    label(ax, 1615, 440, "발송", 40, "#FFFFFF", bold=True)
+    per = 2.4
+    k = int(t // per) % len(MSGS)
+    u = (t % per) / per
+    name, stop = MSGS[k]
+    end_x = gx[stop] - 140 - 290 if stop is not None else 1490 - 290
+    x = 30 + (end_x - 30) * ease(u / 0.7)
+    y = 440
+    blocked = stop is not None and u > 0.7
+    box(ax, x, y - 45, 290, 90, ec=BAD if blocked else TXT, fc="#FFF4F4" if blocked else "#FFFFFF", lw=4, r=14)
+    label(ax, x + 145, y, name, 25, BAD if blocked else TXT, bold=True)
+    if blocked:
+        label(ax, gx[stop], 620, "막힘", 44, BAD, bold=True, alpha=ease((u - 0.7) / 0.15))
+    elif stop is None and u > 0.7:
+        label(ax, 1615, 560, "통과", 40, INK, bold=True, alpha=ease((u - 0.7) / 0.15))
+    label(ax, 888, 900, "모델이 판단할 일이 아니라, 넘을 수 없는 선", 34, GRAY)
+
+
 ANIMS = {"eras": (lambda: timing("eras", (14.0, []))[0], draw_eras), "brain": (lambda: timing("brain", (16.0, []))[0], draw_brain),
-         "agents": (lambda: timing("agents", (14.0, []))[0], draw_agents), "week": (lambda: timing("week", (20.0, []))[0], draw_week)}
+         "agents": (lambda: timing("agents", (14.0, []))[0], draw_agents), "week": (lambda: timing("week", (20.0, []))[0], draw_week),
+         "consent": (lambda: 12.0, draw_consent)}
 
 if __name__ == "__main__":
     for name in sys.argv[1:] or ANIMS:
