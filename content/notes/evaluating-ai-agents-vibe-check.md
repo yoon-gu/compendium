@@ -4,7 +4,7 @@ date: 2026-10-16
 draft: false
 math: false
 source_url: "https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check/"
-youtube: "PHiqOj9HpkQ"
+youtube: "gA-f1tCA3mE"
 author: "Hugo Selbie, Dani Zamora, Jesse Carah, John DeMartino (Google)"
 tags: ["AI", "에이전트", "평가", "LLM-as-a-judge", "관측성", "OpenTelemetry", "Google", "블로그"]
 summary: "프롬프트 몇 개를 돌려 보고 결과를 눈으로 훑는 '바이브 체크'로는 에이전트가 빙빙 도는 루프, 잘못된 도구 인자, 새는 토큰을 잡지 못한다. Google 엔지니어들은 핵심 사용자 여정(CUJ)으로 성공을 정의하고, 사용자 시뮬레이터로 시나리오를 돌리고, 1-5점 대신 예/아니요 루브릭으로 채점하고, 비용·지연까지 함께 재라고 권한다. Day 0에는 트레이스 20개를 빨간 펜으로 읽고, Day 1에는 같은 시험을 매번 돌리며 손잡이를 하나씩 돌리고, Day 2에는 PR 병합 관문과 공유 대시보드를 세운다."
