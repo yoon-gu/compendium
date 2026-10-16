@@ -14,7 +14,7 @@ The Startup Ideas Podcast 진행자이자 Late Checkout 대표인 Greg Isenberg�
 
 원문(영어): https://x.com/gregisenberg/status/2108188646973313195
 한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/marketing-engineers/
-함께 보기, 코드는 더 이상 해자가 아니다(AI 시대에 남는 소프트웨어의 방어력): https://youtu.be/ydgGVpHOJJA
+함께 보기, 토의편(마케팅 엔지니어를 카드사에 들이면, 네 부서가 금융 마케팅 규제까지 따져 본 가상 토의): https://youtu.be/Av_AUkR5ZGY
 
 화면 자료 출처: 그림과 애니메이션은 원문의 내용을 바탕으로 새로 그렸습니다. 캠페인 표의 숫자는 설명을 위한 예시 값이고, 다섯 시대의 막대는 실험 속도를 개념으로 보여 주는 그림입니다. 원문의 일부 수치(첫 결과 70%, 2028년 전망 등)는 저자가 근거 없이 제시한 값입니다.
 
