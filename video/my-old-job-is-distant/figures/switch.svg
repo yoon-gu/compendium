@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 440" width="888" height="440"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B4E2E"/></marker></defs><rect x="0" y="0" width="888" height="130" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="46" font-size="30" fill="#6B4E2E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Opus 5</text>
+<text x="26" y="88" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고칠 일은 줄었다</text>
+<text x="26" y="120" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">대신 비용↑ · 말이 많아짐</text>
+<line x1="444" y1="132" x2="444" y2="148" stroke="#6B4E2E" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="150" width="888" height="130" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="196" font-size="30" fill="#6B4E2E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">ChatGPT로</text>
+<text x="26" y="238" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코딩 실력은 비슷</text>
+<text x="26" y="270" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">더 싸고 덜 장황</text>
+<line x1="444" y1="282" x2="444" y2="298" stroke="#6B4E2E" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="300" width="888" height="130" rx="14" fill="#FFFFFF" stroke="#6B4E2E" stroke-width="4"/>
+<text x="26" y="346" font-size="30" fill="#6B4E2E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">다시 Claude로</text>
+<text x="26" y="388" font-size="24" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델이 다시 비슷하거나 더 나음</text>
+<text x="26" y="420" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">OpenAI 불신은 숨기지 않는 편향</text></svg>

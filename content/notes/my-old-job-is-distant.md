@@ -4,6 +4,7 @@ date: 2026-10-18
 draft: false
 math: false
 source_url: "https://www.pinecoder.dev/blog/2026-10-15/my-old-job-is-distant/"
+youtube: "vF-1md6ryGs"
 author: "Chris (Pinecoder blog)"
 tags: ["AI", "에이전트", "코딩 에이전트", "개발자", "Claude", "회고", "블로그"]
 summary: "한 개발자가 ChatGPT를 검색 대신 쓰던 때부터 에이전트에게 iPhone 앱을 통째로 맡기는 지금까지를 돌아본다. 복사·붙여넣기, 탭 완성, 에이전트 코딩을 거치며 생산성은 세 배쯤 올랐고 병목은 코드 리뷰로 옮겨 갔다. 지금은 코드보다 QA와 설계, 도구 만들기에 시간을 쓴다. 변화가 신나지만 불안하고, 예전의 일하는 방식은 멀어져 간다고 그는 쓴다."

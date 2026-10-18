@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 618" width="888" height="618"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B4E2E"/></marker></defs><rect x="0" y="0" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">묻는다</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">파이썬 컴퓨터 비전을 몰랐다</text>
+<line x1="444.0" y1="152" x2="444.0" y2="196" stroke="#6B4E2E" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="200" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="254" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">배우면서 만든다</text>
+<text x="26" y="306" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">노트북에서 바로 돌려 본다</text>
+<line x1="444.0" y1="352" x2="444.0" y2="396" stroke="#6B4E2E" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="400" width="888" height="148" rx="14" fill="#FFFFFF" stroke="#6B4E2E" stroke-width="4"/>
+<text x="26" y="454" font-size="34" fill="#6B4E2E" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">엉뚱한 답</text>
+<text x="26" y="506" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">= 모델의 지식이 끝나는 경계</text><text x="444" y="598" font-size="23" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">통제권을 내준 때가 아니라, 오염된 검색과 부실한 문서를 건너뛴 때</text></svg>
