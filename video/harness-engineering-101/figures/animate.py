@@ -233,7 +233,7 @@ def draw_cache(ax, t):
 
     def panel(x0, title, data, tint):
         label(ax, x0, 130, title, 34, INK if tint else BAD, ha="left", bold=True, mono=True)
-        label(ax, x0, 180, "바퀴  ■ cache_read(10% 값)  ■ cache_write(제값+25%)", 22, GRAY, ha="left", mono=True)
+        label(ax, x0, 180, "바퀴  ■ cache_read(값의 10%)  ■ cache_write(제값+25%)", 22, GRAY, ha="left", mono=True)
         for k in range(shown):
             w, r = data[k]
             y = 220 + k * 120

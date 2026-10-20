@@ -54,18 +54,18 @@ def stack(items, gap=52, top=0):
 figs = {}
 
 # ---------- 수업 하나의 틀 ----------
-steps = ["오늘 만들 것", "따라 치기", "실행해 보기", "방금 무슨 일이", "자주 막히는 곳", "체크포인트"]
+steps = ["오늘 만들 것", "코드 같이 쓰기", "실행해 보기", "방금 일어난 일", "자주 막히는 곳", "체크포인트"]
 b = []
 for i, s in enumerate(steps):
     x = (i % 3) * 300; y = (i // 3) * 150
     b.append(rect(x, y, 288, 120, INK if i in (1, 2) else LINE, sw=4 if i in (1, 2) else 3))
     b.append(text(x + 24, y + 48, f"{i + 1}", 30, INK, weight="bold"))
-    b.append(text(x + 24, y + 92, s, 32, TXT, weight="bold"))
+    b.append(text(x + 20, y + 92, s, 30, TXT, weight="bold"))
 figs["lesson-flow"] = svg(280, "\n".join(b))
 
 # ---------- 준비물 ----------
 h, b = stack([("Python 3.10 이상", ["설치할 패키지 없음 — urllib 만 쓴다"], False),
-              ("저장소 받기", ["git clone … harness-engineering-101", "src/harness/ 에 v1 ~ v4, harness.py"], False),
+              ("저장소 받기", ["git clone … harness-engineering-101", "src/harness/ 에 v1-v4, harness.py"], False),
               ("API 키", ["export ANTHROPIC_API_KEY=…", "지출 한도를 낮게 걸어 둔다"], True),
               ("모델 한 줄", ["MODEL = \"claude-haiku-5-5\"", "실습은 싼 모델로"], False)])
 figs["setup"] = svg(h, b)
@@ -121,7 +121,7 @@ b.append(text(0, 200, "같은 바이트 = 캐시 적중 (값의 10%)", 28, INK, 
 b.append(text(0, 246, "새 바이트 = 제값", 28, GRAY, weight="bold"))
 b.append(rect(0, 290, W, 160, BAD, "#FBEFEF", 3))
 b.append(text(24, 340, "맨 위에 'Current time: 09:52:17' 한 줄을 넣으면", 28, BAD))
-b.append(text(24, 390, "매 요청마다 1번째 바이트부터 달라진다 → 전부 제값 → cache_read=0", 28, BAD))
+b.append(text(24, 390, "요청마다 첫 바이트부터 달라진다 → 전부 제값 → cache_read=0", 28, BAD))
 figs["prefix"] = svg(460, "\n".join(b))
 
 # ---------- 뇌와 몸 (정지판) ----------
