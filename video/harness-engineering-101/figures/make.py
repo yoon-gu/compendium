@@ -175,13 +175,24 @@ def code(path, start, end, hl_substr=("# 수업", "# NEW"), size=22, lh=32, cols
     for i, ln in enumerate(lines):
         ln = ln.rstrip().replace("\t", "    ")
         hl = any(h in ln for h in hl_substr)
-        first = True
-        while True:
-            rows.append((start + i if first else None, ln[:cols], hl)); first = False
-            ln = ln[cols:]
-            if not ln:
-                break
-            ln = "        " + ln.lstrip()
+        indent = len(ln) - len(ln.lstrip())
+        # 긴 줄: 뒤에 붙은 주석(#…)은 코드 줄 아래 같은 들여쓰기로 내리고, 코드가 그래도 길면 띄어쓰기 자리에서 접는다
+        code_part, cmt = ln, ""
+        if len(ln) > cols and "#" in ln and not ln.lstrip().startswith("#"):
+            k = ln.rfind("  #")
+            if k > 0:
+                code_part, cmt = ln[:k].rstrip(), ln[k:].strip()
+        segs, cur = [], code_part
+        while len(cur) > cols:
+            cut = cur.rfind(" ", indent + 8, cols)
+            if cut <= indent:
+                cut = cols
+            segs.append(cur[:cut].rstrip()); cur = " " * (indent + 8) + cur[cut:].lstrip()
+        segs.append(cur)
+        if cmt:
+            segs.append(" " * indent + cmt)
+        for j, seg in enumerate(segs):
+            rows.append((start + i if j == 0 else None, seg, hl))
     body = [rect(0, 0, W, lh * len(rows) + 36, LINE, "#1B1D21", 0, 12)]
     for r, (no, txt, hl) in enumerate(rows):
         y = 50 + r * lh
