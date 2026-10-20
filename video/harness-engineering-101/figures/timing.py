@@ -22,6 +22,20 @@ spec = importlib.util.spec_from_file_location("build", HERE.parent.parent / "bui
 b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)
 
 ANIMS = ["array-grow", "loop", "cache", "errors"]
+# 코드 타이핑 클립: 나레이션의 단어가 들릴 때 어느 줄까지 쳐져 있어야 하는지. (단어 후보, 줄에 들어 있는 글자)
+CODE_RULES = {
+    "code-l1": [(("빈 리스트", "리스트가"), "messages = json.load"), (("사용자가 치면", "치면"), "input("), (("리스트에 붙이고", "붙이고"), 'messages.append({"role": "user"'),
+                (("통째로",), "reply = call_llm"), (("답이 오면", "또 붙"), 'messages.append({"role": "assistant"'), (("파란",), "[array]"), (("파일로 저장", "저장합니다"), "json.dump(messages")],
+    "code-l3-tools": [(("도구 목록", "덩어리는"), "TOOLS = ["), (("리드 파일", "read_file"), '"read_file"'), (("런 커맨드", "run_command"), '"run_command"'), (("인자 스키마", "스키마가"), '"input_schema"')],
+    "code-l3-dispatch": [(("디스패치",), "def execute_tool"), (("리드 파일이면", "리드 파일", "read_file"), 'name == "read_file"'), (("런 커맨드면", "런 커맨드", "run_command"), 'name == "run_command"'),
+                         (("마지막 줄", "예외가"), "except Exception"), (("오류 문자열",), 'return f"ERROR: {e}"')],
+    "code-l4-loop": [(("포 루프", "for 루프", "루프 하나"), "for _ in range"), (("모델을 부르고", "부르고"), "reply = call_llm"), (("답을 붙이고",), '"role": "assistant"'),
+                     (("툴 유즈가 아니면", "아니면 끝", "tool_use"), "stop_reason"), (("전부 돌리고", "전부"), 'block["type"] == "tool_use"'), (("하나로 붙여서", "붙여서"), '"role": "user", "content": results')],
+    "code-l5": [(("예외를 잡아서", "예외를"), "except Exception"), (("빈 문자열",), 'return ""')],
+    "code-l6": [(("코드는 이렇게", "고쳤습니다"), "msgs = json.loads"), (("마지막 메시지", "메시지에도"), 'last["content"][-1]["cache_control"]'), (("뒤로 움직", "움직입니다"), '"cache_control": {"type": "ephemeral"}}],')],
+    "code-l6-usage": [(("유시지", "usage"), 'u = reply.get("usage"'), (("캐시 리드", "cache_read"), "cache_read=")],
+    "code-l6-bust": [(("현재 시각", "시각"), "Current time")],
+}
 # 터미널 클립: 나레이션의 단어가 들릴 때 기록의 어느 줄이 찍혀 있어야 하는지. (단어 후보, 출력 정규식, n번째 일치)
 TERM_RULES = {
     "l1-chat": [(("듣는편람",), r"하니스 공부 중입니다\.", 1), (("물어봅니다", "물어봅"), r"제 이름이 뭐라고 했죠\?", 1),
@@ -112,6 +126,19 @@ def main():
                     assert marks == sorted(marks) and marks[-1] < dur, (name, marks, dur)
                     (HERE / f"{name}-timing.json").write_text(json.dumps({"duration": round(dur, 2), "marks": marks}, ensure_ascii=False))
                     print(f"{name}: 화면 {dur:.1f}초, 말 {speech_end:.1f}초, 표시 {marks}")
+            for name, rules in CODE_RULES.items():
+                if any(ln.strip() == f"![](figures/{name}.mp4)" for ln in frame["slide"]):
+                    words, pauses, speech_end = frame_words(frame)
+                    marks, last = [], 0.0
+                    for keys, line in rules:
+                        tk = first(words, *keys)
+                        if tk is None:
+                            print(f"   (못 찾음) {keys[0]!r}"); continue
+                        if tk - 0.3 <= last:
+                            continue
+                        last = round(tk - 0.3, 2); marks.append({"t": last, "line": line})
+                    (HERE / f"{name}-timing.json").write_text(json.dumps({"duration": round(dur, 2), "marks": marks}, ensure_ascii=False))
+                    print(f"{name}: 화면 {dur:.1f}초, 표시 {[m['t'] for m in marks]} / 규칙 {len(rules)}개 중 {len(marks)}개 잡힘")
             for name, rules in TERM_RULES.items():
                 if any(ln.strip() == f"![](figures/term-{name}.mp4)" for ln in frame["slide"]):
                     words, pauses, speech_end = frame_words(frame)

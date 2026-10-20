@@ -31,6 +31,8 @@ dtype_name = opt.get("--dtype", "fp16")                # 16GB 맥에서 1.7B fp3
 instruct = opt.get("--instruct", "차분하고 안정된 강의 말투. 감정 기복 없이 처음부터 끝까지 일정한 속도와 높낮이로, 또렷하고 친절하게 읽는다.")
 temperature = float(opt.get("--temperature", "0.6"))
 seed = int(opt.get("--seed", "7"))
+tempo = float(opt.get("--tempo", "1.0"))                   # 1.2 면 ffmpeg atempo 로 1.2배(음높이 유지)해서 저장
+MAX_SEC_PER_CHAR = 0.30                                    # 이보다 느리면 끝에 긴 무음·반복이 붙은 것 → 시드를 바꿔 다시 만든다
 
 sys.argv = ["build.py", slug, f"--voice={voice}"]   # build.py 는 import 할 때 sys.argv 를 읽는다
 import importlib.util  # noqa: E402
@@ -69,14 +71,26 @@ print(f"모델 {model_id} ({device}, {dtype}) 로드 {time.time() - t0:.0f}초")
 total_audio = 0.0
 for i, (raw, dest, said) in enumerate(todo, 1):
     t1 = time.time()
-    torch.manual_seed(seed)
-    wavs, sr = model.generate_custom_voice(text=said, language="Korean", speaker=speaker, instruct=instruct or None,
-                                           do_sample=True, temperature=temperature, top_p=0.9, top_k=50)
-    wav = np.asarray(wavs[0], dtype=np.float32)
-    if wav.ndim > 1:
-        wav = wav.mean(axis=1)
-    wav = np.clip(wav, -1.0, 1.0)
+    for attempt in range(4):
+        torch.manual_seed(seed + attempt)
+        wavs, sr = model.generate_custom_voice(text=said, language="Korean", speaker=speaker, instruct=instruct or None,
+                                               do_sample=True, temperature=temperature, top_p=0.9, top_k=50,
+                                               max_new_tokens=int(len(said) * 4.5) + 60)   # 12Hz 코덱: 글자당 토큰 ~3, 여유 50%
+        wav = np.asarray(wavs[0], dtype=np.float32)
+        if wav.ndim > 1:
+            wav = wav.mean(axis=1)
+        wav = np.clip(wav, -1.0, 1.0)
+        sec = len(wav) / sr
+        if sec / len(said) <= MAX_SEC_PER_CHAR:
+            break
+        print(f"     느림({sec:.0f}초/{len(said)}자) → 시드 {seed + attempt + 1}로 다시")
     sf.write(str(dest), (wav * 32767).astype(np.int16), sr, subtype="PCM_16")
-    sec = len(wav) / sr; total_audio += sec
+    if tempo != 1.0:
+        import subprocess
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(dest), "-filter:a", f"atempo={tempo}", "-ar", str(sr), "-ac", "1",
+                        "-sample_fmt", "s16", str(dest) + ".tmp.wav"], check=True)
+        Path(str(dest) + ".tmp.wav").replace(dest)
+        sec /= tempo
+    total_audio += sec
     print(f"  [{i}/{len(todo)}] {sec:5.1f}초 음성, {time.time() - t1:5.1f}초 걸림: {said[:28]}…")
 print(f"끝. 음성 {total_audio / 60:.1f}분, 걸린 시간 {(time.time() - t0) / 60:.1f}분, 샘플레이트 {sr}")

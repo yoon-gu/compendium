@@ -133,9 +133,10 @@ b = [box(0, 60, 300, 260, "뇌 = 모델", ["글자를 받아", "글자를 낸다
 figs["body-brain"] = svg(340, "\n".join(b))
 
 HERE = Path(__file__).resolve().parent
-for name, s in figs.items():
-    (HERE / f"{name}.svg").write_text(s, encoding="utf-8")
-    print(name)
+if __name__ == "__main__":
+    for name, s in figs.items():
+        (HERE / f"{name}.svg").write_text(s, encoding="utf-8")
+        print(name)
 
 
 # ---------- 코드 화면: 실습 파일에서 줄 범위를 잘라 와 그린다 (수업 N 표시가 있는 줄은 잉크색) ----------
@@ -168,8 +169,8 @@ def tokens(line):
     return out
 
 
-def code(path, start, end, hl_substr=("# 수업", "# NEW"), size=22, lh=32, cols=72):
-    """줄 번호 + 구문 강조 코드. 긴 줄은 cols 글자에서 접어 다음 줄에 이어 쓴다. 수업 표시 줄은 바탕을 푸르게 칠한다."""
+def code_rows(path, start, end, hl_substr=("# 수업", "# NEW"), cols=72):
+    """(줄 번호|None, 글자, 수업 표시 여부) 목록. 긴 줄은 접고 뒤 주석은 아래 줄로. SVG 와 타이핑 클립이 같이 쓴다."""
     lines = Path(path).read_text(encoding="utf-8").splitlines()[start - 1:end]
     rows = []
     for i, ln in enumerate(lines):
@@ -193,6 +194,12 @@ def code(path, start, end, hl_substr=("# 수업", "# NEW"), size=22, lh=32, cols
             segs.append(" " * indent + cmt)
         for j, seg in enumerate(segs):
             rows.append((start + i if j == 0 else None, seg, hl))
+    return rows
+
+
+def code(path, start, end, hl_substr=("# 수업", "# NEW"), size=22, lh=32, cols=72):
+    """줄 번호 + 구문 강조 코드 SVG."""
+    rows = code_rows(path, start, end, hl_substr, cols)
     body = [rect(0, 0, W, lh * len(rows) + 36, LINE, "#1B1D21", 0, 12)]
     for r, (no, txt, hl) in enumerate(rows):
         y = 50 + r * lh
@@ -212,19 +219,21 @@ def find_line(path, needle):
     raise KeyError(needle)
 
 
-l1 = LAB / "lessons/l1_chat.py"
-s = find_line(l1, "def main"); figs["code-l1"] = code(l1, s, find_line(l1, "# 수업 2") + 1)
-l3 = LAB / "lessons/l3_tools.py"
-figs["code-l3-tools"] = code(l3, find_line(l3, "TOOLS = ["), find_line(l3, "TOOLS = [") + 11)
-figs["code-l3-dispatch"] = code(l3, find_line(l3, "def execute_tool"), find_line(l3, 'return f"ERROR: {e}"'))
-l4 = LAB / "lessons/l4_agent.py"
-figs["code-l4-loop"] = code(l4, find_line(l4, "for _ in range(MAX_ROUNDS)"), find_line(l4, 'messages.append({"role": "user", "content": results})'))
-l5 = LAB / "lessons/l5_agent_silent.py"
-figs["code-l5"] = code(l5, find_line(l5, "def execute_tool"), find_line(l5, "# 수업 5"))
-l6 = LAB / "lessons/l6_agent_cache.py"
-figs["code-l6"] = code(l6, find_line(l6, "msgs = json.loads"), find_line(l6, '"messages": msgs, "tools": TOOLS}'))
-figs["code-l6-usage"] = code(l6, find_line(l6, "u = reply.get"), find_line(l6, "return reply"))
-figs["code-l6-bust"] = code(LAB / "lessons/l6_agent_cachebust.py", find_line(LAB / "lessons/l6_agent_cachebust.py", "SYSTEM_TEXT"), find_line(LAB / "lessons/l6_agent_cachebust.py", "SYSTEM_TEXT"))
-for name in [k for k in figs if k.startswith("code-")]:
-    (HERE / f"{name}.svg").write_text(figs[name], encoding="utf-8")
-    print(name)
+l1 = LAB / "lessons/l1_chat.py"; l3 = LAB / "lessons/l3_tools.py"; l4 = LAB / "lessons/l4_agent.py"
+l5 = LAB / "lessons/l5_agent_silent.py"; l6 = LAB / "lessons/l6_agent_cache.py"; l6b = LAB / "lessons/l6_agent_cachebust.py"
+CODE_SPECS = {   # 이름: (파일, 시작 줄, 끝 줄) — SVG(make.py)와 타이핑 클립(codeanim.py)이 같은 범위를 쓴다
+    "code-l1": (l1, find_line(l1, "def main"), find_line(l1, "json.dump(messages")),
+    "code-l3-tools": (l3, find_line(l3, "TOOLS = ["), find_line(l3, "TOOLS = [") + 11),
+    "code-l3-dispatch": (l3, find_line(l3, "def execute_tool"), find_line(l3, 'return f"ERROR: {e}"')),
+    "code-l4-loop": (l4, find_line(l4, "for _ in range(MAX_ROUNDS)"), find_line(l4, 'messages.append({"role": "user", "content": results})')),
+    "code-l5": (l5, find_line(l5, "def execute_tool"), find_line(l5, "# 수업 5")),
+    "code-l6": (l6, find_line(l6, "msgs = json.loads"), find_line(l6, '"messages": msgs, "tools": TOOLS}')),
+    "code-l6-usage": (l6, find_line(l6, "u = reply.get"), find_line(l6, "return reply")),
+    "code-l6-bust": (l6b, find_line(l6b, "SYSTEM_TEXT"), find_line(l6b, "SYSTEM_TEXT")),
+}
+for name, (path, a, z) in CODE_SPECS.items():
+    figs[name] = code(path, a, z)
+if __name__ == "__main__":
+    for name in CODE_SPECS:
+        (HERE / f"{name}.svg").write_text(figs[name], encoding="utf-8")
+        print(name)
