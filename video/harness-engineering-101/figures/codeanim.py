@@ -24,12 +24,7 @@ PAD, LH, SIZE, ROWS_VISIBLE = 40, 60, 40, 15
 BG, NUM, HL = "#1B1D21", "#6B6F76", (0x2F, 0x5D, 0x8A, 90)
 FONT = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Regular.ttf"), SIZE)
 FONT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Bold.ttf"), SIZE)
-CW = 22                             # 한 칸 폭(px). 한글은 2칸
 TYPE_SEC, LEAD, TAIL = 0.03, 0.3, 1.0
-
-
-def width(s):
-    return sum(2 if ord(c) > 0x2E7F else 1 for c in s)
 
 
 def schedule(rows, name):
@@ -94,14 +89,14 @@ def render(name):
                 d.rectangle([12, y - 6, W - 12, y + LH - 10], fill=HL)
             if no is not None and typed[i] > 0:
                 d.text((PAD, y), f"{no:3d}", fill=NUM, font=FONT)
-            x = PAD + 90
-            shown = txt[:typed[i]]
+            x0, x = PAD + 90, PAD + 90
+            shown, done = txt[:typed[i]], ""
             for tok, col in make.tokens(txt):
                 if not shown:
                     break
                 part = tok[:len(shown)]; shown = shown[len(part):]
                 d.text((x, y), part, fill=col, font=FONT)
-                x += width(part) * CW
+                done += part; x = x0 + d.textlength(done, font=FONT)   # 글꼴 실제 폭으로 다음 토큰 자리를 잡는다
             if i == cur and typed[i] < len(txt) or (i == cur and t < ends[-1]):
                 if int(t * 2) % 2 == 0:
                     d.rectangle([x + 2, y + 4, x + 20, y + LH - 14], fill="#E6E6E3")
