@@ -142,8 +142,34 @@ for name, s in figs.items():
 LAB = HERE.parent / "lab"
 
 
+KW = {"def","if","elif","else","return","try","except","for","in","while","import","from","as","lambda","with","not","and","or",
+      "True","False","None","break","continue","pass","is","yield","class","raise"}
+C_KW, C_STR, C_CMT, C_NUM, C_FN, C_TXT = "#C792EA", "#C3E88D", "#7C8089", "#F78C6C", "#82AAFF", "#E6E6E3"
+
+
+def tokens(line):
+    """파이썬 한 줄을 (글자, 색) 조각으로 — 주석·문자열·키워드·숫자·함수 이름만 구분하는 단순 규칙."""
+    import re as _re
+    out, i = [], 0
+    pat = _re.compile(r'(#.*$)|("""|\'\'\'|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\')|(\b\d+(?:\.\d+)?\b)|(\b[A-Za-z_]\w*\b)')
+    for m in pat.finditer(line):
+        if m.start() > i:
+            out.append((line[i:m.start()], C_TXT))
+        g = m.group(0)
+        if m.group(1): col = C_CMT
+        elif m.group(2): col = C_STR
+        elif m.group(3): col = C_NUM
+        else:
+            prev = line[:m.start()].rstrip()
+            col = C_KW if g in KW else (C_FN if prev.endswith("def") or line[m.end():m.end() + 1] == "(" else C_TXT)
+        out.append((g, col)); i = m.end()
+    if i < len(line):
+        out.append((line[i:], C_TXT))
+    return out
+
+
 def code(path, start, end, hl_substr=("# 수업", "# NEW"), size=22, lh=32, cols=72):
-    """줄 번호 + 코드. 긴 줄은 cols 글자에서 접어 다음 줄에 이어 쓴다(잘라 내지 않는다)."""
+    """줄 번호 + 구문 강조 코드. 긴 줄은 cols 글자에서 접어 다음 줄에 이어 쓴다. 수업 표시 줄은 바탕을 푸르게 칠한다."""
     lines = Path(path).read_text(encoding="utf-8").splitlines()[start - 1:end]
     rows = []
     for i, ln in enumerate(lines):
@@ -159,9 +185,12 @@ def code(path, start, end, hl_substr=("# 수업", "# NEW"), size=22, lh=32, cols
     body = [rect(0, 0, W, lh * len(rows) + 36, LINE, "#1B1D21", 0, 12)]
     for r, (no, txt, hl) in enumerate(rows):
         y = 50 + r * lh
+        if hl:
+            body.append(f'<rect x="8" y="{y - 24}" width="{W - 16}" height="{lh}" rx="4" fill="#2F5D8A" fill-opacity="0.35"/>')
         if no is not None:
             body.append(text(18, y, f"{no:3d}", 20, "#6B6F76", mono=True))
-        body.append(text(76, y, txt, size, "#9CC7F5" if hl else "#E6E6E3", weight="bold" if hl else "normal", mono=True))
+        spans = "".join(f'<tspan fill="{c}">{escape(t, quote=False)}</tspan>' for t, c in tokens(txt))
+        body.append(f'<text x="76" y="{y}" font-size="{size}" {MONO} xml:space="preserve">{spans}</text>')
     return svg(lh * len(rows) + 36, "\n".join(body))
 
 
