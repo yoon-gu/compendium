@@ -22,6 +22,25 @@ spec = importlib.util.spec_from_file_location("build", HERE.parent.parent / "bui
 b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)
 
 ANIMS = ["array-grow", "loop", "cache", "errors"]
+# 터미널 클립: 나레이션의 단어가 들릴 때 기록의 어느 줄이 찍혀 있어야 하는지. (단어 후보, 출력 정규식, n번째 일치)
+TERM_RULES = {
+    "l1-chat": [(("듣는편람",), r"하니스 공부 중입니다\.", 1), (("물어봅니다", "물어봅"), r"제 이름이 뭐라고 했죠\?", 1),
+                (("이천오백팔십구", "이천오백", "2589", "2,589"), r"\[array\] 2 messages, 2589", 1), (("사천삼백육십이", "사천삼백", "4362", "4,362"), r"\[array\] 4 messages, 4362", 1),
+                (("클리어", "clear"), r"/clear", 1), (("자기 이름", "자기", "클로드", "Claude"), r"저는 Claude", 1)],
+    "l2-session": [(("묻습니다",), r"아는 걸 말해 봐요\.", 1), (("모델의 답", "보면"), r"assistant> 방금", 1)],
+    "l3-tools": [(("달라고",), r"내용을 보여 줘\.", 1), (("파인드",), r"\[tool\] run_command", 1), (("멈춥니다", "멈춰"), r"다시 확인하겠습니다\.", 1),
+                 (("다음 질문", "질문을"), r"이 폴더에 어떤 파일이 있어\?", 1), (("사백", "400"), r"HTTP Error 400", 1)],
+    "l4-agent": [(("고쳐 줘", "실패해"), r"다시 돌려서 확인해\.", 1), (("파일 목록", "목록"), r"\[tool\] run_command", 1), (("리드미",), r"\[tool\] run_command", 2),
+                 (("테스트를 돌려", "테스트를", "실패를"), r"\[tool\] run_command", 3), (("내림",), r"assistant> 원인은", 1), (("올림",), r"\[tool\] write_file", 1),
+                 (("세 개 통과", "통과", "3개"), r"\[tool\] run_command", 4)],
+    "l5-honest": [(("여섯", "6번째", "퍼미션", "Permission"), r"\[tool\] write_file", 1), (("권한을 추가", "거부"), r"읽기 전용이라", 1), (("씨에이치모드", "씨에이치", "chmod", "시모드"), r"chmod u\+w", 1), (("아홉", "9번", "끝냅니다"), r"모두 통과", 1)],
+    "l5-silent": [(("일곱", "7번째", "빈 문자열"), r"\[tool\] write_file", 1), (("여전히", "의심", "실패합니다"), r"오류 없이 끝났지만", 1), (("씨에이치모드", "씨에이치", "chmod", "시모드"), r"chmod u\+w", 1),
+                  (("다시 씁", "씁니다"), r"\[tool\] write_file", 2), (("열두", "12번", "12"), r"모두 성공", 1)],
+    "l6-cache": [(("첫 바퀴", "첫", "0입니다"), r"\[usage\]", 1), (("육백삼십삼", "633"), r"cache_read=633", 1), (("천육십팔", "1068", "1,068"), r"cache_read=1068", 1),
+                 (("천칠백육십팔", "1768", "1,768"), r"cache_read=1768", 1), (("이천이백오십사", "2254", "2,254"), r"cache_read=2254", 1)],
+    "l6-cachebust": [(("끝까지",), r"\[usage\]", 1), (("육백사십사", "644"), r"cache_write=644", 1), (("천백사십육", "1146", "1,146"), r"cache_write=1146", 1),
+                     (("천오백오십오", "1555", "1,555"), r"cache_write=1555", 1), (("이천백오", "2105", "2110", "2,105"), r"cache_write=2105", 1), (("이천육백사십팔", "2648", "2,648"), r"cache_write=2648", 1)],
+}
 
 
 def words_of(wav: Path):
@@ -93,6 +112,19 @@ def main():
                     assert marks == sorted(marks) and marks[-1] < dur, (name, marks, dur)
                     (HERE / f"{name}-timing.json").write_text(json.dumps({"duration": round(dur, 2), "marks": marks}, ensure_ascii=False))
                     print(f"{name}: 화면 {dur:.1f}초, 말 {speech_end:.1f}초, 표시 {marks}")
+            for name, rules in TERM_RULES.items():
+                if any(ln.strip() == f"![](figures/term-{name}.mp4)" for ln in frame["slide"]):
+                    words, pauses, speech_end = frame_words(frame)
+                    marks, last = [], 0.0
+                    for keys, pat, nth in rules:
+                        t = first(words, *keys)
+                        if t is None:
+                            print(f"   (못 찾음) {keys[0]!r} — 들린 말: {' '.join(w for w, _ in words)[:120]}…"); continue
+                        if t - 0.2 <= last:
+                            print(f"   (순서 역전) {keys[0]!r} {t:.1f}s"); continue
+                        last = round(t - 0.2, 2); marks.append({"t": last, "pat": pat, "nth": nth})
+                    (HERE / f"term-{name}-timing.json").write_text(json.dumps({"duration": round(dur, 2), "marks": marks}, ensure_ascii=False))
+                    print(f"term-{name}: 화면 {dur:.1f}초, 표시 {[m['t'] for m in marks]} / 규칙 {len(rules)}개 중 {len(marks)}개 잡힘")
 
 
 if __name__ == "__main__":

@@ -93,8 +93,38 @@ def events(name, speed):
     return out, clock + TAIL
 
 
+def warp(ev, total, name):
+    """term-<name>-timing.json 이 있으면: 기록의 기준 줄(정규식 n번째 일치가 끝나는 글자)이 나레이션 단어 시각에 찍히도록
+    이벤트 시각을 구간별 선형으로 다시 배치하고, 클립 길이를 화면 길이에 맞춘다."""
+    p = HERE / f"term-{name}-timing.json"
+    if not p.exists():
+        return ev, total
+    d = json.loads(p.read_text())
+    text = "".join(c for _, c in ev)
+    pairs = [(0.0, 0.0)]
+    for m in d["marks"]:
+        hits = list(re.finditer(m["pat"], text))
+        if len(hits) < m["nth"]:
+            continue
+        nat = ev[hits[m["nth"] - 1].end() - 1][0]
+        if nat > pairs[-1][0] and m["t"] > pairs[-1][1]:
+            pairs.append((nat, m["t"]))
+    nat_end = ev[-1][0]
+    end_target = max(d["duration"] - TAIL, pairs[-1][1] + 1.0)
+    if nat_end > pairs[-1][0]:
+        pairs.append((nat_end, end_target))
+
+    def f(x):
+        for (a0, b0), (a1, b1) in zip(pairs, pairs[1:]):
+            if x <= a1:
+                return b0 + (b1 - b0) * (x - a0) / (a1 - a0) if a1 > a0 else b0
+        return pairs[-1][1]
+    return [(f(c), ch) for c, ch in ev], d["duration"]
+
+
 def render(name, speed=1.0):
     ev, total = events(name, speed)
+    ev, total = warp(ev, total, name)
     cmd = json.loads((RUNS / f"{name}.jsonl").open(encoding="utf-8").readline())["s"]
     title = f"lab — {cmd.split('/')[-1]} — zsh"
     frames = int(total * FPS)
