@@ -135,9 +135,9 @@ def draw_intro(ax, t):
 
 
 # ---------------------------------------------------------------- array-grow (수업 1 실측)
-TURNS = [("user", "안녕하세요. 저는 윤구예요…", 1488, False), ("assistant", "안녕하세요, 윤구님! …", 1488, True),
-         ("user", "제 이름이 뭐라고 했죠?", 1719, False), ("assistant", "윤구님이라고 말씀하셨어요.", 1719, True),
-         ("/clear", "", 0, False), ("user", "제 이름이 뭐죠?", 277, False), ("assistant", "저는 Claude라고 합니다…", 277, True)]
+TURNS = [("user", "안녕하세요. 저는 듣는편람이에요…", 2589, False), ("assistant", "안녕하세요! 하니스 공부 중이시군요…", 2589, True),
+         ("user", "제 이름이 뭐라고 했죠?", 4362, False), ("assistant", "듣는편람이라고 소개해 주셨어요…", 4362, True),
+         ("/clear", "", 0, False), ("user", "제 이름이 뭐죠?", 258, False), ("assistant", "저는 Claude입니다…", 258, True)]
 
 
 def draw_array_grow(ax, t):
@@ -170,7 +170,7 @@ def draw_array_grow(ax, t):
     cleared = any(TURNS[i][0] == "/clear" for i in range(cur + 1))
     for k, v in enumerate(hist):
         y = ry + k * 110
-        frac = v / 1800
+        frac = v / 5000
         ax.add_patch(Rectangle((rx, y), rw * frac, 70, fc=BAD if cleared and k == len(hist) - 1 else INK, ec="none"))
         label(ax, rx + rw * frac + 20, y + 35, f"{v} bytes", 34, TXT, ha="left", bold=True, mono=True)
         label(ax, rx - 16, y + 35, f"턴 {k + 1}", 28, GRAY, ha="right")
