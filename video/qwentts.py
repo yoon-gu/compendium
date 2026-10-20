@@ -8,7 +8,7 @@
 - 조각 = build.py 가 TTS 한 번에 보내는 단위(‖ 로 자르고 300자 넘으면 문장 경계). 발음 교정(pronounce.tsv)도 build.py 와 같다.
 - 캐시 이름은 build.py 의 tts() 와 같은 해시라, 조각 글자가 바뀐 곳만 다시 만든다.
 - 화자 이름(--voice)은 Qwen3-TTS CustomVoice 의 preset speaker(Sohee 등)를 소문자로 쓴다. 모델은 1.7B 기본, --model=0.6b 로 바꿀 수 있다.
-- 장치는 MPS(Apple Silicon) → CPU 순으로 고른다. 출력은 16비트 모노 wav(모델 샘플레이트 그대로).
+- 장치는 MPS(Apple Silicon) → CPU 순으로 고른다. dtype 은 --dtype=fp16(기본)|fp32|bf16. 출력은 16비트 모노 wav(모델 샘플레이트 그대로).
 """
 import hashlib
 import sys
@@ -25,6 +25,7 @@ voice = opt.get("--voice", "sohee")
 speaker = voice[:1].upper() + voice[1:]            # sohee → Sohee
 model_id = {"0.6b": "Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice"}.get(opt.get("--model", "1.7b").lower(), "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice")
 limit = int(opt.get("--limit", "0"))
+dtype_name = opt.get("--dtype", "fp16")                # 16GB 맥에서 1.7B fp32(≈8GB)는 스왑을 일으킨다 → 기본 fp16
 
 sys.argv = ["build.py", slug, f"--voice={voice}"]   # build.py 는 import 할 때 sys.argv 를 읽는다
 import importlib.util  # noqa: E402
@@ -55,7 +56,7 @@ import torch  # noqa: E402
 from qwen_tts import Qwen3TTSModel  # noqa: E402
 
 device = "mps" if torch.backends.mps.is_available() else "cpu"
-dtype = torch.float32
+dtype = {"fp32": torch.float32, "fp16": torch.float16, "bf16": torch.bfloat16}[dtype_name]
 t0 = time.time()
 model = Qwen3TTSModel.from_pretrained(model_id, device_map=device, dtype=dtype)
 print(f"모델 {model_id} ({device}, {dtype}) 로드 {time.time() - t0:.0f}초")
