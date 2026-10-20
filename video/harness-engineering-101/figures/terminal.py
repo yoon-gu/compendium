@@ -20,11 +20,12 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 RUNS = HERE.parent / "lab" / "runs"
 W, H, FPS = 1808, 1016, 25
-PAD, LH = 44, 60                    # 여백, 줄 높이
+PAD, LH, BAR = 44, 60, 64           # 여백, 줄 높이, 창 제목 줄 높이(macOS 터미널처럼 신호등 셋 + 제목)
 COLS = 68                           # 한 줄 글자 수(한글은 2칸). 904px 로 줄어도 읽히게 크게
 BG, FG, DIM, PROMPT, ASSIST, TOOL, USAGE, ERR = "#1B1D21", "#E6E6E3", "#8A8D93", "#8FD3A0", "#F2E2A0", "#9CC7F5", "#F0A9A9", "#F0A9A9"
 FONT = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Regular.ttf"), 40)
 FONT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Bold.ttf"), 40)
+FONT_T = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothic-Regular.ttf"), 26)
 TYPE_SEC, MAX_GAP, TAIL = 0.04, 1.2, 2.5
 ANSI = re.compile(r"\x1b\[[0-9;]*[A-Za-z]")
 
@@ -94,8 +95,10 @@ def events(name, speed):
 
 def render(name, speed=1.0):
     ev, total = events(name, speed)
+    cmd = json.loads((RUNS / f"{name}.jsonl").open(encoding="utf-8").readline())["s"]
+    title = f"lab — {cmd.split('/')[-1]} — zsh"
     frames = int(total * FPS)
-    rows = (H - 2 * PAD) // LH
+    rows = (H - BAR - 2 * PAD) // LH
     out = HERE / f"term-{name}.mp4"
     proc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
                              "-i", "-", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", str(out)],
@@ -110,14 +113,19 @@ def render(name, speed=1.0):
         cursor_on = int(t * 2) % 2 == 0
         im = Image.new("RGB", (W, H), BG)
         d = ImageDraw.Draw(im)
+        d.rectangle([0, 0, W, BAR], fill="#2A2D33")                       # 창 제목 줄
+        for j, c in enumerate(("#FF5F57", "#FEBC2E", "#28C840")):          # 신호등 (k 는 이벤트 인덱스라 쓰지 않는다)
+            d.ellipse([28 + j * 36, BAR // 2 - 11, 50 + j * 36, BAR // 2 + 11], fill=c)
+        d.text((W // 2, BAR // 2), title, fill="#B8BBC2", font=FONT_T, anchor="mm")
         shown = lines[-rows:]
+        top = BAR + PAD
         for r, ln in enumerate(shown):
             col, font = color_of(ln)
-            d.text((PAD, PAD + r * LH), ln, fill=col, font=font)
+            d.text((PAD, top + r * LH), ln, fill=col, font=font)
         if cursor_on and shown:
             last = shown[-1]
             x = PAD + sum(width(c) for c in last) * 22
-            d.rectangle([x + 4, PAD + (len(shown) - 1) * LH + 8, x + 24, PAD + (len(shown) - 1) * LH + 50], fill=FG)
+            d.rectangle([x + 4, top + (len(shown) - 1) * LH + 8, x + 24, top + (len(shown) - 1) * LH + 50], fill=FG)
         proc.stdin.write(im.tobytes())
         if i in sheet_at:
             shots.append(im.copy())

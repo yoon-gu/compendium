@@ -253,8 +253,8 @@ def draw_cache(ax, t):
 
 
 # ---------------------------------------------------------------- errors (수업 5 실측)
-HONEST = ["find", "read pager", "read test", "read README", "unittest", "write ✗ denied", "chmod u+w", "write_file", "unittest ✓"]
-SILENT = ["find", "read pager", "read test", "read README", "pytest→unit", "unittest", "write → \"\"", "unittest ✗", "cat; chmod", "write_file", "unittest ✓", "chmod 444"]
+HONEST = ["find", "read pager", "read test", "read README", "unittest", "write X denied", "chmod u+w", "write_file", "unittest OK"]
+SILENT = ["find", "read pager", "read test", "read README", "pytest→unit", "unittest", "write → \"\"", "unittest X", "cat; chmod", "write_file", "unittest OK", "chmod 444"]
 
 
 def draw_errors(ax, t):
@@ -268,8 +268,8 @@ def draw_errors(ax, t):
         for i, s in enumerate(calls):
             x = 90 + i * 136
             a = 1.0 if i < n else 0.15
-            bad = "✗" in s or "\"\"" in s
-            ax.add_patch(Circle((x + 40, y + 90), 30, fc=(BAD if bad else (OK if "✓" in s else color)), ec="none", alpha=a))
+            bad = " X" in s or "\"\"" in s
+            ax.add_patch(Circle((x + 40, y + 90), 30, fc=(BAD if bad else (OK if "OK" in s else color)), ec="none", alpha=a))
             label(ax, x + 40, y + 90, str(i + 1), 26, "#FFFFFF", bold=True, alpha=a)
             label(ax, x + 40, y + 150 + (36 if i % 2 else 0), s, 20, TXT, alpha=a, mono=True)
         if on:
