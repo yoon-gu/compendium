@@ -8,6 +8,7 @@
 - 조각 = build.py 가 TTS 한 번에 보내는 단위(‖ 로 자르고 300자 넘으면 문장 경계). 발음 교정(pronounce.tsv)도 build.py 와 같다.
 - 캐시 이름은 build.py 의 tts() 와 같은 해시라, 조각 글자가 바뀐 곳만 다시 만든다.
 - 화자 이름(--voice)은 Qwen3-TTS CustomVoice 의 preset speaker(Sohee 등)를 소문자로 쓴다. 모델은 1.7B 기본, --model=0.6b 로 바꿀 수 있다.
+- --instruct(기본: 차분한 강의 말투), --temperature(기본 0.6), --seed(기본 7)로 조각 사이 톤을 고르게 한다. 지시문을 바꾸면 캐시 폴더를 비우고 다시 만든다(캐시 이름에 지시문은 안 들어간다).
 - 장치는 MPS(Apple Silicon) → CPU 순으로 고른다. dtype 은 --dtype=fp16(기본)|fp32|bf16. 출력은 16비트 모노 wav(모델 샘플레이트 그대로).
 """
 import hashlib
@@ -26,6 +27,10 @@ speaker = voice[:1].upper() + voice[1:]            # sohee → Sohee
 model_id = {"0.6b": "Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice"}.get(opt.get("--model", "1.7b").lower(), "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice")
 limit = int(opt.get("--limit", "0"))
 dtype_name = opt.get("--dtype", "fp16")                # 16GB 맥에서 1.7B fp32(≈8GB)는 스왑을 일으킨다 → 기본 fp16
+# 조각마다 감정이 널뛰지 않게: 같은 지시문 + 낮은 온도 + 조각마다 같은 시드. 지시문은 모든 조각에 똑같이 준다
+instruct = opt.get("--instruct", "차분하고 안정된 강의 말투. 감정 기복 없이 처음부터 끝까지 일정한 속도와 높낮이로, 또렷하고 친절하게 읽는다.")
+temperature = float(opt.get("--temperature", "0.6"))
+seed = int(opt.get("--seed", "7"))
 
 sys.argv = ["build.py", slug, f"--voice={voice}"]   # build.py 는 import 할 때 sys.argv 를 읽는다
 import importlib.util  # noqa: E402
@@ -64,7 +69,9 @@ print(f"모델 {model_id} ({device}, {dtype}) 로드 {time.time() - t0:.0f}초")
 total_audio = 0.0
 for i, (raw, dest, said) in enumerate(todo, 1):
     t1 = time.time()
-    wavs, sr = model.generate_custom_voice(text=said, language="Korean", speaker=speaker)
+    torch.manual_seed(seed)
+    wavs, sr = model.generate_custom_voice(text=said, language="Korean", speaker=speaker, instruct=instruct or None,
+                                           do_sample=True, temperature=temperature, top_p=0.9, top_k=50)
     wav = np.asarray(wavs[0], dtype=np.float32)
     if wav.ndim > 1:
         wav = wav.mean(axis=1)
