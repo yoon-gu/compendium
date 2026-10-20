@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 340" width="904" height="340"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><rect x="0" y="60" width="300" height="260" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="114" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">뇌 = 모델</text>
+<text x="26" y="166" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">글자를 받아</text>
+<text x="26" y="216" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">글자를 낸다</text>
+<text x="26" y="266" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">그뿐</text>
+<rect x="604" y="60" width="300" height="260" rx="14" fill="#FFFFFF" stroke="#2F5D8A" stroke-width="4"/>
+<text x="630" y="114" font-size="34" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">몸 = 하니스</text>
+<text x="630" y="166" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">배열을 짠다</text>
+<text x="630" y="216" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구를 돌린다</text>
+<text x="630" y="266" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">결과를 붙인다</text>
+<rect x="330" y="150" width="244" height="80" rx="8" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="452" y="200" font-size="30" fill="#2F5D8A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">JSON 배열</text>
+<line x1="300" y1="170" x2="330" y2="170" stroke="#2F5D8A" stroke-width="4" marker-end="url(#a)"/>
+<line x1="574" y1="210" x2="604" y2="210" stroke="#2F5D8A" stroke-width="4" marker-end="url(#a)"/>
+<text x="452.0" y="30" font-size="30" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">둘 사이를 오가는 것은 배열 하나뿐</text></svg>

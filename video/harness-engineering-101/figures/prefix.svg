@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 460" width="904" height="460"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><text x="0" y="34" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">배열 (앞 → 뒤)</text>
+<rect x="0" y="60" width="142" height="90" rx="8" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="71.0" y="115" font-size="28" fill="#2F5D8A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">tools</text>
+<rect x="150" y="60" width="162" height="90" rx="8" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="231.0" y="115" font-size="28" fill="#2F5D8A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">system</text>
+<rect x="320" y="60" width="352" height="90" rx="8" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="496.0" y="115" font-size="28" fill="#2F5D8A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지난 대화</text>
+<rect x="680" y="60" width="192" height="90" rx="8" fill="#ECECE8" stroke="#6B6B68" stroke-width="3"/>
+<text x="776.0" y="115" font-size="28" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이번 바퀴</text>
+<text x="0" y="200" font-size="28" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 바이트 = 캐시 적중 (값의 10%)</text>
+<text x="0" y="246" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">새 바이트 = 제값</text>
+<rect x="0" y="290" width="904" height="160" rx="14" fill="#FBEFEF" stroke="#A23B3B" stroke-width="3"/>
+<text x="24" y="340" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">맨 위에 'Current time: 09:52:17' 한 줄을 넣으면</text>
+<text x="24" y="390" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">매 요청마다 1번째 바이트부터 달라진다 → 전부 제값 → cache_read=0</text></svg>

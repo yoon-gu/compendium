@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 432" width="904" height="432"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><text x="0" y="34" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">stop_reason</text>
+<text x="300" y="34" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">뜻</text>
+<text x="600" y="34" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">루프가 할 일</text>
+<rect x="0" y="60" width="904" height="84" rx="14" fill="#FFFFFF" stroke="#2F5D8A" stroke-width="4"/>
+<text x="24" y="112" font-size="30" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">tool_use</text>
+<text x="300" y="112" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구를 돌려 달라</text>
+<text x="600" y="112" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실행 → 결과 붙임 → 다시 호출</text>
+<rect x="0" y="156" width="904" height="84" rx="14" fill="#FFFFFF" stroke="#2F5D8A" stroke-width="4"/>
+<text x="24" y="208" font-size="30" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">end_turn</text>
+<text x="300" y="208" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">다 했다</text>
+<text x="600" y="208" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">루프를 나가 사용자에게</text>
+<rect x="0" y="252" width="904" height="84" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="304" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">max_tokens</text>
+<text x="300" y="304" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">길이 한도에 잘림</text>
+<text x="600" y="304" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">늘리거나 이어 받기</text>
+<rect x="0" y="348" width="904" height="84" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="400" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">refusal</text>
+<text x="300" y="400" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">거절</text>
+<text x="600" y="400" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">루프를 나가 메시지 표시</text></svg>

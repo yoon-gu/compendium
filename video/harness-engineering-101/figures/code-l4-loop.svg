@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 868" width="904" height="868"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><rect x="0" y="0" width="904" height="868" rx="12" fill="#1B1D21" stroke="#B9B9B4" stroke-width="0"/>
+<text x="18" y="50" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 70</text>
+<text x="76" y="50" font-size="22" fill="#9CC7F5" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">    for _ in range(MAX_ROUNDS):                      # NEW: the agent lo</text>
+<text x="76" y="82" font-size="22" fill="#9CC7F5" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">        op</text>
+<text x="18" y="114" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 71</text>
+<text x="76" y="114" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        reply = call_llm(messages)</text>
+<text x="18" y="146" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 72</text>
+<text x="76" y="146" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        messages.append({"role": "assistant", "content": reply["content"</text>
+<text x="76" y="178" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        ]})</text>
+<text x="18" y="210" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 73</text>
+<text x="76" y="210" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        for block in reply["content"]:</text>
+<text x="18" y="242" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 74</text>
+<text x="76" y="242" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">            if block["type"] == "text" and block["text"].strip():</text>
+<text x="18" y="274" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 75</text>
+<text x="76" y="274" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">                print(f"\nassistant&gt; {block['text']}")</text>
+<text x="18" y="306" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 76</text>
+<text x="76" y="306" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"></text>
+<text x="18" y="338" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 77</text>
+<text x="76" y="338" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        if reply["stop_reason"] != "tool_use":       # done: hand back t</text>
+<text x="76" y="370" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        o user</text>
+<text x="18" y="402" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 78</text>
+<text x="76" y="402" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">            return</text>
+<text x="18" y="434" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 79</text>
+<text x="76" y="434" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"></text>
+<text x="18" y="466" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 80</text>
+<text x="76" y="466" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        results = []                                 # run EVERY request</text>
+<text x="76" y="498" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        ed tool</text>
+<text x="18" y="530" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 81</text>
+<text x="76" y="530" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        for block in reply["content"]:</text>
+<text x="18" y="562" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 82</text>
+<text x="76" y="562" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">            if block["type"] == "tool_use":</text>
+<text x="18" y="594" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 83</text>
+<text x="76" y="594" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">                print(f"[tool] {block['name']}({json.dumps(block['input'</text>
+<text x="76" y="626" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        ])[:120]})")</text>
+<text x="18" y="658" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 84</text>
+<text x="76" y="658" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">                results.append({</text>
+<text x="18" y="690" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 85</text>
+<text x="76" y="690" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">                    "type": "tool_result",</text>
+<text x="18" y="722" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 86</text>
+<text x="76" y="722" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">                    "tool_use_id": block["id"],</text>
+<text x="18" y="754" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 87</text>
+<text x="76" y="754" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">                    "content": execute_tool(block["name"], block["input"</text>
+<text x="76" y="786" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        ]),</text>
+<text x="18" y="818" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 88</text>
+<text x="76" y="818" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">                })</text>
+<text x="18" y="850" font-size="20" fill="#6B6F76" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve"> 89</text>
+<text x="76" y="850" font-size="22" fill="#E6E6E3" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">        messages.append({"role": "user", "content": results})</text></svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 898" width="904" height="898"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><rect x="0" y="0" width="904" height="148" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Python 3.10 이상</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">설치할 패키지 없음 — urllib 만 쓴다</text>
+<line x1="452.0" y1="152" x2="452.0" y2="196" stroke="#2F5D8A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="200" width="904" height="198" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="254" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">저장소 받기</text>
+<text x="26" y="306" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">git clone … harness-engineering-101</text>
+<text x="26" y="356" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">src/harness/ 에 v1 ~ v4, harness.py</text>
+<line x1="452.0" y1="402" x2="452.0" y2="446" stroke="#2F5D8A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="450" width="904" height="198" rx="14" fill="#FFFFFF" stroke="#2F5D8A" stroke-width="4"/>
+<text x="26" y="504" font-size="34" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">API 키</text>
+<text x="26" y="556" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">export ANTHROPIC_API_KEY=…</text>
+<text x="26" y="606" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지출 한도를 낮게 걸어 둔다</text>
+<line x1="452.0" y1="652" x2="452.0" y2="696" stroke="#2F5D8A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="700" width="904" height="198" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="754" font-size="34" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델 한 줄</text>
+<text x="26" y="806" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">MODEL = "claude-haiku-5-5"</text>
+<text x="26" y="856" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실습은 싼 모델로</text></svg>
