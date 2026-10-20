@@ -6,6 +6,7 @@ math: false
 source_url: "https://github.com/IsuruMaduranga/harness-engineering-101"
 author: "Isuru Wijesiri (WSO2)"
 tags: ["AI", "에이전트", "하니스", "코딩 에이전트", "컨텍스트 엔지니어링", "프롬프트 캐싱", "MCP", "RAG", "책"]
+youtube: "4cHCurwI6kQ"
 summary: "LLM API는 아무것도 기억하지 않는다. 매번 대화 전체를 JSON 배열로 보내고 답을 받을 뿐이다. 그 배열을 만들고 지키고 다듬는 프로그램이 하니스다. 에이전트·RAG·MCP·멀티 에이전트라는 이름들도 결국 그 배열에 무엇을 넣고 모델의 요청 중 무엇을 들어줄지의 문제로 풀린다. 16장짜리 공개 책을 장 순서대로 요약했다."
 ---
 
