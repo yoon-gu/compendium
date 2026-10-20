@@ -115,8 +115,9 @@ def draw_intro(ax, t):
     # 배열 통로
     box(ax, 620, 440, 570, 140, INK, "#FFFFFF", 3, 14); label(ax, 905, 510, "JSON 배열", 40, INK, bold=True, mono=True)
     label(ax, 905, 620, "둘 사이 유일한 통로", 30, GRAY)
-    arrow(ax, bx + bw, 470, 620, 470); arrow(ax, 1190, 550, nx, 550, INK)
-    arrow(ax, nx, 470, 1190, 470, GRAY); arrow(ax, 620, 550, bx + bw, 550, GRAY)
+    # 위 차선(470)은 몸 → 배열 → 뇌로 오른쪽, 아래 차선(550)은 뇌 → 배열 → 몸으로 왼쪽. 점이 가는 길과 같은 방향
+    arrow(ax, bx + bw, 470, 620, 470); arrow(ax, 1190, 470, nx, 470, INK)
+    arrow(ax, nx, 550, 1190, 550, GRAY); arrow(ax, 620, 550, bx + bw, 550, GRAY)
     # 세상
     box(ax, 120, 800, 440, 130, LINE, SOFT, 3, 18); label(ax, 340, 865, "세상: 파일 · 셸 · 사람", 32, TXT)
     arrow(ax, 340, by + bh, 340, 800, INK)
