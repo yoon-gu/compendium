@@ -11,4 +11,4 @@
 <text x="0" y="246" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">새 바이트 = 제값</text>
 <rect x="0" y="290" width="904" height="160" rx="14" fill="#FBEFEF" stroke="#A23B3B" stroke-width="3"/>
 <text x="24" y="340" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">맨 위에 'Current time: 09:52:17' 한 줄을 넣으면</text>
-<text x="24" y="390" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">매 요청마다 1번째 바이트부터 달라진다 → 전부 제값 → cache_read=0</text></svg>
+<text x="24" y="390" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">요청마다 첫 바이트부터 달라진다 → 전부 제값 → cache_read=0</text></svg>
