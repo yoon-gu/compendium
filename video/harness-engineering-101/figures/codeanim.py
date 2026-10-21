@@ -5,6 +5,9 @@ code-<이름>-timing.json({duration, marks:[{t, line}]}, timing.py 가 만든다
     python3 codeanim.py                      # make.py 의 CODE_SPECS 전부 → code-<이름>.mp4 (+ code-<이름>-last.png 마지막 프레임)
     python3 codeanim.py code-l1 code-l4-loop
 
+- 타자 효과음: 글자가 쳐지는 시각마다 짧은 클릭(합성 소음, 저작권 없음)을 넣은 code-<이름>-keys.wav 를 함께 만든다.
+  영상에 섞는 것은 ../../sfx.py (build.py 는 클립을 무음으로 얹으므로 빌드 뒤에 한 번 더 돌린다).
+
 - 글자·색·줄 접기·수업 표시 줄은 make.py 의 SVG 와 같다(code_rows, tokens 를 그대로 쓴다).
 - 타이밍 파일이 없으면 글자당 0.03초로 친다. 줄이 14개를 넘으면 터미널처럼 아래로 흘러 치는 줄이 보이게 한다.
 """
@@ -56,11 +59,37 @@ def schedule(rows, name):
     return [f(cum[i + 1]) for i in range(len(rows))], d["duration"]
 
 
+def keys_wav(rows, starts, ends, total, dest, sr=24000):
+    """글자마다 클릭 하나. 띄어쓰기는 낮고 둔한 소리(스페이스바), 나머지는 짧은 노이즈 버스트. 세기·높이를 조금씩 흔든다."""
+    import wave
+    import numpy as np
+    rng = np.random.default_rng(3)
+    out = np.zeros(int(total * sr) + sr, dtype=np.float32)
+    t_click = np.arange(int(0.028 * sr)) / sr
+    for (no, txt, hl), a, z in zip(rows, starts, ends):
+        n = max(len(txt), 1)
+        for k, ch in enumerate(txt):
+            t = a + (z - a) * (k + 0.5) / n
+            i = int(t * sr)
+            if ch == " ":
+                burst = np.sin(2 * np.pi * 110 * t_click) * np.exp(-t_click / 0.008) * 0.5
+            else:
+                tone = 1800 + rng.uniform(-500, 900)
+                burst = (rng.standard_normal(len(t_click)) * 0.6 + np.sin(2 * np.pi * tone * t_click) * 0.4) * np.exp(-t_click / 0.004)
+            burst *= rng.uniform(0.18, 0.32)
+            out[i:i + len(burst)] += burst[:len(out) - i]
+    out = np.clip(out, -1, 1)
+    with wave.open(str(dest), "wb") as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)
+        w.writeframes((out * 32767).astype("<i2").tobytes())
+
+
 def render(name):
     path, start, end = make.CODE_SPECS[name]
     rows = make.code_rows(path, start, end)
     ends, total = schedule(rows, name)
     starts = [LEAD] + ends[:-1]
+    keys_wav(rows, starts, ends, total, HERE / f"{name}-keys.wav")
     out = HERE / f"{name}.mp4"
     proc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
                              "-i", "-", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", str(out)],
