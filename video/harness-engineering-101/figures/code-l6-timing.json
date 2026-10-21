@@ -1,1 +1,1 @@
-{"duration": 17.95, "marks": [{"t": 6.2, "line": "last[\"content\"][-1][\"cache_control\"]"}, {"t": 10.42, "line": "\"cache_control\": {\"type\": \"ephemeral\"}}],"}]}
+{"duration": 23.21, "marks": [{"t": 6.18, "line": "last[\"content\"][-1][\"cache_control\"]"}]}
