@@ -88,9 +88,24 @@ def frame_words(frame):
 
 
 def first(words, *keys):
+    """단어 후보 중 하나가 처음 나오는 시각. 띄어쓰기가 든 후보("리드 파일")도 whisper 단어들을 이어 붙인 글에서 찾는다."""
+    joined, spans, pos = "", [], 0
     for w, s in words:
-        if any(k in w for k in keys):
-            return s
+        joined += w + " "; spans.append((pos, pos + len(w), s)); pos += len(w) + 1
+    flat = joined.replace(" ", "")
+    for k in keys:
+        i = joined.find(k)
+        if i < 0 and " " in k:
+            j = flat.find(k.replace(" ", ""))
+            if j >= 0:   # 띄어쓰기 무시하고 맞춘 자리 → 원래 글자 위치로
+                cnt, i = 0, 0
+                while i < len(joined) and cnt < j:
+                    if joined[i] != " ": cnt += 1
+                    i += 1
+        if i >= 0:
+            for a, z, t in spans:
+                if a <= i < z or i < a:
+                    return t
     return None
 
 
