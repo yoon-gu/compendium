@@ -32,7 +32,18 @@ instruct = opt.get("--instruct", "차분하고 안정된 강의 말투. 감정 �
 temperature = float(opt.get("--temperature", "0.6"))
 seed = int(opt.get("--seed", "7"))
 tempo = float(opt.get("--tempo", "1.0"))                   # 1.2 면 ffmpeg atempo 로 1.2배(음높이 유지)해서 저장
-MAX_SEC_PER_CHAR = 0.30                                    # 이보다 느리면 끝에 긴 무음·반복이 붙은 것 → 시드를 바꿔 다시 만든다
+MAX_SEC_PER_CHAR = float(opt.get("--max-spc", "0.26"))     # 이보다 느리면 긴 무음·반복이 붙은 것 → 시드를 바꿔 다시 만든다
+MAX_GAP = float(opt.get("--max-gap", "2.5"))                # 문장 사이 무음이 이보다 길어도 다시 만든다(TTS가 중간에 멈추는 사고)
+
+
+def longest_gap(wav, sr, thr=0.02, win=0.05):
+    """가장 긴 내부 무음(초). 50ms 창의 최대 진폭이 thr 아래인 구간."""
+    n = int(win * sr)
+    env = np.array([np.abs(wav[i:i + n]).max() for i in range(0, len(wav) - n, n)])
+    best = cur = 0
+    for v in env > thr:
+        cur = 0 if v else cur + 1; best = max(best, cur)
+    return best * win
 
 sys.argv = ["build.py", slug, f"--voice={voice}"]   # build.py 는 import 할 때 sys.argv 를 읽는다
 import importlib.util  # noqa: E402
@@ -80,10 +91,10 @@ for i, (raw, dest, said) in enumerate(todo, 1):
         if wav.ndim > 1:
             wav = wav.mean(axis=1)
         wav = np.clip(wav, -1.0, 1.0)
-        sec = len(wav) / sr
-        if sec / len(said) <= MAX_SEC_PER_CHAR:
+        sec = len(wav) / sr; gap = longest_gap(wav, sr)
+        if sec / len(said) <= MAX_SEC_PER_CHAR and gap <= MAX_GAP:
             break
-        print(f"     느림({sec:.0f}초/{len(said)}자) → 시드 {seed + attempt + 1}로 다시")
+        print(f"     느림({sec:.0f}초/{len(said)}자) 또는 무음 {gap:.1f}초 → 시드 {seed + attempt + 1}로 다시")
     sf.write(str(dest), (wav * 32767).astype(np.int16), sr, subtype="PCM_16")
     if tempo != 1.0:
         import subprocess
