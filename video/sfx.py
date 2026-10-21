@@ -15,7 +15,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 slug = next(a for a in sys.argv[1:] if not a.startswith("--"))
 opt = {a.split("=", 1)[0]: a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--") and "=" in a}
-gain = float(opt.get("--gain", "0.35"))
+gain = float(opt.get("--gain", "0.12"))                      # 목소리를 가리지 않게 작게
 sys.argv = ["build.py", slug, "--wide"] + [a for a in sys.argv[1:] if a.startswith("--voice=")]
 import importlib.util  # noqa: E402
 spec = importlib.util.spec_from_file_location("build", HERE / "build.py")

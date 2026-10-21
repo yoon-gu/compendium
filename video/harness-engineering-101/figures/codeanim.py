@@ -39,14 +39,19 @@ def schedule(rows, name):
     total = cum[-1]
     p = HERE / f"{name}-timing.json"
     if not p.exists():
-        return [LEAD + cum[i + 1] * TYPE_SEC for i in range(len(rows))], LEAD + total * TYPE_SEC + TAIL
+        return [LEAD + cum[i + 1] * TYPE_SEC for i in range(len(rows))], LEAD + total * TYPE_SEC + TAIL, []
     d = json.loads(p.read_text())
-    pts, pos = [(0, LEAD)], 0
+    pts, pos, anchors = [(0, LEAD)], 0, []
     for m in d["marks"]:
         hit = next((i for i in range(pos, len(rows)) if m["line"] in rows[i][1]), None)
         if hit is None or m["t"] <= pts[-1][1]:
             continue
         pts.append((cum[hit + 1], m["t"])); pos = hit + 1
+        # 설명 중인 줄: 접힌 이어짐 줄(번호 None)까지 한 덩어리
+        last = hit
+        while last + 1 < len(rows) and rows[last + 1][0] is None:
+            last += 1
+        anchors.append((m["t"], hit, last))
     end_t = max(d["duration"] - TAIL, pts[-1][1] + 0.5)
     if total > pts[-1][0]:
         pts.append((total, min(end_t, pts[-1][1] + (total - pts[-1][0]) * 0.06)))
@@ -56,7 +61,7 @@ def schedule(rows, name):
             if x <= a1:
                 return b0 + (b1 - b0) * (x - a0) / (a1 - a0) if a1 > a0 else b0
         return pts[-1][1]
-    return [f(cum[i + 1]) for i in range(len(rows))], d["duration"]
+    return [f(cum[i + 1]) for i in range(len(rows))], d["duration"], anchors
 
 
 def keys_wav(rows, starts, ends, total, dest, sr=24000):
@@ -87,9 +92,10 @@ def keys_wav(rows, starts, ends, total, dest, sr=24000):
 def render(name):
     path, start, end = make.CODE_SPECS[name]
     rows = make.code_rows(path, start, end)
-    ends, total = schedule(rows, name)
+    ends, total, anchors = schedule(rows, name)
     starts = [LEAD] + ends[:-1]
     keys_wav(rows, starts, ends, total, HERE / f"{name}-keys.wav")
+    boxes = [(t0, (anchors[i + 1][0] if i + 1 < len(anchors) else total), a, z) for i, (t0, a, z) in enumerate(anchors)]   # 설명 중인 줄 네모
     out = HERE / f"{name}.mp4"
     proc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
                              "-i", "-", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", str(out)],
@@ -111,6 +117,7 @@ def render(name):
         first = max(0, cur - ROWS_VISIBLE + 1) if len(rows) > ROWS_VISIBLE else 0
         im = Image.new("RGB", (W, H), BG)
         d = ImageDraw.Draw(im, "RGBA")
+        box_rows = next(((a, z) for t0, t1, a, z in boxes if t0 <= t < t1), None)
         for r, i in enumerate(range(first, min(len(rows), first + ROWS_VISIBLE))):
             no, txt, hl = rows[i]
             y = PAD + r * LH
@@ -129,6 +136,13 @@ def render(name):
             if i == cur and typed[i] < len(txt) or (i == cur and t < ends[-1]):
                 if int(t * 2) % 2 == 0:
                     d.rectangle([x + 2, y + 4, x + 20, y + LH - 14], fill="#E6E6E3")
+        if box_rows:
+            a, z = box_rows
+            if a < first + ROWS_VISIBLE and z >= first:
+                ya = PAD + (max(a, first) - first) * LH - 8; yz = PAD + (min(z, first + ROWS_VISIBLE - 1) - first + 1) * LH - 6
+                grow = min(1.0, (t - next(t0 for t0, t1, aa, zz in boxes if (aa, zz) == (a, z))) / 0.25)   # 0.25초 동안 펼쳐지는 네모
+                d.rounded_rectangle([PAD + 70, ya, PAD + 70 + (W - PAD * 2 - 70) * grow, yz], radius=10, outline=(0x8F, 0xB4, 0xDC, 230), width=4,
+                                    fill=(0x8F, 0xB4, 0xDC, 28))
         proc.stdin.write(im.tobytes()); last = im
     proc.stdin.close(); proc.wait()
     assert proc.returncode == 0
