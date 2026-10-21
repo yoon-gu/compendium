@@ -1,1 +1,1 @@
-{"duration": 99.06, "marks": [{"t": 1.86, "pat": "\\[tool\\] write_file", "nth": 1}, {"t": 8.8, "pat": "오류 없이 끝났지만", "nth": 1}, {"t": 22.66, "pat": "\\[tool\\] write_file", "nth": 2}, {"t": 25.12, "pat": "모두 성공", "nth": 1}]}
+{"duration": 99.04, "marks": [{"t": 1.86, "pat": "\\[tool\\] write_file", "nth": 1}, {"t": 8.8, "pat": "오류 없이 끝났지만", "nth": 1}, {"t": 22.66, "pat": "\\[tool\\] write_file", "nth": 2}, {"t": 25.12, "pat": "모두 성공", "nth": 1}]}

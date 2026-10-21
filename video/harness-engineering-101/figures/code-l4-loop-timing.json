@@ -1,0 +1,1 @@
+{"duration": 31.4, "marks": [{"t": 4.8, "line": "reply = call_llm"}, {"t": 11.24, "line": "block[\"type\"] == \"tool_use\""}, {"t": 13.78, "line": "\"role\": \"user\", \"content\": results"}]}

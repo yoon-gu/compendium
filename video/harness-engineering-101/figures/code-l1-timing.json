@@ -1,0 +1,1 @@
+{"duration": 32.78, "marks": [{"t": 4.86, "line": "messages = json.load"}, {"t": 7.26, "line": "input("}, {"t": 8.5, "line": "messages.append({\"role\": \"user\""}, {"t": 8.98, "line": "reply = call_llm"}, {"t": 19.06, "line": "[array]"}, {"t": 26.4, "line": "json.dump(messages"}]}
