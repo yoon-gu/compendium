@@ -68,6 +68,7 @@ MAX_CHARS = 300                     # 한 요청에 보내는 글자 수 상한(
 GAP_CHUNK, GAP_PARA = 0.25, 0.6      # 300자 조각 사이 / 한 화면 안 문단 사이
 GAP_FRAME, GAP_SCENE = 1.2, 2.0      # 화면이 넘어갈 때 / 장면(장)이 바뀔 때
 LOOK_FIG, LOOK_MATH = 0.8, 1.5       # 그림·수식이 있는 화면은 나레이션 뒤에 볼 시간을 더 준다
+PAD_TO_CLIP = True                   # 클립이 나레이션보다 길면 화면을 클립 길이까지 늘린다(timing.py 는 끈다 — 클립을 나레이션에 맞춰 다시 만드니까)
 GAP_THINK = 1.2                      # 나레이션 속 `‖` 자리: 생각할 쉼(질문 뒤, 핵심 주장 뒤, 숫자 비교 뒤. 1분에 두 번 이하)
 W, H = (1920, 1080) if WIDE else (1080, 1920)
 
@@ -205,7 +206,7 @@ def scene_audio(scene: dict) -> tuple[Path, list[float]]:
                (LOOK_FIG if any(ln.startswith("![") for ln in frame["slide"]) else 0)
         samples += silence((GAP_SCENE if fi == len(frames) - 1 else GAP_FRAME) + look)
         short = clip_seconds(frame) - samples / params.framerate   # 애니메이션은 적어도 한 번은 끝까지 보이게
-        if short > 0:
+        if short > 0 and PAD_TO_CLIP:
             samples += silence(short)
         seconds.append(samples / params.framerate)
     with wave.open(str(dest), "wb") as out:

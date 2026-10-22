@@ -1,1 +1,1 @@
-{"duration": 44.8, "marks": [{"t": 4.08, "pat": "\\[usage\\]", "nth": 1}, {"t": 10.06, "pat": "cache_read=633", "nth": 1}]}
+{"duration": 39.35, "marks": [{"t": 4.08, "pat": "\\[usage\\]", "nth": 1}, {"t": 10.06, "pat": "cache_read=633", "nth": 1}]}

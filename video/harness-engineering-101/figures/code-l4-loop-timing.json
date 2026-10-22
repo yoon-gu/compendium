@@ -1,1 +1,1 @@
-{"duration": 41.4, "marks": [{"t": 6.8, "line": "reply = call_llm"}, {"t": 16.4, "line": "block[\"type\"] == \"tool_use\""}]}
+{"duration": 41.11, "marks": [{"t": 5.7, "line": "for _ in range"}, {"t": 9.9, "line": "reply = call_llm"}, {"t": 21.74, "line": "block[\"type\"] == \"tool_use\""}]}

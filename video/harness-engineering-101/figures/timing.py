@@ -131,6 +131,7 @@ def RULES(name, words, pauses, speech_end, dur):
 
 def main():
     meta, scenes = b.parse(b.SCRIPT.read_text(encoding="utf-8"))
+    b.PAD_TO_CLIP = False   # 지난 빌드의 클립 길이에 화면이 맞춰져 클립이 매번 길어지는 되먹임을 끊는다
     for s in scenes:
         _, secs = b.scene_audio(s)
         for frame, dur in zip(s["frames"], secs):
