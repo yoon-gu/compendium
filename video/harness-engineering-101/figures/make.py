@@ -54,11 +54,11 @@ def stack(items, gap=52, top=0):
 figs = {}
 
 # ---------- 수업 하나의 틀 ----------
-steps = ["오늘 만들 것", "코드 같이 쓰기", "실행해 보기", "방금 일어난 일", "자주 막히는 곳", "체크포인트"]
+steps = ["코드 같이 쓰기", "실행해 보기", "방금 일어난 일", "자주 막히는 곳", "체크포인트"]
 b = []
 for i, s in enumerate(steps):
     x = (i % 3) * 300; y = (i // 3) * 150
-    b.append(rect(x, y, 288, 120, INK if i in (1, 2) else LINE, sw=4 if i in (1, 2) else 3))
+    b.append(rect(x, y, 288, 120, INK if i in (0, 1) else LINE, sw=4 if i in (0, 1) else 3))
     b.append(text(x + 24, y + 48, f"{i + 1}", 30, INK, weight="bold"))
     b.append(text(x + 20, y + 92, s, 30, TXT, weight="bold"))
 figs["lesson-flow"] = svg(280, "\n".join(b))
@@ -233,6 +233,8 @@ CODE_SPECS = {   # 이름: (파일, 시작 줄, 끝 줄) — SVG(make.py)와 타
 }
 for name, (path, a, z) in CODE_SPECS.items():
     figs[name] = code(path, a, z)
+sj = LAB / "runs/l1-session-edited.json"
+figs["session-json"] = code(sj, 1, len(sj.read_text(encoding="utf-8").splitlines()), hl_substr=("홍길동",), cols=60)
 if __name__ == "__main__":
     for name in CODE_SPECS:
         (HERE / f"{name}.svg").write_text(figs[name], encoding="utf-8")

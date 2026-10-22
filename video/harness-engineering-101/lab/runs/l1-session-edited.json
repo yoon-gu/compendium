@@ -1,0 +1,15 @@
+[
+  {
+    "role": "user",
+    "content": "제 이름이 뭐죠?"
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "당신 이름은 홍길동이에요. 조선의 의적이시죠."
+      }
+    ]
+  }
+]
