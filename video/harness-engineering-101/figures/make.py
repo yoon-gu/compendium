@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """하니스 101 핸즈온 회차 화면용 다이어그램을 SVG 로 그린다(책의 구조만 가져와 새로 그림, 가로판 904px 폭).  python3 make.py"""
+import json
 from html import escape
 from pathlib import Path
 
@@ -234,8 +235,16 @@ CODE_SPECS = {   # 이름: (파일, 시작 줄, 끝 줄) — SVG(make.py)와 타
 for name, (path, a, z) in CODE_SPECS.items():
     figs[name] = code(path, a, z)
 sj = LAB / "runs/l1-session-edited.json"
+# 수업 1 앞: 실제 요청·응답 한 쌍(하이쿠). 응답은 핵심 키만 추려 짧게
+_req = json.load(open(LAB / "runs/l1-request.json", encoding="utf-8")); _res = json.load(open(LAB / "runs/l1-response.json", encoding="utf-8"))
+_txt = next(b["text"] for b in _res["content"] if b.get("type") == "text")
+_res_short = {"role": _res["role"], "content": [{"type": "text", "text": _txt[:26] + "…"}],
+              "stop_reason": _res["stop_reason"], "usage": {k: _res["usage"][k] for k in ("input_tokens", "output_tokens")}}
+_pair = LAB / "runs/l1-request-response.txt"
+_pair.write_text("# 요청 (POST /v1/messages)\n" + json.dumps(_req, ensure_ascii=False, indent=2) + "\n\n# 응답\n" + json.dumps(_res_short, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+figs["request-response"] = code(_pair, 1, len(_pair.read_text(encoding="utf-8").splitlines()), hl_substr=('"role"', '"stop_reason"', '"usage"'), cols=60)
 figs["session-json"] = code(sj, 1, len(sj.read_text(encoding="utf-8").splitlines()), hl_substr=("홍길동",), cols=60)
 if __name__ == "__main__":
-    for name in CODE_SPECS:
+    for name in list(CODE_SPECS) + ["session-json", "request-response"]:
         (HERE / f"{name}.svg").write_text(figs[name], encoding="utf-8")
         print(name)

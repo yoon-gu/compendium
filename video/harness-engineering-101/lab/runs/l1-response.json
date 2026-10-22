@@ -1,0 +1,38 @@
+{
+  "model": "claude-haiku-5-5",
+  "id": "msg_011CgGNXr2TetbXg1VycQw2b",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+    {
+      "type": "thinking",
+      "thinking": "",
+      "signature": "CAQSiQcKEAgTGAI4AUIIdGhpbmtpbmcSDC0nhkgZFNZgvULgLhoMBES0JA66UTs9lJq4IjDzBISXkqU+MY17ZGtpusEFlftfaqJg4PbzHAQp0qRu3BvyXTR/JcjaAl0g4Txm+GoqpgbM5+ZB/8g4G0jWhiSTmVJCfG06IOErZgng5I5Z12vixamU0JnEcRZ6NYSI0c7jAv37xcpLVYkoM2xld1j/FmcYP0ftNX5Ymm//40kk9jTQDMD09Ebw0pi2o17sEF2boOAVHbBoGDQXwvu7jIOJYHKaVrMYhifUBMcPuV7h+Pl9mEyPkvR4VYfL0t7NNTWo90GZTqxp8kZBSBGNc8ltOqATJ6SdN7o87n4puSk7eDGtGfWKeTLcH5TrUdpdZe4/63v1v5vZ2PJNA57peujKWPuSqC6oxzrduqhTlCPAJMiL/J3bD5thGMpnUi4LaSa9xajz3PIut4Jf/C9XiGeOwAJGueW9EHKcohE1MZIotWAkyqbmlzj01UyubSZh9CpgFuO4N1mZek+3Ku48HoAh7W1m45k+ZP/EyL6PPaFuZXuCFscu0kEtghaa/wj7QK29YQ8UJHS1oV6M/UM6sekzbii1vGMq9yOAyD9a59mBzZQDJ6RgO/ZWnP7JU3UZBpOh+aK/aF55/L25wvF6dpFj5ZzDDSjfonaLzYeiN5jZqVsWaA7Pwe9bJxlTDPpc2CRD5+8GZ1hgMP1vhyBzvyhl9HQtVlMTkqV05UHpWvrw76gAxAsSYwWgCfxljUHCHyw8mr5fZXFsqzZMFEQjZChPVRTW9eqQg/bt6iT7Eeogs9blbUYvHG7YQzzB+LUjHzWdZP3KkERMOhOsm10kpQ6iJksox83FNxgrahq8wAAStL4aPsd98VE363sfgHPMVM/ahcZh//Hj43wbuj/g1Axg9IeqEcGUDcJELQDj8KJL+1+OH6K4LwiMsoLuRUHMH7bEyuApcokQ2vCQIy/qyj7UETh4xIKXn/UVFoyzTNLTs+CrH83NZYvOAgRQw1s30RpDbDaRl3Dbl5KN7jWMGOLY/rMzuMrg44pipQSg3mp8825enZkuko1gxUHzhC7e4NuNJTVLAtQFRb08OtH6ZuyawImlAVVxoutY8Wawd31oBnw/Jkd1DZG1vKK/yFBFWyJYYB7uBfrv9d2J4he1jzwT8VtyLv2ZZJHJm9Tw4mhhTGzWMqiPQUw+4xgB"
+    },
+    {
+      "type": "text",
+      "text": "안녕하세요, 듣는편람님! 반가워요. 무엇을 도와드릴까요?"
+    }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+    "input_tokens": 38,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 160,
+    "output_tokens_details": {
+      "thinking_tokens": 123
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+  },
+  "diagnostics": null
+}
