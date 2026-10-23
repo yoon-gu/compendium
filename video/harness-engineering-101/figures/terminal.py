@@ -27,6 +27,7 @@ FONT = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Reg
 FONT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Bold.ttf"), 40)
 FONT_T = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothic-Regular.ttf"), 26)
 TYPE_SEC, MAX_GAP, TAIL = 0.04, 1.2, 2.5
+LEAD = 1.5                          # 기준 줄은 나레이션이 그 말을 하기 이 만큼 앞서 찍힌다 — 모델 답이 다 뜬 뒤에 설명이 들리게
 ANSI = re.compile(r"\x1b\[[0-9;]*[A-Za-z]")
 
 
@@ -107,8 +108,9 @@ def warp(ev, total, name):
         if len(hits) < m["nth"]:
             continue
         nat = ev[hits[m["nth"] - 1].end() - 1][0]
-        if nat > pairs[-1][0] and m["t"] > pairs[-1][1]:
-            pairs.append((nat, m["t"]))
+        tm = max(m["t"] - LEAD, 0.5)
+        if nat > pairs[-1][0] and tm > pairs[-1][1]:
+            pairs.append((nat, tm))
     nat_end = ev[-1][0]
     end_target = max(d["duration"] - TAIL, pairs[-1][1] + 1.0)
     if nat_end > pairs[-1][0]:
