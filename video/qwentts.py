@@ -82,6 +82,7 @@ print(f"모델 {model_id} ({device}, {dtype}) 로드 {time.time() - t0:.0f}초")
 total_audio = 0.0
 for i, (raw, dest, said) in enumerate(todo, 1):
     t1 = time.time()
+    best = None                                        # 네 번 다 기준을 못 넘기면 무음이 가장 짧은 시도를 쓴다
     for attempt in range(4):
         torch.manual_seed(seed + attempt)
         wavs, sr = model.generate_custom_voice(text=said, language="Korean", speaker=speaker, instruct=instruct or None,
@@ -92,9 +93,14 @@ for i, (raw, dest, said) in enumerate(todo, 1):
             wav = wav.mean(axis=1)
         wav = np.clip(wav, -1.0, 1.0)
         sec = len(wav) / sr; gap = longest_gap(wav, sr)
+        if best is None or gap < best[2]:
+            best = (wav, sec, gap)
         if sec / len(said) <= MAX_SEC_PER_CHAR and gap <= MAX_GAP:
             break
         print(f"     느림({sec:.0f}초/{len(said)}자) 또는 무음 {gap:.1f}초 → 시드 {seed + attempt + 1}로 다시")
+    else:
+        wav, sec, gap = best
+        print(f"     네 번 모두 기준 밖 → 무음이 가장 짧은 시도({gap:.1f}초)를 쓴다")
     sf.write(str(dest), (wav * 32767).astype(np.int16), sr, subtype="PCM_16")
     if tempo != 1.0:
         import subprocess

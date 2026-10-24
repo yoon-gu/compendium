@@ -205,8 +205,8 @@ def scene_audio(scene: dict) -> tuple[Path, list[float]]:
         look = (LOOK_MATH if any(ln.startswith("$$") for ln in frame["slide"]) else 0) or \
                (LOOK_FIG if any(ln.startswith("![") for ln in frame["slide"]) else 0)
         samples += silence((GAP_SCENE if fi == len(frames) - 1 else GAP_FRAME) + look)
-        short = clip_seconds(frame) - samples / params.framerate   # 애니메이션은 적어도 한 번은 끝까지 보이게
-        if short > 0 and PAD_TO_CLIP:
+        short = (clip_seconds(frame) - samples / params.framerate) if PAD_TO_CLIP else 0   # 애니메이션은 적어도 한 번은 끝까지 보이게(시각 측정 땐 클립이 아직 없을 수 있다)
+        if short > 0:
             samples += silence(short)
         seconds.append(samples / params.framerate)
     with wave.open(str(dest), "wb") as out:

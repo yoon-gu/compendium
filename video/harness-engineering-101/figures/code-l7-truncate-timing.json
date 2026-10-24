@@ -1,0 +1,1 @@
+{"duration": 41.92, "marks": [{"t": 1.32, "line": "def truncate"}, {"t": 9.94, "line": "keep = MAX_RESULT_CHARS"}, {"t": 24.48, "line": "with open(path, \"w\")"}, {"t": 25.76, "line": "note = ("}, {"t": 33.78, "line": "off, lim ="}]}
