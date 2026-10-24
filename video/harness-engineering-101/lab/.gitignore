@@ -2,3 +2,5 @@ debug/
 *.json
 __pycache__/
 runs/work-*/
+sample-project2/logs/
+.harness/

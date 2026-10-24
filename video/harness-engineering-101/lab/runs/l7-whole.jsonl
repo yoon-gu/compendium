@@ -1,0 +1,12 @@
+{"t": 0.0, "k": "cmd", "s": "python3 ../../lessons/l7_budget.py"}
+{"t": 0.103, "k": "out", "s": "\r\nyou> "}
+{"t": 0.511, "k": "in", "s": "logs/build.log를 read_file로 읽고 빌드가 왜 깨졌는지 알려 줘."}
+{"t": 0.512, "k": "out", "s": "logs/build.log를 read_file로 읽고 빌드가 왜 깨졌는지 알려 줘.\r\n"}
+{"t": 0.512, "k": "out", "s": "  [array] 1 messages, 154 bytes\r\n"}
+{"t": 1.448, "k": "out", "s": "  [usage] in=4 cache_write=0 cache_read=608 out=52\r\n[tool] read_file({\"path\": \"logs/build.log\"})\r\n"}
+{"t": 1.456, "k": "out", "s": "  [array] 3 messages, 2,331,535 bytes\r\n"}
+{"t": 2.475, "k": "out", "s": "\r\n[harness] HTTP 400: prompt is too long: 1267285 tokens > 1000000 maximum\r\n"}
+{"t": 2.475, "k": "out", "s": "\r\nyou> "}
+{"t": 2.882, "k": "in", "s": "/quit"}
+{"t": 2.882, "k": "out", "s": "/quit\r\n"}
+{"t": 2.893, "k": "end", "s": ""}

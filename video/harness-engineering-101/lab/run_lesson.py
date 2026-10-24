@@ -4,6 +4,7 @@
     python3 run_lesson.py <이름> --cwd <폴더> --input "첫 줄" --input "둘째 줄" -- python3 l1_chat.py s.json
 
 - 프로그램이 `you> ` 프롬프트를 띄우면 다음 --input 줄을 넣는다. 입력이 다 떨어지면 `/quit`.
+- `--input "@wait 60"` 은 60초 동안 아무것도 치지 않는다(수업 10: 그 사이 하니스가 스스로 모델을 깨우는지 본다).
 - 기록: runs/<이름>.jsonl — 한 줄에 {"t": 초, "k": "cmd"|"in"|"out", "s": 글자}. 실제 출력만 담고 고치지 않는다.
 - 환경 변수: ANTHROPIC_API_KEY 는 ~/.config/anthropic-key.txt 에서 읽어 넘긴다.
 """
@@ -53,7 +54,7 @@ def main():
     if pid == 0:
         os.chdir(cwd)
         os.execvpe(cmd[0], cmd, env)
-    buf = b""
+    buf, wait_until = b"", 0.0
     while True:
         r, _, _ = select.select([fd], [], [], 0.2)
         if r:
@@ -67,7 +68,9 @@ def main():
             sys.stdout.write(text); sys.stdout.flush()
             rec("out", text)
             buf = (buf + data)[-64:]
-        if buf.endswith(PROMPT) and inputs:
+        if buf.endswith(PROMPT) and inputs and inputs[0].startswith("@wait"):
+            wait_until = time.time() + float(inputs.pop(0).split()[1])
+        if buf.endswith(PROMPT) and inputs and time.time() >= wait_until:
             line = inputs.pop(0)
             time.sleep(0.4)
             rec("in", line)
