@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 450" width="904" height="450"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><text x="0" y="36" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">컨텍스트 윈도우 (하이쿠: 1,000,000 토큰)</text>
+<rect x="0" y="60" width="904" height="110" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<rect x="0" y="60" width="497.20000000000005" height="110" rx="10" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="24" y="126" font-size="28" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">잘 읽히는 범위</text>
+<text x="521.2" y="126" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">앞쪽을 덜 챙긴다 (열화)</text>
+<text x="0" y="236" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">넘치면?</text>
+<rect x="0" y="260" width="904" height="110" rx="10" fill="#FBEFEF" stroke="#A23B3B" stroke-width="3"/>
+<text x="24" y="326" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">HTTP 400: prompt is too long</text>
+<text x="0" y="430" font-size="30" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">가방처럼 던져 넣지 말고, 예산처럼 쓴다</text></svg>

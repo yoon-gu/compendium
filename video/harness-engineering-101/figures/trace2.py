@@ -87,13 +87,112 @@ SPECS = {
     "l6-cachebust": dict(file=L6B, ranges=[(17, 17), (41, 41), (45, 45), (47, 48), (58, 60)], split=580, rules=BUST_RULES),
 }
 
+# ------------------------------------------------------------------ 2편 (수업 7-10)
+LAB = make.LAB / "lessons"
+L7B, L7T, L8, L9, L10 = (LAB / f for f in ("l7_budget.py", "l7_truncate.py", "l8_subagents.py", "l9_reminders.py", "l10_background.py"))
+
+
+def R(path, a, b=None):
+    """줄 번호 대신 글자로 고르는 발췌 범위(코드가 바뀌어도 따라간다)."""
+    return (make.find_line(path, a), make.find_line(path, b) if b else make.find_line(path, a))
+
+
+NONE = [(0, None)]
+SPECS.update({
+    "l7-whole": dict(cols=96, file=L7B, split=560, ranges=[R(L7B, 'if name == "read_file"', 'return open(args["path"]).read()'),
+                                                  R(L7B, 'print(f"  [array]', 'if reply is None'),
+                                                  R(L7B, 'except urllib.error.HTTPError', 'return None')], rules=[
+        dict(on="prefix", pat=r"\[tool\] read_file", seq=[(0, 'name == "read_file"'), (0.4, 'return open(args')]),
+        dict(on="prefix", pat=r"\[array\]", seq=[(0, '[array]'), (0.5, 'reply = call_llm')]),
+        dict(on="prefix", pat=r"\[harness\] HTTP", seq=[(0, 'except urllib.error.HTTPError'), (0.4, 'print(f"\\n[harness]'), (0.9, 'return None')]),
+    ]),
+    "l7-truncate": dict(cols=96, file=L7T, split=440, ranges=[R(L7T, 'off, lim =', 'return truncate("".join'),
+                                                     R(L7T, 'if len(text) <= MAX', 'keep = MAX'),
+                                                     R(L7T, 'os.makedirs', 'return text[:keep] + note'),
+                                                     R(L7T, 'return truncate(out.stdout')], rules=[
+        dict(on="prefix", pat=r"\[tool\] read_file", seq=[(0, 'off, lim ='), (0.4, 'return truncate("".join'), (0.9, 'if len(text) <= MAX'),
+                                                          (1.3, 'os.makedirs'), (1.7, 'note = ('), (2.2, 'return text[:keep] + note')]),
+        dict(on="prefix", pat=r"\[tool\] run_command", seq=[(0, 'return truncate(out.stdout')]),
+        dict(on="prefix", pat=r"assistant>", seq=NONE),
+    ]),
+    "l7-silent": dict(cols=96, file=L7T, split=600, ranges=[R(L7T, 'off, lim =', 'return truncate("".join'),
+                                                   R(L7T, 'if len(text) <= MAX', 'return text[:keep] + text[-keep:]')], rules=[
+        dict(on="prefix", pat=r"\[tool\] read_file", seq=[(0, 'off, lim ='), (0.4, 'return truncate("".join'), (0.9, 'if len(text) <= MAX'),
+                                                          (1.3, 'if SILENT'), (1.7, 'return text[:keep] + text[-keep:]')]),
+        dict(on="prefix", pat=r"assistant>", seq=NONE),
+    ]),
+    "l8-noagent": dict(cols=96, file=L8, split=430, ranges=[R(L8, 'reply = call_llm(messages, tools, system, who)'),
+                                                   R(L8, 'print(f"\\nassistant>'),
+                                                   R(L8, 'tag = "    [sub]"', 'allow_agent),'),
+                                                   R(L8, 'messages.append({"role": "user", "content": results})'),
+                                                   R(L8, 'print(f"\\n  [array] parent', 'print(f"  [tokens]')], rules=[
+        dict(on="line", pat=r"^you> (?!/quit$).+", seq=[(0, 'reply = call_llm')]),
+        dict(on="prefix", pat=r"assistant>", seq=[(0, 'print(f"\\nassistant>')]),
+        dict(on="prefix", pat=r"\[tool\]", seq=[(0, 'print(f"{tag}'), (0.6, '"content": execute_tool'), (1.2, '"content": results'), (1.8, 'reply = call_llm')]),
+        dict(on="prefix", pat=r"\[array\] parent", seq=[(0, '[array] parent')]),
+        dict(on="prefix", pat=r"\[tokens\]", seq=[(0, '[tokens]')]),
+    ]),
+    "l8-agent": dict(cols=96, file=L8, split=460, ranges=[R(L8, 'if name == "agent"', 'return run_subagent'),
+                                                 R(L8, 'tag = "    [sub]"', 'print(f"{tag}'),
+                                                 R(L8, 'sub_messages = [', 'return final_text or'),
+                                                 R(L8, 'print(f"\\n  [array] parent', 'print(f"  [tokens]')], rules=[
+        dict(on="prefix", pat=r"\[tool\] agent", seq=[(0, 'print(f"{tag}'), (0.5, 'if name == "agent"'), (1.0, 'return run_subagent'),
+                                                      (1.5, 'sub_messages = ['), (2.0, 'final_text = run_loop(sub_messages')]),
+        dict(on="prefix", pat=r"\[sub\] (?!d)\w", seq=[(0, 'tag = "    [sub]"')]),
+        dict(on="prefix", pat=r"\[sub\] done", seq=[(0, '[sub] done'), (0.6, 'return final_text or')]),
+        dict(on="prefix", pat=r"\[tool\] (?!a)\w", seq=[(0, 'print(f"{tag}')]),
+        dict(on="prefix", pat=r"assistant>", seq=NONE),
+        dict(on="prefix", pat=r"\[array\] parent", seq=[(0, '[array] parent')]),
+        dict(on="prefix", pat=r"\[tokens\]", seq=[(0, '[tokens]')]),
+    ]),
+})
+_L9_RANGES = [R(L9, 'READ_STATE[os.path.normpath(args["path"])] = os.stat(args["path"]).st_mtime_ns   # 수업 9\n'.strip(), 'human_edits(os.path'),
+              R(L9, 'print(f"  [human]'),
+              R(L9, 'def watch_files', 'remind(f"{path} changed'),
+              R(L9, '        watch_files()', 'drain_reminders_into(results)')]
+_L9_RULES = [
+    dict(on="prefix", pat=r"\[tool\] read_file", seq=[(0, 'READ_STATE[os.path.normpath'), (0.4, 'human_edits(os.path')]),
+    dict(on="prefix", pat=r"\[human\]", seq=[(0, '[human]')]),
+    dict(on="prefix", pat=r"\[tool\] (?!r)\w", seq=NONE),
+    dict(on="prefix", pat=r"assistant>", seq=NONE),
+]
+SPECS.update({
+    "l9-noreminder": dict(cols=96, file=L9, split=430, ranges=_L9_RANGES, rules=_L9_RULES + [
+        dict(on="prefix", pat=r"\[array\] 5", seq=[(0, '        watch_files()'), (0.5, 'st_mtime_ns != seen'), (1.0, 'if REMIND:')]),
+    ]),
+    "l9-reminder": dict(cols=96, file=L9, split=430, ranges=_L9_RANGES, rules=_L9_RULES + [
+        dict(on="prefix", pat=r"\[reminder\]", seq=[(0, 'st_mtime_ns != seen'), (0.4, '[reminder]'), (0.8, 'remind(f"{path}'), (1.3, 'drain_reminders_into(results)')]),
+    ]),
+    "l9-todo": dict(cols=96, file=L9, split=520, ranges=[R(L9, 'if name == "todo_write"', 'remind("Your current todo'),
+                                                R(L9, 'def drain_reminders_into', 'return blocks'),
+                                                R(L9, '        watch_files()', 'drain_reminders_into(results)')], rules=[
+        dict(on="prefix", pat=r"\[tool\] todo_write", seq=[(0, 'if name == "todo_write"'), (0.4, 'marks = {'), (0.8, 'print("  [todo]'),
+                                                           (1.3, 'remind("Your current'), (1.8, 'drain_reminders_into(results)')]),
+        dict(on="prefix", pat=r"\[tool\] (?!t)\w", seq=NONE),
+        dict(on="prefix", pat=r"assistant>", seq=NONE),
+    ]),
+    "l10-background": dict(cols=96, file=L10, split=420, ranges=[R(L10, 'proc = subprocess.Popen', 'stdout=subprocess.PIPE'),
+                                                        R(L10, 'code = proc.wait()'),
+                                                        R(L10, 'print(f"\\n  [bg]', 'f"Use task_output'),
+                                                        R(L10, 'if args.get("background")', 'return start_background'),
+                                                        R(L10, 'while not select.select', '                run_turn(messages)')], rules=[
+        dict(on="prefix", pat=r"you> ?", seq=[(0, 'while not select.select')]),
+        dict(on="prefix", pat=r"\[tool\] run_command", seq=[(0, 'if args.get("background")'), (0.4, 'return start_background')]),
+        dict(on="prefix", pat=r"\[bg\] started", seq=[(0, 'proc = subprocess.Popen'), (0.5, 'return start_background')]),
+        dict(on="prefix", pat=r"\[bg\] b\d finished", seq=[(0, 'code = proc.wait()'), (0.4, 'print(f"\\n  [bg]'), (0.8, 'remind(f"Background task')]),
+        dict(on="prefix", pat=r"\[harness\] notice", seq=[(0, 'if REMINDERS:'), (0.4, 'notice arrived'), (0.8, 'drain_reminders_into([])'), (1.2, 'run_turn(messages)')]),
+        dict(on="prefix", pat=r"\[tool\] (?!r)\w", seq=NONE),
+        dict(on="prefix", pat=r"assistant>", seq=NONE),
+    ]),
+})
+
 
 def code_rows(spec):
     rows = []
     for k, (a, z) in enumerate(spec["ranges"]):
         if k:
             rows.append((None, "⋯", False))
-        rows += [r for r in make.code_rows(spec["file"], a, z, cols=80) if not r[1].strip().startswith("# 수업")]
+        rows += [r for r in make.code_rows(spec["file"], a, z, cols=spec.get("cols", 80)) if not r[1].strip().startswith("# 수업")]
     return rows
 
 

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 410" width="904" height="410"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><rect x="0" y="0" width="440" height="300" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">피할 것</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">매 바퀴 "조심하세요"</text>
+<text x="26" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시계에 맞춘 알림</text>
+<text x="26" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델이 방금 한 일까지 알림</text>
+<rect x="464" y="0" width="440" height="300" rx="14" fill="#FFFFFF" stroke="#2F5D8A" stroke-width="4"/>
+<text x="490" y="54" font-size="32" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">할 것</text>
+<text x="490" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사건이 생겼을 때만</text>
+<text x="490" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">구체적인 사실만</text>
+<text x="490" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">늘 필요한 말은 시스템 프롬프트로</text>
+<text x="0" y="356" font-size="25" fill="#A23B3B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">제 첫 버전: 모델이 sed 로 고친 파일까지 '바뀌었다'고 알렸다</text>
+<text x="0" y="396" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 모델 자신이 바꾼 것은 알리지 않게 고쳤다</text></svg>

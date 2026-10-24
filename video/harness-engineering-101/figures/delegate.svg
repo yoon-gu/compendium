@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 470" width="904" height="470"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><rect x="0" y="0" width="440" height="400" rx="14" fill="#FFFFFF" stroke="#2F5D8A" stroke-width="4"/>
+<text x="26" y="54" font-size="32" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">맡길 일</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">무언가를 찾기</text>
+<text x="26" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">테스트 돌리고 실패만 요약</text>
+<text x="26" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">긴 문서에서 핵심 뽑기</text>
+<text x="26" y="256" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서로 독립인 여러 조각</text>
+<rect x="464" y="0" width="440" height="400" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="490" y="54" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">맡기지 말 일</text>
+<text x="490" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이 세션의 판단이 필요한 일</text>
+<text x="490" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">명령 하나면 끝날 일</text>
+<text x="490" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">줄줄이 이어지는 수정</text>
+<text x="452.0" y="450" font-size="30" fill="#2F5D8A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">읽을 건 많고, 남길 건 짧은 일</text></svg>

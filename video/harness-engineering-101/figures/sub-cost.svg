@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 576" width="904" height="576"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><text x="0" y="32" font-size="27" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">부모 배열 (bytes)</text>
+<text x="0" y="96" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">없이</text>
+<rect x="90" y="54" width="545.7974666666667" height="56" rx="6" fill="#ECECE8" stroke="#6B6B68" stroke-width="3"/>
+<text x="649.7974666666667" y="94" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">57,052</text>
+<text x="0" y="170" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">맡김</text>
+<rect x="90" y="128" width="368.4601666666667" height="56" rx="6" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="472.4601666666667" y="168" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">38,515</text>
+<text x="0" y="228" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">자식 배열 140,121 bytes 는 끝나고 버렸다</text>
+<text x="0" y="296" font-size="27" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">입력 토큰 합계</text>
+<text x="0" y="360" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">없이</text>
+<rect x="90" y="318" width="149.8878" height="56" rx="6" fill="#ECECE8" stroke="#6B6B68" stroke-width="3"/>
+<text x="253.8878" y="358" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">36,558</text>
+<text x="0" y="434" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">맡김</text>
+<rect x="90" y="392" width="552.7456" height="56" rx="6" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="656.7456" y="432" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">134,816</text>
+<text x="0" y="492" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">맡긴 판 = 부모 24,778 + 자식 110,038</text>
+<text x="0" y="556" font-size="30" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">돈은 더 든다. 사는 것은 부모의 작업 기억</text></svg>

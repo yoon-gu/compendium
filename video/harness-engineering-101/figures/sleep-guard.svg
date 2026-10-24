@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 416" width="904" height="416"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><text x="0" y="30" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델이 보낸 명령</text>
+<rect x="0" y="46" width="904" height="76" rx="10" fill="#1B1D21" stroke="#B9B9B4" stroke-width="0"/>
+<text x="22" y="94" font-size="26" fill="#C3E88D" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">run_command("sleep 30 &amp;&amp; cat result.txt")</text>
+<line x1="452.0" y1="132" x2="452.0" y2="178" stroke="#2F5D8A" stroke-width="4" marker-end="url(#a)"/>
+<text x="0" y="214" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">몸이 돌려주는 도구 결과</text>
+<rect x="0" y="230" width="904" height="110" rx="10" fill="#FBEFEF" stroke="#A23B3B" stroke-width="3"/>
+<text x="22" y="276" font-size="25" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">BLOCKED: don't wait in the foreground.</text>
+<text x="22" y="318" font-size="25" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">Use background=true and you'll be notified.</text>
+<text x="0" y="396" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">좋은 길을 쉬운 길로 만드는 건 몸의 몫 (위 명령은 예시)</text></svg>

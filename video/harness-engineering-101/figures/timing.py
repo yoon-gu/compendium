@@ -16,12 +16,12 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SLUG = HERE.parent.name
-sys.argv = ["build.py", SLUG, "--wide"] + [a for a in sys.argv[1:] if a.startswith("--voice=")]
+sys.argv = ["build.py", SLUG, "--wide"] + [a for a in sys.argv[1:] if a.startswith(("--voice=", "--script="))]
 import importlib.util  # noqa: E402
 spec = importlib.util.spec_from_file_location("build", HERE.parent.parent / "build.py")
 b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)
 
-ANIMS = ["array-grow", "loop", "cache", "errors"]
+ANIMS = ["array-grow", "loop", "cache", "errors", "pile", "subagent", "events"]
 # 코드 타이핑 클립: 나레이션의 단어가 들릴 때 어느 줄까지 쳐져 있어야 하는지. (단어 후보, 줄에 들어 있는 글자)
 CODE_RULES = {
     "code-l1": [(("빈 리스트", "리스트가"), "messages = json.load"), (("사용자가 치면", "치면"), "input("), (("리스트에 붙이고", "붙이고"), 'messages.append({"role": "user"'),
@@ -35,6 +35,16 @@ CODE_RULES = {
     "code-l6": [(("코드는 이렇게", "고쳤습니다"), "msgs = json.loads"), (("마지막 메시지", "메시지에도"), 'last["content"][-1]["cache_control"]'), (("뒤로 움직", "움직입니다"), '"cache_control": {"type": "ephemeral"}}],')],
     "code-l6-usage": [(("유시지", "usage"), 'u = reply.get("usage"'), (("캐시 리드", "cache_read"), "cache_read=")],
     "code-l6-bust": [(("현재 시각", "시각"), "Current time")],
+    "code-l7-truncate": [(("이만 자",), "MAX_RESULT_CHARS = 20_000"), (("트렁케이트",), "def truncate"), (("머리 만 자", "꼬리"), "keep = MAX_RESULT_CHARS"),
+                         (("저장", "파일로"), 'with open(path, "w")'), (("경로를", "통째로 읽지"), "note = ("), (("오프셋", "리밋"), "off, lim =")],
+    "code-l8-agent": [(("에이전트라는 도구", "도구를 하나"), "AGENT_TOOL = {"), (("배경을 다", "근거로"), "include all necessary background"),
+                      (("손자",), "SUB_TOOLS = BASE_TOOLS"), (("디스패치 표",), 'if name == "agent"'), (("런 서브에이전트",), "def run_subagent"),
+                      (("새 배열",), "sub_messages = ["), (("마지막 글만",), "return final_text or")],
+    "code-l9-queue": [(("리마인더스",), "REMINDERS = []"), (("리마인드 함수",), "def remind"), (("드레인",), "while REMINDERS"),
+                      (("파일 감시", "수정 시각"), "def watch_files"), (("달라졌으면", "다시 읽으라고"), 'remind(f"{path} changed'), (("바퀴가 끝나", "도구 결과를 붙일"), "        watch_files()")],
+    "code-l10-bg": [(("백그라운드 플래그",), "def start_background"), (("띄워 놓고", "비 원"), "proc = subprocess.Popen"), (("스레드",), "def pump"),
+                    (("리마인드를",), 'remind(f"Background task'), (("태스크 아웃풋",), 'return f"started background'), (("슬립",), 'if args.get("background")'),
+                    (("입력을 기다리는",), "while not select.select"), (("몸이 먼저",), "                run_turn(messages)")],
 }
 # 터미널 클립: 나레이션의 단어가 들릴 때 기록의 어느 줄이 찍혀 있어야 하는지. (단어 후보, 출력 정규식, n번째 일치)
 TERM_RULES = {
@@ -52,6 +62,21 @@ TERM_RULES = {
                   (("다시 씁", "씁니다"), r"\[tool\] write_file", 2), (("열두", "12번", "12"), r"모두 성공", 1)],
     "l6-cache": [(("첫 바퀴", "첫", "0입니다"), r"\[usage\]", 1), (("육백삼십삼", "633"), r"cache_read=633", 1), (("천육십팔", "1068", "1,068"), r"cache_read=1068", 1),
                  (("천칠백육십팔", "1768", "1,768"), r"cache_read=1768", 1), (("이천이백오십사", "2254", "2,254"), r"cache_read=2254", 1)],
+    "l7-whole": [(("통째로 읽고", "읽고 왜"), r"\[tool\] read_file", 1), (("이백삼십삼만",), r"2,331,535 bytes", 1), (("거절", "사백"), r"HTTP 400", 1)],
+    "l7-truncate": [(("이만 바이트",), r"20,873 bytes", 1), (("잘렸다", "잘렸"), r"assistant> 로그가", 1), (("그렙으로", "저장 파일에서"), r"\[tool\] run_command", 1),
+                    (("원인을 찾아", "페이저 유틸즈"), r"assistant> 빌드가", 1)],
+    "l7-silent": [(("머리와 꼬리는",), r"\[tool\] read_file", 1), (("특정할 수 없다", "결론"), r"assistant> 로그만으로는", 1)],
+    "l8-noagent": [(("그렙으로 후보", "직접"), r"\[tool\] run_command", 1), (("잘리기도", "길어"), r"assistant> 출력이 길어서", 1),
+                   (("오만 칠천",), r"\[array\] parent", 1)],
+    "l8-agent": [(("한 번 부르고", "에이전트 도구를"), r"\[tool\] agent", 1), (("섭 줄", "따로 그렙"), r"\[sub\] run_command", 2),
+                 (("십사만",), r"\[sub\] done", 1), (("삼만 팔천",), r"\[array\] parent", 1)],
+    "l9-noreminder": [(("휴먼 줄", "그 순간"), r"\[human\]", 1), (("통째로 다시",), r"\[tool\] write_file", 1), (("둘뿐",), r"13:def get_page", 1)],
+    "l9-reminder": [(("함수를 더합니다", "더합니다"), r"\[human\]", 1), (("리마인더 줄", "바뀌었다"), r"\[reminder\]", 1),
+                    (("다시 읽은",), r"\[tool\] read_file", 2), (("셋이 있습니다", "셋"), r"19:def page_range", 1)],
+    "l9-todo": [(("목록을 쓰면",), r"\[todo\]", 1), (("체크 상자",), r"\[todo\]", 2), (("여기까지 확인",), r"\[todo\]", 3)],
+    "l10-background": [(("파이썬이라는", "곧바로 실패"), r"b1 finished", 1), (("파이썬 쓰리로",), r"\[bg\] started b2", 1),
+                       (("차례를 끝냅니다", "구 초"), r"assistant> README 오타 수정은", 1), (("삼십육 초", "스스로"), r"\[harness\] notice", 1),
+                       (("실패했다고",), r"assistant> 느린 테스트가", 1)],
     "l6-cachebust": [(("끝까지",), r"\[usage\]", 1), (("육백사십사", "644"), r"cache_write=644", 1), (("천백사십육", "1146", "1,146"), r"cache_write=1146", 1),
                      (("천오백오십오", "1555", "1,555"), r"cache_write=1555", 1), (("이천백오", "2105", "2110", "2,105"), r"cache_write=2105", 1), (("이천육백사십팔", "2648", "2,648"), r"cache_write=2648", 1)],
 }
@@ -126,6 +151,29 @@ def RULES(name, words, pauses, speech_end, dur):
     if name == "errors":       # 정직한 줄 → 삼킨 줄 → 결론('체크포인트')
         tc = first(words, "체크포인트", "체크") or speech_end * 0.7
         return [0.5, round((0.5 + tc) / 2, 2), round(tc - 0.1, 2)]
+    if name == "pile":         # 바퀴 다섯을 '바퀴'부터 말 끝까지 고르게
+        t0 = first(words, "바퀴") or 1.0
+        return spread(max(0.5, t0 - 0.3), speech_end - 1.0, 5)
+    if name == "subagent":     # 부모가 부름 → 자식 배열 → 보고 → 버림 → 부모 계속
+        ta = first(words, "문자열로", "건네면") or speech_end * 0.35
+        tb = first(words, "빈 배열", "똑같이") or ta + 2.0
+        tc = first(words, "마지막 답", "돌아오고") or tb + 3.0
+        td = first(words, "버려집니다", "버려") or tc + 2.0
+        te = first(words, "깨끗하게") or td + 2.0
+        out = [round(max(0.4, ta - 0.3), 2)]
+        for v in (tb, tc, td, te):
+            out.append(round(max(v - 0.3, out[-1] + 0.6), 2))
+        return out
+    if name == "events":       # 사건 넷 → 지킬 것
+        keys = [("엔터",), ("작업이 끝났을", "작업이"), ("파일이 바뀌었을", "파일이"), ("시각이", "알람")]
+        out = []
+        for k in keys:
+            v = first(words, *k)
+            v = v - 0.3 if v else (out[-1] + 2.0 if out else 0.8)
+            out.append(round(max(v, out[-1] + 0.6) if out else max(v, 0.4), 2))
+        tr = first(words, "돈이", "지킬") or speech_end * 0.8
+        out.append(round(max(tr - 0.3, out[-1] + 0.6), 2))
+        return out
     raise KeyError(name)
 
 

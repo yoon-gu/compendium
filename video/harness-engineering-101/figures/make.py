@@ -232,8 +232,42 @@ CODE_SPECS = {   # 이름: (파일, 시작 줄, 끝 줄) — SVG(make.py)와 타
     "code-l6-usage": (l6, find_line(l6, "u = reply.get"), find_line(l6, "return reply")),
     "code-l6-bust": (l6b, find_line(l6b, "SYSTEM_TEXT"), find_line(l6b, "SYSTEM_TEXT")),
 }
-for name, (path, a, z) in CODE_SPECS.items():
-    figs[name] = code(path, a, z)
+# 2편: 값이 (파일, [(시작, 끝), …]) 면 여러 구간을 '⋯' 줄로 이어 붙인다
+_l7t = LAB / "lessons/l7_truncate.py"; _l8 = LAB / "lessons/l8_subagents.py"; _l9 = LAB / "lessons/l9_reminders.py"; _l10 = LAB / "lessons/l10_background.py"
+
+
+def _r(path, a, b=None):
+    return (find_line(path, a), find_line(path, b) if b else find_line(path, a))
+
+
+CODE_SPECS.update({
+    "code-l7-truncate": (_l7t, [_r(_l7t, "MAX_RESULT_CHARS = 20_000"), _r(_l7t, "def truncate", "return text[:keep] + note"),
+                                _r(_l7t, "off, lim =", 'return truncate("".join')]),
+    "code-l8-agent": (_l8, [_r(_l8, "AGENT_TOOL = {", "SUB_TOOLS = BASE_TOOLS"), _r(_l8, 'if name == "agent"', "return run_subagent"),
+                            _r(_l8, "def run_subagent", "return final_text or")]),
+    "code-l9-queue": (_l9, [_r(_l9, "REMINDERS = []"), _r(_l9, "def remind", "def drain_reminders_into"), _r(_l9, "    while REMINDERS:", "    return blocks"),
+                            _r(_l9, "def watch_files", 'remind(f"{path} changed'), _r(_l9, "        watch_files()", "drain_reminders_into(results)")]),
+    "code-l10-bg": (_l10, [_r(_l10, "def start_background", 'return f"started background'), _r(_l10, 'if args.get("background")', "return start_background"),
+                           _r(_l10, "while not select.select", "                run_turn(messages)")]),
+})
+
+
+def spec_rows(name, cols=72):
+    path, *rest = CODE_SPECS[name]
+    ranges = rest[0] if isinstance(rest[0], list) else [tuple(rest)]
+    if isinstance(rest[0], list):
+        cols = 80                                   # 2편 클립은 한 줄 80칸
+    rows = []
+    for k, (a, z) in enumerate(ranges):
+        if k:
+            rows.append((None, "⋯", False))
+        rows += code_rows(path, a, z, cols=cols)
+    return rows
+
+
+for name, (path, *rest) in CODE_SPECS.items():
+    if not isinstance(rest[0], list):
+        figs[name] = code(path, *rest)
 sj = LAB / "runs/l1-session-edited.json"
 # 수업 1 앞: 실제 요청·응답 한 쌍(하이쿠). 응답은 핵심 키만 추려 짧게
 _req = json.load(open(LAB / "runs/l1-request.json", encoding="utf-8")); _res = json.load(open(LAB / "runs/l1-response.json", encoding="utf-8"))

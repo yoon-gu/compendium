@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 596" width="904" height="596"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><text x="0" y="32" font-size="28" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">압축 (compaction)</text>
+<rect x="0" y="52" width="120" height="70" rx="8" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="60" y="96" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">system</text>
+<rect x="128" y="52" width="470" height="70" rx="8" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="363" y="96" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">오래된 바퀴들 (길다)</text>
+<rect x="606" y="52" width="298" height="70" rx="8" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="755" y="96" font-size="24" fill="#2F5D8A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">최근 몇 바퀴</text>
+<line x1="363" y1="130" x2="363" y2="178" stroke="#2F5D8A" stroke-width="4" marker-end="url(#a)"/>
+<rect x="0" y="186" width="120" height="70" rx="8" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="60" y="230" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">system</text>
+<rect x="128" y="186" width="200" height="70" rx="8" fill="#EDF5EF" stroke="#3C7A4A" stroke-width="3"/>
+<text x="228" y="230" font-size="23" fill="#3C7A4A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">요약 한 덩어리</text>
+<rect x="336" y="186" width="298" height="70" rx="8" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="485" y="230" font-size="24" fill="#2F5D8A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">최근 몇 바퀴</text>
+<text x="0" y="300" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">요약 지시: 지금 상태 · 정한 것 · 만진 파일 · 남은 일</text>
+<text x="0" y="376" font-size="28" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">메모리 파일</text>
+<rect x="0" y="396" width="430" height="190" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="450" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">배열 = RAM</text>
+<text x="26" y="502" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">세션이 끝나면 비워진다</text>
+<rect x="474" y="396" width="430" height="190" rx="14" fill="#FFFFFF" stroke="#2F5D8A" stroke-width="4"/>
+<text x="500" y="450" font-size="28" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">파일 = 디스크</text>
+<text x="500" y="502" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시작할 때 넣어 준다</text>
+<text x="500" y="552" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">빌드 명령·규칙 등</text></svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 490" width="904" height="490"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><text x="0" y="32" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">거절된 배열의 덩어리별 토큰 (총 1,267,285)</text>
+<text x="0" y="90" font-size="27" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시스템 + 도구 정의</text>
+<rect x="0" y="108" width="6" height="56" rx="6" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="22" y="146" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">약 600 토큰</text>
+<text x="0" y="220" font-size="27" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사용자 질문</text>
+<rect x="0" y="238" width="6" height="56" rx="6" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="22" y="276" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수십 토큰</text>
+<text x="0" y="350" font-size="27" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">도구 결과 하나 (build.log)</text>
+<rect x="0" y="368" width="904" height="56" rx="6" fill="#FBEFEF" stroke="#A23B3B" stroke-width="3"/>
+<text x="884" y="406" font-size="26" fill="#A23B3B" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">약 1,266,600 토큰 → 화면 밖으로</text>
+<text x="0" y="470" font-size="30" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예산을 먹는 건 말이 아니라 도구 결과</text></svg>

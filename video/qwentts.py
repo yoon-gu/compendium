@@ -45,7 +45,7 @@ def longest_gap(wav, sr, thr=0.02, win=0.05):
         cur = 0 if v else cur + 1; best = max(best, cur)
     return best * win
 
-sys.argv = ["build.py", slug, f"--voice={voice}"]   # build.py 는 import 할 때 sys.argv 를 읽는다
+sys.argv = ["build.py", slug, f"--voice={voice}"] + [a for a in sys.argv[1:] if a.startswith("--script=")]   # build.py 는 import 할 때 sys.argv 를 읽는다
 import importlib.util  # noqa: E402
 spec = importlib.util.spec_from_file_location("build", HERE / "build.py")
 b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)

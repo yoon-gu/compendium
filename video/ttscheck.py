@@ -21,7 +21,7 @@ opt = {a.split("=", 1)[0]: a.split("=", 1)[1] for a in sys.argv[1:] if a.startsw
 voice = opt.get("--voice", "진우")
 threshold = float(opt.get("--min", "0.75"))
 delete = "--delete" in sys.argv
-sys.argv = ["build.py", slug, f"--voice={voice}"]
+sys.argv = ["build.py", slug, f"--voice={voice}"] + [a for a in sys.argv[1:] if a.startswith("--script=")]
 import importlib.util  # noqa: E402
 spec = importlib.util.spec_from_file_location("build", HERE / "build.py")
 b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 434" width="904" height="434"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><text x="18" y="32" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수업</text>
+<text x="248" y="32" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">무너지는 것</text>
+<text x="608" y="32" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고치는 법</text>
+<rect x="0" y="50" width="904" height="86" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="18" y="102.0" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">7 예산</text>
+<text x="248" y="102.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">배열이 차서 호출이 거절된다</text>
+<text x="608" y="102.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">자르고, 잘랐다고 말한다</text>
+<rect x="0" y="146" width="904" height="86" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="18" y="198.0" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">8 서브에이전트</text>
+<text x="248" y="198.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">탐색 기록이 배열에 남는다</text>
+<text x="608" y="198.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">빈 배열에 맡긴다</text>
+<rect x="0" y="242" width="904" height="86" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="18" y="294.0" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">9 리마인더</text>
+<text x="248" y="294.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">바뀐 세상·계획을 놓친다</text>
+<text x="608" y="294.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">맨 아래에 알림을 붙인다</text>
+<rect x="0" y="338" width="904" height="86" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="18" y="390.0" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">10 백그라운드</text>
+<text x="248" y="390.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">느린 명령 앞에서 멈춘다</text>
+<text x="608" y="390.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">몸이 기다리고 깨운다</text></svg>

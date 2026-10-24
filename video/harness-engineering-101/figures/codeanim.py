@@ -90,8 +90,7 @@ def keys_wav(rows, starts, ends, total, dest, sr=24000):
 
 
 def render(name):
-    path, start, end = make.CODE_SPECS[name]
-    rows = make.code_rows(path, start, end)
+    rows = make.spec_rows(name)
     ends, total, anchors = schedule(rows, name)
     starts = [LEAD] + ends[:-1]
     keys_wav(rows, starts, ends, total, HERE / f"{name}-keys.wav")

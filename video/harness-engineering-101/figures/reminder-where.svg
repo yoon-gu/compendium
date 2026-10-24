@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 480" width="904" height="480"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><rect x="0" y="0" width="904" height="72" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="22" y="46" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">system</text>
+<text x="190" y="46" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">캐시가 붙어 고정 — 고치면 아래 전부 다시</text>
+<rect x="0" y="86" width="904" height="72" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="22" y="132" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">user</text>
+<text x="190" y="132" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">pager.py에 타입 힌트를 달아 줘.</text>
+<rect x="0" y="172" width="904" height="72" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="22" y="218" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">assistant</text>
+<text x="190" y="218" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">tool_use: read_file(pager.py)</text>
+<rect x="0" y="258" width="904" height="72" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="22" y="304" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">user</text>
+<text x="190" y="304" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">tool_result: (파일 내용)</text>
+<rect x="0" y="344" width="904" height="72" rx="10" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="4"/>
+<text x="22" y="390" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve"></text>
+<text x="22" y="390" font-size="25" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">+ &lt;system-reminder&gt; pager.py changed on disk …</text>
+<text x="0" y="464" font-size="28" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">새 소식은 언제나 맨 아래, 사용자 쪽 메시지 끝에</text></svg>
