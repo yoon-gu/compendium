@@ -23,8 +23,8 @@ W, H, FPS = 1808, 1016, 25
 PAD, LH, BAR = 44, 60, 64           # 여백, 줄 높이, 창 제목 줄 높이(macOS 터미널처럼 신호등 셋 + 제목)
 COLS = 68                           # 한 줄 글자 수(한글은 2칸). 904px 로 줄어도 읽히게 크게
 BG, FG, DIM, PROMPT, ASSIST, TOOL, USAGE, ERR = "#1B1D21", "#E6E6E3", "#8A8D93", "#8FD3A0", "#F2E2A0", "#9CC7F5", "#F0A9A9", "#F0A9A9"
-FONT = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Regular.ttf"), 40)
-FONT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Bold.ttf"), 40)
+FONT = ImageFont.truetype(str(Path.home() / "Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc"), 40, index=0)
+FONT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc"), 40, index=1)
 FONT_T = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothic-Regular.ttf"), 26)
 TYPE_SEC, MAX_GAP, TAIL = 0.04, 1.2, 2.5
 LEAD = 1.5                          # 기준 줄은 나레이션이 그 말을 하기 이 만큼 앞서 찍힌다 — 모델 답이 다 뜬 뒤에 설명이 들리게

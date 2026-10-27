@@ -5,5 +5,5 @@
 <text x="521.2" y="126" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">앞쪽을 덜 챙긴다 (열화)</text>
 <text x="0" y="236" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">넘치면?</text>
 <rect x="0" y="260" width="904" height="110" rx="10" fill="#FBEFEF" stroke="#A23B3B" stroke-width="3"/>
-<text x="24" y="326" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">HTTP 400: prompt is too long</text>
+<text x="24" y="326" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">HTTP 400: prompt is too long</text>
 <text x="0" y="430" font-size="30" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">가방처럼 던져 넣지 말고, 예산처럼 쓴다</text></svg>

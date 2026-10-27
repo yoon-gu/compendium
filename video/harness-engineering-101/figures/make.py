@@ -6,7 +6,7 @@ from pathlib import Path
 
 INK, TXT, GRAY, LINE, FILL, SOFT, BAD, OK = "#2F5D8A", "#141414", "#6B6B68", "#B9B9B4", "#FFFFFF", "#ECECE8", "#A23B3B", "#3C7A4A"
 F = 'font-family="NanumGothic, Nanum Gothic, sans-serif"'
-MONO = 'font-family="NanumGothicCoding, monospace"'
+MONO = 'font-family="D2Coding, NanumGothicCoding, monospace"'
 W = 904
 
 

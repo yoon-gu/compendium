@@ -27,11 +27,11 @@ import terminal as T  # noqa: E402
 W, H, FPS = T.W, T.H, T.FPS
 TPAD, TLH, TBAR, TCOLS = 28, 50, 48, 88            # 2026-10-28: 화면에서 글자가 작다는 의견 → 30px → 38px
 SPLIT, CLH = 520, 44                             # 위 터미널 / 아래 코드 경계, 코드 줄 높이(넘치면 지금 줄을 따라 스크롤)
-FT = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Regular.ttf"), 38)
-FT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Bold.ttf"), 38)
+FT = ImageFont.truetype(str(Path.home() / "Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc"), 38, index=0)
+FT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc"), 38, index=1)
 FT_T = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothic-Regular.ttf"), 22)
-FC = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Regular.ttf"), 34)
-FC_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Bold.ttf"), 34)
+FC = ImageFont.truetype(str(Path.home() / "Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc"), 34, index=0)
+FC_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc"), 34, index=1)
 CODE_BG, CODE_NUM, CUR_BAR, DOTS = "#1B1D21", "#6B6F76", "#8FB4DC", "#4A4F58"
 L1, L3, L4, L5, L6, L6B = make.l1, make.l3, make.l4, make.l5, make.l6, make.l6b
 

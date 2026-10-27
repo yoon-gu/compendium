@@ -25,8 +25,8 @@ import make  # noqa: E402  (import 만으로는 SVG 를 쓰지 않는다)
 W, H, FPS = 1808, 1016, 25
 PAD, LH, SIZE, ROWS_VISIBLE = 40, 60, 40, 15
 BG, NUM, HL = "#1B1D21", "#6B6F76", (0x2F, 0x5D, 0x8A, 90)
-FONT = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Regular.ttf"), SIZE)
-FONT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Bold.ttf"), SIZE)
+FONT = ImageFont.truetype(str(Path.home() / "Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc"), SIZE, index=0)
+FONT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc"), SIZE, index=1)
 TYPE_SEC, LEAD, TAIL = 0.03, 0.3, 1.0
 
 

@@ -28,8 +28,9 @@ FONTS = Path.home() / "Library/Fonts"
 for f in ["NanumGothic-Regular.ttf", "NanumGothic-Bold.ttf", "NanumGothic-ExtraBold.ttf", "NanumGothicCoding-Regular.ttf", "NanumGothicCoding-Bold.ttf"]:
     if (FONTS / f).exists():
         font_manager.fontManager.addfont(str(FONTS / f))
+font_manager.fontManager.addfont(str(FONTS / "D2Coding-Ver1.3.2-20180524-all.ttc"))   # 코드 글꼴(D2Coding)
 plt.rcParams.update({"font.family": ["NanumGothic", "DejaVu Sans"], "axes.unicode_minus": False})
-MONO = "NanumGothicCoding"
+MONO = "D2Coding"
 
 W, H, FPS = 1808, 1016, 25        # 가로판 클립 자리(904x508)의 꼭 두 배. 캔버스가 1px 깎이면 아래서 종이색으로 채운다
 PAPER, INK, TXT, GRAY, LINE, SOFT, BAD, OK, TINT = "#F4F4F1", "#2F5D8A", "#141414", "#6B6B68", "#B9B9B4", "#E4E4DF", "#A23B3B", "#3C7A4A", "#E7EEF5"
