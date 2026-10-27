@@ -72,11 +72,13 @@ def keys_wav(rows, starts, ends, total, dest, sr=24000, step=0.09):
     t_click = np.arange(int(0.028 * sr)) / sr
     click = (rng.standard_normal(len(t_click)) * 0.6 + np.sin(2 * np.pi * 2200 * t_click) * 0.4) * np.exp(-t_click / 0.004) * 0.25
     out = np.zeros(int(total * sr) + sr, dtype=np.float32)
+    last = -step                                                  # 박자는 줄을 넘어 이어서 센다(줄이 바뀌어도 간격이 같게)
     for (no, txt, hl), a, z in zip(rows, starts, ends):
         if not txt.strip():
             continue
-        t = a
+        t = max(a, last + step)
         while t < z:
+            last = t
             i = int(t * sr)
             out[i:i + len(click)] += click[:len(out) - i]
             t += step

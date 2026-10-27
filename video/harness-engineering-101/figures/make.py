@@ -125,6 +125,27 @@ b.append(text(24, 340, "맨 위에 'Current time: 09:52:17' 한 줄을 넣으면
 b.append(text(24, 390, "요청마다 첫 바이트부터 달라진다 → 전부 제값 → cache_read=0", 28, BAD))
 figs["prefix"] = svg(460, "\n".join(b))
 
+# ---------- 수업 3 과 수업 4: 무엇이 달라지나 ----------
+def _row(y, title, steps, back):
+    out = [text(0, y + 30, title, 28, INK, weight="bold")]
+    x, w = 0, 196
+    for i, (s_, acc) in enumerate(steps):
+        out.append(rect(x, y + 50, w, 80, INK if acc else LINE, "#E7EEF5" if acc else "#FFFFFF", 4 if acc else 3, 12))
+        out.append(text(x + w / 2, y + 100, s_, 26, INK if acc else TXT, "middle", "bold" if acc else "normal"))
+        if i < len(steps) - 1:
+            out.append(arrow(x + w + 4, y + 90, x + w + 32, y + 90))
+        x += w + 36
+    if back:
+        out.append(f'<path d="M {x - 36 - w / 2} {y + 134} L {x - 36 - w / 2} {y + 172} L {w / 2} {y + 172} L {w / 2} {y + 140}" fill="none" stroke="{INK}" stroke-width="4" marker-end="url(#a)"/>')
+        out.append(text(W / 2, y + 206, back, 25, GRAY, "middle"))
+    return out
+
+
+b = _row(0, "수업 3: 도구 한 번 → 사람에게", [("모델 부르기", False), ("도구 한 번", False), ("사람에게", False), ("엔터 기다림", False)], "")
+b += _row(190, "수업 4: 다 했다고 할 때까지 되풀이", [("모델 부르기", True), ("도구 실행", True), ("결과 붙이기", True), ("다시 부르기", True)],
+          "tool_use 가 아니면(= 더 부탁할 도구 없음) 루프를 나가 사람에게")
+figs["v2-v3"] = svg(420, "\n".join(b))
+
 # ---------- 뇌와 몸 (정지판) ----------
 b = [box(0, 60, 300, 260, "뇌 = 모델", ["글자를 받아", "글자를 낸다", "그뿐"], False),
      box(604, 60, 300, 260, "몸 = 하니스", ["배열을 짠다", "도구를 돌린다", "결과를 붙인다"], True),
@@ -279,6 +300,7 @@ _pair.write_text("# 요청 (POST /v1/messages)\n" + json.dumps(_req, ensure_asci
 figs["request-response"] = code(_pair, 1, len(_pair.read_text(encoding="utf-8").splitlines()), hl_substr=('"role"', '"stop_reason"', '"usage"'), cols=60)
 figs["session-json"] = code(sj, 1, len(sj.read_text(encoding="utf-8").splitlines()), hl_substr=("홍길동",), cols=60)
 if __name__ == "__main__":
-    for name in list(CODE_SPECS) + ["session-json", "request-response"]:
-        (HERE / f"{name}.svg").write_text(figs[name], encoding="utf-8")
+    for name in list(CODE_SPECS) + ["session-json", "request-response", "v2-v3"]:
+        if name in figs:
+            (HERE / f"{name}.svg").write_text(figs[name], encoding="utf-8")
         print(name)
