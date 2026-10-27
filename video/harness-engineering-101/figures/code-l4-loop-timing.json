@@ -1,1 +1,1 @@
-{"duration": 41.11, "marks": [{"t": 5.7, "line": "for _ in range"}, {"t": 9.9, "line": "reply = call_llm"}, {"t": 21.74, "line": "block[\"type\"] == \"tool_use\""}]}
+{"duration": 35.75, "marks": [{"t": 5.46, "line": "for _ in range"}, {"t": 9.02, "line": "reply = call_llm"}, {"t": 10.1, "line": "\"role\": \"assistant\""}, {"t": 14.64, "line": "stop_reason"}, {"t": 18.64, "line": "block[\"type\"] == \"tool_use\""}, {"t": 21.12, "line": "\"role\": \"user\", \"content\": results"}]}

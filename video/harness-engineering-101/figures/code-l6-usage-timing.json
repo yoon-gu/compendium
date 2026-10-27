@@ -1,1 +1,1 @@
-{"duration": 18.48, "marks": [{"t": 0.16, "line": "u = reply.get(\"usage\""}, {"t": 0.98, "line": "cache_read="}]}
+{"duration": 14.3, "marks": [{"t": 0.28, "line": "u = reply.get(\"usage\""}, {"t": 1.18, "line": "cache_read="}]}
