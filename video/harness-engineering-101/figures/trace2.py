@@ -25,11 +25,13 @@ import make  # noqa: E402
 import terminal as T  # noqa: E402
 
 W, H, FPS = T.W, T.H, T.FPS
-TPAD, TLH, TBAR, TCOLS = 28, 44, 48, 100
-FT = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Regular.ttf"), 30)
-FT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Bold.ttf"), 30)
+TPAD, TLH, TBAR, TCOLS = 28, 50, 48, 88            # 2026-10-28: 화면에서 글자가 작다는 의견 → 30px → 38px
+SPLIT, CLH = 520, 44                             # 위 터미널 / 아래 코드 경계, 코드 줄 높이(넘치면 지금 줄을 따라 스크롤)
+FT = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Regular.ttf"), 38)
+FT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Bold.ttf"), 38)
 FT_T = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothic-Regular.ttf"), 22)
-FC, FC_B = FT, FT_B
+FC = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Regular.ttf"), 34)
+FC_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothicCoding-Bold.ttf"), 34)
 CODE_BG, CODE_NUM, CUR_BAR, DOTS = "#1B1D21", "#6B6F76", "#8FB4DC", "#4A4F58"
 L1, L3, L4, L5, L6, L6B = make.l1, make.l3, make.l4, make.l5, make.l6, make.l6b
 
@@ -248,8 +250,8 @@ def wrap(line, cols):
 def render(name):
     spec = SPECS[name]
     rows = code_rows(spec)
-    split = spec["split"]
-    clh = max(30, min(36, (H - split - 24) // len(rows)))
+    split, clh = SPLIT, CLH
+    vis = (H - split - 16) // clh                   # 한 번에 보이는 코드 줄 수
     ev, total = T.events(name, 1.0)
     ev, total = T.warp(ev, total, name)
     marks = line_marks(ev, spec, rows)
@@ -282,16 +284,19 @@ def render(name):
             col, font = T.color_of(ln)
             d.text((TPAD, top + r * TLH), ln, fill=col, font=FT_B if font is T.FONT_B else FT)
         if int(t * 2) % 2 == 0 and shown:
-            x = TPAD + sum(T.width(c) for c in shown[-1]) * 16.5
-            d.rectangle([x + 3, top + (len(shown) - 1) * TLH + 6, x + 18, top + (len(shown) - 1) * TLH + 38], fill=T.FG)
+            x = TPAD + sum(T.width(c) for c in shown[-1]) * FT.getlength("a")
+            d.rectangle([x + 3, top + (len(shown) - 1) * TLH + 6, x + 21, top + (len(shown) - 1) * TLH + 44], fill=T.FG)
         # ---- 아래: 코드 발췌, 지금 출력을 만든 줄만 밝게
         cur_row = next((ln for mt, ln in reversed(marks) if mt <= t), -1)
         d.rectangle([0, split + 8, W, H], fill=CODE_BG)
-        ctop = split + 8 + (H - split - 8 - len(rows) * clh) // 2
+        first = min(max(0, cur_row - vis // 2), max(0, len(rows) - vis))   # 지금 줄이 가운데 오게
+        ctop = split + 16 + max(0, (H - split - 16 - min(vis, len(rows)) * clh) // 2)
         for r, (no, txt, _) in enumerate(rows):
-            y = ctop + r * clh
+            if not first <= r < first + vis:
+                continue
+            y = ctop + (r - first) * clh
             if txt == "⋯":
-                d.text((TPAD + 90, y - 4), "⋯", fill=DOTS, font=FC)
+                d.text((TPAD + 100, y - 4), "⋯", fill=DOTS, font=FC)
                 continue
             if r == cur_row:
                 d.rectangle([12, y - 2, W - 12, y + clh - 4], fill=(0x8F, 0xB4, 0xDC, 56))
@@ -299,7 +304,7 @@ def render(name):
             dim = cur_row >= 0 and r != cur_row
             if no is not None:
                 d.text((TPAD, y), f"{no:3d}", fill=CODE_NUM if dim else "#E6E6E3", font=FC)
-            x0 = x = TPAD + 90
+            x0 = x = TPAD + 100
             done = ""
             for tok, col in make.tokens(txt):
                 c = tuple(int(int(col[j:j + 2], 16) * 0.45) for j in (1, 3, 5)) if dim else col
