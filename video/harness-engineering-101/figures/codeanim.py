@@ -64,25 +64,22 @@ def schedule(rows, name):
     return [f(cum[i + 1]) for i in range(len(rows))], d["duration"], anchors
 
 
-def keys_wav(rows, starts, ends, total, dest, sr=24000):
-    """글자마다 클릭 하나. 띄어쓰기는 낮고 둔한 소리(스페이스바), 나머지는 짧은 노이즈 버스트. 세기·높이를 조금씩 흔든다."""
+def keys_wav(rows, starts, ends, total, dest, sr=24000, step=0.09):
+    """타자 소리: 줄이 쳐지는 동안 step 초마다 같은 클릭 하나. 간격·세기·소리가 일정하다(타자 빠르기와 무관)."""
     import wave
     import numpy as np
     rng = np.random.default_rng(3)
-    out = np.zeros(int(total * sr) + sr, dtype=np.float32)
     t_click = np.arange(int(0.028 * sr)) / sr
+    click = (rng.standard_normal(len(t_click)) * 0.6 + np.sin(2 * np.pi * 2200 * t_click) * 0.4) * np.exp(-t_click / 0.004) * 0.25
+    out = np.zeros(int(total * sr) + sr, dtype=np.float32)
     for (no, txt, hl), a, z in zip(rows, starts, ends):
-        n = max(len(txt), 1)
-        for k, ch in enumerate(txt):
-            t = a + (z - a) * (k + 0.5) / n
+        if not txt.strip():
+            continue
+        t = a
+        while t < z:
             i = int(t * sr)
-            if ch == " ":
-                burst = np.sin(2 * np.pi * 110 * t_click) * np.exp(-t_click / 0.008) * 0.5
-            else:
-                tone = 1800 + rng.uniform(-500, 900)
-                burst = (rng.standard_normal(len(t_click)) * 0.6 + np.sin(2 * np.pi * tone * t_click) * 0.4) * np.exp(-t_click / 0.004)
-            burst *= rng.uniform(0.18, 0.32)
-            out[i:i + len(burst)] += burst[:len(out) - i]
+            out[i:i + len(click)] += click[:len(out) - i]
+            t += step
     out = np.clip(out, -1, 1)
     with wave.open(str(dest), "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)
@@ -149,7 +146,15 @@ def render(name):
     print(f"{out.name}: {n} 프레임, {total:.1f}초, 줄 {len(rows)}개")
 
 
+def keys_only(name):
+    """영상은 그대로 두고 타자 소리(code-<이름>-keys.wav)만 다시 만든다."""
+    rows = make.spec_rows(name)
+    ends, total, _ = schedule(rows, name)
+    keys_wav(rows, [LEAD] + ends[:-1], ends, total, HERE / f"{name}-keys.wav")
+    print(f"{name}-keys.wav")
+
+
 if __name__ == "__main__":
     names = [a for a in sys.argv[1:] if not a.startswith("--")] or list(make.CODE_SPECS)
     for nm in names:
-        render(nm)
+        keys_only(nm) if "--keys-only" in sys.argv else render(nm)
