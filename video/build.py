@@ -276,6 +276,12 @@ h1 { font-size: 72px; } .long h1 { font-size: 60px; } .cover h1 { font-size: 84p
 .math { font-size: 36px; }
 .abbr { bottom: 70px; }
 .sec { top: 195px; }
+/* 실습 화면(터미널·코드 클립)은 오른쪽 단을 넓힌다: 500 + 64 + 1164 = 1728 */
+.big .col1 { width: 500px; gap: 26px; }
+.big .col2 { width: 1164px; }
+.big .clip { width: 1164px; height: 654px; }
+.big h1 { font-size: 56px; } .big.long h1 { font-size: 48px; }
+.big .sup { font-size: 29px; line-height: 1.45; }
 .src { max-width: 1400px; }
 """ if WIDE else "") + f"""
 .pg {{ position: absolute; right: 96px; top: 150px; font-size: 30px; line-height: 1.5; color: #6B6B68; font-variant-numeric: tabular-nums; }}
@@ -326,6 +332,8 @@ def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1,
         else:
             parts.append(f"<p class=sup>{inline(ln)}</p>")
     cls = f"f b{(page - 1) % 6}" + (" cover" if cover else "") + (" long" if len(re.sub(r"\*", "", head)) > 44 else "")
+    if WIDE and any(re.search(r"figures/(term|code)-[^)]*\.mp4", ln) for ln in rest):
+        cls += " big"                                       # 실습 화면은 클립을 크게
     if WIDE:   # 그림·클립·수식은 오른쪽 단, 글은 왼쪽 단
         visual = [x for x in parts if x.startswith(("<div class=clip", "<figure", "<p class=math"))]
         words = [x for x in parts if x not in visual]
