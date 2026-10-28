@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 548" width="904" height="548"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><text x="0" y="32" font-size="27" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고치기 전</text>
+<rect x="0" y="50" width="904" height="70" rx="10" fill="#1B1D21" stroke="#B9B9B4" stroke-width="0"/>
+<text x="22" y="96" font-size="28" fill="#F0A9A9" text-anchor="start" font-weight="normal" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">return n_items // per_page</text>
+<text x="0" y="172" font-size="27" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델이 고친 뒤</text>
+<rect x="0" y="190" width="904" height="70" rx="10" fill="#1B1D21" stroke="#2F5D8A" stroke-width="0"/>
+<text x="22" y="236" font-size="28" fill="#C3E88D" text-anchor="start" font-weight="normal" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">return (n_items + per_page - 1) // per_page</text>
+<text x="0" y="318" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">n_items</text>
+<text x="200" y="318" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고치기 전</text>
+<text x="470" y="318" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고친 뒤</text>
+<text x="700" y="318" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">테스트</text>
+<rect x="0" y="340" width="904" height="64" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="20" y="382" font-size="27" fill="#141414" text-anchor="start" font-weight="bold" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">20</text>
+<text x="200" y="382" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">20 // 10 = 2</text>
+<text x="470" y="382" font-size="26" fill="#3C7A4A" text-anchor="start" font-weight="normal" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">29 // 10 = 2</text>
+<text x="700" y="382" font-size="26" fill="#3C7A4A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">2 OK</text>
+<rect x="0" y="416" width="904" height="64" rx="10" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="3"/>
+<text x="20" y="458" font-size="27" fill="#141414" text-anchor="start" font-weight="bold" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">21</text>
+<text x="200" y="458" font-size="26" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">21 // 10 = 2</text>
+<text x="470" y="458" font-size="26" fill="#3C7A4A" text-anchor="start" font-weight="normal" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">30 // 10 = 3</text>
+<text x="700" y="458" font-size="26" fill="#3C7A4A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">3 OK</text>
+<text x="0" y="528" font-size="28" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">나머지가 하나라도 있으면 한 쪽을 더 센다 (올림 나눗셈)</text></svg>

@@ -1,0 +1,17 @@
+$ python3 -m unittest -v
+test_exact_fit (test_pager.TestPager.test_exact_fit) ... ok
+test_last_page (test_pager.TestPager.test_last_page) ... ok
+test_leftover_items_need_a_page (test_pager.TestPager.test_leftover_items_need_a_page) ... FAIL
+
+========================================================
+FAIL: test_leftover_items_need_a_page (test_pager.TestPager.test_leftover_items_need_a_page)
+--------------------------------------------------------
+Traceback (most recent call last):
+  File "test_pager.py", line 11, in test_leftover_items_need_a_page
+    self.assertEqual(page_count(21, 10), 3)
+AssertionError: 2 != 3
+
+--------------------------------------------------------
+Ran 3 tests in 0.000s
+
+FAILED (failures=1)

@@ -298,9 +298,25 @@ _res_short = {"role": _res["role"], "content": [{"type": "text", "text": _txt[:2
 _pair = LAB / "runs/l1-request-response.txt"
 _pair.write_text("# 요청 (POST /v1/messages)\n" + json.dumps(_req, ensure_ascii=False, indent=2) + "\n\n# 응답\n" + json.dumps(_res_short, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 figs["request-response"] = code(_pair, 1, len(_pair.read_text(encoding="utf-8").splitlines()), hl_substr=('"role"', '"stop_reason"', '"usage"'), cols=60)
+# 수업 4: 예제 프로젝트와 실제 실패 출력, 그리고 모델이 고친 한 줄
+_proj = LAB / "runs/l4-project.txt"; _fail = LAB / "runs/l4-test-fail.txt"
+figs["l4-project"] = code(_proj, 1, len(_proj.read_text(encoding="utf-8").splitlines()), hl_substr=("n_items // per_page", "page_count(21, 10), 3"), cols=60)
+figs["l4-test-fail"] = code(_fail, 1, len(_fail.read_text(encoding="utf-8").splitlines()), hl_substr=("... FAIL", "AssertionError"), cols=62)
+_b = [text(0, 32, "고치기 전", 27, GRAY, weight="bold"),
+      rect(0, 50, W, 70, LINE, "#1B1D21", 0, 10), text(22, 96, "return n_items // per_page", 28, "#F0A9A9", mono=True),
+      text(0, 172, "모델이 고친 뒤", 27, INK, weight="bold"),
+      rect(0, 190, W, 70, INK, "#1B1D21", 0, 10), text(22, 236, "return (n_items + per_page - 1) // per_page", 28, "#C3E88D", mono=True),
+      text(0, 318, "n_items", 25, GRAY, weight="bold"), text(200, 318, "고치기 전", 25, GRAY, weight="bold"), text(470, 318, "고친 뒤", 25, GRAY, weight="bold"), text(700, 318, "테스트", 25, GRAY, weight="bold")]
+for i, (n, a, c, ok) in enumerate([(20, "20 // 10 = 2", "29 // 10 = 2", "2 OK"), (21, "21 // 10 = 2", "30 // 10 = 3", "3 OK")]):
+    y = 340 + i * 76
+    _b.append(rect(0, y, W, 64, INK if n == 21 else LINE, "#E7EEF5" if n == 21 else "#FFFFFF", 3, 10))
+    _b += [text(20, y + 42, str(n), 27, TXT, weight="bold", mono=True), text(200, y + 42, a, 26, BAD if n == 21 else TXT, mono=True),
+           text(470, y + 42, c, 26, OK, mono=True), text(700, y + 42, ok, 26, OK, weight="bold")]
+_b.append(text(0, 528, "나머지가 하나라도 있으면 한 쪽을 더 센다 (올림 나눗셈)", 28, INK, weight="bold"))
+figs["l4-fix"] = svg(548, "\n".join(_b))
 figs["session-json"] = code(sj, 1, len(sj.read_text(encoding="utf-8").splitlines()), hl_substr=("홍길동",), cols=60)
 if __name__ == "__main__":
-    for name in list(CODE_SPECS) + ["session-json", "request-response", "v2-v3"]:
+    for name in list(CODE_SPECS) + ["session-json", "request-response", "v2-v3", "l4-project", "l4-test-fail", "l4-fix"]:
         if name in figs:
             (HERE / f"{name}.svg").write_text(figs[name], encoding="utf-8")
         print(name)
