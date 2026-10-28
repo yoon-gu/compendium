@@ -1,6 +1,7 @@
 ---
 title: "하니스 엔지니어링 101 — 모델은 뇌, 하니스는 몸"
 date: 2026-10-20
+youtube: "HMMcNYNLxEI"
 draft: false
 math: false
 source_url: "https://github.com/IsuruMaduranga/harness-engineering-101"
