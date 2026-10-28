@@ -85,8 +85,8 @@ SPECS = {
     "l4-agent":     dict(file=L4, ranges=[(70, 72), (75, 75), (77, 78), (83, 83), (89, 89)], split=600, rules=LOOP_RULES),
     "l5-honest":    dict(file=L4, ranges=[(51, 51), (53, 54), (55, 58), (59, 60), (64, 65)], split=550, rules=TOOL_RULES, exc_ret='return f"ERROR: {e}"'),
     "l5-silent":    dict(file=L5, ranges=[(51, 51), (53, 54), (55, 58), (59, 60), (64, 65)], split=550, rules=TOOL_RULES, exc_ret='return ""'),
-    "l6-cache":     dict(file=L6, ranges=[(41, 41), (45, 45), (47, 48), (58, 60)], split=600, rules=CACHE_RULES),
-    "l6-cachebust": dict(file=L6B, ranges=[(17, 17), (41, 41), (45, 45), (47, 48), (58, 60)], split=580, rules=BUST_RULES),
+    "l6-cache":     dict(focus=r"cache_read=\d+", file=L6, ranges=[(41, 41), (45, 45), (47, 48), (58, 60)], split=600, rules=CACHE_RULES),
+    "l6-cachebust": dict(focus=r"cache_write=\d+", file=L6B, ranges=[(17, 17), (41, 41), (45, 45), (47, 48), (58, 60)], split=580, rules=BUST_RULES),
 }
 
 # ------------------------------------------------------------------ 2편 (수업 7-10)
@@ -264,6 +264,8 @@ def render(name):
                              "-i", "-", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", str(out)],
                             stdin=subprocess.PIPE)
     text, k, shots = "", 0, []
+    focus = re.compile(spec["focus"]) if spec.get("focus") else None
+    seen_at = {}                                    # 강조할 줄(전체 줄 번호) → 처음 보인 시각
     sheet_at = {int(frames * f) for f in (0.15, 0.4, 0.7, 0.97)}
     for i in range(frames):
         t = i / FPS
@@ -283,6 +285,20 @@ def render(name):
         for r, ln in enumerate(shown):
             col, font = T.color_of(ln)
             d.text((TPAD, top + r * TLH), ln, fill=col, font=FT_B if font is T.FONT_B else FT)
+        if focus:                                   # 나레이션이 읽는 값(예: cache_read=633)을 상자로 짚는다
+            base = len(lines) - len(shown)
+            hits = [(base + r, r, m) for r, ln in enumerate(shown) for m in [focus.search(ln)] if m]
+            if hits:
+                gi, r, m = hits[-1]
+                t0 = seen_at.setdefault(gi, t)
+                grow = min(1.0, (t - t0) / 0.4)
+                cw = FT.getlength("a")
+                x0 = TPAD + sum(T.width(c) for c in shown[r][:m.start()]) * cw - 8
+                x1 = x0 + 16 + (m.end() - m.start()) * cw * grow
+                y = top + r * TLH
+                pulse = 255 if (t - t0) > 2.0 else int(150 + 105 * abs(((t - t0) * 2) % 2 - 1))
+                d.rounded_rectangle([x0, y - 6, x1, y + TLH - 6], radius=8, outline=(0xF2, 0xC1, 0x4E, pulse), width=5,
+                                    fill=(0xF2, 0xC1, 0x4E, 40))
         if int(t * 2) % 2 == 0 and shown:
             x = TPAD + sum(T.width(c) for c in shown[-1]) * FT.getlength("a")
             d.rectangle([x + 3, top + (len(shown) - 1) * TLH + 6, x + 21, top + (len(shown) - 1) * TLH + 44], fill=T.FG)

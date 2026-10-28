@@ -1,1 +1,1 @@
-{"duration": 30.65, "marks": [{"t": 3.22, "pat": "\\[usage\\]", "nth": 1}, {"t": 7.98, "pat": "cache_read=633", "nth": 1}, {"t": 9.52, "pat": "cache_read=1068", "nth": 1}, {"t": 10.56, "pat": "cache_read=1768", "nth": 1}, {"t": 12.64, "pat": "cache_read=2254", "nth": 1}]}
+{"duration": 37.05, "marks": [{"t": 4.0, "pat": "\\[usage\\]", "nth": 1}, {"t": 10.2, "pat": "cache_read=633", "nth": 1}, {"t": 11.96, "pat": "cache_read=1068", "nth": 1}, {"t": 13.94, "pat": "cache_read=1768", "nth": 1}, {"t": 16.04, "pat": "cache_read=2254", "nth": 1}]}

@@ -1,1 +1,1 @@
-{"duration": 20.05, "marks": [{"t": 3.8, "line": "TOOLS = ["}, {"t": 7.18, "line": "\"read_file\""}, {"t": 7.8, "line": "\"run_command\""}, {"t": 10.18, "line": "\"input_schema\""}]}
+{"duration": 24.55, "marks": [{"t": 4.64, "line": "TOOLS = ["}, {"t": 9.26, "line": "\"read_file\""}, {"t": 9.98, "line": "\"run_command\""}, {"t": 13.04, "line": "\"input_schema\""}]}

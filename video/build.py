@@ -172,6 +172,56 @@ def clip_seconds(frame: dict) -> float:
     return 0.0
 
 
+# 코드 실습 화면(터미널·코드 클립, 코드·출력 그림)은 천천히: 8% 느리게, 문장 사이 쉼 +0.45초, 쉼표 자리 쉼 +0.15초(2026-10-28 요청).
+# 녹음을 다시 하지 않고 캐시 wav 를 가공해 <해시>-slow.wav 로 둔다(크레딧 0). timing.py 도 같은 함수를 써서 시각이 맞는다.
+SLOW_FIGS = re.compile(r"figures/((term|code)-[^)]*\.mp4|(session-json|request-response|l4-project|l4-test-fail|reminder-json)\.svg)")
+SLOW_TEMPO, SLOW_SENT, SLOW_COMMA = 0.92, 0.45, 0.15
+
+
+def is_slow(frame: dict) -> bool:
+    return WIDE and any(SLOW_FIGS.search(ln) for ln in frame["slide"])
+
+
+def voice(text: str, slow: bool = False) -> Path:
+    """나레이션 조각 wav. slow 면 쉼을 늘리고 템포를 낮춘 사본."""
+    src = tts(text)
+    if not slow:
+        return src
+    dest = src.with_name(src.stem + "-slow.wav")
+    if dest.exists() and dest.stat().st_mtime >= src.stat().st_mtime:
+        return dest
+    import numpy as np
+    with wave.open(str(src)) as f:
+        sr, ch, sw = f.getframerate(), f.getnchannels(), f.getsampwidth()
+        a = np.frombuffer(f.readframes(f.getnframes()), dtype="<i2").reshape(-1, ch)
+    assert sw == 2, "16비트 wav 만 처리한다"
+    win = int(sr * 0.02)
+    env = np.array([np.abs(a[i:i + win]).max() for i in range(0, len(a) - win, win)])
+    quiet = env < 600
+    pieces, last, i = [], 0, 0
+    while i < len(quiet):
+        if not quiet[i]:
+            i += 1; continue
+        j = i
+        while j < len(quiet) and quiet[j]:
+            j += 1
+        dur = (j - i) * 0.02
+        if i > 0 and j < len(quiet) and dur >= 0.09:          # 앞뒤 무음은 그대로, 안쪽 쉼만 늘린다
+            mid = (i + j) // 2 * win
+            pieces += [a[last:mid], np.zeros((int(sr * (SLOW_SENT if dur >= 0.3 else SLOW_COMMA)), ch), dtype="<i2")]
+            last = mid
+        i = j
+    pieces.append(a[last:])
+    tmp = dest.with_suffix(".tmp.wav")
+    with wave.open(str(tmp), "wb") as out:
+        out.setnchannels(ch); out.setsampwidth(2); out.setframerate(sr)
+        out.writeframes(np.concatenate(pieces).astype("<i2").tobytes())
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(tmp), "-filter:a", f"atempo={SLOW_TEMPO}", "-ar", str(sr), "-ac", str(ch),
+                    "-sample_fmt", "s16", str(dest)], check=True)
+    tmp.unlink()
+    return dest
+
+
 def scene_audio(scene: dict) -> tuple[Path, list[float]]:
     """장면의 문단 wav 들을 쉼 정책(GAP_*, LOOK_*)대로 이어 붙인 wav 와 화면별 길이(초)."""
     dest = WORK / f"voice-{VOICE}" / f"scene-{scene['n']:02d}.wav"
@@ -190,7 +240,7 @@ def scene_audio(scene: dict) -> tuple[Path, list[float]]:
             for k, part in enumerate(parts):
                 cs = chunks(part)
                 for c, text in enumerate(cs):
-                    with wave.open(str(tts(text))) as f:
+                    with wave.open(str(voice(text, is_slow(frame)))) as f:
                         if params is None:
                             params = f.getparams()
                         assert (f.getnchannels(), f.getsampwidth(), f.getframerate()) == params[:3], f"wav 형식이 다르다: {text[:20]}"

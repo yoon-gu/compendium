@@ -1,1 +1,1 @@
-{"duration": 25.3, "marks": [{"t": 0.18, "line": "def execute_tool"}, {"t": 5.94, "line": "name == \"read_file\""}, {"t": 7.52, "line": "name == \"run_command\""}, {"t": 13.28, "line": "except Exception"}, {"t": 16.28, "line": "return f\"ERROR: {e}\""}]}
+{"duration": 30.74, "marks": [{"t": 0.22, "line": "def execute_tool"}, {"t": 7.62, "line": "name == \"read_file\""}, {"t": 9.38, "line": "name == \"run_command\""}, {"t": 16.62, "line": "except Exception"}, {"t": 20.44, "line": "return f\"ERROR: {e}\""}]}

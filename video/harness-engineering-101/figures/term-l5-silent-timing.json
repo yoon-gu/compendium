@@ -1,1 +1,1 @@
-{"duration": 45.75, "marks": [{"t": 2.14, "pat": "\\[tool\\] write_file", "nth": 1}, {"t": 7.46, "pat": "오류 없이 끝났지만", "nth": 1}, {"t": 16.9, "pat": "chmod u\\+w", "nth": 1}, {"t": 18.24, "pat": "\\[tool\\] write_file", "nth": 2}, {"t": 20.06, "pat": "모두 성공", "nth": 1}]}
+{"duration": 55.15, "marks": [{"t": 2.64, "pat": "\\[tool\\] write_file", "nth": 1}, {"t": 9.08, "pat": "오류 없이 끝났지만", "nth": 1}, {"t": 20.82, "pat": "chmod u\\+w", "nth": 1}, {"t": 22.44, "pat": "\\[tool\\] write_file", "nth": 2}, {"t": 24.92, "pat": "모두 성공", "nth": 1}]}

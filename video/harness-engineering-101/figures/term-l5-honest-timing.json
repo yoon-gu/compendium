@@ -1,1 +1,1 @@
-{"duration": 24.85, "marks": [{"t": 8.06, "pat": "\\[tool\\] write_file", "nth": 1}, {"t": 16.68, "pat": "읽기 전용이라", "nth": 1}, {"t": 17.96, "pat": "chmod u\\+w", "nth": 1}, {"t": 21.52, "pat": "모두 통과", "nth": 1}]}
+{"duration": 29.77, "marks": [{"t": 10.38, "pat": "\\[tool\\] write_file", "nth": 1}, {"t": 20.74, "pat": "읽기 전용이라", "nth": 1}, {"t": 22.26, "pat": "chmod u\\+w", "nth": 1}, {"t": 26.3, "pat": "모두 통과", "nth": 1}]}

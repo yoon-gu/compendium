@@ -100,7 +100,7 @@ def frame_words(frame):
         for k, part in enumerate(parts):
             cs = b.chunks(part)
             for c, text in enumerate(cs):
-                wav = b.tts(text)
+                wav = b.voice(text, b.is_slow(frame))
                 words += [(w, t + s) for w, s in words_of(wav)]
                 with wave.open(str(wav)) as f:
                     t += f.getnframes() / f.getframerate()
