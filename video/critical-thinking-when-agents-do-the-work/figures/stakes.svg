@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 420" width="888" height="420"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2E5A4F"/></marker></defs><rect x="0" y="0" width="420" height="330" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="24" y="52" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">통째로 넘긴다</text>
+<text x="24" y="102" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">녹화할 호텔 고르기</text>
+<text x="24" y="152" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">평점 비슷한 세 곳</text>
+<text x="24" y="202" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">틀려도 싸다</text>
+<rect x="468" y="0" width="420" height="330" rx="14" fill="#FFFFFF" stroke="#2E5A4F" stroke-width="4"/>
+<text x="492" y="52" font-size="32" fill="#2E5A4F" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">추론은 쥐고 있다</text>
+<text x="492" y="102" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">돈을 어디에 넣을지</text>
+<text x="492" y="152" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">아이 진로 조언</text>
+<text x="492" y="202" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">무엇을 출시할지</text>
+<text x="444" y="400" font-size="28" fill="#2E5A4F" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">기준: 틀렸을 때 누가 뒷감당하나</text></svg>

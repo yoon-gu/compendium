@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 440" width="888" height="440"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2E5A4F"/></marker></defs><rect x="0" y="0" width="432" height="166" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="216" y="70" font-size="30" fill="#141414" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">아는 줄 아는 것</text>
+<text x="216" y="120" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델에게 다 준다</text>
+<rect x="456" y="0" width="432" height="166" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="672" y="70" font-size="30" fill="#141414" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모르는 줄 아는 것</text>
+<text x="672" y="120" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">질문할 수 있다</text>
+<rect x="0" y="190" width="432" height="166" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="216" y="260" font-size="30" fill="#141414" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">아는 줄 모르는 것</text>
+<text x="216" y="310" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">잊고 있던 지식</text>
+<rect x="456" y="190" width="432" height="166" rx="16" fill="#2E5A4F" stroke="#2E5A4F" stroke-width="4"/>
+<text x="672" y="260" font-size="30" fill="#FFFFFF" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모르는 줄 모르는 것</text>
+<text x="672" y="310" font-size="26" fill="#FFFFFF" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델에게 찾게 한다</text>
+<text x="444" y="420" font-size="28" fill="#2E5A4F" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사각지대 점검(blind spot pass)</text></svg>

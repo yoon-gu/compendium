@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 340" width="888" height="340"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2E5A4F"/></marker></defs><rect x="0" y="40" width="160" height="200" rx="10" fill="#FFFFFF" stroke="#2E5A4F" stroke-width="4"/>
+<text x="80" y="120" font-size="30" fill="#2E5A4F" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">원문</text>
+<text x="80" y="170" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">50쪽</text>
+<line x1="166" y1="140" x2="192" y2="140" stroke="#2E5A4F" stroke-width="4" marker-end="url(#a)"/>
+<rect x="196" y="40.0" width="200" height="200" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="296" y="130" font-size="24" fill="#141414" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트 1</text>
+<text x="296" y="168" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">요약 5쪽</text>
+<line x1="402" y1="140" x2="428" y2="140" stroke="#2E5A4F" stroke-width="4" marker-end="url(#a)"/>
+<rect x="432" y="65.0" width="200" height="150" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="532" y="130" font-size="24" fill="#141414" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트 2</text>
+<text x="532" y="168" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">요약의 요약</text>
+<line x1="638" y1="140" x2="664" y2="140" stroke="#2E5A4F" stroke-width="4" marker-end="url(#a)"/>
+<rect x="668" y="90.0" width="200" height="100" rx="10" fill="#FFFFFF" stroke="#A23B3B" stroke-width="4"/>
+<text x="768" y="130" font-size="24" fill="#A23B3B" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트 3</text>
+<text x="768" y="168" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">원문은 못 봄</text>
+<text x="444" y="320" font-size="26" fill="#A23B3B" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">세 번째 에이전트는 원문을 한 번도 읽지 않았다</text></svg>

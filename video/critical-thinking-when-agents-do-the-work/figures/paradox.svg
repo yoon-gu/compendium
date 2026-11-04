@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 380" width="888" height="380"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2E5A4F"/></marker></defs><rect x="0" y="60" width="380" height="160" rx="16" fill="#FFFFFF" stroke="#2E5A4F" stroke-width="4"/>
+<text x="190" y="128" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">클로드를 감독하려면</text>
+<text x="190" y="178" font-size="32" fill="#2E5A4F" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">코딩 실력이 필요</text>
+<rect x="508" y="60" width="380" height="160" rx="16" fill="#FFFFFF" stroke="#A23B3B" stroke-width="4"/>
+<text x="698" y="128" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">AI를 과하게 쓰면</text>
+<text x="698" y="178" font-size="32" fill="#A23B3B" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">그 실력이 녹슨다</text>
+<path d="M384 110 C 444 40, 444 40, 504 110" fill="none" stroke="#2E5A4F" stroke-width="4" marker-end="url(#a)"/>
+<path d="M504 170 C 444 240, 444 240, 384 170" fill="none" stroke="#2E5A4F" stroke-width="4" marker-end="url(#a)"/>
+<text x="444" y="310" font-size="28" fill="#2E5A4F" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">감독의 역설(paradox of supervision)</text>
+<text x="444" y="356" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Anthropic, 자사 엔지니어·연구자 조사</text></svg>
