@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 590" width="888" height="590"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2E5A4F"/></marker></defs><rect x="0" y="0" width="560" height="520" rx="12" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 590" width="888" height="590"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><rect x="0" y="0" width="560" height="520" rx="12" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
 <text x="24" y="44" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothicCoding, monospace" xml:space="preserve">PR #128  +600줄</text>
 <rect x="24" y="74" width="300" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
 <rect x="24" y="101" width="353" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
@@ -7,20 +7,20 @@
 <rect x="24" y="182" width="312" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
 <rect x="24" y="209" width="365" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
 <rect x="24" y="236" width="418" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
-<rect x="24" y="263" width="471" height="14" rx="4" fill="#A23B3B" stroke="#A23B3B" stroke-width="0"/>
+<rect x="24" y="263" width="471" height="14" rx="4" fill="#C0605A" stroke="#C0605A" stroke-width="0"/>
 <rect x="24" y="290" width="324" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
 <rect x="24" y="317" width="377" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
 <rect x="24" y="344" width="430" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
-<rect x="24" y="371" width="483" height="14" rx="4" fill="#A23B3B" stroke="#A23B3B" stroke-width="0"/>
+<rect x="24" y="371" width="483" height="14" rx="4" fill="#C0605A" stroke="#C0605A" stroke-width="0"/>
 <rect x="24" y="398" width="336" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
 <rect x="24" y="425" width="389" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
 <rect x="24" y="452" width="442" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
 <rect x="24" y="479" width="495" height="14" rx="4" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
-<rect x="10" y="64" width="540" height="80" rx="8" fill="none" stroke="#2E5A4F" stroke-width="3" stroke-dasharray="8 6"/>
-<text x="600" y="104" font-size="26" fill="#2E5A4F" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">훑어본 곳</text>
+<rect x="10" y="64" width="540" height="80" rx="8" fill="none" stroke="#3F7A66" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="600" y="104" font-size="26" fill="#3F7A66" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">훑어본 곳</text>
 <text x="600" y="140" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">구조 · 변수 이름 · 테스트</text>
-<line x1="600" y1="270" x2="340" y2="270" stroke="#A23B3B" stroke-width="3" marker-end="url(#a)"/>
-<text x="600" y="262" font-size="24" fill="#A23B3B" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">트랜잭션 순서</text>
-<line x1="600" y1="382" x2="440" y2="382" stroke="#A23B3B" stroke-width="3" marker-end="url(#a)"/>
-<text x="600" y="374" font-size="24" fill="#A23B3B" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">뒤집힌 기본값</text>
-<text x="0" y="570" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">찾을 줄 알던 것만 찾았다</text></svg>
+<line x1="600" y1="270" x2="340" y2="270" stroke="#C0605A" stroke-width="3" marker-end="url(#a)"/>
+<text x="600" y="262" font-size="24" fill="#C0605A" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">트랜잭션 순서</text>
+<line x1="600" y1="382" x2="440" y2="382" stroke="#C0605A" stroke-width="3" marker-end="url(#a)"/>
+<text x="600" y="374" font-size="24" fill="#C0605A" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">뒤집힌 기본값</text>
+<text x="0" y="570" font-size="28" fill="#C0605A" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">찾을 줄 알던 것만 찾았다</text></svg>

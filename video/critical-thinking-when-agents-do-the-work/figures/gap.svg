@@ -1,15 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 360" width="888" height="360"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2E5A4F"/></marker></defs><text x="0" y="34" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예전</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 360" width="888" height="360"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="0" y="34" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예전</text>
 <rect x="0" y="56" width="150" height="70" rx="12" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
 <text x="75" y="100" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">질문</text>
 <rect x="738" y="56" width="150" height="70" rx="12" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
 <text x="813" y="100" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">답</text>
-<rect x="170" y="56" width="548" height="70" rx="12" fill="#FFFFFF" stroke="#2E5A4F" stroke-width="3" stroke-dasharray="10 8"/>
-<text x="444" y="100" font-size="26" fill="#2E5A4F" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">따지고 · 고르고 · 다듬는 틈</text>
+<rect x="170" y="56" width="548" height="70" rx="12" fill="#FFFFFF" stroke="#3F7A66" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="444" y="100" font-size="26" fill="#3F7A66" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">따지고 · 고르고 · 다듬는 틈</text>
 <text x="0" y="214" font-size="30" fill="#141414" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지금</text>
 <rect x="0" y="236" width="150" height="70" rx="12" fill="#ECECE8" stroke="#B9B9B4" stroke-width="2"/>
 <text x="75" y="280" font-size="26" fill="#141414" text-anchor="middle" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">질문</text>
-<rect x="190" y="236" width="150" height="70" rx="12" fill="#2E5A4F" stroke="#2E5A4F" stroke-width="2"/>
+<rect x="190" y="236" width="150" height="70" rx="12" fill="#3F7A66" stroke="#3F7A66" stroke-width="2"/>
 <text x="265" y="280" font-size="26" fill="#FFFFFF" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">답</text>
-<text x="170" y="340" font-size="26" fill="#A23B3B" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">몇 초</text>
+<text x="170" y="340" font-size="26" fill="#C0605A" text-anchor="middle" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">몇 초</text>
 <text x="380" y="268" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">잘 쓰였고, 대체로 맞다</text>
-<text x="380" y="306" font-size="26" fill="#2E5A4F" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 다시 볼 이유가 사라진다</text></svg>
+<text x="380" y="306" font-size="26" fill="#3F7A66" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 다시 볼 이유가 사라진다</text></svg>

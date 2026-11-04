@@ -30,7 +30,7 @@ for f in ["NanumGothic-Regular.ttf", "NanumGothic-Bold.ttf", "NanumGothic-ExtraB
 plt.rcParams.update({"font.family": ["NanumGothic", "DejaVu Sans"], "axes.unicode_minus": False})
 
 W, H, FPS = 1776, 1000, 25
-PAPER, INK, TXT, GRAY, LINE, SOFT, BAD, OK = "#F4F4F1", "#2E5A4F", "#141414", "#6B6B68", "#B9B9B4", "#E4E4DF", "#A23B3B", "#3A7D44"
+PAPER, INK, TXT, GRAY, LINE, SOFT, BAD, OK = "#F4F4F1", "#3F7A66", "#141414", "#6B6B68", "#B9B9B4", "#E4E4DF", "#C0605A", "#4E8F76"
 MONO = "NanumGothicCoding"
 
 
@@ -117,30 +117,43 @@ def draw_experiment(ax, t):
 
 
 # ---------- (b) 위임·추종·항복 스펙트럼 ----------
-SPECTRUM = [("인지 위임", "맡기되 결과의 주인은 나", INK), ("추종", "출력이 다음 생각의 전제", "#8A7A3A"), ("인지적 항복", "확인할 필요조차 못 느낀다", BAD)]
+# 셋 다 나쁜 게 아니다: 맨 위는 권장, 가운데는 주의, 맨 아래는 위험. 공은 아래로 미끄러졌다가 '셋 다 나쁜 건 아닙니다'에서 맨 위로 돌아간다.
+SPECTRUM = [("인지 위임", "맡기되 결과의 주인은 나", "✓ 권장", "#4E8F76", "#EAF3EE"),
+            ("추종", "출력이 다음 생각의 전제가 된다", "! 주의", "#C9963A", "#F8F0E0"),
+            ("인지적 항복", "확인할 필요조차 못 느낀다", "✕ 위험", "#C0605A", "#F6E7E5")]
 
 
 def draw_spectrum(ax, t):
-    dur, marks = timing("spectrum", (12.0, [1.0, 4.5, 8.0]))
-    current = max((k for k in range(3) if t >= marks[k]), default=-1)
-    for k, (head, sub, col) in enumerate(SPECTRUM):
-        y = 70 + k * 300
+    dur, marks = timing("spectrum", (14.0, [1.0, 4.5, 8.0, 11.0]))
+    back = marks[3] if len(marks) > 3 else marks[2] + 3.0          # 맨 위로 돌아가는 시각
+    home = t >= back
+    current = 0 if home else max((k for k in range(3) if t >= marks[k]), default=-1)
+    for k, (head, sub, tag, col, tint) in enumerate(SPECTRUM):
+        y = 60 + k * 300
         a = ease((t - marks[k]) / 0.4)
-        now = k == current
         if a <= 0:
-            box(ax, 260, y, 1300, 250, ec=SOFT, fc=PAPER, lw=3, r=30)
+            box(ax, 220, y, 1180, 250, ec=SOFT, fc=PAPER, lw=3, r=30)
             continue
-        box(ax, 260, y, 1300, 250, ec=col, fc=col if now else "#FFFFFF", lw=6 if now else 4, r=30, alpha=a)
-        ax.text(330, y + 95, head, fontsize=60 if now else 52, color="#FFFFFF" if now else col, va="center", fontweight="bold", alpha=a)
-        ax.text(330, y + 185, sub, fontsize=38, color="#F3F3F0" if now else GRAY, va="center", alpha=a)
-    # 왼쪽 세로 미끄럼틀과 공: 지금 말하는 칸 높이로 내려간다
-    ax.plot([140, 140], [120, 870], color=LINE, lw=10, solid_capstyle="round")
-    tgt = [195, 495, 795]
+        now = k == current
+        dim = home and k > 0
+        box(ax, 220, y, 1180, 250, ec=col, fc=col if now else tint, lw=7 if now else 4, r=30, alpha=a * (0.45 if dim else 1))
+        ax.text(290, y + 95, head, fontsize=60 if now else 52, color="#FFFFFF" if now else col, va="center", fontweight="bold",
+                alpha=a * (0.45 if dim else 1))
+        ax.text(290, y + 185, sub, fontsize=38, color="#FFFFFF" if now else TXT, va="center", alpha=a * (0.45 if dim else 1))
+        box(ax, 1430, y + 75, 290, 100, ec=col, fc=col, lw=0, r=50, alpha=a * (0.45 if dim else 1))
+        ax.text(1575, y + 125, tag, fontsize=44, color="#FFFFFF", ha="center", va="center", fontweight="bold", alpha=a * (0.45 if dim else 1))
+    # 왼쪽 미끄럼틀과 공
+    ax.plot([110, 110], [110, 830], color=LINE, lw=10, solid_capstyle="round")
+    tgt = [185, 485, 785]
     if current >= 0:
-        prev = tgt[max(current - 1, 0)]
-        y = prev + (tgt[current] - prev) * ease((t - marks[current]) / 0.8)
-        ax.add_patch(plt.Circle((140, y), 42, color=SPECTRUM[current][2], zorder=5))
-    ax.text(140, 950, "신뢰가 쌓일수록 아래로", fontsize=30, color=GRAY, ha="left", va="center")
+        if home:
+            y = tgt[2] + (tgt[0] - tgt[2]) * ease((t - back) / 1.2)
+        else:
+            prev = tgt[max(current - 1, 0)]
+            y = prev + (tgt[current] - prev) * ease((t - marks[current]) / 0.8)
+        ax.add_patch(plt.Circle((110, y), 44, color=SPECTRUM[0 if home else current][3], zorder=5))
+    msg, mc = ("목표는 맨 위에 머무는 것", SPECTRUM[0][3]) if home else ("신뢰가 쌓이면 나도 모르게 아래로", GRAY)
+    ax.text(888, 960, msg, fontsize=40 if home else 34, color=mc, ha="center", va="center", fontweight="bold" if home else "normal")
 
 
 # ---------- (c) 스스로에게 묻는 질문 여섯 ----------
@@ -231,7 +244,7 @@ def draw_tax(ax, t):
                 alpha=ease((t - 8.5) / 0.6))
 
 
-ANIMS = {"experiment": (12, draw_experiment), "spectrum": (timing("spectrum", (12.0, None))[0], draw_spectrum),
+ANIMS = {"experiment": (12, draw_experiment), "spectrum": (timing("spectrum", (14.0, None))[0], draw_spectrum),
          "questions": (timing("questions", (18.0, None))[0], draw_questions), "greencheck": (14, draw_greencheck), "tax": (11, draw_tax)}
 
 if __name__ == "__main__":

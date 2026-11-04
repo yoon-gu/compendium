@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 540" width="888" height="540"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2E5A4F"/></marker></defs><rect x="0" y="0" width="408" height="96" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 540" width="888" height="540"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><rect x="0" y="0" width="408" height="96" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
 <text x="22" y="42" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">꼼꼼히 읽는다</text>
-<text x="22" y="80" font-size="22" fill="#3A7D44" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">괜찮았다</text>
+<text x="22" y="80" font-size="22" fill="#4E8F76" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">괜찮았다</text>
 <line x1="300" y1="98" x2="340" y2="116" stroke="#6B6B68" stroke-width="3" marker-end="url(#a)"/>
 <rect x="160" y="118" width="408" height="96" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
 <text x="182" y="160" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">훑어본다</text>
@@ -10,7 +10,7 @@
 <text x="342" y="278" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">뼈대만 본다</text>
 <text x="342" y="316" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">구조만 맞으면</text>
 <line x1="620" y1="334" x2="660" y2="352" stroke="#6B6B68" stroke-width="3" marker-end="url(#a)"/>
-<rect x="480" y="354" width="408" height="96" rx="14" fill="#FFFFFF" stroke="#A23B3B" stroke-width="4"/>
-<text x="502" y="396" font-size="28" fill="#A23B3B" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">설명하지 못한다</text>
-<text x="502" y="434" font-size="22" fill="#A23B3B" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트 도움으로도</text>
+<rect x="480" y="354" width="408" height="96" rx="14" fill="#FFFFFF" stroke="#C0605A" stroke-width="4"/>
+<text x="502" y="396" font-size="28" fill="#C0605A" text-anchor="start" font-weight="bold" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">설명하지 못한다</text>
+<text x="502" y="434" font-size="22" fill="#C0605A" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트 도움으로도</text>
 <text x="0" y="520" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" opacity="1" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">걸음마다 그럴듯해서, 넘어가는 순간이 안 보인다</text></svg>

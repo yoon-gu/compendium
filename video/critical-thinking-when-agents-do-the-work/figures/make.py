@@ -3,7 +3,7 @@
 from html import escape
 from pathlib import Path
 
-INK, TXT, GRAY, LINE, FILL, SOFT, BAD, OK = "#2E5A4F", "#141414", "#6B6B68", "#B9B9B4", "#FFFFFF", "#ECECE8", "#A23B3B", "#3A7D44"
+INK, TXT, GRAY, LINE, FILL, SOFT, BAD, OK = "#3F7A66", "#141414", "#6B6B68", "#B9B9B4", "#FFFFFF", "#ECECE8", "#C0605A", "#4E8F76"
 F = 'font-family="NanumGothic, Nanum Gothic, sans-serif"'
 MONO = 'font-family="NanumGothicCoding, monospace"'
 W = 888
@@ -156,8 +156,8 @@ b = [rect(0, 60, 380, 160, INK, FILL, 4, 16), text(190, 128, "클로드를 감�
      text(190, 178, "코딩 실력이 필요", 32, INK, "middle", "bold"),
      rect(508, 60, 380, 160, BAD, FILL, 4, 16), text(698, 128, "AI를 과하게 쓰면", 26, GRAY, "middle"),
      text(698, 178, "그 실력이 녹슨다", 32, BAD, "middle", "bold"),
-     '<path d="M384 110 C 444 40, 444 40, 504 110" fill="none" stroke="#2E5A4F" stroke-width="4" marker-end="url(#a)"/>',
-     '<path d="M504 170 C 444 240, 444 240, 384 170" fill="none" stroke="#2E5A4F" stroke-width="4" marker-end="url(#a)"/>',
+     '<path d="M384 110 C 444 40, 444 40, 504 110" fill="none" stroke="#3F7A66" stroke-width="4" marker-end="url(#a)"/>',
+     '<path d="M504 170 C 444 240, 444 240, 384 170" fill="none" stroke="#3F7A66" stroke-width="4" marker-end="url(#a)"/>',
      text(444, 310, "감독의 역설(paradox of supervision)", 28, INK, "middle", "bold"),
      text(444, 356, "Anthropic, 자사 엔지니어·연구자 조사", 24, GRAY, "middle")]
 figs["paradox"] = svg(380, "\n".join(b))
