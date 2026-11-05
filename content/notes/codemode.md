@@ -14,6 +14,8 @@ summary: "Armin Ronacher가 자신의 에이전트 하니스 Pi에 넣은 Codemo
 > **저자:** 아르민 로나허(Armin Ronacher) — 파이썬 웹 프레임워크 Flask와 템플릿 엔진 Jinja, WSGI 라이브러리 Werkzeug를 만든 개발자. 오류 모니터링 회사 Sentry[^sentry]에서 오래 일했고, 지금은 자신의 에이전트 하니스(harness) Pi[^pi]를 만들며 에이전트와 도구 설계에 대한 글을 꾸준히 쓴다. 이 글은 그 Pi에 넣은 Codemode를 설명한다.
 >
 > 아래는 원문의 절 순서를 따라 요지를 정리하고 해설을 붙인 노트다. 요지 정리와 해설은 옮긴 이의 것이고 전문은 위 링크에서 읽을 수 있다.
+>
+> 같은 흐름을 업계 전체로 넓혀 본 글로 필립 슈미트의 [에이전트의 도구는 곧 하나만 남는다](/compendium/notes/one-tool-agents-code-mode/)가 있다. Pi·Factory Droid·Codex가 왜 `exec` 도구 하나로 모이는지 정리했다.
 
 ## 왜 이 글이 나왔나 — 저자의 지론과 MCP가 움직인 방향
 
