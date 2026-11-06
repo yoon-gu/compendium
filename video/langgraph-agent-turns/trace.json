@@ -1,0 +1,404 @@
+[
+ {
+  "t": 0.001,
+  "kind": "line",
+  "line": 1,
+  "fn": "<module>"
+ },
+ {
+  "t": 0.001,
+  "kind": "line",
+  "line": 2,
+  "fn": "<module>"
+ },
+ {
+  "t": 0.004,
+  "kind": "line",
+  "line": 3,
+  "fn": "<module>"
+ },
+ {
+  "t": 5.3,
+  "kind": "line",
+  "line": 4,
+  "fn": "<module>"
+ },
+ {
+  "t": 5.3,
+  "kind": "line",
+  "line": 5,
+  "fn": "<module>"
+ },
+ {
+  "t": 5.311,
+  "kind": "line",
+  "line": 6,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.258,
+  "kind": "line",
+  "line": 7,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.258,
+  "kind": "line",
+  "line": 8,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.276,
+  "kind": "line",
+  "line": 10,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.276,
+  "kind": "line",
+  "line": 10,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.276,
+  "kind": "line",
+  "line": 12,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.276,
+  "kind": "line",
+  "line": 13,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.276,
+  "kind": "line",
+  "line": 12,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.278,
+  "kind": "line",
+  "line": 13,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.278,
+  "kind": "line",
+  "line": 17,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.278,
+  "kind": "line",
+  "line": 18,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.278,
+  "kind": "line",
+  "line": 17,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.279,
+  "kind": "line",
+  "line": 18,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.279,
+  "kind": "line",
+  "line": 22,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.279,
+  "kind": "line",
+  "line": 23,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.279,
+  "kind": "line",
+  "line": 22,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.28,
+  "kind": "line",
+  "line": 23,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.28,
+  "kind": "line",
+  "line": 27,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.28,
+  "kind": "line",
+  "line": 28,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 29,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 32,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 32,
+  "fn": "State"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 33,
+  "fn": "State"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 35,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 39,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 43,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 44,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 45,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 46,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 47,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 48,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.283,
+  "kind": "line",
+  "line": 49,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.284,
+  "kind": "line",
+  "line": 51,
+  "fn": "<module>"
+ },
+ {
+  "t": 6.29,
+  "kind": "line",
+  "line": 36,
+  "fn": "agent"
+ },
+ {
+  "t": 8.153,
+  "kind": "line",
+  "line": 37,
+  "fn": "agent"
+ },
+ {
+  "t": 8.154,
+  "kind": "line",
+  "line": 40,
+  "fn": "route"
+ },
+ {
+  "t": 8.154,
+  "kind": "line",
+  "line": 41,
+  "fn": "route"
+ },
+ {
+  "t": 8.154,
+  "kind": "update",
+  "node": "agent",
+  "messages": [
+   {
+    "type": "ai",
+    "content": "  ",
+    "tool_calls": [
+     {
+      "name": "load_skill",
+      "args": {
+       "name": "travel-memo"
+      }
+     },
+     {
+      "name": "get_weather",
+      "args": {
+       "city": "서울"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "t": 8.155,
+  "kind": "line",
+  "line": 15,
+  "fn": "load_skill"
+ },
+ {
+  "t": 8.155,
+  "kind": "line",
+  "line": 20,
+  "fn": "get_weather"
+ },
+ {
+  "t": 8.157,
+  "kind": "update",
+  "node": "tools",
+  "messages": [
+   {
+    "type": "tool",
+    "content": "---\nname: travel-memo\ndescription: 여행지 날씨를 짧은 여행 메모로 정리한다\n---\n1. 첫 줄은 \"도시 — 한 줄 요약\".\n2. 기온은 섭씨와 화씨를 함께 적는다. 화씨는 반드시 c_to_f 도구로 계산한다.\n3. 마지막 줄에 챙길 것 하나를 권한다.\n",
+    "name": "load_skill"
+   },
+   {
+    "type": "tool",
+    "content": "{\"city\": \"서울\", \"temp_c\": 18, \"sky\": \"맑음, 오후 소나기\"}",
+    "name": "get_weather"
+   }
+  ]
+ },
+ {
+  "t": 8.157,
+  "kind": "line",
+  "line": 36,
+  "fn": "agent"
+ },
+ {
+  "t": 9.053,
+  "kind": "line",
+  "line": 37,
+  "fn": "agent"
+ },
+ {
+  "t": 9.054,
+  "kind": "line",
+  "line": 40,
+  "fn": "route"
+ },
+ {
+  "t": 9.054,
+  "kind": "line",
+  "line": 41,
+  "fn": "route"
+ },
+ {
+  "t": 9.055,
+  "kind": "update",
+  "node": "agent",
+  "messages": [
+   {
+    "type": "ai",
+    "content": "",
+    "tool_calls": [
+     {
+      "name": "c_to_f",
+      "args": {
+       "celsius": 18
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "t": 9.056,
+  "kind": "line",
+  "line": 25,
+  "fn": "c_to_f"
+ },
+ {
+  "t": 9.057,
+  "kind": "update",
+  "node": "tools",
+  "messages": [
+   {
+    "type": "tool",
+    "content": "64.4",
+    "name": "c_to_f"
+   }
+  ]
+ },
+ {
+  "t": 9.057,
+  "kind": "line",
+  "line": 36,
+  "fn": "agent"
+ },
+ {
+  "t": 10.871,
+  "kind": "line",
+  "line": 37,
+  "fn": "agent"
+ },
+ {
+  "t": 10.871,
+  "kind": "line",
+  "line": 40,
+  "fn": "route"
+ },
+ {
+  "t": 10.871,
+  "kind": "line",
+  "line": 41,
+  "fn": "route"
+ },
+ {
+  "t": 10.872,
+  "kind": "update",
+  "node": "agent",
+  "messages": [
+   {
+    "type": "ai",
+    "content": "서울 — 맑지만 오후에 소나기가 올 수 있는 선선한 날씨\n\n- 기온: 18°C (64.4°F)\n- 하늘: 맑음, 오후 소나기\n\n챙길 것: 접이식 우산\n\n참고로 제가 가져온 날씨 정보는 현재 기준 예시 데이터입니다. 다음 주 예보와 다를 수 있으니 출발 전에 한 번 더 확인해 주세요."
+   }
+  ]
+ }
+]
