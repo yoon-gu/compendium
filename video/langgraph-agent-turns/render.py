@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""trace.json(실제 실행 기록) + agent.py → 16:9 모션 그래픽(1920x1080, 25fps).
+"""trace.json(실제 실행 기록) + agent.py → 4:3(8:6) 모션 그래픽(1440x1080, 25fps).
 
 왼쪽: 지금 실행 중인 agent.py 줄을 밝힌다. 오른쪽: 그래프에서 켜진 노드와 state["messages"]가 한 턴씩 쌓이는 모습.
     python3 render.py            → out/langgraph-turns.mp4 + out/sheet.png(장면별 마지막 프레임)
@@ -16,12 +16,12 @@ from pygments.token import Token
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "out"
-W, H, FPS = 1920, 1080, 25
+W, H, FPS = 1440, 1080, 25
 F = Path.home() / "Library/Fonts"
-CODE = ImageFont.truetype(str(F / "D2Coding-Ver1.3.2-20180524-all.ttc"), 20)
+CODE = ImageFont.truetype(str(F / "D2Coding-Ver1.3.2-20180524-all.ttc"), 18)
 def kr(size, w="Regular"): return ImageFont.truetype(str(F / f"NanumGothic-{w}.ttf"), size)
 TITLE, SUB, BODY, SMALL, TINY = kr(40, "ExtraBold"), kr(28, "Bold"), kr(24), kr(21), kr(18)
-MONO_S = ImageFont.truetype(str(F / "D2Coding-Ver1.3.2-20180524-all.ttc"), 19)
+MONO_S = ImageFont.truetype(str(F / "D2Coding-Ver1.3.2-20180524-all.ttc"), 17)
 
 # 차분한 숲 팔레트
 PAPER, INK, TXT, GRAY, LINE, SOFT = "#F4F4F1", "#3F7A66", "#141414", "#6B6B68", "#B9B9B4", "#E4E4DF"
@@ -70,8 +70,8 @@ def short(m):
         return "ai", m["content"].splitlines()[0]
     body = m["content"].replace("\n", " ")
     if m["name"] == "load_skill":
-        body = "SKILL.md 본문 — " + body.split("---")[-1].strip()
-    return f'tool·{m["name"]}', body
+        body = "SKILL.md 본문: " + body.split("---")[-1].strip()
+    return "tool", f'{m["name"]} → {body}'
 
 
 MSGS = [("user", "다음 주 서울 여행 메모 써 줘")] + [short(m) for u in UPD for m in u["messages"]]
@@ -106,6 +106,13 @@ def text(d, xy, s, font, fill, anchor="la"):
     d.text(xy, s, font=font, fill=fill, anchor=anchor)
 
 
+def sized(s, w, size, width):
+    """한 줄에 들어가도록 글자 크기를 줄인다."""
+    while size > 16 and kr(size, w).getlength(s) > width:
+        size -= 1
+    return kr(size, w)
+
+
 def fit(s, font, width):
     if font.getlength(s) <= width:
         return s
@@ -115,8 +122,8 @@ def fit(s, font, width):
 
 
 # ---------- 왼쪽: 코드 ----------
-CX, CY, CW, CH = 40, 120, 960, 860
-LH, VIS = 30, 27
+CX, CY, CW, CH = 24, 120, 818, 860
+LH, VIS = 28, 29
 
 
 def top_for(seq):
@@ -148,8 +155,8 @@ def draw_code(im, b, u, top):
             d.rectangle([CX + 8, y - 3, CX + 14, y + LH - 5], fill="#8FC4AE")
         elif n in done:
             d.rectangle([CX + 8, y - 3, CX + CW - 8, y + LH - 5], fill=(63, 122, 102, 55))
-        text(d, (CX + 56, y), str(n), CODE, CNUM, "ra")
-        x = CX + 76
+        text(d, (CX + 48, y), str(n), CODE, CNUM, "ra")
+        x = CX + 64
         for c, s in ROWS[i]:
             d.text((x, y), s, font=CODE, fill=c)
             x += CODE.getlength(s)
@@ -157,14 +164,14 @@ def draw_code(im, b, u, top):
 
 
 # ---------- 오른쪽: 그래프 + 메시지 ----------
-RX, RW = 1040, 840
-NODES = {"START": (1110, 250), "agent": (1440, 250), "tools": (1440, 390), "END": (1780, 250)}
+RX, RW = 862, 554
+NODES = {"START": (RX + 70, 250), "agent": (RX + 280, 250), "tools": (RX + 280, 390), "END": (RX + 490, 250)}
 
 
 def box(d, name, on, glow):
     x, y = NODES[name]
     small = name in ("START", "END")
-    w, h = (110, 54) if small else (190, 70)
+    w, h = (100, 50) if small else (160, 64)
     fill, edge, fg = (INK, INK, "white") if on else ("white", LINE if small else INK, TXT)
     if glow:
         for r in range(4, 0, -1):
@@ -191,8 +198,8 @@ def arrow(d, a, b, col, width=3, dash=False):
     d.polygon([(x2, y2), (x2 - ux * 18 + px * 9, y2 - uy * 18 + py * 9), (x2 - ux * 18 - px * 9, y2 - uy * 18 - py * 9)], fill=col)
 
 
-EDGES = {("START", "agent"): ((1165, 250), (1345, 250)), ("agent", "END"): ((1535, 250), (1725, 250)),
-         ("agent", "tools"): ((1400, 285), (1400, 355)), ("tools", "agent"): ((1480, 355), (1480, 285))}
+EDGES = {("START", "agent"): ((RX + 120, 250), (RX + 200, 250)), ("agent", "END"): ((RX + 360, 250), (RX + 440, 250)),
+         ("agent", "tools"): ((RX + 250, 282), (RX + 250, 358)), ("tools", "agent"): ((RX + 310, 358), (RX + 310, 282))}
 
 
 def draw_graph(d, b, u):
@@ -203,7 +210,7 @@ def draw_graph(d, b, u):
         hot = b.get("edge") == (a, c)
         dash = (a, c) in (("agent", "tools"), ("agent", "END"))
         arrow(d, p, q, INK if hot else LINE, 4 if hot else 3, dash and not hot)
-    text(d, (1352, 320), "route()", TINY, WARN, "rm")
+    text(d, (RX + 242, 320), "route()", TINY, WARN, "rm")
     for name in NODES:
         on = b.get("active") == name
         box(d, name, on, (0.5 + 0.5 * abs(((u * 2) % 2) - 1)) if on else 0)
@@ -215,8 +222,8 @@ def draw_graph(d, b, u):
             d.ellipse([x - 9, y - 9, x + 9, y + 9], fill=WARN)
     if b.get("route") and u > 0.5:
         lab = f'route → "{b["route"]}"'
-        d.rounded_rectangle([1560, 360, 1840, 420], 12, fill=WARN_BG, outline=WARN, width=2)
-        text(d, (1700, 390), lab, MONO_S, "#7A5A1E", "mm")
+        d.rounded_rectangle([RX + 370, 362, RX + RW - 16, 418], 12, fill=WARN_BG, outline=WARN, width=2)
+        text(d, (RX + (370 + RW - 16) / 2, 390), lab, MONO_S, "#7A5A1E", "mm")
     if reveal < 1:   # 배선 장면: 그래프가 왼쪽에서 오른쪽으로 드러난다
         d.rectangle([RX + 40 + (RW - 60) * reveal, CY + 46, RX + RW - 4, CY + 346], fill="white")
 
@@ -227,7 +234,7 @@ def draw_registry(d, b, u, prev):
     reg = b.get("reg", set())
     new = reg - prev.get("reg", set())
     y = CY + 70
-    items = [("skill", "스킬", [("travel-memo", "이름·설명만 시스템 프롬프트에. 본문은 load_skill 이 읽을 때")]),
+    items = [("skill", "스킬", [("travel-memo", "이름·설명만 프롬프트에, 본문은 나중에")]),
              ("tools", "도구 (@tool)", [("load_skill(name)", "스킬 본문을 읽어 온다"),
                                         ("get_weather(city)", "도시의 현재 날씨(예시 데이터)"),
                                         ("c_to_f(celsius)", "섭씨를 화씨로 바꾼다")]),
@@ -242,7 +249,7 @@ def draw_registry(d, b, u, prev):
         for name, desc in rows:
             d.rounded_rectangle([RX + 30, y + dy, RX + RW - 30, y + 84 + dy], 14, fill=OK_BG if a == 1 else "#F2F7F4", outline=OK, width=2)
             text(d, (RX + 52, y + 14 + dy), name, MONO_S, TXT)
-            text(d, (RX + 52, y + 48 + dy), desc, SMALL, GRAY)
+            text(d, (RX + 52, y + 48 + dy), fit(desc, SMALL, RW - 110), SMALL, GRAY)
             y += 98
         y += 18
 
@@ -263,13 +270,13 @@ def draw_msgs(d, b, u, prev):
         fg, bg = ROLE.get(role, (WARN, WARN_BG))
         dx = (1 - a) * 60
         d.rounded_rectangle([RX + 20 + dx, y, RX + RW - 20 + dx, y + 56], 12, fill=bg, outline=fg if fresh else None, width=2)
-        d.rounded_rectangle([RX + 32 + dx, y + 12, RX + 222 + dx, y + 44], 16, fill=fg)
-        text(d, (RX + 127 + dx, y + 28), role, TINY, "white", "mm")
-        text(d, (RX + 238 + dx, y + 16), fit(body, MONO_S, RW - 280), MONO_S, TXT)
+        d.rounded_rectangle([RX + 30 + dx, y + 12, RX + 100 + dx, y + 44], 16, fill=fg)
+        text(d, (RX + 65 + dx, y + 28), role, TINY, "white", "mm")
+        text(d, (RX + 112 + dx, y + 18), fit(body, MONO_S, RW - 150), MONO_S, TXT)
         y += 66
     if b.get("skill_loaded") and not prev.get("skill_loaded") and u > 0.45:
-        d.rounded_rectangle([RX + 470, top + 8, RX + RW - 90, top + 40], 14, fill=WARN_BG, outline=WARN, width=2)
-        text(d, (RX + 470 + (RW - 560) / 2, top + 24), "스킬 본문이 이제 컨텍스트에", TINY, "#7A5A1E", "mm")
+        d.rounded_rectangle([RX + 190, top + 8, RX + RW - 70, top + 40], 14, fill=WARN_BG, outline=WARN, width=2)
+        text(d, (RX + (190 + RW - 70) / 2, top + 24), "스킬 본문이 이제 컨텍스트에", TINY, "#7A5A1E", "mm")
 
 
 def draw_final(d, u):
@@ -306,10 +313,10 @@ def draw_summary(im, u):
              ("메시지", f"{len(MSGS)}개"), ("LLM 대기 실측", f"{L1 + L2 + L3:.1f}초")]
     for i, (k, v) in enumerate(stats):
         a = ease(u * 3 - i * 0.35)
-        x = 120 + i * 430
-        d.rounded_rectangle([x, 200 + (1 - a) * 30, x + 380, 400 + (1 - a) * 30], 20, fill=OK_BG, outline=OK, width=2)
-        text(d, (x + 190, 260 + (1 - a) * 30), k, SUB, GRAY, "mm")
-        text(d, (x + 190, 340 + (1 - a) * 30), v, kr(64, "ExtraBold"), INK, "mm")
+        x = 60 + i * 335
+        d.rounded_rectangle([x, 200 + (1 - a) * 30, x + 300, 400 + (1 - a) * 30], 20, fill=OK_BG, outline=OK, width=2)
+        text(d, (x + 150, 260 + (1 - a) * 30), k, SUB, GRAY, "mm")
+        text(d, (x + 150, 340 + (1 - a) * 30), v, kr(64, "ExtraBold"), INK, "mm")
     pts = ["등록(한 번): 스킬 이름·설명, 도구 스키마, 노드, 간선 — compile() 로 굳힌다",
            "실행(턴마다): agent 가 LLM을 부르고 route 가 tool_calls 를 보고 tools 나 END 로 보낸다",
            "도구 결과는 ToolMessage 로 messages 에 붙고, 다음 턴 LLM 입력이 된다",
@@ -317,8 +324,9 @@ def draw_summary(im, u):
     for i, p in enumerate(pts):
         a = ease(u * 3 - 1.2 - i * 0.3)
         if a > 0:
-            d.ellipse([140, 506 + i * 92, 158, 524 + i * 92], fill=INK)
-            text(d, (184 + (1 - a) * 30, 500 + i * 92), p, BODY, TXT)
+            d.ellipse([80, 486 + i * 110, 98, 504 + i * 110], fill=INK)
+            for j, part in enumerate(wrap(p, BODY, W - 200)):
+                text(d, (124 + (1 - a) * 30, 480 + i * 110 + j * 38), part, BODY, TXT)
 
 
 def frame(bi, u):
@@ -326,7 +334,7 @@ def frame(bi, u):
     prev = B[bi - 1] if bi else {}
     im = Image.new("RGB", (W, H), PAPER)
     d = ImageDraw.Draw(im, "RGBA")
-    text(d, (40, 34), b["title"], TITLE, TXT)
+    text(d, (40, 34), b["title"], sized(b["title"], "ExtraBold", 40, W - 320), TXT)
     turn = sum(1 for x in B[:bi + 1] if x["title"].startswith("턴") and "agent" in x["title"])
     chip = "등록 단계" if b.get("reg") else (f"턴 {turn}" if turn and not b.get("summary") and not b.get("final") else "")
     if chip:
@@ -349,7 +357,7 @@ def frame(bi, u):
         else:
             draw_registry(d, b, u, prev)
     d.rounded_rectangle([40, 1000, W - 40, 1056], 14, fill="white")
-    text(d, (64, 1028), b["cap"], BODY, TXT, "lm")
+    text(d, (64, 1028), b["cap"], sized(b["cap"], "Regular", 24, W - 140), TXT, "lm")
     return im
 
 
