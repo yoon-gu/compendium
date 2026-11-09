@@ -17,7 +17,8 @@ import zipfile
 from pathlib import Path
 
 slug, arg = sys.argv[1], sys.argv[2]
-sys.argv = ["build.py", slug]                       # build.py 는 import 할 때 sys.argv 를 읽는다
+script_args = [a for a in sys.argv[3:] if a.startswith(("--script=", "--voice="))]
+sys.argv = ["build.py", slug] + script_args                     # build.py 는 import 할 때 sys.argv 를 읽는다
 import importlib.util                               # noqa: E402
 spec = importlib.util.spec_from_file_location("build", Path(__file__).with_name("build.py"))
 b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)

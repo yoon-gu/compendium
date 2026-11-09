@@ -1,1 +1,1 @@
-{"duration": 41.17, "marks": [{"t": 6.44, "pat": "\\[tool\\] agent", "nth": 1}, {"t": 7.5, "pat": "\\[sub\\] run_command", "nth": 2}, {"t": 15.98, "pat": "\\[sub\\] done", "nth": 1}, {"t": 19.71, "pat": "\\[array\\] parent", "nth": 1}]}
+{"duration": 52.19, "marks": [{"t": 8.02, "pat": "\\[tool\\] agent", "nth": 1}, {"t": 10.96, "pat": "\\[sub\\] run_command", "nth": 2}, {"t": 20.16, "pat": "\\[sub\\] done", "nth": 1}, {"t": 25.03, "pat": "\\[array\\] parent", "nth": 1}]}

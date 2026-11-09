@@ -522,6 +522,7 @@ def overlay_clips(video: Path, clips: list[tuple]) -> Path:
 
 def demo() -> None:
     out, seconds = build()
+    out.with_name(out.stem + "-nosfx.mp4").unlink(missing_ok=True)   # 새 영상이 나왔으니 sfx.py 가 옛 원본을 다시 쓰지 않게
     if seconds is None:   # --audio 모드: 길이 검증은 encode 의 -t 가 보장한다
         print(f"{out.name} · 외부 음성 · {out.stat().st_size / 1e6:.0f}MB"); return
     info = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "stream=codec_type,width,height:format=duration",

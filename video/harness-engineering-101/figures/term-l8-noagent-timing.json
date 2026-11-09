@@ -1,1 +1,1 @@
-{"duration": 37.45, "marks": [{"t": 12.96, "pat": "\\[tool\\] run_command", "nth": 1}, {"t": 18.66, "pat": "assistant> 출력이 길어서", "nth": 1}]}
+{"duration": 46.17, "marks": [{"t": 16.98, "pat": "\\[tool\\] run_command", "nth": 1}, {"t": 22.74, "pat": "assistant> 출력이 길어서", "nth": 1}, {"t": 27.56, "pat": "\\[array\\] parent", "nth": 1}]}

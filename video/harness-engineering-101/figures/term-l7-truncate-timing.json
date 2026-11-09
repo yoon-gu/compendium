@@ -1,1 +1,1 @@
-{"duration": 50.25, "marks": [{"t": 12.0, "pat": "assistant> 로그가", "nth": 1}, {"t": 17.87, "pat": "\\[tool\\] run_command", "nth": 1}, {"t": 24.21, "pat": "assistant> 빌드가", "nth": 1}]}
+{"duration": 66.12, "marks": [{"t": 7.28, "pat": "20,873 bytes", "nth": 1}, {"t": 17.78, "pat": "assistant> 로그가", "nth": 1}, {"t": 27.61, "pat": "\\[tool\\] run_command", "nth": 1}, {"t": 34.65, "pat": "assistant> 빌드가", "nth": 1}]}

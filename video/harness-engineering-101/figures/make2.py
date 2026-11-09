@@ -30,20 +30,29 @@ def table(rows, widths, head=None, size=27, rh=78, accent=()):
 
 
 # ---------- 오늘의 지도 ----------
-h, b = table([("7 예산", "배열이 차서 호출이 거절된다", "자르고, 잘랐다고 말한다"),
+MAP_ROWS = [("7 예산", "배열이 차서 호출이 거절된다", "자르고, 잘랐다고 말한다"),
               ("8 서브에이전트", "탐색 기록이 배열에 남는다", "빈 배열에 맡긴다"),
               ("9 리마인더", "바뀐 세상·계획을 놓친다", "맨 아래에 알림을 붙인다"),
-              ("10 백그라운드", "느린 명령 앞에서 멈춘다", "몸이 기다리고 깨운다")],
-             [230, 360, 314], head=("수업", "무너지는 것", "고치는 법"), size=26, rh=96)
+              ("10 백그라운드", "느린 명령 앞에서 멈춘다", "몸이 기다리고 깨운다")]
+h, b = table(MAP_ROWS,
+             [230, 360, 314], head=("수업", "무너지는 것", "고치는 법"), size=26, rh=96, accent=(0, 1))
 figs["map-2"] = svg(h, b)
+h, b = table(MAP_ROWS, [230, 360, 314], head=("수업", "무너지는 것", "고치는 법"), size=26, rh=96, accent=(2, 3))
+figs["map-3"] = svg(h, b)   # 3편: 같은 지도에서 아래 두 줄을 칠한다
 
 # ---------- 준비물 ----------
 h, b = table([("1편 그대로", "Python 3.10+, API 키, 설치할 패키지 없음"),
-              ("새 실습 파일", "lessons/l7_budget.py … l10_background.py"),
+              ("새 실습 파일", "lessons/l7_budget.py · l8_subagents.py"),
               ("예제 만들기", "python3 make_samples.py"),
               ("생기는 것", "sample-project2/ (로그 2.3MB) · minishop/")],
              [250, 654], size=26, rh=92, accent=(2,))
 figs["setup-2"] = svg(h, b)
+h, b = table([("2편 그대로", "Python 3.10+, API 키, 설치할 패키지 없음"),
+              ("새 실습 파일", "lessons/l9_reminders.py · l10_background.py"),
+              ("예제", "2편의 sample-project2/ (pager.py · test_slow.py)"),
+              ("없다면", "python3 make_samples.py")],
+             [250, 654], size=26, rh=92, accent=(2,))
+figs["setup-3"] = svg(h, b)
 
 # ---------- 윈도우와 예산 ----------
 b = [text(0, 36, "컨텍스트 윈도우 (하이쿠: 1,000,000 토큰)", 28, GRAY, weight="bold"),
@@ -168,12 +177,13 @@ b = [text(0, 30, "모델이 보낸 명령", 25, GRAY, weight="bold"),
      text(0, 396, "좋은 길을 쉬운 길로 만드는 건 몸의 몫 (위 명령은 예시)", 26, INK, weight="bold")]
 figs["sleep-guard"] = svg(416, "\n".join(b))
 
-# ---------- 2편 정리 ----------
-h, b = table([("예산", "자르고, 잘랐다고 말한다"), ("서브에이전트", "빈 배열에 맡기고 답만 받는다"),
-              ("리마인더", "배열 맨 아래에 붙인다"), ("백그라운드", "몸이 기다리고, 끝나면 깨운다")],
-             [260, 644], size=28, rh=96)
-b += "\n" + text(0, h + 40, "전부 1편의 배열 · 루프 · 디스패치 표를 다시 쓴 것", 28, INK, weight="bold")
-figs["recap-2"] = svg(h + 60, b)
+# ---------- 2편·3편 정리 ----------
+RECAP = [("예산", "자르고, 잘랐다고 말한다"), ("서브에이전트", "빈 배열에 맡기고 답만 받는다"),
+         ("리마인더", "배열 맨 아래에 붙인다"), ("백그라운드", "몸이 기다리고, 끝나면 깨운다")]
+for name, rows in (("recap-2", RECAP[:2]), ("recap-3", RECAP)):
+    h, b = table(rows, [260, 644], size=28, rh=96)
+    b += "\n" + text(0, h + 40, "전부 1편의 배열 · 루프 · 디스패치 표를 다시 쓴 것", 28, INK, weight="bold")
+    figs[name] = svg(h + 60, b)
 
 if __name__ == "__main__":
     for name, s in figs.items():
