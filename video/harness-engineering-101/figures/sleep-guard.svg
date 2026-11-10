@@ -6,4 +6,4 @@
 <rect x="0" y="230" width="904" height="110" rx="10" fill="#FBEFEF" stroke="#A23B3B" stroke-width="3"/>
 <text x="22" y="276" font-size="25" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">BLOCKED: don't wait in the foreground.</text>
 <text x="22" y="318" font-size="25" fill="#A23B3B" text-anchor="start" font-weight="normal" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">Use background=true and you'll be notified.</text>
-<text x="0" y="396" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">좋은 길을 쉬운 길로 만드는 건 몸의 몫 (위 명령은 예시)</text></svg>
+<text x="0" y="396" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">좋은 길을 쉬운 길로 만들어 주는 게 몸이 할 일 (위 명령은 예시)</text></svg>

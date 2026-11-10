@@ -42,7 +42,7 @@ def draw_pile(ax, t):
     label(ax, rx, 140, "이번 호출에 보내는 양", 28, GRAY, ha="left")
     ax.add_patch(Rectangle((rx, 180), 120, max(4, total * 0.95), fc=BAD, ec="none", alpha=0.85))
     label(ax, rx + 140, 180 + total * 0.95 / 2, f"바퀴 {max(cur + 1, 0)}", 32, TXT, ha="left", bold=True)
-    label(ax, W / 2, 975, "1편에서 본 대로, 배열은 매 바퀴 통째로 다시 간다", 30, INK, bold=True)
+    label(ax, W / 2, 975, "1편에서 봤듯이 바퀴마다 배열을 통째로 다시 보낸다", 30, INK, bold=True)
 
 
 # ------------------------------------------------------------ subagent: 빈 배열로 도는 같은 루프 (l8-agent 실측)
@@ -54,7 +54,7 @@ def draw_subagent(ax, t):
     dur, marks = timing("subagent", (30.0, [1.0, 4.0, 12.0, 16.0, 20.0]))
     # marks: 0 부모가 agent 부름, 1 자식 배열 생김, 2 보고가 돌아옴, 3 자식 배열 버림, 4 부모 계속
     cur = current_of(t, marks)
-    label(ax, W / 2, 56, "서브에이전트 = 빈 배열에서 도는 같은 루프. 답 한 덩어리만 돌아온다", 34, GRAY)
+    label(ax, W / 2, 56, "서브에이전트 = 빈 배열에서 도는 같은 루프. 돌아오는 건 마지막 답 하나", 34, GRAY)
     # 부모 배열
     px, pw = 80, 700
     label(ax, px, 120, "부모 배열", 32, INK, ha="left", bold=True)
@@ -69,12 +69,12 @@ def draw_subagent(ax, t):
         box(ax, px, y, pw, 80, c, TINT if c == INK else ("#E6F2E8" if c == OK else "#FFFFFF"), 5 if on else 3, 12)
         label(ax, px + 20, y + 40, role, 24, INK, ha="left", bold=True, mono=True)
         label(ax, px + 190, y + 40, s, 25, TXT, ha="left", mono=i == 1)
-    label(ax, px, 960, "부모 배열 38,515 bytes 로 끝", 30, INK, ha="left", bold=True, alpha=1.0 if cur >= 4 else 0.0)
+    label(ax, px, 960, "부모 배열은 38,515 bytes에서 끝", 30, INK, ha="left", bold=True, alpha=1.0 if cur >= 4 else 0.0)
     # 자식 배열
     cx, cw = 960, 780
     if 1 <= cur <= 3:
         fade = 1.0 - ease((t - marks[3]) / 1.0) * 0.85 if cur == 3 else 1.0
-        label(ax, cx, 120, "자식 배열 (새로 비어 있는 배열)", 32, GRAY, ha="left", bold=True, alpha=fade)
+        label(ax, cx, 120, "자식 배열 (빈 배열에서 시작)", 32, GRAY, ha="left", bold=True, alpha=fade)
         box(ax, cx, 160, cw, 64, LINE, "#FFFFFF", 3, 10, alpha=fade)
         label(ax, cx + 20, 192, "user: 작업 디렉터리는 … 이다. HTTP 호출을 찾아라 …", 22, TXT, ha="left", alpha=fade)
         span = (marks[2] - marks[1]) if len(marks) > 2 else 8.0
@@ -99,7 +99,7 @@ SOURCES = [("키보드", "사람이 엔터를 친다"), ("작업 완료", "b2 fi
 def draw_events(ax, t):
     dur, marks = timing("events", (24.0, [1.0, 3.0, 5.0, 7.0, 10.0]))
     cur = current_of(t, marks)
-    label(ax, W / 2, 56, "무엇이든 같은 입구로: 배열 맨 아래에 붙이고 모델을 부른다", 34, GRAY)
+    label(ax, W / 2, 56, "무슨 일이든 같은 문으로: 배열 맨 아래에 붙이고 모델을 부른다", 34, GRAY)
     for i, (name, ex) in enumerate(SOURCES):
         y = 160 + i * 200
         on = i <= cur

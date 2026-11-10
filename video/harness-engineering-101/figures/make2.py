@@ -31,8 +31,8 @@ def table(rows, widths, head=None, size=27, rh=78, accent=()):
 
 # ---------- 오늘의 지도 ----------
 MAP_ROWS = [("7 예산", "배열이 차서 호출이 거절된다", "자르고, 잘랐다고 말한다"),
-              ("8 서브에이전트", "탐색 기록이 배열에 남는다", "빈 배열에 맡긴다"),
-              ("9 리마인더", "바뀐 세상·계획을 놓친다", "맨 아래에 알림을 붙인다"),
+              ("8 서브에이전트", "탐색한 흔적이 배열에 쌓인다", "빈 배열에 맡긴다"),
+              ("9 리마인더", "바뀐 파일·할 일을 놓친다", "맨 아래에 알림을 붙인다"),
               ("10 백그라운드", "느린 명령 앞에서 멈춘다", "몸이 기다리고 깨운다")]
 h, b = table(MAP_ROWS,
              [230, 360, 314], head=("수업", "무너지는 것", "고치는 법"), size=26, rh=96, accent=(0, 1))
@@ -59,11 +59,11 @@ b = [text(0, 36, "컨텍스트 윈도우 (하이쿠: 1,000,000 토큰)", 28, GRA
      rect(0, 60, W, 110, LINE, "#FFFFFF", 3, 10),
      rect(0, 60, W * 0.55, 110, INK, TINT, 3, 10),
      text(24, 126, "잘 읽히는 범위", 28, INK, weight="bold"),
-     text(W * 0.55 + 24, 126, "앞쪽을 덜 챙긴다 (열화)", 26, GRAY),
+     text(W * 0.55 + 24, 126, "앞쪽을 점점 놓친다 (열화)", 26, GRAY),
      text(0, 236, "넘치면?", 28, BAD, weight="bold"),
      rect(0, 260, W, 110, BAD, PINK, 3, 10),
      text(24, 326, "HTTP 400: prompt is too long", 28, BAD, mono=True),
-     text(0, 430, "가방처럼 던져 넣지 말고, 예산처럼 쓴다", 30, INK, weight="bold")]
+     text(0, 430, "다 채울 가방이 아니라 아껴 쓸 예산이다", 30, INK, weight="bold")]
 figs["window-budget"] = svg(450, "\n".join(b))
 
 # ---------- 무엇이 예산을 먹었나 (l7-whole 실측) ----------
@@ -76,7 +76,7 @@ for i, (name, v, lab) in enumerate(parts):
     b.append(rect(0, y + 44, wbar, 56, BAD if i == 2 else INK, PINK if i == 2 else TINT, 3, 6))
     b.append(text(min(wbar, W - 300) + 16 if i < 2 else W - 20, y + 82, lab + " 토큰" + (" → 화면 밖으로" if i == 2 else ""), 26,
                   BAD if i == 2 else TXT, "start" if i < 2 else "end", "bold"))
-b.append(text(0, 470, "예산을 먹는 건 말이 아니라 도구 결과", 30, INK, weight="bold"))
+b.append(text(0, 470, "예산을 다 먹은 건 대화가 아니라 도구 결과", 30, INK, weight="bold"))
 figs["budget-bars"] = svg(490, "\n".join(b))
 
 # ---------- 압축과 메모리 파일 ----------
@@ -106,13 +106,13 @@ def bars(y0, title, a, bv, note, scale):
     return out
 
 
-b = bars(32, "부모 배열 (bytes)", 57_052, 38_515, "자식 배열 140,121 bytes 는 끝나고 버렸다", 60_000)
+b = bars(32, "부모 배열 (bytes)", 57_052, 38_515, "자식 배열 140,121 bytes는 일이 끝나자 버렸다", 60_000)
 b += bars(296, "입력 토큰 합계", 36_558, 134_816, "맡긴 버전 = 부모 24,778 + 자식 110,038", 140_000)
-b.append(text(0, 556, "돈은 더 든다. 사는 것은 부모의 작업 기억", 30, INK, weight="bold"))
+b.append(text(0, 556, "돈은 더 든다. 대신 부모의 작업 기억을 아낀다", 30, INK, weight="bold"))
 figs["sub-cost"] = svg(576, "\n".join(b))
 
 # ---------- 좋은 일감 (l8-agent 실제 첫머리) ----------
-b = [text(0, 30, "실제로 부모가 쓴 일감의 첫머리", 25, GRAY, weight="bold"),
+b = [text(0, 30, "부모가 실제로 쓴 일감 첫머리", 25, GRAY, weight="bold"),
      rect(0, 48, W, 130, INK, "#1B1D21", 0, 10),
      text(22, 96, "작업 디렉터리는 /private/tmp/he101/l8b 이다 (프로젝트", 25, "#C3E88D", mono=True),
      text(22, 140, "루트, 이 경로 밖은 읽거나 수정하지 말 것). 이 안에 있는 …", 25, "#C3E88D", mono=True)]
@@ -123,13 +123,13 @@ b.append(text(0, 210 + h + 40, "첫 시도엔 '어디서'가 빠져 자식이 �
 figs["ticket"] = svg(210 + h + 60, "\n".join(b))
 
 # ---------- 맡길 일, 맡기지 말 일 ----------
-b = [box(0, 0, 440, 400, "맡길 일", ["무언가를 찾기", "테스트 돌리고 실패만 요약", "긴 문서에서 핵심 뽑기", "서로 독립인 여러 조각"], True, 32),
-     box(464, 0, 440, 400, "맡기지 말 일", ["이 세션의 판단이 필요한 일", "명령 하나면 끝날 일", "줄줄이 이어지는 수정"], False, 32),
-     text(W / 2, 450, "읽을 건 많고, 남길 건 짧은 일", 30, INK, "middle", "bold")]
+b = [box(0, 0, 440, 400, "맡길 일", ["뭔가 찾아내는 일", "테스트 돌리고 실패만 요약", "긴 문서에서 핵심 뽑기", "서로 얽히지 않은 여러 조각"], True, 32),
+     box(464, 0, 440, 400, "맡기지 말 일", ["지금 대화를 알아야 판단할 일", "명령 하나면 끝날 일", "줄줄이 이어지는 수정"], False, 32),
+     text(W / 2, 450, "읽을 건 많은데 남길 건 짧은 일", 30, INK, "middle", "bold")]
 figs["delegate"] = svg(470, "\n".join(b))
 
 # ---------- 리마인더는 어디에 붙나 ----------
-rows = [("system", "캐시가 붙어 고정 — 고치면 아래 전부 다시", LINE, SOFT),
+rows = [("system", "캐시된 부분 — 고치면 아래가 다 깨진다", LINE, SOFT),
         ("user", "pager.py에 타입 힌트를 달아 줘.", LINE, "#FFFFFF"),
         ("assistant", "tool_use: read_file(pager.py)", LINE, "#FFFFFF"),
         ("user", "tool_result: (파일 내용)", LINE, "#FFFFFF"),
@@ -140,7 +140,7 @@ for i, (role, s, c, fill) in enumerate(rows):
     b.append(rect(0, y, W, 72, c, fill, 4 if c == INK else 3, 10))
     b.append(text(22, y + 46, role, 26, INK, weight="bold", mono=True))
     b.append(text(190 if role else 22, y + 46, s, 25, INK if c == INK else TXT, weight="bold" if c == INK else "normal", mono=role != "system"))
-b.append(text(0, 5 * 86 + 34, "새 소식은 언제나 맨 아래, 사용자 쪽 메시지 끝에", 28, INK, weight="bold"))
+b.append(text(0, 5 * 86 + 34, "새 소식은 늘 맨 아래, 사용자 쪽 메시지 끝에 붙인다", 28, INK, weight="bold"))
 figs["reminder-where"] = svg(5 * 86 + 50, "\n".join(b))
 
 # ---------- 배열 끝 열어 보기 (l9-reminder 세션 실측) ----------
@@ -153,15 +153,15 @@ p.write_text(json.dumps(short, ensure_ascii=False, indent=2).replace("\\n", "\\n
 figs["reminder-json"] = code(p, 1, len(p.read_text(encoding="utf-8").splitlines()), hl_substr=("system-reminder", "changed on disk"), cols=60)
 
 # ---------- 너무 자주 알리기 ----------
-b = [box(0, 0, 440, 300, "피할 것", ["매 바퀴 \"조심하세요\"", "시계에 맞춘 알림", "모델이 방금 한 일까지 알림"], False, 32),
-     box(464, 0, 440, 300, "할 것", ["사건이 생겼을 때만", "구체적인 사실만", "늘 필요한 말은 시스템 프롬프트로"], True, 32),
+b = [box(0, 0, 440, 300, "피할 것", ["매 바퀴 \"조심하세요\"", "몇 분마다 보내는 알림", "모델이 방금 한 일까지 알리기"], False, 32),
+     box(464, 0, 440, 300, "할 것", ["일이 생겼을 때만", "구체적인 사실만", "늘 할 말은 시스템 프롬프트에"], True, 32),
      text(0, 356, "제 첫 버전: 모델이 sed 로 고친 파일까지 '바뀌었다'고 알렸다", 25, BAD, weight="bold"),
-     text(0, 396, "→ 모델 자신이 바꾼 것은 알리지 않게 고쳤다", 25, GRAY)]
+     text(0, 396, "→ 모델이 직접 고친 파일은 알리지 않게 바꿨다", 25, GRAY)]
 figs["oversteer"] = svg(410, "\n".join(b))
 
 # ---------- 동기 루프의 한계 ----------
 h, b = table([("끝까지 기다린다", "그동안 아무것도 못 한다"),
-              ("시간 제한으로 끊는다", "모델은 \"여기선 실패한다\"고 배운다"),
+              ("시간 제한으로 끊는다", "모델은 이 명령이 실패한다고 여긴다"),
               ("sleep 하고 확인, 또 확인", "비싼 뇌가 주방 타이머 노릇 (폴링)")],
              [340, 564], head=("30초 걸리는 테스트 앞에서", "그 결과"), size=26, rh=100, accent=(2,))
 figs["sync-limits"] = svg(h, b)
@@ -174,7 +174,7 @@ b = [text(0, 30, "모델이 보낸 명령", 25, GRAY, weight="bold"),
      rect(0, 230, W, 110, BAD, PINK, 3, 10),
      text(22, 276, "BLOCKED: don't wait in the foreground.", 25, BAD, mono=True),
      text(22, 318, "Use background=true and you'll be notified.", 25, BAD, mono=True),
-     text(0, 396, "좋은 길을 쉬운 길로 만드는 건 몸의 몫 (위 명령은 예시)", 26, INK, weight="bold")]
+     text(0, 396, "좋은 길을 쉬운 길로 만들어 주는 게 몸이 할 일 (위 명령은 예시)", 26, INK, weight="bold")]
 figs["sleep-guard"] = svg(416, "\n".join(b))
 
 # ---------- 2편·3편 정리 ----------
@@ -182,7 +182,7 @@ RECAP = [("예산", "자르고, 잘랐다고 말한다"), ("서브에이전트",
          ("리마인더", "배열 맨 아래에 붙인다"), ("백그라운드", "몸이 기다리고, 끝나면 깨운다")]
 for name, rows in (("recap-2", RECAP[:2]), ("recap-3", RECAP)):
     h, b = table(rows, [260, 644], size=28, rh=96)
-    b += "\n" + text(0, h + 40, "전부 1편의 배열 · 루프 · 디스패치 표를 다시 쓴 것", 28, INK, weight="bold")
+    b += "\n" + text(0, h + 40, "모두 1편의 배열 · 루프 · 디스패치 표를 다시 쓴 것뿐이다", 28, INK, weight="bold")
     figs[name] = svg(h + 60, b)
 
 if __name__ == "__main__":
