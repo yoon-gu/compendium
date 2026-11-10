@@ -55,7 +55,7 @@ h, b = table([("2편 그대로", "Python 3.10+, API 키, 설치할 패키지 없
 figs["setup-3"] = svg(h, b)
 
 # ---------- 윈도우와 예산 ----------
-b = [text(0, 36, "컨텍스트 윈도우 (하이쿠: 1,000,000 토큰)", 28, GRAY, weight="bold"),
+b = [text(0, 36, "컨텍스트 윈도우 (Haiku: 1,000,000 토큰)", 28, GRAY, weight="bold"),
      rect(0, 60, W, 110, LINE, "#FFFFFF", 3, 10),
      rect(0, 60, W * 0.55, 110, INK, TINT, 3, 10),
      text(24, 126, "잘 읽히는 범위", 28, INK, weight="bold"),

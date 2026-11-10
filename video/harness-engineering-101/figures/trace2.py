@@ -263,7 +263,7 @@ def render(name):
     proc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
                              "-i", "-", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", str(out)],
                             stdin=subprocess.PIPE)
-    text, k, shots = "", 0, []
+    text, k, shots, top_line = "", 0, [], 0.0
     focus = re.compile(spec["focus"]) if spec.get("focus") else None
     seen_at = {}                                    # 강조할 줄(전체 줄 번호) → 처음 보인 시각
     sheet_at = {int(frames * f) for f in (0.15, 0.4, 0.7, 0.97)}
@@ -280,13 +280,14 @@ def render(name):
             d.ellipse([22 + j * 30, TBAR // 2 - 9, 40 + j * 30, TBAR // 2 + 9], fill=c)
         d.text((W // 2, TBAR // 2), title, fill="#B8BBC2", font=FT_T, anchor="mm")
         lines = [w for ln in text.split("\n") for w in wrap(ln, TCOLS)]
-        shown = lines[-trows:]
+        top_line = T.scroll(top_line, len(lines), trows, t, total)   # 긴 답도 첫 줄부터 읽는 속도로 올라간다
+        base = int(top_line)
+        shown = lines[base:base + trows]
         top = TBAR + TPAD
         for r, ln in enumerate(shown):
             col, font = T.color_of(ln)
             d.text((TPAD, top + r * TLH), ln, fill=col, font=FT_B if font is T.FONT_B else FT)
         if focus:                                   # 나레이션이 읽는 값(예: cache_read=633)을 상자로 짚는다
-            base = len(lines) - len(shown)
             hits = [(base + r, r, m) for r, ln in enumerate(shown) for m in [focus.search(ln)] if m]
             if hits:
                 gi, r, m = hits[-1]
@@ -299,7 +300,7 @@ def render(name):
                 pulse = 255 if (t - t0) > 2.0 else int(150 + 105 * abs(((t - t0) * 2) % 2 - 1))
                 d.rounded_rectangle([x0, y - 6, x1, y + TLH - 6], radius=8, outline=(0xF2, 0xC1, 0x4E, pulse), width=5,
                                     fill=(0xF2, 0xC1, 0x4E, 40))
-        if int(t * 2) % 2 == 0 and shown:
+        if int(t * 2) % 2 == 0 and shown and base + trows >= len(lines):   # 커서는 맨 끝 줄이 보일 때만
             x = TPAD + sum(T.width(c) for c in shown[-1]) * FT.getlength("a")
             d.rectangle([x + 3, top + (len(shown) - 1) * TLH + 6, x + 21, top + (len(shown) - 1) * TLH + 44], fill=T.FG)
         # ---- 아래: 코드 발췌, 지금 출력을 만든 줄만 밝게

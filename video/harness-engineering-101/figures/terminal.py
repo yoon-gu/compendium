@@ -27,6 +27,8 @@ FONT = ImageFont.truetype(str(Path.home() / "Library/Fonts/D2Coding-Ver1.3.2-201
 FONT_B = ImageFont.truetype(str(Path.home() / "Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc"), 40, index=1)
 FONT_T = ImageFont.truetype(str(Path.home() / "Library/Fonts/NanumGothic-Regular.ttf"), 26)
 TYPE_SEC, MAX_GAP, TAIL = 0.04, 1.2, 2.5
+CATCHUP = 10.0                      # 밀린 줄은 대략 이 초 안에 따라잡는다(나레이션과 너무 어긋나지 않게)
+SCROLL = 1.5                        # 넘친 출력을 올리는 속도(줄/초). 예전엔 마지막 줄들만 보여 긴 답의 앞부분이 잘렸다
 LEAD = 1.5                          # 기준 줄은 나레이션이 그 말을 하기 이 만큼 앞서 찍힌다 — 모델 답이 다 뜬 뒤에 설명이 들리게
 ANSI = re.compile(r"\x1b\[[0-9;]*[A-Za-z]")
 
@@ -59,6 +61,16 @@ def color_of(line):
     if "Error" in s or "Traceback" in s or s.startswith("ERROR"):
         return ERR, FONT
     return FG, FONT
+
+
+def scroll(top_line, n_lines, rows, t, total):
+    """다음 프레임에서 맨 위에 보일 줄. 넘친 줄은 초당 SCROLL 줄 이상, 밀린 양을 CATCHUP 초·남은 시간 안에 따라잡는 속도로 올린다."""
+    target = max(n_lines - rows, 0)
+    if target <= top_line:
+        return float(target)
+    left = total - t - TAIL
+    v = max(SCROLL, (target - top_line) / CATCHUP, (target - top_line) / left if left > 0.5 else 1e9)
+    return min(float(target), top_line + v / FPS)
 
 
 def events(name, speed):
@@ -136,6 +148,7 @@ def render(name, speed=1.0):
                              "-i", "-", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", str(out)],
                             stdin=subprocess.PIPE)
     text, k, shots = "", 0, []
+    top_line = 0.0                  # 화면 맨 위에 보이는 줄. 긴 답이 한꺼번에 와도 첫 줄부터 보이고 읽는 속도로 내려간다
     sheet_at = {int(frames * f) for f in (0.15, 0.4, 0.7, 0.97)}
     for i in range(frames):
         t = i / FPS
@@ -149,12 +162,13 @@ def render(name, speed=1.0):
         for j, c in enumerate(("#FF5F57", "#FEBC2E", "#28C840")):          # 신호등 (k 는 이벤트 인덱스라 쓰지 않는다)
             d.ellipse([28 + j * 36, BAR // 2 - 11, 50 + j * 36, BAR // 2 + 11], fill=c)
         d.text((W // 2, BAR // 2), title, fill="#B8BBC2", font=FONT_T, anchor="mm")
-        shown = lines[-rows:]
+        top_line = scroll(top_line, len(lines), rows, t, total)
+        shown = lines[int(top_line):int(top_line) + rows]
         top = BAR + PAD
         for r, ln in enumerate(shown):
             col, font = color_of(ln)
             d.text((PAD, top + r * LH), ln, fill=col, font=font)
-        if cursor_on and shown:
+        if cursor_on and shown and int(top_line) + rows >= len(lines):   # 커서는 맨 끝 줄이 보일 때만
             last = shown[-1]
             x = PAD + sum(width(c) for c in last) * 22
             d.rectangle([x + 4, top + (len(shown) - 1) * LH + 8, x + 24, top + (len(shown) - 1) * LH + 50], fill=FG)
