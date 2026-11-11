@@ -1,1 +1,1 @@
-{"duration": 64.34, "marks": [{"t": 3.96, "line": "REMINDERS = []"}, {"t": 9.94, "line": "def remind"}, {"t": 19.18, "line": "while REMINDERS"}, {"t": 40.1, "line": "def watch_files"}, {"t": 54.82, "line": "remind(f\"{path} changed"}]}
+{"duration": 80.56, "marks": [{"t": 4.88, "line": "REMINDERS = []"}, {"t": 11.02, "line": "def remind"}, {"t": 18.0, "line": "while REMINDERS"}, {"t": 44.74, "line": "def watch_files"}, {"t": 54.47, "line": "remind(f\"{path} changed"}]}

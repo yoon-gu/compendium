@@ -1,1 +1,1 @@
-{"duration": 55.31, "marks": [{"t": 7.22, "pat": "\\[tool\\] read_file", "nth": 1}, {"t": 19.64, "pat": "2,331,535 bytes", "nth": 1}, {"t": 25.39, "pat": "HTTP 400", "nth": 1}]}
+{"duration": 77.69, "marks": [{"t": 7.22, "pat": "\\[tool\\] read_file", "nth": 1}, {"t": 19.64, "pat": "2,331,535 bytes", "nth": 1}, {"t": 26.05, "pat": "HTTP 400", "nth": 1}]}
