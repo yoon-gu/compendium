@@ -1,1 +1,1 @@
-{"duration": 67.74, "marks": [{"t": 9.08, "line": "MAX_RESULT_CHARS = 20_000"}, {"t": 13.36, "line": "keep = MAX_RESULT_CHARS"}, {"t": 47.86, "line": "with open(path, \"w\")"}, {"t": 49.48, "line": "note = ("}]}
+{"duration": 49.35, "marks": [{"t": 7.52, "line": "MAX_RESULT_CHARS = 20_000"}, {"t": 10.42, "line": "keep = MAX_RESULT_CHARS"}, {"t": 32.7, "line": "with open(path, \"w\")"}, {"t": 33.52, "line": "note = ("}]}
