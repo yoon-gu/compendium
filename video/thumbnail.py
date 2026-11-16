@@ -16,17 +16,17 @@ from pathlib import Path
 HERE = Path(__file__).parent
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 W, H = 1280, 720
-KIND = "-podcast" if "--podcast" in sys.argv else ""   # 대화편: 부제를 바꾸고 episodes.tsv 에서 <슬러그>-podcast 회차를 찾는다
+KIND = next((f"-{a[7:]}" for a in sys.argv if a.startswith("--part=")), "-podcast" if "--podcast" in sys.argv else "")   # --part=2: 연재 2편(youtube-2.md, script-2.md)   # 대화편: 부제를 바꾸고 episodes.tsv 에서 <슬러그>-podcast 회차를 찾는다
 
 
 def parse(slug: str) -> dict:
-    own = HERE / slug / "script-podcast.md"   # 대화편 화면 대본이 있으면 그 표지·부제를 쓴다
+    own = HERE / slug / ("script-podcast.md" if KIND == "-podcast" else f"script{KIND}.md")   # 대화편 화면 대본이 있으면 그 표지·부제를 쓴다
     text = (own if KIND and own.exists() else HERE / slug / "script.md").read_text(encoding="utf-8")
     meta = dict(re.findall(r"^(출처|잉크|부제): (.+)$", text, re.M))
     cover = re.search(r"^## 1 \|.*\n((?:> .*\n)+)", text, re.M)[1]
     lines = [ln[2:].strip() for ln in cover.splitlines() if not ln[2:].strip().startswith("![")]   # 그림·영상 줄은 썸네일에 안 쓴다
     weeks = {r[1]: r[0] for r in (ln.split("\t") for ln in (HERE / "episodes.tsv").read_text(encoding="utf-8").splitlines()[1:])}
-    return {"title": lines[0], "sub": meta.get("부제") or "두 진행자가 묻고 답하는 대화편" if KIND else lines[1] if len(lines) > 1 else meta.get("부제", ""), "ink": meta.get("잉크", "#1C2E6B"),
+    return {"title": lines[0], "sub": meta.get("부제") or "두 진행자가 묻고 답하는 대화편" if KIND == "-podcast" else lines[1] if len(lines) > 1 else meta.get("부제", ""), "ink": meta.get("잉크", "#1C2E6B"),
             "src": meta.get("출처", ""), "week": weeks.get(slug + KIND, "")}
 
 

@@ -18,7 +18,7 @@ from googleapiclient.discovery import build
 HERE = pathlib.Path(__file__).parent
 SCOPES = ["https://www.googleapis.com/auth/youtube"]
 TOKEN = HERE / "token-manage.json"
-KIND = "-podcast" if "--podcast" in sys.argv else ""
+KIND = next((f"-{a[7:]}" for a in sys.argv if a.startswith("--part=")), "-podcast" if "--podcast" in sys.argv else "")   # --part=2: 연재 2편(youtube-2.md, script-2.md)
 
 
 def credentials():

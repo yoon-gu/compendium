@@ -9,7 +9,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from update_meta import credentials  # youtube 권한 토큰(token-manage.json)
 
 vid, slug = sys.argv[1:3]
-png = pathlib.Path(__file__).parent / slug / "out" / f"{slug}{'-podcast' if '--podcast' in sys.argv else ''}-thumb.png"
+png = pathlib.Path(__file__).parent / slug / "out" / f"{slug}{next((f'-{a[7:]}' for a in sys.argv if a.startswith('--part=')), '-podcast' if '--podcast' in sys.argv else '')}-thumb.png"
 assert png.stat().st_size < 2_000_000, "유튜브 썸네일은 2MB 이하"
 r = build("youtube", "v3", credentials=credentials()).thumbnails().set(videoId=vid, media_body=MediaFileUpload(png, mimetype="image/png")).execute()
 print(vid, r["items"][0]["maxres"]["url"] if "maxres" in r["items"][0] else "set")

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 486" width="904" height="486"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><text x="18" y="32" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시각</text>
+<text x="188" y="32" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">무슨 일</text>
+<text x="748" y="32" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">누가</text>
+<rect x="0" y="50" width="904" height="66" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="18" y="92.0" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">9초</text>
+<text x="188" y="92.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델이 말을 마치고 you&gt; 가 뜬다</text>
+<text x="748" y="92.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델</text>
+<rect x="0" y="126" width="904" height="66" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="18" y="168.0" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">9-36초</text>
+<text x="188" y="168.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">아무도 안 친다. 0.3초마다 살피기만</text>
+<text x="748" y="168.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">몸</text>
+<rect x="0" y="202" width="904" height="66" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="18" y="244.0" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">36.05초</text>
+<text x="188" y="244.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">테스트 끝 → 일꾼이 큐에 알림</text>
+<text x="748" y="244.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">뒤의 일꾼</text>
+<rect x="0" y="278" width="904" height="66" rx="10" fill="#E7EEF5" stroke="#2F5D8A" stroke-width="4"/>
+<text x="18" y="320.0" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">36.34초</text>
+<text x="188" y="320.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">몸이 알림을 보고 모델을 부른다</text>
+<text x="748" y="320.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">몸</text>
+<rect x="0" y="354" width="904" height="66" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="18" y="396.0" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">37-40초</text>
+<text x="188" y="396.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델이 출력을 읽고 실패를 알린다</text>
+<text x="748" y="396.0" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델</text>
+<text x="0" y="470" font-size="26" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델이 받은 것: 사람이 친 것과 같은 사용자 쪽 메시지</text></svg>

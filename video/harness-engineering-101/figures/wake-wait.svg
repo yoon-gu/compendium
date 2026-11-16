@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 904 420" width="904" height="420"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F5D8A"/></marker></defs><rect x="0" y="0" width="440" height="300" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="26" y="54" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고치기 전</text>
+<text x="26" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">input() 에서 멈춘다</text>
+<text x="26" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람이 칠 때까지 영원히</text>
+<text x="26" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">알림은 큐에 갇힌다</text>
+<rect x="464" y="0" width="440" height="300" rx="14" fill="#FFFFFF" stroke="#2F5D8A" stroke-width="4"/>
+<text x="490" y="54" font-size="32" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">고친 뒤</text>
+<text x="490" y="106" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">0.3초씩 잘게 기다린다</text>
+<text x="490" y="156" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">틈마다 큐를 들여다본다</text>
+<text x="490" y="206" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">알림이 오면 몸이 부른다</text>
+<text x="0" y="360" font-size="28" fill="#2F5D8A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델은 저절로 돌지 않는다. 몸이 대신 부른다</text>
+<text x="0" y="404" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="D2Coding, NanumGothicCoding, monospace" xml:space="preserve">select.select([stdin], [], [], 0.3): 0.3초만 기다리고 돌아온다</text></svg>
