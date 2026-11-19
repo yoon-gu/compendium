@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 620" width="888" height="620"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">확신도 0.9라고 말한 답 열 개</text>
+<rect x="0" y="60" width="70" height="70" rx="35" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="35" y="108" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✓</text>
+<rect x="86" y="60" width="70" height="70" rx="35" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="121" y="108" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✓</text>
+<rect x="172" y="60" width="70" height="70" rx="35" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="207" y="108" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✓</text>
+<rect x="258" y="60" width="70" height="70" rx="35" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="293" y="108" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✓</text>
+<rect x="344" y="60" width="70" height="70" rx="35" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="379" y="108" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✓</text>
+<rect x="430" y="60" width="70" height="70" rx="35" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="465" y="108" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✓</text>
+<rect x="516" y="60" width="70" height="70" rx="35" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="551" y="108" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✓</text>
+<rect x="602" y="60" width="70" height="70" rx="35" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="637" y="108" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✓</text>
+<rect x="688" y="60" width="70" height="70" rx="35" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="723" y="108" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✓</text>
+<rect x="774" y="60" width="70" height="70" rx="35" fill="#F6E7E5" stroke="#C0605A" stroke-width="3"/>
+<text x="809" y="108" font-size="34" fill="#C0605A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">✕</text>
+<text x="0" y="180" font-size="26" fill="#4E8F76" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">보정됐다 = 말한 확신도만큼 실제로 맞는다</text>
+<rect x="0" y="220" width="888" height="150" rx="16" fill="#F8F0E0" stroke="#C9963A" stroke-width="3"/>
+<text x="28" y="270" font-size="28" fill="#C9963A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">작은 모델이 고른 '모르겠음'</text>
+<text x="28" y="318" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델이 스스로 매긴 판단 — 보정된 점수가 아니다</text>
+<text x="28" y="352" font-size="23" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 라벨 데이터로 맞춰 본 뒤에 넘김 기준으로 쓴다</text>
+<rect x="0" y="400" width="888" height="150" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="450" font-size="28" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Strands Decider README</text>
+<text x="28" y="498" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">짧은 분류 과제, 확신도 0.9 이상 → 약 95% 정답</text>
+<text x="28" y="532" font-size="23" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실험 모델이니 내 데이터로 다시 확인</text>
+<text x="0" y="600" font-size="28" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">threshold는 내 라벨 데이터에서 정한다</text></svg>

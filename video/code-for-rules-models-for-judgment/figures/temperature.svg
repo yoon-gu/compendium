@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 660" width="888" height="660"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="0" y="34" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 문의를 세 번 보낸다: "카드가 두 번 긁혔어요"</text>
+<text x="0" y="100" font-size="30" fill="#C0605A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델 (온도 0)</text>
+<rect x="0" y="124" width="272" height="90" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="136" y="182" font-size="32" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">billing</text>
+<rect x="296" y="124" width="272" height="90" rx="14" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="432" y="182" font-size="32" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">billing</text>
+<rect x="592" y="124" width="272" height="90" rx="14" fill="#F6E7E5" stroke="#C0605A" stroke-width="4"/>
+<text x="728" y="182" font-size="32" fill="#C0605A" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">account</text>
+<text x="0" y="260" font-size="26" fill="#C0605A" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">덜 흔들릴 뿐, 똑같은 출력은 보장 못 한다</text>
+<text x="0" y="340" font-size="30" fill="#4E8F76" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">규칙 (키워드 검사)</text>
+<rect x="0" y="364" width="272" height="90" rx="14" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="136" y="422" font-size="32" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">billing</text>
+<rect x="296" y="364" width="272" height="90" rx="14" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="432" y="422" font-size="32" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">billing</text>
+<rect x="592" y="364" width="272" height="90" rx="14" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="728" y="422" font-size="32" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">billing</text>
+<text x="0" y="500" font-size="26" fill="#4E8F76" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">언제나 같은 입력 → 같은 답</text>
+<rect x="0" y="540" width="888" height="110" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<text x="28" y="584" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">환각: 그럴듯하지만 틀린 답을 지어내는 것</text>
+<text x="28" y="626" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">규칙에는 들쭉날쭉함도, 환각도 없다</text></svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 660" width="888" height="660"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><rect x="0" y="0" width="888" height="148" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="48" font-size="30" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">1  작은 모델 + 구조화 출력</text>
+<text x="28" y="92" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">답을 보기로 묶고 '모르겠음'을 둔다</text>
+<text x="28" y="130" font-size="23" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">넘김 신호: 모델 스스로의 판단</text>
+<rect x="0" y="168" width="888" height="148" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="216" font-size="30" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">2  임베딩 유사도</text>
+<text x="28" y="260" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">가장 가까운 정답 예시를 고른다</text>
+<text x="28" y="298" font-size="23" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">넘김 신호: 유사도 점수</text>
+<rect x="0" y="336" width="888" height="148" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="384" font-size="30" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">3  Strands Decider</text>
+<text x="28" y="428" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">실험 단계 오픈소스 결정 모델</text>
+<text x="28" y="466" font-size="23" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">넘김 신호: 보정된 확신도</text>
+<rect x="0" y="504" width="888" height="148" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="28" y="552" font-size="30" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">4  직접 학습한 분류기</text>
+<text x="28" y="596" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">라벨 데이터로 SageMaker에서 학습</text>
+<text x="28" y="634" font-size="23" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">넘김 신호: 클래스별 확률</text></svg>

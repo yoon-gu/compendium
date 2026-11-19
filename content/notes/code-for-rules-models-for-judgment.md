@@ -3,6 +3,7 @@ title: "규칙은 코드로, 판단은 모델로 — 생성형 AI 비용을 줄�
 date: 2026-11-19
 draft: false
 math: false
+youtube: "gxTHVP-W7qY"
 source_url: "https://aws.amazon.com/ko/blogs/machine-learning/cut-generative-ai-costs-code-for-rules-models-for-judgment/"
 author: "Meghan Kothari, Krishna Aswani, Pranav Patankar, Vineet Kamdar (AWS)"
 tags: ["AI", "LLM", "비용 최적화", "에이전트", "AWS", "Amazon Bedrock", "구조화 출력", "라우팅", "평가"]

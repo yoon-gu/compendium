@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 710" width="888" height="710"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><rect x="30" y="452.0" width="130" height="108.0" rx="8" fill="#F6E7E5" stroke="#B9B9B4" stroke-width="2"/>
+<text x="95" y="438.0" font-size="24" fill="#C0605A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">62점</text>
+<text x="95" y="596" font-size="20" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">아주 작은 모델</text>
+<text x="95" y="628" font-size="20" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">비용 ×1</text>
+<rect x="202" y="236.0" width="130" height="324.0" rx="8" fill="#EAF3EE" stroke="#4E8F76" stroke-width="4"/>
+<text x="267" y="222.0" font-size="24" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">86점</text>
+<text x="267" y="596" font-size="20" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">작은 모델</text>
+<text x="267" y="628" font-size="20" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">비용 ×2</text>
+<rect x="374" y="209.0" width="130" height="351.0" rx="8" fill="#ECECE8" stroke="#6B6B68" stroke-width="2"/>
+<text x="439" y="195.0" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">89점</text>
+<text x="439" y="596" font-size="20" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">중간 모델</text>
+<text x="439" y="628" font-size="20" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">비용 ×5</text>
+<rect x="546" y="200.0" width="130" height="360.0" rx="8" fill="#ECECE8" stroke="#6B6B68" stroke-width="2"/>
+<text x="611" y="186.0" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">90점</text>
+<text x="611" y="596" font-size="20" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">큰 모델</text>
+<text x="611" y="628" font-size="20" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">비용 ×15</text>
+<rect x="718" y="191.0" width="130" height="369.0" rx="8" fill="#ECECE8" stroke="#6B6B68" stroke-width="2"/>
+<text x="783" y="177.0" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">91점</text>
+<text x="783" y="596" font-size="20" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">최신 최대 모델</text>
+<text x="783" y="628" font-size="20" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">비용 ×40</text>
+<line x1="0" y1="245.0" x2="888" y2="245.0" stroke="#C0605A" stroke-width="3" stroke-dasharray="12 8"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="#C0605A" stroke-width="3" stroke-dasharray="12 8"/>
+<text x="76" y="26" font-size="24" fill="#C0605A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">품질 하한 85점 (골든 평가 세트로 잰다)</text>
+<text x="0" y="690" font-size="28" fill="#4E8F76" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">하한을 넘는 것 중 가장 싼 모델을 고른다</text>
+<text x="888" y="690" font-size="20" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">점수·비용은 설명용 가상 값</text></svg>

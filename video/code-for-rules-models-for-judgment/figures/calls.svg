@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 620" width="888" height="620"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="170" y="34" font-size="28" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">보통 방식</text>
+<text x="660" y="34" font-size="28" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">바꾼 방식</text>
+<text x="444" y="90" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">주문번호 형식 검사</text>
+<rect x="70" y="112" width="200" height="50" rx="25" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/><text x="170.0" y="146" font-size="24" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">LLM</text>
+<line x1="300" y1="137" x2="420" y2="137" stroke="#B9B9B4" stroke-width="3" marker-end="url(#a)"/>
+<rect x="450" y="112" width="420" height="50" rx="25" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/><text x="660.0" y="146" font-size="24" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">정규식 한 줄</text>
+<text x="444" y="240" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">창구 고르기</text>
+<rect x="70" y="262" width="200" height="50" rx="25" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/><text x="170.0" y="296" font-size="24" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">LLM</text>
+<line x1="300" y1="287" x2="420" y2="287" stroke="#B9B9B4" stroke-width="3" marker-end="url(#a)"/>
+<rect x="450" y="262" width="420" height="50" rx="25" fill="#F8F0E0" stroke="#C9963A" stroke-width="3"/><text x="660.0" y="296" font-size="24" fill="#C9963A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">키워드 → 결정 호출</text>
+<text x="444" y="390" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">답장 쓰기</text>
+<rect x="70" y="412" width="200" height="50" rx="25" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/><text x="170.0" y="446" font-size="24" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">LLM</text>
+<line x1="300" y1="437" x2="420" y2="437" stroke="#B9B9B4" stroke-width="3" marker-end="url(#a)"/>
+<rect x="450" y="412" width="420" height="50" rx="25" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/><text x="660.0" y="446" font-size="24" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">LLM</text>
+<rect x="0" y="520" width="420" height="90" rx="14" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/>
+<text x="210" y="576" font-size="30" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">한 건에 LLM 3번</text>
+<rect x="468" y="520" width="420" height="90" rx="14" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="678" y="576" font-size="30" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">대부분 LLM 1번</text></svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 550" width="888" height="550"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><rect x="0" y="0" width="250" height="110" rx="14" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/>
+<text x="125" y="48" font-size="30" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">LLM</text>
+<text x="125" y="88" font-size="23" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">정규식 초안 1번</text>
+<line x1="260" y1="55" x2="318" y2="55" stroke="#3F7A66" stroke-width="4" marker-end="url(#a)"/>
+<rect x="328" y="0" width="232" height="110" rx="14" fill="#F8F0E0" stroke="#C9963A" stroke-width="3"/>
+<text x="444" y="48" font-size="30" fill="#C9963A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람 검토</text>
+<text x="444" y="88" font-size="21" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">좋은/나쁜 입력으로 시험</text>
+<line x1="570" y1="55" x2="628" y2="55" stroke="#3F7A66" stroke-width="4" marker-end="url(#a)"/>
+<rect x="638" y="0" width="250" height="110" rx="14" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="763" y="48" font-size="28" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">저장소에 커밋</text>
+<text x="763" y="88" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이후 매번 규칙 속도</text>
+<rect x="0" y="150" width="888" height="92" rx="14" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<text x="28" y="207" font-size="28" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">TRACK = r'\b1Z[0-9A-Z]{16}\b'</text>
+<text x="0" y="300" font-size="28" fill="#C0605A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">피할 꼴: 반복을 겹친 정규식</text>
+<rect x="0" y="324" width="888" height="92" rx="14" fill="#F6E7E5" stroke="#C0605A" stroke-width="3"/>
+<text x="28" y="381" font-size="28" fill="#C0605A" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">(a+)+$   ←  'aaaaaaaaaaaaaaaaaaaaaab'</text>
+<text x="0" y="460" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">어떤 입력에서는 검사가 한없이 느려진다 (ReDoS)</text>
+<text x="0" y="530" font-size="25" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">설정 파일엔 정해진 부품만: 정규식·스키마·키워드·범위</text></svg>

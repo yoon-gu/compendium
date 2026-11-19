@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 620" width="888" height="620"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">골든 평가 세트 = 정답이 붙은 내 과제 예시</text>
+<text x="30" y="92" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">입력</text>
+<text x="700" y="92" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">정답</text>
+<rect x="0" y="112" width="888" height="70" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<text x="30" y="158" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">"카드가 두 번 긁혔어요"</text>
+<text x="700" y="158" font-size="25" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">billing</text>
+<rect x="0" y="196" width="888" height="70" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="0"/>
+<text x="30" y="242" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">"앱이 계속 꺼져요"</text>
+<text x="700" y="242" font-size="25" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">technical</text>
+<rect x="0" y="280" width="888" height="70" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<text x="30" y="326" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">"이메일을 바꾸고 싶어요"</text>
+<text x="700" y="326" font-size="25" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">account</text>
+<rect x="0" y="364" width="888" height="70" rx="10" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="0"/>
+<text x="30" y="410" font-size="25" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">"배송은 언제 오나요"</text>
+<text x="700" y="410" font-size="25" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothicCoding, monospace" xml:space="preserve">other</text>
+<rect x="0" y="470" width="420" height="140" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="210" y="520" font-size="28" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">벤치마크</text>
+<text x="210" y="566" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">넓은 과제 수천 개</text>
+<rect x="468" y="470" width="420" height="140" rx="16" fill="#E3EEEA" stroke="#3F7A66" stroke-width="4"/>
+<text x="678" y="520" font-size="28" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">골든 평가 세트</text>
+<text x="678" y="566" font-size="24" fill="#3F7A66" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">내 과제 하나, 하한 하나</text></svg>
