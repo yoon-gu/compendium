@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 630" width="888" height="630"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><rect x="0" y="0" width="888" height="290" rx="18" fill="#F8F0E0" stroke="#C9963A" stroke-width="4"/>
+<text x="40" y="70" font-size="60" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif"><tspan fill="#C9963A">Deci</tspan><tspan fill="#141414">ML</tspan></text>
+<text x="40" y="128" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">Decision + Machine Learning</text>
+<text x="40" y="182" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">읽으면 'decimal'(데시멀)</text>
+<text x="40" y="240" font-size="26" fill="#C9963A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">결정 · 광고 · 푸시 · 쿠폰 · 배너</text>
+<rect x="0" y="330" width="888" height="290" rx="18" fill="#EAF3EE" stroke="#4E8F76" stroke-width="4"/>
+<text x="40" y="400" font-size="60" fill="#4E8F76" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">NeXA</text>
+<text x="250" y="400" font-size="40" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">넥사</text>
+<text x="40" y="458" font-size="26" fill="#141414" text-anchor="start" font-weight="normal" font-family="NanumGothicCoding, monospace" xml:space="preserve">Next eXploration Architecture</text>
+<text x="40" y="512" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">탐색(eXploration) + 노출 구조(Architecture)</text>
+<text x="40" y="570" font-size="26" fill="#4E8F76" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">발견 · 추천 · 검색 · 큐레이션</text></svg>

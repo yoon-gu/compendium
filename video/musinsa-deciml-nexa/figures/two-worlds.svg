@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 680" width="888" height="680"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="444" y="34" font-size="30" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 고객 B, 두 세계</text>
+<rect x="0" y="70" width="410" height="250" rx="18" fill="#E3EEEA" stroke="#3F7A66" stroke-width="4"/>
+<text x="205" y="122" font-size="28" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">푸시를 받은 세계</text>
+<text x="205" y="220" font-size="64" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">10%</text>
+<text x="205" y="284" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">구매 확률</text>
+<rect x="478" y="70" width="410" height="250" rx="18" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="683" y="122" font-size="28" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">받지 않은 세계</text>
+<text x="683" y="220" font-size="64" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">2%</text>
+<text x="683" y="284" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">구매 확률</text>
+<text x="444" y="210" font-size="56" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">−</text>
+<line x1="444" y1="340" x2="444" y2="392" stroke="#3F7A66" stroke-width="4" marker-end="url(#a)"/>
+<rect x="144" y="400" width="600" height="110" rx="18" fill="#EAF3EE" stroke="#4E8F76" stroke-width="4"/>
+<text x="444" y="452" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">증분 효과 = 8%p</text>
+<text x="444" y="492" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">푸시가 실제로 만든 차이</text>
+<text x="0" y="570" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">한 사람이 두 세계를 다 살 수는 없다</text>
+<text x="0" y="616" font-size="24" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">→ 비슷한 고객들의 데이터로 모델이 추정한다 (업리프트 모델링)</text>
+<text x="888" y="666" font-size="20" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">숫자는 설명용 가상 값</text></svg>

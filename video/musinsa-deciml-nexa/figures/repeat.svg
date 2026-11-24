@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 610" width="888" height="610"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="0" y="34" font-size="28" fill="#C0605A" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예전: 모델마다 처음부터</text>
+<rect x="0" y="56" width="272" height="300" rx="16" fill="#F6E7E5" stroke="#C0605A" stroke-width="3"/>
+<text x="136" y="96" font-size="26" fill="#C0605A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델 1</text>
+<text x="136" y="146" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서빙 API 연결</text>
+<text x="136" y="192" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">장애 처리</text>
+<text x="136" y="238" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">배포 절차</text>
+<text x="136" y="284" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">트래픽 감당</text>
+<text x="136" y="330" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서빙 자원</text>
+<rect x="296" y="56" width="272" height="300" rx="16" fill="#F6E7E5" stroke="#C0605A" stroke-width="3"/>
+<text x="432" y="96" font-size="26" fill="#C0605A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델 2</text>
+<text x="432" y="146" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서빙 API 연결</text>
+<text x="432" y="192" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">장애 처리</text>
+<text x="432" y="238" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">배포 절차</text>
+<text x="432" y="284" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">트래픽 감당</text>
+<text x="432" y="330" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서빙 자원</text>
+<rect x="592" y="56" width="272" height="300" rx="16" fill="#F6E7E5" stroke="#C0605A" stroke-width="3"/>
+<text x="728" y="96" font-size="26" fill="#C0605A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">모델 3</text>
+<text x="728" y="146" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서빙 API 연결</text>
+<text x="728" y="192" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">장애 처리</text>
+<text x="728" y="238" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">배포 절차</text>
+<text x="728" y="284" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">트래픽 감당</text>
+<text x="728" y="330" font-size="22" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서빙 자원</text>
+<text x="0" y="420" font-size="28" fill="#4E8F76" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지금: 표준 경로를 깔아 둔다</text>
+<rect x="0" y="444" width="888" height="90" rx="45" fill="#EAF3EE" stroke="#4E8F76" stroke-width="4"/>
+<text x="444" y="500" font-size="28" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서빙 → 배포 → 운영 (한 번 만든 길)</text>
+<text x="0" y="596" font-size="26" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">성적표: 문제 정의 → 서비스 반영까지 걸린 시간</text></svg>

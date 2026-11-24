@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 570" width="888" height="570"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><rect x="0" y="0" width="400" height="260" rx="18" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<text x="200" y="52" font-size="28" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">예전 질문</text>
+<text x="200" y="120" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이 고객이 누를</text>
+<text x="200" y="166" font-size="28" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">확률은 얼마?</text>
+<text x="200" y="226" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">CTR · CVR 점수</text>
+<line x1="412" y1="130" x2="474" y2="130" stroke="#3F7A66" stroke-width="4" marker-end="url(#a)"/>
+<rect x="488" y="0" width="400" height="260" rx="18" fill="#E3EEEA" stroke="#3F7A66" stroke-width="4"/>
+<text x="688" y="52" font-size="28" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">지금 질문</text>
+<text x="688" y="120" font-size="28" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">이 고객에게 지금</text>
+<text x="688" y="166" font-size="28" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">무엇을 보여 줄까?</text>
+<text x="688" y="226" font-size="24" fill="#3F7A66" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">점수 + 제약 → 결정</text>
+<rect x="0" y="330" width="130" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="65" y="372" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">검색</text>
+<line x1="65" y1="404" x2="444" y2="470" stroke="#B9B9B4" stroke-width="2" marker-end="url(#a)"/>
+<rect x="148" y="330" width="130" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="213" y="372" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">추천</text>
+<line x1="213" y1="404" x2="444" y2="470" stroke="#B9B9B4" stroke-width="2" marker-end="url(#a)"/>
+<rect x="296" y="330" width="130" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="361" y="372" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">광고</text>
+<line x1="361" y1="404" x2="444" y2="470" stroke="#B9B9B4" stroke-width="2" marker-end="url(#a)"/>
+<rect x="444" y="330" width="130" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="509" y="372" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">앱 푸시</text>
+<line x1="509" y1="404" x2="444" y2="470" stroke="#B9B9B4" stroke-width="2" marker-end="url(#a)"/>
+<rect x="592" y="330" width="130" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="657" y="372" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">쿠폰</text>
+<line x1="657" y1="404" x2="444" y2="470" stroke="#B9B9B4" stroke-width="2" marker-end="url(#a)"/>
+<rect x="740" y="330" width="130" height="64" rx="32" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="805" y="372" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">배너</text>
+<line x1="805" y1="404" x2="444" y2="470" stroke="#B9B9B4" stroke-width="2" marker-end="url(#a)"/>
+<rect x="244" y="480" width="400" height="80" rx="40" fill="#FFFFFF" stroke="#3F7A66" stroke-width="3"/>
+<text x="444" y="530" font-size="26" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">하나의 질문으로 모인다</text></svg>

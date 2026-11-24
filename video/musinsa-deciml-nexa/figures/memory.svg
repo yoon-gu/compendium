@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 640" width="888" height="640"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><rect x="0" y="0" width="410" height="330" rx="18" fill="#ECECE8" stroke="#B9B9B4" stroke-width="3"/>
+<text x="205" y="52" font-size="30" fill="#6B6B68" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">담당자 머릿속</text>
+<text x="205" y="120" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">왜 이렇게 풀었나</text>
+<text x="205" y="170" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">어떤 조건에서 배포해도 되나</text>
+<rect x="60" y="210" width="290" height="80" rx="40" fill="#F6E7E5" stroke="#C0605A" stroke-width="3"/>
+<text x="205" y="260" font-size="24" fill="#C0605A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트는 못 읽는다</text>
+<rect x="478" y="0" width="410" height="330" rx="18" fill="#E3EEEA" stroke="#3F7A66" stroke-width="4"/>
+<text x="683" y="52" font-size="30" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">플랫폼에 남긴 기록</text>
+<text x="683" y="120" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">무엇을 바꿨나</text>
+<text x="683" y="170" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">어떤 테스트를 통과했나</text>
+<text x="683" y="220" font-size="24" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">왜 그렇게 골랐나</text>
+<rect x="538" y="250" width="290" height="60" rx="30" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="683" y="290" font-size="22" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람도 에이전트도 읽는다</text>
+<text x="0" y="400" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 규칙</text>
+<rect x="0" y="424" width="410" height="90" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="205" y="480" font-size="30" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사람</text>
+<rect x="478" y="424" width="410" height="90" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="683" y="480" font-size="30" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">에이전트</text>
+<text x="444" y="570" font-size="25" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 기준으로 검증받고 같은 꼴로 남긴다</text>
+<text x="444" y="616" font-size="23" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">담당자가 바뀌어도 맥락을 다시 캐지 않는다</text></svg>

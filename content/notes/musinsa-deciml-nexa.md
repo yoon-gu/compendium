@@ -7,6 +7,7 @@ source_url: "https://techblog.musinsa.com/%EC%98%88%EC%B8%A1%EC%9D%84-%EB%84%98%
 author: "김윤태 (무신사 Core-E Personalization 팀)"
 tags: ["AI", "Personalization", "Recommendation", "MLOps", "업리프트 모델링", "ML 플랫폼", "Musinsa"]
 summary: "클릭률을 올렸는데 구매는 그대로라면 무엇이 잘못됐을까? 무신사 개인화 팀은 반응 확률을 예측하는 것만으로는 '이 고객에게 지금 무엇을 보여 줄까'에 답할 수 없다고 본다. 자원을 누가 쓰느냐로 문제를 갈라, 서비스의 자원(푸시·쿠폰)을 배분하는 DeciML과 고객의 시간과 주의를 돕는 NeXA를 만들었다. 시리즈 첫 편으로, 문제 정의와 설계 원칙 세 가지를 다룬다."
+youtube: "lLAnXRaXj2c"
 ---
 > **원문:** [예측을 넘어 결정과 발견으로: DeciML과 NeXA를 만든 이유](https://techblog.musinsa.com/%EC%98%88%EC%B8%A1%EC%9D%84-%EB%84%98%EC%96%B4-%EA%B2%B0%EC%A0%95%EA%B3%BC-%EB%B0%9C%EA%B2%AC%EC%9C%BC%EB%A1%9C-deciml%EA%B3%BC-nexa%EB%A5%BC-%EB%A7%8C%EB%93%A0-%EC%9D%B4%EC%9C%A0-9313debb2a4f) — 김윤태, 무신사 테크 블로그, 2026-11-03
 >

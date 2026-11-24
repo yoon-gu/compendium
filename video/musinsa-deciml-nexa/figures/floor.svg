@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 540" width="888" height="540"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><rect x="0" y="0" width="888" height="250" rx="18" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="444" y="48" font-size="30" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">그 위: DS · MLE의 몫</text>
+<rect x="40" y="160" width="254" height="84" rx="14" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/>
+<text x="167" y="210" font-size="23" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">어떤 문제를 풀까</text>
+<rect x="314" y="120" width="254" height="84" rx="14" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/>
+<text x="441" y="170" font-size="23" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">어떤 접근이 나을까</text>
+<rect x="588" y="80" width="254" height="84" rx="14" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/>
+<text x="715" y="130" font-size="23" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">동료와 쌓는 지식</text>
+<rect x="0" y="270" width="888" height="190" rx="18" fill="#EAF3EE" stroke="#4E8F76" stroke-width="4"/>
+<text x="444" y="318" font-size="30" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">바닥: 플랫폼이 책임지는 품질 하한</text>
+<rect x="20" y="352" width="200" height="80" rx="12" fill="#FFFFFF" stroke="#4E8F76" stroke-width="3"/>
+<text x="120" y="400" font-size="21" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">서빙 계약</text>
+<rect x="234" y="352" width="200" height="80" rx="12" fill="#FFFFFF" stroke="#4E8F76" stroke-width="3"/>
+<text x="334" y="400" font-size="21" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">재시도·과부하 차단</text>
+<rect x="448" y="352" width="200" height="80" rx="12" fill="#FFFFFF" stroke="#4E8F76" stroke-width="3"/>
+<text x="548" y="400" font-size="21" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">배포·롤백 경로</text>
+<rect x="662" y="352" width="200" height="80" rx="12" fill="#FFFFFF" stroke="#4E8F76" stroke-width="3"/>
+<text x="762" y="400" font-size="21" fill="#141414" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">관측 규약</text>
+<text x="444" y="520" font-size="25" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">누가 어떤 모델을 만들어도 기본 품질은 같다</text></svg>
