@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 580" width="888" height="580"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><rect x="0" y="0" width="420" height="120" rx="16" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/>
+<text x="210.0" y="54.0" font-size="28" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 유저의 행동끼리</text>
+<text x="210.0" y="94.0" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사례 1 · 수십 개 금융 행동</text>
+<rect x="468" y="0" width="420" height="120" rx="16" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/>
+<text x="678.0" y="54.0" font-size="28" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 상품의 과제끼리</text>
+<text x="678.0" y="94.0" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">사례 2 · 분류 하나 + 수치 둘</text>
+<rect x="0" y="160" width="888" height="120" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="444" y="208" font-size="28" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">Meta Lattice (KDD 2026)</text>
+<text x="444" y="252" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수천 개 광고 모델을 비슷한 것끼리 묶어 몇 개로 · 인프라 약 20% 절감</text>
+<rect x="0" y="320" width="888" height="110" rx="16" fill="#F6E7E5" stroke="#C0605A" stroke-width="3"/>
+<text x="444" y="386" font-size="30" fill="#C0605A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">무작정 합치면 품질이 떨어진다</text>
+<rect x="0" y="460" width="888" height="110" rx="16" fill="#F8F0E0" stroke="#C9963A" stroke-width="3"/>
+<text x="444" y="506" font-size="28" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">합치기 전에 과제별 평가 기준부터</text>
+<text x="444" y="546" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">평균은 좋아져도 일부 과제는 나빠질 수 있다</text></svg>

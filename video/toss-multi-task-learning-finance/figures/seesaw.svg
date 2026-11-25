@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 560" width="888" height="560"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><polygon points="444,330 404,400 484,400" fill="#6B6B68"/>
+<line x1="104" y1="380" x2="784" y2="280" stroke="#141414" stroke-width="10" stroke-linecap="round"/>
+<rect x="54" y="296" width="200" height="80" rx="16" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="154" y="346" font-size="28" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">과제 A ↑</text>
+<rect x="634" y="196" width="200" height="80" rx="16" fill="#F6E7E5" stroke="#C0605A" stroke-width="3"/>
+<text x="734" y="246" font-size="28" fill="#C0605A" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">과제 B ↓</text>
+<text x="444" y="60" font-size="28" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">공유층을 거치는 한</text>
+<text x="444" y="104" font-size="24" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">한 과제를 위한 변경이 다른 과제를 해칠 수 있다</text>
+<rect x="0" y="450" width="888" height="100" rx="16" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/>
+<text x="444" y="494" font-size="26" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">부정적 전이 → PLE 의 과제별 전문가와 게이트로 줄인다</text>
+<text x="444" y="532" font-size="21" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">손실은 과제마다 표준화하고 손실 함수도 분포에 맞게</text></svg>

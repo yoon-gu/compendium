@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 560" width="888" height="560"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="0" y="34" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">목적별 트리 모델 대비 (상대값)</text>
+<text x="0" y="118" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">AP</text>
+<rect x="250" y="80" width="420" height="56" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<rect x="250" y="80" width="378" height="56" rx="10" fill="#3F7A66" stroke="#3F7A66" stroke-width="0"/>
+<text x="888" y="118" font-size="24" fill="#3F7A66" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">약 54% 개선</text>
+<text x="0" y="218" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">상위 N명 재현율</text>
+<rect x="250" y="180" width="420" height="56" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<rect x="250" y="180" width="140" height="56" rx="10" fill="#3F7A66" stroke="#3F7A66" stroke-width="0"/>
+<text x="888" y="218" font-size="24" fill="#3F7A66" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">약 20% 개선</text>
+<text x="0" y="318" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">AUC</text>
+<rect x="250" y="280" width="420" height="56" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<rect x="250" y="280" width="10" height="56" rx="10" fill="#B9B9B4" stroke="#3F7A66" stroke-width="0"/>
+<text x="888" y="318" font-size="24" fill="#6B6B68" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">거의 같음</text>
+<rect x="0" y="400" width="888" height="150" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="30" y="446" font-size="26" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">AUC  전체 순위가 잘 섰나</text>
+<text x="30" y="500" font-size="26" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">AP · 상위 재현율  맨 위 N명이 정확한가</text>
+<text x="30" y="536" font-size="22" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">마케팅이 실제로 쓰는 건 맨 위 N명</text></svg>
