@@ -1,65 +1,13 @@
-import { CalculateMetadataFunction, Composition, Folder } from "remotion";
-import { FPS, Timing, W } from "./lib/ui";
-import { Bound } from "./toss/Bound";
-import { Case1 } from "./toss/Case1";
-import { Case2 } from "./toss/Case2";
-import { Case2Results } from "./toss/Case2Results";
-import { Closing } from "./toss/Closing";
-import { Costs } from "./toss/Costs";
-import { Explosion } from "./toss/Explosion";
-import { Group } from "./toss/Group";
-import { Mask } from "./toss/Mask";
-import { Online } from "./toss/Online";
-import { Ple } from "./toss/Ple";
-import { Seesaw } from "./toss/Seesaw";
-import { Share } from "./toss/Share";
-import { Shortcut } from "./toss/Shortcut";
-import { Takeaways } from "./toss/Takeaways";
-import { Topn } from "./toss/Topn";
-import { TwoUses } from "./toss/TwoUses";
+// 회차마다 src/<회차>/index.tsx 에 컴포지션 목록을 두고 여기서 모은다(회차끼리 이 파일을 함께 고치지 않게).
+import React from "react";
+import { AgentFolder } from "./agent";
+import { TargetingFolder } from "./targeting";
+import { TossFolder } from "./toss";
 
-// 클립 길이는 화면 길이(props.duration 초)를 따른다. 렌더할 때 --props=<이름>-timing.json 으로 넘긴다.
-const byDuration: CalculateMetadataFunction<Timing> = ({ props }) => ({
-  durationInFrames: Math.ceil(props.duration * FPS),
-});
-
-// [이름, 컴포넌트, 높이(폭은 888), 표시 수]. 높이는 화면에서 제목 아래 남는 자리(약어 각주가 붙는 화면은 낮게).
-const TOSS: [string, React.FC<Timing>, number, number][] = [
-  ["explosion", Explosion, 720, 6],
-  ["costs", Costs, 684, 5],
-  ["ple", Ple, 720, 7],
-  ["two-uses", TwoUses, 690, 6],
-  ["mask", Mask, 720, 5],
-  ["share", Share, 690, 6],
-  ["case1", Case1, 700, 8],
-  ["topn", Topn, 538, 6],
-  ["online", Online, 690, 8],
-  ["case2", Case2, 700, 11],
-  ["shortcut", Shortcut, 720, 6],
-  ["case2-results", Case2Results, 610, 5],
-  ["seesaw", Seesaw, 610, 6],
-  ["bound", Bound, 700, 7],
-  ["group", Group, 690, 8],
-  ["takeaways", Takeaways, 720, 4],
-  ["closing", Closing, 560, 5],
-];
-
-export const RemotionRoot: React.FC = () => {
-  return (
-    <Folder name="toss-multi-task-learning-finance">
-      {TOSS.map(([id, component, h, n]) => (
-        <Composition
-          key={id}
-          id={`toss-${id}`}
-          component={component}
-          durationInFrames={40 * FPS}
-          fps={FPS}
-          width={W}
-          height={h}
-          defaultProps={{ duration: 40, marks: Array.from({ length: n }, (_, i) => 2 + i * 4) }}
-          calculateMetadata={byDuration}
-        />
-      ))}
-    </Folder>
-  );
-};
+export const RemotionRoot: React.FC = () => (
+  <>
+    <TossFolder />
+    <AgentFolder />
+    <TargetingFolder />
+  </>
+);
