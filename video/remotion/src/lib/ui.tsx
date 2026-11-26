@@ -87,3 +87,16 @@ export const Tree: React.FC<{ x: number; y: number; s?: number; a?: number; colo
     <rect x="26" y="46" width="8" height="20" fill={color} />
   </svg>
 );
+
+/** a→b 를 t(0-1)만큼. 숫자 세기·위치 이동에 쓴다. */
+export const mix = (a: number, b: number, t: number) => a + (b - a) * t;
+
+/** 머리글 + 설명 줄이 있는 카드. 설명은 줄 목록. */
+export const Card: React.FC<{ x: number; y: number; w: number; h: number; a?: number; head: React.ReactNode; sub?: React.ReactNode[]; ec?: string; fc?: string; hc?: string; hs?: number; ss?: number; lw?: number; rise?: boolean }> = ({ x, y, w, h, a = 1, head, sub = [], ec = C.line, fc = "#FFFFFF", hc = C.txt, hs = 32, ss = 26, lw = 3, rise = true }) => (
+  <Box x={x} y={y} w={w} h={h} a={a} ec={ec} fc={fc} lw={lw} r={16} size={hs} bold color={hc} rise={rise}>
+    {head}
+    {sub.map((s, k) => (
+      <span key={k} style={{ fontSize: ss, fontWeight: 400, color: C.gray, marginTop: k ? 2 : 8 }}>{s}</span>
+    ))}
+  </Box>
+);
