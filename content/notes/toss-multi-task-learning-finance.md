@@ -7,7 +7,7 @@ source_url: "https://toss.tech/article/multi-task-learning-in-finance"
 author: "토스 ML 챕터"
 tags: ["AI", "Multi-Task Learning", "Recommendation", "MLOps", "멀티태스크 학습", "PLE", "Toss"]
 summary: "예측할 질문이 생길 때마다 트리 모델을 하나씩 만들면 금세 수백 개가 된다. 토스 ML 챕터는 마케팅용 금융 행동 예측과 상품별 세 과제 예측을 각각 멀티태스크 모델 하나로 묶었다. 공유 인코더와 PLE 전문가 구조로 드문 과제가 큰 과제에서 배우게 했고, AP는 약 54% 오르고 MAE는 66-79% 줄었다. 무엇이 쉬워지고 무엇이 어려워지는지까지 정리한다."
-youtube: "CVukt60JSfc"
+youtube: "HGM_e2VxT1E"
 ---
 > **원문:** [목적마다, 상품마다 늘던 모델을 하나로: 금융 도메인에 멀티태스크 학습 적용하기](https://toss.tech/article/multi-task-learning-in-finance) — 토스 ML 챕터, 토스 테크 블로그, 2026-11-23
 >

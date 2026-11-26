@@ -1,6 +1,7 @@
 ---
 title: "판단만 사람이 한다 — 토스가 타겟팅 모델의 비교 네 가지를 자동화한 방법"
 date: 2026-11-26
+youtube: "CMFCS_ejSGk"
 draft: false
 math: false
 source_url: "https://toss.tech/article/targeting-model-automation"

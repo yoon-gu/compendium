@@ -15,7 +15,7 @@
 
 원문: https://toss.tech/article/targeting-model-automation
 한국어 번역·정리 노트: https://yoon-gu.github.io/compendium/notes/toss-targeting-model-automation/
-함께 보기, 수백 개 트리 모델을 멀티태스크 모델 하나로 묶은 토스 ML 챕터의 글: https://youtu.be/CVukt60JSfc
+함께 보기, 수백 개 트리 모델을 멀티태스크 모델 하나로 묶은 토스 ML 챕터의 글: https://youtu.be/HGM_e2VxT1E
 
 화면의 그림과 애니메이션은 원문 그림을 쓰지 않고 새로 그렸습니다. 성과 수치는 모두 원문에서 옮겼습니다.
 

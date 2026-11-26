@@ -1,6 +1,7 @@
 ---
 title: "실행은 가두고, 대화는 잇는다 — 토스가 망분리 환경에 에이전트 플랫폼을 세운 방법"
 date: 2026-11-26
+youtube: "QVb7OH8CgSA"
 draft: false
 math: false
 source_url: "https://toss.tech/article/agent-platform-foundation"
