@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 550" width="888" height="550"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="0" y="34" font-size="26" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">상품별 트리 모델 대비</text>
-<text x="0" y="100" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수치 과제 ① 오차</text>
-<text x="888" y="100" font-size="26" fill="#3F7A66" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">MAE 약 79% 감소</text>
-<rect x="0" y="120" width="888" height="40" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
-<text x="878" y="150" font-size="20" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">기존 100</text>
-<rect x="0" y="166" width="186.48" height="40" rx="10" fill="#3F7A66" stroke="#3F7A66" stroke-width="0"/>
-<text x="198.48" y="196" font-size="22" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">21</text>
-<text x="0" y="250" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수치 과제 ② 오차</text>
-<text x="888" y="250" font-size="26" fill="#3F7A66" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">MAE 약 66% 감소</text>
-<rect x="0" y="270" width="888" height="40" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
-<text x="878" y="300" font-size="20" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">기존 100</text>
-<rect x="0" y="316" width="301.92" height="40" rx="10" fill="#3F7A66" stroke="#3F7A66" stroke-width="0"/>
-<text x="313.92" y="346" font-size="22" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">34</text>
-<rect x="0" y="380" width="888" height="110" rx="16" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
-<text x="444" y="446" font-size="30" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">분류 과제 AUC 약 10% 향상 (상대값)</text>
-<text x="444" y="536" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 유저 · 같은 상품만 모아 같은 실제 결과로 채점</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 610" width="888" height="610"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="0" y="30" font-size="28" fill="#6B6B68" text-anchor="start" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">상품별 트리 모델 대비</text>
+<text x="0" y="92" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수치 과제 ① 오차</text>
+<text x="888" y="92" font-size="30" fill="#3F7A66" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">MAE 약 79% 감소</text>
+<rect x="0" y="112" width="888" height="48" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<text x="874" y="146" font-size="26" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">기존 100</text>
+<rect x="0" y="168" width="186.48" height="48" rx="10" fill="#3F7A66" stroke="#3F7A66" stroke-width="0"/>
+<text x="200.48" y="202" font-size="28" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">21</text>
+<text x="0" y="268" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">수치 과제 ② 오차</text>
+<text x="888" y="268" font-size="30" fill="#3F7A66" text-anchor="end" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">MAE 약 66% 감소</text>
+<rect x="0" y="288" width="888" height="48" rx="10" fill="#ECECE8" stroke="#B9B9B4" stroke-width="0"/>
+<text x="874" y="322" font-size="26" fill="#6B6B68" text-anchor="end" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">기존 100</text>
+<rect x="0" y="344" width="301.92" height="48" rx="10" fill="#3F7A66" stroke="#3F7A66" stroke-width="0"/>
+<text x="315.92" y="378" font-size="28" fill="#3F7A66" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">34</text>
+<rect x="0" y="424" width="888" height="120" rx="16" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="444" y="498" font-size="34" fill="#4E8F76" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">분류 과제 AUC 약 10% 향상 (상대값)</text>
+<text x="444" y="594" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">같은 유저 · 같은 상품만 모아 같은 실제 결과로 채점</text></svg>

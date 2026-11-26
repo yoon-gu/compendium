@@ -7,6 +7,6 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 cd "$HERE/../../remotion"
 for n in ${@:-explosion ple mask shortcut}; do
   P=""; [ -f "$HERE/$n-timing.json" ] && P="--props=$HERE/$n-timing.json"
-  npx remotion render "toss-$n" "$HERE/$n.mp4" $P --codec=h264 --muted --log=error
+  npx remotion render "toss-$n" "$HERE/$n.mp4" $P --codec=h264 --muted --scale=2 --log=error
   echo "$n.mp4"
 done

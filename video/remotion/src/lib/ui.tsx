@@ -15,8 +15,8 @@ for (const [w, f] of [["400", "Regular"], ["700", "Bold"], ["800", "ExtraBold"]]
 // 클립 길이 = 그 화면의 길이(초), marks = 나레이션에서 각 요소가 언급되는 시각(초). timing.py 가 채운다.
 export type Timing = { duration: number; marks: number[] };
 export const FPS = 25;
-export const W = 1776;
-export const H = 1000;
+export const W = 888;   // 세로 영상 본문 폭 그대로(화면 px). 렌더는 --scale=2 로 선명하게
+export const H = 720;
 
 const ease = Easing.bezier(0.16, 1, 0.3, 1);
 

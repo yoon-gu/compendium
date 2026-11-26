@@ -367,7 +367,10 @@ def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1,
     parts = []
     for ln in rest:
         if ln.startswith("![") and ln.endswith(")") and re.search(r"\.(webm|mp4|mov)(#|\))", ln):
-            parts.append('<div class=clip></div>')   # 영상 자리. 위치는 build_on_audio 의 clip_y 규칙과 맞춰야 한다
+            src = HERE / re.search(r"\]\((.+?)(?:#|\))", ln)[1]   # 영상 자리. 높이는 클립 비율을 따른다(16:9 아닌 세로형 클립도)
+            cw, ch = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height",
+                                     "-of", "csv=p=0", str(src)], check=True, capture_output=True, text=True).stdout.split(",")
+            parts.append(f'<div class=clip style="height:auto;aspect-ratio:{cw.strip()}/{ch.strip()}"></div>')
         elif ln.startswith("![") and ln.endswith(")"):
             path = ln[ln.index("](") + 2:-1]
             src = (HERE / path).resolve().as_uri()

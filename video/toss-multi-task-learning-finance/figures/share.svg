@@ -1,34 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 566" width="888" height="566"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="0" y="34" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">공유 부분은 모든 과제의 데이터로 배운다</text>
-<rect x="0" y="64" width="270" height="120" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="135" y="106" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">흔한 과제</text>
-<circle cx="30" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="56" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="82" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="108" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="134" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="160" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="186" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="212" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="238" cy="152" r="9" fill="#3F7A66"/>
-<line x1="135" y1="194" x2="444" y2="262" stroke="#B9B9B4" stroke-width="3" marker-end="url(#a)"/>
-<rect x="300" y="64" width="270" height="120" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="435" y="106" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">보통 과제</text>
-<circle cx="330" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="356" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="382" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="408" cy="152" r="9" fill="#3F7A66"/>
-<circle cx="434" cy="152" r="9" fill="#3F7A66"/>
-<line x1="435" y1="194" x2="444" y2="262" stroke="#B9B9B4" stroke-width="3" marker-end="url(#a)"/>
-<rect x="600" y="64" width="270" height="120" rx="16" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
-<text x="735" y="106" font-size="26" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">드문 과제</text>
-<circle cx="630" cy="152" r="9" fill="#3F7A66"/>
-<line x1="735" y1="194" x2="444" y2="262" stroke="#B9B9B4" stroke-width="3" marker-end="url(#a)"/>
-<rect x="144" y="270" width="600" height="90" rx="18" fill="#E3EEEA" stroke="#3F7A66" stroke-width="4"/>
-<text x="444" y="326" font-size="30" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">공유 인코더 · 공유 전문가</text>
-<text x="0" y="420" font-size="28" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">입력도 넓어진다</text>
-<rect x="0" y="446" width="420" height="110" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
-<text x="210.0" y="495.0" font-size="28" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">트리 모델</text>
-<text x="210.0" y="535.0" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">표 한 줄 · 순서는 집계해 편다</text>
-<rect x="468" y="446" width="420" height="110" rx="16" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/>
-<text x="678.0" y="495.0" font-size="28" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">신경망</text>
-<text x="678.0" y="535.0" font-size="22" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시간 순 기록 · 상품 묶음 그대로</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 888 690" width="888" height="690"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F7A66"/></marker></defs><text x="0" y="38" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">공유 부분은 모든 과제의 데이터로 배운다</text>
+<rect x="0" y="70" width="280" height="140" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="140" y="122" font-size="30" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">흔한 과제</text>
+<circle cx="28" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="56" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="84" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="112" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="140" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="168" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="196" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="224" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="252" cy="172" r="11" fill="#3F7A66"/>
+<line x1="140" y1="220" x2="444" y2="282" stroke="#B9B9B4" stroke-width="4" marker-end="url(#a)"/>
+<rect x="304" y="70" width="280" height="140" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="444" y="122" font-size="30" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">보통 과제</text>
+<circle cx="332" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="360" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="388" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="416" cy="172" r="11" fill="#3F7A66"/>
+<circle cx="444" cy="172" r="11" fill="#3F7A66"/>
+<line x1="444" y1="220" x2="444" y2="282" stroke="#B9B9B4" stroke-width="4" marker-end="url(#a)"/>
+<rect x="608" y="70" width="280" height="140" rx="16" fill="#EAF3EE" stroke="#4E8F76" stroke-width="3"/>
+<text x="748" y="122" font-size="30" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">드문 과제</text>
+<circle cx="636" cy="172" r="11" fill="#3F7A66"/>
+<line x1="748" y1="220" x2="444" y2="282" stroke="#B9B9B4" stroke-width="4" marker-end="url(#a)"/>
+<rect x="104" y="290" width="680" height="100" rx="18" fill="#E3EEEA" stroke="#3F7A66" stroke-width="4"/>
+<text x="444" y="352" font-size="34" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">공유 인코더 · 공유 전문가</text>
+<text x="0" y="472" font-size="32" fill="#141414" text-anchor="start" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">입력도 넓어진다</text>
+<rect x="0" y="500" width="420" height="190" rx="16" fill="#FFFFFF" stroke="#B9B9B4" stroke-width="3"/>
+<text x="210.0" y="560.0" font-size="32" fill="#141414" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">트리 모델</text>
+<text x="210.0" y="608.0" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">표 한 줄로 편다</text>
+<text x="210.0" y="648.0" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">순서는 집계해 넣는다</text>
+<rect x="468" y="500" width="420" height="190" rx="16" fill="#E3EEEA" stroke="#3F7A66" stroke-width="3"/>
+<text x="678.0" y="560.0" font-size="32" fill="#3F7A66" text-anchor="middle" font-weight="bold" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">신경망</text>
+<text x="678.0" y="608.0" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">시간 순 기록 그대로</text>
+<text x="678.0" y="648.0" font-size="26" fill="#6B6B68" text-anchor="middle" font-weight="normal" font-family="NanumGothic, Nanum Gothic, sans-serif" xml:space="preserve">상품 묶음 그대로</text></svg>
