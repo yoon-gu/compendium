@@ -384,7 +384,10 @@ def frame_html(frame: dict, scene: dict, meta: dict, cover: bool, page: int = 1,
             parts.append(f"<p class=by>{inline(ln[1:].strip())}</p>")
         else:
             parts.append(f"<p class=sup>{inline(ln)}</p>")
-    cls = f"f b{(page - 1) % 6}" + (" cover" if cover else "") + (" long" if len(re.sub(r"\*", "", head)) > 44 else "")
+    bg = (page - 1) % 6
+    if any(p.startswith("<div class=clip") for p in parts) and bg not in (0, 4):
+        bg = 0 if page % 2 else 4   # 클립 바탕(#F4F4F1)과 다른 배경에는 클립을 얹지 않는다(어두운 b3 위 밝은 상자 금지)
+    cls = f"f b{bg}" + (" cover" if cover else "") + (" long" if len(re.sub(r"\*", "", head)) > 44 else "")
     if WIDE and any(re.search(r"figures/(term|code)-[^)]*\.mp4", ln) for ln in rest):
         cls += " big"                                       # 실습 화면은 클립을 크게
     if WIDE:   # 그림·클립·수식은 오른쪽 단, 글은 왼쪽 단
